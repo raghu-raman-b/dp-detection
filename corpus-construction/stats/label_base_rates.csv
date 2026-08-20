@@ -1,0 +1,30 @@
+column,meso_label,high_level,random_pos,targeted_pos,total_pos,random_n,rate,ci_lo,ci_hi
+T_PlayingByAppointment,Playing by Appointment,Temporal,22,29,51,300,0.0733,0.0489,0.1085
+T_DailyRewards,Daily Rewards,Temporal,3,19,22,300,0.01,0.0034,0.029
+T_Grinding,Grinding,Temporal,20,12,32,300,0.0667,0.0436,0.1007
+T_Advertisement,Advertisement,Temporal,11,14,25,300,0.0367,0.0206,0.0645
+T_InfiniteTreadmill,Infinite Treadmill,Temporal,1,4,5,300,0.0033,0.0006,0.0186
+T_MandatoryMarathon,Mandatory Marathon,Temporal,1,1,2,300,0.0033,0.0006,0.0186
+M_PayToProgress,Pay to Progress,Monetary,62,57,119,300,0.2067,0.1647,0.2561
+M_IntermediateCurrency,Intermediate Currency,Monetary,21,17,38,300,0.07,0.0462,0.1046
+M_DeceptiveLuxury,Deceptive Luxury,Monetary,2,4,6,300,0.0067,0.0018,0.024
+M_RecurringFee,Recurring Fee,Monetary,8,7,15,300,0.0267,0.0136,0.0517
+M_Gambling,Gambling,Monetary,15,17,32,300,0.05,0.0305,0.0808
+M_PowerCreep,Power Creep,Monetary,5,7,12,300,0.0167,0.0071,0.0384
+M_WasteAversion,Waste Aversion,Monetary,4,11,15,300,0.0133,0.0052,0.0338
+M_EasyToPurchase,Easy to Purchase,Monetary,7,13,20,300,0.0233,0.0113,0.0474
+M_UIMisdirection,UI Misdirection,Monetary,0,18,18,300,0.0,0.0,0.0126
+M_NeverEndingLure,Never-Ending Lure,Monetary,1,9,10,300,0.0033,0.0006,0.0186
+S_ForcedFellowship,Forced Fellowship,Social,1,1,2,300,0.0033,0.0006,0.0186
+S_FriendSpamImpersonation,Friend Spam / Impersonation,Social,0,4,4,300,0.0,0.0,0.0126
+S_Reciprocity,Reciprocity,Social,4,15,19,300,0.0133,0.0052,0.0338
+S_EncouragesAntiSocialBehavior,Encourages Anti-Social Behavior,Social,1,1,2,300,0.0033,0.0006,0.0186
+S_FearOfMissingOutFOMO,Fear of Missing Out (FOMO),Social,1,2,3,300,0.0033,0.0006,0.0186
+S_Competition,Competition,Social,20,24,44,300,0.0667,0.0436,0.1007
+P_EasyToGetHardToLose,"Easy to Get, Hard to Lose",Psychological,3,8,11,300,0.01,0.0034,0.029
+P_CompleteTheCollection,Complete the Collection,Psychological,5,21,26,300,0.0167,0.0071,0.0384
+P_IllusionOfControl,Illusion of Control,Psychological,19,25,44,300,0.0633,0.0409,0.0968
+P_AestheticManipulation,Aesthetic Manipulation,Psychological,0,14,14,300,0.0,0.0,0.0126
+P_OptimismAndFrequencyBiases,Optimism and Frequency Biases,Psychological,3,6,9,300,0.01,0.0034,0.029
+P_RewardMania,Reward Mania,Psychological,28,31,59,300,0.0933,0.0654,0.1316
+Tech_FragmentedDownloads,Fragmented Downloads,Technical,0,6,6,300,0.0,0.0,0.0126

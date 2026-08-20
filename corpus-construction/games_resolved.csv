@@ -1,0 +1,89 @@
+app_id,canonical_title,developer,markets,casino,title_raw,match_score,needs_review,notes
+com.miniclip.eightballpool,8 Ball Pool,Miniclip.com,in,0,8 Ball Pool,1.000,0,
+com.homagames.studio.allinhole,All in Hole: Black Hole Games,Homa,us,0,All in Hole: Black Hole Games,1.000,0,
+com.innplaylabs.animalkingdomraid,Animals & Coins: Animal Run,Innplay Labs,gb;in,0,Animals & Coins;Animals & Coins: Animal Run,0.703,0,FLAG: low score 0.70 | FLAG: low score 0.70; also matched by raw 'Animals & Coins' | normalized from 'Animals and Coins' to match India row | normalized from 'Animals and Coins: Animal Run'
+com.pubg.imobile,BGMI: FPS Battle Royale,"KRAFTON, Inc.",in,0,Battlegrounds Mobile India (BGMI),0.566,0,FLAG: low score 0.57 | fixed from 'BGMI: FPS Battle Royale'
+air.com.buffalo_studios.newflashbingo,Bingo Blitz™️ - Bingo Games,Playtika Santa Monica,gb;us,1,Bingo Blitz - Bingo Games,1.000,0,fixed spacing from 'Bingo Blitz- Bingo Games'; social bingo | fixed spacing; social bingo
+com.cooking.bingo.ldkwh,Bingo Frenzy: Live Bingo Games,VERTEX GAMES PTE. LTD.,gb,1,Bingo Frenzy - Live Bingo Games,1.000,0,fixed casing from 'Bingo Frenzy - Live Bingo games'; social bingo
+com.bingo.cruise.free.best.top.game,Bingo Voyage - Live Bingo Game,VERTEX GAMES PTE. LTD.,gb,1,Bingo Voyage: Live Bingo Games,0.982,0,social bingo
+com.activision.callofduty.shooter,Call of Duty®: Mobile,"Activision Publishing, Inc.",in;us,0,Call of Duty: Mobile,1.000,0,
+com.king.candycrushsaga,Candy Crush Saga,King,gb;in;us,0,Candy Crush Saga,1.000,0,
+com.king.candycrushsodasaga,Candy Crush Soda Saga,King,gb;in;us,0,Candy Crush Soda Saga,1.000,0,
+com.solitairetripeaks.masterdesign,Carnival Tycoon: Coin Games,Wild Candle Spin LLC,in,0,Carnival Tycoon: Coin Games,1.000,0,
+com.miniclip.carrom,Carrom Pool: Disc Game,Miniclip.com,in,0,Carrom Pool: Disc Game,1.000,0,
+slots.pcg.casino.games.free.android,Cash Frenzy™ - Casino Slots,SpinX Games Limited,us,1,Cash Frenzy - Casino Slots,1.000,0,social casino slots
+com.productmadness.cashmancasino,Cashman Casino Slots Games,Product Madness,us,1,Cashman Casino Slots Games,1.000,0,social casino slots
+com.chess,Chess - Play and Learn Online,Chess.com,in,0,Chess - Play and Learn,0.851,0,fixed from 'Chess - Play and Learn Online' (Chess.com app)
+com.supercell.clashofclans,Clash of Clans,Supercell,gb;in;us,0,Clash of Clans,1.000,0,
+com.supercell.clashroyale,Clash Royale,Supercell,gb;in;us,0,Clash Royale,1.000,0,
+com.moonactive.coinmaster,Coin Master,Moon Active,gb;in;us,0,Coin Master,1.000,0,
+com.moonactive.cmboard,Coin Master - Board Adventure,Moon Active,gb;us,0,Coin Master: Board Adventure,1.000,0,distinct app from Coin Master — verify | fixed from 'Coin Master - Board Adventure'; distinct app from Coin Master — verify
+com.miniclip.cricketleague,Cricket League,Miniclip.com,in,0,Cricket League,1.000,0,
+com.readygo.dark.gp,Dark War Survival,Omnilojo Pte Ltd,gb;us,0,Dark War Survival,1.000,0,
+com.superplaystudios.dicedreams,Dice Dreams™️,SuperPlay.,gb;us,0,Dice Dreams,1.000,0,
+com.superplaystudios.disneysolitairedreams,Disney Solitaire,SuperPlay.,gb;us,0,Disney Solitaire,1.000,0,
+com.screenshake.dominodreams,Domino Dreams™,SuperPlay.,gb,0,Domino Dreams,1.000,0,
+com.bandainamcoent.dblegends_ww,DRAGON BALL LEGENDS,Bandai Namco Entertainment Inc.,gb;us,0,Dragon Ball Legends,1.000,0,
+com.firsttouchgames.dls7,Dream League Soccer 2026,First Touch Games Ltd.,in,0,Dream League Soccer 2026,1.000,0,
+com.ea.gp.fifamobile,EA SPORTS FC Soccer Mobile 26,ELECTRONIC ARTS,in,0,EA SPORTS FC Mobile 26 Soccer,1.000,0,fixed word order from 'EA Sports FC Soccer Mobile 26'
+jp.konami.pesam,eFootball™,KONAMI,in,0,eFootball,1.000,0,
+com.topgamesinc.evony,Evony: The King's Return,TG Inc.,gb;in;us,0,Evony: The King's Return,1.000,0,fixed casing from 'Evony: The king's return'
+com.aniplex.fategrandorder.en,Fate/Grand Order (English),Aniplex Inc.,gb;us,0,Fate/Grand Order,0.800,0,
+com.playrix.fishdomdd.gplay,Fishdom,Playrix,gb;in;us,0,Fishdom,1.000,0,
+com.cola.game,Flambé®: Merge & Cook,Microfun Limited,gb;in,0,Flambe: Merge and Cook,0.895,0,fixed casing from 'Flambe: Merge and cook'
+com.dts.freefiremax,Free Fire MAX,GARENA INTERNATIONAL I,in,0,Free Fire MAX,1.000,0,India-only variant of Free Fire
+com.dts.freefireth,Free Fire: 9th Anniversary,GARENA INTERNATIONAL I,us,0,Free Fire,0.514,0,FLAG: low score 0.51 | fixed from 'Free Fire: 9th Anniversary' (seasonal subtitle)
+com.playrix.gardenscapes,Gardenscapes,Playrix,gb;in;us,0,Gardenscapes,1.000,0,fixed from 'Garden Scapes'
+com.miHoYo.GenshinImpact,Genshin Impact,COGNOSPHERE PTE. LTD.,in,0,Genshin Impact,1.000,0,
+com.proximabeta.nikke,GODDESS OF VICTORY: NIKKE,Level Infinite,us,0,Goddess of Victory: NIKKE,1.000,0,
+com.mergegames.gossipharbor,Gossip Harbor: Merge & Story,Microfun Limited,gb;us,0,Gossip Harbor: Merge & Story,1.000,0,normalized from 'Gossip Harbor: Merge and Story'
+cricketgames.hitwicket.strategy,Hitwicket™ Cricket Game 2026,Hitwicket Cricket Games,in,0,Hitwicket Cricket Game 2026,1.000,0,
+com.hollywood.merge,Hollywood Merge,VoyagerOne IE,gb,0,Hollywood Merge,1.000,0,
+com.playrix.homescapes,Homescapes,Playrix,gb;in;us,0,Homescapes,1.000,0,
+com.williamsinteractive.jackpotparty,Jackpot Party Casino Slots,SciPlay,us,1,Jackpot Party Casino Slots,1.000,0,social casino slots
+com.run.tower.defense,Kingshot,Century Games PTE. LTD.,gb;in;us,0,Kingshot,1.000,0,fixed from 'King Shot' (matches US/UK listing)
+com.phs.global,Last Asylum: Plague,37GAMES GLOBAL,gb;us,0,Last Asylum: Plague,1.000,0,
+com.fun.lastwar.gp,Last War:Survival Game,FUNFLY PTE. LTD.,gb;in;us,0,Last War: Survival Game,1.000,0,
+com.readygo.barrel.gp,Last Z: Survival Shooter,Omnilojo Pte Ltd,gb;in;us,0,Last Z: Survival Shooter,1.000,0,
+com.productmadness.lightninglink,Lightning Link Casino Slots,Product Madness,us,1,Lightning Link Casino Slots,1.000,0,fixed from 'Lighting Link Casino Slots'; social casino slots
+com.igg.android.lordsmobile,Lords Mobile: Kingdom Wars,IGG.COM,in,0,Lords Mobile: Kingdom Wars,1.000,0,fixed casing from 'Lords Mobile: Kingdom wars'
+com.diamondlife.slots.vegas.free,Lotsa Slots - Casino Games,SpinX Games Limited,us,1,Lotsa Slots - Casino Games,1.000,0,social casino slots
+com.ludo.king,Ludo King®,Gametion,in,0,Ludo King,1.000,0,
+com.MadOut.BIG,MadOut 2: Grand Auto Racing,MadOut Games LLC FZ,in,0,MadOut 2: Grand Auto Racing,1.000,0,
+net.peakgames.match,Match Factory!,Peak,gb;us,0,Match Factory!,1.000,0,
+com.funtomic.matchmasters,Match Masters,Candivore,gb,0,Match Masters: PvP Puzzle Game,0.619,0,FLAG: low score 0.62
+com.joycastle.mergematch,Matching Story - Puzzle Games,VERTEX GAMES PTE. LTD.,gb,0,Matching Story - Puzzle Games,1.000,0,
+com.plarium.mechlegion,Mech Arena - Shooting Game,Plarium Global Ltd,in,0,Mech Arena - Shooting Game,1.000,0,
+com.merge.cooking.theme.restaurant.food,Merge Cooking®,Happibits Game,gb;us,0,Merge Cooking,1.000,0,
+com.mobiin.gp,Moba Legends: 5v5!,Vizta Games,in,0,Moba Legends: 5v5!,1.000,0,VERIFY: fixed from 'Moba Legends: 5v5' — hand-check resolved id
+com.scopely.monopolygo,MONOPOLY GO!,Scopely,gb;in;us,0,Monopoly GO!,1.000,0,normalized from 'Monopoly Go'
+com.cedargames.mysterytown,Mystery Town: Merge Games,Cedar Games Studio,gb,0,Mystery Town: Merge Games,1.000,0,
+com.loomgames.pixelflow,Pixel Flow!,Loom Games A.Ş.,gb;us,0,Pixel Flow!,1.000,0,
+com.nianticlabs.pokemongo,Pokémon GO,"Niantic, Inc.",gb;in;us,0,Pokémon GO,1.000,0,fixed casing from 'Pokémon Go'
+com.tencent.ig,PUBG MOBILE,Level Infinite,gb;us,0,PUBG MOBILE,1.000,0,fixed casing from 'PUBG Mobile'
+com.global.ztmslg,Puzzles & Survival,37GAMES,us,0,Puzzles & Survival,1.000,0,normalized from 'Puzzles and Survival'
+com.plarium.raidlegends,RAID: Shadow Legends,Plarium Global Ltd,gb,0,RAID: Shadow Legends,1.000,0,
+com.nautilus.realcricket,Real Cricket™,"KRAFTON, Inc.",in,0,Real Cricket 26,0.889,0,VERIFY: 'Real Cricket' ambiguous across versions
+com.roblox.client,Roblox,Roblox Corporation,gb;in;us,0,Roblox,1.000,0,
+com.dreamgames.royalkingdom,Royal Kingdom,"Dream Games, Ltd.",gb;us,0,Royal Kingdom,1.000,0,fixed from 'Royal Kingdowm'
+com.dreamgames.royalmatch,Royal Match,"Dream Games, Ltd.",gb;in;us,0,Royal Match,1.000,0,
+com.gamedots.seasideescape,Seaside Escape®: Merge & Story,Microfun Limited,gb,0,Seaside Escape: Merge & Story,1.000,0,normalized from 'Seaside Escape: Merge and Story'
+com.nekki.shadowfightarena,Shadow Fight 4: Arena,NEKKI,in,0,Shadow Fight 4: Arena,1.000,0,
+net.supertreat.solitaire,Solitaire Grand Harvest,Supertreat - A Playtika Studio,gb;us,0,Solitaire Grand Harvest,1.000,0,
+com.zjcs.android.us,Sword x Staff,BOLTRAY GAMES,us,0,Sword x Staff,1.000,0,
+com.fatmerge.global,Tasty Travels: Merge Game,Century Games PTE. LTD.,gb;in;us,0,Tasty Travels: Merge Game,1.000,0,
+com.teenpatti.hd.gold,Teen Patti GOLD: 3 Patti Rummy,Moonfrog,in,1,Teen Patti GOLD: 3 Patti Rummy,1.000,0,card gambling
+com.octro.teenpatti,Teen Patti Octro 3 Patti Rummy,"Octro, Inc.",in,1,Teen Patti Octro 3 Patti Rummy,1.000,0,card gambling
+com.funplus.ts.global,Tiles Survive!,FunPlus International AG,in,0,Tiles Survive!,1.000,0,
+net.peakgames.toonblast,Toon Blast,Peak,gb;us,0,Toon Blast,1.000,0,
+com.monopoly.dream.idle.king,Top Tycoon: Coin Theme Empire,BeheFun Games Limited,gb;in,0,Top Tycoon: Coin Theme Empire,1.000,0,
+com.totalbattle,Total Battle: War Strategy,Scorewarrior,gb;us,0,Total Battle: Tactical Wars;Total Battle: War Strategy,1.000,0,FLAG: also matched by raw 'Total Battle: War Strategy' | fixed from 'Toral Battle: War Strategy'; same app as UK 'Total Battle: Tactical Wars' | same app as US 'Total Battle: War Strategy'
+com.playrix.township,Township,Playrix,gb;in;us,0,Township,1.000,0,
+io.randomco.travel,Travel Town - Merge Adventure,Magmatic Games LTD,gb;in;us,0,Travel Town - Merge Adventure,1.000,0,normalized from 'Travel Town Merge Adventure'
+com.pixonic.wwr,War Robots Multiplayer Battles,MYGAMES MENA FZ LLC,in,0,War Robots Multiplayer Battles,1.000,0,
+com.snowprintstudios.tacticus,"Warhammer 40,000: Tacticus ™",Snowprint Studios AB,gb,0,"Warhammer 40,000: Tacticus",1.000,0,
+com.gof.global,Whiteout Survival,Century Games PTE. LTD.,gb;in;us,0,Whiteout Survival,1.000,0,
+com.kurogame.wutheringwaves.global,Wuthering Waves - To Xuanfang,HK KURO GAMES LIMITED,in,0,Wuthering Waves,0.714,0,FLAG: low score 0.71 | seasonal subtitle; match base app
+com.yalla.yallagames,Yalla Ludo - Ludo&Jackaroo,Aviva Sun,in,0,Yalla Ludo - Ludo & Domino,0.783,0,FLAG: low score 0.78 | fixed from 'Yalla Ludo - Ludo and Jackaroo'; verify match
+com.combo.yarnflow,Yarn Loop,Combo Game,gb;us,0,Yarn Loop,1.000,0,
+com.zynga.livepoker,Zynga Poker ™ – Texas Holdem,Zynga,in,1,Zynga Poker - Texas Holdem,1.000,0,poker

@@ -1,0 +1,1052 @@
+{
+  "v2::in::Free Fire MAX": [
+    {
+      "appId": "com.dts.freefiremax",
+      "title": "Free Fire MAX",
+      "developer": "GARENA INTERNATIONAL I"
+    }
+  ],
+  "v2::in::Battlegrounds Mobile India (BGMI)": [
+    {
+      "appId": "com.pubg.imobile",
+      "title": "BGMI: FPS Battle Royale",
+      "developer": "KRAFTON, Inc."
+    }
+  ],
+  "v2::in::Coin Master": [
+    {
+      "appId": "com.moonactive.coinmaster",
+      "title": "Coin Master",
+      "developer": "Moon Active"
+    }
+  ],
+  "v2::in::Candy Crush Saga": [
+    {
+      "appId": "com.king.candycrushsaga",
+      "title": "Candy Crush Saga",
+      "developer": "King"
+    }
+  ],
+  "v2::in::eFootball": [
+    {
+      "appId": "jp.konami.pesam",
+      "title": "eFootball™",
+      "developer": "KONAMI"
+    }
+  ],
+  "v2::in::Roblox": [
+    {
+      "appId": "com.roblox.client",
+      "title": "Roblox",
+      "developer": "Roblox Corporation"
+    }
+  ],
+  "v2::in::Pokémon GO": [
+    {
+      "appId": "com.nianticlabs.pokemongo",
+      "title": "Pokémon GO",
+      "developer": "Niantic, Inc."
+    }
+  ],
+  "v2::in::Clash of Clans": [
+    {
+      "appId": "com.supercell.clashofclans",
+      "title": "Clash of Clans",
+      "developer": "Supercell"
+    }
+  ],
+  "v2::in::Kingshot": [
+    {
+      "appId": "com.run.tower.defense",
+      "title": "Kingshot",
+      "developer": "Century Games PTE. LTD."
+    }
+  ],
+  "v2::in::EA SPORTS FC Mobile 26 Soccer": [
+    {
+      "appId": "com.ea.gp.fifamobile",
+      "title": "EA SPORTS FC Soccer Mobile 26",
+      "developer": "ELECTRONIC ARTS"
+    }
+  ],
+  "v2::in::Teen Patti Octro 3 Patti Rummy": [
+    {
+      "appId": "com.octro.teenpatti",
+      "title": "Teen Patti Octro 3 Patti Rummy",
+      "developer": "Octro, Inc."
+    }
+  ],
+  "v2::in::Gardenscapes": [
+    {
+      "appId": "com.playrix.gardenscapes",
+      "title": "Gardenscapes",
+      "developer": "Playrix"
+    }
+  ],
+  "v2::in::Call of Duty: Mobile": [
+    {
+      "appId": "com.activision.callofduty.shooter",
+      "title": "Call of Duty®: Mobile",
+      "developer": "Activision Publishing, Inc."
+    }
+  ],
+  "v2::in::Travel Town - Merge Adventure": [
+    {
+      "appId": "io.randomco.travel",
+      "title": "Travel Town - Merge Adventure",
+      "developer": "Magmatic Games LTD"
+    }
+  ],
+  "v2::in::Top Tycoon: Coin Theme Empire": [
+    {
+      "appId": "com.monopoly.dream.idle.king",
+      "title": "Top Tycoon: Coin Theme Empire",
+      "developer": "BeheFun Games Limited"
+    }
+  ],
+  "v2::in::Township": [
+    {
+      "appId": "com.playrix.township",
+      "title": "Township",
+      "developer": "Playrix"
+    }
+  ],
+  "v2::in::Last War: Survival Game": [
+    {
+      "appId": "com.fun.lastwar.gp",
+      "title": "Last War:Survival Game",
+      "developer": "FUNFLY PTE. LTD."
+    }
+  ],
+  "v2::in::Tasty Travels: Merge Game": [
+    {
+      "appId": "com.fatmerge.global",
+      "title": "Tasty Travels: Merge Game",
+      "developer": "Century Games PTE. LTD."
+    }
+  ],
+  "v2::in::Royal Match": [
+    {
+      "appId": "com.dreamgames.royalmatch",
+      "title": "Royal Match",
+      "developer": "Dream Games, Ltd."
+    }
+  ],
+  "v2::in::Last Z: Survival Shooter": [
+    {
+      "appId": "com.readygo.barrel.gp",
+      "title": "Last Z: Survival Shooter",
+      "developer": "Omnilojo Pte Ltd"
+    }
+  ],
+  "v2::in::Teen Patti GOLD: 3 Patti Rummy": [
+    {
+      "appId": "com.teenpatti.hd.gold",
+      "title": "Teen Patti GOLD: 3 Patti Rummy",
+      "developer": "Moonfrog"
+    }
+  ],
+  "v2::in::Ludo King": [
+    {
+      "appId": "com.ludo.king",
+      "title": "Ludo King®",
+      "developer": "Gametion"
+    }
+  ],
+  "v2::in::8 Ball Pool": [
+    {
+      "appId": "com.miniclip.eightballpool",
+      "title": "8 Ball Pool",
+      "developer": "Miniclip.com"
+    }
+  ],
+  "v2::in::Moba Legends: 5v5!": [
+    {
+      "appId": "com.mobiin.gp",
+      "title": "Moba Legends: 5v5!",
+      "developer": "Vizta Games"
+    }
+  ],
+  "v2::in::Homescapes": [
+    {
+      "appId": "com.playrix.homescapes",
+      "title": "Homescapes",
+      "developer": "Playrix"
+    }
+  ],
+  "v2::in::Whiteout Survival": [
+    {
+      "appId": "com.gof.global",
+      "title": "Whiteout Survival",
+      "developer": "Century Games PTE. LTD."
+    }
+  ],
+  "v2::in::Yalla Ludo - Ludo & Domino": [
+    {
+      "appId": "com.yalla.yallagames",
+      "title": "Yalla Ludo - Ludo&Jackaroo",
+      "developer": "Aviva Sun"
+    }
+  ],
+  "v2::in::Shadow Fight 4: Arena": [
+    {
+      "appId": "com.nekki.shadowfightarena",
+      "title": "Shadow Fight 4: Arena",
+      "developer": "NEKKI"
+    }
+  ],
+  "v2::in::Clash Royale": [
+    {
+      "appId": "com.supercell.clashroyale",
+      "title": "Clash Royale",
+      "developer": "Supercell"
+    }
+  ],
+  "v2::in::Carrom Pool: Disc Game": [
+    {
+      "appId": "com.miniclip.carrom",
+      "title": "Carrom Pool: Disc Game",
+      "developer": "Miniclip.com"
+    }
+  ],
+  "v2::in::Genshin Impact": [
+    {
+      "appId": "com.miHoYo.GenshinImpact",
+      "title": "Genshin Impact",
+      "developer": "COGNOSPHERE PTE. LTD."
+    }
+  ],
+  "v2::in::Evony: The King's Return": [
+    {
+      "appId": "com.topgamesinc.evony",
+      "title": "Evony: The King's Return",
+      "developer": "TG Inc."
+    }
+  ],
+  "v2::in::Chess - Play and Learn": [
+    {
+      "appId": "com.chess",
+      "title": "Chess - Play and Learn Online",
+      "developer": "Chess.com"
+    }
+  ],
+  "v2::in::MadOut 2: Grand Auto Racing": [
+    {
+      "appId": "com.MadOut.BIG",
+      "title": "MadOut 2: Grand Auto Racing",
+      "developer": "MadOut Games LLC FZ"
+    }
+  ],
+  "v2::in::Cricket League": [
+    {
+      "appId": "com.miniclip.cricketleague",
+      "title": "Cricket League",
+      "developer": "Miniclip.com"
+    }
+  ],
+  "v2::in::Zynga Poker - Texas Holdem": [
+    {
+      "appId": "com.zynga.livepoker",
+      "title": "Zynga Poker ™ – Texas Holdem",
+      "developer": "Zynga"
+    }
+  ],
+  "v2::in::Mech Arena - Shooting Game": [
+    {
+      "appId": "com.plarium.mechlegion",
+      "title": "Mech Arena - Shooting Game",
+      "developer": "Plarium Global Ltd"
+    }
+  ],
+  "v2::in::Real Cricket 26": [
+    {
+      "appId": "com.nautilus.realcricket",
+      "title": "Real Cricket™",
+      "developer": "KRAFTON, Inc."
+    }
+  ],
+  "v2::in::Lords Mobile: Kingdom Wars": [
+    {
+      "appId": "com.igg.android.lordsmobile",
+      "title": "Lords Mobile: Kingdom Wars",
+      "developer": "IGG.COM"
+    }
+  ],
+  "v2::in::Fishdom": [
+    {
+      "appId": "com.playrix.fishdomdd.gplay",
+      "title": "Fishdom",
+      "developer": "Playrix"
+    }
+  ],
+  "v2::in::Flambe: Merge and Cook": [
+    {
+      "appId": "com.cola.game",
+      "title": "Flambé®: Merge & Cook",
+      "developer": "Microfun Limited"
+    }
+  ],
+  "v2::in::Tiles Survive!": [
+    {
+      "appId": "com.funplus.ts.global",
+      "title": "Tiles Survive!",
+      "developer": "FunPlus International AG"
+    }
+  ],
+  "v2::in::War Robots Multiplayer Battles": [
+    {
+      "appId": "com.pixonic.wwr",
+      "title": "War Robots Multiplayer Battles",
+      "developer": "MYGAMES MENA FZ LLC"
+    }
+  ],
+  "v2::in::Wuthering Waves": [
+    {
+      "appId": "com.kurogame.wutheringwaves.global",
+      "title": "Wuthering Waves - To Xuanfang",
+      "developer": "HK KURO GAMES LIMITED"
+    }
+  ],
+  "v2::in::Animals & Coins": [
+    {
+      "appId": "com.innplaylabs.animalkingdomraid",
+      "title": "Animals & Coins: Animal Run",
+      "developer": "Innplay Labs"
+    }
+  ],
+  "v2::in::Dream League Soccer 2026": [
+    {
+      "appId": "com.firsttouchgames.dls7",
+      "title": "Dream League Soccer 2026",
+      "developer": "First Touch Games Ltd."
+    }
+  ],
+  "v2::in::Monopoly GO!": [
+    {
+      "appId": "com.scopely.monopolygo",
+      "title": "MONOPOLY GO!",
+      "developer": "Scopely"
+    }
+  ],
+  "v2::in::Candy Crush Soda Saga": [
+    {
+      "appId": "com.king.candycrushsodasaga",
+      "title": "Candy Crush Soda Saga",
+      "developer": "King"
+    }
+  ],
+  "v2::in::Hitwicket Cricket Game 2026": [
+    {
+      "appId": "cricketgames.hitwicket.strategy",
+      "title": "Hitwicket™ Cricket Game 2026",
+      "developer": "Hitwicket Cricket Games"
+    }
+  ],
+  "v2::in::Carnival Tycoon: Coin Games": [
+    {
+      "appId": "com.solitairetripeaks.masterdesign",
+      "title": "Carnival Tycoon: Coin Games",
+      "developer": "Wild Candle Spin LLC"
+    }
+  ],
+  "v2::us::Monopoly GO!": [
+    {
+      "appId": "com.scopely.monopolygo",
+      "title": "MONOPOLY GO!",
+      "developer": "Scopely"
+    }
+  ],
+  "v2::us::Pokémon GO": [
+    {
+      "appId": "com.nianticlabs.pokemongo",
+      "title": "Pokémon GO",
+      "developer": "Niantic, Inc."
+    }
+  ],
+  "v2::us::Roblox": [
+    {
+      "appId": "com.roblox.client",
+      "title": "Roblox",
+      "developer": "Roblox Corporation"
+    }
+  ],
+  "v2::us::Candy Crush Saga": [
+    {
+      "appId": "com.king.candycrushsaga",
+      "title": "Candy Crush Saga",
+      "developer": "King"
+    }
+  ],
+  "v2::us::Royal Match": [
+    {
+      "appId": "com.dreamgames.royalmatch",
+      "title": "Royal Match",
+      "developer": "Dream Games, Ltd."
+    }
+  ],
+  "v2::us::Kingshot": [
+    {
+      "appId": "com.run.tower.defense",
+      "title": "Kingshot",
+      "developer": "Century Games PTE. LTD."
+    }
+  ],
+  "v2::us::Gossip Harbor: Merge & Story": [
+    {
+      "appId": "com.mergegames.gossipharbor",
+      "title": "Gossip Harbor: Merge & Story",
+      "developer": "Microfun Limited"
+    }
+  ],
+  "v2::us::Coin Master": [
+    {
+      "appId": "com.moonactive.coinmaster",
+      "title": "Coin Master",
+      "developer": "Moon Active"
+    }
+  ],
+  "v2::us::Township": [
+    {
+      "appId": "com.playrix.township",
+      "title": "Township",
+      "developer": "Playrix"
+    }
+  ],
+  "v2::us::Last War: Survival Game": [
+    {
+      "appId": "com.fun.lastwar.gp",
+      "title": "Last War:Survival Game",
+      "developer": "FUNFLY PTE. LTD."
+    }
+  ],
+  "v2::us::Whiteout Survival": [
+    {
+      "appId": "com.gof.global",
+      "title": "Whiteout Survival",
+      "developer": "Century Games PTE. LTD."
+    }
+  ],
+  "v2::us::Royal Kingdom": [
+    {
+      "appId": "com.dreamgames.royalkingdom",
+      "title": "Royal Kingdom",
+      "developer": "Dream Games, Ltd."
+    }
+  ],
+  "v2::us::Fate/Grand Order": [
+    {
+      "appId": "com.aniplex.fategrandorder.en",
+      "title": "Fate/Grand Order (English)",
+      "developer": "Aniplex Inc."
+    }
+  ],
+  "v2::us::Last Z: Survival Shooter": [
+    {
+      "appId": "com.readygo.barrel.gp",
+      "title": "Last Z: Survival Shooter",
+      "developer": "Omnilojo Pte Ltd"
+    }
+  ],
+  "v2::us::Toon Blast": [
+    {
+      "appId": "net.peakgames.toonblast",
+      "title": "Toon Blast",
+      "developer": "Peak"
+    }
+  ],
+  "v2::us::Call of Duty: Mobile": [
+    {
+      "appId": "com.activision.callofduty.shooter",
+      "title": "Call of Duty®: Mobile",
+      "developer": "Activision Publishing, Inc."
+    }
+  ],
+  "v2::us::Free Fire": [
+    {
+      "appId": "com.dts.freefireth",
+      "title": "Free Fire: 9th Anniversary",
+      "developer": "GARENA INTERNATIONAL I"
+    }
+  ],
+  "v2::us::Evony: The King's Return": [
+    {
+      "appId": "com.topgamesinc.evony",
+      "title": "Evony: The King's Return",
+      "developer": "TG Inc."
+    }
+  ],
+  "v2::us::Jackpot Party Casino Slots": [
+    {
+      "appId": "com.williamsinteractive.jackpotparty",
+      "title": "Jackpot Party Casino Slots",
+      "developer": "SciPlay"
+    }
+  ],
+  "v2::us::Sword x Staff": [
+    {
+      "appId": "com.zjcs.android.us",
+      "title": "Sword x Staff",
+      "developer": "BOLTRAY GAMES"
+    }
+  ],
+  "v2::us::Disney Solitaire": [
+    {
+      "appId": "com.superplaystudios.disneysolitairedreams",
+      "title": "Disney Solitaire",
+      "developer": "SuperPlay."
+    }
+  ],
+  "v2::us::Gardenscapes": [
+    {
+      "appId": "com.playrix.gardenscapes",
+      "title": "Gardenscapes",
+      "developer": "Playrix"
+    }
+  ],
+  "v2::us::Match Factory!": [
+    {
+      "appId": "net.peakgames.match",
+      "title": "Match Factory!",
+      "developer": "Peak"
+    }
+  ],
+  "v2::us::Lightning Link Casino Slots": [
+    {
+      "appId": "com.productmadness.lightninglink",
+      "title": "Lightning Link Casino Slots",
+      "developer": "Product Madness"
+    }
+  ],
+  "v2::us::Total Battle: War Strategy": [
+    {
+      "appId": "com.totalbattle",
+      "title": "Total Battle: War Strategy",
+      "developer": "Scorewarrior"
+    }
+  ],
+  "v2::us::Cashman Casino Slots Games": [
+    {
+      "appId": "com.productmadness.cashmancasino",
+      "title": "Cashman Casino Slots Games",
+      "developer": "Product Madness"
+    }
+  ],
+  "v2::us::Candy Crush Soda Saga": [
+    {
+      "appId": "com.king.candycrushsodasaga",
+      "title": "Candy Crush Soda Saga",
+      "developer": "King"
+    }
+  ],
+  "v2::us::PUBG MOBILE": [
+    {
+      "appId": "com.tencent.ig",
+      "title": "PUBG MOBILE",
+      "developer": "Level Infinite"
+    }
+  ],
+  "v2::us::Bingo Blitz - Bingo Games": [
+    {
+      "appId": "air.com.buffalo_studios.newflashbingo",
+      "title": "Bingo Blitz™️ - Bingo Games",
+      "developer": "Playtika Santa Monica"
+    }
+  ],
+  "v2::us::Pixel Flow!": [
+    {
+      "appId": "com.loomgames.pixelflow",
+      "title": "Pixel Flow!",
+      "developer": "Loom Games A.Ş."
+    }
+  ],
+  "v2::us::Fishdom": [
+    {
+      "appId": "com.playrix.fishdomdd.gplay",
+      "title": "Fishdom",
+      "developer": "Playrix"
+    }
+  ],
+  "v2::us::Tasty Travels: Merge Game": [
+    {
+      "appId": "com.fatmerge.global",
+      "title": "Tasty Travels: Merge Game",
+      "developer": "Century Games PTE. LTD."
+    }
+  ],
+  "v2::us::Goddess of Victory: NIKKE": [
+    {
+      "appId": "com.proximabeta.nikke",
+      "title": "GODDESS OF VICTORY: NIKKE",
+      "developer": "Level Infinite"
+    }
+  ],
+  "v2::us::Dice Dreams": [
+    {
+      "appId": "com.superplaystudios.dicedreams",
+      "title": "Dice Dreams™️",
+      "developer": "SuperPlay."
+    }
+  ],
+  "v2::us::Dragon Ball Legends": [
+    {
+      "appId": "com.bandainamcoent.dblegends_ww",
+      "title": "DRAGON BALL LEGENDS",
+      "developer": "Bandai Namco Entertainment Inc."
+    }
+  ],
+  "v2::us::Homescapes": [
+    {
+      "appId": "com.playrix.homescapes",
+      "title": "Homescapes",
+      "developer": "Playrix"
+    }
+  ],
+  "v2::us::Clash of Clans": [
+    {
+      "appId": "com.supercell.clashofclans",
+      "title": "Clash of Clans",
+      "developer": "Supercell"
+    }
+  ],
+  "v2::us::Last Asylum: Plague": [
+    {
+      "appId": "com.phs.global",
+      "title": "Last Asylum: Plague",
+      "developer": "37GAMES GLOBAL"
+    }
+  ],
+  "v2::us::Lotsa Slots - Casino Games": [
+    {
+      "appId": "com.diamondlife.slots.vegas.free",
+      "title": "Lotsa Slots - Casino Games",
+      "developer": "SpinX Games Limited"
+    }
+  ],
+  "v2::us::Clash Royale": [
+    {
+      "appId": "com.supercell.clashroyale",
+      "title": "Clash Royale",
+      "developer": "Supercell"
+    }
+  ],
+  "v2::us::All in Hole: Black Hole Games": [
+    {
+      "appId": "com.homagames.studio.allinhole",
+      "title": "All in Hole: Black Hole Games",
+      "developer": "Homa"
+    }
+  ],
+  "v2::us::Yarn Loop": [
+    {
+      "appId": "com.combo.yarnflow",
+      "title": "Yarn Loop",
+      "developer": "Combo Game"
+    }
+  ],
+  "v2::us::Dark War Survival": [
+    {
+      "appId": "com.readygo.dark.gp",
+      "title": "Dark War Survival",
+      "developer": "Omnilojo Pte Ltd"
+    }
+  ],
+  "v2::us::Travel Town - Merge Adventure": [
+    {
+      "appId": "io.randomco.travel",
+      "title": "Travel Town - Merge Adventure",
+      "developer": "Magmatic Games LTD"
+    }
+  ],
+  "v2::us::Cash Frenzy - Casino Slots": [
+    {
+      "appId": "slots.pcg.casino.games.free.android",
+      "title": "Cash Frenzy™ - Casino Slots",
+      "developer": "SpinX Games Limited"
+    }
+  ],
+  "v2::us::Solitaire Grand Harvest": [
+    {
+      "appId": "net.supertreat.solitaire",
+      "title": "Solitaire Grand Harvest",
+      "developer": "Supertreat - A Playtika Studio"
+    }
+  ],
+  "v2::us::Merge Cooking": [
+    {
+      "appId": "com.merge.cooking.theme.restaurant.food",
+      "title": "Merge Cooking®",
+      "developer": "Happibits Game"
+    }
+  ],
+  "v2::us::Puzzles & Survival": [
+    {
+      "appId": "com.global.ztmslg",
+      "title": "Puzzles & Survival",
+      "developer": "37GAMES"
+    }
+  ],
+  "v2::us::Coin Master: Board Adventure": [
+    {
+      "appId": "com.moonactive.cmboard",
+      "title": "Coin Master - Board Adventure",
+      "developer": "Moon Active"
+    }
+  ],
+  "v2::gb::Coin Master": [
+    {
+      "appId": "com.moonactive.coinmaster",
+      "title": "Coin Master",
+      "developer": "Moon Active"
+    }
+  ],
+  "v2::gb::Pokémon GO": [
+    {
+      "appId": "com.nianticlabs.pokemongo",
+      "title": "Pokémon GO",
+      "developer": "Niantic, Inc."
+    }
+  ],
+  "v2::gb::Monopoly GO!": [
+    {
+      "appId": "com.scopely.monopolygo",
+      "title": "MONOPOLY GO!",
+      "developer": "Scopely"
+    }
+  ],
+  "v2::gb::Roblox": [
+    {
+      "appId": "com.roblox.client",
+      "title": "Roblox",
+      "developer": "Roblox Corporation"
+    }
+  ],
+  "v2::gb::Candy Crush Saga": [
+    {
+      "appId": "com.king.candycrushsaga",
+      "title": "Candy Crush Saga",
+      "developer": "King"
+    }
+  ],
+  "v2::gb::Royal Match": [
+    {
+      "appId": "com.dreamgames.royalmatch",
+      "title": "Royal Match",
+      "developer": "Dream Games, Ltd."
+    }
+  ],
+  "v2::gb::Kingshot": [
+    {
+      "appId": "com.run.tower.defense",
+      "title": "Kingshot",
+      "developer": "Century Games PTE. LTD."
+    }
+  ],
+  "v2::gb::Gossip Harbor: Merge & Story": [
+    {
+      "appId": "com.mergegames.gossipharbor",
+      "title": "Gossip Harbor®: Merge & Story",
+      "developer": "Microfun Limited"
+    }
+  ],
+  "v2::gb::Township": [
+    {
+      "appId": "com.playrix.township",
+      "title": "Township",
+      "developer": "Playrix"
+    }
+  ],
+  "v2::gb::Last War: Survival Game": [
+    {
+      "appId": "com.fun.lastwar.gp",
+      "title": "Last War:Survival Game",
+      "developer": "FUNFLY PTE. LTD."
+    }
+  ],
+  "v2::gb::Disney Solitaire": [
+    {
+      "appId": "com.superplaystudios.disneysolitairedreams",
+      "title": "Disney Solitaire",
+      "developer": "SuperPlay."
+    }
+  ],
+  "v2::gb::Royal Kingdom": [
+    {
+      "appId": "com.dreamgames.royalkingdom",
+      "title": "Royal Kingdom",
+      "developer": "Dream Games, Ltd."
+    }
+  ],
+  "v2::gb::Whiteout Survival": [
+    {
+      "appId": "com.gof.global",
+      "title": "Whiteout Survival",
+      "developer": "Century Games PTE. LTD."
+    }
+  ],
+  "v2::gb::Gardenscapes": [
+    {
+      "appId": "com.playrix.gardenscapes",
+      "title": "Gardenscapes",
+      "developer": "Playrix"
+    }
+  ],
+  "v2::gb::Dice Dreams": [
+    {
+      "appId": "com.superplaystudios.dicedreams",
+      "title": "Dice Dreams™️",
+      "developer": "SuperPlay."
+    }
+  ],
+  "v2::gb::Travel Town - Merge Adventure": [
+    {
+      "appId": "io.randomco.travel",
+      "title": "Travel Town - Merge Adventure",
+      "developer": "Magmatic Games LTD"
+    }
+  ],
+  "v2::gb::Total Battle: Tactical Wars": [
+    {
+      "appId": "com.totalbattle",
+      "title": "Total Battle: Tactical Wars",
+      "developer": "Scorewarrior"
+    }
+  ],
+  "v2::gb::Tasty Travels: Merge Game": [
+    {
+      "appId": "com.fatmerge.global",
+      "title": "Tasty Travels: Merge Game",
+      "developer": "Century Games PTE. LTD."
+    }
+  ],
+  "v2::gb::Coin Master: Board Adventure": [
+    {
+      "appId": "com.moonactive.cmboard",
+      "title": "Coin Master - Board Adventure",
+      "developer": "Moon Active"
+    }
+  ],
+  "v2::gb::Homescapes": [
+    {
+      "appId": "com.playrix.homescapes",
+      "title": "Homescapes",
+      "developer": "Playrix"
+    }
+  ],
+  "v2::gb::Fate/Grand Order": [
+    {
+      "appId": "com.aniplex.fategrandorder.en",
+      "title": "Fate/Grand Order (English)",
+      "developer": "Aniplex Inc."
+    }
+  ],
+  "v2::gb::Candy Crush Soda Saga": [
+    {
+      "appId": "com.king.candycrushsodasaga",
+      "title": "Candy Crush Soda Saga",
+      "developer": "King"
+    }
+  ],
+  "v2::gb::Flambe: Merge and Cook": [
+    {
+      "appId": "com.cola.game",
+      "title": "Flambé®: Merge & Cook",
+      "developer": "Microfun Limited"
+    }
+  ],
+  "v2::gb::Last Asylum: Plague": [
+    {
+      "appId": "com.phs.global",
+      "title": "Last Asylum: Plague",
+      "developer": "37GAMES GLOBAL"
+    }
+  ],
+  "v2::gb::Fishdom": [
+    {
+      "appId": "com.playrix.fishdomdd.gplay",
+      "title": "Fishdom",
+      "developer": "Playrix"
+    }
+  ],
+  "v2::gb::Last Z: Survival Shooter": [
+    {
+      "appId": "com.readygo.barrel.gp",
+      "title": "Last Z: Survival Shooter",
+      "developer": "Omnilojo Pte Ltd"
+    }
+  ],
+  "v2::gb::RAID: Shadow Legends": [
+    {
+      "appId": "com.plarium.raidlegends",
+      "title": "RAID: Shadow Legends",
+      "developer": "Plarium Global Ltd"
+    }
+  ],
+  "v2::gb::Bingo Blitz - Bingo Games": [
+    {
+      "appId": "air.com.buffalo_studios.newflashbingo",
+      "title": "Bingo Blitz™️ - Bingo Games",
+      "developer": "Playtika Santa Monica"
+    }
+  ],
+  "v2::gb::Toon Blast": [
+    {
+      "appId": "net.peakgames.toonblast",
+      "title": "Toon Blast",
+      "developer": "Peak"
+    }
+  ],
+  "v2::gb::Pixel Flow!": [
+    {
+      "appId": "com.loomgames.pixelflow",
+      "title": "Pixel Flow!",
+      "developer": "Loom Games A.Ş."
+    }
+  ],
+  "v2::gb::Matching Story - Puzzle Games": [
+    {
+      "appId": "com.joycastle.mergematch",
+      "title": "Matching Story - Puzzle Games",
+      "developer": "VERTEX GAMES PTE. LTD."
+    }
+  ],
+  "v2::gb::Evony: The King's Return": [
+    {
+      "appId": "com.topgamesinc.evony",
+      "title": "Evony: The King's Return",
+      "developer": "TG Inc."
+    }
+  ],
+  "v2::gb::Mystery Town: Merge Games": [
+    {
+      "appId": "com.cedargames.mysterytown",
+      "title": "Mystery Town: Merge Games",
+      "developer": "Cedar Games Studio"
+    }
+  ],
+  "v2::gb::Match Factory!": [
+    {
+      "appId": "net.peakgames.match",
+      "title": "Match Factory!",
+      "developer": "Peak"
+    }
+  ],
+  "v2::gb::Dragon Ball Legends": [
+    {
+      "appId": "com.bandainamcoent.dblegends_ww",
+      "title": "DRAGON BALL LEGENDS",
+      "developer": "Bandai Namco Entertainment Inc."
+    }
+  ],
+  "v2::gb::Domino Dreams": [
+    {
+      "appId": "com.screenshake.dominodreams",
+      "title": "Domino Dreams™",
+      "developer": "SuperPlay."
+    }
+  ],
+  "v2::gb::Clash of Clans": [
+    {
+      "appId": "com.supercell.clashofclans",
+      "title": "Clash of Clans",
+      "developer": "Supercell"
+    }
+  ],
+  "v2::gb::Bingo Voyage: Live Bingo Games": [
+    {
+      "appId": "com.bingo.cruise.free.best.top.game",
+      "title": "Bingo Voyage - Live Bingo Game",
+      "developer": "VERTEX GAMES PTE. LTD."
+    }
+  ],
+  "v2::gb::Yarn Loop": [
+    {
+      "appId": "com.combo.yarnflow",
+      "title": "Yarn Loop",
+      "developer": "Combo Game"
+    }
+  ],
+  "v2::gb::Solitaire Grand Harvest": [
+    {
+      "appId": "net.supertreat.solitaire",
+      "title": "Solitaire Grand Harvest",
+      "developer": "Supertreat - A Playtika Studio"
+    }
+  ],
+  "v2::gb::Seaside Escape: Merge & Story": [
+    {
+      "appId": "com.gamedots.seasideescape",
+      "title": "Seaside Escape®: Merge & Story",
+      "developer": "Microfun Limited"
+    }
+  ],
+  "v2::gb::Merge Cooking": [
+    {
+      "appId": "com.merge.cooking.theme.restaurant.food",
+      "title": "Merge Cooking®",
+      "developer": "Happibits Game"
+    }
+  ],
+  "v2::gb::Warhammer 40,000: Tacticus": [
+    {
+      "appId": "com.snowprintstudios.tacticus",
+      "title": "Warhammer 40,000: Tacticus ™",
+      "developer": "Snowprint Studios AB"
+    }
+  ],
+  "v2::gb::Clash Royale": [
+    {
+      "appId": "com.supercell.clashroyale",
+      "title": "Clash Royale",
+      "developer": "Supercell"
+    }
+  ],
+  "v2::gb::Dark War Survival": [
+    {
+      "appId": "com.readygo.dark.gp",
+      "title": "Dark War Survival",
+      "developer": "Omnilojo Pte Ltd"
+    }
+  ],
+  "v2::gb::Animals & Coins: Animal Run": [
+    {
+      "appId": "com.innplaylabs.animalkingdomraid",
+      "title": "Animals & Coins",
+      "developer": "Innplay Labs"
+    }
+  ],
+  "v2::gb::Match Masters: PvP Puzzle Game": [
+    {
+      "appId": "com.funtomic.matchmasters",
+      "title": "Match Masters",
+      "developer": "Candivore"
+    }
+  ],
+  "v2::gb::PUBG MOBILE": [
+    {
+      "appId": "com.tencent.ig",
+      "title": "PUBG MOBILE",
+      "developer": "Level Infinite"
+    }
+  ],
+  "v2::gb::Bingo Frenzy - Live Bingo Games": [
+    {
+      "appId": "com.cooking.bingo.ldkwh",
+      "title": "Bingo Frenzy: Live Bingo Games",
+      "developer": "VERTEX GAMES PTE. LTD."
+    }
+  ],
+  "v2::gb::Hollywood Merge": [
+    {
+      "appId": "com.hollywood.merge",
+      "title": "Hollywood Merge",
+      "developer": "VoyagerOne IE"
+    }
+  ],
+  "v2::gb::Top Tycoon: Coin Theme Empire": [
+    {
+      "appId": "com.monopoly.dream.idle.king",
+      "title": "Top Tycoon: Coin Theme Empire",
+      "developer": "BeheFun Games Limited"
+    }
+  ]
+}

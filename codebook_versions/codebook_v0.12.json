@@ -1,0 +1,921 @@
+{
+  "version": "0.12",
+  "changelog": [
+    {
+      "version": "0.3",
+      "date": "2026-07-11",
+      "change": "Initial canonical codebook. All definitions transcribed verbatim from Zhang et al. (2025). Inherited meso-level definitions (Zagal et al. [87], Sousa & Oliveira [74], King et al. [39], Hadan et al. [23], Dahlan & Susanty [12].",
+      "invalidates_prior_coding": false,
+      "rows_rechecked": ""
+    },
+    {
+      "version": "0.4",
+      "date": "2026-07-12",
+      "change": "Improve code book structure and ordering.",
+      "invalidates_prior_coding": false,
+      "rows_rechecked": ""
+    },
+    {
+      "version": "0.5",
+      "date": "2026-07-12",
+      "change": "Added alt. defintions from darkpattern.games",
+      "invalidates_prior_coding": false,
+      "rows_rechecked": ""
+    },
+    {
+      "version": "0.7",
+      "date": "2026-08-06",
+      "change": "Add preliminary global rules and cross-verify definitions.",
+      "invalidates_prior_coding": false,
+      "rows_rechecked": ""
+    },
+    {
+      "version": "0.8",
+      "date": "2026-08-06",
+      "change": "Final version prior to pilot labeling. Fix inconsistencies.",
+      "invalidates_prior_coding": false,
+      "rows_rechecked": ""
+    },
+    {
+      "version": "0.9",
+      "date": "2026-08-06",
+      "change": "Add Boundary Rules, Worked Examples and counters after coding 25 reviews",
+      "invalidates_prior_coding": false,
+      "rows_rechecked": ""
+    },
+    {
+      "version": "0.10",
+      "date": "2026-08-06",
+      "change": "Add changes after labeling 55 reviews.",
+      "invalidates_prior_coding": false,
+      "rows_rechecked": ""
+    },
+    {
+      "version": "0.11",
+      "date": "2026-08-07",
+      "change": "Updates after coding 100 reviews",
+      "invalidates_prior_coding": false,
+      "rows_rechecked": ""
+    },
+    {
+      "version": "0.12",
+      "date": "2026-08-07",
+      "change": "Updates after coding 133 reviews.",
+      "invalidates_prior_coding": false,
+      "rows_rechecked": ""
+    }
+  ],
+  "global_rules": [
+    {
+      "id": "R1",
+      "statement": "One review is one unit. Assign each applicable meso label at most once per review, regardless of how many times the pattern appears in the text.",
+      "worked_example_review_id": "",
+      "worked_example_text": ""
+    },
+    {
+      "id": "R2",
+      "statement": "Assign a label only when the review describes a game mechanic or design behaviour. Never assign from rating, tone, or general dissatisfaction alone.",
+      "worked_example_review_id": "",
+      "worked_example_text": ""
+    },
+    {
+      "id": "R3",
+      "statement": "Record the exact quoted span that triggered each label. A label with no recorded span is invalid and must be removed.",
+      "worked_example_review_id": "",
+      "worked_example_text": ""
+    },
+    {
+      "id": "R4",
+      "statement": "Assign the label the recorded span satisfies. Never assign because the game is known to contain the pattern, or because the pattern usually co-occurs with one already assigned.\n",
+      "worked_example_review_id": "",
+      "worked_example_text": ""
+    },
+    {
+      "id": "R5",
+      "statement": "Every entry in a label's indicators list is an instance of that pattern, whether tagged [low-level], [dp-combo], or [indicators]. A span that names an instance assigns its meso label; a meso label assigns its high-level class. Alternate definitions (Alt. def.) are restatements of the meso definition, not instances.",
+      "worked_example_review_id": "4ac321dc-5b10-4df5-94d0-8a36467c675d",
+      "worked_example_text": "1: The main issue is Network problem. Plz solve this. 2: I'm playing this game for 2 year's. At start it was a very good game, but similarly updates were coming. Every update had one thing that affect a real and good user. 3: It provide the facility of buying bundles, gun skins and other collections only by diamonds. Why not gold. 4: Hacking is also very common in this game. A lot of hackers destroying the real game of a good player. Gold must be used to buy bundles & skins etc.😈😈😈.\n\nJustification: Indicates presence of the low-level pattern \"Polymorphic Currency\""
+    },
+    {
+      "id": "R6",
+      "statement": "When no meso label satisfies R2 and R3, assign NONE. NONE is a blank cell.",
+      "worked_example_review_id": "e2a30022-c1d9-4b58-9c99-7dd99b93b2f2 ",
+      "worked_example_text": "You go down more rapidly than it take time to reach above"
+    },
+    {
+      "id": "R7",
+      "statement": "Assign labels irrespective of the reviewer's approval or disapproval. A five-star review praising daily login rewards receives Daily Rewards.",
+      "worked_example_review_id": "13e86d78-cb8b-49b1-b569-fe3037c15d96",
+      "worked_example_text": "This game is a ridiculous amount of fun and I haven't had it crash yet. There's a lot of strategy involved if you want to rank up but you can just tool around and still have a good time. Be aware; there's a fair amount of waiting if you don't want to pay to speed things up. Edit (almost a decade later): just got back into playing and it's even more fun with the builder base addition. It cuts the wait time down on gameplay and involves real tactical thought.\n\nLabels: Playing by Appointment, Pay to Progress"
+    },
+    {
+      "id": "R8",
+      "statement": "Code the mechanic described, not the reviewer's evaluation of it. \"Generous battle pass\" and \"predatory battle pass\" both describe a battle pass.",
+      "worked_example_review_id": "",
+      "worked_example_text": ""
+    },
+    {
+      "id": "R9",
+      "statement": "When two labels both fit and no boundary rule separates them, assign both.\n",
+      "worked_example_review_id": "",
+      "worked_example_text": ""
+    },
+    {
+      "id": "R10",
+      "statement": "If a game mechanic is not clear from the review's context, an external search can be used. Justify the search and tag the search query along with the review.",
+      "worked_example_review_id": "a66dab9e-229c-426e-b6c7-bd839f84f749",
+      "worked_example_text": "Tired of game play changing for the worse. There used to be a variety of mini games. Now it's candy crush with a side of farming/town building. They made the boosters in the mini game worse and seems like most people did not get compensated as they said. I swear the golden ticket was cheaper or lasted a longer amount of time. Now it's only 3 weeks long. If the price of the golden ticket went up I'm not buying it ever again and am seriously considering quitting.\n\nJustification: Meaning of \"Golden pass\" is unclear so a search query \"what is golden ticket township\" answers \"The Golden Ticket in the mobile game Township is a paid seasonal pass (costing around $4.99 USD)\" which tags the review as a recurring fee.\""
+    },
+    {
+      "id": "R11",
+      "statement": "Where the span attributes the described behaviour to a bug, glitch, error, or technical fault, assign NONE, even if the behaviour would otherwise satisfy a label. Dark patterns are design choices; malfunctions are not. Applies only where the bug attribution is attached to the specific behaviour being coded. A general statement that a game is buggy, glitchy, or broken does not suppress labels on other spans in the same review.",
+      "worked_example_review_id": "",
+      "worked_example_text": ""
+    },
+    {
+      "id": "R12",
+      "statement": "R12. Code only mechanics the span describes as present in the game. Requests, suggestions, wishes, and hypotheticals about mechanics the game does not have (\"they should add…\", \"make us watch an ad to get coins\", \"if only there were…\") are not codable, even where the named mechanic matches a label.",
+      "worked_example_review_id": "5b03434b-902f-401d-aab7-d958c7fcf788",
+      "worked_example_text": "The game itself is fun, but you end up having to wait nearly 2 hours to pay for free. You get coins every hour, but one hours worth of coins isn't going to likely even get you past one level as you almost always need to buy additional cards. If they want to keep people playing, they need to make free ways to get coins. Make us watch an ad to get 1-2k coins. Otherwise this game is more frustrating than fun.\n\nLabels: Playing by Appointment only"
+    }
+  ],
+  "high_level_classes": [
+    {
+      "name": "Temporal",
+      "canonical_definition": "Temporal DPs manipulate the amount of time spent on gameplay, i.e., expected versus actual time, leading players to feel that their time has been unfairly exploited [87].",
+      "definition_citation": "Zagal et al. [87]"
+    },
+    {
+      "name": "Monetary",
+      "canonical_definition": "Monetary DPs cause players to unexpectedly invest more financial resources, ultimately causing them to regret or lose track of their expenditures [87].",
+      "definition_citation": "Zhang et al. 2025, §3.4 (verbatim; after Zagal et al. [87])"
+    },
+    {
+      "name": "Social",
+      "canonical_definition": "Social DPs exploit players’ social connections from the real world and in-game to deceive or manipulate them, thereby putting their social standing and relationships at risk [74, 87].",
+      "definition_citation": "Zhang et al. 2025, §3.4 (verbatim)"
+    },
+    {
+      "name": "Psychological",
+      "canonical_definition": "Psychological DPs and practices manipulate players’ minds, emotions, and cognition, inducing them to make poor decisions through psychological tricks [74].",
+      "definition_citation": "Zhang et al. 2025, §3.4 (verbatim; after Sousa & Oliveira [74])"
+    },
+    {
+      "name": "Technical",
+      "canonical_definition": "The Technical pattern, deceives users or players by obscuring or misrepresenting the technical aspects of the game application.",
+      "definition_citation": "Zhang et al. 2025"
+    }
+  ],
+  "labels": [
+    {
+      "high_level": "Temporal",
+      "meso_label": "Playing by Appointment",
+      "level": "meso",
+      "canonical_definition": "Requires players play at specific times (and or dates) as defined by the game, rather than the players. When mechanics result in player playing according to the schedules the game offers, rather than their personal desires (an obligation).",
+      "definition_citation": "Zagal et al. 2013 [87]",
+      "definition_pending": false,
+      "indicators": [
+        "(Alt. def.) (Hadan et al. 2024): “Patterns that forces players to adhere to the game’s schedule.”",
+        "Evil Battle Pass (Zhang et al.): “Players are required to spend excessive time completing tasks, risking expiration of the battle pass and loss of rewards, even if they have paid for it in advance.” [low-level]",
+        "Wait to Play (Hadan et al. 2024): “Patterns that impose arbitrary wait times on players through in-game timers.”\ndarkpattern.games: “In-game timers that make you arbitrarily wait for something.” [low-level]",
+        "Trapping starter kits: This pattern particularly entices new players to log in and play continuously for the first few\ndays after creating new accounts. These designs often use in-game rewards as incentives, creating\na situation where new players lose the opportunity to obtain these rewards if they fail to log in and\ncomplete tasks within the specified timeframe. [dp-combo]"
+      ],
+      "boundary_rules": [
+        {
+          "vs_label": "Non-dark scheduling",
+          "rule": "Zagal et al.: “Nullified if completing appointments is not required for progress. In other words, when appointment is combined with progress it becomes dark.”"
+        },
+        {
+          "vs_label": "Fear of missing out",
+          "rule": "Where a reward expires on the game's clock and the span describes the schedule or the loss, code Playing by Appointment. Code FOMO only where the span describes anticipatory pressure i.e., the player continuing, returning, or feeling anxious in order not to miss out or fall behind. Both apply under R9 only if the span carries the schedule and the felt pressure."
+        },
+        {
+          "vs_label": "Recurring Fee",
+          "rule": "A paid pass or subscription alone is Recurring Fee. Assign Playing by Appointment additionally only where the span describes the pass's clock operating on the player: tasks that must be completed before expiry, rewards forfeited by not playing within the window, or pressure to play to a schedule set by the pass. Price, duration, or poor value alone do not trigger it. Where both are present, assign both under R9."
+        },
+        {
+          "vs_label": "Resource depletion without stated wait",
+          "rule": "Wait to Play requires the span to describe the wait or its regeneration schedule (lives/energy refilling over time, a build timer, a cooldown, a cooldown-skip offer)."
+        }
+      ],
+      "counterexamples": [
+        {
+          "review_id": "331c695a-8b57-4a46-b4d2-00fcdff9ec1a",
+          "text": "The game itself seems to be good but after one day of play I decided to uninstall it. The reasons? 1. The controls in general are quite slow, even when you set sensibilities to its high 2. The matching times takes forever. I have been waiting for 5 min without starting a match. 3. The size of the maps in Royale are HUGE. Even if you choose the smallest map it takes forever to engage with enemies since the maps are that big.",
+          "why_not": "Wait to Play requires a wait the game imposes as a gate like energy or lives regenerating, build and upgrade timers, cooldowns, cooldown-skip offers. Waits arising from the operation of the service rather than from a designed gate like matchmaking and queue times, loading, downloads, server latency, lag are not Playing by Appointment, however long the span says they last."
+        }
+      ],
+      "worked_examples": [
+        {
+          "review_id": "e6f62d13-d119-405c-9b61-a8ff7be5b3a3",
+          "text": "If I was rating this game solely on how fun it is, I'd give it 5 stars. However, the reason I'm rating it 2, is because they make it near impossible to play with any consistency, unless you spend a ton of money to get coins. You only get free coins once an hour and that's just enough for 1 game. If you build up any amount of coins, you burn through them in 15 mins of consistent playing bc you can only win every 10th game. They really need to think about changing this if they want to keep players",
+          "labels_assigned": []
+        }
+      ]
+    },
+    {
+      "high_level": "Temporal",
+      "meso_label": "Daily Rewards",
+      "level": "meso",
+      "canonical_definition": "Motivates players to log in daily by providing incentives, while also penalising them for failing to do so.",
+      "definition_citation": "Sousa & Oliveira 2023 ",
+      "definition_pending": false,
+      "indicators": [
+        "Daily log-in reward calendars [indicators]",
+        "Daily task lists with resetting rewards [indicators]",
+        "(Alt. def.) (Hadan et al. 2024): “Patterns that encourage players to revisit the game daily.”",
+        "(Alt. def.) darkpattern.games: “Encourages return visits every day and punishes you for missing a day.”",
+        "Trapping starter kits: This pattern particularly entices new players to log in and play continuously for the first few\ndays after creating new accounts. These designs often use in-game rewards as incentives, creating\na situation where new players lose the opportunity to obtain these rewards if they fail to log in and\ncomplete tasks within the specified timeframe. [dp-combo]"
+      ],
+      "boundary_rules": [],
+      "counterexamples": [
+        {
+          "review_id": "c1115d1f-9ced-4d51-9174-7f8d6c957afc",
+          "text": "Can be fun. However as you progress you must do more an more for the same reward. For an example, to get 100 coins in a day when you first start off you may have to complete 10 levels. Fair enough. When you get to higher levels you need to complete 25 levels in a day. Pretty tough since you are far in the game, you would think the reward would be 250 coins. Nope, still 100. Also you only get 1 coin for donating a life. A whole one coin. At least make it 5 coins.",
+          "why_not": "Assign only where the span describes the game rewarding the daily return or penalising a missed day: a login calendar, a resetting task list, a streak. A daily rate used by the reviewer to describe an exchange rate or earning ceiling (\"100 coins a day takes 25 levels\") measures the economy, it does not describe a daily-return incentive."
+        }
+      ],
+      "worked_examples": [
+        {
+          "review_id": "201672d6-579d-44c3-a1df-55a3f8182969",
+          "text": "This game was lot more fun in the starting stage . The daily missions are impossible to do in such less attempts and it takes nearly 2 minutes for new chances to play. And the item don't even make according to the orders . Pathetic game\n",
+          "labels_assigned": []
+        }
+      ]
+    },
+    {
+      "high_level": "Temporal",
+      "meso_label": "Grinding",
+      "level": "meso",
+      "canonical_definition": "“Performing repetitive and tedious tasks” in order to make progress in a game. Emphasizes time invested over skill and in worst cases could be conducted unattended by the player.",
+      "definition_citation": "Zagal et al. 2013",
+      "definition_pending": false,
+      "indicators": [
+        "(Alt. def.) (Hadan et al. 2024): “Patterns that requires players to perform repetitive tasks.”",
+        "(Alt. def.) (Sousa & Oliveira 2023): “Being compelled to complete monotonous tasks in order to make progress.”",
+        "(Alt. def.) (Dahlan & Susanty 2022): “It is forcing players to perform repetitive tasks to make progress in the game.”",
+        "Try now, Pay later (Zhang et. al): This pattern offers players the chance to initially try premium experiences,\npowerful items, or privileges, with payment required at a later stage. [dp-combo]",
+        "Trapping starter kits: This pattern particularly entices new players to log in and play continuously for the first few\ndays after creating new accounts. These designs often use in-game rewards as incentives, creating\na situation where new players lose the opportunity to obtain these rewards if they fail to log in and\ncomplete tasks within the specified timeframe. [dp-combo]"
+      ],
+      "boundary_rules": [
+        {
+          "vs_label": "Slow Progress",
+          "rule": "Assign where the span describes the activity required for progress as repetitive, tedious, or requiring the same task be repeated: replaying levels, farming, repeated attempts. A statement that progress is slow, hard, or time-consuming, without describing what the player must repeatedly do, is not Grinding on its own; where the slowness is attributed to payment being the alternative, code Pay to Progress alone."
+        },
+        {
+          "vs_label": "Gameplay described as repetitive",
+          "rule": "Assign where the span identifies the repeated activity: replaying levels, farming, repeated attempts, a task cycle the player must run to advance. A general characterisation of the game as repetitive, boring, monotonous, or \"the same thing over and over,\" with no activity named and no link to progress, is an evaluation of quality and codes NONE under R2."
+        }
+      ],
+      "counterexamples": [
+        {
+          "review_id": "c34240d6-3294-419b-99a9-ae30ec8886a8",
+          "text": "Not fun any more. You made all of the level, even the supposedly easy ones so hard to win that it takes too long to make any progress without spending money.",
+          "why_not": "Refers to slow progress and payment being an alternative. Does not specify repetitive action."
+        }
+      ],
+      "worked_examples": [
+        {
+          "review_id": "5314b2a4-056d-4fde-bab1-731549f727be",
+          "text": "From my initial 5 star review it has been edited and changed to a 2 star review. I've been playing this game for 3 years now and it's never been worse than what it is right now. The algorithm is terrible and is set at such a way that it keeps you battling for hours to just gain a little bit of progress. I played a tournament at Town Hall 6 with 2600 trophies (level 6) and faced a townhall 8 with 4500 trophies. If that isn't a tad unfair then i don't know what is. Thanks for making me uninstal",
+          "labels_assigned": []
+        }
+      ]
+    },
+    {
+      "high_level": "Temporal",
+      "meso_label": "Advertisement",
+      "level": "meso",
+      "canonical_definition": "Compelled to view advertisements or incentivized to do so through the promise of rewards.",
+      "definition_citation": "Sousa & Oliveira 2023",
+      "definition_pending": false,
+      "indicators": [
+        "(Alt. def.) darkpattern.games: “Forced to watch ads or given rewards for watching ads.”"
+      ],
+      "boundary_rules": [],
+      "counterexamples": [
+        {
+          "review_id": "d246b22d-bb09-4f3e-b123-fa6c6d30de1f",
+          "text": "If I wanted to play a matching(candy crush style) puzzle game I already have a couple favorites that I like to play. The game is nothing like the ad I kept seeing, I even thought well if I get to a certain level it would open up the puzzles that are on the ad but no...will be deleting this game from my phone. It's a shame that it couldn't be what was advertised that looked fun.",
+          "why_not": "Assign only where the span describes advertisements encountered within the game: forced ad views, ad-gated continues, or rewards for watching. External or store-front advertising, including misleading ads that prompted the install, does not trigger Advertisement."
+        },
+        {
+          "review_id": "0266f2af-effc-47a0-8b09-c39f61384b65",
+          "text": "I don't need to be told to buy 10-15 times every time I run out of energy, open the game, or come back from an ad! also, unskippable animations everywhere. my first review was posted in 2025. I thought I would give the game another try and see if they improved anything. it's only gotten worse. I wish I could give it -1 star. Now part of the unskippable pop-up lineup are the forced events. whether you want to participate or not, you are. and they have to remind you constantly that you are",
+          "why_not": "Only mentions the ads does not relate the ads to being forced to watch or being incentivized to watch."
+        }
+      ],
+      "worked_examples": [
+        {
+          "review_id": "33834f20-6663-4aab-aba0-2500f8d3d88c",
+          "text": "Downgraded to a 2 star. Literally after you get to level 18 you get 1 attempt win or lose and you get a forced unskippable ad. It ruins the game and forces you to pay £5.93 to remove the ads or have restart the app over and over. Really really bad form by the developer. It is however, a good little game, but the forced ads after 1 try is awful practice!!",
+          "labels_assigned": []
+        },
+        {
+          "review_id": "6660a737-d91c-4308-8d22-70a8966cbcad",
+          "text": "More frustrating than enjoyable. Not a game you'd pick up if you had a free 5 minutes because it takes that long to load it and cancel the offers to play. Almost impossible to progress without payments or watching boring ads. Many of your earned rewards need to be purchased. Shields are very few so rebuilding is frequent. Game crashes and freezing is common. Often having to close and reload and because it takes so long to load many of the rewards you've built up are lost or stolen.",
+          "labels_assigned": []
+        }
+      ]
+    },
+    {
+      "high_level": "Temporal",
+      "meso_label": "Infinite Treadmill",
+      "level": "meso",
+      "canonical_definition": "Patterns that continually expand the game to never allow players to complete.",
+      "definition_citation": "Hadan et al. 2024",
+      "definition_pending": false,
+      "indicators": [
+        "(Alt. def.) darkpattern.games: “Impossible to win or complete the game.”"
+      ],
+      "boundary_rules": [
+        {
+          "vs_label": "High level number or long play history",
+          "rule": "Assign only where the span describes the game itself extending beyond completion: content added faster than it can be cleared, a goal that recedes as it is approached, no attainable end state, or the reviewer stating the game cannot be finished. A large level number, a high rank, a long tenure, or a report that the game \"never ends\" as a figure of speech for tedium is not sufficient."
+        }
+      ],
+      "counterexamples": [],
+      "worked_examples": [
+        {
+          "review_id": "98bffab1-a7ab-48a4-ac1b-c14aa257e651",
+          "text": "Can't progress at all🤬 I can only go a few levels and then am held at one spot for about 2 weeks while they supposedly are creating new levels so I can move forward! I'm calling B.S.! Can't participate in any of the weekly or daily races when you are stuck! I used to love this game, so much fun! Not anymore! It's not fun when you have to try to beat a level over 400 times! Uninstalling this POS game!🤬🤬🤬🤬",
+          "labels_assigned": []
+        }
+      ]
+    },
+    {
+      "high_level": "Temporal",
+      "meso_label": "Mandatory Marathon",
+      "level": "meso",
+      "canonical_definition": "Design that prevents the player from stopping at a moment of their choosing, requiring continuation to a stopping point defined by the game. Includes absent or restricted saving, checkpoint-only progress, and sessions or matches that cannot be exited without forfeiting progress.",
+      "definition_citation": "[NOT VERBATIM] derived from low-level patterns",
+      "definition_pending": true,
+      "indicators": [
+        "Can’t Pause or Save (Hadan et al. 2024): “Patterns that force players to continue playing before they can save progress.” [low-level]"
+      ],
+      "boundary_rules": [
+        {
+          "vs_label": "Unskippable sequence",
+          "rule": "Mandatory Marathon requires that the player be prevented from ending a session or losing progress. Unskippable cutscenes, encounters, or animations within a session do not trigger it unless the review states the player could not stop playing or lost progress."
+        }
+      ],
+      "counterexamples": [
+        {
+          "review_id": "7622b34e-eb64-4e4a-9541-c0923dbf3aa1",
+          "text": "Revisiting this after a few years. Still annoyingly reliant on the user having a high-end phone. Now I have one, and the problems arise with consistency and the intention of making the game fun. Unskippable encounters where the pokemon is supposed to be \"given\" to you are a mess. Adventure sync is good. Weird geographic limitations on pokemon feel ridiculous, but it's whatever. Wish spawn rates were higher in less populated areas, but I get it. Battles are fun.",
+          "why_not": "\"Unskippable encounters\" specifies presence of elements that cannot be skipped but it is not related to progress."
+        }
+      ],
+      "worked_examples": []
+    },
+    {
+      "high_level": "Monetary",
+      "meso_label": "Pay to Progress",
+      "level": "meso",
+      "canonical_definition": "Patterns that require the players to spend money to progress in-game.",
+      "definition_citation": "[NOT VERBATIM] Extracted from low level definitions.",
+      "definition_pending": true,
+      "indicators": [
+        "Pay to Skip (Sousa & Oliveira 2023): “Permitting or actively promoting players to spend money to speed up their progress in the game.” Alt (Hadan 2024): “Patterns that allows players players to pay to bypass undesired obstacles.” Alt (Dahlan & Susanty 2022): “Allowing or even encouraging players to spend money to make progress in the game easier and faster.” darkpattern.games: “Spend money to avoid waiting for a timer to expire.” [low-level]",
+        "Pay to Win (Hadan et al. 2024): “Patterns that grant advantages to players who spend money.” Zagal et al.’s “Monetized Rivalries”: “Exploits Player competitiveness; encouraging them to spend money they would not otherwise in order to achieve in-game status such as a high placement on a leader board.” darkpattern.games: “A player can spend real money to purchase something that gives them an advantage in the game.” [low-level]",
+        "Pay Wall (Sousa & Oliveira 2023): “The game reaches a point where further progress is contingent on making a payment.” Alt (Hadan 2024): “Patterns that make the game unplayable without payment.” darkpattern.games: “The game becomes impossible to continue playing without payment.” [low-level]",
+        "Narrative Obligation (King et al. 2023): “the game’s narrative structure makes the purchase of in-game items a regular or repetitive part of gameplay. Although in-game currency may be earned, this is generally at a slow rate, so players may be forced to spend to keep the game flowing.” [low-level]",
+        "Try now, Pay later (Zhang et. al): This pattern offers players the chance to initially try premium experiences,\npowerful items, or privileges, with payment required at a later stage. [dp-combo]"
+      ],
+      "boundary_rules": [
+        {
+          "vs_label": "Free workaround",
+          "rule": "Pay to Progress holds whenever payment is described as a route past a progress obstacle, even if the reviewer names a free alternative (asking friends, waiting, watching an ad). The existence of a non-monetary bypass does not nullify the label; code the bypass separately if it satisfies its own label."
+        },
+        {
+          "vs_label": "Paid removal of artificial friction",
+          "rule": "Where payment is described as removing, skipping, or unlocking a restriction rather than buying advancement, ad removal, inventory or loadout actions, convenience functions, assign Pay to Progress only where the span shows the restriction standing between the player and continued play or progress. Friction described purely as an annoyance, with no progress consequence in the span, does not trigger it."
+        }
+      ],
+      "counterexamples": [
+        {
+          "review_id": "57d93bed-3d95-46c4-875e-6463c40d58ea",
+          "text": "This is good game but as it got updated, so there is new feature of voice talk. But we have to pay nd refill it after once it gets blank. But its a request for the ludo team to make it free because no one ll going to pay for that. thats the concern..so it ll be easy for us to play wid friends and also we can talk...thank you!",
+          "why_not": "The payment specified here is not linked to the progression in-game, it's linked to an additional, optional feature \"voice talk\"."
+        }
+      ],
+      "worked_examples": [
+        {
+          "review_id": "77e664a8-c654-4630-852f-2717fe7d53cc",
+          "text": "\"After level 100 it does get alot harder and you will run out of lives multiple times but without spending money you just ask your friends and team for lives to continue playing\" ",
+          "labels_assigned": [
+            "Pay to Progress",
+            "Reciprocity"
+          ]
+        },
+        {
+          "review_id": "33834f20-6663-4aab-aba0-2500f8d3d88c",
+          "text": "Downgraded to a 2 star. Literally after you get to level 18 you get 1 attempt win or lose and you get a forced unskippable ad. It ruins the game and forces you to pay £5.93 to remove the ads or have restart the app over and over. Really really bad form by the developer. It is however, a good little game, but the forced ads after 1 try is awful practice!!",
+          "labels_assigned": []
+        }
+      ]
+    },
+    {
+      "high_level": "Monetary",
+      "meso_label": "Intermediate Currency",
+      "level": "meso",
+      "canonical_definition": "Pattern where players use real-world money to acquire in-game currency for purchases or trades within the game world",
+      "definition_citation": "Zhang et al. 2025",
+      "definition_pending": false,
+      "indicators": [
+        "Premium Currency (Sousa & Oliveira 2023): “The true cost of in-game items is concealed by the exchange rate between real-world currency and virtual currency.” Alt (Hadan 2024): “Patterns that disguises item real prices by introducing exchange rates.” darkpattern.games: “Exchange rate between real money and in-game currency disguises the real price of items.” [low-level]",
+        "Polymorphic Currency:is the use of multiple, purpose-specific in-game currencies within a\nsingle game that can either be purchased with real-world money or earned by in-game activities.\nThe malicious part is that they are non-interchangeable. Zhang et al. 2025. [low-level]",
+        "Bulk Purchase: King et al. 2023: “the player may only purchase in-game currency in set pack sizes, with a bulk-buy discount to encourage larger purchases” [low-level]",
+        "Leftovers: King et al. 2023: “the pricing of items is not aligned to the pack sizes, meaning that players must often purchase more currency than required.” [low-level]"
+      ],
+      "boundary_rules": [],
+      "counterexamples": [],
+      "worked_examples": [
+        {
+          "review_id": "e6f62d13-d119-405c-9b61-a8ff7be5b3a3",
+          "text": "Review: If I was rating this game solely on how fun it is, I'd give it 5 stars. However, the reason I'm rating it 2, is because they make it near impossible to play with any consistency, unless you spend a ton of money to get coins. You only get free coins once an hour and that's just enough for 1 game. If you build up any amount of coins, you burn through them in 15 mins of consistent playing bc you can only win every 10th game. They really need to think about changing this if they want to keep players.\nJustification: \"spend a ton of money to get coins\" shows the presence of intermediate currency called \"coins\" bought with real money.",
+          "labels_assigned": []
+        }
+      ]
+    },
+    {
+      "high_level": "Monetary",
+      "meso_label": "Deceptive Luxury",
+      "level": "meso",
+      "canonical_definition": "Deceptive Luxury is a game design tactic that makes an item feel rare and exclusive so players will pay more for it, when the rarity was invented by the developer rather than being a real limit. The item's price reflects manufactured scarcity, not genuine value.",
+      "definition_citation": "[NOT VERBATIM] derived from low-level patterns",
+      "definition_pending": true,
+      "indicators": [
+        "Artificial Scarcity (Hadan et al. 2024): “Patterns that use limited-time offers to manipulate player decisions.” darkpattern.games: “Limited time offers with unnecessary urgency.” [low-level]",
+        "Remedy Consumption: is a pattern where players are given a second opportunity to correct\na missed purchase of some limited, valuable in-game items. This involves intentional artificial\nscarcity for these in-game items, which compels players to expend additional effort or incur further\ncosts (compared to the first time) to obtain them. Zhang et al. 2025. [low-level]",
+        "Rarity Level (Zhang et al.): in-game items are often designed with varying levels of rarity. For\ninstance, character skins are ranked from B rank to S++ rank, with\nhigher ranks featuring more intricate designs and commanding higher prices [dp-enhancer]. Mention of rarity tied to price, purchase, or manufactured scarcity implies presence of pattern."
+      ],
+      "boundary_rules": [
+        {
+          "vs_label": "Scarcity without monetization",
+          "rule": "Deceptive Luxury requires the scarcity to bear on price or purchase. Availability restrictions with no monetary consequence in the span (regional exclusives, location-gated content, low spawn rates) are not Deceptive Luxury"
+        }
+      ],
+      "counterexamples": [
+        {
+          "review_id": "c1dee664-e5f1-4752-b857-e29aec3351c6",
+          "text": "after the new update whenever I switch to any of my mythic guns I just start lagging mid game, so many bugs in the game, now I can't use any of my mythic just legendarys and prestige guns, please fix this",
+          "why_not": "Mention of rarity or tier names (mythic, legendary, S-rank, prestige) is a dp-enhancer, not a low-level indicator, and does not lift to Deceptive Luxury under R5. Require a span tying the rarity to price, purchase, or manufactured scarcity."
+        }
+      ],
+      "worked_examples": []
+    },
+    {
+      "high_level": "Monetary",
+      "meso_label": "Recurring Fee",
+      "level": "meso",
+      "canonical_definition": "Patterns that encourages players to maximize playtime to justify their spending.",
+      "definition_citation": "Hadan et al. 2024",
+      "definition_pending": false,
+      "indicators": [
+        "(Alt. def.) darkpattern.games: Involves monthly/yearly subscriptions which encourages the player to play as much as possible to get their money's worth.",
+        "Battle passes, MMO-subscriptions [indicators]"
+      ],
+      "boundary_rules": [],
+      "counterexamples": [],
+      "worked_examples": [
+        {
+          "review_id": "b85de1eb-96ee-4b79-b89b-a6b0f784f3d5",
+          "text": "I really loved playing this game it is the only one that I have ever been able to justify spending my money on. But they have made so many changes to it, they've cut out so many of the fun aspects, the ways to collect extra coins, and useful items in the game. They took their 30 day pass and turned it into a 7-Day pass and they're charging the same thing for it and giving less prizes and incentives to have it. If they don't change it back I will be leaving the game",
+          "labels_assigned": []
+        }
+      ]
+    },
+    {
+      "high_level": "Monetary",
+      "meso_label": "Gambling",
+      "level": "meso",
+      "canonical_definition": "Using real money to participate in a game that involves an element of luck, with the possibility of receiving a prize as a reward.",
+      "definition_citation": "Sousa & Oliveira 2023 [74] (“Gambling/Loot Boxes”)",
+      "definition_pending": false,
+      "indicators": [
+        "Loot Boxes (Hadan 2024, “Gambling / Loot Boxes”): “Patterns that encourages players to spend money on chance-based rewards.” darkpattern.games (“Gambling / Loot Boxes”): “Spending real money to play a game of chance for a reward.” [low-level]",
+        "Risk Conversion: offers players an alternative way to achieve their goals, such as obtaining\nan extremely rare item, by spending a substantial amount of money to circumvent the uncertainties\ninherent in gambling mechanics. However, the actual amount players spend is significantly higher\nthan if they had opted for gambling mechanics. This pattern specifically targets risk-averse players. Zhang et al. 2025 [low-level]",
+        "Bundle Bonus: encourages players to engage in multiple gambling attempts at once rather\nthan a single one. For instance, if a player undertakes 10 in-game lottery activities at once, they\nreceive an additional opportunity for free, incentivizing bulk gambling. . Zhang et al. 2025. [low-level]"
+      ],
+      "boundary_rules": [
+        {
+          "vs_label": "Intermediate Currency",
+          "rule": "Where real money is converted into in-game currency and that currency is then wagered, assign both Gambling and Intermediate Currency under R9. The intervening currency layer does not nullify Gambling (\"using real money\" is satisfied by the funding chain), and the wagering does not absorb Intermediate Currency. Assign Gambling alone where the stake is currency earned in-game with no purchase described."
+        },
+        {
+          "vs_label": "Mechanic naming",
+          "rule": "Gambling's real-money element must be present in the span. Naming gacha, loot boxes, crates, or a summon system, and describing their odds, establishes chance-based delivery but not a monetary stake, code Reward Mania. Assign Gambling where the span describes money spent, a purchased stake, or a described wager of earned currency (per the Intermediate Currency rule). Do not supply the monetary element from the fact that the mechanic is normally monetised."
+        }
+      ],
+      "counterexamples": [],
+      "worked_examples": [
+        {
+          "review_id": "0615728a-3278-4286-a121-7d79baca3a17",
+          "text": "it's fine it's a gacha game so of course it's going to cost money I'm fine with that. but it's the anniversary it was off to such a strong start impossible to ruin and part two did just that killed any fun the game had by making any team other than hybrids and future dead. but long live the immortal gohans",
+          "labels_assigned": []
+        }
+      ]
+    },
+    {
+      "high_level": "Monetary",
+      "meso_label": "Power Creep",
+      "level": "meso",
+      "canonical_definition": "Patterns that diminishing the value of purchased items over time to drive new purchases.",
+      "definition_citation": "Hadan et al. 2024 [23]",
+      "definition_pending": false,
+      "indicators": [
+        "(Alt. def.) darkpattern.games: “A permanently purchased item in the game becomes less valuable over time.”"
+      ],
+      "boundary_rules": [
+        {
+          "vs_label": "Incomplete on purchase",
+          "rule": "Power Creep requires the span to show a purchased item losing value after acquisition, through updates, new releases, or rebalancing. An item that is underpowered or unusable at the point of sale and requires further payment to reach full function is not Power Creep; code Pay to Progress where the further payment buys progress or advantage."
+        }
+      ],
+      "counterexamples": [],
+      "worked_examples": [
+        {
+          "review_id": "d2025743-54d1-4583-9750-6c1d50dbe806",
+          "text": "You should see all the edits I've done. This games devs tell you all sorts of lies. fair gameplay, NO. they literally nerf your old stuff and never reimburse you. You'll spend money and a few months later all new meta will appear and your INVESTMENT is gone. they say they strive for balance, HAH. if you don't mind throwing money down the drain then this is your game. Absolutely 0 return on any investment made.... It is fun game play though even if the bots are exponentially higher lvl always.",
+          "labels_assigned": []
+        }
+      ]
+    },
+    {
+      "high_level": "Monetary",
+      "meso_label": "Waste Aversion",
+      "level": "meso",
+      "canonical_definition": "Patterns set small differences between in-game currency and item costs, prompting additional currency purchases.",
+      "definition_citation": "Hadan et al. 2024",
+      "definition_pending": false,
+      "indicators": [
+        "(Alt. def.) darkpattern.games: “Capped inventory forces you to destroy items or upgrade inventory. Also, having small amounts of left over premium currency.”"
+      ],
+      "boundary_rules": [],
+      "counterexamples": [],
+      "worked_examples": []
+    },
+    {
+      "high_level": "Monetary",
+      "meso_label": "Easy to Purchase",
+      "level": "meso",
+      "canonical_definition": "Interface design that reduces the friction or deliberation involved in spending real money, through purchase-by-default options, absent confirmation or refund steps, prompts triggered at the point of insufficient funds, or price presentation that makes an amount appear smaller than it is.",
+      "definition_citation": "[NOT VERBATIM] Derived from low level defintions.",
+      "definition_pending": true,
+      "indicators": [
+        "Anchoring Tricks (Hadan et al. 2024): “Patterns that place inexpensive items next to expensive ones to create the illusion of affordability.” darkpattern.games: “Placing a cheap item next to an expensive item to make it look more affordable.” [low-level]",
+        "Accidental Purchases (Hadan et al. 2024): “Patterns that use visual design or default options to deceive players into making unintended purchases.” darkpattern.games: “Making it easy to accidentally spend money with no confirmation or ability to undo or refund the action.” [low-level]",
+        "Low Barrier: King et al. 2023 “Default To Purchase”: “instances where the player was directed to purchase in-game items or in-game currency as a default action; if they do not wish to purchase, they must opt-out.” [low-level]",
+        "Prompted to Buy: King et al. 2023: “if the player attempts to buy an item with insufficient credit, the user interface displays a prompt for the user to purchase additional in-game currency with real money.” [low-level]"
+      ],
+      "boundary_rules": [],
+      "counterexamples": [],
+      "worked_examples": [
+        {
+          "review_id": "0266f2af-effc-47a0-8b09-c39f61384b65",
+          "text": "I don't need to be told to buy 10-15 times every time I run out of energy, open the game, or come back from an ad! also, unskippable animations everywhere. my first review was posted in 2025. I thought I would give the game another try and see if they improved anything. it's only gotten worse. I wish I could give it -1 star. Now part of the unskippable pop-up lineup are the forced events. whether you want to participate or not, you are. and they have to remind you constantly that you are\nJustification: Comes under the Prompted to Buy low-level pattern.\n",
+          "labels_assigned": []
+        },
+        {
+          "review_id": "6660a737-d91c-4308-8d22-70a8966cbcad",
+          "text": "More frustrating than enjoyable. Not a game you'd pick up if you had a free 5 minutes because it takes that long to load it and cancel the offers to play. Almost impossible to progress without payments or watching boring ads. Many of your earned rewards need to be purchased. Shields are very few so rebuilding is frequent. Game crashes and freezing is common. Often having to close and reload and because it takes so long to load many of the rewards you've built up are lost or stolen.\n\nJustification: \"cancel the offers to play\" implies that the reviewer has to opt-out of payment offers and they are shown as default options when the game boots up.",
+          "labels_assigned": []
+        }
+      ]
+    },
+    {
+      "high_level": "Monetary",
+      "meso_label": "UI Misdirection",
+      "level": "meso",
+      "canonical_definition": "The user interface (i.e., not the NPC) contains elements designed to purposefully focus attention on specific options, or away from opportunities to opt-out.",
+      "definition_citation": "King et al. 2023",
+      "definition_pending": false,
+      "indicators": [
+        "Exciting UI Effect: King et al. 2023: “the use of colors and animation to direct the player’s attention to selected UI elements (such as the ‘buy in-game currency’ button)”; “[the buy button] was attracting more attention than the rest of the screen”; “a pleasing sound effect described as ‘an angelic choir’ and ‘a heavenly sound’ to accompany the appearance of the in-game currency storefront.” [low-level]"
+      ],
+      "boundary_rules": [],
+      "counterexamples": [],
+      "worked_examples": []
+    },
+    {
+      "high_level": "Monetary",
+      "meso_label": "Never-Ending Lure",
+      "level": "meso",
+      "canonical_definition": "The “Never-Ending Lure” pattern is designed to convert non-paying players into paying ones (“First Charge Discount”) and encourage consistent long-term payments (“Accumulating Rewards”).",
+      "definition_citation": "Zhang et al. 2025.",
+      "definition_pending": false,
+      "indicators": [
+        "First Charge Discount: happens when in-game items or currencies are offered at significantly reduced prices for the player’s first purchase, and then revert to the original higher price for subsequent purchases. This pattern distorts the player’s perception of in-game items’ true value. Zhang et al. 2025.[low-level]",
+        "Accumulating Rewards: involves granting privileges, special offers, and rewards to players who spend above certain monetary thresholds. Zhang et al. 2025. [low-level]"
+      ],
+      "boundary_rules": [
+        {
+          "vs_label": "Premium Currency",
+          "rule": "it focuses on a one-time-only purchase to mislead players into feeling\nthat they have taken advantage of the purchase unlike Premium Currency which is a permanent effect."
+        },
+        {
+          "vs_label": "Pay to Win",
+          "rule": "Unlike Pay to Win, where players directly spend\nmoney to gain in-game advantages, this pattern does not emphasize helping players progress faster.\nInstead, it offers players a special, privileged, and extraordinary status that is visible to other players."
+        }
+      ],
+      "counterexamples": [],
+      "worked_examples": []
+    },
+    {
+      "high_level": "Social",
+      "meso_label": "Forced Fellowship",
+      "level": "meso",
+      "canonical_definition": "Forced Fellowship is a game design tactic that turns real friendships into leverage: the game rewards you for pulling friends in, then makes it costly to stop playing because quitting would let those friends down.Design that uses the player's social ties, real or in-game, as the mechanism of recruitment or retention: rewarding the player for bringing others into the game, or making disengagement costly because absence burdens teammates, guildmates, or friends.",
+      "definition_citation": "[NOT VERBATIM] Derived from low-level patterns",
+      "definition_pending": true,
+      "indicators": [
+        "Social Pyramid Scheme (Sousa & Oliveira 2023): “Players are incentivized to invite friends to join the game and are encouraged to continue spreading the invitation to others in their social circle.” Alt (Hadan 2024): “Patterns that reward players for inviting friends.” Alt (Dahlan & Susanty 2022): “Encouraging or sometimes forcing players to invite people to join them in the game to gain in-game incentives or make progress.” darkpattern.games: “You get a bonus for inviting your friends and then they have to invite their friends.” [low-level]",
+        "Social Obligation / Guilds (Sousa & Oliveira 2023): “Due to a sense of responsibility towards one's friends, players may feel compelled to play the game even when they would prefer not to.” Alt (Hadan 2024): “Patterns that create a sense of obligation to avoid letting down friends in the game.” darkpattern.games: “To avoid letting down your friends, you are obligated to play when you don't want to.” [low-level]"
+      ],
+      "boundary_rules": [
+        {
+          "vs_label": "Reciprocity",
+          "rule": "If the player is asked to bring NEW people into the game, code Forced Fellowship\n  (Social Pyramid Scheme). If the player exchanges resources, lives, or favours with\n  people ALREADY playing, code Reciprocity. If the player is described as playing\n  when they'd rather not, so as not to burden others, code Forced Fellowship (Social Obligation).\n"
+        },
+        {
+          "vs_label": "Coerced grouping",
+          "rule": "Where the span shows the player compelled into a group to obtain protection or mechanical advantage against other players, or to obtain rewards with no obligation to those group members described, Forced Fellowship does not apply. "
+        }
+      ],
+      "counterexamples": [
+        {
+          "review_id": "90ae5c9e-0cfa-450c-b6fd-e32dab044f6c",
+          "text": "Nice distraction and my alliance is filled with lovely people!",
+          "why_not": "Names an in-game social group without describing recruitment pressure or obligation to keep playing; the Social Obligation indicator requires the player be shown playing when they would rather not"
+        }
+      ],
+      "worked_examples": [
+        {
+          "review_id": "68f59d20-42ae-4154-94a9-9437e72dc79f",
+          "text": "My new invited friend is not credit, its so stupid. because I need more energy, but this game is so stupid so stupid, new invited friend is on my list friend but did not credit. What the F this game, kindly fix this.\n\nJustification: Implies that the reviewer has invited their friend to play the game in order to get \"more energy\". Falls under Social Pyramid Scheme.",
+          "labels_assigned": []
+        }
+      ]
+    },
+    {
+      "high_level": "Social",
+      "meso_label": "Friend Spam / Impersonation",
+      "level": "meso",
+      "canonical_definition": "The game employs unsolicited messaging to a player's contact list or social media account.",
+      "definition_citation": "Sousa & Oliveira 2023",
+      "definition_pending": false,
+      "indicators": [
+        "Game requests or uses access to the player’s contact list / social graph [indicators]",
+        "Alt (Hadan 2024): “Patterns that send spam to players’ contact lists or social media accounts.”",
+        "(Alt. def.) darkpattern.games: “The game sends spam to your contact list or social media account.”"
+      ],
+      "boundary_rules": [],
+      "counterexamples": [],
+      "worked_examples": []
+    },
+    {
+      "high_level": "Social",
+      "meso_label": "Reciprocity",
+      "level": "meso",
+      "canonical_definition": "Patterns that instill a sense of obligation to reciprocate by donating resources to other players.",
+      "definition_citation": "Hadan et al. 2024 ",
+      "definition_pending": false,
+      "indicators": [
+        "(Alt. def.) darkpattern.games: “Feeling obligated to return a favor, share resources, trade an item, etc.”"
+      ],
+      "boundary_rules": [],
+      "counterexamples": [],
+      "worked_examples": [
+        {
+          "review_id": "c1115d1f-9ced-4d51-9174-7f8d6c957afc",
+          "text": "Can be fun. However as you progress you must do more an more for the same reward. For an example, to get 100 coins in a day when you first start off you may have to complete 10 levels. Fair enough. When you get to higher levels you need to complete 25 levels in a day. Pretty tough since you are far in the game, you would think the reward would be 250 coins. Nope, still 100. Also you only get 1 coin for donating a life. A whole one coin. At least make it 5 coins.",
+          "labels_assigned": []
+        }
+      ]
+    },
+    {
+      "high_level": "Social",
+      "meso_label": "Encourages Anti-Social Behavior",
+      "level": "meso",
+      "canonical_definition": "Patterns that incentivize players to engage in dishonest or harmful actions to gain an advantage.",
+      "definition_citation": "Hadan et al. 2024",
+      "definition_pending": false,
+      "indicators": [
+        "(Alt. def.) darkpattern.games: “The game incentivizes players to lie, cheat, or backstab other players to get ahead.”"
+      ],
+      "boundary_rules": [
+        {
+          "vs_label": "Permitted harm",
+          "rule": "Design that permits, enables, or fails to prevent players harming one another is not sufficient. Assign only where the span shows a reward, advantage, or incentive flowing to the player who acts harmfully: plunder taken, ranking or progression gained, rewards for deception or betrayal. Statements that developers \"allow\", \"let it happen\", or decline to intervene describe absent moderation, not incentive, and code NONE. Where the span carries both the harmful act and the gain it produces for the aggressor, assign the label."
+        }
+      ],
+      "counterexamples": [
+        {
+          "review_id": "4ac321dc-5b10-4df5-94d0-8a36467c675d",
+          "text": "1: The main issue is Network problem. Plz solve this. 2: I'm playing this game for 2 year's. At start it was a very good game, but similarly updates were coming. Every update had one thing that affect a real and good user. 3: It provide the facility of buying bundles, gun skins and other collections only by diamonds. Why not gold. 4: Hacking is also very common in this game. A lot of hackers destroying the real game of a good player. Gold must be used to buy bundles & skins etc.😈😈😈.",
+          "why_not": "Reports of other players hacking, cheating, or using bots describe player conduct, not a game pattern incentivising it. Assign only where the span shows the design rewarding or encouraging dishonest or harmful action."
+        }
+      ],
+      "worked_examples": []
+    },
+    {
+      "high_level": "Social",
+      "meso_label": "Fear of Missing Out (FOMO)",
+      "level": "meso",
+      "canonical_definition": "Players are pressured to continue playing the game by the fear of missing out on rewards or falling behind other players.",
+      "definition_citation": "Sousa & Oliveira 2023 ",
+      "definition_pending": false,
+      "indicators": [
+        "(Alt. def.) (Hadan 2024): “Patterns that induce anxiety that players will miss exciting or important events if they stop playing.”",
+        "(Alt. def.) darkpattern.games: “If you stop playing you'll miss out on something or be left behind and unable to catch up.”"
+      ],
+      "boundary_rules": [],
+      "counterexamples": [],
+      "worked_examples": [
+        {
+          "review_id": "9b8c9d60-412f-428d-8100-9163b2e54a2e",
+          "text": "A game that used to be top tier, and brought all types of players together, has sadly fallen into what seems like a corrupt scheme catering to only 1 type of player. While the casual player may still find some enjoyment in Pokemon GOandSpendMoney, they will constantly feel like they're missing out on a huge chunk of the game. Niantic lacks the Instinct to listen to it's players, and without the Valor to make changes, they'll turn you into a Mystic questioning why you still play Pokemon GO.\n\nJustification: assign wherever the span describes ongoing pressure from missing rewards, events, or content, whether the missing-out follows from stopping play, from not spending, or from not keeping pace with others.",
+          "labels_assigned": []
+        }
+      ]
+    },
+    {
+      "high_level": "Social",
+      "meso_label": "Competition",
+      "level": "meso",
+      "canonical_definition": "Patterns that make players against each other in competition.",
+      "definition_citation": "Hadan et al. 2024 ",
+      "definition_pending": false,
+      "indicators": [
+        "(Alt. def.) darkpattern.games: “The game makes you compete against other players.”"
+      ],
+      "boundary_rules": [],
+      "counterexamples": [],
+      "worked_examples": [
+        {
+          "review_id": "3a3106b6-7d10-4444-bb70-63e08f9f5664",
+          "text": "Fun, so far. Minimal purchases needed to play at a competitive level. Many different game styles and features. Great game for a friend group. Would recommend.",
+          "labels_assigned": []
+        }
+      ]
+    },
+    {
+      "high_level": "Psychological",
+      "meso_label": "Easy to Get, Hard to Lose",
+      "level": "meso",
+      "canonical_definition": "Design in which accumulated investment, time played, money spent, progress attained, or partially completed goals, raises the cost of leaving. Entry is low-friction; exit entails forfeiting value the player already holds.",
+      "definition_citation": "[NOT VERBATIM] Derived from low level defintions.",
+      "definition_pending": true,
+      "indicators": [
+        "Invested (Endowed) Value (Sousa & Oliveira 2023): “Having invested significant time and money into advancing one's status in the game, it can be challenging to abandon those gains.” Alt (Hadan 2024): “Patterns that make it hard for players to discard investments in time and money.” darkpattern.games (“Invested / Endowed Value”): “Having already spent time and money to improve your status in the game, it's difficult to throw it away.” [low-level]",
+        "Endowed Progress (Hadan et al. 2024, “Badges / Endowed Progress”): “Patterns that discourage players from abandoning partially completed goals.” darkpattern.games (“Badges / Endowed Progress”): “Reluctancy to abandon a partially completed goal, even one forced upon the player.” [low-level]",
+        "Try now, Pay later (Zhang et. al): This pattern offers players the chance to initially try premium experiences,\npowerful items, or privileges, with payment required at a later stage. [dp-combo]"
+      ],
+      "boundary_rules": [],
+      "counterexamples": [
+        {
+          "review_id": "64eb239e-ee58-4e4f-9ba8-11e533ac2f9e",
+          "text": "I got a new phone and I synced both phone and now my last war account is missing.... they want me to start over from scratch when I was a level 23... I want my old account back but I don't know how to get it. After contacting the developer to get my account back, providing screenshots of me paying from the email that was linked and so on... I will never plat another game from this developer or any other affiliate... I put a couple grand into the account. they really didn't care about my recovery",
+          "why_not": "Assign only where the span shows accumulated investment operating on the player's choice to keep playing or to leave: reluctance to quit, difficulty abandoning progress, or a partially completed goal pulling the player back. Reporting a sum spent, a level reached, or value lost is not sufficient. Where investment is described as already forfeited and the player is disengaging, assign NONE."
+        }
+      ],
+      "worked_examples": []
+    },
+    {
+      "high_level": "Psychological",
+      "meso_label": "Complete the Collection",
+      "level": "meso",
+      "canonical_definition": "The compulsion to acquire all the items, achievements, or hidden features in a game.",
+      "definition_citation": "Sousa & Oliveira 2023.",
+      "definition_pending": false,
+      "indicators": [
+        "Collection screens emphasizing unowned items over achieved ones [indicators]",
+        "(Alt. def.) (Hadan 2024): “Patterns that capitalize on players’ strong desire to achieve in-game collections and achievements.”",
+        "(Alt. def.) (Zhang et al. 2025): “drives players to feel compelled to acquire all in-game items, achievements, or myths (secret achievements for the player to discover).”",
+        "(Alt. def.) darkpattern.games: “The urge to collect all the items, achievements or secrets in a game.”"
+      ],
+      "boundary_rules": [],
+      "counterexamples": [],
+      "worked_examples": [
+        {
+          "review_id": "1b4af9d8-e490-4512-a1fb-2f03db53133c",
+          "text": "Was good to start with, but gone right down hill, can't get enough dice to complete tasks in the time scale unless you spend mega amounts of money. The dice reward of 50 is still the same on completing level 186 as it was completing level one. Card set packs have far too many repeats so impossible to complete again unless you spend money and that's not guaranteed. All in all 1 star is being generous\n\nJustification: Search string \"Card set packs monopoly go\" provides \"In Monopoly GO, sticker sets and packs are collected to complete themed albums for dice rolls and cash.\"",
+          "labels_assigned": []
+        }
+      ]
+    },
+    {
+      "high_level": "Psychological",
+      "meso_label": "Illusion of Control",
+      "level": "meso",
+      "canonical_definition": "Patterns that deceive players about their skill level to encourage more gameplay.",
+      "definition_citation": "Hadan et al. 2024",
+      "definition_pending": false,
+      "indicators": [
+        "(Alt. def.) darkpattern.games: “The game cheats or hides information to make you think you're better than you actually are.”"
+      ],
+      "boundary_rules": [
+        {
+          "vs_label": "Alleged rigging",
+          "rule": "Assign where the span asserts that the game conceals or manipulates the determination of outcomes, a non-random deal, a fixed win ratio, engineered near-misses, matchmaking or difficulty tuned to a hidden schedule, whether the deception is framed as being about the player's skill or about the game's odds. Do not assign from an unlucky or losing run alone, or from a general accusation of unfairness with no mechanism described in the span. Loss streaks also encourage more gameplay. "
+        },
+        {
+          "vs_label": "Optimism and Frequency Bias",
+          "rule": "Where the span asserts that the game determines or tunes outcomes: a non-random deal, a fixed win ratio, difficulty or matchmaking on a hidden schedule, code Illusion of Control. Where the span describes the player's perception of frequency: near-wins felt as frequent, a run of almost-successes, a sense that a win is imminent, code Optimism and Frequency Biases. Engineered near-misses commonly carry both: the alleged design (IoC) and the perceptual effect it produces (O&FB). Assign both under R9 only where the span carries the manipulation claim and the frequency perception; a near-miss reported without any claim of manipulation is O&FB alone."
+        }
+      ],
+      "counterexamples": [
+        {
+          "review_id": "",
+          "text": "I spent almost $100 on in game currency, bet minimum bets the entire time, and i lost my money and smashed my phone because I didn't win a SINGLE free game and I was broke in 20 min. Whats the point in getting this if your NEVER going to win..",
+          "why_not": "\"didn't win a SINGLE free game\" reports a losing run, not a misrepresented skill level or concealed information; no fixed ratio is asserted, so the rule from the coins review doesn't reach it."
+        }
+      ],
+      "worked_examples": [
+        {
+          "review_id": "e1ff8d7f-dd27-475b-9e1d-78a4c335534e",
+          "text": "The match making is absolutely the worst I have ever seen,the opponents have 60-70% more stats in almost every match.Leveling up and unlocking skills is impossible for f2p players and unlocking characters as f2p is literally impossible with chances of getting shards for characters you don't have being actually less than 1% and 10 shards required to fully unlock and play as them and server connection is worst in all of the games I have ever played because no way my wifi is bad when it runs cod\n",
+          "labels_assigned": []
+        }
+      ]
+    },
+    {
+      "high_level": "Psychological",
+      "meso_label": "Aesthetic Manipulation",
+      "level": "meso",
+      "canonical_definition": "The use of deceitful questions or manipulation of emotions and subconscious desires, mainly based on aesthetical game elements.",
+      "definition_citation": "Sousa & Oliveira 2023 ",
+      "definition_pending": false,
+      "indicators": [
+        "(Alt. def.) (Zhang et al. 2025): “involves using misleading questions or exploiting emotional and subconscious desires to influence player behaviour.”",
+        "(Alt. def.) darkpattern.games : “Trick questions or toying with emotions or our subconscious desires.”",
+        "(Alt. def.) (Hadan 2024): “Patterns that subtly influence players’ aesthetic preferences through text, graphics, or sounds.”",
+        "Frequently enhanced with \"cuteness/kawaii\" where aesthetically pleasing characters / elements are used to influence player behaviour."
+      ],
+      "boundary_rules": [],
+      "counterexamples": [],
+      "worked_examples": []
+    },
+    {
+      "high_level": "Psychological",
+      "meso_label": "Optimism and Frequency Biases",
+      "level": "meso",
+      "canonical_definition": "Patterns that exploit cognitive biases and clustering illusions to overestimate event frequencies (e.g., winning streaks).",
+      "definition_citation": "Hadan et al. 2024",
+      "definition_pending": false,
+      "indicators": [
+        "Frequently enhanced by “The Power of NPCs” demonstrating gambling with free trials",
+        "darkpattern.games: “Overestimating the frequency of something because we've seen it recently or memorably.”"
+      ],
+      "boundary_rules": [],
+      "counterexamples": [],
+      "worked_examples": [
+        {
+          "review_id": "a8169883-6ac9-49ec-86a9-f8e0a21acc61",
+          "text": "The game is clearly rigged to make you take risker bets, lose, and buy more chips. Zynga sets up different hands among players to maximize betting and losses. I regularly get beat with a flush by a full house or straight flush. You will notice how often you get almost nuts hands and then lose. I've had some great runs on the game but it started to feel like players were cheating or using bots. When I did some research most of what I could is that it is not a random deal but hand scenarios.\n\nJustification: \"You will notice how often you get almost nuts hands\" specifies the optimistic bias towards getting a good hand.",
+          "labels_assigned": []
+        }
+      ]
+    },
+    {
+      "high_level": "Psychological",
+      "meso_label": "Reward Mania",
+      "level": "meso",
+      "canonical_definition": "Reward structures in which the mechanism of delivery, its complexity, its unpredictability, or the out-of-game activity it demands, is what sustains engagement, rather than the value of the reward itself. The player invests disproportionate cognitive effort, repeated attempts, or external activity in pursuit of the reward system.",
+      "definition_citation": "[NOT VERBATIM] derived from low-level definitions",
+      "definition_pending": false,
+      "indicators": [
+        "Overloading (Zhang et al.):occurs in in-game mechanisms, such as reward systems or gambling, that are\ndesigned to be overly complex, thereby enticing players to invest significant effort in understanding\nand engaging with them. [low-level]",
+        "Sycophant (Zhang et al.): “Sycophant” refers to the use of rewards within the game to encourage players to allocate\nadditional attention and resources to social activities outside of the game, such as following the\ngame’s social media accounts or participating in related online communities. [low-level]",
+        "Variable Rewards (Sousa & Oliveira 2023): “Irregular or unexpected rewards have a greater potential to generate addiction compared to rewards provided on a predictable schedule.” Alt (Hadan 2024): “Patterns that offer unpredictable or random rewards to enhance game addiction.” darkpattern.games: “Unpredictable or random rewards are more addictive than a predictable schedule.” [low-level]",
+        "Gacha mechanics [indicators]"
+      ],
+      "boundary_rules": [],
+      "counterexamples": [],
+      "worked_examples": [
+        {
+          "review_id": "490e1dac-d813-4b77-bba3-b31e8975878f",
+          "text": "A gacha game like any other. It has a good story and characters, but it also has terrible rates. Honestly, I love this game but they need to implement some sort of pity system.\n",
+          "labels_assigned": []
+        }
+      ]
+    },
+    {
+      "high_level": "Technical",
+      "meso_label": "Fragmented Downloads",
+      "level": "meso",
+      "canonical_definition": "“Fragmented Downloads” are characterized by designs that obscure the true storage requirements of the game until the game starts. This is deceptive because it targets mobile users who are cautious about their device’s storage capacity and foments a space monopoly by the app against competitors.",
+      "definition_citation": "Zhang et al. 2025",
+      "definition_pending": false,
+      "indicators": [
+        "Small advertised App Store size vs. large mandatory in-game download [indicators]",
+        "“Download wall” blocking progress past the tutorial [indicators]",
+        "Missing animations / assets with in-place “downloading” prompts when packages are declined [indicators]"
+      ],
+      "boundary_rules": [],
+      "counterexamples": [],
+      "worked_examples": []
+    }
+  ]
+}

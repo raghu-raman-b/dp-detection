@@ -1,0 +1,182 @@
+================================================================================
+PROMPT 1 — REVIEW LABELING WEB APP
+(paste into Claude Code / your coding assistant; provide reviews JSONL alongside)
+================================================================================
+
+Build a single-file HTML labeling app (vanilla JS + CSS, no build step, runs by
+opening the file in a browser) for hand-labeling mobile game reviews with a
+multi-label deceptive-pattern taxonomy. It must be fast enough that one person
+can label 500 reviews at ~1.5 min/review, keyboard-first.
+
+DATA IN:
+- Loads a JSONL file via a file picker (each line: {review_id, app_id, game_name,
+  market, review_date, star_rating, review_text, stratum, seed_keyword, casino}).
+- On load, merges with any previously saved progress (see persistence) by
+  review_id, so sessions resume exactly where I left off.
+
+LABEL SPACE (hardcode as a config object at the top of the file so I can edit):
+Five high-level groups, each with meso-level labels, displayed as grouped
+checkbox panels with keyboard shortcuts:
+- Temporal (T): Playing by Appointment, Daily Rewards, Grinding, Advertisement,
+  Infinite Treadmill, Mandatory Marathon
+- Monetary (M): Pay to Progress, Intermediate Currency, Deceptive Luxury,
+  Recurring Fee, Gambling, Power Creep, Waste Aversion, Easy to Purchase,
+  UI Misdirection, Never-Ending Lure
+- Social (S): Forced Fellowship, Friend Spam / Impersonation, Reciprocity,
+  Encourages Anti-Social Behavior, Fear of Missing Out (FOMO), Competition
+- Psychological (P): Easy to Get Hard to Lose, Complete the Collection,
+  Illusion of Control, Aesthetic Manipulation, Optimism and Frequency Biases,
+  Reward Mania
+- Technical (Tech): Fragmented Downloads
+Plus an explicit NONE toggle that is mutually exclusive with all labels
+(selecting any label clears None; selecting None clears all labels; a row cannot
+be saved with neither None nor ≥1 label).
+
+MAIN SCREEN LAYOUT:
+- Left 60%: review card — review_text large and readable, metadata line
+  (game_name, market, star_rating, date, stratum, seed_keyword if present).
+- Right 40%: label panels (collapsible per group), then judgment fields:
+  * confidence: H / M / L (radio, keys 1/2/3)
+  * rule_applied: free-text short field (e.g., "R1,R3")
+  * borderline: checkbox (key B)
+  * rationale: small textarea (only fill when non-obvious)
+- Bottom bar: Prev / Save+Next (Enter) / Skip-flag, progress counter
+  ("137 / 500 · 12 borderline · random: 84/300 · targeted: 53/200"), and a
+  filter dropdown (all / unlabeled / borderline / low-confidence / by stratum
+  / by label).
+
+KEYBOARD: Enter = save+next; arrows = prev/next; typing in a fuzzy-search box
+filters labels and Space toggles the highlighted one; N = None; B = borderline.
+Show a shortcut cheat-sheet on "?".
+
+PERSISTENCE & EXPORT (critical):
+- Autosave every change to localStorage keyed by review_id AND offer
+  "Download progress" which exports the full dataset as BOTH:
+  (a) CSV with one binary column per meso label using exact names prefixed
+      (T_DailyRewards, M_Gambling, ...), plus none, labels_str (computed,
+      "T: Daily Rewards; M: Gambling"), confidence, rule_applied, borderline,
+      rationale, pass, codebook_version, and all identity/sampling columns;
+  (b) the same as JSONL.
+- An "Import progress" button that restores from a previously exported JSONL.
+- A visible codebook_version text input (global, stamped on every row saved
+  while it is set) and a pass selector (1/2) for the re-coding round.
+- Warn on window close if unsaved-to-file changes exist.
+
+QUALITY GUARDS:
+- Cannot advance a row with zero labels and None unchecked.
+- labels_str is always computed, never editable.
+- A "review flagged rows" mode that cycles only borderline + low-confidence rows.
+
+Keep it a single .html file, no external network calls, comment the config
+section clearly.
+
+================================================================================
+PROMPT 2 — EDITABLE CODEBOOK HTML APP
+(paste into Claude Code; provide codebook_v0.json alongside — I will supply it)
+================================================================================
+
+Build a single-file HTML codebook editor (vanilla JS, no build step, offline)
+for a qualitative coding codebook. The codebook is structured data rendered as
+a readable document, and every field is editable in place (click-to-edit), with
+all edits typed — no WYSIWYG chrome, just clean inline text editing.
+
+DATA MODEL (load from / save to JSON via file picker + download button):
+{
+  version: "0.3",
+  changelog: [ {version, date, change, invalidates_prior_coding: bool,
+                rows_rechecked: ""} ],
+  global_rules: [ {id: "R1", statement, worked_example_review_id,
+                   worked_example_text} ],
+  labels: [ {
+     high_level: "Temporal",
+     meso_label: "Daily Rewards",
+     canonical_definition,          // VERBATIM Zhang et al.; render with a
+     definition_citation,           // lock icon + confirm dialog before edits
+     indicators: [string],          // review-text indicators & low-level
+                                    // patterns as examples
+     boundary_rules: [ {vs_label, rule} ],
+     counterexamples: [ {review_id, text, why_not} ],
+     worked_examples: [ {review_id, text, labels_assigned} ]
+  } ]
+}
+
+RENDERING:
+- Document view grouped by high_level, one card per meso label showing the five
+  fields in order; global rules section pinned at top; changelog at bottom.
+- Sidebar: table of contents (rules + labels), full-text search that filters
+  cards live, and a "gaps" view listing every label whose indicators,
+  boundary_rules, or worked_examples arrays are still empty (my to-fill list
+  during the pilot).
+- Print stylesheet so the whole codebook exports cleanly to PDF for the paper
+  appendix and for training month-2 coders.
+
+EDITING BEHAVIOR:
+- Every text field click-to-edit; arrays get add/remove/reorder controls.
+- canonical_definition edits require a confirmation dialog ("This field is
+  verbatim from Zhang et al. — are you sure?").
+- A "bump version" button: prompts for change description +
+  invalidates_prior_coding, appends to changelog, increments version, and
+  updates a visible version badge. Unsaved-changes indicator; save = download
+  JSON (filename codebook_v{version}.json).
+- An import/merge that diffs an incoming JSON against current and shows what
+  changed (so I can reconcile edits made on two machines).
+
+Single .html file, no network calls, data lives only in the JSON I load/save.
+
+================================================================================
+PROMPT 3 — PLAY STORE REVIEW SCRAPER + FILTER PIPELINE
+(paste into Claude Code; provide games.csv alongside)
+================================================================================
+
+Write a Python project (plain scripts, no framework) that scrapes and filters
+Google Play reviews for a research corpus. Use google-play-scraper (pip).
+Python 3.11, runs on Fedora.
+
+INPUT: games.csv with columns: title_raw, market_listed (us/in/gb, may repeat
+across rows), casino (0/1), notes.
+
+STAGE 0 — resolve_ids.py:
+- For each title_raw, search Google Play (google_play_scraper.search) per its
+  market, take best match, and write games_resolved.csv: app_id, canonical
+  title, developer, all markets it appeared in (dedupe by app_id across
+  markets), casino flag, plus a needs_review column for low-confidence matches
+  (fuzzy title similarity < threshold) so I can hand-verify those rows before
+  scraping. Never silently guess.
+
+STAGE 1 — scrape.py:
+- For each (app_id × market in {us,in,gb} where the app is available):
+  pull up to 5,000 most-recent English reviews (lang="en", country=market,
+  Sort.NEWEST, batches of 200 with continuation tokens, 1s sleep, retry with
+  exponential backoff on errors, resume support via saved continuation state).
+- Write raw/{app_id}_{market}.jsonl with: review_id, app_id, market, text,
+  rating, date (ISO), thumbs_up. Log per-file counts to scrape_log.csv.
+
+STAGE 2 — filter.py (order matters; log survivor counts per stage per app to
+filter_log.csv — this feeds a PRISMA-style flow figure):
+1. language filter: keep English (langdetect or fasttext-langdetect)
+2. length floor: >= 10 words
+3. exact-duplicate removal (normalized text hash, global across corpus)
+4. near-duplicate removal: normalize case/whitespace, MinHash/LSH at ~0.9
+   Jaccard (datasketch), keep first occurrence
+5. strip HTML entities/markup ONLY — preserve emojis, punctuation, casing;
+   NO stopword removal, NO lemmatization
+- Output filtered/{app_id}_{market}.jsonl + corpus_stats.json (totals per
+  stage, per app, per market).
+
+STAGE 3 — sample.py:
+- Build the labeling pool: stratified sample to N=200,000 with a per-game cap
+  (default 800), proportional across markets, seeded RNG (seed in config),
+  writing pool.jsonl with a added field sample_weight if capping truncated.
+- Separately: pilot_random.jsonl = 300 uniform-random reviews sampled from the
+  UNFILTERED-by-binary-classifier corpus (i.e., from filtered/ output — the
+  text filters apply, no ML filter), and pilot_targeted.jsonl = 200 reviews
+  matched by a configurable keyword list (config.py: ["battle pass","pity",
+  "energy","VIP","storage","download","guild","invite","gacha",...]),
+  round-robin across keywords, deduped against the random 300, each row
+  stamped stratum + seed_keyword.
+
+GENERAL: config.py for all constants; every script idempotent/resumable;
+tqdm progress; a final report.py that prints the full count table (games
+resolved, reviews scraped/filtered per stage, pool size, pilot strata) as
+markdown for direct paste into the paper's data section.
+================================================================================

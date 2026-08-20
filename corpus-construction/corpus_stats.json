@@ -1,0 +1,650 @@
+{
+  "stage_totals": {
+    "scraped": 735839,
+    "english": 719871,
+    "min_words": 678708,
+    "exact_dedup": 428491,
+    "near_dedup": 428241
+  },
+  "per_app": {
+    "air.com.buffalo_studios.newflashbingo": {
+      "scraped": 10000,
+      "english": 9976,
+      "min_words": 9725,
+      "exact_dedup": 6749,
+      "near_dedup": 6749
+    },
+    "com.activision.callofduty.shooter": {
+      "scraped": 10000,
+      "english": 9992,
+      "min_words": 9947,
+      "exact_dedup": 6466,
+      "near_dedup": 6461
+    },
+    "com.aniplex.fategrandorder.en": {
+      "scraped": 10000,
+      "english": 10000,
+      "min_words": 9994,
+      "exact_dedup": 4997,
+      "near_dedup": 4997
+    },
+    "com.bandainamcoent.dblegends_ww": {
+      "scraped": 10000,
+      "english": 9998,
+      "min_words": 9926,
+      "exact_dedup": 6223,
+      "near_dedup": 6221
+    },
+    "com.bingo.cruise.free.best.top.game": {
+      "scraped": 5000,
+      "english": 4836,
+      "min_words": 3770,
+      "exact_dedup": 3770,
+      "near_dedup": 3770
+    },
+    "com.cedargames.mysterytown": {
+      "scraped": 1583,
+      "english": 1277,
+      "min_words": 879,
+      "exact_dedup": 879,
+      "near_dedup": 879
+    },
+    "com.chess": {
+      "scraped": 5000,
+      "english": 4996,
+      "min_words": 4830,
+      "exact_dedup": 4830,
+      "near_dedup": 4830
+    },
+    "com.cola.game": {
+      "scraped": 7234,
+      "english": 5570,
+      "min_words": 3602,
+      "exact_dedup": 1800,
+      "near_dedup": 1800
+    },
+    "com.combo.yarnflow": {
+      "scraped": 6066,
+      "english": 4818,
+      "min_words": 2730,
+      "exact_dedup": 1365,
+      "near_dedup": 1365
+    },
+    "com.cooking.bingo.ldkwh": {
+      "scraped": 5000,
+      "english": 4928,
+      "min_words": 4610,
+      "exact_dedup": 4609,
+      "near_dedup": 4608
+    },
+    "com.diamondlife.slots.vegas.free": {
+      "scraped": 5000,
+      "english": 4981,
+      "min_words": 4783,
+      "exact_dedup": 4783,
+      "near_dedup": 4783
+    },
+    "com.dreamgames.royalkingdom": {
+      "scraped": 10000,
+      "english": 9895,
+      "min_words": 9010,
+      "exact_dedup": 4691,
+      "near_dedup": 4689
+    },
+    "com.dreamgames.royalmatch": {
+      "scraped": 15000,
+      "english": 14969,
+      "min_words": 14695,
+      "exact_dedup": 5979,
+      "near_dedup": 5975
+    },
+    "com.dts.freefiremax": {
+      "scraped": 5000,
+      "english": 4996,
+      "min_words": 4926,
+      "exact_dedup": 4922,
+      "near_dedup": 4892
+    },
+    "com.dts.freefireth": {
+      "scraped": 5000,
+      "english": 4994,
+      "min_words": 4948,
+      "exact_dedup": 4940,
+      "near_dedup": 4925
+    },
+    "com.ea.gp.fifamobile": {
+      "scraped": 5000,
+      "english": 4998,
+      "min_words": 4940,
+      "exact_dedup": 4937,
+      "near_dedup": 4933
+    },
+    "com.fatmerge.global": {
+      "scraped": 15000,
+      "english": 14808,
+      "min_words": 12734,
+      "exact_dedup": 4354,
+      "near_dedup": 4353
+    },
+    "com.firsttouchgames.dls7": {
+      "scraped": 5000,
+      "english": 4999,
+      "min_words": 4958,
+      "exact_dedup": 4958,
+      "near_dedup": 4954
+    },
+    "com.fun.lastwar.gp": {
+      "scraped": 15000,
+      "english": 14993,
+      "min_words": 14863,
+      "exact_dedup": 5758,
+      "near_dedup": 5757
+    },
+    "com.funplus.ts.global": {
+      "scraped": 5000,
+      "english": 4835,
+      "min_words": 3535,
+      "exact_dedup": 3535,
+      "near_dedup": 3535
+    },
+    "com.funtomic.matchmasters": {
+      "scraped": 5000,
+      "english": 4997,
+      "min_words": 4961,
+      "exact_dedup": 4961,
+      "near_dedup": 4961
+    },
+    "com.gamedots.seasideescape": {
+      "scraped": 5000,
+      "english": 4925,
+      "min_words": 4251,
+      "exact_dedup": 4251,
+      "near_dedup": 4251
+    },
+    "com.global.ztmslg": {
+      "scraped": 5000,
+      "english": 4998,
+      "min_words": 4971,
+      "exact_dedup": 4971,
+      "near_dedup": 4971
+    },
+    "com.gof.global": {
+      "scraped": 15000,
+      "english": 14994,
+      "min_words": 14873,
+      "exact_dedup": 5530,
+      "near_dedup": 5530
+    },
+    "com.hollywood.merge": {
+      "scraped": 1555,
+      "english": 1156,
+      "min_words": 694,
+      "exact_dedup": 694,
+      "near_dedup": 694
+    },
+    "com.homagames.studio.allinhole": {
+      "scraped": 5000,
+      "english": 4858,
+      "min_words": 4021,
+      "exact_dedup": 4021,
+      "near_dedup": 4021
+    },
+    "com.igg.android.lordsmobile": {
+      "scraped": 5000,
+      "english": 4996,
+      "min_words": 4965,
+      "exact_dedup": 4960,
+      "near_dedup": 4959
+    },
+    "com.innplaylabs.animalkingdomraid": {
+      "scraped": 10000,
+      "english": 9974,
+      "min_words": 9643,
+      "exact_dedup": 4887,
+      "near_dedup": 4887
+    },
+    "com.joycastle.mergematch": {
+      "scraped": 5000,
+      "english": 4894,
+      "min_words": 3994,
+      "exact_dedup": 3994,
+      "near_dedup": 3994
+    },
+    "com.king.candycrushsaga": {
+      "scraped": 15000,
+      "english": 14934,
+      "min_words": 14446,
+      "exact_dedup": 5777,
+      "near_dedup": 5769
+    },
+    "com.king.candycrushsodasaga": {
+      "scraped": 15000,
+      "english": 14979,
+      "min_words": 14724,
+      "exact_dedup": 5061,
+      "near_dedup": 5056
+    },
+    "com.kurogame.wutheringwaves.global": {
+      "scraped": 5000,
+      "english": 4993,
+      "min_words": 4950,
+      "exact_dedup": 4950,
+      "near_dedup": 4950
+    },
+    "com.loomgames.pixelflow": {
+      "scraped": 10000,
+      "english": 9799,
+      "min_words": 8804,
+      "exact_dedup": 4593,
+      "near_dedup": 4593
+    },
+    "com.ludo.king": {
+      "scraped": 5000,
+      "english": 4994,
+      "min_words": 4931,
+      "exact_dedup": 4928,
+      "near_dedup": 4921
+    },
+    "com.MadOut.BIG": {
+      "scraped": 5000,
+      "english": 4969,
+      "min_words": 4782,
+      "exact_dedup": 4777,
+      "near_dedup": 4774
+    },
+    "com.merge.cooking.theme.restaurant.food": {
+      "scraped": 10000,
+      "english": 9801,
+      "min_words": 8565,
+      "exact_dedup": 4496,
+      "near_dedup": 4496
+    },
+    "com.mergegames.gossipharbor": {
+      "scraped": 10000,
+      "english": 9973,
+      "min_words": 9744,
+      "exact_dedup": 5576,
+      "near_dedup": 5575
+    },
+    "com.miHoYo.GenshinImpact": {
+      "scraped": 5000,
+      "english": 5000,
+      "min_words": 4998,
+      "exact_dedup": 4997,
+      "near_dedup": 4995
+    },
+    "com.miniclip.carrom": {
+      "scraped": 5000,
+      "english": 4968,
+      "min_words": 4646,
+      "exact_dedup": 4633,
+      "near_dedup": 4619
+    },
+    "com.miniclip.cricketleague": {
+      "scraped": 5000,
+      "english": 4980,
+      "min_words": 4772,
+      "exact_dedup": 4767,
+      "near_dedup": 4755
+    },
+    "com.miniclip.eightballpool": {
+      "scraped": 5000,
+      "english": 4996,
+      "min_words": 4934,
+      "exact_dedup": 4934,
+      "near_dedup": 4933
+    },
+    "com.mobiin.gp": {
+      "scraped": 5000,
+      "english": 4982,
+      "min_words": 4768,
+      "exact_dedup": 4768,
+      "near_dedup": 4767
+    },
+    "com.monopoly.dream.idle.king": {
+      "scraped": 10000,
+      "english": 5702,
+      "min_words": 2710,
+      "exact_dedup": 1352,
+      "near_dedup": 1352
+    },
+    "com.moonactive.cmboard": {
+      "scraped": 10000,
+      "english": 7544,
+      "min_words": 3522,
+      "exact_dedup": 1764,
+      "near_dedup": 1764
+    },
+    "com.moonactive.coinmaster": {
+      "scraped": 15000,
+      "english": 14982,
+      "min_words": 14735,
+      "exact_dedup": 7134,
+      "near_dedup": 7131
+    },
+    "com.nautilus.realcricket": {
+      "scraped": 5000,
+      "english": 4992,
+      "min_words": 4791,
+      "exact_dedup": 4786,
+      "near_dedup": 4783
+    },
+    "com.nekki.shadowfightarena": {
+      "scraped": 5000,
+      "english": 5000,
+      "min_words": 4956,
+      "exact_dedup": 4955,
+      "near_dedup": 4953
+    },
+    "com.nianticlabs.pokemongo": {
+      "scraped": 15000,
+      "english": 14990,
+      "min_words": 14940,
+      "exact_dedup": 7305,
+      "near_dedup": 7304
+    },
+    "com.octro.teenpatti": {
+      "scraped": 5000,
+      "english": 4854,
+      "min_words": 4070,
+      "exact_dedup": 4066,
+      "near_dedup": 4064
+    },
+    "com.phs.global": {
+      "scraped": 10000,
+      "english": 9239,
+      "min_words": 6537,
+      "exact_dedup": 3291,
+      "near_dedup": 3291
+    },
+    "com.pixonic.wwr": {
+      "scraped": 5000,
+      "english": 4998,
+      "min_words": 4970,
+      "exact_dedup": 4969,
+      "near_dedup": 4969
+    },
+    "com.plarium.mechlegion": {
+      "scraped": 5000,
+      "english": 4999,
+      "min_words": 4981,
+      "exact_dedup": 4981,
+      "near_dedup": 4981
+    },
+    "com.plarium.raidlegends": {
+      "scraped": 5000,
+      "english": 4998,
+      "min_words": 4981,
+      "exact_dedup": 4981,
+      "near_dedup": 4981
+    },
+    "com.playrix.fishdomdd.gplay": {
+      "scraped": 15000,
+      "english": 14997,
+      "min_words": 14955,
+      "exact_dedup": 7241,
+      "near_dedup": 7241
+    },
+    "com.playrix.gardenscapes": {
+      "scraped": 15000,
+      "english": 14997,
+      "min_words": 14924,
+      "exact_dedup": 7015,
+      "near_dedup": 7015
+    },
+    "com.playrix.homescapes": {
+      "scraped": 15000,
+      "english": 14996,
+      "min_words": 14908,
+      "exact_dedup": 7350,
+      "near_dedup": 7342
+    },
+    "com.playrix.township": {
+      "scraped": 15000,
+      "english": 14990,
+      "min_words": 14897,
+      "exact_dedup": 7262,
+      "near_dedup": 7258
+    },
+    "com.productmadness.cashmancasino": {
+      "scraped": 5000,
+      "english": 4972,
+      "min_words": 4669,
+      "exact_dedup": 4668,
+      "near_dedup": 4668
+    },
+    "com.productmadness.lightninglink": {
+      "scraped": 5000,
+      "english": 4968,
+      "min_words": 4510,
+      "exact_dedup": 4508,
+      "near_dedup": 4508
+    },
+    "com.proximabeta.nikke": {
+      "scraped": 5000,
+      "english": 4995,
+      "min_words": 4971,
+      "exact_dedup": 4971,
+      "near_dedup": 4971
+    },
+    "com.pubg.imobile": {
+      "scraped": 5000,
+      "english": 4960,
+      "min_words": 4668,
+      "exact_dedup": 4667,
+      "near_dedup": 4655
+    },
+    "com.readygo.barrel.gp": {
+      "scraped": 15000,
+      "english": 14886,
+      "min_words": 14028,
+      "exact_dedup": 4902,
+      "near_dedup": 4901
+    },
+    "com.readygo.dark.gp": {
+      "scraped": 10000,
+      "english": 9973,
+      "min_words": 9598,
+      "exact_dedup": 5178,
+      "near_dedup": 5178
+    },
+    "com.roblox.client": {
+      "scraped": 15000,
+      "english": 14991,
+      "min_words": 14991,
+      "exact_dedup": 5057,
+      "near_dedup": 5052
+    },
+    "com.run.tower.defense": {
+      "scraped": 15000,
+      "english": 14950,
+      "min_words": 14156,
+      "exact_dedup": 5049,
+      "near_dedup": 5049
+    },
+    "com.scopely.monopolygo": {
+      "scraped": 15000,
+      "english": 14987,
+      "min_words": 14866,
+      "exact_dedup": 6969,
+      "near_dedup": 6968
+    },
+    "com.screenshake.dominodreams": {
+      "scraped": 5000,
+      "english": 4977,
+      "min_words": 4611,
+      "exact_dedup": 4610,
+      "near_dedup": 4609
+    },
+    "com.snowprintstudios.tacticus": {
+      "scraped": 5000,
+      "english": 4996,
+      "min_words": 4895,
+      "exact_dedup": 4895,
+      "near_dedup": 4895
+    },
+    "com.solitairetripeaks.masterdesign": {
+      "scraped": 5000,
+      "english": 3760,
+      "min_words": 2086,
+      "exact_dedup": 2085,
+      "near_dedup": 2085
+    },
+    "com.supercell.clashofclans": {
+      "scraped": 15000,
+      "english": 14990,
+      "min_words": 14774,
+      "exact_dedup": 5594,
+      "near_dedup": 5584
+    },
+    "com.supercell.clashroyale": {
+      "scraped": 15000,
+      "english": 14993,
+      "min_words": 14918,
+      "exact_dedup": 6009,
+      "near_dedup": 6008
+    },
+    "com.superplaystudios.dicedreams": {
+      "scraped": 10000,
+      "english": 9989,
+      "min_words": 9794,
+      "exact_dedup": 7577,
+      "near_dedup": 7576
+    },
+    "com.superplaystudios.disneysolitairedreams": {
+      "scraped": 10000,
+      "english": 9974,
+      "min_words": 9171,
+      "exact_dedup": 5216,
+      "near_dedup": 5214
+    },
+    "com.teenpatti.hd.gold": {
+      "scraped": 5000,
+      "english": 4964,
+      "min_words": 4813,
+      "exact_dedup": 4807,
+      "near_dedup": 4804
+    },
+    "com.tencent.ig": {
+      "scraped": 10000,
+      "english": 9994,
+      "min_words": 9942,
+      "exact_dedup": 5751,
+      "near_dedup": 5706
+    },
+    "com.topgamesinc.evony": {
+      "scraped": 15000,
+      "english": 15000,
+      "min_words": 14968,
+      "exact_dedup": 5899,
+      "near_dedup": 5897
+    },
+    "com.totalbattle": {
+      "scraped": 10000,
+      "english": 9942,
+      "min_words": 9545,
+      "exact_dedup": 4883,
+      "near_dedup": 4883
+    },
+    "com.williamsinteractive.jackpotparty": {
+      "scraped": 5000,
+      "english": 4969,
+      "min_words": 4697,
+      "exact_dedup": 4696,
+      "near_dedup": 4696
+    },
+    "com.yalla.yallagames": {
+      "scraped": 5000,
+      "english": 4939,
+      "min_words": 4742,
+      "exact_dedup": 4731,
+      "near_dedup": 4724
+    },
+    "com.zjcs.android.us": {
+      "scraped": 4401,
+      "english": 3633,
+      "min_words": 2485,
+      "exact_dedup": 2485,
+      "near_dedup": 2485
+    },
+    "com.zynga.livepoker": {
+      "scraped": 5000,
+      "english": 4997,
+      "min_words": 4960,
+      "exact_dedup": 4958,
+      "near_dedup": 4957
+    },
+    "cricketgames.hitwicket.strategy": {
+      "scraped": 5000,
+      "english": 4979,
+      "min_words": 4813,
+      "exact_dedup": 4788,
+      "near_dedup": 4784
+    },
+    "io.randomco.travel": {
+      "scraped": 15000,
+      "english": 14969,
+      "min_words": 14685,
+      "exact_dedup": 5472,
+      "near_dedup": 5471
+    },
+    "jp.konami.pesam": {
+      "scraped": 5000,
+      "english": 4995,
+      "min_words": 4993,
+      "exact_dedup": 4992,
+      "near_dedup": 4987
+    },
+    "net.peakgames.match": {
+      "scraped": 10000,
+      "english": 9853,
+      "min_words": 9008,
+      "exact_dedup": 4769,
+      "near_dedup": 4769
+    },
+    "net.peakgames.toonblast": {
+      "scraped": 10000,
+      "english": 9992,
+      "min_words": 9844,
+      "exact_dedup": 5586,
+      "near_dedup": 5585
+    },
+    "net.supertreat.solitaire": {
+      "scraped": 10000,
+      "english": 9989,
+      "min_words": 9889,
+      "exact_dedup": 6299,
+      "near_dedup": 6299
+    },
+    "slots.pcg.casino.games.free.android": {
+      "scraped": 5000,
+      "english": 4998,
+      "min_words": 4899,
+      "exact_dedup": 4897,
+      "near_dedup": 4897
+    }
+  },
+  "per_market": {
+    "us": {
+      "scraped": 242434,
+      "english": 238473,
+      "min_words": 224690,
+      "exact_dedup": 76413,
+      "near_dedup": 76389
+    },
+    "in": {
+      "scraped": 248617,
+      "english": 243566,
+      "min_words": 232570,
+      "exact_dedup": 130707,
+      "near_dedup": 130583
+    },
+    "gb": {
+      "scraped": 244788,
+      "english": 237832,
+      "min_words": 221448,
+      "exact_dedup": 221371,
+      "near_dedup": 221269
+    }
+  }
+}

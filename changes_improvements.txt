@@ -1,0 +1,90 @@
+CHANGES & IMPROVEMENTS — CORPUS AND PLAN
+=========================================
+
+1. GENRE QUESTION — DECISION: KEEP TOP-GROSSING AS-IS
+-----------------------------------------------------
+Do not switch to genre-stratified top-free. Reasons:
+
+a) Direct precedent: Petrovskaya & Zendle (CHI '22) sampled exactly the top-50
+   top-grossing games. You can cite the frame instead of defending a custom one.
+b) Construct alignment: top-grossing is where monetization-driven DPs
+   concentrate (Petrovskaya: 88% of top-grossing mobile had >=1 problematic
+   technique; casino/RPG densest). Your badge targets exactly these games.
+c) The claim changes from "audit across the mobile game landscape" to "audit of
+   top-grossing mobile games" — which is the claim you can actually support,
+   and arguably the more policy-relevant one (these games have the players).
+d) Genre-stratified top-free would add coverage (racing, music, word...) at the
+   cost of chart relevance, and those genres are precisely where Zhang found
+   the fewest DPs anyway.
+
+REQUIRED FOLLOW-THROUGH:
+- Write the limitation sentence now: "Our corpus reflects top-grossing F2P
+  titles; findings may not generalize to niche genres or premium games, and
+  genre coverage is skewed toward puzzle/merge, casino, and strategy-survival."
+- Verify darkpattern.games overlap THIS WEEK (~30 titles by hand). If overlap
+  < ~50 games, add the site's most-reviewed games as a documented supplementary
+  stratum. Only fixable if caught now.
+- Record the Sensor Tower snapshot verbatim (source, chart type, markets,
+  exact date). The date IS the sampling frame.
+
+2. LIST HYGIENE (BEFORE SCRAPING)
+---------------------------------
+- Resolve all titles to Play Store app_ids; dedupe by app_id, never by name.
+  Expect ~150 distinct apps after cross-market dedup (heavy US/UK overlap).
+- Fix typos: "Toral Battle" -> Total Battle; "Royal Kingdowm" -> Royal Kingdom;
+  "Garden Scapes" -> Gardenscapes.
+- Verify same-vs-different:
+  * "Travel Town Merge Adventure" / "Travel Town - Merge Adventure" = same app.
+  * "Coin Master" vs "Coin Master - Board Adventure" — check; may be distinct.
+  * "Free Fire: 9th Anniversary" = seasonal store title of Free Fire.
+  * Free Fire MAX (IN) vs Free Fire (US) — same family, different app_ids
+    (India ban context). Decide one entity or two; document either way.
+- CASINO STRATUM: keep slots/bingo/Teen Patti apps (precedent: Zendle sampled
+  casino; Petrovskaya found highest technique density there) but tag casino=1
+  so every result can be reported with/without. Preempts "of course the slots
+  app flags Gambling."
+
+3. PLAN CORRECTIONS (from your last summary — silent regressions caught)
+------------------------------------------------------------------------
+- Pilot is NOT "a random 500": it is 300 random + 200 keyword-targeted, strata
+  tagged and analyzed separately. Random -> base rates; targeted -> rare-class
+  coverage (Social especially; Zhang's own data shows it is sparse).
+- "Validate the teacher and maximize prompt scores" = TWO activities, TWO sets.
+  Split 300 dev / 200 test BEFORE any prompt work; tune on dev only; ONE frozen
+  run on test = the reported number. Same-set tuning+validation = contaminated
+  number a reviewer will catch.
+- Missing step between prompt validation and training: mass-label 200k ->
+  observability frequency plots -> scope label set -> THEN decide subclass
+  heads -> THEN train. Prevents last cycle's discover-imbalance-after-the-fact.
+- Pilot random stratum and all base rates come from text-filtered but
+  NOT ML-filtered reviews (binary classifier's 0.849 recall would bias rates,
+  disproportionately dropping rare patterns).
+
+4. EVALUATOR AGENT SCOPE
+------------------------
+Game descriptions from store pages / wikis / gameplay summaries — do NOT play
+~150 games (that cost bought the weakest part of the last paper). Output:
+plausible/implausible per label. Framing everywhere: pipeline label-QC.
+Never validation (LLM-checking-LLM shares failure modes).
+
+5. DON'T-FORGET ITEMS WITH LEAD TIME
+------------------------------------
+- Ethics exemption: file at IITG this week (check Mphasis data policy too).
+  Two of three reviewers flagged ethics absence; Petrovskaya got formal
+  approval for scraped reviews and cited the case number — match that.
+- Gold-set protocol document written THIS month (sampling, coder training,
+  practice set, IRR statistic, adjudication rules) so month 2 is execution.
+- Repro package (OSF/repo): codebook, prompts, code, count logs. Zhang
+  preregistered; matching neutralizes a critique class cheaply.
+- Re-code your first ~50 pilot rows after the codebook stabilizes (pass=2).
+- Terminology sweep when writing: "LLM-annotated corpus", never "synthetic";
+  "player-reported", never "player-perceived".
+
+6. NICE-TO-HAVE (only if time remains)
+--------------------------------------
+- Keyword/regex baseline as the floor row in the results table (cheap, makes
+  the fine-tuned numbers legible).
+- Temporal metadata analysis: reviews span years; a one-figure "pattern
+  mentions over time" per game is cheap and speaks to the badge-freshness
+  limitation.
+- With/without-casino-stratum results split in an appendix table.

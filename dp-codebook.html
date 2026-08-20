@@ -1,0 +1,1861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DP Codebook — Deceptive Game Design Patterns</title>
+<style>
+/* ============ tokens ============ */
+:root{
+  --paper:#f7f7f4;        /* cool near-white */
+  --card:#fffffe;
+  --ink:#26251f;          /* graphite */
+  --muted:#6d6b60;
+  --line:#dddcd4;
+  --pine:#1e4b42;         /* structure, links, group titles */
+  --pine-soft:#e7eeec;
+  --stamp:#9c3b23;        /* reserved: verbatim seal + dirty dot */
+  --stamp-soft:#f6e9e4;
+  --amber:#8a6a1c;
+  --amber-soft:#f4edda;
+  --serif:"Palatino Linotype","Book Antiqua",Palatino,"URW Palladio L","Iowan Old Style",Georgia,serif;
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--serif);font-size:16px;line-height:1.55}
+
+/* ============ toolbar ============ */
+#toolbar{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:.75rem;
+  padding:.6rem 1.1rem;background:var(--paper);border-bottom:2px solid var(--ink)}
+.brand{font-family:var(--serif);font-weight:700;font-size:1.05rem;letter-spacing:.01em;display:flex;align-items:center;gap:.55rem}
+.brand small{font-family:var(--sans);font-weight:400;color:var(--muted);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase}
+#versionBadge{font-family:var(--mono);font-size:.75rem;color:var(--pine);border:1.5px solid var(--pine);
+  border-radius:2px;padding:.1rem .45rem;transform:rotate(-1.5deg);background:var(--pine-soft)}
+#dirtyDot{width:.6rem;height:.6rem;border-radius:50%;background:var(--stamp);display:none}
+#dirtyDot.on{display:inline-block}
+.actions{margin-left:auto;display:flex;gap:.4rem;flex-wrap:wrap}
+.tb-btn{font-family:var(--sans);font-size:.78rem;padding:.35rem .7rem;border:1px solid var(--ink);
+  background:var(--card);color:var(--ink);cursor:pointer;border-radius:2px}
+.tb-btn:hover{background:var(--pine);border-color:var(--pine);color:#fff}
+.tb-btn.primary{background:var(--ink);color:#fff}
+.tb-btn.primary:hover{background:var(--pine)}
+
+/* ============ layout ============ */
+#layout{display:grid;grid-template-columns:270px minmax(0,1fr);max-width:1180px;margin:0 auto}
+#sidebar{border-right:1px solid var(--line);padding:1rem .9rem 3rem;
+  position:sticky;top:52px;height:calc(100vh - 52px);overflow-y:auto;font-family:var(--sans)}
+#search{width:100%;font-family:var(--sans);font-size:.82rem;padding:.45rem .6rem;
+  border:1px solid var(--line);border-radius:2px;background:var(--card);color:var(--ink)}
+#search:focus{outline:2px solid var(--pine);outline-offset:1px}
+.side-tabs{display:flex;gap:.3rem;margin:.7rem 0 .5rem}
+.side-tab{flex:1;font-family:var(--sans);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;
+  padding:.3rem;border:1px solid var(--line);background:transparent;cursor:pointer;color:var(--muted);border-radius:2px}
+.side-tab.on{border-color:var(--pine);color:var(--pine);background:var(--pine-soft);font-weight:600}
+#toc a,.gap-item{display:block;text-decoration:none;color:var(--ink);font-size:.8rem;
+  padding:.18rem .35rem;border-left:2px solid transparent}
+#toc a:hover,.gap-item:hover{border-left-color:var(--pine);color:var(--pine)}
+#toc a.toc-group{font-weight:700;margin-top:.55rem;color:var(--pine);text-transform:uppercase;font-size:.7rem;letter-spacing:.08em}
+#toc a.toc-low{padding-left:1.1rem;color:var(--muted)}
+#toc a.hide{display:none}
+.gap-item{margin:.3rem 0;border:1px solid var(--line);border-left:3px solid var(--amber);border-radius:2px;padding:.35rem .5rem}
+.gap-name{font-weight:600;font-size:.8rem}
+.gap-miss{font-size:.7rem;color:var(--amber)}
+
+/* ============ document ============ */
+#doc{padding:1.6rem 2.2rem 6rem;max-width:820px}
+.group{margin-bottom:2.6rem}
+.group.dim{opacity:.35}
+.group-title{font-size:1.7rem;margin:1.6rem 0 .4rem;color:var(--pine);
+  border-bottom:2px solid var(--pine);padding-bottom:.2rem;letter-spacing:.01em}
+.group-note{font-family:var(--sans);font-size:.8rem;color:var(--muted);margin:.2rem 0 1rem}
+.class-def{margin:.4rem 0 1.2rem;padding:.2rem 0 .2rem 1rem;border-left:3px solid var(--pine)}
+
+.card{background:var(--card);border:1px solid var(--line);border-radius:3px;
+  padding:1rem 1.2rem;margin:.9rem 0;break-inside:avoid}
+.card.low{margin-left:1.6rem;border-left:3px solid var(--pine)}
+.card.hide,.rule-card.hide{display:none}
+.card-head{display:flex;align-items:baseline;gap:.6rem;flex-wrap:wrap;margin-bottom:.3rem}
+.card-title{margin:0;font-size:1.15rem}
+.badge{font-family:var(--sans);font-size:.65rem;letter-spacing:.05em;text-transform:uppercase;
+  padding:.12rem .45rem;border-radius:2px;white-space:nowrap}
+.low-badge{background:var(--pine-soft);color:var(--pine);border:1px solid var(--pine)}
+.gap-badge{background:var(--amber-soft);color:var(--amber);border:1px solid var(--amber)}
+.mono{font-family:var(--mono);font-size:.85em}
+
+.field{margin:.65rem 0}
+.field-label{font-family:var(--sans);font-size:.68rem;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:.15rem}
+.mini-label{font-family:var(--sans);font-size:.62rem;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--muted);display:block;margin-bottom:.05rem}
+
+/* editable */
+.editable{cursor:text;border-radius:2px;padding:.1rem .25rem;margin:-.1rem -.25rem;min-height:1.2em}
+.editable:hover{background:var(--pine-soft);outline:1px dashed var(--pine)}
+.editable.empty .ed-text{color:var(--muted);font-style:italic;font-family:var(--sans);font-size:.85em}
+.editable textarea,.editable input{width:100%;font:inherit;color:inherit;background:#fffdf5;
+  border:1.5px solid var(--pine);border-radius:2px;padding:.3rem .4rem}
+.editable textarea:focus,.editable input:focus{outline:none;box-shadow:0 0 0 2px var(--pine-soft)}
+.cite .ed-text{font-family:var(--mono);font-size:.78rem;color:var(--muted)}
+.title-ed{font-weight:700}
+
+/* signature: verbatim seal */
+.editable.canonical.empty{border:1.5px dashed var(--amber);background:var(--amber-soft);
+  padding:.45rem .7rem;margin-left:0;border-left-width:1.5px}
+.editable.canonical.empty .ed-text{color:var(--amber)}
+
+.canonical{border-left:3px solid var(--stamp);padding-left:.8rem;margin-left:0;background:transparent}
+.canonical:hover{background:var(--stamp-soft);outline:1px dashed var(--stamp)}
+.seal{display:inline-block;font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;
+  color:var(--stamp);border:1px solid var(--stamp);border-radius:2px;padding:.05rem .4rem;
+  margin-bottom:.25rem;transform:rotate(-1deg);background:var(--stamp-soft);user-select:none}
+.canonical .ed-text{font-style:italic}
+
+/* arrays */
+.arr-row{display:flex;gap:.5rem;align-items:flex-start;padding:.28rem 0;border-bottom:1px dotted var(--line)}
+.arr-body{flex:1;min-width:0}
+.ctl{display:flex;gap:.15rem;flex-shrink:0}
+.ctl-btn{font-family:var(--sans);font-size:.68rem;width:1.45rem;height:1.45rem;border:1px solid var(--line);
+  background:var(--card);color:var(--muted);cursor:pointer;border-radius:2px;line-height:1}
+.ctl-btn:hover:not(:disabled){border-color:var(--ink);color:var(--ink)}
+.ctl-btn:disabled{opacity:.3;cursor:default}
+.add-btn{font-family:var(--sans);font-size:.72rem;margin-top:.4rem;padding:.25rem .6rem;
+  border:1px dashed var(--pine);background:transparent;color:var(--pine);cursor:pointer;border-radius:2px}
+.add-btn:hover{background:var(--pine-soft)}
+.add-label{display:block;margin:.6rem 0 0}
+.pair{display:grid;grid-template-columns:170px minmax(0,1fr);gap:.6rem;margin:.2rem 0}
+.pair-a,.pair-b{min-width:0}
+
+/* rules & changelog */
+.rule-card{background:var(--card);border:1px solid var(--line);border-radius:3px;padding:.8rem 1rem;break-inside:avoid}
+.rule-id{font-weight:700;color:var(--pine);font-size:.95rem}
+.log-row{padding:.3rem 0}
+.log-meta{display:flex;align-items:center;gap:.7rem;font-family:var(--sans);font-size:.8rem;margin-bottom:.2rem}
+.log-meta .badge{background:var(--pine-soft);color:var(--pine);border:1px solid var(--pine)}
+.inv-label{font-size:.75rem;color:var(--muted);display:flex;align-items:center;gap:.3rem}
+
+/* dialogs */
+dialog{border:2px solid var(--ink);border-radius:3px;background:var(--card);color:var(--ink);
+  font-family:var(--sans);max-width:620px;width:92vw;padding:1.2rem 1.4rem}
+dialog::backdrop{background:rgba(38,37,31,.45)}
+dialog h3{margin:0 0 .7rem;font-family:var(--serif)}
+dialog label{display:block;font-size:.78rem;margin:.6rem 0 .2rem;color:var(--muted);
+  text-transform:uppercase;letter-spacing:.07em}
+dialog textarea,dialog input[type=text]{width:100%;font-family:var(--sans);font-size:.85rem;
+  padding:.4rem .5rem;border:1px solid var(--line);border-radius:2px}
+.dlg-actions{display:flex;gap:.5rem;justify-content:flex-end;margin-top:1rem}
+#mergeDialog{max-width:780px}
+#mergeList{max-height:55vh;overflow-y:auto;margin-top:.6rem}
+.diff-row{border:1px solid var(--line);border-radius:2px;padding:.55rem .7rem;margin:.45rem 0}
+.diff-path{font-size:.72rem;color:var(--pine);margin-bottom:.3rem}
+.diff-cmp{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;font-size:.78rem}
+.diff-side{min-width:0;overflow-wrap:break-word}
+.take-all{border-style:solid;font-weight:600}
+
+@media (max-width:840px){
+  #layout{grid-template-columns:1fr}
+  #sidebar{position:static;height:auto;border-right:none;border-bottom:1px solid var(--line)}
+  #doc{padding:1rem 1.1rem 4rem}
+  .pair{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+/* ============ print ============ */
+@media print{
+  #toolbar,#sidebar,.ctl,.add-btn,.tb-btn,dialog{display:none !important}
+  #layout{display:block;max-width:none}
+  #doc{max-width:none;padding:0}
+  body{background:#fff;color:#000;font-size:11pt}
+  .card,.rule-card{border:1px solid #999;box-shadow:none;page-break-inside:avoid}
+  .card.hide,.rule-card.hide{display:block !important}   /* print the whole book */
+  .group.dim{opacity:1}
+  .group-title{page-break-after:avoid}
+  .editable:hover{background:transparent;outline:none}
+  .seal{color:#000;border-color:#000;background:transparent}
+  .canonical{border-left-color:#000}
+  a{color:#000;text-decoration:none}
+}
+</style>
+</head>
+<body>
+
+<header id="toolbar">
+  <div class="brand">DP&nbsp;Codebook <small>Deceptive Game Design Patterns</small>
+    <span id="versionBadge">v–</span><span id="dirtyDot" title="Unsaved changes"></span>
+  </div>
+  <div class="actions">
+    <button class="tb-btn" id="btnLoad" title="Replace the codebook with a JSON file">Load JSON</button>
+    <button class="tb-btn" id="btnMerge" title="Diff a second JSON against the current codebook">Import / Merge</button>
+    <button class="tb-btn" id="btnBump" title="Record a change and increment the version">Bump version</button>
+    <button class="tb-btn" id="btnPrint" title="Print or export to PDF">Print / PDF</button>
+    <button class="tb-btn primary" id="btnSave" title="Download codebook_v{version}.json">Save JSON</button>
+  </div>
+</header>
+
+<div id="layout">
+  <aside id="sidebar">
+    <input id="search" type="search" placeholder="Search the codebook…" aria-label="Search codebook">
+    <div class="side-tabs">
+      <button class="side-tab on" data-tab="toc" type="button">Contents</button>
+      <button class="side-tab" data-tab="gaps" type="button">Gaps</button>
+    </div>
+    <nav id="toc" aria-label="Table of contents"></nav>
+    <div id="gaps" hidden></div>
+  </aside>
+  <main id="doc"></main>
+</div>
+
+<dialog id="bumpDialog">
+  <h3>Bump version</h3>
+  <label for="bumpDesc">What changed</label>
+  <textarea id="bumpDesc" rows="3" placeholder="e.g. Tightened the FOMO vs. Evil Battle Pass boundary rule after pilot disagreement on rows 112–140"></textarea>
+  <label class="inv-label" style="text-transform:none;letter-spacing:0;display:flex;align-items:center;gap:.4rem">
+    <input type="checkbox" id="bumpInvalid"> This change invalidates prior coding
+  </label>
+  <label for="bumpRows">Rows re-checked (optional)</label>
+  <input type="text" id="bumpRows" placeholder="e.g. 1–250, or ‘none yet’">
+  <div class="dlg-actions">
+    <button class="tb-btn" id="bumpCancel" type="button">Cancel</button>
+    <button class="tb-btn primary" id="bumpGo" type="button">Record &amp; bump</button>
+  </div>
+</dialog>
+
+<dialog id="mergeDialog">
+  <h3>Import / merge</h3>
+  <p id="mergeSummary" style="font-size:.85rem;color:var(--muted);margin:.2rem 0"></p>
+  <div id="mergeList"></div>
+  <div class="dlg-actions">
+    <button class="tb-btn" id="mergeClose" type="button">Done</button>
+  </div>
+</dialog>
+
+<input type="file" id="loadFile" accept=".json,application/json" hidden>
+<input type="file" id="mergeFile" accept=".json,application/json" hidden>
+
+<script>
+// ============================================================================
+// SEED DATA — Canonical codebook v0.5
+// Primary source: Zhang et al. (2025), doi:10.1145/3748620 (CC BY-NC-SA 4.0).
+// Inherited definitions: Zagal et al. 2013 [87]; Hadan et al. 2024 [23];
+// Sousa & Oliveira 2023 [74]; Dahlan & Susanty 2022 [12]; King et al. 2023 [39];
+// darkpattern.games (all transcribed from user-supplied excerpts).
+// FILL boxes remain where no source definition exists — tag those [NOT VERBATIM].
+// ============================================================================
+const SEED = {
+  "version": "0.5",
+  "changelog": [
+    {
+      "version": "0.3",
+      "date": "2026-07-11",
+      "change": "Initial canonical codebook. All definitions transcribed verbatim from Zhang et al. (2025), doi:10.1145/3748620 (CC BY-NC-SA 4.0). Inherited meso-level definitions (Zagal et al. [87], Sousa & Oliveira [74], King et al. [39], Hadan et al. [23], Dahlan & Susanty [12], darkpattern.games) pending transcription from source papers. Entries tagged [DRAFT] are pilot placeholders, not from the paper.",
+      "invalidates_prior_coding": false,
+      "rows_rechecked": ""
+    },
+    {
+      "version": "0.4",
+      "date": "2026-07-12",
+      "change": "Filled inherited definitions from user-supplied source excerpts: Zagal et al. 2013 [87] (user-transcribed), Hadan et al. 2024 [23] (pattern summary table), Sousa & Oliveira 2023 [74] (Table, p. 601), Dahlan & Susanty 2022 [12] (Table 1), King et al. 2023 [39] (§4). One canonical source per label; alternate definitions recorded as indicators. Verbatim seal now covers all cited sources, not only Zhang et al. Remaining pending: Mandatory Marathon, Forced Fellowship, Easy to Get Hard to Lose (meso defs, darkpattern.games); container mesos Pay to Progress, Intermediate Currency, Easy to Purchase, Deceptive Luxury have no source definition anywhere.",
+      "invalidates_prior_coding": false,
+      "rows_rechecked": ""
+    },
+    {
+      "version": "0.5",
+      "date": "2026-07-12",
+      "change": "Added darkpattern.games one-liners (user-supplied screenshots, verbatim) as alternate definitions/indicators across all inherited patterns. Promoted Zhang §4.3 in-text characterization to canonical for Intermediate Currency. Resolved the Recurring Fee note: the Hadan description matches darkpattern.games (play-to-justify-spend, not subscriptions). Remaining FILL boxes (no source definition exists anywhere): Mandatory Marathon, Pay to Progress, Deceptive Luxury, Easy to Purchase, Forced Fellowship, Easy to Get Hard to Lose — write [NOT VERBATIM] working definitions before the pilot.",
+      "invalidates_prior_coding": false,
+      "rows_rechecked": ""
+    }
+  ],
+  "global_rules": [
+    {
+      "id": "R1",
+      "statement": "Counting rule — adopted verbatim from Zhang et al. 2025, §3.3: “If the identified DPs exhibited the same design and appearance, i.e., same case, they were counted once. However, if the same DPs occurred in different scenarios, such as loot boxes containing aesthetic items (e.g., fashion) and another set of loot boxes containing functional items (e.g., weapons and armour), they were treated as distinct cases.”",
+      "worked_example_review_id": "",
+      "worked_example_text": ""
+    },
+    {
+      "id": "R2",
+      "statement": "[DRAFT — confirm during pilot] Unit of coding: one app-store review = one coding unit. Assign every meso-level label for which at least one indicator is explicitly described in the review text. Do not infer patterns from the game’s reputation or from other reviews.",
+      "worked_example_review_id": "",
+      "worked_example_text": ""
+    },
+    {
+      "id": "R3",
+      "statement": "[DRAFT — confirm during pilot] Evidence threshold: the review must describe the mechanism, not merely the sentiment. “Predatory” or “cash grab” alone is not codable without a described mechanic.",
+      "worked_example_review_id": "",
+      "worked_example_text": ""
+    },
+    {
+      "id": "R4",
+      "statement": "DP Enhancers are meta-level and are only coded when co-present with at least one DP label. Basis (Zhang et al. 2025, §4.2.2, verbatim): “most such designs were not instances of DPs, but deployed alongside other DPs like ‘Aesthetic Manipulation’ to enhance their effects.”",
+      "worked_example_review_id": "",
+      "worked_example_text": ""
+    }
+  ],
+  "high_level_classes": [
+    {
+      "name": "Temporal",
+      "canonical_definition": "Temporal DPs manipulate the amount of time spent on gameplay, i.e., expected versus actual time, leading players to feel that their time has been unfairly exploited [87].",
+      "definition_citation": "Zhang et al. 2025, §3.4 (verbatim; after Zagal et al. [87])"
+    },
+    {
+      "name": "Monetary",
+      "canonical_definition": "Monetary DPs cause players to unexpectedly invest more financial resources, ultimately causing them to regret or lose track of their expenditures [87].",
+      "definition_citation": "Zhang et al. 2025, §3.4 (verbatim; after Zagal et al. [87])"
+    },
+    {
+      "name": "Social",
+      "canonical_definition": "Social DPs exploit players’ social connections from the real world and in-game to deceive or manipulate them, thereby putting their social standing and relationships at risk [74, 87].",
+      "definition_citation": "Zhang et al. 2025, §3.4 (verbatim)"
+    },
+    {
+      "name": "Psychological",
+      "canonical_definition": "Psychological DPs and practices manipulate players’ minds, emotions, and cognition, inducing them to make poor decisions through psychological tricks [74].",
+      "definition_citation": "Zhang et al. 2025, §3.4 (verbatim; after Sousa & Oliveira [74])"
+    },
+    {
+      "name": "Technical",
+      "canonical_definition": "We identified a new high-level pattern, the Technical pattern, which deceives users or players by obscuring or misrepresenting the technical aspects of the game application.",
+      "definition_citation": "Zhang et al. 2025, §4.1.3 (verbatim; novel class)"
+    },
+    {
+      "name": "DP Combos",
+      "canonical_definition": "[R]ather than relying on a single DP to deceive or manipulate players for a single purpose, game developers sometimes employed multiple DPs simultaneously within a single design or interface towards a particular end. We refer to these as DP Combos.",
+      "definition_citation": "Zhang et al. 2025, §4.2.1 (verbatim; meta-level)"
+    },
+    {
+      "name": "DP Enhancers",
+      "canonical_definition": "…designs that are not inherently deceptive or manipulative but can intensify the effects of accompanying DPs.",
+      "definition_citation": "Zhang et al. 2025, §4.2.2 (verbatim; meta-level — see rule R4)"
+    }
+  ],
+  "labels": [
+    {
+      "high_level": "Temporal",
+      "meso_label": "Playing by Appointment",
+      "level": "meso",
+      "canonical_definition": "Requires players play at specific times (and or dates) as defined by the game, rather than the players. When mechanics result in player playing according to the schedules the game offers, rather than their personal desires (an obligation).",
+      "definition_citation": "Zagal et al. 2013 [87] (user-transcribed — verify wording against original)",
+      "definition_pending": false,
+      "indicators": [
+        "Evil Battle Pass [23] — Fig. 7 caption (verbatim): “Players are required to spend excessive time completing tasks, risking expiration of the battle pass and loss of rewards, even if they have paid for it in advance.”",
+        "Wait to Play (Hadan et al. 2024): “Patterns that impose arbitrary wait times on players through in-game timers.” — absent from the Zhang et al. corpus darkpattern.games: “In-game timers that make you arbitrarily wait for something.”",
+        "Alt. def (Hadan et al. 2024): “Patterns that forces players to adhere to the game’s schedule.”",
+        "Alt. def (Sousa & Oliveira 2023): “Having to adhere to the game's predetermined schedule rather than being able to play on your own terms.”",
+        "Alt. def (Dahlan & Susanty 2022): “Incentivizing or even forcing players to play the game during a specific range of time.”",
+        "[Corpus stat] Most dominant Temporal meso: 48 of 91 Temporal DPs, incl. 20 Evil Battle Pass and 9 Trapping Starter Kit combos (§4.3)",
+        "darkpattern.games (site one-liner, verbatim): “Being forced to play according to the game's schedule instead of yours.”"
+      ],
+      "boundary_rules": [
+        {
+          "vs_label": "Fear of Missing Out (FOMO)",
+          "rule": "§4.4 (verbatim): “Although there is some overlap between ‘Evil Battle Pass’ and ‘FOMO’ patterns—battle passes are seasonal events with exclusive rewards like seasonal skins—we did not find other FOMO patterns in the Chinese corpus.”"
+        },
+        {
+          "vs_label": "Non-dark scheduling",
+          "rule": "Zagal et al. (user-transcribed): “Nullified if completing appointments is not required for progress. In other words, when appointment is combined with progress it becomes dark.”"
+        }
+      ],
+      "counterexamples": [],
+      "worked_examples": [
+        {
+          "review_id": "ZHANG2025-§5.3.3",
+          "text": "[Seeded from paper] “Although battle passes are typically designed to align with regular game seasons, developers have implemented parallel seasonal systems—such as esports competition seasons—to justify releasing multiple battle passes concurrently. This pushes players to purchase both, because advancing in either requires the same effort in-game.”",
+          "labels_assigned": [
+            "Playing by Appointment"
+          ]
+        }
+      ]
+    },
+    {
+      "high_level": "Temporal",
+      "meso_label": "Daily Rewards",
+      "level": "meso",
+      "canonical_definition": "Motivates players to log in daily by providing incentives, while also penalising them for failing to do so.",
+      "definition_citation": "Sousa & Oliveira 2023 [74], Table (p. 601) (verbatim)",
+      "definition_pending": false,
+      "indicators": [
+        "Daily log-in reward calendars",
+        "Daily task lists with resetting rewards",
+        "Alt. def (Hadan et al. 2024): “Patterns that encourage players to revisit the game daily.”",
+        "Zhang et al. §4.3 (verbatim): “manifesting primarily as daily log-ins and daily tasks.”",
+        "darkpattern.games (site one-liner, verbatim): “Encourages return visits every day and punishes you for missing a day.”"
+      ],
+      "boundary_rules": [],
+      "counterexamples": [],
+      "worked_examples": []
+    },
+    {
+      "high_level": "Temporal",
+      "meso_label": "Grinding",
+      "level": "meso",
+      "canonical_definition": "“Performing repetitive and tedious tasks” in order to make progress in a game. Emphasizes time invested over skill and in worst cases could be conducted unattended by the player.",
+      "definition_citation": "Zagal et al. 2013 [87] (user-transcribed — verify wording against original)",
+      "definition_pending": false,
+      "indicators": [
+        "[Corpus stat] Found in only one instance in a single game (§5.3), vs. dominant in Dahlan & Susanty [12]",
+        "Alt. def (Hadan et al. 2024): “Patterns that requires players to perform repetitive tasks.”",
+        "Alt. def (Sousa & Oliveira 2023): “Being compelled to complete monotonous tasks in order to make progress.”",
+        "Alt. def (Dahlan & Susanty 2022): “It is forcing players to perform repetitive tasks to make progress in the game.”",
+        "darkpattern.games (site one-liner, verbatim): “Being required to perform repetitive and tedious tasks to advance.”"
+      ],
+      "boundary_rules": [],
+      "counterexamples": [],
+      "worked_examples": []
+    },
+    {
+      "high_level": "Temporal",
+      "meso_label": "Advertisement",
+      "level": "meso",
+      "canonical_definition": "Compelled to view advertisements or incentivized to do so through the promise of rewards.",
+      "definition_citation": "Sousa & Oliveira 2023 [74] (“Advertisements”), Table (p. 601) (verbatim)",
+      "definition_pending": false,
+      "indicators": [
+        "darkpattern.games (“Advertisements”, verbatim): “Forced to watch ads or given rewards for watching ads.”"
+      ],
+      "boundary_rules": [],
+      "counterexamples": [],
+      "worked_examples": []
+    },
+    {
+      "high_level": "Temporal",
+      "meso_label": "Infinite Treadmill",
+      "level": "meso",
+      "canonical_definition": "Patterns that continually expand the game to never allow players to complete.",
+      "definition_citation": "Hadan et al. 2024 [23], pattern summary table (verbatim; user-supplied excerpt). Absent from the Zhang et al. corpus (§4.4).",
+      "definition_pending": false,
+      "indicators": [
+        "darkpattern.games (site one-liner, verbatim): “Impossible to win or complete the game.”"
+      ],
+      "boundary_rules": [],
+      "counterexamples": [],
+      "worked_examples": []
+    },
+    {
+      "high_level": "Temporal",
+      "meso_label": "Mandatory Marathon",
+      "level": "meso",
+      "canonical_definition": "",
+      "definition_citation": "FILL — meso named in Zhang et al. 2025 Table 2 (uncited); no source definition exists (darkpattern.games defines only the low-level “Can’t Pause or Save”). Write a working definition and tag it [NOT VERBATIM]. Low-level defined in indicators.",
+      "definition_pending": true,
+      "indicators": [
+        "Can’t Pause or Save (Hadan et al. 2024): “Patterns that force players to continue playing before they can save progress.” — absent from the Zhang et al. corpus (§4.4) darkpattern.games: “The game does not allow you to stop playing whenever you want.”"
+      ],
+      "boundary_rules": [],
+      "counterexamples": [],
+      "worked_examples": []
+    },
+    {
+      "high_level": "Monetary",
+      "meso_label": "Pay to Progress",
+      "level": "meso",
+      "canonical_definition": "",
+      "definition_citation": "FILL — container meso created by Zhang et al. (Table 2); no source definition exists anywhere. Write a working definition and tag it [NOT VERBATIM]. Low-level definitions in indicators.",
+      "definition_pending": true,
+      "indicators": [
+        "Pay to Skip (Sousa & Oliveira 2023): “Permitting or actively promoting players to spend money to speed up their progress in the game.” Alt (Hadan 2024): “Patterns that allows players players to pay to bypass undesired obstacles.” Alt (Dahlan & Susanty 2022): “Allowing or even encouraging players to spend money to make progress in the game easier and faster.” darkpattern.games: “Spend money to avoid waiting for a timer to expire.”",
+        "Pay to Win (Hadan et al. 2024): “Patterns that grant advantages to players who spend money.” Cf. Zagal et al.’s “Monetized Rivalries” (user-transcribed): “Exploits Player competitiveness; encouraging them to spend money they would not otherwise in order to achieve in-game status such as a high placement on a leader board.” darkpattern.games: “A player can spend real money to purchase something that gives them an advantage in the game.”",
+        "Pay Wall (Sousa & Oliveira 2023): “The game reaches a point where further progress is contingent on making a payment.” Alt (Hadan 2024): “Patterns that make the game unplayable without payment.” — not found in the Zhang et al. corpus (§5.3) darkpattern.games: “The game becomes impossible to continue playing without payment.”",
+        "Narrative Obligation (King et al. 2023 [39], §4, verbatim): “the game’s narrative structure makes the purchase of in-game items a regular or repetitive part of gameplay. Although in-game currency may be earned, this is generally at a slow rate, so players may be forced to spend to keep the game flowing.”"
+      ],
+      "boundary_rules": [],
+      "counterexamples": [],
+      "worked_examples": []
+    },
+    {
+      "high_level": "Monetary",
+      "meso_label": "Intermediate Currency",
+      "level": "meso",
+      "canonical_definition": "where players use real-world money to acquire in-game currency for purchases or trades within the game world",
+      "definition_citation": "Zhang et al. 2025, §4.3 (verbatim in-text characterization — the closest thing to a definition any source offers for this container meso; replace with a [NOT VERBATIM] working definition if you want a full sentence)",
+      "definition_pending": false,
+      "indicators": [
+        "Premium Currency (Sousa & Oliveira 2023): “The true cost of in-game items is concealed by the exchange rate between real-world currency and virtual currency.” Alt (Hadan 2024): “Patterns that disguises item real prices by introducing exchange rates.” — employed by all games in both corpora (§4.4) darkpattern.games: “Exchange rate between real money and in-game currency disguises the real price of items.”",
+        "Polymorphic Currency — NEW, see its own entry below",
+        "Bulk Purchase [23] — Zhang §4.3 (verbatim): “where players can only buy in-game currencies in fixed bulk amounts [39]”; King et al. 2023 §4 (verbatim): “the player may only purchase in-game currency in set pack sizes, with a bulk-buy discount to encourage larger purchases”",
+        "Leftovers [23] — cf. King et al. 2023 §4 (verbatim): “the pricing of items is not aligned to the pack sizes, meaning that players must often purchase more currency than required.” The Zhang et al. authors could not search for this pattern (§4.4) Cf. darkpattern.games “Waste Aversion”: “…having small amounts of left over premium currency.”",
+        "[Corpus stat] Most prevalent Monetary meso: 54 of 380 game DPs (§4.3)"
+      ],
+      "boundary_rules": [],
+      "counterexamples": [],
+      "worked_examples": [
+        {
+          "review_id": "ZHANG2025-§4.2.1",
+          "text": "[Seeded from paper] Combined use of “Premium Currency” and “Bulk Purchase”: “Instead of allowing players to purchase an exact amount of intermediate currency, they are forced to choose from predetermined bulk amounts. The higher the bulk amount, the better the exchange rate between virtual currency and real-world money, thereby manipulating players into spending more.”",
+          "labels_assigned": [
+            "Intermediate Currency",
+            "DP Combo"
+          ]
+        }
+      ]
+    },
+    {
+      "high_level": "Monetary",
+      "meso_label": "Polymorphic Currency",
+      "level": "low",
+      "parent_meso": "Intermediate Currency",
+      "canonical_definition": "“Polymorphic Currency” is the use of multiple, purpose-specific in-game currencies within a single game that can either be purchased with real-world money or earned by in-game activities. The malicious part is that they are non-interchangeable, unlike Premium Currency, designed to obscure the exchange rate between real-world money and in-game currencies. This burdens the player and leads them to eventually spend more.",
+      "definition_citation": "Zhang et al. 2025, §4.1.1, p. 9 (verbatim; novel pattern)",
+      "definition_pending": false,
+      "indicators": [
+        "Multiple currencies each restricted to a purpose (skins vs. common items vs. event items)",
+        "Currencies are non-interchangeable in-game but all purchasable with real money",
+        "Frequent accumulation of unused / leftover currency amounts",
+        "[Corpus stat] 20 of 54 Intermediate Currency DPs; found in all games except puzzle games (§4.3–4.4)"
+      ],
+      "boundary_rules": [
+        {
+          "vs_label": "Premium Currency",
+          "rule": "§4.1.1 (verbatim): “they are non-interchangeable, unlike Premium Currency, designed to obscure the exchange rate between real-world money and in-game currencies.” One convertible premium currency = Premium Currency; several siloed ones = Polymorphic."
+        }
+      ],
+      "counterexamples": [],
+      "worked_examples": [
+        {
+          "review_id": "ZHANG2025-FIG3",
+          "text": "[Seeded from paper, Fig. 3] “‘Lightning Coins’ are designated for purchasing character skins, ‘Gold Coins’ are used to exchange for common in-game items, and ‘Moon Icons’ serve as a special currency for acquiring event-exclusive items, expiring when the event concludes. Importantly, all three currencies can be obtained through real-world money transactions; however, they are not interchangeable within the game, players have to spend separately to get different kinds of coins, which leads to the frequent accumulation of unused and leftover currencies.”",
+          "labels_assigned": [
+            "Intermediate Currency",
+            "Polymorphic Currency"
+          ]
+        }
+      ]
+    },
+    {
+      "high_level": "Monetary",
+      "meso_label": "Deceptive Luxury",
+      "level": "meso",
+      "canonical_definition": "",
+      "definition_citation": "FILL — container meso created by Zhang et al. (Table 2); no source definition exists anywhere. Write a working definition and tag it [NOT VERBATIM]. Found only in the Chinese corpus (§4.4); often combined with the “Rarity Level” enhancer (§5.4). Low-level definitions in indicators.",
+      "definition_pending": true,
+      "indicators": [
+        "Artificial Scarcity (Hadan et al. 2024): “Patterns that use limited-time offers to manipulate player decisions.” darkpattern.games: “Limited time offers with unnecessary urgency.”",
+        "Remedy Consumption — NEW, see its own entry below"
+      ],
+      "boundary_rules": [],
+      "counterexamples": [],
+      "worked_examples": []
+    },
+    {
+      "high_level": "Monetary",
+      "meso_label": "Remedy Consumption",
+      "level": "low",
+      "parent_meso": "Deceptive Luxury",
+      "canonical_definition": "“Remedy Consumption” is a pattern where players are given a second opportunity to correct a missed purchase of some limited, valuable in-game items. This involves intentional artificial scarcity for these in-game items, which compels players to expend additional effort or incur further costs (compared to the first time) to obtain them.",
+      "definition_citation": "Zhang et al. 2025, §4.1.1, p. 9 (verbatim; novel pattern)",
+      "definition_pending": false,
+      "indicators": [
+        "Re-released limited items priced higher or gated behind extra effort than the original offer",
+        "Often occurs in combination with “Artificial Scarcity” (§4.1.1)"
+      ],
+      "boundary_rules": [
+        {
+          "vs_label": "Prior re-release findings [61, 62]",
+          "rule": "§5.2 (verbatim): “In contrast to prior studies highlighting the unfair re-release of in-game products at lower prices [61, 62], ‘Remedy Consumption’ operates differently by making re-released items more expensive and harder to obtain.”"
+        }
+      ],
+      "counterexamples": [
+        {
+          "review_id": "",
+          "text": "[DRAFT — not from paper] Item returns at the same price in a routine rotating shop.",
+          "why_not": "No added cost or effort relative to the first offer; the deceptive element (penalized second chance) is missing."
+        }
+      ],
+      "worked_examples": []
+    },
+    {
+      "high_level": "Monetary",
+      "meso_label": "Recurring Fee",
+      "level": "meso",
+      "canonical_definition": "Patterns that encourages players to maximize playtime to justify their spending.",
+      "definition_citation": "Hadan et al. 2024 [23], pattern summary table (verbatim; user-supplied excerpt). Matches the darkpattern.games one-liner — earlier misalignment concern resolved; the pattern genuinely means play-to-justify-spend, not subscriptions.",
+      "definition_pending": false,
+      "indicators": [
+        "darkpattern.games (site one-liner, verbatim): “Encourages players to play as much as possible to get their money's worth.”"
+      ],
+      "boundary_rules": [],
+      "counterexamples": [],
+      "worked_examples": []
+    },
+    {
+      "high_level": "Monetary",
+      "meso_label": "Gambling",
+      "level": "meso",
+      "canonical_definition": "Using real money to participate in a game that involves an element of luck, with the possibility of receiving a prize as a reward.",
+      "definition_citation": "Sousa & Oliveira 2023 [74] (“Gambling/Loot Boxes”), Table (p. 601) (verbatim)",
+      "definition_pending": false,
+      "indicators": [
+        "Loot Boxes [23, 74] — alt. def (Hadan 2024, “Gambling / Loot Boxes”): “Patterns that encourages players to spend money on chance-based rewards.” darkpattern.games (“Gambling / Loot Boxes”): “Spending real money to play a game of chance for a reward.”",
+        "Risk Conversion — NEW, see its own entry below",
+        "Bundle Bonus — NEW, see its own entry below",
+        "Used in both corpora “to encourage players to spend money on highly powerful, valuable, and rare items” (§4.4, verbatim)"
+      ],
+      "boundary_rules": [],
+      "counterexamples": [],
+      "worked_examples": []
+    },
+    {
+      "high_level": "Monetary",
+      "meso_label": "Risk Conversion",
+      "level": "low",
+      "parent_meso": "Gambling",
+      "canonical_definition": "“Risk Conversion” offers players an alternative way to achieve their goals, such as obtaining an extremely rare item, by spending a substantial amount of money to circumvent the uncertainties inherent in gambling mechanics. However, the actual amount players spend is significantly higher than if they had opted for gambling mechanics. This pattern specifically targets risk-averse players.",
+      "definition_citation": "Zhang et al. 2025, §4.1.1, p. 9 (verbatim; novel pattern)",
+      "definition_pending": false,
+      "indicators": [
+        "Direct-purchase price for a gacha/loot item set far above its expected gambling cost",
+        "Offer framed as removing uncertainty (“guaranteed”, “direct exchange”)"
+      ],
+      "boundary_rules": [
+        {
+          "vs_label": "Loot Boxes",
+          "rule": "[DRAFT — not from paper] Loot Boxes = the chance-based purchase itself; Risk Conversion = the overpriced deterministic bypass sold alongside that chance mechanic. Code both when both are present."
+        }
+      ],
+      "counterexamples": [],
+      "worked_examples": []
+    },
+    {
+      "high_level": "Monetary",
+      "meso_label": "Bundle Bonus",
+      "level": "low",
+      "parent_meso": "Gambling",
+      "canonical_definition": "“Bundle Bonus” encourages players to engage in multiple gambling attempts at once rather than a single one. For instance, if a player undertakes 10 in-game lottery activities at once, they receive an additional opportunity for free, incentivizing bulk gambling.",
+      "definition_citation": "Zhang et al. 2025, §4.1.1, p. 9 (verbatim; novel pattern)",
+      "definition_pending": false,
+      "indicators": [
+        "Multi-pull discounts or free extra pulls (e.g., 10+1)",
+        "Bonus items exclusive to bulk gambling attempts"
+      ],
+      "boundary_rules": [
+        {
+          "vs_label": "Bulk Purchase",
+          "rule": "[DRAFT — not from paper] Bulk Purchase concerns buying currency in fixed lots; Bundle Bonus concerns performing gambling attempts in bulk. The former is an Intermediate Currency low-level, the latter a Gambling low-level."
+        }
+      ],
+      "counterexamples": [],
+      "worked_examples": []
+    },
+    {
+      "high_level": "Monetary",
+      "meso_label": "Power Creep",
+      "level": "meso",
+      "canonical_definition": "Patterns that diminishing the value of purchased items over time to drive new purchases.",
+      "definition_citation": "Hadan et al. 2024 [23], pattern summary table (verbatim, incl. original grammar; user-supplied excerpt)",
+      "definition_pending": false,
+      "indicators": [
+        "darkpattern.games (site one-liner, verbatim): “A permanently purchased item in the game becomes less valuable over time.”"
+      ],
+      "boundary_rules": [],
+      "counterexamples": [],
+      "worked_examples": []
+    },
+    {
+      "high_level": "Monetary",
+      "meso_label": "Waste Aversion",
+      "level": "meso",
+      "canonical_definition": "Patterns set small differences between in-game currency and item costs, prompting additional currency purchases.",
+      "definition_citation": "Hadan et al. 2024 [23], pattern summary table (verbatim; user-supplied excerpt)",
+      "definition_pending": false,
+      "indicators": [
+        "darkpattern.games (site one-liner, verbatim): “Capped inventory forces you to destroy items or upgrade inventory. Also, having small amounts of left over premium currency.”"
+      ],
+      "boundary_rules": [],
+      "counterexamples": [],
+      "worked_examples": []
+    },
+    {
+      "high_level": "Monetary",
+      "meso_label": "Easy to Purchase",
+      "level": "meso",
+      "canonical_definition": "",
+      "definition_citation": "FILL — container meso created by Zhang et al. (Table 2); no source definition exists anywhere. Write a working definition and tag it [NOT VERBATIM]. Low-level definitions in indicators.",
+      "definition_pending": true,
+      "indicators": [
+        "Anchoring Tricks (Hadan et al. 2024): “Patterns that place inexpensive items next to expensive ones to create the illusion of affordability.” — identified in both corpora (§4.4) darkpattern.games: “Placing a cheap item next to an expensive item to make it look more affordable.”",
+        "Accidental Purchases (Hadan et al. 2024): “Patterns that use visual design or default options to deceive players into making unintended purchases.” darkpattern.games: “Making it easy to accidentally spend money with no confirmation or ability to undo or refund the action.”",
+        "Low Barrier [39] — cf. King et al. 2023 “Default To Purchase” (§4, verbatim): “instances where the player was directed to purchase in-game items or in-game currency as a default action; if they do not wish to purchase, they must opt-out.”",
+        "Prompted to Buy [39] — cf. King et al. 2023 (§4, verbatim): “if the player attempts to buy an item with insufficient credit, the user interface displays a prompt for the user to purchase additional in-game currency with real money.”"
+      ],
+      "boundary_rules": [],
+      "counterexamples": [],
+      "worked_examples": []
+    },
+    {
+      "high_level": "Monetary",
+      "meso_label": "UI Misdirection",
+      "level": "meso",
+      "canonical_definition": "The user interface (i.e., not the NPC) contains elements designed to purposefully focus attention on specific options, or away from opportunities to opt-out.",
+      "definition_citation": "King et al. 2023 [39], §4 “UI Misdirection” (verbatim)",
+      "definition_pending": false,
+      "indicators": [
+        "Exciting UI Effect [39] — from the same King et al. passage: “the use of colors and animation to direct the player’s attention to selected UI elements (such as the ‘buy in-game currency’ button)”; “[the buy button] was attracting more attention than the rest of the screen”; “a pleasing sound effect — described as ‘an angelic choir’ and ‘a heavenly sound’ — to accompany the appearance of the in-game currency storefront.”"
+      ],
+      "boundary_rules": [],
+      "counterexamples": [],
+      "worked_examples": []
+    },
+    {
+      "high_level": "Monetary",
+      "meso_label": "Never-Ending Lure",
+      "level": "meso",
+      "canonical_definition": "The “Never-Ending Lure” pattern is designed to convert non-paying players into paying ones (“First Charge Discount”) and encourage consistent long-term payments (“Accumulating Rewards”).",
+      "definition_citation": "Zhang et al. 2025, §5.2, p. 17 (verbatim; novel meso-level pattern). Unique to the Chinese corpus (§4.4); both examples originated from the same developer (§5.3.2).",
+      "definition_pending": false,
+      "indicators": [
+        "First Charge Discount — NEW, see its own entry below",
+        "Accumulating Rewards — NEW, see its own entry below"
+      ],
+      "boundary_rules": [],
+      "counterexamples": [],
+      "worked_examples": []
+    },
+    {
+      "high_level": "Monetary",
+      "meso_label": "First Charge Discount",
+      "level": "low",
+      "parent_meso": "Never-Ending Lure",
+      "canonical_definition": "“First Charge Discount” happens when in-game items or currencies are offered at significantly reduced prices for the player’s first purchase, and then revert to the original higher price for subsequent purchases. This pattern distorts the player’s perception of in-game items’ true value. Unlike Premium Currency, it focuses on a one-time-only purchase to mislead players into feeling that they have taken advantage of the purchase.",
+      "definition_citation": "Zhang et al. 2025, §4.1.1, p. 9 (verbatim; novel pattern)",
+      "definition_pending": false,
+      "indicators": [
+        "Steeply discounted first top-up / first purchase offer",
+        "Price reverts to the higher original for all subsequent purchases"
+      ],
+      "boundary_rules": [
+        {
+          "vs_label": "Premium Currency",
+          "rule": "§4.1.1 (verbatim): “Unlike Premium Currency, it focuses on a one-time-only purchase to mislead players into feeling that they have taken advantage of the purchase.”"
+        }
+      ],
+      "counterexamples": [],
+      "worked_examples": []
+    },
+    {
+      "high_level": "Monetary",
+      "meso_label": "Accumulating Rewards",
+      "level": "low",
+      "parent_meso": "Never-Ending Lure",
+      "canonical_definition": "“Accumulating Rewards” involves granting privileges, special offers, and rewards to players who spend above certain monetary thresholds. Unlike Pay to Win, where players directly spend money to gain in-game advantages, this pattern does not emphasize helping players progress faster. Instead, it offers players a special, privileged, and extraordinary status that is visible to other players.",
+      "definition_citation": "Zhang et al. 2025, §4.1.1, p. 9 (verbatim; novel pattern)",
+      "definition_pending": false,
+      "indicators": [
+        "VIP levels or spend-tier statuses accrued from total spending",
+        "Status-gated characters / aesthetics unlockable only through continued spending",
+        "§5.2 (verbatim): “players cannot directly purchase certain items, but they need a sufficient purchase history to be qualified to purchase them.”"
+      ],
+      "boundary_rules": [
+        {
+          "vs_label": "Pay to Win",
+          "rule": "§4.1.1 (verbatim): “Unlike Pay to Win, where players directly spend money to gain in-game advantages, this pattern does not emphasize helping players progress faster.”"
+        }
+      ],
+      "counterexamples": [
+        {
+          "review_id": "",
+          "text": "[DRAFT — not from paper] Buying a stat-boosting item that immediately strengthens the player.",
+          "why_not": "Direct spend → direct advantage is Pay to Win; Accumulating Rewards requires threshold-based status accrual visible to other players."
+        }
+      ],
+      "worked_examples": [
+        {
+          "review_id": "ZHANG2025-§4.1.1",
+          "text": "[Seeded from paper] “we encountered a game that encouraged players to spend money, accumulating towards a certain VIP level. Instead of directly paying for higher VIP levels, this system tracks all in-game spending behaviours—including purchases of premium currency, battle passes and other items—gradually accumulating their value to determine the player’s VIP level. Different VIP levels unlocked different powerful characters and unique aesthetic items that could only be accessed through continued spending.”",
+          "labels_assigned": [
+            "Never-Ending Lure",
+            "Accumulating Rewards"
+          ]
+        }
+      ]
+    },
+    {
+      "high_level": "Social",
+      "meso_label": "Forced Fellowship",
+      "level": "meso",
+      "canonical_definition": "",
+      "definition_citation": "FILL — meso named in Zhang et al. 2025 Table 2 (uncited); darkpattern.games has no “Forced Fellowship” page (its Social one-liners are all low-levels). Write a working definition and tag it [NOT VERBATIM]. Low-level definitions in indicators.",
+      "definition_pending": true,
+      "indicators": [
+        "Social Pyramid Scheme (Sousa & Oliveira 2023): “Players are incentivized to invite friends to join the game and are encouraged to continue spreading the invitation to others in their social circle.” Alt (Hadan 2024): “Patterns that reward players for inviting friends.” Alt (Dahlan & Susanty 2022): “Encouraging or sometimes forcing players to invite people to join them in the game to gain in-game incentives or make progress.” darkpattern.games: “You get a bonus for inviting your friends and then they have to invite their friends.”",
+        "Social Obligation / Guilds (Sousa & Oliveira 2023): “Due to a sense of responsibility towards one's friends, players may feel compelled to play the game even when they would prefer not to.” Alt (Hadan 2024): “Patterns that create a sense of obligation to avoid letting down friends in the game.” darkpattern.games: “To avoid letting down your friends, you are obligated to play when you don't want to.”"
+      ],
+      "boundary_rules": [],
+      "counterexamples": [],
+      "worked_examples": []
+    },
+    {
+      "high_level": "Social",
+      "meso_label": "Friend Spam / Impersonation",
+      "level": "meso",
+      "canonical_definition": "The game employs unsolicited messaging to a player's contact list or social media account.",
+      "definition_citation": "Sousa & Oliveira 2023 [74], Table (p. 601) (verbatim). Alt (Hadan 2024): “Patterns that send spam to players’ contact lists or social media accounts.”",
+      "definition_pending": false,
+      "indicators": [
+        "Game requests or uses access to the player’s contact list / social graph",
+        "Only appeared in the Chinese corpus; possibly tied to WeChat log-ins (§5.3.2)",
+        "Impersonation sense (Dahlan & Susanty 2022): “They are showing representations (impersonations) of people related to the players, to make the game more relatable, leading to a negative impact on their social relations.”",
+        "darkpattern.games (site one-liner, verbatim): “The game sends spam to your contact list or social media account.”"
+      ],
+      "boundary_rules": [],
+      "counterexamples": [],
+      "worked_examples": []
+    },
+    {
+      "high_level": "Social",
+      "meso_label": "Reciprocity",
+      "level": "meso",
+      "canonical_definition": "Patterns that instill a sense of obligation to reciprocate by donating resources to other players.",
+      "definition_citation": "Hadan et al. 2024 [23], pattern summary table (verbatim; user-supplied excerpt)",
+      "definition_pending": false,
+      "indicators": [
+        "darkpattern.games (site one-liner, verbatim): “Feeling obligated to return a favor, share resources, trade an item, etc.”"
+      ],
+      "boundary_rules": [],
+      "counterexamples": [],
+      "worked_examples": []
+    },
+    {
+      "high_level": "Social",
+      "meso_label": "Encourages Anti-Social Behavior",
+      "level": "meso",
+      "canonical_definition": "Patterns that incentivize players to engage in dishonest or harmful actions to gain an advantage.",
+      "definition_citation": "Hadan et al. 2024 [23], pattern summary table (verbatim; user-supplied excerpt)",
+      "definition_pending": false,
+      "indicators": [
+        "darkpattern.games (site one-liner, verbatim): “The game incentivizes players to lie, cheat, or backstab other players to get ahead.”"
+      ],
+      "boundary_rules": [],
+      "counterexamples": [],
+      "worked_examples": []
+    },
+    {
+      "high_level": "Social",
+      "meso_label": "Fear of Missing Out (FOMO)",
+      "level": "meso",
+      "canonical_definition": "Players are pressured to continue playing the game by the fear of missing out on rewards or falling behind other players.",
+      "definition_citation": "Sousa & Oliveira 2023 [74] (“Fear of Missing Out (FoMO)”), Table (p. 601) (verbatim). Alt (Hadan 2024): “Patterns that induce anxiety that players will miss exciting or important events if they stop playing.”",
+      "definition_pending": false,
+      "indicators": [
+        "Zhang et al. §4.3 (verbatim): “the game deliberately creates a sense of urgency by implying that pausing or quitting the game would lead to missed rewards or an inability to keep up with other players [74].”",
+        "Urgency framing around quitting / pausing (missed rewards, falling behind)",
+        "Common in the Japanese corpus; rare in the Chinese corpus outside battle passes (§4.4). FOMO is strongly correlated with collectivism from a marketing perspective [37] (§5.3.2)",
+        "darkpattern.games (“Fear of Missing Out”, verbatim): “If you stop playing you'll miss out on something or be left behind and unable to catch up.”"
+      ],
+      "boundary_rules": [
+        {
+          "vs_label": "Playing by Appointment (Evil Battle Pass)",
+          "rule": "§4.4 (verbatim): “Although there is some overlap between ‘Evil Battle Pass’ and ‘FOMO’ patterns—battle passes are seasonal events with exclusive rewards like seasonal skins…” Code Evil Battle Pass under Playing by Appointment; code FOMO for urgency mechanics beyond battle passes."
+        }
+      ],
+      "counterexamples": [],
+      "worked_examples": []
+    },
+    {
+      "high_level": "Social",
+      "meso_label": "Competition",
+      "level": "meso",
+      "canonical_definition": "Patterns that make players against each other in competition.",
+      "definition_citation": "Hadan et al. 2024 [23], pattern summary table (verbatim, incl. original grammar; user-supplied excerpt). Zagal et al. [87] first-source definition still worth fetching.",
+      "definition_pending": false,
+      "indicators": [
+        "[Corpus stat] 2 of 29 Social DPs (§4.3)",
+        "darkpattern.games (site one-liner, verbatim): “The game makes you compete against other players.”"
+      ],
+      "boundary_rules": [],
+      "counterexamples": [],
+      "worked_examples": []
+    },
+    {
+      "high_level": "Psychological",
+      "meso_label": "Easy to Get, Hard to Lose",
+      "level": "meso",
+      "canonical_definition": "",
+      "definition_citation": "FILL — no formal source definition for this meso. Option A: write a working definition tagged [NOT VERBATIM]. Option B: adopt Zhang in-text (§5.2, verbatim): “‘Easy to Get, Hard to Lose’ parallels the ‘Roach Motel’ pattern. Engaging games are easy to enter but difficult to leave, reinforcing psychological attachment.” Low-level definitions in indicators.",
+      "definition_pending": true,
+      "indicators": [
+        "Invested (Endowed) Value (Sousa & Oliveira 2023): “Having invested significant time and money into advancing one's status in the game, it can be challenging to abandon those gains.” Alt (Hadan 2024): “Patterns that make it hard for players to discard investments in time and money.” — 11 of 18 instances (§4.3) darkpattern.games (“Invested / Endowed Value”): “Having already spent time and money to improve your status in the game, it's difficult to throw it away.”",
+        "Endowed Progress (Hadan et al. 2024, “Badges / Endowed Progress”): “Patterns that discourage players from abandoning partially completed goals.” — 2 instances; unique to the Chinese corpus (§4.4) darkpattern.games (“Badges / Endowed Progress”): “Reluctancy to abandon a partially completed goal, even one forced upon the player.”",
+        "Try Now and Pay Later combos counted here — 5 instances (§4.3)"
+      ],
+      "boundary_rules": [],
+      "counterexamples": [],
+      "worked_examples": []
+    },
+    {
+      "high_level": "Psychological",
+      "meso_label": "Complete the Collection",
+      "level": "meso",
+      "canonical_definition": "The compulsion to acquire all the items, achievements, or hidden features in a game.",
+      "definition_citation": "Sousa & Oliveira 2023 [74], Table (p. 601) (verbatim). Alt (Hadan 2024): “Patterns that capitalize on players’ strong desire to achieve in-game collections and achievements.” Zhang in-text retained in indicators.",
+      "definition_pending": false,
+      "indicators": [
+        "Collection screens emphasizing unowned items over achieved ones (§5.3: “these DPs emphasize the items that await players to unlock”)",
+        "Often enhanced by the “Functional Value” enhancer (§5.4)",
+        "[Corpus stat] 25 of 104 Psychological DPs (§4.3)",
+        "Zhang et al. §4.3 (verbatim): “drives players to feel compelled to acquire all in-game items, achievements, or myths (secret achievements for the player to discover).”",
+        "darkpattern.games (site one-liner, verbatim): “The urge to collect all the items, achievements or secrets in a game.”"
+      ],
+      "boundary_rules": [],
+      "counterexamples": [],
+      "worked_examples": []
+    },
+    {
+      "high_level": "Psychological",
+      "meso_label": "Illusion of Control",
+      "level": "meso",
+      "canonical_definition": "Patterns that deceive players about their skill level to encourage more gameplay.",
+      "definition_citation": "Hadan et al. 2024 [23], pattern summary table (verbatim; user-supplied excerpt). Unique to the Chinese corpus (§4.4).",
+      "definition_pending": false,
+      "indicators": [
+        "darkpattern.games (site one-liner, verbatim): “The game cheats or hides information to make you think you're better than you actually are.”"
+      ],
+      "boundary_rules": [],
+      "counterexamples": [],
+      "worked_examples": []
+    },
+    {
+      "high_level": "Psychological",
+      "meso_label": "Aesthetic Manipulation",
+      "level": "meso",
+      "canonical_definition": "The use of deceitful questions or manipulation of emotions and subconscious desires, mainly based on aesthetical game elements.",
+      "definition_citation": "Sousa & Oliveira 2023 [74] (“Aesthetic Manipulations”), Table (verbatim). Alt (Hadan 2024): “Patterns that subtly influence players’ aesthetic preferences through text, graphics, or sounds.”",
+      "definition_pending": false,
+      "indicators": [
+        "Visually appealing content used to influence cognition/emotion (§5.3)",
+        "[Corpus stat] Predominant Psychological pattern in both corpora; 27 of 104 Psychological DPs (§4.3–4.4)",
+        "Zhang et al. §4.3 (verbatim): “involves using misleading questions or exploiting emotional and subconscious desires to influence player behaviour.”",
+        "darkpattern.games (“Aesthetic Manipulations”, verbatim): “Trick questions or toying with emotions or our subconscious desires.”"
+      ],
+      "boundary_rules": [
+        {
+          "vs_label": "Cuteness/Kawaii (Enhancer)",
+          "rule": "Per §4.2.2, cuteness in the corpus was mostly NOT a DP itself but an enhancer deployed alongside DPs like Aesthetic Manipulation. Code Aesthetic Manipulation only when the aesthetic itself misleads; code Kawaii as an enhancer when it amplifies another DP."
+        }
+      ],
+      "counterexamples": [],
+      "worked_examples": []
+    },
+    {
+      "high_level": "Psychological",
+      "meso_label": "Optimism and Frequency Biases",
+      "level": "meso",
+      "canonical_definition": "Patterns that exploit cognitive biases and clustering illusions to overestimate event frequencies (e.g., winning streaks).",
+      "definition_citation": "Hadan et al. 2024 [23], pattern summary table (verbatim; user-supplied excerpt)",
+      "definition_pending": false,
+      "indicators": [
+        "Frequently enhanced by “The Power of NPCs” demonstrating gambling with free trials (§4.2.2)",
+        "darkpattern.games (site one-liner, verbatim): “Overestimating the frequency of something because we've seen it recently or memorably.”"
+      ],
+      "boundary_rules": [],
+      "counterexamples": [],
+      "worked_examples": []
+    },
+    {
+      "high_level": "Psychological",
+      "meso_label": "Reward Mania",
+      "level": "meso",
+      "canonical_definition": "We introduced the meso-level pattern “Reward Mania,” which encompasses two newly discovered low-level patterns: “Overloading” and “Sycophant,” as well as the previously recognized “Variable Rewards” [74].",
+      "definition_citation": "Zhang et al. 2025, §4.1.2, p. 9 (verbatim; novel meso-level pattern)",
+      "definition_pending": false,
+      "indicators": [
+        "Overloading — NEW, see its own entry below",
+        "Sycophant — NEW, see its own entry below",
+        "Variable Rewards (Sousa & Oliveira 2023): “Irregular or unexpected rewards have a greater potential to generate addiction compared to rewards provided on a predictable schedule.” Alt (Hadan 2024): “Patterns that offer unpredictable or random rewards to enhance game addiction.” — 5 instances; unique to the Chinese corpus (§4.3–4.4) darkpattern.games: “Unpredictable or random rewards are more addictive than a predictable schedule.”",
+        "[Corpus stat] 26 of 104 Psychological DPs; prevalence in the Chinese corpus may relate to WeChat marketing (§5.3.2)"
+      ],
+      "boundary_rules": [],
+      "counterexamples": [],
+      "worked_examples": []
+    },
+    {
+      "high_level": "Psychological",
+      "meso_label": "Overloading",
+      "level": "low",
+      "parent_meso": "Reward Mania",
+      "canonical_definition": "“Overloading” occurs in in-game mechanisms, such as reward systems or gambling, that are designed to be overly complex, thereby enticing players to invest significant effort in understanding and engaging with them.",
+      "definition_citation": "Zhang et al. 2025, §4.1.2, p. 9 (verbatim; novel pattern)",
+      "definition_pending": false,
+      "indicators": [
+        "Reward / discount systems requiring significant cognitive effort to optimize",
+        "Game-imposed randomness and constraints that make optimal outcomes “nearly impossible” (§5.2)",
+        "Unique to the Chinese corpus (§4.4)"
+      ],
+      "boundary_rules": [
+        {
+          "vs_label": "Sycophant",
+          "rule": "§5.2 (verbatim): “‘Overloading’ functions more as deception (hidden) rather than manipulation (forcing action). Conversely, ‘Sycophant’ incorporates manipulative tactics, using stimuli to persuade players to take additional actions.”"
+        }
+      ],
+      "counterexamples": [],
+      "worked_examples": [
+        {
+          "review_id": "ZHANG2025-FIG4",
+          "text": "[Seeded from paper, Fig. 4] Discounted skin bundle: “The interface features five options, one set to a default skin; players can select four additional skins under certain constraints. … Players must collect ‘crown coins’ to unlock discounts. Each crown coin applies a random discount to one of the five options, but there is a maximum discount. Crown coins can be earned by completing daily tasks or by direct purchase. Purchasing all five skins is incentivized, as it grants an extra skin loot. This process demands significant cognitive effort from players, particularly if they aim to maximize the discount on the highest rarity skin while securing the best overall discount.”",
+          "labels_assigned": [
+            "Reward Mania",
+            "Overloading"
+          ]
+        }
+      ]
+    },
+    {
+      "high_level": "Psychological",
+      "meso_label": "Sycophant",
+      "level": "low",
+      "parent_meso": "Reward Mania",
+      "canonical_definition": "“Sycophant” refers to the use of rewards within the game to encourage players to allocate additional attention and resources to social activities outside of the game, such as following the game’s social media accounts or participating in related online communities.",
+      "definition_citation": "Zhang et al. 2025, §4.1.2, pp. 9–10 (verbatim; novel pattern)",
+      "definition_pending": false,
+      "indicators": [
+        "In-game rewards for following official social media accounts",
+        "Redemption codes distributed through out-of-game channels",
+        "§5.2: mirrors predatory advertising — “rewards are used to create commercial ties with players, making them believe their actions are voluntary”",
+        "[Corpus stat] 15 of 104 Psychological DPs (§4.3)"
+      ],
+      "boundary_rules": [
+        {
+          "vs_label": "Overloading",
+          "rule": "§5.2 (verbatim): Sycophant “incorporates manipulative tactics, using stimuli to persuade players to take additional actions,” whereas Overloading is hidden deception via complexity."
+        }
+      ],
+      "counterexamples": [],
+      "worked_examples": [
+        {
+          "review_id": "ZHANG2025-FIG5",
+          "text": "[Seeded from paper, Fig. 5] Redemption Center: “players are encouraged to follow the game developers’ or the game’s social media accounts in the hope of obtaining a redemption code, which can be exchanged for in-game rewards.” The kawaii mascot on the same screen acts as a DP Enhancer.",
+          "labels_assigned": [
+            "Reward Mania",
+            "Sycophant",
+            "Cuteness/Kawaii"
+          ]
+        }
+      ]
+    },
+    {
+      "high_level": "Technical",
+      "meso_label": "Fragmented Downloads",
+      "level": "meso",
+      "canonical_definition": "“Fragmented Downloads” are characterized by designs that obscure the true storage requirements of the game until the game starts. This is deceptive because it targets mobile users who are cautious about their device’s storage capacity and foments a space monopoly by the app against competitors.",
+      "definition_citation": "Zhang et al. 2025, §4.1.3, p. 11 (verbatim; novel meso-level pattern under the novel Technical class)",
+      "definition_pending": false,
+      "indicators": [
+        "Small advertised App Store size vs. large mandatory in-game download",
+        "“Download wall” blocking progress past the tutorial (§4.4)",
+        "Missing animations / assets with in-place “downloading” prompts when packages are declined",
+        "[Corpus stat] Observed in half of the 18 games, in both corpora (§4.4)"
+      ],
+      "boundary_rules": [],
+      "counterexamples": [
+        {
+          "review_id": "",
+          "text": "[DRAFT — not from paper] Optional HD texture pack with size clearly disclosed before install, gameplay fully functional without it.",
+          "why_not": "Storage requirements are not obscured and progress is not gated; no deception about technical aspects."
+        }
+      ],
+      "worked_examples": [
+        {
+          "review_id": "ZHANG2025-FIG6",
+          "text": "[Seeded from paper, Fig. 6] “allows players to choose whether to download the main content while playing the tutorial session. Although declining is possible, the download prompt repeatedly appears during the tutorial. If they do not download the content, they are unable to progress to the main portion of the game.”",
+          "labels_assigned": [
+            "Fragmented Downloads"
+          ]
+        },
+        {
+          "review_id": "ZHANG2025-FIG7",
+          "text": "[Seeded from paper, Fig. 7] “if players choose not to download the additional packages, certain animations—like those for character selection before a match or viewing the details of skins (cosmetic modifications)—will not appear on the screen. Instead, a ‘downloading’ button will prompt players to download the missing content.”",
+          "labels_assigned": [
+            "Fragmented Downloads"
+          ]
+        }
+      ]
+    },
+    {
+      "high_level": "DP Combos",
+      "meso_label": "Trapping Starter Kits",
+      "level": "meso",
+      "canonical_definition": "…we identified “Trapping Starter Kits” Combo that combined the patterns “Playing by Appointment,” “Daily Rewards” and “Grinding.” This DP Combo particularly entices new players to log in and play continuously for the first few days after creating new accounts. These designs often use in-game rewards as incentives, creating a situation where new players lose the opportunity to obtain these rewards if they fail to log in and complete tasks within the specified timeframe.",
+      "definition_citation": "Zhang et al. 2025, §4.2.1, p. 13 (verbatim; novel combo)",
+      "definition_pending": false,
+      "indicators": [
+        "New-account 7-day login event with escalating rewards",
+        "Rewards forfeited if daily tasks are missed within the launch window",
+        "[Corpus stat] 9 instances, counted under Playing by Appointment (§4.3)"
+      ],
+      "boundary_rules": [
+        {
+          "vs_label": "Daily Rewards (alone)",
+          "rule": "[DRAFT — not from paper] Ordinary daily log-in calendars = Daily Rewards. Code the combo only when the design targets new accounts with a time-boxed forfeiture structure combining Playing by Appointment + Daily Rewards + Grinding."
+        }
+      ],
+      "counterexamples": [],
+      "worked_examples": []
+    },
+    {
+      "high_level": "DP Combos",
+      "meso_label": "Try Now and Pay Later",
+      "level": "meso",
+      "canonical_definition": "…this Combo combined “Grinding,” “Pay to Win,” “Pay Wall,” and “Easy to Get, Hard to Lose.” This DP Combo offers players the chance to initially try premium experiences, powerful items, or privileges, with payment required at a later stage.",
+      "definition_citation": "Zhang et al. 2025, §4.2.1, p. 13 (verbatim; novel combo). See also §5.2: “which required players to invest either money or time as effort, promising the full experience but taking it away from the player if they did not pay.”",
+      "definition_pending": false,
+      "indicators": [
+        "Free trial of premium characters / privileges during onboarding",
+        "Permanent acquisition requires money or a large additional time investment",
+        "[Corpus stat] 5 instances, counted under Easy to Get, Hard to Lose (§4.3)"
+      ],
+      "boundary_rules": [],
+      "counterexamples": [],
+      "worked_examples": [
+        {
+          "review_id": "ZHANG2025-§4.2.1",
+          "text": "[Seeded from paper] “a game might provide a trial experience with powerful characters, allowing players to complete tasks easily and quickly. However, if players wish to permanently acquire these characters, they must either spend money or complete numerous tasks, requiring significant additional time.”",
+          "labels_assigned": [
+            "Try Now and Pay Later",
+            "Easy to Get, Hard to Lose"
+          ]
+        }
+      ]
+    },
+    {
+      "high_level": "DP Enhancers",
+      "meso_label": "Cuteness/Kawaii",
+      "level": "meso",
+      "canonical_definition": "“Cuteness/Kawaii” (Figure 5) acts as a DP Enhancer when used in conjunction with the “Sycophant” low-level Psychological pattern. Kawaii characters were employed to persuade players to follow the game’s official social media account for additional rewards.",
+      "definition_citation": "Zhang et al. 2025, §4.2.2, p. 14 (verbatim; novel enhancer). Background: cuteness listed as a low-level pattern under “Emotional or Sensory Manipulation” in [21, 44, 50], but observed here mostly as a non-DP enhancer.",
+      "definition_pending": false,
+      "indicators": [
+        "Kawaii mascots fronting purchase, follow, or reward prompts",
+        "§5.4: kawaii “reducing player resistance to participating in out-of-game activities”"
+      ],
+      "boundary_rules": [
+        {
+          "vs_label": "Aesthetic Manipulation",
+          "rule": "Per §4.2.2 (verbatim): “most such designs were not instances of DPs, but deployed alongside other DPs like ‘Aesthetic Manipulation’ to enhance their effects.” Enhancer = amplifies a co-present DP; Aesthetic Manipulation = the aesthetic itself misleads."
+        }
+      ],
+      "counterexamples": [
+        {
+          "review_id": "ZHANG2025-§4.2.2",
+          "text": "[Seeded from paper] Kawaii item/character design appearing with no co-present DP.",
+          "why_not": "“While a neutral concept…” — cuteness alone is neutral; per rule R4, code the enhancer only alongside at least one DP label."
+        }
+      ],
+      "worked_examples": [
+        {
+          "review_id": "ZHANG2025-FIG5",
+          "text": "[Seeded from paper, Fig. 5] Kawaii mascot on the Redemption Center screen amplifying the Sycophant pattern.",
+          "labels_assigned": [
+            "Cuteness/Kawaii",
+            "Sycophant"
+          ]
+        }
+      ]
+    },
+    {
+      "high_level": "DP Enhancers",
+      "meso_label": "The Power of NPCs",
+      "level": "meso",
+      "canonical_definition": "“The Power of NPCs” occurs when neutral non-player characters (NPCs) are deployed for deceptive purposes.",
+      "definition_citation": "Zhang et al. 2025, §4.2.2, p. 13 (verbatim; novel enhancer). See also §5.4: “NPCs can enhance player engagement in gambling situations, such as loot boxes and lotteries, by encouraging the player to seek more powerful items or expressing pity when they fail.”",
+      "definition_pending": false,
+      "indicators": [
+        "Popular NPC leading tutorials into gambling mechanics (free-trial lottery demos)",
+        "NPC encouragement or pity responses around loot boxes / lotteries (§5.4)"
+      ],
+      "boundary_rules": [],
+      "counterexamples": [],
+      "worked_examples": [
+        {
+          "review_id": "ZHANG2025-§4.2.2",
+          "text": "[Seeded from paper] “we encountered a tutorial session led by a popular NPC, who guided us on how to play, explained interface functions, and demonstrated how to engage in gambling mechanisms, like obtaining powerful characters through a lottery system, with a free trial. This interaction significantly enhanced ‘Optimism and Frequency Biases,’ leading us to overestimate the likelihood of certain events or occurrences due to the recent or memorable exposure.”",
+          "labels_assigned": [
+            "The Power of NPCs",
+            "Optimism and Frequency Biases",
+            "Gambling"
+          ]
+        }
+      ]
+    },
+    {
+      "high_level": "DP Enhancers",
+      "meso_label": "Rarity Level",
+      "level": "meso",
+      "canonical_definition": "“Rarity Level” reflects how in-game items are often designed with varying levels of rarity. For instance, in Chinese simulation games, character skins are ranked from B rank to S++ rank, with higher ranks featuring more intricate designs and commanding higher prices, as we observed. Rarity levels were often combined with the “Deceptive Luxury” meso-level Monetary pattern, where the higher the rarity, the scarcer and more desirable the item becomes.",
+      "definition_citation": "Zhang et al. 2025, §4.2.2, p. 14 (verbatim; novel enhancer)",
+      "definition_pending": false,
+      "indicators": [
+        "Tiered rarity ranks (B → S++) with price scaling by rarity",
+        "§5.4: rarity combined with Deceptive Luxury “inflates the price of items to unreasonable levels”"
+      ],
+      "boundary_rules": [],
+      "counterexamples": [],
+      "worked_examples": []
+    },
+    {
+      "high_level": "DP Enhancers",
+      "meso_label": "Functional Value",
+      "level": "meso",
+      "canonical_definition": "Players rely on functional values such as attack (ATK), defence (DEF), and health (HP) to determine their ability to overcome dungeons, monsters, and other players, making these statistical advantages crucial. We identified the use of functional value as a means to enhance the “Complete the Collection” meso-level Psychological pattern. Specifically, the more characters players collect—often through direct purchases or gambling mechanisms like loot boxes—the greater the statistical bonuses they receive, such as increased ATK and HP.",
+      "definition_citation": "Zhang et al. 2025, §4.2.2, p. 14 (verbatim; novel enhancer)",
+      "definition_pending": false,
+      "indicators": [
+        "Collection-size bonuses to ATK / DEF / HP",
+        "Stat bonuses tied to characters obtainable mainly via purchase or gambling",
+        "§5.4: “leading to unfair advantages between paying and non-paying players”"
+      ],
+      "boundary_rules": [
+        {
+          "vs_label": "Pay to Win",
+          "rule": "[DRAFT — not from paper] Functional Value is an enhancer amplifying Complete the Collection (stats reward collection breadth); Pay to Win is the DP where spending directly buys advantage. Code both when a purchase directly grants stats AND collection bonuses apply."
+        }
+      ],
+      "counterexamples": [],
+      "worked_examples": []
+    }
+  ]
+};
+
+</script>
+<script>
+/* ==========================================================================
+   DP Codebook Editor — vanilla JS, offline, no dependencies.
+   Data lives only in the JSON you load/save.
+   ========================================================================== */
+(function () {
+  'use strict';
+
+  var data = JSON.parse(JSON.stringify(SEED));
+  var dirty = false;
+  var query = '';
+  var sideTab = 'toc';
+  var VERBATIM_CONFIRM = 'This field is transcribed verbatim from the cited source \u2014 are you sure?';
+
+  /* ---------- tiny DOM helpers ---------- */
+  function $(s) { return document.querySelector(s); }
+  function el(tag, cls, txt) {
+    var e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (txt !== undefined && txt !== null) e.textContent = txt;
+    return e;
+  }
+  function slugify(s) {
+    return String(s).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+  }
+  function cardId(lb) { return 'label-' + slugify(lb.high_level) + '-' + slugify(lb.meso_label); }
+  function today() { return new Date().toISOString().slice(0, 10); }
+  function clone(v) { return JSON.parse(JSON.stringify(v)); }
+
+  function markDirty() { dirty = true; updateHeader(); }
+  function updateHeader() {
+    $('#versionBadge').textContent = 'v' + data.version;
+    $('#dirtyDot').classList.toggle('on', dirty);
+    $('#dirtyDot').title = dirty ? 'Unsaved changes \u2014 use Save JSON' : 'All changes saved';
+  }
+
+  /* ---------- inline editing ---------- */
+  function editable(target, key, opts) {
+    opts = opts || {};
+    var wrap = el(opts.block === false ? 'span' : 'div',
+      'editable' + (opts.className ? ' ' + opts.className : ''));
+    var val = target[key] == null ? '' : String(target[key]);
+
+    if (opts.locked) {
+      var seal = el('span', 'seal', 'VERBATIM \u00b7 cited source');
+      seal.title = 'Locked: edits require confirmation';
+      wrap.appendChild(seal);
+    }
+    var textNode = el(opts.block === false ? 'span' : 'div', 'ed-text');
+    textNode.textContent = val || (opts.placeholder || '\u2014 click to add \u2014');
+    if (!val) wrap.classList.add('empty');
+    wrap.appendChild(textNode);
+    wrap.title = 'Click to edit';
+
+    wrap.addEventListener('click', function (ev) {
+      if (wrap.querySelector('textarea, input')) return;
+      ev.stopPropagation();
+      if (opts.locked && String(target[key] == null ? '' : target[key]).trim() && !window.confirm(VERBATIM_CONFIRM)) return;
+      startEdit();
+    });
+
+    function startEdit() {
+      var multiline = opts.multiline !== false;
+      var box = multiline ? el('textarea') : el('input');
+      box.value = target[key] == null ? '' : String(target[key]);
+      textNode.replaceWith(box);
+      if (multiline) {
+        box.rows = Math.min(14, Math.max(2, box.value.split('\n').length + Math.ceil(box.value.length / 90)));
+      }
+      box.focus();
+      var cancelled = false;
+      box.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') { cancelled = true; e.preventDefault(); box.blur(); }
+        else if (e.key === 'Enter' && (!multiline || e.ctrlKey || e.metaKey)) { e.preventDefault(); box.blur(); }
+      });
+      box.addEventListener('blur', function () {
+        if (cancelled) { renderAll(); return; }
+        var nv = box.value;
+        if (nv !== String(target[key] == null ? '' : target[key])) {
+          if (opts.csv) target[key] = nv.split(',').map(function (t) { return t.trim(); }).filter(Boolean);
+          else target[key] = nv;
+          markDirty();
+        }
+        renderAll();
+      });
+    }
+    return wrap;
+  }
+
+  function csvEditable(target, key, opts) {
+    opts = opts || {};
+    var proxy = { v: (target[key] || []).join(', ') };
+    var node = editable(proxy, 'v', {
+      multiline: false, placeholder: opts.placeholder || '\u2014 labels, comma-separated \u2014',
+      className: opts.className
+    });
+    // intercept commit: re-route into target[key]
+    node.addEventListener('focusout', function () {
+      target[key] = String(proxy.v || '').split(',').map(function (t) { return t.trim(); }).filter(Boolean);
+    }, true);
+    return node;
+  }
+
+  function field(labelTxt, node, cls) {
+    var w = el('div', 'field' + (cls ? ' ' + cls : ''));
+    w.appendChild(el('div', 'field-label', labelTxt));
+    w.appendChild(node);
+    return w;
+  }
+
+  /* ---------- array editors ---------- */
+  function listEditor(arr, cfg) {
+    var box = el('div', 'list');
+    arr.forEach(function (item, i) {
+      var row = el('div', 'arr-row');
+      var body = el('div', 'arr-body');
+      body.appendChild(cfg.render(item, i));
+      row.appendChild(body);
+
+      var ctl = el('div', 'ctl');
+      addBtn('\u2191', 'move up', i === 0, function () {
+        var t = arr[i - 1]; arr[i - 1] = arr[i]; arr[i] = t; done();
+      });
+      addBtn('\u2193', 'move down', i === arr.length - 1, function () {
+        var t = arr[i + 1]; arr[i + 1] = arr[i]; arr[i] = t; done();
+      });
+      addBtn('\u2715', 'remove', false, function () { arr.splice(i, 1); done(); });
+      function addBtn(sym, tip, dis, fn) {
+        var b = el('button', 'ctl-btn', sym);
+        b.type = 'button'; b.title = tip; b.disabled = dis;
+        b.addEventListener('click', function (e) { e.stopPropagation(); fn(); });
+        ctl.appendChild(b);
+      }
+      row.appendChild(ctl);
+      box.appendChild(row);
+    });
+    var add = el('button', 'add-btn', '\uFF0B ' + (cfg.addLabel || 'Add item'));
+    add.type = 'button';
+    add.addEventListener('click', function () { arr.push(cfg.blank()); done(); });
+    box.appendChild(add);
+    function done() { markDirty(); renderAll(); }
+    return box;
+  }
+
+  function pairRow(labelA, nodeA, labelB, nodeB) {
+    var w = el('div', 'pair');
+    var a = el('div', 'pair-a'); a.appendChild(el('span', 'mini-label', labelA)); a.appendChild(nodeA);
+    var b = el('div', 'pair-b'); b.appendChild(el('span', 'mini-label', labelB)); b.appendChild(nodeB);
+    w.appendChild(a); w.appendChild(b);
+    return w;
+  }
+
+  /* ---------- gaps ---------- */
+  function gapsFor(lb) {
+    var g = [];
+    if (!lb.canonical_definition || lb.definition_pending) g.push('definition');
+    if (!lb.indicators || !lb.indicators.length) g.push('indicators');
+    if (!lb.boundary_rules || !lb.boundary_rules.length) g.push('boundary rules');
+    if (!lb.worked_examples || !lb.worked_examples.length) g.push('worked examples');
+    return g;
+  }
+
+  /* ---------- cards ---------- */
+  function labelCard(lb) {
+    var card = el('article', 'card' + (lb.level === 'low' ? ' low' : ''));
+    card.id = cardId(lb);
+
+    var head = el('header', 'card-head');
+    var h = el('h3', 'card-title');
+    h.appendChild(editable(lb, 'meso_label', { multiline: false, block: false, className: 'title-ed' }));
+    head.appendChild(h);
+    if (lb.level === 'low') {
+      head.appendChild(el('span', 'badge low-badge', 'low-level \u00b7 under ' + (lb.parent_meso || '?')));
+    }
+    var gg = gapsFor(lb);
+    if (gg.length) {
+      var chip = el('span', 'badge gap-badge', '\u26A0 ' + gg.length + ' gap' + (gg.length > 1 ? 's' : ''));
+      chip.title = 'Missing: ' + gg.join(', ');
+      head.appendChild(chip);
+    }
+    card.appendChild(head);
+
+    card.appendChild(field('Canonical definition',
+      editable(lb, 'canonical_definition', {
+        locked: true,
+        placeholder: '\u2014 FILL: write the definition here (see citation for guidance) \u2014',
+        className: 'canonical'
+      })));
+    card.appendChild(field('Citation',
+      editable(lb, 'definition_citation', { multiline: false, className: 'cite' })));
+
+    card.appendChild(field('Indicators & low-level patterns', listEditor(lb.indicators, {
+      render: function (it, i) { return editable(lb.indicators, i, { placeholder: '\u2014 indicator \u2014' }); },
+      blank: function () { return ''; },
+      addLabel: 'Add indicator'
+    })));
+
+    card.appendChild(field('Boundary rules', listEditor(lb.boundary_rules, {
+      render: function (br) {
+        return pairRow('vs', editable(br, 'vs_label', { multiline: false }),
+          'rule', editable(br, 'rule'));
+      },
+      blank: function () { return { vs_label: '', rule: '' }; },
+      addLabel: 'Add boundary rule'
+    })));
+
+    card.appendChild(field('Counterexamples', listEditor(lb.counterexamples, {
+      render: function (cx) {
+        var w = el('div');
+        w.appendChild(pairRow('review id', editable(cx, 'review_id', { multiline: false, className: 'mono' }),
+          'text', editable(cx, 'text')));
+        var why = el('div', 'pair-a');
+        why.appendChild(el('span', 'mini-label', 'why not'));
+        why.appendChild(editable(cx, 'why_not'));
+        w.appendChild(why);
+        return w;
+      },
+      blank: function () { return { review_id: '', text: '', why_not: '' }; },
+      addLabel: 'Add counterexample'
+    })));
+
+    card.appendChild(field('Worked examples', listEditor(lb.worked_examples, {
+      render: function (wx) {
+        var w = el('div');
+        w.appendChild(pairRow('review id', editable(wx, 'review_id', { multiline: false, className: 'mono' }),
+          'text', editable(wx, 'text')));
+        var la = el('div', 'pair-a');
+        la.appendChild(el('span', 'mini-label', 'labels assigned'));
+        la.appendChild(csvEditable(wx, 'labels_assigned'));
+        w.appendChild(la);
+        return w;
+      },
+      blank: function () { return { review_id: '', text: '', labels_assigned: [] }; },
+      addLabel: 'Add worked example'
+    })));
+
+    return card;
+  }
+
+  function ruleCard(r) {
+    var w = el('div', 'rule-card');
+    w.id = 'rule-' + slugify(r.id || 'r');
+    var head = el('div', 'rule-head');
+    head.appendChild(editable(r, 'id', { multiline: false, block: false, className: 'rule-id mono' }));
+    w.appendChild(head);
+    w.appendChild(field('Statement', editable(r, 'statement')));
+    w.appendChild(pairRow('worked example review id',
+      editable(r, 'worked_example_review_id', { multiline: false, className: 'mono' }),
+      'worked example text', editable(r, 'worked_example_text')));
+    return w;
+  }
+
+  /* ---------- document ---------- */
+  function groupOrder() {
+    var order = (data.high_level_classes || []).map(function (c) { return c.name; });
+    (data.labels || []).forEach(function (lb) {
+      if (order.indexOf(lb.high_level) === -1) order.push(lb.high_level);
+    });
+    return order;
+  }
+
+  function renderDoc() {
+    var doc = $('#doc');
+    doc.textContent = '';
+
+    /* Global rules — pinned first */
+    var rulesSec = el('section', 'group rules-group');
+    rulesSec.id = 'global-rules';
+    rulesSec.appendChild(el('h2', 'group-title', 'Global Rules'));
+    rulesSec.appendChild(listEditor(data.global_rules, {
+      render: function (r) { return ruleCard(r); },
+      blank: function () {
+        return { id: 'R' + (data.global_rules.length + 1), statement: '', worked_example_review_id: '', worked_example_text: '' };
+      },
+      addLabel: 'Add rule'
+    }));
+    doc.appendChild(rulesSec);
+
+    /* Groups */
+    groupOrder().forEach(function (gname) {
+      var sec = el('section', 'group');
+      sec.id = 'group-' + slugify(gname);
+      sec.appendChild(el('h2', 'group-title', gname));
+
+      var cls = (data.high_level_classes || []).find(function (c) { return c.name === gname; });
+      if (cls) {
+        var cd = el('div', 'class-def');
+        cd.appendChild(editable(cls, 'canonical_definition', { locked: true, className: 'canonical' }));
+        cd.appendChild(editable(cls, 'definition_citation', { multiline: false, className: 'cite' }));
+        sec.appendChild(cd);
+      }
+
+      data.labels.forEach(function (lb) {
+        if (lb.high_level === gname) sec.appendChild(labelCard(lb));
+      });
+
+      var add = el('button', 'add-btn add-label', '\uFF0B Add label to ' + gname);
+      add.type = 'button';
+      add.addEventListener('click', function () {
+        data.labels.push({
+          high_level: gname, meso_label: 'New label', level: 'meso',
+          canonical_definition: '', definition_citation: '', definition_pending: false,
+          indicators: [], boundary_rules: [], counterexamples: [], worked_examples: []
+        });
+        markDirty(); renderAll();
+      });
+      sec.appendChild(add);
+      doc.appendChild(sec);
+    });
+
+    /* Changelog — pinned last */
+    var logSec = el('section', 'group changelog-group');
+    logSec.id = 'changelog';
+    logSec.appendChild(el('h2', 'group-title', 'Changelog'));
+    logSec.appendChild(listEditor(data.changelog, {
+      render: function (c) {
+        var w = el('div', 'log-row');
+        var meta = el('div', 'log-meta');
+        meta.appendChild(el('span', 'badge mono', 'v' + c.version));
+        meta.appendChild(editable(c, 'date', { multiline: false, block: false, className: 'mono' }));
+        var inv = el('label', 'inv-label');
+        var cb = el('input'); cb.type = 'checkbox'; cb.checked = !!c.invalidates_prior_coding;
+        cb.addEventListener('change', function () { c.invalidates_prior_coding = cb.checked; markDirty(); });
+        inv.appendChild(cb);
+        inv.appendChild(document.createTextNode(' invalidates prior coding'));
+        meta.appendChild(inv);
+        w.appendChild(meta);
+        w.appendChild(editable(c, 'change'));
+        w.appendChild(pairRow('rows re-checked',
+          editable(c, 'rows_rechecked', { multiline: false, className: 'mono' }),
+          '', el('span')));
+        return w;
+      },
+      blank: function () {
+        return { version: data.version, date: today(), change: '', invalidates_prior_coding: false, rows_rechecked: '' };
+      },
+      addLabel: 'Add entry'
+    }));
+    doc.appendChild(logSec);
+  }
+
+  /* ---------- sidebar ---------- */
+  function renderTOC() {
+    var toc = $('#toc');
+    toc.textContent = '';
+    toc.appendChild(tocLink('Global Rules', '#global-rules', 'toc-group'));
+    groupOrder().forEach(function (g) {
+      toc.appendChild(tocLink(g, '#group-' + slugify(g), 'toc-group'));
+      data.labels.forEach(function (lb) {
+        if (lb.high_level !== g) return;
+        toc.appendChild(tocLink(lb.meso_label, '#' + cardId(lb),
+          'toc-label' + (lb.level === 'low' ? ' toc-low' : '')));
+      });
+    });
+    toc.appendChild(tocLink('Changelog', '#changelog', 'toc-group'));
+  }
+  function tocLink(txt, href, cls) {
+    var a = el('a', cls, txt);
+    a.href = href;
+    return a;
+  }
+
+  function renderGaps() {
+    var g = $('#gaps');
+    g.textContent = '';
+    var any = false;
+    data.labels.forEach(function (lb) {
+      var miss = gapsFor(lb);
+      if (!miss.length) return;
+      any = true;
+      var a = el('a', 'gap-item');
+      a.href = '#' + cardId(lb);
+      a.appendChild(el('div', 'gap-name', lb.meso_label));
+      a.appendChild(el('div', 'gap-miss', 'missing: ' + miss.join(', ')));
+      g.appendChild(a);
+    });
+    if (!any) g.appendChild(el('p', 'group-note', 'No gaps \u2014 every label has a definition, indicators, boundary rules, and worked examples.'));
+  }
+
+  /* ---------- search ---------- */
+  function applyFilter() {
+    var q = query.trim().toLowerCase();
+    document.querySelectorAll('#doc .card, #doc .rule-card').forEach(function (c) {
+      c.classList.toggle('hide', !!q && c.textContent.toLowerCase().indexOf(q) === -1);
+    });
+    document.querySelectorAll('#doc .group').forEach(function (sec) {
+      var cards = sec.querySelectorAll('.card, .rule-card');
+      if (!cards.length) return;
+      var allHidden = Array.prototype.every.call(cards, function (c) { return c.classList.contains('hide'); });
+      sec.classList.toggle('dim', !!q && allHidden);
+    });
+    document.querySelectorAll('#toc a.toc-label').forEach(function (a) {
+      a.classList.toggle('hide', !!q && a.textContent.toLowerCase().indexOf(q) === -1);
+    });
+  }
+
+  function renderAll() {
+    var y = window.scrollY;
+    renderDoc();
+    renderTOC();
+    renderGaps();
+    updateHeader();
+    applyFilter();
+    window.scrollTo(0, y);
+  }
+
+  /* ---------- version bump ---------- */
+  function openBump() {
+    $('#bumpDesc').value = '';
+    $('#bumpInvalid').checked = false;
+    $('#bumpRows').value = '';
+    $('#bumpDialog').showModal();
+  }
+  function doBump() {
+    var desc = $('#bumpDesc').value.trim();
+    if (!desc) { alert('Describe the change first \u2014 the changelog is the audit trail.'); return; }
+    var parts = String(data.version).split('.');
+    var maj = parseInt(parts[0], 10) || 0;
+    var min = parseInt(parts[1], 10) || 0;
+    var nv = maj + '.' + (min + 1);
+    data.changelog.push({
+      version: nv, date: today(), change: desc,
+      invalidates_prior_coding: $('#bumpInvalid').checked,
+      rows_rechecked: $('#bumpRows').value.trim()
+    });
+    data.version = nv;
+    markDirty();
+    $('#bumpDialog').close();
+    renderAll();
+  }
+
+  /* ---------- save / load ---------- */
+  function saveJSON() {
+    var out = clone(data);
+    var blob = new Blob([JSON.stringify(out, null, 2)], { type: 'application/json' });
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'codebook_v' + data.version + '.json';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(function () { URL.revokeObjectURL(a.href); }, 500);
+    dirty = false;
+    updateHeader();
+  }
+
+  function readFile(file, cb) {
+    var r = new FileReader();
+    r.onload = function () {
+      try { cb(JSON.parse(r.result)); }
+      catch (e) { alert('Could not parse JSON: ' + e.message); }
+    };
+    r.readAsText(file);
+  }
+
+  function loadJSON(parsed) {
+    if (!parsed || !parsed.version || !Array.isArray(parsed.labels)) {
+      alert('This file does not look like a codebook (needs version + labels).');
+      return;
+    }
+    ['changelog', 'global_rules', 'high_level_classes', 'labels'].forEach(function (k) {
+      if (!Array.isArray(parsed[k])) parsed[k] = [];
+    });
+    parsed.labels.forEach(function (lb) {
+      ['indicators', 'boundary_rules', 'counterexamples', 'worked_examples'].forEach(function (k) {
+        if (!Array.isArray(lb[k])) lb[k] = [];
+      });
+    });
+    data = parsed;
+    dirty = false;
+    renderAll();
+  }
+
+  /* ---------- import / merge ---------- */
+  var LABEL_FIELDS = ['canonical_definition', 'definition_citation', 'definition_pending',
+    'indicators', 'boundary_rules', 'counterexamples', 'worked_examples', 'level', 'parent_meso'];
+  var RULE_FIELDS = ['statement', 'worked_example_review_id', 'worked_example_text'];
+
+  function buildDiff(incoming) {
+    var diffs = [];
+    function key(l) { return l.high_level + ' \u25b8 ' + l.meso_label; }
+
+    if (incoming.version !== data.version) {
+      diffs.push({
+        path: 'version', cur: data.version, inc: incoming.version,
+        apply: function () { data.version = incoming.version; }
+      });
+    }
+    var curMap = {}, incMap = {};
+    data.labels.forEach(function (l) { curMap[key(l)] = l; });
+    (incoming.labels || []).forEach(function (l) { incMap[key(l)] = l; });
+
+    Object.keys(incMap).forEach(function (k) {
+      if (!curMap[k]) {
+        diffs.push({
+          path: 'label added: ' + k, cur: '(absent)', inc: preview(incMap[k].canonical_definition || incMap[k]),
+          apply: function () { data.labels.push(clone(incMap[k])); }
+        });
+      } else {
+        LABEL_FIELDS.forEach(function (f) {
+          var a = JSON.stringify(curMap[k][f] === undefined ? null : curMap[k][f]);
+          var b = JSON.stringify(incMap[k][f] === undefined ? null : incMap[k][f]);
+          if (a !== b) {
+            diffs.push({
+              path: k + ' \u00b7 ' + f, cur: preview(curMap[k][f]), inc: preview(incMap[k][f]),
+              apply: function () { curMap[k][f] = clone(incMap[k][f]); }
+            });
+          }
+        });
+      }
+    });
+    Object.keys(curMap).forEach(function (k) {
+      if (!incMap[k]) {
+        diffs.push({
+          path: 'label only in current: ' + k, cur: preview(curMap[k].canonical_definition || curMap[k]), inc: '(absent in incoming)',
+          apply: function () {
+            var i = data.labels.indexOf(curMap[k]);
+            if (i > -1) data.labels.splice(i, 1);
+          },
+          applyLabel: 'Delete from current'
+        });
+      }
+    });
+
+    var curR = {}, incR = {};
+    (data.global_rules || []).forEach(function (r) { curR[r.id] = r; });
+    (incoming.global_rules || []).forEach(function (r) { incR[r.id] = r; });
+    Object.keys(incR).forEach(function (id) {
+      if (!curR[id]) {
+        diffs.push({
+          path: 'rule added: ' + id, cur: '(absent)', inc: preview(incR[id].statement),
+          apply: function () { data.global_rules.push(clone(incR[id])); }
+        });
+      } else {
+        RULE_FIELDS.forEach(function (f) {
+          if (JSON.stringify(curR[id][f] || '') !== JSON.stringify(incR[id][f] || '')) {
+            diffs.push({
+              path: id + ' \u00b7 ' + f, cur: preview(curR[id][f]), inc: preview(incR[id][f]),
+              apply: function () { curR[id][f] = clone(incR[id][f]); }
+            });
+          }
+        });
+      }
+    });
+
+    var curVersions = (data.changelog || []).map(function (c) { return c.version + '|' + c.change; });
+    (incoming.changelog || []).forEach(function (c) {
+      if (curVersions.indexOf(c.version + '|' + c.change) === -1) {
+        diffs.push({
+          path: 'changelog entry v' + c.version, cur: '(absent)', inc: preview(c.change),
+          apply: function () { data.changelog.push(clone(c)); }
+        });
+      }
+    });
+    return diffs;
+  }
+
+  function preview(v) {
+    var s = typeof v === 'string' ? v : JSON.stringify(v);
+    if (s == null) s = '(empty)';
+    s = String(s);
+    return s.length > 110 ? s.slice(0, 110) + '\u2026' : (s || '(empty)');
+  }
+
+  function openMerge(incoming) {
+    var list = $('#mergeList');
+    list.textContent = '';
+    var diffs = buildDiff(incoming);
+    $('#mergeSummary').textContent = diffs.length
+      ? diffs.length + ' difference' + (diffs.length > 1 ? 's' : '') + ' between current and incoming.'
+      : 'No differences \u2014 the two files match.';
+    diffs.forEach(function (d) {
+      var row = el('div', 'diff-row');
+      row.appendChild(el('div', 'diff-path mono', d.path));
+      var cmp = el('div', 'diff-cmp');
+      var cur = el('div', 'diff-side'); cur.appendChild(el('span', 'mini-label', 'current')); cur.appendChild(el('div', null, d.cur));
+      var inc = el('div', 'diff-side'); inc.appendChild(el('span', 'mini-label', 'incoming')); inc.appendChild(el('div', null, d.inc));
+      cmp.appendChild(cur); cmp.appendChild(inc);
+      row.appendChild(cmp);
+      var b = el('button', 'add-btn', d.applyLabel || 'Take incoming');
+      b.type = 'button';
+      b.addEventListener('click', function () {
+        d.apply(); markDirty(); row.remove(); renderAll();
+      });
+      row.appendChild(b);
+      list.appendChild(row);
+    });
+    if (diffs.length) {
+      var all = el('button', 'add-btn take-all', 'Take everything incoming');
+      all.type = 'button';
+      all.addEventListener('click', function () {
+        diffs.forEach(function (d) { d.apply(); });
+        markDirty(); renderAll(); $('#mergeDialog').close();
+      });
+      list.appendChild(all);
+    }
+    $('#mergeDialog').showModal();
+  }
+
+  /* ---------- init ---------- */
+  function init() {
+    $('#btnSave').addEventListener('click', saveJSON);
+    $('#btnPrint').addEventListener('click', function () { window.print(); });
+    $('#btnBump').addEventListener('click', openBump);
+    $('#bumpGo').addEventListener('click', function (e) { e.preventDefault(); doBump(); });
+    $('#bumpCancel').addEventListener('click', function (e) { e.preventDefault(); $('#bumpDialog').close(); });
+    $('#mergeClose').addEventListener('click', function (e) { e.preventDefault(); $('#mergeDialog').close(); });
+
+    $('#btnLoad').addEventListener('click', function () { $('#loadFile').click(); });
+    $('#loadFile').addEventListener('change', function () {
+      if (this.files[0]) readFile(this.files[0], loadJSON);
+      this.value = '';
+    });
+    $('#btnMerge').addEventListener('click', function () { $('#mergeFile').click(); });
+    $('#mergeFile').addEventListener('change', function () {
+      if (this.files[0]) readFile(this.files[0], openMerge);
+      this.value = '';
+    });
+
+    $('#search').addEventListener('input', function () { query = this.value; applyFilter(); });
+
+    document.querySelectorAll('.side-tab').forEach(function (b) {
+      b.addEventListener('click', function () {
+        sideTab = b.dataset.tab;
+        document.querySelectorAll('.side-tab').forEach(function (x) { x.classList.toggle('on', x === b); });
+        $('#toc').hidden = sideTab !== 'toc';
+        $('#gaps').hidden = sideTab !== 'gaps';
+      });
+    });
+
+    window.addEventListener('beforeunload', function (e) {
+      if (dirty) { e.preventDefault(); e.returnValue = ''; }
+    });
+
+    renderAll();
+  }
+
+  document.addEventListener('DOMContentLoaded', init);
+})();
+
+</script>
+</body>
+</html>

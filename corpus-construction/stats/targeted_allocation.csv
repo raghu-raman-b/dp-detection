@@ -1,0 +1,20 @@
+column,meso_label,high_level,have,deficit,pull,priority
+S_EncouragesAntiSocialBehavior,Encourages Anti-Social Behavior,Social,2,23,16,high
+S_ForcedFellowship,Forced Fellowship,Social,2,23,16,high
+T_MandatoryMarathon,Mandatory Marathon,Temporal,2,23,16,high
+S_FearOfMissingOutFOMO,Fear of Missing Out (FOMO),Social,3,22,16,high
+S_FriendSpamImpersonation,Friend Spam / Impersonation,Social,4,21,15,high
+T_InfiniteTreadmill,Infinite Treadmill,Temporal,5,20,14,high
+M_DeceptiveLuxury,Deceptive Luxury,Monetary,6,19,14,high
+Tech_FragmentedDownloads,Fragmented Downloads,Technical,6,19,14,high
+P_OptimismAndFrequencyBiases,Optimism and Frequency Biases,Psychological,9,16,11,medium
+M_NeverEndingLure,Never-Ending Lure,Monetary,10,15,11,medium
+P_EasyToGetHardToLose,"Easy to Get, Hard to Lose",Psychological,11,14,10,medium
+M_PowerCreep,Power Creep,Monetary,12,13,9,medium
+P_AestheticManipulation,Aesthetic Manipulation,Psychological,14,11,8,medium
+M_RecurringFee,Recurring Fee,Monetary,15,10,7,medium
+M_WasteAversion,Waste Aversion,Monetary,15,10,7,medium
+M_UIMisdirection,UI Misdirection,Monetary,18,7,5,medium
+S_Reciprocity,Reciprocity,Social,19,6,4,medium
+M_EasyToPurchase,Easy to Purchase,Monetary,20,5,4,medium
+T_DailyRewards,Daily Rewards,Temporal,22,3,3,medium
