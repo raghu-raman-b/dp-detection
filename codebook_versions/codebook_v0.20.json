@@ -185,7 +185,7 @@
     {
       "id": "R11",
       "statement": "Where the span attributes the described behaviour to a bug, glitch, error, or technical fault, assign NONE, even if the behaviour would otherwise satisfy a label. Dark patterns are design choices; malfunctions are not. Applies only where the bug attribution is attached to the specific behaviour being coded. A general statement that a game is buggy, glitchy, or broken does not suppress labels on other spans in the same review.",
-      "worked_example_review_id": "",
+      "worked_example_review_id": "3743b488-0ced-4497-9511-39c02d984a50",
       "worked_example_text": "I am a loyal player and encourage others to play as well as rate the game favorably...again this morning I was told I missed a day (after playing at least Six games today) and bounced back to level ONE. The first time it happened I was at level 80+ !! Today is the fourth time recently I've been erroneously demoted...Please FIX!\n\nLabels: Daily Rewards\n\nJustification: \"I was told I missed a day (after playing at least six games today)… erroneously demoted… Please FIX!\" codes Daily Rewards. The error claim attaches to whether the missed-day condition was correctly detected, not to the streak-reset penalty itself, which the reviewer describes as the game's normal operation. R11 suppresses only where the bug attribution reaches the mechanic being coded."
     },
     {
@@ -898,7 +898,7 @@
       "counterexamples": [],
       "worked_examples": [
         {
-          "review_id": "seed: first purchase",
+          "review_id": "54b037fa-4d2f-419d-9b6b-808704bebada",
           "text": "Fun and lots to do. You also don't need to spend too much. That 89p first purchase is enough for a while.\n\nJustification: Span \"That 89p first purchase\" names a reduced-price entry purchase framed explicitly as the first one which is First Charge Discount [low-level].",
           "labels_assigned": [
             "M_NeverEndingLure"
@@ -1196,7 +1196,7 @@
       ],
       "counterexamples": [
         {
-          "review_id": "",
+          "review_id": "32c458cc-1b25-488c-8d2c-02406894e883",
           "text": "I spent almost $100 on in game currency, bet minimum bets the entire time, and i lost my money and smashed my phone because I didn't win a SINGLE free game and I was broke in 20 min. Whats the point in getting this if your NEVER going to win..",
           "why_not": "\"didn't win a SINGLE free game\" reports a losing run, not a misrepresented skill level or concealed information; no fixed ratio is asserted, so the rule from the coins review doesn't reach it."
         },
@@ -1251,7 +1251,7 @@
       ],
       "worked_examples": [
         {
-          "review_id": "targetted",
+          "review_id": "b76bf6ad-1a7c-4c82-9b69-ef2e10405a4a",
           "text": "This game has been one of my favorite games until I try to create a new account and spend 40$ on it. Try to link it with my Facebook just to find out the confusing question about linking is asking you to delete the current progress. Terrible description in question. Wish everyone Goodluck cause I won't play again!!",
           "labels_assigned": [
             "P_AestheticManipulation"
@@ -1344,7 +1344,7 @@
       ],
       "worked_examples": [
         {
-          "review_id": "seed: additional download",
+          "review_id": "eb604ffc-d535-48dd-90de-ae046da9d5aa",
           "text": "Edit: I get that everything is mandatory but the file size is way too big. I don't got 12 GB of phone space bro. My experience is this: Download the game, finish tutorial (No problem) Man I can't wait to play (up to literally all of my free 8 GB of storage gone just for additional downloads and that wasn't counting an extra 2 GB left before I said nah I can't. Way too big of a game file for me. I'm sure the game is amazing but ain't no way I can experience this when its this massive on storage.",
           "labels_assigned": [
             "Tech_FragmentedDownloads"

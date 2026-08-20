@@ -169,6 +169,7 @@ def load(input_dir):
 
     rows, excluded = [], []
     malformed = 0
+    lines_parsed = 0
 
     for p in paths:
         with open(p, "r", encoding="utf-8") as fh:
@@ -176,6 +177,7 @@ def load(input_dir):
                 line = line.strip()
                 if not line:
                     continue
+                lines_parsed += 1
                 try:
                     rec = json.loads(line)
                 except json.JSONDecodeError as e:
@@ -223,7 +225,8 @@ def load(input_dir):
             })
 
     clean.sort(key=lambda e: (e["src"], e["line"]))
-    return paths, clean, excluded, dup_identical, dup_conflict, malformed
+    return (paths, clean, excluded, dup_identical, dup_conflict, malformed,
+            lines_parsed)
 
 
 # ──────────────────────────── helpers ────────────────────────────
@@ -454,32 +457,6 @@ def make_figures(clean, outdir):
     plt.xlabel("Review year")
     fig(2.6, "f08_year.png", outdir)
 
-    # F9 seed keyword yield
-    kw_tot, kw_hit = Counter(), Counter()
-    for e in clean:
-        if stratum_of(e) != "targeted":
-            continue
-        k = str(e["rec"].get("seed_keyword", "")).strip().lower()
-        if not k:
-            continue
-        kw_tot[k] += 1
-        if e["labels"]:
-            kw_hit[k] += 1
-    if kw_tot:
-        ks = sorted(kw_tot, key=lambda k: (-(kw_hit[k] / kw_tot[k]), -kw_tot[k]))
-        plt.figure(figsize=(FIG_WIDTH, max(2.6, 0.24 * len(ks) + 1.0)))
-        y = np.arange(len(ks))
-        rate = [100 * kw_hit[k] / kw_tot[k] for k in ks]
-        plt.barh(y, rate, color="#CC79A7", edgecolor="white", linewidth=0.4)
-        plt.yticks(y, [f"{k}  (n={kw_tot[k]})" for k in ks])
-        plt.gca().invert_yaxis()
-        plt.xlabel("Percent of retrieved reviews receiving a label")
-        plt.xlim(0, 105)
-        for i, k in enumerate(ks):
-            plt.text(rate[i] + 1, i, f"{kw_hit[k]}/{kw_tot[k]}",
-                     va="center", fontsize=7)
-        fig(3.0, "f09_keyword_yield.png", outdir)
-
     # F10 top games
     gm = Counter(str(e["rec"].get("game_name", "")) for e in clean)
     top_g = gm.most_common(TOP_N_GAMES)
@@ -559,7 +536,7 @@ def make_figures(clean, outdir):
 # ──────────────────────────── report ────────────────────────────
 
 def write_report(paths, clean, excluded, dup_identical, dup_conflict,
-                 malformed, outdir):
+                 malformed, lines_parsed, outdir):
     n = len(clean)
     L = []
     w = L.append
@@ -576,25 +553,37 @@ def write_report(paths, clean, excluded, dup_identical, dup_conflict,
     w("CORPUS STATISTICS: hand-labeled dark-pattern review set")
     w(f"Source files: {', '.join(p.name for p in paths)}")
 
-    sec("1. sampling and totals")
-    w(f"Post-filter review pool                : {SIZE_OF_POOL:,}")
-    w(f"Records read                           : {n + len(excluded)}")
-    w(f"Excluded (see section 10)              : {len(excluded)}")
-    w(f"Clean hand-labeled reviews             : {n}")
-    w(f"Sampling fraction of pool              : {100 * n / SIZE_OF_POOL:.3f}%")
-    w(f"Exact duplicate ids collapsed          : {len(dup_identical)}")
-    w(f"Conflicting duplicate ids quarantined  : {len(dup_conflict)}")
-    w(f"Unparseable lines                      : {malformed}")
+    sec("1. corpus")
+    dup_lines_collapsed = sum(len(locs) - 1 for _, locs in dup_identical)
+    dup_lines_conflict = sum(len(g) for _, g in dup_conflict)
+    excluded_rows = len(excluded) - len(dup_conflict) + dup_lines_conflict
+    total = n + dup_lines_collapsed + excluded_rows
 
-    strat = Counter(stratum_of(e) for e in clean)
+    def kv(label, value):
+        w(f"  {label:<38}{value:>12}")
+
+    kv("Post-filter review pool", f"{SIZE_OF_POOL:,}")
+    kv("Lines read", f"{lines_parsed:,}")
+    kv("  redundant copies of repeated ids", dup_lines_collapsed)
+    kv("  excluded, see section 10", excluded_rows)
+    kv("  unparseable", malformed)
+    kv("Hand-labeled reviews", f"{n:,}")
+    kv("Sampling fraction of pool", f"{100 * n / SIZE_OF_POOL:.3f}%")
+    if total != lines_parsed:
+        w(f"  WARNING: outcomes sum to {total}, lines read {lines_parsed}")
     w("")
-    w("By stratum:")
-    for k, v in strat.most_common():
-        w(f"  {k:<10} {v:>6}  ({pct(v, n)})")
+    kv("Repeated review_ids", len(dup_identical) + len(dup_conflict))
+    kv("  copies agreed, one kept", len(dup_identical))
+    kv("  copies disagreed, all quarantined", len(dup_conflict))
+
     w("")
-    w("By source file:")
+    w("  Stratum")
+    for k, v in Counter(stratum_of(e) for e in clean).most_common():
+        w(f"    {k:<36}{v:>8}{pct(v, n):>9}")
+    w("")
+    w("  Source file")
     for k, v in Counter(e["src"] for e in clean).most_common():
-        w(f"  {k:<24} {v:>6}  ({pct(v, n)})")
+        w(f"    {k:<36}{v:>8}{pct(v, n):>9}")
 
     sec("2. apps and games")
     apps = Counter(e["rec"].get("app_id") for e in clean)
@@ -689,10 +678,6 @@ def write_report(paths, clean, excluded, dup_identical, dup_conflict,
     sec("5. prevalence in the random stratum only")
     rnd = [e for e in clean if stratum_of(e) == "random"]
     nr = len(rnd)
-    w("The combined counts above are not a prevalence estimate: the targeted")
-    w("stratum was drawn by keyword and oversamples the patterns it seeded on.")
-    w("The random stratum is the only unbiased view of the pool.")
-    w("")
     w(f"Random stratum size: {nr}")
     if nr:
         sr = Counter()
@@ -738,8 +723,8 @@ def write_report(paths, clean, excluded, dup_identical, dup_conflict,
         lift = c / exp if exp else float("inf")
         w(f"  {a + ' + ' + b:<62}{c:>5}{lift:>8.1f}")
 
-    sec("8. targeted sampling and seed keywords")
-    kw_tot, kw_hit, kw_lab = Counter(), Counter(), defaultdict(Counter)
+    sec("8. seed keywords")
+    kw_tot, kw_hit = Counter(), Counter()
     for e in clean:
         if stratum_of(e) != "targeted":
             continue
@@ -749,27 +734,40 @@ def write_report(paths, clean, excluded, dup_identical, dup_conflict,
         kw_tot[k] += 1
         if e["labels"]:
             kw_hit[k] += 1
-        kw_lab[k].update(e["labels"])
-    w(f"Distinct seed keywords: {len([k for k in kw_tot if k != '(no keyword)'])}")
-    w("")
-    w(f"  {'keyword':<26}{'n':>5}{'labeled':>9}{'yield':>8}   top labels produced")
-    for k in sorted(kw_tot, key=lambda k: (-kw_tot[k], k)):
-        top3 = ", ".join(f"{c}({v})" for c, v in kw_lab[k].most_common(3)) or "-"
-        w(f"  {k[:24]:<26}{kw_tot[k]:>5}{kw_hit[k]:>9}"
-          f"{pct(kw_hit[k], kw_tot[k]):>8}   {top3}")
+    real = [k for k in kw_tot if k != "(no keyword)"]
+    productive = sorted(k for k in real if kw_hit[k] > 0)
+    dead = sorted(k for k in real if kw_hit[k] == 0)
 
-    only_t = []
+    def wrap(items, indent="    "):
+        if not items:
+            w(indent + "none")
+            return
+        buf = indent
+        for i, k in enumerate(items):
+            piece = k + ("," if i < len(items) - 1 else "")
+            if len(buf) + len(piece) + 1 > 76:
+                w(buf.rstrip())
+                buf = indent
+            buf += piece + " "
+        w(buf.rstrip())
+
+    w(f"  {'Targeted reviews':<38}{sum(kw_tot.values()):>12}")
+    w(f"  {'Distinct seed keywords':<38}{len(real):>12}")
+    w("")
+    w(f"  Produced at least one label ({len(productive)})")
+    wrap(productive)
+    w("")
+    w(f"  Produced no label ({len(dead)})")
+    wrap(dead)
+
     sr = Counter()
     for e in rnd:
         sr.update(e["labels"])
-    for c in LABELS:
-        if support.get(c, 0) > 0 and sr.get(c, 0) == 0:
-            only_t.append(c)
+    only_t = [c for c in LABELS
+              if support.get(c, 0) > 0 and sr.get(c, 0) == 0]
     w("")
-    w(f"Labels with support only in the targeted stratum ({len(only_t)}):")
-    w("  " + (", ".join(only_t) if only_t else "none"))
-    w("  These would carry zero support under random sampling alone, which is")
-    w("  the argument for the two-stratum design.")
+    w(f"  Labels with support only in the targeted stratum ({len(only_t)})")
+    wrap(only_t)
 
     sec("9. star rating against labeling")
     w(f"  {'star':<6}{'labeled':>10}{'no label':>11}{'labeled %':>12}")
@@ -778,7 +776,7 @@ def write_report(paths, clean, excluded, dup_identical, dup_conflict,
         lb = sum(1 for e in a if e["labels"])
         w(f"  {s:<6}{lb:>10}{len(a) - lb:>11}{pct(lb, len(a)):>12}")
 
-    sec("10. excluded records, fix these and rerun")
+    sec("10. excluded records")
     w(f"Total excluded: {len(excluded)}")
     if not excluded:
         w("None. Every record passed validation.")
@@ -814,12 +812,14 @@ def main():
     figdir = outdir / "figures"
     figdir.mkdir(parents=True, exist_ok=True)
 
-    paths, clean, excluded, dup_id, dup_cf, malformed = load(INPUT_DIR)
+    (paths, clean, excluded, dup_id, dup_cf, malformed,
+     lines_parsed) = load(INPUT_DIR)
     if not clean:
         raise SystemExit("no clean records survived validation, see the report")
 
     make_figures(clean, figdir)
-    write_report(paths, clean, excluded, dup_id, dup_cf, malformed, outdir)
+    write_report(paths, clean, excluded, dup_id, dup_cf, malformed,
+                 lines_parsed, outdir)
 
     print(f"clean reviews : {len(clean)}")
     print(f"excluded      : {len(excluded)}")
