@@ -1,0 +1,545 @@
+CORPUS STATISTICS: hand-labeled dark-pattern review set
+Source files: fsi.jsonl, minors.jsonl, random.jsonl, targeted.jsonl, targeted_2.jsonl, targeted_200.jsonl
+
+========================================================================
+1. SAMPLING AND TOTALS
+========================================================================
+Post-filter review pool                : 200,000
+Records read                           : 611
+Excluded (see section 10)              : 0
+Clean hand-labeled reviews             : 611
+Sampling fraction of pool              : 0.305%
+Exact duplicate ids collapsed          : 8
+Conflicting duplicate ids quarantined  : 0
+Unparseable lines                      : 0
+
+By stratum:
+  targeted      311  (50.9%)
+  random        300  (49.1%)
+
+By source file:
+  random.jsonl                300  (49.1%)
+  targeted_200.jsonl          194  (31.8%)
+  minors.jsonl                 50  (8.2%)
+  targeted.jsonl               49  (8.0%)
+  fsi.jsonl                    10  (1.6%)
+  targeted_2.jsonl              8  (1.3%)
+
+========================================================================
+2. APPS AND GAMES
+========================================================================
+Unique app ids   : 87
+Unique game names: 87
+Share held by top 5 games: 12.6%
+Games contributing a single review: 4
+
+Top 15 games:
+  MONOPOLY GO!                                      17  (2.8%)
+  Homescapes                                        15  (2.5%)
+  Pokémon GO                                        15  (2.5%)
+  Cash Frenzy™ - Casino Slots                       15  (2.5%)
+  Last War:Survival Game                            15  (2.5%)
+  Coin Master                                       14  (2.3%)
+  Dice Dreams™️                                     14  (2.3%)
+  Match Masters                                     12  (2.0%)
+  Clash of Clans                                    12  (2.0%)
+  Candy Crush Saga                                  11  (1.8%)
+  Travel Town - Merge Adventure                     11  (1.8%)
+  Shadow Fight 4: Arena                             10  (1.6%)
+  Fishdom                                           10  (1.6%)
+  Mech Arena - Shooting Game                        10  (1.6%)
+  Bingo Blitz™️ - Bingo Games                       10  (1.6%)
+
+========================================================================
+3. MARKETS, DATES, RATINGS, LENGTH
+========================================================================
+Market:
+  UK          345  (56.5%)
+  IN          148  (24.2%)
+  US          118  (19.3%)
+
+Review date range: 2018-09-13 to 2026-07-09
+
+Reviews per year:
+  2018          9  (1.5%)
+  2019         29  (4.7%)
+  2020         52  (8.5%)
+  2021         42  (6.9%)
+  2022         59  (9.7%)
+  2023         54  (8.8%)
+  2024         70  (11.5%)
+  2025         80  (13.1%)
+  2026        216  (35.4%)
+
+Star rating, overall and by stratum:
+  star       all    random  targeted
+  1          250       132       118
+  2          100        43        57
+  3           87        33        54
+  4           55        30        25
+  5          119        62        57
+  mean star rating: 2.50   median: 2
+
+Review length in words:
+  all        mean   65.2   median    69   p25    44   p75    88   max   185
+  labeled    mean   72.8   median    80   p25    56   p75    92   max   183
+  no label   mean   53.7   median    53   p25    30   p75    78   max   185
+
+========================================================================
+4. LABEL DISTRIBUTION
+========================================================================
+Total label instances: 738
+Reviews with at least one label: 368  (60.2%)
+Reviews with no label: 243  (39.8%)
+
+  label                                  n  % of reviews  % of instances
+  M_PayToProgress                      127         20.8%           17.2%
+  S_Competition                         63         10.3%            8.5%
+  P_RewardMania                         60          9.8%            8.1%
+  T_PlayingByAppointment                55          9.0%            7.5%
+  P_IllusionOfControl                   45          7.4%            6.1%
+  M_IntermediateCurrency                37          6.1%            5.0%
+  M_Gambling                            34          5.6%            4.6%
+  T_Grinding                            34          5.6%            4.6%
+  P_CompleteTheCollection               30          4.9%            4.1%
+  T_Advertisement                       29          4.7%            3.9%
+  M_EasyToPurchase                      23          3.8%            3.1%
+  T_DailyRewards                        22          3.6%            3.0%
+  S_Reciprocity                         19          3.1%            2.6%
+  M_UIMisdirection                      17          2.8%            2.3%
+  T_MandatoryMarathon                   16          2.6%            2.2%
+  M_WasteAversion                       15          2.5%            2.0%
+  M_RecurringFee                        14          2.3%            1.9%
+  M_PowerCreep                          12          2.0%            1.6%
+  S_ForcedFellowship                    12          2.0%            1.6%
+  P_AestheticManipulation               11          1.8%            1.5%
+  P_EasyToGetHardToLose                 11          1.8%            1.5%
+  P_OptimismAndFrequencyBiases          11          1.8%            1.5%
+  M_NeverEndingLure                      8          1.3%            1.1%
+  S_EncouragesAntiSocialBehavior         8          1.3%            1.1%
+  M_DeceptiveLuxury                      7          1.1%            0.9%
+  Tech_FragmentedDownloads               6          1.0%            0.8%
+  T_InfiniteTreadmill                    5          0.8%            0.7%
+  S_FriendSpamImpersonation              4          0.7%            0.5%
+  S_FearOfMissingOutFOMO                 3          0.5%            0.4%
+
+Zero support (0): none
+Support below 3 (0): none
+
+By class:
+  Temporal         instances   161   reviews   142  (23.2%)
+  Monetary         instances   294   reviews   209  (34.2%)
+  Social           instances   109   reviews    94  (15.4%)
+  Psychological    instances   168   reviews   128  (20.9%)
+  Technical        instances     6   reviews     6  (1.0%)
+
+========================================================================
+5. PREVALENCE IN THE RANDOM STRATUM ONLY
+========================================================================
+The combined counts above are not a prevalence estimate: the targeted
+stratum was drawn by keyword and oversamples the patterns it seeded on.
+The random stratum is the only unbiased view of the pool.
+
+Random stratum size: 300
+Reviews with at least one label: 142 (47.3%), 95% CI [41.8%, 53.0%]
+
+  label                                  n     prev              95% CI
+  M_PayToProgress                       62    20.7%        [16.5, 25.6]
+  P_RewardMania                         28     9.3%         [6.5, 13.2]
+  T_PlayingByAppointment                22     7.3%         [4.9, 10.9]
+  M_IntermediateCurrency                21     7.0%         [4.6, 10.5]
+  S_Competition                         20     6.7%         [4.4, 10.1]
+  T_Grinding                            20     6.7%         [4.4, 10.1]
+  P_IllusionOfControl                   19     6.3%          [4.1, 9.7]
+  M_Gambling                            15     5.0%          [3.1, 8.1]
+  T_Advertisement                       11     3.7%          [2.1, 6.4]
+  M_RecurringFee                         8     2.7%          [1.4, 5.2]
+  M_EasyToPurchase                       7     2.3%          [1.1, 4.7]
+  M_PowerCreep                           5     1.7%          [0.7, 3.8]
+  P_CompleteTheCollection                5     1.7%          [0.7, 3.8]
+  M_WasteAversion                        4     1.3%          [0.5, 3.4]
+  S_Reciprocity                          4     1.3%          [0.5, 3.4]
+  P_EasyToGetHardToLose                  3     1.0%          [0.3, 2.9]
+  P_OptimismAndFrequencyBiases           3     1.0%          [0.3, 2.9]
+  T_DailyRewards                         3     1.0%          [0.3, 2.9]
+  M_DeceptiveLuxury                      2     0.7%          [0.2, 2.4]
+  M_NeverEndingLure                      1     0.3%          [0.1, 1.9]
+  S_EncouragesAntiSocialBehavior         1     0.3%          [0.1, 1.9]
+  S_FearOfMissingOutFOMO                 1     0.3%          [0.1, 1.9]
+  S_ForcedFellowship                     1     0.3%          [0.1, 1.9]
+  T_InfiniteTreadmill                    1     0.3%          [0.1, 1.9]
+  T_MandatoryMarathon                    1     0.3%          [0.1, 1.9]
+  M_UIMisdirection                       0     0.0%          [0.0, 1.3]
+  P_AestheticManipulation                0     0.0%          [0.0, 1.3]
+  S_FriendSpamImpersonation              0     0.0%          [0.0, 1.3]
+  Tech_FragmentedDownloads               0     0.0%          [0.0, 1.3]
+
+========================================================================
+6. LABELS PER REVIEW
+========================================================================
+Mean 1.21   median 1   max 5
+Mean among labeled reviews only: 2.01
+Multi-label reviews (2 or more): 210  (34.4%)
+
+  0 label(s):   243  (39.8%)
+  1 label(s):   158  (25.9%)
+  2 label(s):   103  (16.9%)
+  3 label(s):    63  (10.3%)
+  4 label(s):    35  (5.7%)
+  5 label(s):     9  (1.5%)
+
+========================================================================
+7. CO-OCCURRENCE
+========================================================================
+Distinct co-occurring pairs observed: 184
+
+Top 15 pairs by count, with lift:
+  pair                                                              n    lift
+  M_PayToProgress + S_Competition                                  28     2.1
+  M_PayToProgress + T_PlayingByAppointment                         23     2.0
+  M_Gambling + P_RewardMania                                       20     6.0
+  M_PayToProgress + P_RewardMania                                  19     1.5
+  M_PayToProgress + P_IllusionOfControl                            18     1.9
+  P_CompleteTheCollection + P_RewardMania                          17     5.8
+  M_IntermediateCurrency + M_PayToProgress                         16     2.1
+  M_Gambling + M_IntermediateCurrency                              12     5.8
+  M_PayToProgress + P_CompleteTheCollection                        11     1.8
+  M_EasyToPurchase + M_PayToProgress                                9     1.9
+  M_Gambling + M_PayToProgress                                      9     1.3
+  P_RewardMania + T_PlayingByAppointment                            9     1.7
+  S_Competition + T_MandatoryMarathon                               8     4.8
+  M_Gambling + P_IllusionOfControl                                  8     3.2
+  P_IllusionOfControl + S_Competition                               8     1.7
+
+========================================================================
+8. TARGETED SAMPLING AND SEED KEYWORDS
+========================================================================
+Distinct seed keywords: 295
+
+  keyword                       n  labeled   yield   top labels produced
+  additional download           2        2  100.0%   Tech_FragmentedDownloads(2)
+  don't leave                   2        1   50.0%   T_InfiniteTreadmill(1)
+  double negative               2        1   50.0%   P_IllusionOfControl(1)
+  downloading assets            2        0    0.0%   -
+  extra download                2        1   50.0%   Tech_FragmentedDownloads(1)
+  fine print                    2        2  100.0%   P_CompleteTheCollection(1), P_AestheticManipulation(1), M_EasyToPurchase(1)
+  first purchase                2        1   50.0%   M_NeverEndingLure(1)
+  misclick                      2        2  100.0%   T_Advertisement(1), P_IllusionOfControl(1)
+  no way to close               2        2  100.0%   T_Advertisement(2), M_UIMisdirection(1)
+  resource pack                 2        2  100.0%   Tech_FragmentedDownloads(2), M_UIMisdirection(1)
+  review was posted             2        0    0.0%   -
+  starter pack                  2        1   50.0%   M_EasyToPurchase(1)
+  the more you spend            2        2  100.0%   M_PayToProgress(2), T_PlayingByAppointment(1), P_IllusionOfControl(1)
+  tiny x                        2        1   50.0%   P_IllusionOfControl(1), M_UIMisdirection(1)
+  under my name                 2        0    0.0%   -
+  vip level                     2        1   50.0%   M_NeverEndingLure(1), M_RecurringFee(1), P_IllusionOfControl(1)
+  100%                          1        1  100.0%   M_PayToProgress(1), P_IllusionOfControl(1)
+  accidental tap                1        0    0.0%   -
+  accidentally bought           1        1  100.0%   M_IntermediateCurrency(1)
+  accidentally clicked          1        1  100.0%   T_Advertisement(1)
+  account is worth              1        0    0.0%   -
+  achievements                  1        1  100.0%   P_CompleteTheCollection(1), M_PayToProgress(1)
+  addicted                      1        0    0.0%   -
+  addictive by design           1        1  100.0%   M_PayToProgress(1)
+  adorable                      1        0    0.0%   -
+  after installing              1        1  100.0%   M_PayToProgress(1)
+  album                         1        1  100.0%   P_CompleteTheCollection(1), M_Gambling(1), P_RewardMania(1)
+  always get duplicates         1        1  100.0%   M_DeceptiveLuxury(1), P_CompleteTheCollection(1), M_PayToProgress(1)
+  always short by               1        1  100.0%   P_CompleteTheCollection(1), S_Competition(1), P_OptimismAndFrequencyBiases(1)
+  animation                     1        1  100.0%   S_Competition(1)
+  are you sure you want to      1        1  100.0%   M_EasyToPurchase(1), M_WasteAversion(1), M_PayToProgress(1)
+  are you sure you want to      1        1  100.0%   S_Competition(1), M_UIMisdirection(1)
+  arms race                     1        1  100.0%   S_Competition(1), S_FearOfMissingOutFOMO(1), M_PayToProgress(1)
+  ask for lives                 1        1  100.0%   S_Reciprocity(1)
+  ask friends for               1        1  100.0%   M_IntermediateCurrency(1), S_Reciprocity(1), M_PayToProgress(1)
+  asset pack                    1        0    0.0%   -
+  back to day 1                 1        1  100.0%   T_DailyRewards(1)
+  bag full                      1        1  100.0%   T_MandatoryMarathon(1), M_IntermediateCurrency(1)
+  banned for leaving            1        1  100.0%   T_MandatoryMarathon(1), S_Competition(1)
+  before you can save           1        1  100.0%   T_MandatoryMarathon(1)
+  beginner pack                 1        1  100.0%   M_NeverEndingLure(1)
+  begs you                      1        1  100.0%   P_IllusionOfControl(1)
+  bring a friend                1        1  100.0%   S_ForcedFellowship(1), P_CompleteTheCollection(1)
+  broke my streak               1        1  100.0%   T_DailyRewards(1)
+  buffed                        1        1  100.0%   S_Competition(1), M_PayToProgress(1)
+  button                        1        0    0.0%   -
+  button placement              1        0    0.0%   -
+  buttons are placed            1        0    0.0%   -
+  buy more space                1        1  100.0%   M_WasteAversion(1)
+  buy more storage              1        1  100.0%   M_WasteAversion(1)
+  calendar                      1        1  100.0%   T_DailyRewards(1), P_CompleteTheCollection(1)
+  can't back out                1        1  100.0%   T_Advertisement(1), M_UIMisdirection(1)
+  can't close the ad            1        1  100.0%   T_Advertisement(1)
+  can't exit                    1        1  100.0%   M_EasyToPurchase(1), M_PayToProgress(1), M_UIMisdirection(1)
+  can't leave until             1        1  100.0%   T_MandatoryMarathon(1)
+  can't quit                    1        0    0.0%   -
+  cannot exit                   1        0    0.0%   -
+  cant back out                 1        1  100.0%   T_Advertisement(1)
+  cant exit                     1        0    0.0%   -
+  cant quit                     1        1  100.0%   T_Grinding(1), P_OptimismAndFrequencyBiases(1)
+  capped at                     1        1  100.0%   P_CompleteTheCollection(1), P_RewardMania(1), T_PlayingByAppointment(1)
+  card collection               1        1  100.0%   P_CompleteTheCollection(1), M_Gambling(1), M_DeceptiveLuxury(1)
+  check in                      1        0    0.0%   -
+  close button                  1        1  100.0%   M_EasyToPurchase(1), M_PayToProgress(1), T_Advertisement(1)
+  collect them all              1        1  100.0%   T_InfiniteTreadmill(1), P_CompleteTheCollection(1), P_RewardMania(1)
+  collection                    1        0    0.0%   -
+  come back                     1        1  100.0%   T_PlayingByAppointment(1)
+  complete the set              1        1  100.0%   P_CompleteTheCollection(1), M_Gambling(1), S_Reciprocity(1)
+  completionist                 1        1  100.0%   P_CompleteTheCollection(1), M_IntermediateCurrency(1), M_PayToProgress(1)
+  confirm button is             1        1  100.0%   M_IntermediateCurrency(1), M_UIMisdirection(1)
+  confusing question            1        1  100.0%   P_AestheticManipulation(1)
+  consecutive days              1        1  100.0%   M_RecurringFee(1)
+  constant offers               1        1  100.0%   T_Grinding(1), M_EasyToPurchase(1)
+  contact list                  1        0    0.0%   -
+  contacts                      1        0    0.0%   -
+  crying                        1        0    0.0%   -
+  cute                          1        0    0.0%   -
+  dailies                       1        1  100.0%   T_DailyRewards(1), T_Grinding(1), P_RewardMania(1)
+  daily bonus                   1        1  100.0%   T_DailyRewards(1), S_Competition(1), P_RewardMania(1)
+  daily check in                1        1  100.0%   M_PayToProgress(1)
+  daily chest                   1        0    0.0%   -
+  daily gift                    1        0    0.0%   -
+  daily login                   1        1  100.0%   M_PayToProgress(1)
+  daily missions                1        1  100.0%   T_DailyRewards(1)
+  daily quests                  1        1  100.0%   T_DailyRewards(1), T_Grinding(1), P_RewardMania(1)
+  daily reward                  1        1  100.0%   T_DailyRewards(1), T_Advertisement(1)
+  daily tasks                   1        1  100.0%   T_DailyRewards(1)
+  data pack                     1        0    0.0%   -
+  day 30                        1        1  100.0%   S_EncouragesAntiSocialBehavior(1), S_Competition(1)
+  day 7 reward                  1        1  100.0%   T_DailyRewards(1), M_IntermediateCurrency(1)
+  day streak                    1        1  100.0%   T_DailyRewards(1)
+  deleted and reinstalled       1        1  100.0%   S_Competition(1)
+  deliberately confusing        1        1  100.0%   M_UIMisdirection(1), T_InfiniteTreadmill(1), S_Competition(1)
+  designed to confuse           1        1  100.0%   M_UIMisdirection(1), T_DailyRewards(1), T_Grinding(1)
+  disguised as                  1        1  100.0%   M_IntermediateCurrency(1), M_Gambling(1), P_IllusionOfControl(1)
+  doesnt save your progres      1        0    0.0%   -
+  don't want to lose my pr      1        1  100.0%   S_ForcedFellowship(1)
+  donate                        1        1  100.0%   M_PayToProgress(1), P_IllusionOfControl(1)
+  donations                     1        1  100.0%   S_Competition(1), S_Reciprocity(1), T_PlayingByAppointment(1)
+  download more                 1        0    0.0%   -
+  dressed up as                 1        1  100.0%   M_PayToProgress(1), T_PlayingByAppointment(1)
+  dupes                         1        1  100.0%   P_CompleteTheCollection(1), M_EasyToPurchase(1), P_RewardMania(1)
+  duplicates                    1        1  100.0%   P_CompleteTheCollection(1), P_RewardMania(1)
+  easy to start                 1        0    0.0%   -
+  empty slots                   1        1  100.0%   M_WasteAversion(1)
+  encouraged to attack          1        1  100.0%   S_Competition(1), M_PayToProgress(1)
+  endless offers                1        1  100.0%   M_IntermediateCurrency(1), T_PlayingByAppointment(1)
+  exit and lose                 1        1  100.0%   T_MandatoryMarathon(1), S_EncouragesAntiSocialBehavior(1), S_Competition(1)
+  expand your inventory         1        1  100.0%   M_IntermediateCurrency(1), M_WasteAversion(1), M_PayToProgress(1)
+  facebook friends              1        0    0.0%   -
+  feel obligated                1        1  100.0%   P_EasyToGetHardToLose(1), T_InfiniteTreadmill(1), T_Grinding(1)
+  feels like a trap             1        1  100.0%   P_CompleteTheCollection(1), M_IntermediateCurrency(1), M_PayToProgress(1)
+  first charge                  1        1  100.0%   M_IntermediateCurrency(1), M_Gambling(1)
+  first payment                 1        1  100.0%   M_Gambling(1), P_IllusionOfControl(1)
+  first time buyer              1        1  100.0%   M_PayToProgress(1), S_Competition(1), P_AestheticManipulation(1)
+  first top up                  1        1  100.0%   M_IntermediateCurrency(1), M_Gambling(1), P_RewardMania(1)
+  flashing                      1        0    0.0%   -
+  flashing button               1        1  100.0%   M_UIMisdirection(1)
+  forced to sell                1        1  100.0%   M_WasteAversion(1), P_RewardMania(1)
+  forfeit                       1        1  100.0%   S_EncouragesAntiSocialBehavior(1), S_Competition(1)
+  forfeited                     1        1  100.0%   T_MandatoryMarathon(1), S_Competition(1)
+  free but                      1        1  100.0%   S_Competition(1), M_PayToProgress(1), T_PlayingByAppointment(1)
+  free to start                 1        1  100.0%   M_Gambling(1), M_PayToProgress(1), P_RewardMania(1)
+  full set                      1        1  100.0%   M_Gambling(1), M_PayToProgress(1), P_RewardMania(1)
+  gallery                       1        0    0.0%   -
+  gb                            1        0    0.0%   -
+  gift exchange                 1        1  100.0%   S_Reciprocity(1)
+  gift lives                    1        1  100.0%   S_Reciprocity(1), M_PayToProgress(1)
+  gifting                       1        0    0.0%   -
+  glowing                       1        1  100.0%   P_EasyToGetHardToLose(1)
+  glowing button                1        0    0.0%   -
+  goes to waste                 1        1  100.0%   M_PayToProgress(1), P_RewardMania(1), T_PlayingByAppointment(1)
+  gotta collect                 1        1  100.0%   T_Grinding(1)
+  greyed out                    1        0    0.0%   -
+  guilt                         1        1  100.0%   P_IllusionOfControl(1)
+  guilt trip                    1        1  100.0%   T_PlayingByAppointment(1), M_EasyToPurchase(1), P_AestheticManipulation(1)
+  hard to close                 1        1  100.0%   T_Advertisement(1), P_RewardMania(1)
+  hard to quit                  1        1  100.0%   P_EasyToGetHardToLose(1), P_CompleteTheCollection(1)
+  hard to walk away             1        0    0.0%   -
+  have to buy the new           1        1  100.0%   M_PowerCreep(1), M_PayToProgress(1), T_Advertisement(1)
+  have to delete items          1        1  100.0%   M_WasteAversion(1), T_Advertisement(1), T_PlayingByAppointment(1)
+  have to finish the            1        1  100.0%   T_MandatoryMarathon(1), S_Competition(1)
+  have to redo the whole        1        1  100.0%   M_PayToProgress(1), P_OptimismAndFrequencyBiases(1), T_PlayingByAppointment(1)
+  have to scam                  1        0    0.0%   -
+  help each other               1        0    0.0%   -
+  help requests                 1        1  100.0%   S_Reciprocity(1)
+  help your team                1        0    0.0%   -
+  hidden option                 1        1  100.0%   T_PlayingByAppointment(1)
+  high roller                   1        1  100.0%   M_Gambling(1)
+  hooked early                  1        1  100.0%   M_PayToProgress(1), P_OptimismAndFrequencyBiases(1), P_IllusionOfControl(1)
+  hooked from                   1        1  100.0%   S_Competition(1)
+  if you don't donate           1        0    0.0%   -
+  invalidates                   1        1  100.0%   T_Grinding(1), M_PowerCreep(1), M_RecurringFee(1)
+  inventory cap                 1        1  100.0%   T_Grinding(1), M_WasteAversion(1)
+  inventory full                1        1  100.0%   M_PayToProgress(1)
+  inventory space               1        1  100.0%   M_WasteAversion(1)
+  invested too much             1        1  100.0%   P_EasyToGetHardToLose(1)
+  invite bonus                  1        1  100.0%   S_ForcedFellowship(1), M_EasyToPurchase(1)
+  invite code                   1        0    0.0%   -
+  invite reward                 1        1  100.0%   S_ForcedFellowship(1)
+  invites were sent             1        1  100.0%   S_ForcedFellowship(1), S_FriendSpamImpersonation(1)
+  items expire                  1        1  100.0%   T_PlayingByAppointment(1), P_AestheticManipulation(1)
+  just short of                 1        1  100.0%   M_PayToProgress(1), M_Gambling(1), P_OptimismAndFrequencyBiases(1)
+  kawaii                        1        1  100.0%   T_DailyRewards(1), T_PlayingByAppointment(1)
+  keep inviting                 1        1  100.0%   S_ForcedFellowship(1), P_CompleteTheCollection(1), M_Gambling(1)
+  keeps me hooked               1        0    0.0%   -
+  last piece                    1        1  100.0%   P_IllusionOfControl(1)
+  leave and lose                1        1  100.0%   T_MandatoryMarathon(1), S_Competition(1)
+  left over coins               1        1  100.0%   M_WasteAversion(1)
+  leftover                      1        1  100.0%   M_PayToProgress(1), P_OptimismAndFrequencyBiases(1), P_IllusionOfControl(1)
+  limited slots                 1        1  100.0%   S_Competition(1), M_PayToProgress(1)
+  linked my facebook            1        1  100.0%   M_RecurringFee(1)
+  locked into the               1        0    0.0%   -
+  locked slots                  1        0    0.0%   -
+  log in daily                  1        1  100.0%   T_DailyRewards(1), P_RewardMania(1)
+  log in every day              1        1  100.0%   T_DailyRewards(1), T_PlayingByAppointment(1)
+  login bonus                   1        1  100.0%   T_PlayingByAppointment(1)
+  login calendar                1        1  100.0%   S_Competition(1)
+  login streak                  1        1  100.0%   T_DailyRewards(1)
+  lose your entry fee           1        1  100.0%   T_MandatoryMarathon(1), S_Competition(1)
+  lost my progress when i       1        0    0.0%   -
+  lost my streak                1        1  100.0%   M_RecurringFee(1)
+  made me feel bad              1        0    0.0%   -
+  makes it look like a          1        0    0.0%   -
+  makes you feel bad for        1        1  100.0%   S_FearOfMissingOutFOMO(1), S_Competition(1), M_PayToProgress(1)
+  meta changes                  1        1  100.0%   M_Gambling(1), M_PowerCreep(1), M_PayToProgress(1)
+  meta shifts                   1        1  100.0%   M_PowerCreep(1), M_PayToProgress(1), P_RewardMania(1)
+  milestone reward              1        0    0.0%   -
+  milestone rewards             1        0    0.0%   -
+  mis-click                     1        1  100.0%   M_IntermediateCurrency(1), M_Gambling(1), M_UIMisdirection(1)
+  miss a day                    1        1  100.0%   T_DailyRewards(1), T_PlayingByAppointment(1)
+  missed a day                  1        1  100.0%   T_DailyRewards(1)
+  missing one                   1        0    0.0%   -
+  more data                     1        1  100.0%   T_Advertisement(1)
+  moves the button              1        1  100.0%   T_Advertisement(1)
+  need one more to complet      1        1  100.0%   P_CompleteTheCollection(1), S_Reciprocity(1), P_RewardMania(1)
+  nerf                          1        0    0.0%   -
+  nerfed                        1        1  100.0%   T_Grinding(1), M_PowerCreep(1), T_PlayingByAppointment(1)
+  never get the last one        1        1  100.0%   M_DeceptiveLuxury(1), P_CompleteTheCollection(1), M_PayToProgress(1)
+  new meta                      1        0    0.0%   -
+  no confirmation               1        1  100.0%   M_IntermediateCurrency(1), M_UIMisdirection(1)
+  no exit button                1        0    0.0%   -
+  no longer viable              1        1  100.0%   T_PlayingByAppointment(1)
+  no way out of the             1        1  100.0%   T_Advertisement(1)
+  not enough slots              1        1  100.0%   M_WasteAversion(1), M_PayToProgress(1)
+  obsolete                      1        1  100.0%   M_PowerCreep(1), M_PayToProgress(1)
+  on first launch               1        0    0.0%   -
+  one away from                 1        0    0.0%   -
+  one card away                 1        1  100.0%   P_CompleteTheCollection(1), M_PayToProgress(1), P_RewardMania(1)
+  one more pack                 1        1  100.0%   M_EasyToPurchase(1), M_PayToProgress(1)
+  one time offer                1        0    0.0%   -
+  only once                     1        0    0.0%   -
+  only way to win is to         1        1  100.0%   M_Gambling(1), M_PayToProgress(1)
+  outdated                      1        1  100.0%   M_EasyToPurchase(1), T_Advertisement(1)
+  overflow                      1        0    0.0%   -
+  owe them                      1        0    0.0%   -
+  pay it back                   1        0    0.0%   -
+  penalized for leaving         1        1  100.0%   T_MandatoryMarathon(1)
+  penalty for quitting          1        1  100.0%   T_MandatoryMarathon(1), S_Competition(1)
+  please don't go               1        1  100.0%   T_Advertisement(1), P_IllusionOfControl(1)
+  posted on my behalf           1        1  100.0%   M_PayToProgress(1), S_FriendSpamImpersonation(1)
+  power creep                   1        1  100.0%   P_RewardMania(1), P_AestheticManipulation(1)
+  pretends to be free           1        1  100.0%   M_PayToProgress(1)
+  prices go up after            1        1  100.0%   M_NeverEndingLure(1)
+  profit from attacking         1        1  100.0%   S_Competition(1)
+  progress is not saved         1        0    0.0%   -
+  progress isnt saved           1        1  100.0%   T_MandatoryMarathon(1)
+  quit mid game                 1        1  100.0%   T_MandatoryMarathon(1)
+  rebalance                     1        1  100.0%   M_PayToProgress(1)
+  recruit friends               1        0    0.0%   -
+  recruit players               1        0    0.0%   -
+  refer a friend                1        1  100.0%   S_ForcedFellowship(1), S_Competition(1), M_PayToProgress(1)
+  referral                      1        1  100.0%   S_ForcedFellowship(1), M_DeceptiveLuxury(1), M_EasyToPurchase(1)
+  request lives                 1        1  100.0%   S_Reciprocity(1), M_PayToProgress(1), T_PlayingByAppointment(1)
+  request troops                1        1  100.0%   S_Reciprocity(1)
+  return the favor              1        1  100.0%   S_Competition(1), T_PlayingByAppointment(1)
+  review i did not write        1        1  100.0%   S_FriendSpamImpersonation(1), P_OptimismAndFrequencyBiases(1), P_IllusionOfControl(1)
+  reward for attacking          1        1  100.0%   T_MandatoryMarathon(1), S_Competition(1)
+  reward for inviting           1        1  100.0%   S_ForcedFellowship(1), P_CompleteTheCollection(1), P_RewardMania(1)
+  rewarded for attacking        1        1  100.0%   S_EncouragesAntiSocialBehavior(1), S_Competition(1), T_PlayingByAppointment(1)
+  rewards for inviting          1        1  100.0%   S_ForcedFellowship(1), P_CompleteTheCollection(1), M_Gambling(1)
+  sad face                      1        1  100.0%   M_PayToProgress(1), P_IllusionOfControl(1)
+  saves at the end of           1        1  100.0%   T_MandatoryMarathon(1)
+  send gifts                    1        1  100.0%   S_Reciprocity(1)
+  send lives                    1        1  100.0%   S_Reciprocity(1)
+  sent messages to              1        0    0.0%   -
+  set completion                1        1  100.0%   P_CompleteTheCollection(1), T_PlayingByAppointment(1)
+  share this game to            1        0    0.0%   -
+  share to get                  1        1  100.0%   T_Advertisement(1)
+  share to unlock               1        1  100.0%   S_ForcedFellowship(1), T_Grinding(1), S_FriendSpamImpersonation(1)
+  sign in bonus                 1        1  100.0%   T_DailyRewards(1)
+  slippery slope                1        1  100.0%   M_PayToProgress(1)
+  small x                       1        1  100.0%   M_EasyToPurchase(1), M_UIMisdirection(1)
+  so much time invested         1        1  100.0%   P_EasyToGetHardToLose(1)
+  spend to reach                1        1  100.0%   M_NeverEndingLure(1), S_Competition(1), M_PayToProgress(1)
+  spend to unlock               1        1  100.0%   M_IntermediateCurrency(1), M_PayToProgress(1)
+  starts easy then              1        0    0.0%   -
+  steal from weaker             1        1  100.0%   S_EncouragesAntiSocialBehavior(1), S_Competition(1), M_PayToProgress(1)
+  steal their                   1        1  100.0%   S_Competition(1), M_PayToProgress(1)
+  sticker                       1        0    0.0%   -
+  sticker album                 1        1  100.0%   P_CompleteTheCollection(1), P_RewardMania(1)
+  storage                       1        1  100.0%   Tech_FragmentedDownloads(1)
+  storage full                  1        0    0.0%   -
+  streak                        1        0    0.0%   -
+  stuck downloading             1        0    0.0%   -
+  stuck in the match            1        1  100.0%   S_Competition(1), M_PayToProgress(1)
+  stuck with useless            1        1  100.0%   S_Competition(1), M_PayToProgress(1), P_IllusionOfControl(1)
+  sunk cost                     1        1  100.0%   P_EasyToGetHardToLose(1), M_Gambling(1), T_Grinding(1)
+  take their resources          1        1  100.0%   S_EncouragesAntiSocialBehavior(1), S_Competition(1), T_Grinding(1)
+  takes up space                1        1  100.0%   T_PlayingByAppointment(1)
+  teammates expect              1        1  100.0%   P_IllusionOfControl(1)
+  then the price                1        1  100.0%   P_OptimismAndFrequencyBiases(1), P_RewardMania(1), P_IllusionOfControl(1)
+  too far in                    1        1  100.0%   S_Competition(1), M_PayToProgress(1), P_IllusionOfControl(1)
+  too invested                  1        1  100.0%   P_EasyToGetHardToLose(1), M_PayToProgress(1)
+  total spent                   1        1  100.0%   S_Competition(1), M_PayToProgress(1)
+  trade with friends            1        1  100.0%   S_Competition(1), S_Reciprocity(1)
+  trapped                       1        0    0.0%   -
+  trophies                      1        0    0.0%   -
+  until the timer runs out      1        1  100.0%   S_Competition(1)
+  useless now                   1        0    0.0%   -
+  vip                           1        0    0.0%   -
+  vip points                    1        1  100.0%   M_IntermediateCurrency(1), M_PowerCreep(1), P_IllusionOfControl(1)
+  vip system                    1        1  100.0%   S_Competition(1), M_PayToProgress(1), M_NeverEndingLure(1)
+  wasted currency               1        1  100.0%   M_EasyToPurchase(1), M_UIMisdirection(1)
+  wasted money on               1        1  100.0%   M_PayToProgress(1)
+  wasted so much money          1        1  100.0%   P_CompleteTheCollection(1), T_Grinding(1), M_EasyToPurchase(1)
+  went back up                  1        1  100.0%   M_Gambling(1), P_IllusionOfControl(1)
+  whales                        1        0    0.0%   -
+  without my permission         1        0    0.0%   -
+  worded so that                1        1  100.0%   S_Reciprocity(1), M_UIMisdirection(1), P_AestheticManipulation(1)
+  worth attacking               1        1  100.0%   S_Competition(1)
+  would lose everything         1        1  100.0%   P_EasyToGetHardToLose(1)
+  x button is                   1        1  100.0%   M_Gambling(1), M_UIMisdirection(1)
+  years of progress             1        0    0.0%   -
+  you have to cheat to          1        1  100.0%   S_EncouragesAntiSocialBehavior(1), S_Reciprocity(1)
+
+Labels with support only in the targeted stratum (4):
+  M_UIMisdirection, S_FriendSpamImpersonation, P_AestheticManipulation, Tech_FragmentedDownloads
+  These would carry zero support under random sampling alone, which is
+  the argument for the two-stratum design.
+
+========================================================================
+9. STAR RATING AGAINST LABELING
+========================================================================
+  star     labeled   no label   labeled %
+  1            165         85       66.0%
+  2             73         27       73.0%
+  3             55         32       63.2%
+  4             33         22       60.0%
+  5             42         77       35.3%
+
+========================================================================
+10. EXCLUDED RECORDS, FIX THESE AND RERUN
+========================================================================
+Total excluded: 0
+None. Every record passed validation.
+
+Identical duplicate review_ids collapsed to one (8), no action needed:
+  48a0f44f-ee21-4578-bea1-064959f37193   fsi.jsonl:1 , targeted.jsonl:26
+  4a9d42d6-ad1d-4d3e-9cd1-5b16339524b0   targeted.jsonl:2 , targeted_200.jsonl:174
+  3bd06ff1-6014-4de8-8379-b50dada7034a   targeted.jsonl:3 , targeted_200.jsonl:175
+  0853c395-2040-4e0b-a56c-1591484cd35b   targeted.jsonl:22 , targeted_200.jsonl:21
+  6088dbf1-7d56-4302-945e-72fd73832609   targeted.jsonl:29 , targeted_200.jsonl:65
+  6877b6bf-e9e0-4c86-a196-e7c85a51529f   targeted.jsonl:38 , targeted_2.jsonl:5
+  b76bf6ad-1a7c-4c82-9b69-ef2e10405a4a   targeted.jsonl:40 , targeted_2.jsonl:2 , targeted_200.jsonl:141
+  dcae7f00-139f-4fc2-afdd-ea6e55a81188   targeted_2.jsonl:1 , targeted_200.jsonl:140

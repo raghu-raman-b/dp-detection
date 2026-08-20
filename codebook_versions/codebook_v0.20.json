@@ -1079,16 +1079,6 @@
             "M_PayToProgress",
             "S_FearOfMissingOutFOMO"
           ]
-        },
-        {
-          "review_id": "targetted",
-          "text": "I like the satisfaction of finishing the puzzles and renovating rooms a lot, but I hate how the game tries to force you to be competitive. every time you lose the game reminds you that unless you pay up, you're going to go down on the leaderboard and will lose all your winning streak rewards. it makes you feel bad for not winning every level on the first attempt. I just want to enjoy playing a casual puzzle game, and I think there should be opt out of the leaderboard system.",
-          "labels_assigned": [
-            "M_PayToProgress",
-            "S_FearOfMissingOutFOMO",
-            "S_Competition",
-            "P_AestheticManipulation"
-          ]
         }
       ]
     },
