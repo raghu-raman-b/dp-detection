@@ -600,7 +600,7 @@
         },
         {
           "vs_label": "Gacha Rarity",
-          "rule": "The source of the scarcity decides it. Where the scarcity is the draw rate of a chance mechanic, the improbability is the wager and any money named is the price of attempts rather than the price of the item: code Gambling and Reward Mania. Where the scarcity is constructed around the item itself: limited-time availability, urgency, exclusivity, a second-chance offer at higher cost, or a rarity tier carrying its own price, code Deceptive Luxury. Where a chance mechanic delivers an item that is itself scarce, both sources are present: assign all three under R9, the draw rate being the wager and the constructed scarcity being the item's. The Deceptive Luxury component still requires the scarcity to bear on price or purchase, per the Scarcity without monetization rule."
+          "rule": "The source of scarcity determines the code. If scarcity comes from a chance mechanic's draw rate, the improbability itself is the wager, so any money spent buys attempts rather than the item; code this as Gambling and Reward Mania. If scarcity is built around the item itself (limited-time availability, urgency, exclusivity, a costlier second-chance offer, or a priced rarity tier), code it as Deceptive Luxury. When both apply, that is, a chance mechanic delivers an item that's itself scarce or available only for a limited time, assign all three codes under R9. Note that Deceptive Luxury still requires the scarcity to affect price or purchase, per the Scarcity without monetization rule."
         }
       ],
       "counterexamples": [

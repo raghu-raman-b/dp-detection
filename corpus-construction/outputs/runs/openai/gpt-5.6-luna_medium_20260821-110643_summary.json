@@ -1,0 +1,27 @@
+{
+  "tag": "gpt-5.6-luna_medium_20260821-110643",
+  "n": 1,
+  "prompt_sha256": "880acde3c75550a3e0fe5f870613e3e9c4763f64de386e1c6f31b7bee83aa62c",
+  "prompt_file": "../outputs/prompts/teacher_v1.txt",
+  "model": "gpt-5.6-luna",
+  "reasoning_effort": "medium",
+  "web_search": true,
+  "pricing": {
+    "model": "gpt-5.6-luna",
+    "as_of": "2026-08-21",
+    "input": 0.2,
+    "cached_input": 0.02,
+    "cache_write": 0.25,
+    "output": 1.2
+  },
+  "ok": 1,
+  "parsed": 1,
+  "truncated": 0,
+  "searched": 0,
+  "cache_hit_rate": 0.9929,
+  "mean_output_tokens": 236.0,
+  "mean_reasoning_tokens": 111.0,
+  "spend_usd": 0.000792,
+  "usd_per_review": 0.00079164,
+  "projected_usd_at_200000": 158.33
+}
