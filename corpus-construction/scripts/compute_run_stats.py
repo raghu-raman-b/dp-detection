@@ -1,39 +1,38 @@
 #!/usr/bin/env python3
 """
-compute_stats.py -- turn one run into a report and a comparable metrics row.
+compute_stats.py -- turn one run into a report, an error-review sheet, and a metrics row.
 
-Reads the three files a run produces plus the gold labels, and writes:
+Writes:
+    <OUT_ROOT>/<provider>/<model>/<tag>_report.txt   full numeric report
+    <OUT_ROOT>/<provider>/<model>/<tag>_errors.md    every disagreement, for triage
+    <OUT_ROOT>/<provider>/<model>/<tag>_perreview.jsonl  gold vs pred per review
+    <OUT_ROOT>/<provider>/<model>/metrics.jsonl      one row per run, appended
+    <OUT_ROOT>/index.jsonl                           same row, all providers
 
-    <OUT_ROOT>/<provider>/<model>/<tag>_report.txt      human-readable, everything
-    <OUT_ROOT>/<provider>/<model>/metrics.jsonl         one line per run, appended
-    <OUT_ROOT>/index.jsonl                              same line, all providers
-
-The index is the bake-off scoreboard: every run from every provider, one row each,
-so a later comparison script never has to re-parse raw responses.
-
-Metric stack (why these, at n=50):
-  micro-F1          primary; stable at this n
-  example-based F1  per-review overlap; the analogue of coder agreement
+Metric stack at n=50:
+  micro-F1          primary tuning signal
+  example-based F1  per-review overlap; analogue of coder agreement
   class macro-F1    5 classes + None; cascade stage 1
-  meso macro-F1     ONLY over labels with support >= MIN_SUPPORT
+  meso macro-F1     only over labels with support >= MIN_SUPPORT
   None P/R          over-labelling is the main failure mode
 No macro over all 29 labels: most have support 1-2 and one decision swings it 3+ points.
 """
 
 from __future__ import annotations
-import json, statistics, sys
+import json, re, statistics, sys
 from collections import Counter, defaultdict
 from datetime import datetime
 from pathlib import Path
 
 # ============================== CONFIG ==============================
-RUN_DIR      = "../outputs/runs/openai"
-RUN_TAG      = ""                  # "" = most recent run in RUN_DIR
+RUN_DIR      = "../outputs/runs/kimi"
+RUN_TAG      = "kimi-k3_high_20260821-150150"                # "" = most recent run in RUN_DIR
 GOLD_FILE    = "../tuning/tuning_set_50.jsonl"     # the file WITH actual_labels
 OUT_ROOT     = "../outputs/run-stats"
 PROJECT_TO   = 200_000
 MIN_SUPPORT  = 3                   # labels below this are listed, never averaged
-TOP_ERRORS   = 12                  # per-review disagreements printed in the report
+TOP_ERRORS   = 12                  # disagreements printed in the txt report
+WRITE_MD     = True                # markdown triage sheet with every disagreement
 
 PROVIDER_OF  = {"gpt": "openai", "claude": "anthropic", "deepseek": "deepseek",
                 "kimi": "moonshot", "gemini": "google"}
@@ -78,22 +77,50 @@ def pct(x: float) -> str:
     return f"{100*x:5.1f}%"
 
 
-# --------------------------------------------------------------- gold
+def pretty(code: str) -> str:
+    """T_PlayingByAppointment -> 'Playing By Appointment'."""
+    stem = code.split("_", 1)[1] if "_" in code else code
+    return re.sub(r"(?<!^)(?=[A-Z])", " ", stem).strip()
 
-def load_gold(path: Path) -> tuple[dict[str, set[str]], dict[str, str]]:
-    gold, text = {}, {}
+
+def mentioned(code: str, analysis: str) -> bool:
+    """Did the model's own analysis name this label at all? Separates 'considered and
+    rejected' (rule interpretation) from 'never came up' (attention). Heuristic - the
+    markdown prints the analysis so you can confirm each call yourself."""
+    if not analysis:
+        return False
+    t = analysis.lower()
+    stem = (code.split("_", 1)[1] if "_" in code else code).lower()
+    forms = {code.lower(), stem, pretty(code).lower()}
+    words = pretty(code).lower().split()
+    if len(words) >= 3:
+        forms.add(" ".join(words[:3]))
+    return any(f in t for f in forms if len(f) > 3)
+
+
+def classify(g: set, p: set) -> str:
+    if not p and g:
+        return "FALSE NONE"
+    if p < g:
+        return "MISSED ONLY"
+    if g < p:
+        return "SPURIOUS ONLY"
+    return "SWAP"
+
+
+def load_gold(path: Path):
+    gold, text, game = {}, {}, {}
     for row in jsonl(path):
         labs = row.get("actual_labels")
         if labs is None:
-            labs = [l.strip() for l in (row.get("actual_labels_str") or "").split(";") if l.strip()]
+            labs = [l.strip() for l in (row.get("actual_labels_str") or "").split(";")]
         gold[row["review_id"]] = {l for l in labs if l}
         text[row["review_id"]] = row.get("review_text", "")
-    return gold, text
+        game[row["review_id"]] = row.get("game_name", "")
+    return gold, text, game
 
 
-# ---------------------------------------------------------- validation
-
-def validate(parsed: dict | None, review_text: str, legal: set[str]) -> dict:
+def validate(parsed: dict | None, review_text: str, legal: set) -> dict:
     v = {"bad_codes": [], "dup_codes": [], "missing_span": [],
          "span_bad": [], "span_loose": [], "labels": set()}
     if not parsed:
@@ -119,6 +146,144 @@ def validate(parsed: dict | None, review_text: str, legal: set[str]) -> dict:
     return v
 
 
+# ------------------------------------------------------ error-review markdown
+
+def review_card(rid: str, gold_s: set, pred_s: set, text: str, game: str,
+                parsed: dict | None, v: dict) -> list[str]:
+    miss, extra = sorted(gold_s - pred_s), sorted(pred_s - gold_s)
+    items = {i.get("label"): i for i in ((parsed or {}).get("labels") or [])
+             if isinstance(i, dict)}
+    analysis = (parsed or {}).get("analysis", "") or ""
+
+    L = [f"### `{rid}`" + (f" - {game}" if game else ""), ""]
+    L += ["> " + " ".join((text or "").split()), ""]
+    L += ["| | labels |", "|---|---|",
+          f"| gold | {', '.join(f'`{c}`' for c in sorted(gold_s)) or '_NONE_'} |",
+          f"| pred | {', '.join(f'`{c}`' for c in sorted(pred_s)) or '_NONE_'} |"]
+    if miss:
+        L.append(f"| **missed** | {', '.join(f'`{c}`' for c in miss)} |")
+    if extra:
+        L.append(f"| **spurious** | {', '.join(f'`{c}`' for c in extra)} |")
+    L.append("")
+
+    if miss:
+        L += ["**Did the model consider what it missed?**", ""]
+        for c in miss:
+            if mentioned(c, analysis):
+                L.append(f"- `{c}` - considered and rejected -> **rule interpretation**")
+            else:
+                L.append(f"- `{c}` - never mentioned -> **attention / recall**")
+        L.append("")
+
+    L += ["**Model analysis**", "", "```", analysis.strip() or "(empty)", "```", ""]
+
+    if items:
+        L += ["**Labels assigned**", ""]
+        for c in sorted(items):
+            it = items[c]
+            verdict = "ok" if c in gold_s else "**SPURIOUS**"
+            flags = []
+            if c in v.get("span_bad", []):
+                flags.append("span not verbatim")
+            if c in v.get("span_loose", []):
+                flags.append("span loose match")
+            if c in v.get("missing_span", []):
+                flags.append("no span (R3)")
+            tail = f"  _[{'; '.join(flags)}]_" if flags else ""
+            L.append(f"- `{c}` - {verdict}{tail}")
+            L.append(f"  - span: \"{' '.join((it.get('span') or '').split())}\"")
+            if it.get("rationale"):
+                L.append(f"  - why: {' '.join(it['rationale'].split())}")
+        L.append("")
+
+    if (parsed or {}).get("invoked_web_search"):
+        L += [f"**Search:** `{parsed.get('search_query')}` -> {parsed.get('search_result')}", ""]
+
+    L += ["`[ ] under-label`  `[ ] over-label`  `[ ] confusion`  "
+          "`[ ] codebook gap -> v0.21`  `[ ] gold was wrong`", "", "---", ""]
+    return L
+
+
+def write_error_review(path: Path, tag: str, meta0: dict, ids, gold, pred,
+                       gold_text, gold_game, parsed_by_review, val,
+                       mf: float, mp: float, mr: float) -> None:
+    buckets = defaultdict(list)
+    for i in ids:
+        if gold[i] != pred[i]:
+            buckets[classify(gold[i], pred[i])].append(i)
+    order = ["FALSE NONE", "SWAP", "MISSED ONLY", "SPURIOUS ONLY"]
+    n_wrong = sum(len(buckets[k]) for k in order)
+
+    seen_dropped = never_seen = 0
+    by_seen, by_unseen = Counter(), Counter()
+    for i in ids:
+        a = (parsed_by_review.get(i) or {}).get("analysis", "") or ""
+        for c in gold[i] - pred[i]:
+            if mentioned(c, a):
+                seen_dropped += 1
+                by_seen[c] += 1
+            else:
+                never_seen += 1
+                by_unseen[c] += 1
+    tot = seen_dropped + never_seen
+
+    L = [f"# Error review - {tag}", "",
+         f"`{meta0.get('model')}` / reasoning `{meta0.get('reasoning_effort')}` / "
+         f"search `{meta0.get('web_search')}`  ",
+         f"prompt `{meta0.get('prompt_file')}` sha `{(meta0.get('prompt_sha256') or '')[:12]}`  ",
+         f"micro-F1 **{mf:.3f}** (P {mp:.3f} / R {mr:.3f}) - "
+         f"**{n_wrong} of {len(ids)}** reviews disagree", "",
+         "| pattern | n | meaning |", "|---|---|---|",
+         f"| FALSE NONE | {len(buckets['FALSE NONE'])} | said NONE, gold had labels |",
+         f"| SWAP | {len(buckets['SWAP'])} | picked different labels than gold |",
+         f"| MISSED ONLY | {len(buckets['MISSED ONLY'])} | everything predicted was right, "
+         "but incomplete |",
+         f"| SPURIOUS ONLY | {len(buckets['SPURIOUS ONLY'])} | found all gold, added extras |",
+         ""]
+
+    if tot:
+        L += ["## The diagnostic that matters", "",
+              f"Of **{tot}** missed labels, **{seen_dropped}** ({100*seen_dropped/tot:.0f}%) "
+              "were named in the model's own analysis and dropped anyway; "
+              f"**{never_seen}** ({100*never_seen/tot:.0f}%) never came up at all.", "",
+              "> Named-then-dropped is **rule interpretation**: fix prompt wording (R9) or "
+              "the codebook boundary rule.  ",
+              "> Never-named is **attention**: raise reasoning effort, or split the label "
+              "list (the 1+4 cascade). Prompt wording will not help.", ""]
+        if by_seen or by_unseen:
+            L += ["| label | named then dropped | never named |", "|---|---|---|"]
+            for c in sorted(set(by_seen) | set(by_unseen),
+                            key=lambda c: -(by_seen[c] + by_unseen[c])):
+                L.append(f"| `{c}` | {by_seen[c]} | {by_unseen[c]} |")
+            L.append("")
+
+    titles = {"FALSE NONE": "Missed everything (predicted NONE)",
+              "SWAP": "Swapped labels",
+              "MISSED ONLY": "Under-labelled (incomplete, nothing wrong)",
+              "SPURIOUS ONLY": "Over-labelled"}
+    for k in order:
+        if not buckets[k]:
+            continue
+        L += [f"## {titles[k]} ({len(buckets[k])})", ""]
+        for i in buckets[k]:
+            L += review_card(i, gold[i], pred[i], gold_text.get(i, ""),
+                             gold_game.get(i, ""), parsed_by_review.get(i),
+                             val.get(i, {}))
+
+    miss_by, extra_by = defaultdict(list), defaultdict(list)
+    for i in ids:
+        for c in gold[i] - pred[i]:
+            miss_by[c].append(i)
+        for c in pred[i] - gold[i]:
+            extra_by[c].append(i)
+    L += ["## By label", "", "| label | missed | spurious |", "|---|---|---|"]
+    for c in sorted(set(miss_by) | set(extra_by),
+                    key=lambda c: -(len(miss_by[c]) + len(extra_by[c]))):
+        L.append(f"| `{c}` | {len(miss_by[c])} | {len(extra_by[c])} |")
+    L.append("")
+    path.write_text("\n".join(L) + "\n", encoding="utf-8")
+
+
 # ---------------------------------------------------------------- main
 
 def main() -> None:
@@ -126,15 +291,14 @@ def main() -> None:
     tag = find_run(run_dir, RUN_TAG)
     resp = {r["request_id"]: r for r in jsonl(run_dir / f"{tag}_responses.jsonl")}
     meta = {m["request_id"]: m for m in jsonl(run_dir / f"{tag}_meta.jsonl")}
-    gold, gold_text = load_gold(Path(GOLD_FILE))
+    gold, gold_text, gold_game = load_gold(Path(GOLD_FILE))
     legal = {c for s in gold.values() for c in s}
 
     any_meta = next(iter(meta.values()))
     model = any_meta.get("model", "unknown")
     provider = provider_of(model)
 
-    # ---- per-request roll-up -------------------------------------------------
-    pred, val = {}, {}
+    pred, val, parsed_by_review = {}, {}, {}
     comp = Counter()
     lat, costs, usage_rows = [], [], []
     parse_notes, err_types, statuses = Counter(), Counter(), Counter()
@@ -162,6 +326,7 @@ def main() -> None:
             searched_ids.append(review_id)
 
         parsed = r.get("parsed")
+        parsed_by_review[review_id] = parsed
         comp["parsed"] += parsed is not None
         v = validate(parsed, gold_text.get(review_id, ""), legal)
         val[review_id] = v
@@ -173,7 +338,7 @@ def main() -> None:
 
     ids = [i for i in gold if i in pred]
     if not ids:
-        sys.exit("no scorable rows; check GOLD_FILE and review_id join")
+        sys.exit("no scorable rows; check GOLD_FILE and the review_id join")
 
     # ---- quality -------------------------------------------------------------
     tp = sum(len(pred[i] & gold[i]) for i in ids)
@@ -215,6 +380,10 @@ def main() -> None:
             for b in pred[i] - gold[i]:
                 confusion[tuple(sorted((a, b)))] += 1
 
+    seen_dropped = sum(
+        1 for i in ids for c in gold[i] - pred[i]
+        if mentioned(c, (parsed_by_review.get(i) or {}).get("analysis", "") or ""))
+
     # ---- cost and ops --------------------------------------------------------
     spend = sum(c["total"] for c in costs)
     usd_per_review = spend / max(len(costs), 1)
@@ -228,7 +397,7 @@ def main() -> None:
     lat_s = sorted(lat) or [0]
     p50, p95 = lat_s[len(lat_s)//2], lat_s[max(int(len(lat_s)*0.95)-1, 0)]
 
-    # ---- report --------------------------------------------------------------
+    # ---- txt report ----------------------------------------------------------
     L = []
     add = L.append
     add("=" * 78)
@@ -244,10 +413,7 @@ def main() -> None:
     add(f"gold             {GOLD_FILE}")
     add(f"scored           {len(ids)} of {comp['n']} requests")
     add("")
-
-    add("-" * 78)
-    add("RELIABILITY")
-    add("-" * 78)
+    add("-" * 78); add("RELIABILITY"); add("-" * 78)
     add(f"  requests          {comp['n']}")
     add(f"  ok / api errors   {comp['ok']} / {comp['api_error']}")
     add(f"  parsed JSON       {comp['parsed']}/{comp['ok']}")
@@ -258,10 +424,7 @@ def main() -> None:
     if err_types:
         add(f"  error types       {dict(err_types)}")
     add("")
-
-    add("-" * 78)
-    add("CODEBOOK COMPLIANCE")
-    add("-" * 78)
+    add("-" * 78); add("CODEBOOK COMPLIANCE"); add("-" * 78)
     add(f"  labels emitted            {comp['labels_emitted']}")
     add(f"  out-of-vocabulary codes   {comp['bad_codes']}")
     add(f"  duplicate labels (R1)     {comp['dup_codes']}")
@@ -269,18 +432,18 @@ def main() -> None:
     add(f"  span not in review        {comp['span_bad']}")
     add(f"  span matched only loosely {comp['span_loose']}")
     denom = max(comp["labels_emitted"], 1)
-    add(f"  span verbatim rate        {pct(1 - (comp['span_bad']+comp['missing_span'])/denom)}")
+    add(f"  span verbatim rate        {pct(1-(comp['span_bad']+comp['missing_span'])/denom)}")
     add("")
-
-    add("-" * 78)
-    add("QUALITY")
-    add("-" * 78)
+    add("-" * 78); add("QUALITY"); add("-" * 78)
     add(f"  micro-F1            {mf:.3f}   (P {mp:.3f} / R {mr:.3f})   tp {tp} fp {fp} fn {fn}")
     add(f"  example-based F1    {ex_f1:.3f}")
     add(f"  exact set match     {exact:.3f}")
     add(f"  class macro-F1      {class_macro:.3f}   (5 classes + None)")
     add(f"  meso macro-F1       {meso_macro:.3f}   over {len(scored)} labels, support >= {MIN_SUPPORT}")
     add(f"  None P/R/F1         {np_:.3f} / {nr_:.3f} / {nf_:.3f}   (support {nt+nfn})")
+    if fn:
+        add(f"  missed labels named in the model's own analysis: {seen_dropped}/{fn} "
+            f"({100*seen_dropped/fn:.0f}%)   rule interpretation vs attention")
     add("")
     add("  class                     P      R     F1   supp")
     for k, p, r, f, s in crows:
@@ -289,17 +452,13 @@ def main() -> None:
     add(f"  per-label (* = support < {MIN_SUPPORT}, excluded from meso macro)")
     add("    label                                 P      R     F1   supp")
     for c, (p, r, f, s) in sorted(per.items(), key=lambda kv: (-kv[1][3], kv[0])):
-        mark = " " if s >= MIN_SUPPORT else "*"
-        add(f"  {mark} {c:<34} {p:6.3f} {r:6.3f} {f:6.3f}  {s:>4}")
+        add(f"  {' ' if s >= MIN_SUPPORT else '*'} {c:<34} {p:6.3f} {r:6.3f} {f:6.3f}  {s:>4}")
     add("")
-
-    add("-" * 78)
-    add("ERROR TAXONOMY")
-    add("-" * 78)
-    add(f"  over-labelled  (predicted, not in gold)")
+    add("-" * 78); add("ERROR TAXONOMY"); add("-" * 78)
+    add("  over-labelled  (predicted, not in gold)")
     for c, n in over.most_common(TOP_ERRORS):
         add(f"    {c:<36} {n}")
-    add(f"  under-labelled (in gold, not predicted)")
+    add("  under-labelled (in gold, not predicted)")
     for c, n in under.most_common(TOP_ERRORS):
         add(f"    {c:<36} {n}")
     if confusion:
@@ -307,50 +466,42 @@ def main() -> None:
         for (a, b), n in confusion.most_common(TOP_ERRORS):
             add(f"    {a} ~ {b}   {n}")
     add("")
-    add(f"  reviews with disagreements (first {TOP_ERRORS})")
+    add(f"  reviews with disagreements (first {TOP_ERRORS}; full detail in the .md)")
     shown = 0
     for i in ids:
         if pred[i] == gold[i] or shown >= TOP_ERRORS:
             continue
         shown += 1
-        add(f"    {i}")
+        add(f"    {i}   [{classify(gold[i], pred[i])}]")
         add(f"      gold: {sorted(gold[i]) or ['NONE']}")
         add(f"      pred: {sorted(pred[i]) or ['NONE']}")
     add("")
-    add("  triage each into: over / under / confusion / codebook-does-not-rule.")
-    add("  the last bucket is a v0.21 codebook edit, NOT a prompt edit.")
-    add("")
-
-    add("-" * 78)
-    add("COST")
-    add("-" * 78)
+    add("-" * 78); add("COST"); add("-" * 78)
     pr = any_meta.get("pricing", {})
-    add(f"  rates as of       {pr.get('as_of')}  "
-        f"in {pr.get('input')} / cached {pr.get('cached_input')} / "
-        f"write {pr.get('cache_write')} / out {pr.get('output')} per MTok")
-    add(f"  input tokens      {tok['input_tokens']:,}  "
-        f"(cached {tok['cached_tokens']:,}, written {tok['cache_write_tokens']:,}, "
-        f"plain {tok['uncached_input_tokens']:,})")
-    add(f"  output tokens     {tok['output_tokens']:,}  "
-        f"(reasoning {tok['reasoning_tokens']:,}, "
+    add(f"  rates as of       {pr.get('as_of')}  in {pr.get('input')} / "
+        f"cached {pr.get('cached_input')} / write {pr.get('cache_write')} / "
+        f"out {pr.get('output')} per MTok")
+    add(f"  input tokens      {tok['input_tokens']:,}  (cached {tok['cached_tokens']:,}, "
+        f"written {tok['cache_write_tokens']:,}, plain {tok['uncached_input_tokens']:,})")
+    add(f"  output tokens     {tok['output_tokens']:,}  (reasoning {tok['reasoning_tokens']:,}, "
         f"{100*tok['reasoning_tokens']/max(tok['output_tokens'],1):.0f}% of output)")
-    add(f"  mean per review   in {tok['input_tokens']/n_u:,.0f}  out {tok['output_tokens']/n_u:,.0f}  "
-        f"reasoning {tok['reasoning_tokens']/n_u:,.0f}")
+    add(f"  mean per review   in {tok['input_tokens']/n_u:,.0f}  "
+        f"out {tok['output_tokens']/n_u:,.0f}  reasoning {tok['reasoning_tokens']/n_u:,.0f}")
     add(f"  cache hit rate    {hit:.3f}")
     add(f"  total spend       ${spend:.4f}")
     add(f"  per review        ${usd_per_review:.6f}")
-    add(f"  cost split        " + "  ".join(f"{k} {pct(v)}" for k, v in cost_share.items()))
+    add("  cost split        " + "  ".join(f"{k} {pct(v)}" for k, v in cost_share.items()))
     add(f"  projected {PROJECT_TO:,}  ${usd_per_review*PROJECT_TO:,.2f}")
     if mf:
         add(f"  micro-F1 per $ at {PROJECT_TO:,}   {mf/(usd_per_review*PROJECT_TO):.5f}")
     add("")
-
-    add("-" * 78)
-    add("THROUGHPUT")
-    add("-" * 78)
-    add(f"  latency p50/p95   {p50:.2f}s / {p95:.2f}s   mean {statistics.mean(lat or [0]):.2f}s")
-    add(f"  sequential {PROJECT_TO:,}  {PROJECT_TO*statistics.mean(lat or [0])/3600:,.0f} h")
-    add(f"  web searches      {comp['searched']}/{comp['ok']} reviews ({pct(comp['searched']/max(comp['ok'],1))})")
+    add("-" * 78); add("THROUGHPUT"); add("-" * 78)
+    add(f"  latency p50/p95   {p50:.2f}s / {p95:.2f}s   "
+        f"mean {statistics.mean(lat or [0]):.2f}s   max {max(lat or [0]):.2f}s")
+    add(f"  sequential {PROJECT_TO:,}  {PROJECT_TO*p50/3600:,.0f} h at p50 "
+        f"({PROJECT_TO*statistics.mean(lat or [0])/3600:,.0f} h at mean, skewed by outliers)")
+    add(f"  web searches      {comp['searched']}/{comp['ok']} reviews "
+        f"({pct(comp['searched']/max(comp['ok'],1))})")
     if searched_ids:
         add(f"    ids: {', '.join(searched_ids[:8])}{' ...' if len(searched_ids) > 8 else ''}")
     add("")
@@ -361,9 +512,30 @@ def main() -> None:
     out_dir.mkdir(parents=True, exist_ok=True)
     (out_dir / f"{tag}_report.txt").write_text("\n".join(L) + "\n", encoding="utf-8")
 
+    # per-review predictions: needed for the paired bootstrap in compare_runs.py,
+    # since every model sees the same 50 reviews and paired tests are far more
+    # sensitive at n=50 than independent CIs.
+    with open(out_dir / f"{tag}_perreview.jsonl", "w", encoding="utf-8") as f:
+        for i in ids:
+            f.write(json.dumps({
+                "review_id": i,
+                "gold": sorted(gold[i]),
+                "pred": sorted(pred[i]),
+                "correct": sorted(pred[i] & gold[i]),
+                "missed": sorted(gold[i] - pred[i]),
+                "spurious": sorted(pred[i] - gold[i]),
+                "analysis_named_missed": {
+                    c: mentioned(c, (parsed_by_review.get(i) or {}).get("analysis", "") or "")
+                    for c in sorted(gold[i] - pred[i])},
+            }, ensure_ascii=False) + "\n")
+
+    md_path = out_dir / f"{tag}_errors.md"
+    if WRITE_MD:
+        write_error_review(md_path, tag, any_meta, ids, gold, pred, gold_text,
+                           gold_game, parsed_by_review, val, mf, mp, mr)
+
     row = {
-        "tag": tag,
-        "generated": datetime.now().isoformat(timespec="seconds"),
+        "tag": tag, "generated": datetime.now().isoformat(timespec="seconds"),
         "provider": provider, "model": model,
         "model_version": any_meta.get("model_version"),
         "reasoning_effort": any_meta.get("reasoning_effort"),
@@ -371,26 +543,24 @@ def main() -> None:
         "prompt_file": any_meta.get("prompt_file"),
         "prompt_sha256": any_meta.get("prompt_sha256"),
         "gold_file": GOLD_FILE, "n_requests": comp["n"], "n_scored": len(ids),
-        # quality
         "micro_f1": round(mf, 4), "micro_p": round(mp, 4), "micro_r": round(mr, 4),
         "example_f1": round(ex_f1, 4), "exact_match": round(exact, 4),
         "class_macro_f1": round(class_macro, 4),
         "meso_macro_f1": round(meso_macro, 4), "meso_macro_n_labels": len(scored),
         "none_p": round(np_, 4), "none_r": round(nr_, 4), "none_f1": round(nf_, 4),
         "tp": tp, "fp": fp, "fn": fn,
+        "missed_but_named_in_analysis": seen_dropped,
         "per_label_f1": {c: round(v[2], 4) for c, v in per.items()},
         "per_label_support": {c: v[3] for c, v in per.items()},
         "class_f1": {k: round(f, 4) for k, _, _, f, _ in crows},
         "top_over_labelled": over.most_common(5),
         "top_under_labelled": under.most_common(5),
-        # compliance
         "api_errors": comp["api_error"], "parsed": comp["parsed"],
         "truncated": comp["truncated"], "labels_emitted": comp["labels_emitted"],
         "bad_codes": comp["bad_codes"], "dup_labels_r1": comp["dup_codes"],
         "missing_span_r3": comp["missing_span"], "span_not_verbatim": comp["span_bad"],
         "span_loose": comp["span_loose"],
         "span_verbatim_rate": round(1-(comp["span_bad"]+comp["missing_span"])/denom, 4),
-        # cost and ops
         "pricing": pr, "tokens": tok, "cache_hit_rate": round(hit, 4),
         "mean_output_tokens": round(tok["output_tokens"]/n_u, 1),
         "mean_reasoning_tokens": round(tok["reasoning_tokens"]/n_u, 1),
@@ -400,6 +570,7 @@ def main() -> None:
         "latency_p50": round(p50, 2), "latency_p95": round(p95, 2),
         "latency_mean": round(statistics.mean(lat or [0]), 2),
         "search_rate": round(comp["searched"]/max(comp["ok"], 1), 4),
+        "perreview_file": str(out_dir / f"{tag}_perreview.jsonl"),
     }
     line = json.dumps(row, ensure_ascii=False) + "\n"
     with open(out_dir / "metrics.jsonl", "a", encoding="utf-8") as f:
@@ -410,6 +581,9 @@ def main() -> None:
 
     print("\n".join(L))
     print(f"wrote {out_dir / (tag + '_report.txt')}")
+    print(f"wrote {out_dir / (tag + '_perreview.jsonl')}")
+    if WRITE_MD:
+        print(f"wrote {md_path}")
     print(f"appended {out_dir / 'metrics.jsonl'} and {Path(OUT_ROOT) / 'index.jsonl'}")
 
 

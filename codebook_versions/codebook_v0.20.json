@@ -184,13 +184,13 @@
     },
     {
       "id": "R11",
-      "statement": "Where the span attributes the described behaviour to a bug, glitch, error, or technical fault, assign NONE, even if the behaviour would otherwise satisfy a label. Dark patterns are design choices; malfunctions are not. Applies only where the bug attribution is attached to the specific behaviour being coded. A general statement that a game is buggy, glitchy, or broken does not suppress labels on other spans in the same review.",
-      "worked_example_review_id": "3743b488-0ced-4497-9511-39c02d984a50",
+      "statement": "Where the span attributes the described behaviour to a bug, glitch, error, or technical fault, assign NONE, even if the behaviour would otherwise satisfy a label. Dark patterns are design choices; malfunctions are not. Applies only where the bug attribution is attached to the specific behaviour being coded. A general statement that a game is buggy, glitchy, or broken does not suppress labels on other spans in the same review. Exception: Look at Mandatory Marathon's \"Loss caused by malfunction\" rule.",
+      "worked_example_review_id": "",
       "worked_example_text": "I am a loyal player and encourage others to play as well as rate the game favorably...again this morning I was told I missed a day (after playing at least Six games today) and bounced back to level ONE. The first time it happened I was at level 80+ !! Today is the fourth time recently I've been erroneously demoted...Please FIX!\n\nLabels: Daily Rewards\n\nJustification: \"I was told I missed a day (after playing at least six games today)… erroneously demoted… Please FIX!\" codes Daily Rewards. The error claim attaches to whether the missed-day condition was correctly detected, not to the streak-reset penalty itself, which the reviewer describes as the game's normal operation. R11 suppresses only where the bug attribution reaches the mechanic being coded."
     },
     {
       "id": "R12",
-      "statement": "Code only mechanics the span describes as present in the game. Requests, suggestions, wishes, and hypotheticals about mechanics the game does not have (\"they should add…\", \"make us watch an ad to get coins\", \"if only there were…\") are not codable, even where the named mechanic matches a label.",
+      "statement": "Code only mechanics the span describes as present in the game. A request, suggestion, wish, or hypothetical for a mechanic the game doesn't have (\"they should add…\", \"make us watch an ad to get coins\", \"if only there were…\") is not codable as that mechanic, even where the named mechanic matches a label but this exclusion covers only the proposed new mechanic itself. If the same span also describes an existing behavior, pattern, or mechanic that's already present in the game (typically the reason given for the suggestion), that present-tense description stays codable under any label it matches, regardless of the wish wrapped around it.",
       "worked_example_review_id": "5b03434b-902f-401d-aab7-d958c7fcf788",
       "worked_example_text": "The game itself is fun, but you end up having to wait nearly 2 hours to pay for free. You get coins every hour, but one hours worth of coins isn't going to likely even get you past one level as you almost always need to buy additional cards. If they want to keep people playing, they need to make free ways to get coins. Make us watch an ad to get 1-2k coins. Otherwise this game is more frustrating than fun.\n\nLabels: Playing by Appointment only"
     },
@@ -600,7 +600,7 @@
         },
         {
           "vs_label": "Gacha Rarity",
-          "rule": "The source of scarcity determines the code. If scarcity comes from a chance mechanic's draw rate, the improbability itself is the wager, so any money spent buys attempts rather than the item; code this as Gambling and Reward Mania. If scarcity is built around the item itself (limited-time availability, urgency, exclusivity, a costlier second-chance offer, or a priced rarity tier), code it as Deceptive Luxury. When both apply, that is, a chance mechanic delivers an item that's itself scarce or available only for a limited time, assign all three codes under R9. Note that Deceptive Luxury still requires the scarcity to affect price or purchase, per the Scarcity without monetization rule."
+          "rule": "The source of the scarcity decides it. Where the scarcity is the draw rate of a chance mechanic, the improbability is the wager and any money named is the price of attempts rather than the price of the item: code Gambling and Reward Mania. Where the scarcity is constructed around the item itself: limited-time availability, urgency, exclusivity, a second-chance offer at higher cost, or a rarity tier carrying its own price, code Deceptive Luxury. Where a chance mechanic delivers an item that is itself scarce, both sources are present: assign all three under R9, the draw rate being the wager and the constructed scarcity being the item's. The Deceptive Luxury component still requires the scarcity to bear on price or purchase, per the Scarcity without monetization rule."
         }
       ],
       "counterexamples": [
@@ -855,7 +855,16 @@
       "indicators": [
         "Exciting UI Effect: King et al. 2023: “the use of colors and animation to direct the player’s attention to selected UI elements (such as the ‘buy in-game currency’ button)”; “[the buy button] was attracting more attention than the rest of the screen”; “a pleasing sound effect described as ‘an angelic choir’ and ‘a heavenly sound’ to accompany the appearance of the in-game currency storefront.” [low-level]"
       ],
-      "boundary_rules": [],
+      "boundary_rules": [
+        {
+          "vs_label": "Attention-directing without an opt-out",
+          "rule": "The definition has two arms and either is sufficient. Assign where the span describes the interface directing attention toward an option: colour, animation, placement, or size drawing the player to a button, offer, or currency purchase. Also assign where the span describes the interface obstructing an opt-out: a close, cancel, skip, or exit control that is absent, hidden, undersized, delayed, or placed where a mis-tap selects the opposite action, or a screen the player must dismiss before continuing. "
+        },
+        {
+          "vs_label": "UI complaint",
+          "rule": "A statement that the interface is cluttered, ugly, unintuitive, or badly designed is an evaluation of quality and codes NONE under R2. Assign where the span attributes the design to a purpose the interface serves against the player's intent, whether the reviewer states that purpose ('confusing so you buy stuff') or describes the obstruction itself ('no way to close it')."
+        }
+      ],
       "counterexamples": [
         {
           "review_id": "64ad47ca-d7b7-4f73-b296-bd7624c4c5c3",
@@ -898,7 +907,7 @@
       "counterexamples": [],
       "worked_examples": [
         {
-          "review_id": "54b037fa-4d2f-419d-9b6b-808704bebada",
+          "review_id": "seed: first purchase",
           "text": "Fun and lots to do. You also don't need to spend too much. That 89p first purchase is enough for a while.\n\nJustification: Span \"That 89p first purchase\" names a reduced-price entry purchase framed explicitly as the first one which is First Charge Discount [low-level].",
           "labels_assigned": [
             "M_NeverEndingLure"
@@ -1196,7 +1205,7 @@
       ],
       "counterexamples": [
         {
-          "review_id": "32c458cc-1b25-488c-8d2c-02406894e883",
+          "review_id": "",
           "text": "I spent almost $100 on in game currency, bet minimum bets the entire time, and i lost my money and smashed my phone because I didn't win a SINGLE free game and I was broke in 20 min. Whats the point in getting this if your NEVER going to win..",
           "why_not": "\"didn't win a SINGLE free game\" reports a losing run, not a misrepresented skill level or concealed information; no fixed ratio is asserted, so the rule from the coins review doesn't reach it."
         },
@@ -1251,7 +1260,7 @@
       ],
       "worked_examples": [
         {
-          "review_id": "b76bf6ad-1a7c-4c82-9b69-ef2e10405a4a",
+          "review_id": "targetted",
           "text": "This game has been one of my favorite games until I try to create a new account and spend 40$ on it. Try to link it with my Facebook just to find out the confusing question about linking is asking you to delete the current progress. Terrible description in question. Wish everyone Goodluck cause I won't play again!!",
           "labels_assigned": [
             "P_AestheticManipulation"
@@ -1302,6 +1311,14 @@
         {
           "vs_label": "Alleged rigging",
           "rule": "An assertion that outcomes are rigged, fixed, or predetermined does not nullify Reward Mania. The Variable Rewards indicator concerns the delivery schedule as presented to and experienced by the player; a reviewer's claim that the randomness is fake is a claim about the mechanism behind it, and codes Illusion of Control. Where the span carries both, assign both under R9."
+        },
+        {
+          "vs_label": "Gambling",
+          "rule": "Gambling requires a wager. Reward Mania does not: it covers the delivery of rewards, not their purchase. Where the span describes only unpredictable or repeated delivery with no stake described, assign Reward Mania alone."
+        },
+        {
+          "vs_label": "Reward described only by its value",
+          "rule": "Assign where the span describes how rewards are delivered: unpredictable outcomes, repeated attempts needed to obtain a specific item, duplicate or unwanted drops from a randomised pool, or complexity in how the reward system works. A complaint that a reward is too small, too slow, or not worth the effort describes the reward's value rather than its delivery and does not assign Reward Mania on its own."
         }
       ],
       "counterexamples": [],
@@ -1344,7 +1361,7 @@
       ],
       "worked_examples": [
         {
-          "review_id": "eb604ffc-d535-48dd-90de-ae046da9d5aa",
+          "review_id": "seed: additional download",
           "text": "Edit: I get that everything is mandatory but the file size is way too big. I don't got 12 GB of phone space bro. My experience is this: Download the game, finish tutorial (No problem) Man I can't wait to play (up to literally all of my free 8 GB of storage gone just for additional downloads and that wasn't counting an extra 2 GB left before I said nah I can't. Way too big of a game file for me. I'm sure the game is amazing but ain't no way I can experience this when its this massive on storage.",
           "labels_assigned": [
             "Tech_FragmentedDownloads"

@@ -2,7 +2,7 @@
 # Everything above the sentinel line is metadata. Sending it to a model changes the
 # cached prefix on every build and destroys prompt caching. Use load_prompt().
 #
-# built_at            : 2026-08-21T10:29:27+05:30
+# built_at            : 2026-08-21T13:11:06+05:30
 # codebook_file       : ../../codebook_versions/codebook_v0.20.json
 # codebook_version    : 0.20
 # prompt_version      : p1
@@ -11,15 +11,15 @@
 # boundary_rules      : True
 # n_labels            : 29
 # none_exemplar_id    : 331c695a-8b57-4a46-b4d2-00fcdff9ec1a
-# prompt_sha256       : 880acde3c75550a3e0fe5f870613e3e9c4763f64de386e1c6f31b7bee83aa62c
-# chars               : 89731
-# approx_tokens       : 22432  (chars/4, rough)
+# prompt_sha256       : 519268bfa1e4012551f7cca35e5e42e04d6d0825d7b4b78df2a10f2c70425f74
+# chars               : 91567
+# approx_tokens       : 22891  (chars/4, rough)
 #
 # section approx tokens:
 #   role              : 61
-#   rules             : 690
+#   rules             : 709
 #   search_policy     : 103
-#   labels            : 20720
+#   labels            : 21160
 #   output_spec       : 518
 #   none_exemplar     : 240
 #
@@ -42,7 +42,7 @@ R7. Assign labels irrespective of the reviewer's approval or disapproval.
 R8. Code the mechanic described, not the reviewer's evaluation of it. "Generous battle pass" and "predatory battle pass" both describe a battle pass.
 R9. When two labels both fit and no boundary rule separates them, assign both.
 R10. If a game mechanic is not clear from the review's context, an external search can be used. Justify the search and tag the search query along with the review.
-R11. Where the span attributes the described behaviour to a bug, glitch, error, or technical fault, assign NONE, even if the behaviour would otherwise satisfy a label. Dark patterns are design choices; malfunctions are not. Applies only where the bug attribution is attached to the specific behaviour being coded. A general statement that a game is buggy, glitchy, or broken does not suppress labels on other spans in the same review.
+R11. Where the span attributes the described behaviour to a bug, glitch, error, or technical fault, assign NONE, even if the behaviour would otherwise satisfy a label. Dark patterns are design choices; malfunctions are not. Applies only where the bug attribution is attached to the specific behaviour being coded. A general statement that a game is buggy, glitchy, or broken does not suppress labels on other spans in the same review. Exception: Look at Mandatory Marathon's "Loss caused by malfunction" rule.
 R12. Code only mechanics the span describes as present in the game. Requests, suggestions, wishes, and hypotheticals about mechanics the game does not have ("they should add…", "make us watch an ad to get coins", "if only there were…") are not codable, even where the named mechanic matches a label.
 R13. Code only design encountered within the game application. Advertising the developer places in third-party apps, store-listing content, and marketing material are outside the unit even where the behaviour would satisfy a label: including deceptive dismissal controls, emotional appeals to install or return, and misrepresented gameplay. Push notifications sent by the installed game are within scope, being part of the installed product. Where a review describes both out-of-game marketing and in-game design, code the in-game spans only.
 
@@ -326,7 +326,7 @@ CLASS: MONETARY
     vs Scarcity without monetization:
       Deceptive Luxury requires the scarcity to bear on price or purchase. Availability restrictions with no monetary consequence in the span (regional exclusives, location-gated content, low spawn rates) are not Deceptive Luxury
     vs Gacha Rarity:
-      The source of scarcity determines the code. If scarcity comes from a chance mechanic's draw rate, the improbability itself is the wager, so any money spent buys attempts rather than the item; code this as Gambling and Reward Mania. If scarcity is built around the item itself (limited-time availability, urgency, exclusivity, a costlier second-chance offer, or a priced rarity tier), code it as Deceptive Luxury. When both apply, that is, a chance mechanic delivers an item that's itself scarce or available only for a limited time, assign all three codes under R9. Note that Deceptive Luxury still requires the scarcity to affect price or purchase, per the Scarcity without monetization rule.
+      The source of the scarcity decides it. Where the scarcity is the draw rate of a chance mechanic, the improbability is the wager and any money named is the price of attempts rather than the price of the item: code Gambling and Reward Mania. Where the scarcity is constructed around the item itself: limited-time availability, urgency, exclusivity, a second-chance offer at higher cost, or a rarity tier carrying its own price, code Deceptive Luxury. Where a chance mechanic delivers an item that is itself scarce, both sources are present: assign all three under R9, the draw rate being the wager and the constructed scarcity being the item's. The Deceptive Luxury component still requires the scarcity to bear on price or purchase, per the Scarcity without monetization rule.
 
   Counterexample (does NOT get this label):
     "after the new update whenever I switch to any of my mythic guns I just start lagging mid game, so many bugs in the game, now I can't use any of my mythic just legendarys and prestige guns, please fix this"
@@ -491,6 +491,12 @@ CLASS: MONETARY
 
   Indicators (each is an instance of this pattern; see R5):
     - Exciting UI Effect: King et al. 2023: “the use of colors and animation to direct the player’s attention to selected UI elements (such as the ‘buy in-game currency’ button)”; “[the buy button] was attracting more attention than the rest of the screen”; “a pleasing sound effect described as ‘an angelic choir’ and ‘a heavenly sound’ to accompany the appearance of the in-game currency storefront.” [low-level]
+
+  Boundary rules:
+    vs Attention-directing without an opt-out:
+      The definition has two arms and either is sufficient. Assign where the span describes the interface directing attention toward an option: colour, animation, placement, or size drawing the player to a button, offer, or currency purchase. Also assign where the span describes the interface obstructing an opt-out: a close, cancel, skip, or exit control that is absent, hidden, undersized, delayed, or placed where a mis-tap selects the opposite action, or a screen the player must dismiss before continuing.
+    vs UI complaint:
+      A statement that the interface is cluttered, ugly, unintuitive, or badly designed is an evaluation of quality and codes NONE under R2. Assign where the span attributes the design to a purpose the interface serves against the player's intent, whether the reviewer states that purpose ('confusing so you buy stuff') or describes the obstruction itself ('no way to close it').
 
   Counterexample (does NOT get this label):
     "I don't play much games. in fact only had candy crash as the only game i have on my phone. but it has become really annoying. the suggestion feature is extremely misguiding and distracting. if you follow the suggestions, you can never finish a game. if you try to ignore the suggestions you loose concentration trying hard not to follow the suggestion. i don't understand why isn't there an option to turn the suggestion off. i am deleting this app/game immediately. i hope you change this."
@@ -795,6 +801,10 @@ CLASS: PSYCHOLOGICAL
   Boundary rules:
     vs Alleged rigging:
       An assertion that outcomes are rigged, fixed, or predetermined does not nullify Reward Mania. The Variable Rewards indicator concerns the delivery schedule as presented to and experienced by the player; a reviewer's claim that the randomness is fake is a claim about the mechanism behind it, and codes Illusion of Control. Where the span carries both, assign both under R9.
+    vs Gambling:
+      Gambling requires a wager. Reward Mania does not: it covers the delivery of rewards, not their purchase. Where the span describes only unpredictable or repeated delivery with no stake described, assign Reward Mania alone.
+    vs Reward described only by its value:
+      Assign where the span describes how rewards are delivered: unpredictable outcomes, repeated attempts needed to obtain a specific item, duplicate or unwanted drops from a randomised pool, or complexity in how the reward system works. A complaint that a reward is too small, too slow, or not worth the effort describes the reward's value rather than its delivery and does not assign Reward Mania on its own.
 
   Worked example:
     "A gacha game like any other. It has a good story and characters, but it also has terrible rates. Honestly, I love this game but they need to implement some sort of pity system."

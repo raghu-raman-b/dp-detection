@@ -6,14 +6,14 @@
   "boundary_rules": true,
   "n_labels": 29,
   "none_exemplar_id": "331c695a-8b57-4a46-b4d2-00fcdff9ec1a",
-  "prompt_sha256": "880acde3c75550a3e0fe5f870613e3e9c4763f64de386e1c6f31b7bee83aa62c",
-  "chars": 89731,
-  "approx_tokens": 22432,
+  "prompt_sha256": "519268bfa1e4012551f7cca35e5e42e04d6d0825d7b4b78df2a10f2c70425f74",
+  "chars": 91567,
+  "approx_tokens": 22891,
   "section_approx_tokens": {
     "role": 61,
-    "rules": 690,
+    "rules": 709,
     "search_policy": 103,
-    "labels": 20720,
+    "labels": 21160,
     "output_spec": 518,
     "none_exemplar": 240
   }

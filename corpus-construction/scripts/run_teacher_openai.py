@@ -25,7 +25,7 @@ from build_prompt import load_prompt
 
 # ============================== CONFIG ==============================
 MODEL            = "gpt-5.6-luna"
-REASONING_EFFORT = "medium"        # none | low | medium | high | xhigh | max
+REASONING_EFFORT = "high"        # none | low | medium | high | xhigh | max
 PROMPT_FILE      = "../outputs/prompts/teacher_v1.txt"
 REVIEW_FILE      = "../tuning/tuning_set_50_blind.jsonl"   # blind: no gold in this process
 OUT_DIR          = "../outputs/runs/openai"
@@ -34,7 +34,7 @@ MAX_OUTPUT       = 8192            # reasoning tokens count against this; too lo
 SEND_TEMPERATURE = False           # True only if Luna accepts it
 TEMPERATURE      = 0.0
 RETRIES          = 3
-LIMIT            = 1               # 0 = all; set 3 or 20 for a partial actual run
+LIMIT            = 0               # 0 = all; set 3 or 20 for a partial actual run
 
 WEB_SEARCH_TOOL  = {"type": "web_search"}
 
@@ -51,6 +51,8 @@ ENV_FILE         = ".env"          # optional: KEY=value lines, gitignored
 
 # USD per million tokens. Check the pricing page on the day you run and record the date;
 # these move, and the paper needs the rates that were live for the run.
+
+# Luna
 PRICING = {
     "model": "gpt-5.6-luna",
     "as_of": "2026-08-21",
@@ -58,7 +60,18 @@ PRICING = {
     "cached_input": 0.02,      # 0.1x input
     "cache_write": 0.25,       # 1.25x input
     "output": 1.20,
-}
+} 
+
+# Terra
+
+# PRICING = {
+#     "model": "gpt-5.6-terra",
+#     "as_of": "2026-08-21",
+#     "input": 2.00,
+#     "cached_input": 0.20,      # 0.1x input
+#     "cache_write": 2.50,       # 1.25x input
+#     "output": 12.00,
+# }
 PROJECT_TO = 200_000           # for the end-of-run projection
 # ====================================================================
 

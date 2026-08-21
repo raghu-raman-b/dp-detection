@@ -86,41 +86,41 @@ Star rating, overall and by stratum:
 Review length in words:
   all        mean   65.2   median    69   p25    44   p75    88   max   185
   labeled    mean   72.8   median    80   p25    56   p75    92   max   183
-  no label   mean   53.7   median    53   p25    30   p75    78   max   185
+  no label   mean   53.8   median    53   p25    30   p75    78   max   185
 
 ========================================================================
 4. LABEL DISTRIBUTION
 ========================================================================
-Total label instances: 738
-Reviews with at least one label: 368  (60.2%)
-Reviews with no label: 243  (39.8%)
+Total label instances: 732
+Reviews with at least one label: 366  (59.9%)
+Reviews with no label: 245  (40.1%)
 
   label                                  n  % of reviews  % of instances
-  M_PayToProgress                      127         20.8%           17.2%
-  S_Competition                         63         10.3%            8.5%
-  P_RewardMania                         60          9.8%            8.1%
+  M_PayToProgress                      126         20.6%           17.2%
+  S_Competition                         63         10.3%            8.6%
+  P_RewardMania                         60          9.8%            8.2%
   T_PlayingByAppointment                55          9.0%            7.5%
   P_IllusionOfControl                   45          7.4%            6.1%
-  M_IntermediateCurrency                37          6.1%            5.0%
+  M_IntermediateCurrency                36          5.9%            4.9%
   M_Gambling                            34          5.6%            4.6%
-  T_Grinding                            34          5.6%            4.6%
+  T_Grinding                            33          5.4%            4.5%
   P_CompleteTheCollection               30          4.9%            4.1%
-  T_Advertisement                       29          4.7%            3.9%
+  T_Advertisement                       28          4.6%            3.8%
   M_EasyToPurchase                      23          3.8%            3.1%
   T_DailyRewards                        22          3.6%            3.0%
   S_Reciprocity                         19          3.1%            2.6%
   M_UIMisdirection                      17          2.8%            2.3%
   T_MandatoryMarathon                   16          2.6%            2.2%
   M_WasteAversion                       15          2.5%            2.0%
-  M_RecurringFee                        14          2.3%            1.9%
+  M_RecurringFee                        13          2.1%            1.8%
   M_PowerCreep                          12          2.0%            1.6%
   S_ForcedFellowship                    12          2.0%            1.6%
   P_AestheticManipulation               11          1.8%            1.5%
   P_EasyToGetHardToLose                 11          1.8%            1.5%
   P_OptimismAndFrequencyBiases          11          1.8%            1.5%
-  M_NeverEndingLure                      8          1.3%            1.1%
   S_EncouragesAntiSocialBehavior         8          1.3%            1.1%
-  M_DeceptiveLuxury                      7          1.1%            0.9%
+  M_DeceptiveLuxury                      7          1.1%            1.0%
+  M_NeverEndingLure                      7          1.1%            1.0%
   Tech_FragmentedDownloads               6          1.0%            0.8%
   T_InfiniteTreadmill                    5          0.8%            0.7%
   S_FriendSpamImpersonation              4          0.7%            0.5%
@@ -130,8 +130,8 @@ Zero support (0): none
 Support below 3 (0): none
 
 By class:
-  Temporal         instances   161   reviews   142  (23.2%)
-  Monetary         instances   294   reviews   209  (34.2%)
+  Temporal         instances   159   reviews   140  (22.9%)
+  Monetary         instances   290   reviews   208  (34.0%)
   Social           instances   109   reviews    94  (15.4%)
   Psychological    instances   168   reviews   128  (20.9%)
   Technical        instances     6   reviews     6  (1.0%)
@@ -140,7 +140,7 @@ By class:
 5. PREVALENCE IN THE RANDOM STRATUM ONLY
 ========================================================================
 Random stratum size: 300
-Reviews with at least one label: 142 (47.3%), 95% CI [41.8%, 53.0%]
+Reviews with at least one label: 141 (47.0%), 95% CI [41.4%, 52.7%]
 
   label                                  n     prev              95% CI
   M_PayToProgress                       62    20.7%        [16.5, 25.6]
@@ -148,8 +148,8 @@ Reviews with at least one label: 142 (47.3%), 95% CI [41.8%, 53.0%]
   T_PlayingByAppointment                22     7.3%         [4.9, 10.9]
   M_IntermediateCurrency                21     7.0%         [4.6, 10.5]
   S_Competition                         20     6.7%         [4.4, 10.1]
-  T_Grinding                            20     6.7%         [4.4, 10.1]
   P_IllusionOfControl                   19     6.3%          [4.1, 9.7]
+  T_Grinding                            19     6.3%          [4.1, 9.7]
   M_Gambling                            15     5.0%          [3.1, 8.1]
   T_Advertisement                       11     3.7%          [2.1, 6.4]
   M_RecurringFee                         8     2.7%          [1.4, 5.2]
@@ -176,32 +176,32 @@ Reviews with at least one label: 142 (47.3%), 95% CI [41.8%, 53.0%]
 ========================================================================
 6. LABELS PER REVIEW
 ========================================================================
-Mean 1.21   median 1   max 5
-Mean among labeled reviews only: 2.01
-Multi-label reviews (2 or more): 210  (34.4%)
+Mean 1.20   median 1   max 5
+Mean among labeled reviews only: 2.00
+Multi-label reviews (2 or more): 209  (34.2%)
 
-  0 label(s):   243  (39.8%)
-  1 label(s):   158  (25.9%)
-  2 label(s):   103  (16.9%)
-  3 label(s):    63  (10.3%)
+  0 label(s):   245  (40.1%)
+  1 label(s):   157  (25.7%)
+  2 label(s):   105  (17.2%)
+  3 label(s):    60  (9.8%)
   4 label(s):    35  (5.7%)
   5 label(s):     9  (1.5%)
 
 ========================================================================
 7. CO-OCCURRENCE
 ========================================================================
-Distinct co-occurring pairs observed: 184
+Distinct co-occurring pairs observed: 182
 
 Top 15 pairs by count, with lift:
   pair                                                              n    lift
-  M_PayToProgress + S_Competition                                  28     2.1
+  M_PayToProgress + S_Competition                                  28     2.2
   M_PayToProgress + T_PlayingByAppointment                         23     2.0
   M_Gambling + P_RewardMania                                       20     6.0
-  M_PayToProgress + P_RewardMania                                  19     1.5
   M_PayToProgress + P_IllusionOfControl                            18     1.9
+  M_PayToProgress + P_RewardMania                                  18     1.5
   P_CompleteTheCollection + P_RewardMania                          17     5.8
-  M_IntermediateCurrency + M_PayToProgress                         16     2.1
-  M_Gambling + M_IntermediateCurrency                              12     5.8
+  M_IntermediateCurrency + M_PayToProgress                         16     2.2
+  M_Gambling + M_IntermediateCurrency                              12     6.0
   M_PayToProgress + P_CompleteTheCollection                        11     1.8
   M_EasyToPurchase + M_PayToProgress                                9     1.9
   M_Gambling + M_PayToProgress                                      9     1.3
@@ -216,7 +216,7 @@ Top 15 pairs by count, with lift:
   Targeted reviews                               311
   Distinct seed keywords                         295
 
-  Produced at least one label (220)
+  Produced at least one label (219)
     100%, accidentally bought, accidentally clicked, achievements,
     addictive by design, additional download, after installing, album,
     always get duplicates, always short by, animation,
@@ -228,27 +228,27 @@ Top 15 pairs by count, with lift:
     can't exit, can't leave until, cant back out, cant quit, capped at,
     card collection, close button, collect them all, come back,
     complete the set, completionist, confirm button is, confusing question,
-    consecutive days, constant offers, dailies, daily bonus,
-    daily check in, daily login, daily missions, daily quests,
-    daily reward, daily tasks, day 30, day 7 reward, day streak,
-    deleted and reinstalled, deliberately confusing, designed to confuse,
-    disguised as, don't leave, don't want to lose my progress, donate,
-    donations, double negative, dressed up as, dupes, duplicates,
-    empty slots, encouraged to attack, endless offers, exit and lose,
-    expand your inventory, extra download, feel obligated,
-    feels like a trap, fine print, first charge, first payment,
-    first purchase, first time buyer, first top up, flashing button,
-    forced to sell, forfeit, forfeited, free but, free to start, full set,
-    gift exchange, gift lives, glowing, goes to waste, gotta collect,
-    guilt, guilt trip, hard to close, hard to quit, have to buy the new,
-    have to delete items, have to finish the, have to redo the whole,
-    help requests, hidden option, high roller, hooked early, hooked from,
-    invalidates, inventory cap, inventory full, inventory space,
-    invested too much, invite bonus, invite reward, invites were sent,
-    items expire, just short of, kawaii, keep inviting, last piece,
-    leave and lose, left over coins, leftover, limited slots,
-    linked my facebook, log in daily, log in every day, login bonus,
-    login calendar, login streak, lose your entry fee, lost my streak,
+    constant offers, dailies, daily bonus, daily check in, daily login,
+    daily missions, daily quests, daily reward, daily tasks, day 30,
+    day 7 reward, day streak, deleted and reinstalled,
+    deliberately confusing, designed to confuse, disguised as, don't leave,
+    don't want to lose my progress, donate, donations, double negative,
+    dressed up as, dupes, duplicates, empty slots, encouraged to attack,
+    endless offers, exit and lose, expand your inventory, extra download,
+    feel obligated, feels like a trap, fine print, first charge,
+    first payment, first purchase, first time buyer, first top up,
+    flashing button, forced to sell, forfeit, forfeited, free but,
+    free to start, full set, gift exchange, gift lives, glowing,
+    goes to waste, gotta collect, guilt, guilt trip, hard to close,
+    hard to quit, have to buy the new, have to delete items,
+    have to finish the, have to redo the whole, help requests,
+    hidden option, high roller, hooked early, hooked from, invalidates,
+    inventory cap, inventory full, inventory space, invested too much,
+    invite bonus, invite reward, invites were sent, items expire,
+    just short of, kawaii, keep inviting, last piece, leave and lose,
+    left over coins, leftover, limited slots, linked my facebook,
+    log in daily, log in every day, login bonus, login calendar,
+    login streak, lose your entry fee, lost my streak,
     makes you feel bad for, meta changes, meta shifts, mis-click, misclick,
     miss a day, missed a day, more data, moves the button,
     need one more to complete, nerfed, never get the last one,
@@ -273,24 +273,24 @@ Top 15 pairs by count, with lift:
     wasted so much money, went back up, worded so that, worth attacking,
     would lose everything, x button is, you have to cheat to
 
-  Produced no label (75)
+  Produced no label (76)
     accidental tap, account is worth, addicted, adorable, asset pack,
     button, button placement, buttons are placed, can't quit, cannot exit,
-    cant exit, check in, collection, contact list, contacts, crying, cute,
-    daily chest, daily gift, data pack, doesnt save your progress,
-    download more, downloading assets, easy to start, facebook friends,
-    flashing, gallery, gb, gifting, glowing button, greyed out,
-    hard to walk away, have to scam, help each other, help your team,
-    if you don't donate, invite code, keeps me hooked, locked into the,
-    locked slots, lost my progress when i, made me feel bad,
-    makes it look like a, milestone reward, milestone rewards, missing one,
-    nerf, new meta, no exit button, on first launch, one away from,
-    one time offer, only once, overflow, owe them, pay it back,
-    progress is not saved, recruit friends, recruit players,
-    review was posted, sent messages to, share this game to,
-    starts easy then, sticker, storage full, streak, stuck downloading,
-    trapped, trophies, under my name, useless now, vip, whales,
-    without my permission, years of progress
+    cant exit, check in, collection, consecutive days, contact list,
+    contacts, crying, cute, daily chest, daily gift, data pack,
+    doesnt save your progress, download more, downloading assets,
+    easy to start, facebook friends, flashing, gallery, gb, gifting,
+    glowing button, greyed out, hard to walk away, have to scam,
+    help each other, help your team, if you don't donate, invite code,
+    keeps me hooked, locked into the, locked slots,
+    lost my progress when i, made me feel bad, makes it look like a,
+    milestone reward, milestone rewards, missing one, nerf, new meta,
+    no exit button, on first launch, one away from, one time offer,
+    only once, overflow, owe them, pay it back, progress is not saved,
+    recruit friends, recruit players, review was posted, sent messages to,
+    share this game to, starts easy then, sticker, storage full, streak,
+    stuck downloading, trapped, trophies, under my name, useless now, vip,
+    whales, without my permission, years of progress
 
   Labels with support only in the targeted stratum (4)
     M_UIMisdirection, S_FriendSpamImpersonation, P_AestheticManipulation,
@@ -300,8 +300,8 @@ Top 15 pairs by count, with lift:
 9. STAR RATING AGAINST LABELING
 ========================================================================
   star     labeled   no label   labeled %
-  1            165         85       66.0%
-  2             73         27       73.0%
+  1            164         86       65.6%
+  2             72         28       72.0%
   3             55         32       63.2%
   4             33         22       60.0%
   5             42         77       35.3%
