@@ -155,7 +155,7 @@
     {
       "id": "R6",
       "statement": "When no meso label satisfies R2 and R3, assign NONE. NONE is a blank cell.",
-      "worked_example_review_id": "e2a30022-c1d9-4b58-9c99-7dd99b93b2f2 ",
+      "worked_example_review_id": "e2a30022-c1d9-4b58-9c99-7dd99b93b2f2",
       "worked_example_text": "You go down more rapidly than it take time to reach above"
     },
     {
@@ -184,19 +184,19 @@
     },
     {
       "id": "R11",
-      "statement": "Where the span attributes the described behaviour to a bug, glitch, error, or technical fault, assign NONE, even if the behaviour would otherwise satisfy a label. Dark patterns are design choices; malfunctions are not. Applies only where the bug attribution is attached to the specific behaviour being coded. A general statement that a game is buggy, glitchy, or broken does not suppress labels on other spans in the same review. Exception: Look at Mandatory Marathon's \"Loss caused by malfunction\" rule.",
-      "worked_example_review_id": "",
-      "worked_example_text": "I am a loyal player and encourage others to play as well as rate the game favorably...again this morning I was told I missed a day (after playing at least Six games today) and bounced back to level ONE. The first time it happened I was at level 80+ !! Today is the fourth time recently I've been erroneously demoted...Please FIX!\n\nLabels: Daily Rewards\n\nJustification: \"I was told I missed a day (after playing at least six games today)… erroneously demoted… Please FIX!\" codes Daily Rewards. The error claim attaches to whether the missed-day condition was correctly detected, not to the streak-reset penalty itself, which the reviewer describes as the game's normal operation. R11 suppresses only where the bug attribution reaches the mechanic being coded."
+      "statement": "Assign NONE when the text attributes a specific behavior to a bug, glitch, error, or technical fault, as dark patterns are deliberate design choices rather than technical malfunctions. A general mention that a game is buggy does not suppress labels on unrelated, functional design behaviors. However, assign the relevant dark pattern label if the underlying game rule itself imposes a penalty, even if a malfunction triggered it. For instance, if a crash causes a player to lose daily rewards or forfeit match progress, assign the appropriate label because missing a login or quitting a session carries that explicit design penalty regardless of why it happened.",
+      "worked_example_review_id": "3743b488-0ced-4497-9511-39c02d984a50",
+      "worked_example_text": "I am a loyal player and encourage others to play as well as rate the game favorably...again this morning I was told I missed a day (after playing at least Six games today) and bounced back to level ONE. The first time it happened I was at level 80+ !! Today is the fourth time recently I've been erroneously demoted...Please FIX!\n\nJustification: Assign Daily Rewards to \"I was told I missed a day... bounced back to level ONE... erroneously demoted... Please FIX!\" The bug attribution applies only to the faulty detection system, not to the streak reset itself. Because the underlying game design enforces a level reset for missing a day, the penalty is a deliberate pattern that a malfunction merely triggered."
     },
     {
       "id": "R12",
-      "statement": "Code only mechanics the span describes as present in the game. A request, suggestion, wish, or hypothetical for a mechanic the game doesn't have (\"they should add…\", \"make us watch an ad to get coins\", \"if only there were…\") is not codable as that mechanic, even where the named mechanic matches a label but this exclusion covers only the proposed new mechanic itself. If the same span also describes an existing behavior, pattern, or mechanic that's already present in the game (typically the reason given for the suggestion), that present-tense description stays codable under any label it matches, regardless of the wish wrapped around it.",
+      "statement": "Code only the mechanics that the text explicitly describes as currently present in the game. Requests, suggestions, or hypothetical additions, such as wishing for a feature or asking to watch ads for coins, do not trigger tags for the proposed mechanics. However, this restriction applies exclusively to the non-existent feature itself. If the text mentions an existing game behavior or pattern alongside a suggestion, that active mechanic remains fully codable under any label it matches.",
       "worked_example_review_id": "5b03434b-902f-401d-aab7-d958c7fcf788",
       "worked_example_text": "The game itself is fun, but you end up having to wait nearly 2 hours to pay for free. You get coins every hour, but one hours worth of coins isn't going to likely even get you past one level as you almost always need to buy additional cards. If they want to keep people playing, they need to make free ways to get coins. Make us watch an ad to get 1-2k coins. Otherwise this game is more frustrating than fun.\n\nLabels: Playing by Appointment only"
     },
     {
       "id": "R13",
-      "statement": "Code only design encountered within the game application. Advertising the developer places in third-party apps, store-listing content, and marketing material are outside the unit even where the behaviour would satisfy a label: including deceptive dismissal controls, emotional appeals to install or return, and misrepresented gameplay. Push notifications sent by the installed game are within scope, being part of the installed product. Where a review describes both out-of-game marketing and in-game design, code the in-game spans only.",
+      "statement": "Code only design encountered within the game application. Advertising the developer places in third-party apps, store-listing content, and marketing material are outside the unit even where the behaviour would satisfy a label: including deceptive dismissal controls, emotional appeals to install or return, and misrepresented gameplay. Push notifications sent by the installed game are within scope, being part of the installed product. Where a review describes both out-of-game marketing and in-game design, code the in-game spans only. Exception: Look at Friend Spam and Impersonation's \"Destination of the message\" rule.",
       "worked_example_review_id": "",
       "worked_example_text": ""
     }
@@ -296,7 +296,7 @@
       "boundary_rules": [
         {
           "vs_label": "Playing by Appointment",
-          "rule": "Daily Rewards covers the incentive and its penalty: a login calendar, a resetting task list, a streak, or the loss of one. Assign Playing by Appointment additionally only where the span shows the daily schedule gating progress: the player unable to advance, or advancing only at the rate the daily cycle allows, because the appointment must be kept. A daily reward that adds value without conditioning progress is Daily Rewards alone. Where both are present, assign both under R9."
+          "rule": "Assign Daily Rewards when the text describes a daily login incentive with an active consequence for missing a day, such as a broken streak, a lost calendar slot, a reset task list, or simply forfeiting that day's reward opportunity. Assign Playing by Appointment additionally when the daily cycle directly gates overall game progression rather than just a standalone reward, meaning the player cannot advance further until the real-world time gate resets. When a daily reward mechanism itself acts as the barrier controlling player progression, assign both tags under R9."
         }
       ],
       "counterexamples": [
@@ -315,9 +315,7 @@
         {
           "review_id": "41e197fd-9104-4177-a293-6a1b68d37e79",
           "text": "Update- there was an update this morning and it still won't open 🥴 Haven't been able to get on the game for 3 days!! Not able to finish any dishes. When I am finally able to get back on, I'm going to be back to day 1 on the daily gifts. Really debating on just deleting the dang game.",
-          "labels_assigned": [
-            "T_DailyRewards"
-          ]
+          "labels_assigned": ["T_DailyRewards"]
         }
       ]
     },
@@ -391,10 +389,7 @@
         {
           "review_id": "33834f20-6663-4aab-aba0-2500f8d3d88c",
           "text": "Downgraded to a 2 star. Literally after you get to level 18 you get 1 attempt win or lose and you get a forced unskippable ad. It ruins the game and forces you to pay £5.93 to remove the ads or have restart the app over and over. Really really bad form by the developer. It is however, a good little game, but the forced ads after 1 try is awful practice!!",
-          "labels_assigned": [
-            "T_Advertisement",
-            "M_PayToProgress"
-          ]
+          "labels_assigned": ["T_Advertisement", "M_PayToProgress"]
         },
         {
           "review_id": "6660a737-d91c-4308-8d22-70a8966cbcad",
@@ -474,9 +469,7 @@
         {
           "review_id": "0844bd06-e786-4a47-858b-db623d76560a",
           "text": "I accidentally hit a button and was placed in the very high stakes match. When I realized my mistake and tried to exit to the lobby, I lost over half my coins. They need an extra click button to be placed in the room before the ante. Not sure I even want to play anymore.\n\nJustification: \"Tried to exit to the lobby, I lost over half my coins\" shows the player prevented from ending the session at a moment of their choosing: leaving is possible only at the cost of accumulated holdings. Progress forfeited on exit, per the canonical definition.",
-          "labels_assigned": [
-            "T_MandatoryMarathon"
-          ]
+          "labels_assigned": ["T_MandatoryMarathon"]
         }
       ]
     },
@@ -496,16 +489,12 @@
       ],
       "boundary_rules": [
         {
-          "vs_label": "Free workaround",
-          "rule": "Pay to Progress holds whenever payment is described as a route past a progress obstacle, even if the reviewer names a free alternative (asking friends, waiting, watching an ad). The existence of a non-monetary bypass does not nullify the label; code the bypass separately if it satisfies its own label."
-        },
-        {
           "vs_label": "Paid removal of artificial friction",
-          "rule": "Where payment is described as removing, skipping, or unlocking a restriction rather than buying advancement, ad removal, inventory or loadout actions, convenience functions, assign Pay to Progress only where the span shows the restriction standing between the player and continued play or progress. Friction described purely as an annoyance, with no progress consequence in the span, does not trigger it."
+          "rule": "Assign Pay to Progress when payment removes, skips, or unlocks an artificial barrier that directly blocks continued play or advancement. Friction described strictly as an annoyance or a convenience feature, with no progress consequence, does not trigger this tag. For example, paying to bypass a mandatory cooldown timer or an ad break that halts gameplay qualifies, whereas paying for expanded inventory space, cosmetic removals, or purely quality of life tweaks does not."
         },
         {
-          "vs_label": "Free versus paid",
-          "rule": "Words that presuppose a paid alternative like \"free coins\", \"free version\", \"f2p\", \"without paying\", establish the paid route as present in the span; the reviewer need not name the purchase. Assign where the span also shows the free route falling short of progress: not enough free resources to clear a level, free players unable to advance, progress possible only with care. Where the contrast appears with no progress consequence, it does not trigger the label."
+          "vs_label": "Free alternative",
+          "rule": "Assign Pay to Progress when the text uses terms that imply a paid alternative, such as \"free coins,\" \"f2p,\" or \"without paying,\" even if the purchase option is not explicitly named. This contrast establishes that the free path requires extra effort, meticulous play, or excessive grinding compared to a paid shortcut. The tag applies as long as the free route falls short of smooth advancement, forcing the player into a longer or more tedious process to progress. If the contrast between free and paid is mentioned without any impact on player progress, it does not trigger the label."
         }
       ],
       "counterexamples": [
@@ -518,19 +507,13 @@
       "worked_examples": [
         {
           "review_id": "77e664a8-c654-4630-852f-2717fe7d53cc",
-          "text": "\"After level 100 it does get alot harder and you will run out of lives multiple times but without spending money you just ask your friends and team for lives to continue playing\" ",
-          "labels_assigned": [
-            "M_PayToProgress",
-            "S_Reciprocity"
-          ]
+          "text": "\"After level 100 it does get alot harder and you will run out of lives multiple times but without spending money you just ask your friends and team for lives to continue playing\" \n\nJustification: The paid alternative does not require the player to ask for lives to continue playing, they need to put in extra efforts to progress or pay.\n",
+          "labels_assigned": ["M_PayToProgress", "S_Reciprocity"]
         },
         {
           "review_id": "33834f20-6663-4aab-aba0-2500f8d3d88c",
           "text": "Downgraded to a 2 star. Literally after you get to level 18 you get 1 attempt win or lose and you get a forced unskippable ad. It ruins the game and forces you to pay £5.93 to remove the ads or have restart the app over and over. Really really bad form by the developer. It is however, a good little game, but the forced ads after 1 try is awful practice!!",
-          "labels_assigned": [
-            "T_Advertisement",
-            "M_PayToProgress"
-          ]
+          "labels_assigned": ["T_Advertisement", "M_PayToProgress"]
         }
       ]
     },
@@ -571,13 +554,9 @@
           ]
         },
         {
-          "review_id": "b9075858-39b4-4076-9c33-403cfda528e4",
-          "text": "I love the game but im starting to realize how much $ im spending. What really has me pissed off is me paying $2.99 to play sammy madness I got a snake by the 6th level and it cost me 1.6k gems to continue!! Then I got it again on the 11th level but of course it always asks for more gems than u have! Its wrong to take people's money and gems like that. If we pay to play it there's NO REASON WE SHOULD BE EMPTY HANDED AND OUT OF GEMS ITS RIDICULOUS! its turning me off of this game\n\n\nJustification: It is implied that the money spent is to purchase gems, and the gems are used to play the game.",
-          "labels_assigned": [
-            "M_IntermediateCurrency",
-            "M_Gambling",
-            "M_WasteAversion"
-          ]
+          "review_id": "4ac321dc-5b10-4df5-94d0-8a36467c675d",
+          "text": "1: The main issue is Network problem. Plz solve this. 2: I'm playing this game for 2 year's. At start it was a very good game, but similarly updates were coming. Every update had one thing that affect a real and good user. 3: It provide the facility of buying bundles, gun skins and other collections only by diamonds. Why not gold. 4: Hacking is also very common in this game. A lot of hackers destroying the real game of a good player. Gold must be used to buy bundles & skins etc.😈😈😈.\n\n\nJustification: Shows the case of polymorphic currency where two types of currency \"coins\" and \"diamonds\" are present and the reviewer is asking for \"coins\" to be used to purchase items implying that they are non-interchangable.",
+          "labels_assigned": ["M_IntermediateCurrency"]
         }
       ]
     },
@@ -599,8 +578,8 @@
           "rule": "Deceptive Luxury requires the scarcity to bear on price or purchase. Availability restrictions with no monetary consequence in the span (regional exclusives, location-gated content, low spawn rates) are not Deceptive Luxury"
         },
         {
-          "vs_label": "Gacha Rarity",
-          "rule": "The source of the scarcity decides it. Where the scarcity is the draw rate of a chance mechanic, the improbability is the wager and any money named is the price of attempts rather than the price of the item: code Gambling and Reward Mania. Where the scarcity is constructed around the item itself: limited-time availability, urgency, exclusivity, a second-chance offer at higher cost, or a rarity tier carrying its own price, code Deceptive Luxury. Where a chance mechanic delivers an item that is itself scarce, both sources are present: assign all three under R9, the draw rate being the wager and the constructed scarcity being the item's. The Deceptive Luxury component still requires the scarcity to bear on price or purchase, per the Scarcity without monetization rule."
+          "vs_label": "Gambling and Reward Mania",
+          "rule": "Assign Gambling and Reward Mania when scarcity comes from the odds of a chance mechanic, treating the low draw rate as the wager and the payment as the cost of attempts rather than the item itself. Assign Deceptive Luxury when scarcity is built directly into the item through artificial limits like time caps, exclusivity, urgency, or dedicated rarity pricing. If a chance mechanic yields an item that also features built-in scarcity, assign both rule sets under R9 because both sources are active. Note that Deceptive Luxury still requires the item's scarcity to directly affect its price or purchase terms."
         }
       ],
       "counterexamples": [
@@ -650,9 +629,7 @@
         {
           "review_id": "b85de1eb-96ee-4b79-b89b-a6b0f784f3d5",
           "text": "I really loved playing this game it is the only one that I have ever been able to justify spending my money on. But they have made so many changes to it, they've cut out so many of the fun aspects, the ways to collect extra coins, and useful items in the game. They took their 30 day pass and turned it into a 7-Day pass and they're charging the same thing for it and giving less prizes and incentives to have it. If they don't change it back I will be leaving the game",
-          "labels_assigned": [
-            "M_RecurringFee"
-          ]
+          "labels_assigned": ["M_RecurringFee"]
         },
         {
           "review_id": "6ee8dd5a-1523-46b9-9d0d-750390800fdf",
@@ -684,11 +661,11 @@
         },
         {
           "vs_label": "Reward Mania",
-          "rule": "Gambling's real-money element must be present in the span. Naming gacha, loot boxes, crates, spin wheels, or a summon system, and describing their odds, establishes chance-based delivery but not a monetary stake then code Reward Mania. Assign Gambling where the span describes money spent, a purchased stake, or a described wager of earned currency (per the Intermediate Currency rule). Do not supply the monetary element from the fact that the mechanic is normally monetised. Where the span carries both the chance-based delivery and the monetary stake, assign both under R9: Gambling for the stake, Reward Mania for the variable schedule."
+          "rule": "Assign Reward Mania when the text describes a chance-based delivery system like gacha, loot boxes, crates, spin wheels, or summons without explicitly mentioning a monetary stake. Assign Gambling only when the text explicitly describes spent money, a purchased stake, or a wager using paid or earned intermediate currency, rather than assuming monetization just because the mechanic usually costs money. When the text contains both the chance-based mechanic and an explicit monetary stake, assign both tags under R9: Gambling for the stake and Reward Mania for the variable reward schedule."
         },
         {
           "vs_label": "Pay to Progress",
-          "rule": "Where payment continues, retries, or protects a wager already in play: buying another round, or saving accumulated winnings from a loss, the payment is internal to the chance mechanic and codes Gambling alone. Assign Pay to Progress additionally only where the span shows payment advancing the player outside the wager: unlocking content, clearing a gate, or restoring the ability to play the game generally."
+          "rule": "Assign Gambling alone when payment is used internally within a chance mechanic, such as buying another round, retrying a bet, or protecting accumulated winnings from a loss. Assign Pay to Progress additionally only when the payment advances the player outside the wager itself, such as unlocking gated content, restoring general access to the game, or progressing beyond a roadblock."
         }
       ],
       "counterexamples": [
@@ -702,11 +679,7 @@
         {
           "review_id": "0615728a-3278-4286-a121-7d79baca3a17",
           "text": "it's fine it's a gacha game so of course it's going to cost money I'm fine with that. but it's the anniversary it was off to such a strong start impossible to ruin and part two did just that killed any fun the game had by making any team other than hybrids and future dead. but long live the immortal gohans",
-          "labels_assigned": [
-            "M_Gambling",
-            "M_PowerCreep",
-            "P_RewardMania"
-          ]
+          "labels_assigned": ["M_Gambling", "M_PowerCreep", "P_RewardMania"]
         }
       ]
     },
@@ -737,9 +710,7 @@
         {
           "review_id": "d2025743-54d1-4583-9750-6c1d50dbe806",
           "text": "You should see all the edits I've done. This games devs tell you all sorts of lies. fair gameplay, NO. they literally nerf your old stuff and never reimburse you. You'll spend money and a few months later all new meta will appear and your INVESTMENT is gone. they say they strive for balance, HAH. if you don't mind throwing money down the drain then this is your game. Absolutely 0 return on any investment made.... It is fun game play though even if the bots are exponentially higher lvl always.",
-          "labels_assigned": [
-            "M_PowerCreep"
-          ]
+          "labels_assigned": ["M_PowerCreep"]
         },
         {
           "review_id": "18d505c6-1099-4af9-a94a-490aff3b6969",
@@ -767,7 +738,7 @@
       "boundary_rules": [
         {
           "vs_label": "NONE",
-          "rule": "Waste Aversion covers value the player holds but cannot fully use: currency stranded because prices and pack sizes don't align, holdings forfeited because capacity is finite, or holdings falling short of a stated cost or threshold. Assign only where the span shows the shortfall or forfeit realised: an amount left over, something given up to make room, capacity paid for, or a specific gap between what the player has and what is required. A shortfall counts as realised whether or not the player completes the purchase, declining the prompt evidences it (R7, R8). Naming currency, items, or capacity without showing value stranded, given up, or falling short codes NONE."
+          "rule": "Assign Waste Aversion when the text explicitly demonstrates stranded, forfeited, or insufficient value. This includes leftover currency caused by misaligned pack prices, lost holdings due to inventory limits, or a specific shortfall below an item's cost. The shortfall or loss must be realized, meaning the text shows the leftover amount, capacity paid for, items sacrificed, or the specific gap to a target, even if the player ultimately declines the purchase. Simply mentioning currency, items, or inventory limits without showing actual wasted value or a concrete shortfall codes NONE."
         }
       ],
       "counterexamples": [
@@ -815,7 +786,7 @@
       "boundary_rules": [
         {
           "vs_label": "Purchase solicitation",
-          "rule": "Purchase prompts, pop-ups, or offers pushed at the player assign Easy to Purchase where the span shows the prompt intercepting play: triggered on insufficient funds or a spent resource, interrupting a session, or requiring dismissal to continue. Solicitation named only as advertising volume, with no interception and no friction removed, is not sufficient and codes NONE under R2."
+          "rule": "Assign Easy to Purchase when a buying prompt directly intercepts gameplay, such as pop-ups triggered by insufficient funds or a spent resource, offers that interrupt a session, or prompts that require explicit dismissal to continue. Simply describing high advertising volume without an active interception or removed friction is not sufficient and codes NONE under R2."
         }
       ],
       "counterexamples": [
@@ -829,19 +800,12 @@
         {
           "review_id": "0266f2af-effc-47a0-8b09-c39f61384b65",
           "text": "I don't need to be told to buy 10-15 times every time I run out of energy, open the game, or come back from an ad! also, unskippable animations everywhere. my first review was posted in 2025. I thought I would give the game another try and see if they improved anything. it's only gotten worse. I wish I could give it -1 star. Now part of the unskippable pop-up lineup are the forced events. whether you want to participate or not, you are. and they have to remind you constantly that you are\nJustification: Comes under the Prompted to Buy low-level pattern.\n",
-          "labels_assigned": [
-            "M_EasyToPurchase"
-          ]
+          "labels_assigned": ["M_EasyToPurchase"]
         },
         {
-          "review_id": "6660a737-d91c-4308-8d22-70a8966cbcad",
-          "text": "More frustrating than enjoyable. Not a game you'd pick up if you had a free 5 minutes because it takes that long to load it and cancel the offers to play. Almost impossible to progress without payments or watching boring ads. Many of your earned rewards need to be purchased. Shields are very few so rebuilding is frequent. Game crashes and freezing is common. Often having to close and reload and because it takes so long to load many of the rewards you've built up are lost or stolen.\n\nJustification: \"cancel the offers to play\" implies that the reviewer has to opt-out of payment offers and they are shown as default options when the game boots up.",
-          "labels_assigned": [
-            "T_Grinding",
-            "T_Advertisement",
-            "M_PayToProgress",
-            "M_EasyToPurchase"
-          ]
+          "review_id": "5ca5f32a-173f-4d54-a9a4-5a7301d09b66",
+          "text": "Its a fun game. However, after awhile it basically cheats. Why? Of course because it wants you to buy stuff. I am NOT a fan of the way games try and make money nowadays and this basically well done game follows along the norm. Let us try the game. . .if we like it charge us a reasonable price; $5, $15, $25 or whatever. Nope, they prey on the addictiveness. Just one more packet of goodies, lives, etc for $10. No wait! I can get a good savings by buying the $100 pack of goodies. Ridiculous.\n\nJustification:\nAssign Easy to Purchase for Anchoring Tricks to \"Just one more packet of goodies... for $10. No wait! I can get a good savings by buying the $100 pack of goodies.\" The text explicitly demonstrates how placing a higher-priced option alongside a smaller pack alters the perception of value, framing the larger bundle as a deal to drive higher spending.",
+          "labels_assigned": ["M_EasyToPurchase"]
         }
       ]
     },
@@ -876,10 +840,7 @@
         {
           "review_id": "6f4a4ad1-5745-49af-9288-0268816cee6e",
           "text": "Why is it when you accidentally tap a bubble item that the confirm button is red and the cancel button is green? Please stop trying to trick people into spending their gems",
-          "labels_assigned": [
-            "M_UIMisdirection",
-            "M_IntermediateCurrency"
-          ]
+          "labels_assigned": ["M_UIMisdirection", "M_IntermediateCurrency"]
         }
       ]
     },
@@ -896,10 +857,6 @@
       ],
       "boundary_rules": [
         {
-          "vs_label": "Premium Currency",
-          "rule": "it focuses on a one-time-only purchase to mislead players into feeling\nthat they have taken advantage of the purchase unlike Premium Currency which is a permanent effect."
-        },
-        {
           "vs_label": "Pay to Win",
           "rule": "Unlike Pay to Win, where players directly spend\nmoney to gain in-game advantages, this pattern does not emphasize helping players progress faster.\nInstead, it offers players a special, privileged, and extraordinary status that is visible to other players."
         }
@@ -907,10 +864,17 @@
       "counterexamples": [],
       "worked_examples": [
         {
-          "review_id": "seed: first purchase",
+          "review_id": "54b037fa-4d2f-419d-9b6b-808704bebada",
           "text": "Fun and lots to do. You also don't need to spend too much. That 89p first purchase is enough for a while.\n\nJustification: Span \"That 89p first purchase\" names a reduced-price entry purchase framed explicitly as the first one which is First Charge Discount [low-level].",
+          "labels_assigned": ["M_NeverEndingLure"]
+        },
+        {
+          "review_id": "877dd32e-be8b-4100-aaa2-550c4cdbee0d",
+          "text": "It's all fun and games until you hit level 8 and you lose the given shield. Players with higher levels will turn you into a punching bag. You may need a shield, but you'll have to buy one that costs a lot of gems and would only last for a few hours to 3 days (depending on the price). Definitely \"pay to win\" and has got that \"VIP system\" . If you're not willing to pay for upgrades, then this game's not for you. 🚮\n\nJustification: A web search reveals that \"VIP system\" is a privilege granted to players who spend above certain thresholds.",
           "labels_assigned": [
-            "M_NeverEndingLure"
+            "M_NeverEndingLure",
+            "M_PayToProgress",
+            "S_Competition"
           ]
         }
       ]
@@ -947,9 +911,7 @@
         {
           "review_id": "68f59d20-42ae-4154-94a9-9437e72dc79f",
           "text": "My new invited friend is not credit, its so stupid. because I need more energy, but this game is so stupid so stupid, new invited friend is on my list friend but did not credit. What the F this game, kindly fix this.\n\nJustification: Implies that the reviewer has invited their friend to play the game in order to get \"more energy\". Falls under Social Pyramid Scheme.",
-          "labels_assigned": [
-            "S_ForcedFellowship"
-          ]
+          "labels_assigned": ["S_ForcedFellowship"]
         }
       ]
     },
@@ -991,10 +953,7 @@
         {
           "review_id": "48a0f44f-ee21-4578-bea1-064959f37193",
           "text": "I was about to write a review and to my amazement, one had all ready written! It says I wrote a review for this game back in 2018. The things is I only started playing two weeks ago dec.2020. I am incredulous that a review was posted on my behalf! I will warn you all BE Prepared to spend lots of money on really difficult puzzles almost impossible actually! The game is created to keep you spending and spending in very little insignificant details that don't really enhance the basics of home remod",
-          "labels_assigned": [
-            "S_FriendSpamImpersonation",
-            "M_PayToProgress"
-          ]
+          "labels_assigned": ["S_FriendSpamImpersonation", "M_PayToProgress"]
         }
       ]
     },
@@ -1020,10 +979,7 @@
         {
           "review_id": "c1115d1f-9ced-4d51-9174-7f8d6c957afc",
           "text": "Can be fun. However as you progress you must do more an more for the same reward. For an example, to get 100 coins in a day when you first start off you may have to complete 10 levels. Fair enough. When you get to higher levels you need to complete 25 levels in a day. Pretty tough since you are far in the game, you would think the reward would be 250 coins. Nope, still 100. Also you only get 1 coin for donating a life. A whole one coin. At least make it 5 coins.\n\nJustification: The presence of \"you only get 1 coin for donating a life\" implies that there is a resource donation feature. ",
-          "labels_assigned": [
-            "T_Grinding",
-            "S_Reciprocity"
-          ]
+          "labels_assigned": ["T_Grinding", "S_Reciprocity"]
         }
       ]
     },
@@ -1044,7 +1000,7 @@
         },
         {
           "vs_label": "Reward for gameplay elements",
-          "rule": "Reward for game play elements defeating, raiding, or taking from another player is ordinary competitive design and codes Competition, not ASB. Assign ASB where the span describes the conduct as asymmetric or dishonest beyond sanctioned play: stronger players rewarded for attacking weaker ones, bullying, exploiting a mechanic to take from players who cannot respond, deception or betrayal."
+          "rule": "Reward for game play elements defeating, raiding, or taking from another player is ordinary competitive design and codes Competition, not Encourages Anti-Social Behavior. Assign Encourages Anti-Social Behavior where the span describes the conduct as asymmetric or dishonest beyond sanctioned play: stronger players rewarded for attacking weaker ones, bullying, exploiting a mechanic to take from players who cannot respond, deception or betrayal."
         }
       ],
       "counterexamples": [
@@ -1084,10 +1040,7 @@
         {
           "review_id": "9b8c9d60-412f-428d-8100-9163b2e54a2e",
           "text": "A game that used to be top tier, and brought all types of players together, has sadly fallen into what seems like a corrupt scheme catering to only 1 type of player. While the casual player may still find some enjoyment in Pokemon GOandSpendMoney, they will constantly feel like they're missing out on a huge chunk of the game. Niantic lacks the Instinct to listen to it's players, and without the Valor to make changes, they'll turn you into a Mystic questioning why you still play Pokemon GO.\n\nJustification: assign wherever the span describes ongoing pressure from missing rewards, events, or content, whether the missing-out follows from stopping play, from not spending, or from not keeping pace with others.",
-          "labels_assigned": [
-            "M_PayToProgress",
-            "S_FearOfMissingOutFOMO"
-          ]
+          "labels_assigned": ["M_PayToProgress", "S_FearOfMissingOutFOMO"]
         }
       ]
     },
@@ -1107,10 +1060,7 @@
         {
           "review_id": "3a3106b6-7d10-4444-bb70-63e08f9f5664",
           "text": "Fun, so far. Minimal purchases needed to play at a competitive level. Many different game styles and features. Great game for a friend group. Would recommend.",
-          "labels_assigned": [
-            "M_PayToProgress",
-            "S_Competition"
-          ]
+          "labels_assigned": ["M_PayToProgress", "S_Competition"]
         }
       ]
     },
@@ -1148,10 +1098,7 @@
         {
           "review_id": "dfd99d99-23dd-438d-828b-dcf3e2405374",
           "text": "I absolutely hate the bombs. And the little squares with cocoa and cream. I think it's ridiculous that you have to waste three turns just to clear it, then another for the jelly. However, I can't stop playing it. I might hate those things, but in all reality they're what keeps making me come back to beat the levels. It's an addicting game.",
-          "labels_assigned": [
-            "T_Grinding",
-            "P_EasyToGetHardToLose"
-          ]
+          "labels_assigned": ["T_Grinding", "P_EasyToGetHardToLose"]
         }
       ]
     },
@@ -1205,7 +1152,7 @@
       ],
       "counterexamples": [
         {
-          "review_id": "",
+          "review_id": "32c458cc-1b25-488c-8d2c-02406894e883",
           "text": "I spent almost $100 on in game currency, bet minimum bets the entire time, and i lost my money and smashed my phone because I didn't win a SINGLE free game and I was broke in 20 min. Whats the point in getting this if your NEVER going to win..",
           "why_not": "\"didn't win a SINGLE free game\" reports a losing run, not a misrepresented skill level or concealed information; no fixed ratio is asserted, so the rule from the coins review doesn't reach it."
         },
@@ -1248,7 +1195,7 @@
         },
         {
           "vs_label": "Undisclosed Purchase terms",
-          "rule": "Assign Aesthetic Manipulation where the span shows a material term of a purchase: an expiry or time limit on what was bought, automatic renewal, an exclusion on what the purchase counts toward, or a restriction on how it may be used withheld from the player until after the transaction, with the span placing the player's knowledge of the term after the point of sale. The deception is the omission at the point of sale: the emotional and subconscious appeal that drives the purchase operates through what the offer does not say. The label attaches to the withholding, not to the restriction itself. A term the span shows as disclosed before purchase is not Aesthetic Manipulation. Where the span shows the term stated but displaced: fine print, a default the player must go looking for, a disclosure routed away from the offer the deception is in placement and codes UI Misdirection. "
+          "rule": "Assign Aesthetic Manipulation when a material term of a purchase is completely omitted before the sale and only revealed afterward, such as post-purchase expiration dates, hidden auto-renewals, or undisclosed usage restrictions. The core violation is the total withholding of information at the point of sale, relying on what the offer hides rather than the restriction itself. If the term is fully disclosed beforehand, it is not Aesthetic Manipulation. However, if the term is stated before purchase but hidden or obscured through fine print, displaced disclosures, or buried defaults, the violation lies in its placement and codes UI Misdirection."
         }
       ],
       "counterexamples": [
@@ -1260,11 +1207,9 @@
       ],
       "worked_examples": [
         {
-          "review_id": "targetted",
+          "review_id": "b76bf6ad-1a7c-4c82-9b69-ef2e10405a4a",
           "text": "This game has been one of my favorite games until I try to create a new account and spend 40$ on it. Try to link it with my Facebook just to find out the confusing question about linking is asking you to delete the current progress. Terrible description in question. Wish everyone Goodluck cause I won't play again!!",
-          "labels_assigned": [
-            "P_AestheticManipulation"
-          ]
+          "labels_assigned": ["P_AestheticManipulation"]
         }
       ]
     },
@@ -1305,7 +1250,7 @@
         "Overloading (Zhang et al.):occurs in in-game mechanisms, such as reward systems or gambling, that are\ndesigned to be overly complex, thereby enticing players to invest significant effort in understanding\nand engaging with them. [low-level]",
         "Sycophant (Zhang et al.): “Sycophant” refers to the use of rewards within the game to encourage players to allocate\nadditional attention and resources to social activities outside of the game, such as following the\ngame’s social media accounts or participating in related online communities. [low-level]",
         "Variable Rewards (Sousa & Oliveira 2023): “Irregular or unexpected rewards have a greater potential to generate addiction compared to rewards provided on a predictable schedule.” Alt (Hadan 2024): “Patterns that offer unpredictable or random rewards to enhance game addiction.” darkpattern.games: “Unpredictable or random rewards are more addictive than a predictable schedule.” [low-level]",
-        "Gacha mechanics [indicators]"
+        "Gacha mechanics like pulls, rolls, banners. [indicators]"
       ],
       "boundary_rules": [
         {
@@ -1326,16 +1271,12 @@
         {
           "review_id": "490e1dac-d813-4b77-bba3-b31e8975878f",
           "text": "A gacha game like any other. It has a good story and characters, but it also has terrible rates. Honestly, I love this game but they need to implement some sort of pity system.\n",
-          "labels_assigned": [
-            "P_RewardMania"
-          ]
+          "labels_assigned": ["P_RewardMania"]
         },
         {
           "review_id": "1dff8b47-fb1c-4aa7-b69e-9be430c9635a",
           "text": "Easily the most fun game I've downloaded. You can obtain 4-star characters just by playing the first chapter of story quests, one of whom (Kaeya) is still meta-relevant in late game content, apparently. The graphics are top-notch, and the voice actors did a great job making the characters come to life (wait till you meet Lisa in-game). Cooking, gliding and the pity system ensures you'll have a fun time even if you're just a casual player. Combat is worth checking out on YT to see the diversity.\n\nJustification: \"Pity system\" names a gacha draw mechanic (Gacha mechanics indicator, R5). Assigned despite the reviewer praising it as a player-protective feature, R7 and R8 code the mechanic, not the evaluation. Gambling not assigned: no monetary stake in the span (Gambling vs Reward Mania rule).",
-          "labels_assigned": [
-            "P_RewardMania"
-          ]
+          "labels_assigned": ["P_RewardMania"]
         }
       ]
     },
@@ -1361,11 +1302,9 @@
       ],
       "worked_examples": [
         {
-          "review_id": "seed: additional download",
+          "review_id": "eb604ffc-d535-48dd-90de-ae046da9d5aa",
           "text": "Edit: I get that everything is mandatory but the file size is way too big. I don't got 12 GB of phone space bro. My experience is this: Download the game, finish tutorial (No problem) Man I can't wait to play (up to literally all of my free 8 GB of storage gone just for additional downloads and that wasn't counting an extra 2 GB left before I said nah I can't. Way too big of a game file for me. I'm sure the game is amazing but ain't no way I can experience this when its this massive on storage.",
-          "labels_assigned": [
-            "Tech_FragmentedDownloads"
-          ]
+          "labels_assigned": ["Tech_FragmentedDownloads"]
         }
       ]
     }

@@ -1,0 +1,136 @@
+{
+  "tag": "deepseek-v4-flash_high_teacher_v2_full",
+  "n": 50,
+  "prompt_stem": "teacher_v2_full",
+  "finished": "2026-08-22T21:57:47",
+  "complete": true,
+  "stopped_because": null,
+  "started": "2026-08-22T21:35:45",
+  "provider": "deepseek",
+  "model": "deepseek-v4-flash",
+  "reasoning_effort": "high",
+  "effort_surface": "thinking",
+  "effort_body": {
+    "thinking": {
+      "type": "enabled"
+    }
+  },
+  "web_search": true,
+  "web_search_channel": "tavily:web_search_tool",
+  "cache_mode": "automatic",
+  "max_tool_rounds": 1,
+  "temperature": "default",
+  "prompt_file": "/home/prex_san/Documents/dp-detection/corpus-construction/outputs/prompts/teacher_v2_full.txt",
+  "prompt_sha256": "6529a474a2b03d2c00556c78075130b0f05d7cd7d1a637f241279393194c422c",
+  "reviews_file": "/home/prex_san/Documents/dp-detection/corpus-construction/tuning/tuning_set_50_blind.jsonl",
+  "max_output": 8192,
+  "parse_retries": 2,
+  "extra_tool_loop_calls": 3,
+  "pricing_windows_seen": [
+    "off_peak"
+  ],
+  "pricing_pinned": false,
+  "search_spend_usd": 0.024,
+  "search_stats": {
+    "n_calls": 3,
+    "n_cache_hits": 0,
+    "n_live": 3,
+    "n_errors": 0,
+    "cost_usd": 0.024,
+    "backend": "tavily"
+  },
+  "manifest": {
+    "argv": [
+      "run_teacher_deepseek.py",
+      "--actual",
+      "--prompt",
+      "../outputs/prompts/teacher_v2_full.txt",
+      "--model",
+      "deepseek-v4-flash",
+      "--effort",
+      "high"
+    ],
+    "script": "run_teacher_deepseek.py",
+    "python": "3.14.6",
+    "libs": {
+      "openai": "3.3.1",
+      "anthropic": "1.0.0",
+      "requests": "2.34.2",
+      "httpx2": "2.12.0",
+      "tavily": null
+    },
+    "openai_lib": "3.3.1",
+    "git_commit": "6662ca79c072722f346268a079720f44550dcbf6",
+    "git_dirty": true,
+    "prompt_manifest": {
+      "prompt_version": "v2",
+      "mode": "full",
+      "codebook_version": "0.20",
+      "flags": {
+        "indicators": true,
+        "boundary_rules": true,
+        "counterexamples": true,
+        "worked_examples": true,
+        "rule_examples": true
+      },
+      "n_labels": 29,
+      "none_exemplar_id": "331c695a-8b57-4a46-b4d2-00fcdff9ec1a",
+      "positive_exemplar_id": "9d76ef06-a218-4ef4-b835-75443f4ec987",
+      "rule_examples_rendered": 7,
+      "counterexamples_rendered": 25,
+      "worked_examples_rendered": 39,
+      "worked_examples_with_why": 20,
+      "prompt_sha256": "6529a474a2b03d2c00556c78075130b0f05d7cd7d1a637f241279393194c422c",
+      "chars": 97847,
+      "approx_tokens": 24461,
+      "section_approx_tokens": {
+        "role": 75,
+        "rules": 1721,
+        "search_policy": 103,
+        "labels": 21011,
+        "output_spec": 662,
+        "exemplars": 789
+      }
+    }
+  },
+  "pricing": {
+    "model": "deepseek-v4-flash",
+    "as_of": "2026-08-22",
+    "input": 0.22,
+    "cached_input": 0.007,
+    "cache_write": 0.0,
+    "output": 0.66,
+    "window": "off_peak",
+    "search_per_call": 0.008,
+    "search_backend": "tavily",
+    "peak_hours_utc": [
+      [
+        1,
+        4
+      ],
+      [
+        6,
+        10
+      ]
+    ],
+    "window_pinned": false,
+    "window_resolved_at": "2026-08-22T16:05:45+00:00"
+  },
+  "ok": 50,
+  "parsed": 50,
+  "truncated": 0,
+  "searched": 3,
+  "contract_bad": 0,
+  "api_errors": 0,
+  "parse_failures": 0,
+  "retried": 1,
+  "extra_attempts": 1,
+  "superseded": 0,
+  "refusals": 0,
+  "cache_hit_rate": 0.9814,
+  "mean_output_tokens": 3027.7,
+  "mean_reasoning_tokens": 2637.1,
+  "spend_usd": 0.136967,
+  "usd_per_review": 0.00273934,
+  "projected_usd_at_200000": 547.87
+}

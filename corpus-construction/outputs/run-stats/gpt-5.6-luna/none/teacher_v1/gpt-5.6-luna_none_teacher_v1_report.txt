@@ -1,0 +1,174 @@
+==============================================================================
+RUN REPORT  gpt-5.6-luna_none_teacher_v1
+==============================================================================
+generated        2026-08-22T19:22:40
+provider/model   openai / gpt-5.6-luna  (served: gpt-5.6-luna)
+reasoning        
+web search       True
+prompt           /home/prex_san/Documents/dp-detection/corpus-construction/outputs/prompts/teacher_v1.txt
+prompt sha256    e8cd52987c330b045724a453e3260a30fcf0ac5cbe9da931bed4e7b65e94d9e7
+cache key/mode   dp-teacher-e8cd52987c33 / explicit
+gold             /home/prex_san/Documents/dp-detection/corpus-construction/tuning/tuning_set_50.jsonl
+scored           50 of 50 requests
+
+------------------------------------------------------------------------------
+RELIABILITY
+------------------------------------------------------------------------------
+  requests          50
+  ok / api errors   50 / 0
+  parsed JSON       50/50
+  truncated         0
+  parse notes       {'clean': 50}
+  statuses          {'completed': 50}
+
+------------------------------------------------------------------------------
+CODEBOOK COMPLIANCE
+------------------------------------------------------------------------------
+  labels emitted            67
+  out-of-vocabulary codes   0
+  duplicate labels (R1)     0
+  labels with no span (R3)  0
+  span not in review        1
+  span matched only loosely 0
+  span verbatim rate         98.5%
+
+------------------------------------------------------------------------------
+QUALITY
+------------------------------------------------------------------------------
+  micro-F1            0.824   (P 0.940 / R 0.733)   tp 63 fp 4 fn 23
+  example-based F1    0.816
+  exact set match     0.620
+  class macro-F1      0.741   (5 classes + None)
+  meso macro-F1       0.822   over 10 labels, support >= 3
+  None P/R/F1         0.714 / 1.000 / 0.833   (support 10)
+  missed labels named in the model's own analysis: 11/23 (48%)   rule interpretation vs attention
+
+  class                     P      R     F1   supp
+    Monetary              0.955  0.840  0.894    25
+    Psychological         1.000  0.909  0.952    11
+    Social                1.000  0.833  0.909    12
+    Technical             0.000  0.000  0.000     0
+    Temporal              1.000  0.750  0.857    16
+    None                  0.714  1.000  0.833    10
+
+  per-label (* = support < 3, excluded from meso macro)
+    label                                 P      R     F1   supp
+    M_PayToProgress                     0.933  0.778  0.848    18
+    S_Competition                       1.000  0.875  0.933     8
+    T_PlayingByAppointment              1.000  0.857  0.923     7
+    P_RewardMania                       1.000  0.667  0.800     6
+    P_CompleteTheCollection             1.000  1.000  1.000     5
+    T_Grinding                          1.000  0.600  0.750     5
+    M_IntermediateCurrency              1.000  0.500  0.667     4
+    M_UIMisdirection                    1.000  1.000  1.000     3
+    P_IllusionOfControl                 1.000  0.667  0.800     3
+    S_Reciprocity                       1.000  0.333  0.500     3
+  * M_DeceptiveLuxury                   1.000  1.000  1.000     2
+  * M_EasyToPurchase                    1.000  0.500  0.667     2
+  * M_Gambling                          0.500  0.500  0.500     2
+  * M_PowerCreep                        1.000  1.000  1.000     2
+  * M_WasteAversion                     0.333  0.500  0.400     2
+  * P_AestheticManipulation             0.000  0.000  0.000     2
+  * T_Advertisement                     1.000  0.500  0.667     2
+  * T_DailyRewards                      1.000  1.000  1.000     2
+  * M_RecurringFee                      0.000  0.000  0.000     1
+  * P_EasyToGetHardToLose               1.000  1.000  1.000     1
+  * P_OptimismAndFrequencyBiases        0.000  0.000  0.000     1
+  * S_EncouragesAntiSocialBehavior      1.000  1.000  1.000     1
+  * S_ForcedFellowship                  1.000  1.000  1.000     1
+  * S_FriendSpamImpersonation           1.000  1.000  1.000     1
+  * T_InfiniteTreadmill                 1.000  1.000  1.000     1
+  * T_MandatoryMarathon                 1.000  1.000  1.000     1
+  * M_NeverEndingLure                   0.000  0.000  0.000     0
+  * S_FearOfMissingOutFOMO              0.000  0.000  0.000     0
+  * Tech_FragmentedDownloads            0.000  0.000  0.000     0
+
+------------------------------------------------------------------------------
+ERROR TAXONOMY
+------------------------------------------------------------------------------
+  over-labelled  (predicted, not in gold)
+    M_WasteAversion                      2
+    M_PayToProgress                      1
+    M_Gambling                           1
+  under-labelled (in gold, not predicted)
+    M_PayToProgress                      4
+    S_Reciprocity                        2
+    P_RewardMania                        2
+    T_Grinding                           2
+    M_IntermediateCurrency               2
+    P_AestheticManipulation              2
+    T_PlayingByAppointment               1
+    M_RecurringFee                       1
+    P_IllusionOfControl                  1
+    P_OptimismAndFrequencyBiases         1
+    M_Gambling                           1
+    S_Competition                        1
+  co-occurring miss/false-positive pairs
+    M_RecurringFee ~ M_WasteAversion   1
+    M_PayToProgress ~ P_IllusionOfControl   1
+    M_PayToProgress ~ P_OptimismAndFrequencyBiases   1
+    M_Gambling ~ M_WasteAversion   1
+    M_Gambling ~ M_PayToProgress   1
+    M_IntermediateCurrency ~ M_WasteAversion   1
+
+  reviews with disagreements (first 12; full detail in the .md)
+    0853c395-2040-4e0b-a56c-1591484cd35b   [FALSE NONE]
+      gold: ['T_PlayingByAppointment']
+      pred: ['NONE']
+    b580a4c7-3c75-493e-ad3b-03b4f2bde6a5   [MISSED ONLY]
+      gold: ['S_Competition', 'S_Reciprocity']
+      pred: ['S_Competition']
+    0bc09fc3-6436-4a24-855e-0fdc56887918   [SWAP]
+      gold: ['M_RecurringFee', 'S_Reciprocity']
+      pred: ['M_WasteAversion', 'S_Reciprocity']
+    490ca53d-66fe-44b0-928f-ea2ba6682f0b   [FALSE NONE]
+      gold: ['S_Reciprocity']
+      pred: ['NONE']
+    fd1230ab-7d12-4aeb-a425-e37ed06bcd5c   [SWAP]
+      gold: ['P_IllusionOfControl', 'P_OptimismAndFrequencyBiases', 'S_FriendSpamImpersonation']
+      pred: ['M_PayToProgress', 'S_FriendSpamImpersonation']
+    fdef27f2-9a21-4b8e-a04c-7a4753e0fb07   [MISSED ONLY]
+      gold: ['M_Gambling', 'M_IntermediateCurrency', 'M_UIMisdirection']
+      pred: ['M_IntermediateCurrency', 'M_UIMisdirection']
+    549e5e94-9b59-477d-88c7-ae5e00d62514   [MISSED ONLY]
+      gold: ['M_PayToProgress', 'P_IllusionOfControl']
+      pred: ['P_IllusionOfControl']
+    33c422de-1a84-4df9-accd-cdf8bfc96295   [MISSED ONLY]
+      gold: ['M_PayToProgress', 'S_Competition']
+      pred: ['M_PayToProgress']
+    3c46f5e0-6091-43dc-94a0-e3af3259a63d   [SWAP]
+      gold: ['M_PayToProgress', 'M_WasteAversion', 'T_DailyRewards']
+      pred: ['M_Gambling', 'T_DailyRewards']
+    cc714d17-863c-4ebd-b14f-989ba17c71c4   [MISSED ONLY]
+      gold: ['M_DeceptiveLuxury', 'M_PayToProgress', 'P_CompleteTheCollection', 'P_RewardMania']
+      pred: ['M_DeceptiveLuxury', 'M_PayToProgress', 'P_CompleteTheCollection']
+    ab2097d3-2f9b-4a87-885c-25dfcddb5a70   [MISSED ONLY]
+      gold: ['M_PayToProgress', 'T_Grinding']
+      pred: ['M_PayToProgress']
+    fdfb3f26-0573-4cac-a0e2-ea5571bb5ad2   [FALSE NONE]
+      gold: ['T_Grinding']
+      pred: ['NONE']
+
+------------------------------------------------------------------------------
+COST
+------------------------------------------------------------------------------
+  rates as of       2026-08-21  in 0.2 / cached 0.02 / write 0.25 / out 1.2 per MTok
+  input tokens      1,221,569  (cached 1,210,100, written 0, plain 11,469)
+  output tokens     26,403  (reasoning 15,838, 60% of output)
+  mean per review   in 24,431  out 528  reasoning 317
+  cache hit rate    0.991
+  total spend       $0.0582
+  per review        $0.001164
+  cost split        cached  41.6%  cache_write   0.0%  uncached_input   3.9%  output  54.5%
+  projected 200,000  $232.72
+  micro-F1 per $ at 200,000   0.00354
+
+------------------------------------------------------------------------------
+THROUGHPUT
+------------------------------------------------------------------------------
+  latency p50/p95   9.60s / 21.26s   mean 10.66s   max 27.09s
+  sequential 200,000  533 h at p50 (592 h at mean, skewed by outliers)
+  web searches      1/50 reviews (  2.0%)
+    ids: ae3b6309-101e-4320-99b1-aa6795602787
+
+==============================================================================

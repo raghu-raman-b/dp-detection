@@ -1,0 +1,21 @@
+{
+  "prompt_version": "a1",
+  "codebook_version": "0.20",
+  "examples_mode": "full",
+  "indicators": true,
+  "boundary_rules": true,
+  "n_labels": 29,
+  "verify_exemplar_id": "331c695a-8b57-4a46-b4d2-00fcdff9ec1a",
+  "verify_exemplar_label": "T_PlayingByAppointment",
+  "prompt_sha256": "86f79c9ed908ffe942c975f5cc84485a1bade5e1794a5cfbeeb9e715f0a15791",
+  "chars": 94569,
+  "approx_tokens": 23642,
+  "section_approx_tokens": {
+    "role": 185,
+    "rules": 796,
+    "search_policy": 103,
+    "labels": 21160,
+    "output_spec": 879,
+    "verify_exemplar": 418
+  }
+}

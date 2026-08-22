@@ -1,0 +1,9 @@
+# Teacher-runner stack. Floors, not pins: the exact versions that produced any given
+# number are recorded per run in <tag>_summary.json under manifest.libs, which is the
+# reproducibility artifact that actually matters. Freeze a lockfile when the winning
+# run is frozen:  pip freeze > requirements.lock.txt
+openai>=3.3.1          # OpenAI, Kimi and DeepSeek (all OpenAI-compatible surfaces)
+anthropic>=1.0.0       # Claude Messages API; pulls in httpx2
+requests>=2.32         # Kimi's Formula API + web_search_tool.py backends
+matplotlib>=3.11       # compare_runs.py figures
+numpy>=2.0

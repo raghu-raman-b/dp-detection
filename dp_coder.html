@@ -1,0 +1,1296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DP Coder — agreement-study coding bench</title>
+<style>
+  /* ============================================================
+     DP CODER — visual system
+     Forked from dp_adjudicator.html: same dark "coding bench" theme
+     and the same taxonomy hues. Model-verdict styling removed; span
+     capture + coder identity added.
+     ============================================================ */
+  :root{
+    --bg:        #101318;
+    --panel:     #171b22;
+    --panel-2:   #1e2430;
+    --line:      #2a3140;
+    --ink:       #e8ecf3;
+    --ink-dim:   #97a1b3;
+    --ink-faint: #5d6779;
+    --accent:    #ffb454;   /* action / focus */
+    --danger:    #ff6b6b;
+    --ok:        #6fd08c;
+
+    --c-T:    #f2b544;  /* Temporal  — amber   */
+    --c-M:    #63d68b;  /* Monetary  — green   */
+    --c-S:    #5aa9f5;  /* Social    — blue    */
+    --c-P:    #c48af7;  /* Psych     — violet  */
+    --c-Tech: #59d6d0;  /* Technical — teal    */
+
+    --mono: "SF Mono", "Cascadia Code", Consolas, "Liberation Mono", monospace;
+    --sans: -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html,body{ height:100%; }
+  body{
+    background:var(--bg); color:var(--ink); font-family:var(--sans);
+    font-size:15px; overflow:hidden;
+  }
+  button{ font-family:inherit; cursor:pointer; }
+  input,select,textarea{ font-family:inherit; color:var(--ink); }
+  ::selection{ background:#3d5170; }
+
+  /* ---------- app frame: header / main / footer ---------- */
+  #app{ display:flex; flex-direction:column; height:100vh; }
+
+  header{
+    display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+    padding:8px 14px; background:var(--panel); border-bottom:1px solid var(--line);
+  }
+  header .brand{
+    font-family:var(--mono); font-size:14px; font-weight:700; letter-spacing:.5px;
+    color:var(--accent); margin-right:6px; white-space:nowrap;
+  }
+  header .brand small{ color:var(--ink-faint); font-weight:400; }
+  .hgroup{ display:flex; align-items:center; gap:6px; }
+  .hgroup label{ font-size:11px; color:var(--ink-dim); text-transform:uppercase; letter-spacing:.6px; }
+
+  .btn{
+    background:var(--panel-2); border:1px solid var(--line); color:var(--ink);
+    border-radius:6px; padding:5px 11px; font-size:13px;
+  }
+  .btn:hover{ border-color:var(--ink-faint); }
+  .btn.primary{ background:var(--accent); border-color:var(--accent); color:#1a1204; font-weight:600; }
+  .btn.primary:hover{ filter:brightness(1.08); }
+  .btn.ghost{ background:transparent; }
+  .btn:disabled{ opacity:.4; cursor:default; }
+
+  input[type=text], select, textarea{
+    background:var(--panel-2); border:1px solid var(--line); border-radius:6px;
+    padding:5px 8px; font-size:13px;
+  }
+  input[type=text]:focus, select:focus, textarea:focus{
+    outline:none; border-color:var(--accent);
+  }
+
+  /* coder identity — the one field that gates everything */
+  #coderName{ width:150px; font-family:var(--mono); }
+  #coderName.missing{ border-color:var(--danger); box-shadow:0 0 0 1px var(--danger); }
+
+  #dirtyDot{
+    width:9px; height:9px; border-radius:50%; background:var(--ink-faint);
+    display:inline-block; margin-left:2px;
+  }
+  #dirtyDot.dirty{ background:var(--danger); box-shadow:0 0 6px var(--danger); }
+
+  /* ---------- main split ---------- */
+  main{ flex:1; display:flex; min-height:0; }
+
+  /* left: review card */
+  #reviewPane{
+    width:60%; min-width:0; padding:22px 28px; overflow-y:auto;
+    border-right:1px solid var(--line);
+  }
+  #emptyState{ color:var(--ink-faint); margin-top:12vh; text-align:center; line-height:1.9; }
+  #emptyState .big{ font-size:19px; color:var(--ink-dim); }
+  #emptyState code{ font-family:var(--mono); color:var(--accent); font-size:13px; }
+
+  .meta-line{
+    display:flex; flex-wrap:wrap; gap:6px 14px; align-items:baseline;
+    font-family:var(--mono); font-size:12.5px; color:var(--ink-dim); margin-bottom:6px;
+  }
+  .meta-line .game{ font-size:15px; color:var(--ink); font-weight:700; }
+  .meta-line .stars{ color:var(--c-T); letter-spacing:1px; }
+  .meta-pill{
+    background:var(--panel-2); border:1px solid var(--line); border-radius:20px;
+    padding:1px 9px; font-size:11.5px;
+  }
+
+  #rowStateLine{ font-family:var(--mono); font-size:11.5px; margin:2px 0 14px; min-height:15px; }
+  #rowStateLine .st-labeled { color:var(--ok); }
+  #rowStateLine .st-flagged { color:var(--danger); }
+  #rowStateLine .st-none    { color:var(--ink-faint); }
+  #rowStateLine .st-border  { color:var(--accent); }
+
+  #reviewText{
+    font-size:19px; line-height:1.7; color:var(--ink); white-space:pre-wrap;
+    max-width:72ch; cursor:text;
+  }
+  #reviewId{ margin-top:22px; font-family:var(--mono); font-size:11px; color:var(--ink-faint); }
+
+  /* ---------- span capture ---------- */
+  #reviewText mark{
+    padding:0 1px; border-radius:3px; color:var(--ink);
+    background:rgba(255,180,84,.16); box-shadow:inset 0 -2px 0 var(--sc, var(--accent));
+  }
+  #selBar{
+    position:sticky; top:0; z-index:5; margin:-6px 0 14px;
+    border:1px dashed var(--accent); border-radius:8px; background:var(--panel-2);
+    padding:8px 11px; font-size:12.5px; color:var(--ink-dim); display:none;
+  }
+  #selBar.show{ display:block; }
+  #selBar b{ color:var(--accent); font-family:var(--mono); font-size:11px;
+             text-transform:uppercase; letter-spacing:.6px; }
+  #selBar .quote{ color:var(--ink); font-style:italic; margin-top:4px; display:block; }
+
+  #spanBox{ margin-top:24px; border-top:1px solid var(--line); padding-top:14px; max-width:72ch; }
+  #spanBox .shead{
+    font-size:10.5px; color:var(--ink-dim); text-transform:uppercase;
+    letter-spacing:.6px; margin-bottom:8px;
+  }
+  .scard{
+    border:1px solid var(--line); border-left-width:3px; border-radius:8px;
+    padding:7px 10px; margin-bottom:7px; background:var(--panel);
+    display:flex; align-items:flex-start; gap:10px;
+  }
+  .scard .sbody{ flex:1; min-width:0; }
+  .scard .slab{ font-size:12.5px; font-weight:700; color:var(--ink); }
+  .scard .stext{ font-size:12.5px; color:var(--ink-dim); font-style:italic; margin-top:3px; }
+  .scard .sdel{
+    background:transparent; border:1px solid var(--line); border-radius:6px;
+    color:var(--ink-faint); font-size:12px; padding:1px 7px; line-height:1.5;
+  }
+  .scard .sdel:hover{ border-color:var(--danger); color:var(--danger); }
+  .snone{ color:var(--ink-faint); font-size:12.5px; font-style:italic; }
+
+  /* right: labels + judgment */
+  #labelPane{
+    width:40%; min-width:380px; display:flex; flex-direction:column; min-height:0;
+    background:var(--panel);
+  }
+  #searchWrap{ padding:10px 12px 6px; }
+  #labelSearch{ width:100%; font-family:var(--mono); }
+  #searchHint{ font-size:10.5px; color:var(--ink-faint); margin-top:3px; padding-left:2px; }
+
+  #groupsScroll{ flex:1; overflow-y:auto; padding:4px 12px 8px; }
+
+  .group{ margin-bottom:8px; border:1px solid var(--line); border-radius:8px; overflow:hidden; }
+  .group-head{
+    display:flex; align-items:center; gap:8px; width:100%;
+    background:var(--panel-2); border:none; padding:6px 10px; text-align:left;
+    color:var(--ink); font-size:12.5px; font-weight:700; letter-spacing:.4px;
+  }
+  .group-head .swatch{ width:10px; height:10px; border-radius:3px; }
+  .group-head .gcount{ margin-left:auto; font-family:var(--mono); font-size:11px; color:var(--ink-dim); }
+  .group-head .chev{ color:var(--ink-faint); font-size:10px; transition:transform .12s; }
+  .group.collapsed .chev{ transform:rotate(-90deg); }
+  .group.collapsed .chips{ display:none; }
+
+  .chips{ display:flex; flex-wrap:wrap; gap:6px; padding:8px 10px; }
+  .chip{
+    border:1px solid var(--line); border-radius:16px; background:var(--bg);
+    padding:3px 11px; font-size:12.5px; color:var(--ink-dim);
+    user-select:none; position:relative;
+  }
+  .chip:hover{ border-color:var(--gc); color:var(--ink); }
+  .chip.on{ background:var(--gc); border-color:var(--gc); color:#10141a; font-weight:600; }
+  .chip.hl{ outline:2px solid var(--accent); outline-offset:1px; }
+  .chip.hidden{ display:none; }
+  .chip .spanct{
+    font-family:var(--mono); font-size:9.5px; margin-left:5px; opacity:.75;
+  }
+  /* armed = a text selection is waiting to be attached */
+  #labelPane.arming .chip{ border-style:dashed; border-color:var(--accent); }
+
+  #defStrip{
+    border-top:1px solid var(--line); padding:8px 12px; min-height:52px;
+    font-size:12px; line-height:1.5; color:var(--ink-dim); background:var(--panel);
+  }
+  #defStrip b{ color:var(--ink); font-size:12.5px; }
+  #defStrip .placeholder{ color:var(--ink-faint); font-style:italic; }
+
+  /* judgment section */
+  #judgment{
+    border-top:1px solid var(--line); padding:10px 12px; display:grid;
+    grid-template-columns:1fr 1fr; gap:8px 12px; background:var(--panel);
+  }
+  #judgment .full{ grid-column:1 / -1; }
+  .j-label{ font-size:10.5px; color:var(--ink-dim); text-transform:uppercase; letter-spacing:.6px; margin-bottom:3px; display:block; }
+
+  #noneToggle{
+    grid-column:1 / -1; display:flex; align-items:center; justify-content:center; gap:8px;
+    background:transparent; border:1px dashed var(--line); border-radius:8px;
+    color:var(--ink-dim); padding:7px; font-size:13px;
+  }
+  #noneToggle.on{ background:#2c3444; border-style:solid; border-color:var(--ink-dim); color:var(--ink); font-weight:600; }
+  #noneToggle .key{ font-family:var(--mono); font-size:11px; color:var(--ink-faint); }
+
+  .seg{ display:flex; border:1px solid var(--line); border-radius:6px; overflow:hidden; }
+  .seg button{
+    flex:1; background:var(--panel-2); border:none; color:var(--ink-dim);
+    padding:5px 0; font-size:12.5px; border-right:1px solid var(--line);
+  }
+  .seg button:last-child{ border-right:none; }
+  .seg button.on{ background:var(--accent); color:#1a1204; font-weight:700; }
+
+  #borderlineBtn{ width:100%; }
+  #borderlineBtn.on{ background:var(--danger); border-color:var(--danger); color:#20090b; font-weight:700; }
+
+  #rationale{ width:100%; resize:vertical; min-height:44px; max-height:120px; font-size:12.5px; }
+  #ruleApplied{ width:100%; font-family:var(--mono); }
+
+  /* ---------- footer bar ---------- */
+  footer{
+    display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+    padding:8px 14px; background:var(--panel); border-top:1px solid var(--line);
+  }
+  #progressText{ font-family:var(--mono); font-size:12.5px; color:var(--ink-dim); }
+  #progressText b{ color:var(--ink); }
+  #posText{ font-family:var(--mono); font-size:12px; color:var(--ink-faint); }
+  #filterSel{ max-width:220px; }
+  #flagModeBtn.on{ background:var(--danger); border-color:var(--danger); color:#20090b; font-weight:600; }
+  .spacer{ flex:1; }
+
+  /* toast */
+  #toast{
+    position:fixed; bottom:64px; left:50%; transform:translateX(-50%);
+    background:#2c3444; border:1px solid var(--line); color:var(--ink);
+    padding:8px 16px; border-radius:8px; font-size:13px; opacity:0;
+    pointer-events:none; transition:opacity .15s; z-index:50; max-width:70vw;
+  }
+  #toast.show{ opacity:1; }
+  #toast.err{ border-color:var(--danger); color:#ffc9c9; }
+
+  /* cheat sheet */
+  #cheat{
+    position:fixed; inset:0; background:rgba(8,10,14,.78); z-index:100;
+    display:none; align-items:center; justify-content:center;
+  }
+  #cheat.show{ display:flex; }
+  #cheat .card{
+    background:var(--panel); border:1px solid var(--line); border-radius:12px;
+    padding:22px 28px; max-width:600px; width:92%;
+  }
+  #cheat h2{ font-size:15px; margin-bottom:12px; color:var(--accent); font-family:var(--mono); }
+  #cheat table{ width:100%; border-collapse:collapse; font-size:13px; }
+  #cheat td{ padding:4px 6px; border-bottom:1px solid var(--line); color:var(--ink-dim); }
+  #cheat td:first-child{ width:170px; }
+  #cheat kbd{
+    font-family:var(--mono); font-size:11.5px; background:var(--panel-2);
+    border:1px solid var(--line); border-bottom-width:2px; border-radius:4px; padding:1px 6px;
+    color:var(--ink);
+  }
+  #cheat .close{ margin-top:14px; }
+
+  /* scrollbars */
+  ::-webkit-scrollbar{ width:10px; }
+  ::-webkit-scrollbar-thumb{ background:var(--line); border-radius:5px; }
+  ::-webkit-scrollbar-track{ background:transparent; }
+
+  @media (max-width:900px){
+    main{ flex-direction:column; overflow-y:auto; }
+    #reviewPane,#labelPane{ width:100%; min-width:0; }
+    body{ overflow:auto; }
+  }
+</style>
+</head>
+<body>
+<div id="app">
+
+  <header>
+    <span class="brand">DP&nbsp;CODER <small>· agreement study</small></span>
+
+    <div class="hgroup">
+      <label for="coderName">coder</label>
+      <input type="text" id="coderName" placeholder="your coder id" autocomplete="off"
+             title="Written to every row as coder_name. Required before you can save or export.">
+    </div>
+
+    <div class="hgroup">
+      <button class="btn" id="loadBtn">Load blind set…</button>
+      <input type="file" id="fileInput" accept=".jsonl,.json,.txt" hidden>
+      <span id="fileInfo">no file loaded</span>
+    </div>
+
+    <div class="spacer"></div>
+
+    <div class="hgroup">
+      <button class="btn ghost" id="codebookBtn" title="Open the codebook in a new tab">Codebook ↗</button>
+      <button class="btn" id="importBtn" title="Restore your work from a previously exported coder file">Import my work…</button>
+      <input type="file" id="importInput" accept=".jsonl,.json,.txt" hidden>
+      <button class="btn primary" id="exportBtn" title="Download your labels as .jsonl + .csv">Download labels</button>
+      <span id="dirtyDot" title="red = work not yet exported to file"></span>
+    </div>
+
+    <button class="btn ghost" id="helpBtn" title="Keyboard shortcuts (?)">?</button>
+  </header>
+
+  <main>
+    <section id="reviewPane">
+      <div id="emptyState">
+        <div class="big">No coding set loaded</div>
+        <p>Type your <b>coder id</b> up top, then click <b>Load blind set…</b> and pick<br>
+        <code>validation_set_blind.jsonl</code>. One JSON object per line.</p>
+        <p>Read the review, tick every label that applies (or <b>NONE</b>), and — where you can —
+        select the phrase in the review that made you choose it,<br>then click the label to attach that span.<br>
+        Your work autosaves to this browser (localStorage). Nothing leaves your machine
+        until you click <b>Download labels</b>.</p>
+        <p>Press <b>?</b> anytime for keyboard shortcuts.</p>
+      </div>
+
+      <div id="reviewCard" hidden>
+        <div id="selBar">
+          <b>span armed</b> — click a label to attach it · Esc to cancel
+          <span class="quote" id="selQuote"></span>
+        </div>
+        <div class="meta-line" id="metaLine"></div>
+        <div id="rowStateLine"></div>
+        <div id="reviewText"></div>
+        <div id="reviewId"></div>
+        <div id="spanBox"></div>
+      </div>
+    </section>
+
+    <section id="labelPane">
+      <div id="searchWrap">
+        <input type="text" id="labelSearch" placeholder="/  fuzzy-search labels… (Space toggles highlighted)" autocomplete="off">
+        <div id="searchHint">↑↓ move · Space/Enter toggle · Esc clear</div>
+      </div>
+
+      <div id="groupsScroll"></div>
+
+      <div id="defStrip"><span class="placeholder">Hover a label to see its codebook definition.</span></div>
+
+      <div id="judgment">
+        <button id="noneToggle" title="No deceptive pattern in this review (N)">
+          NONE — no deceptive pattern <span class="key">[N]</span>
+        </button>
+
+        <div>
+          <span class="j-label">confidence · 1/2/3</span>
+          <div class="seg" id="confSeg">
+            <button data-conf="H">high</button>
+            <button data-conf="M">med</button>
+            <button data-conf="L">low</button>
+          </div>
+        </div>
+
+        <div>
+          <span class="j-label">borderline · B</span>
+          <button class="btn" id="borderlineBtn">borderline</button>
+        </div>
+
+        <div class="full">
+          <span class="j-label">rule_applied (boundary rule you leaned on, optional)</span>
+          <input type="text" id="ruleApplied" placeholder="e.g. M_WasteAversion vs NONE">
+        </div>
+
+        <div class="full">
+          <span class="j-label">rationale (why these labels) — Ctrl+Enter saves</span>
+          <textarea id="rationale" rows="2"></textarea>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <button class="btn" id="prevBtn" title="Previous (←)">← Prev</button>
+    <button class="btn primary" id="saveBtn" title="Save this row + next (Enter)">Save + Next ⏎</button>
+    <button class="btn" id="skipBtn" title="Flag for discussion and move on (S)">Flag + skip</button>
+
+    <span id="posText"></span>
+    <span id="progressText"></span>
+
+    <div class="spacer"></div>
+
+    <div class="hgroup">
+      <label for="filterSel">filter</label>
+      <select id="filterSel"></select>
+    </div>
+    <button class="btn" id="flagModeBtn" title="Cycle only borderline + low-confidence rows (G)">Review flagged</button>
+  </footer>
+</div>
+
+<div id="toast"></div>
+
+<div id="cheat">
+  <div class="card">
+    <h2>Keyboard shortcuts</h2>
+    <table>
+      <tr><td><kbd>Enter</kbd></td><td>Save current row + advance (also <kbd>Ctrl+Enter</kbd> inside rationale)</td></tr>
+      <tr><td><kbd>←</kbd> / <kbd>→</kbd></td><td>Previous / next row (no save)</td></tr>
+      <tr><td><kbd>N</kbd></td><td>Toggle NONE (clears all labels)</td></tr>
+      <tr><td><kbd>1</kbd> <kbd>2</kbd> <kbd>3</kbd></td><td>Confidence high / medium / low</td></tr>
+      <tr><td><kbd>B</kbd></td><td>Toggle borderline</td></tr>
+      <tr><td><kbd>S</kbd></td><td>Flag this row for discussion and skip it</td></tr>
+      <tr><td><kbd>G</kbd></td><td>Toggle "review flagged" mode (borderline + low-confidence)</td></tr>
+      <tr><td>select text, click label</td><td>Attach that span as evidence for the label</td></tr>
+      <tr><td><kbd>/</kbd></td><td>Focus label search</td></tr>
+      <tr><td><kbd>↑</kbd> <kbd>↓</kbd> in search</td><td>Move highlight between matching labels</td></tr>
+      <tr><td><kbd>Space</kbd> / <kbd>Enter</kbd> in search</td><td>Toggle highlighted label</td></tr>
+      <tr><td><kbd>Esc</kbd></td><td>Cancel armed span / clear search / close this sheet</td></tr>
+      <tr><td><kbd>?</kbd></td><td>Show / hide this sheet</td></tr>
+    </table>
+    <button class="btn close" onclick="document.getElementById('cheat').classList.remove('show')">Close (Esc)</button>
+  </div>
+</div>
+<script>
+/* ================================================================
+   ████  CONFIG — EDIT HERE  ████
+   Taxonomy, verbatim from dp_labeler.html / dp_adjudicator.html. It
+   must stay in step with the codebook and with LABEL_CODES in
+   build_input.py.
+     id     : class prefix used in column names
+     labels : meso-level label display names, in codebook order.
+   CSV column name for a label = id + "_" + CamelCase(label with
+   punctuation stripped), e.g.  "Fear of Missing Out (FOMO)"
+   -> S_FearOfMissingOutFOMO.
+
+   INPUT   validation_set_blind.jsonl (build_validation_set.py, BLIND_OUT)
+   OUTPUT  one row per review, labeled_data/*.jsonl schema plus
+           coder_name, assigned_labels, assigned_spans, source_file.
+   ================================================================ */
+const CONFIG = {
+  defaultCodebookVersion: "0.20",   // used only when a row carries none
+  pass: "agreement",                // written to every row's `pass`
+  codebookHref: "dp-codebook.html", // the Codebook ↗ button
+  blindFields: ["stratum", "seed_keyword", "source_file"], // carried, never shown
+  groups: [
+    { id:"T", name:"Temporal", color:"var(--c-T)", labels:[
+      "Playing by Appointment", "Daily Rewards", "Grinding", "Advertisement",
+      "Infinite Treadmill", "Mandatory Marathon"
+    ]},
+    { id:"M", name:"Monetary", color:"var(--c-M)", labels:[
+      "Pay to Progress", "Intermediate Currency", "Deceptive Luxury",
+      "Recurring Fee", "Gambling", "Power Creep", "Waste Aversion",
+      "Easy to Purchase", "UI Misdirection", "Never-Ending Lure"
+    ]},
+    { id:"S", name:"Social", color:"var(--c-S)", labels:[
+      "Forced Fellowship", "Friend Spam / Impersonation", "Reciprocity",
+      "Encourages Anti-Social Behavior", "Fear of Missing Out (FOMO)", "Competition"
+    ]},
+    { id:"P", name:"Psychological", color:"var(--c-P)", labels:[
+      "Easy to Get Hard to Lose", "Complete the Collection", "Illusion of Control",
+      "Aesthetic Manipulation", "Optimism and Frequency Biases", "Reward Mania"
+    ]},
+    { id:"Tech", name:"Technical", color:"var(--c-Tech)", labels:[
+      "Fragmented Downloads"
+    ]}
+  ]
+};
+
+/* canonical_definition for each label, lifted from codebook v0.20.
+   Shown in the strip under the chips; the full boundary rules live in
+   the codebook itself (Codebook ↗). */
+const DEFS = {
+  T_PlayingByAppointment: "Requires players play at specific times (and or dates) as defined by the game, rather than the players. When mechanics result in player playing according to the schedules the game offers, rather than their personal desires (an obligation).",
+  T_DailyRewards: "Motivates players to log in daily by providing incentives, while also penalising them for failing to do so.",
+  T_Grinding: "“Performing repetitive and tedious tasks” in order to make progress in a game. Emphasizes time invested over skill and in worst cases could be conducted unattended by the player.",
+  T_Advertisement: "Compelled to view advertisements or incentivized to do so through the promise of rewards.",
+  T_InfiniteTreadmill: "Patterns that continually expand the game to never allow players to complete.",
+  T_MandatoryMarathon: "Design that prevents the player from stopping at a moment of their choosing, requiring continuation to a stopping point defined by the game. Includes absent or restricted saving, checkpoint-only progress, and sessions or matches that cannot be exited without forfeiting progress.",
+  M_PayToProgress: "Patterns that require the players to spend money to progress in-game.",
+  M_IntermediateCurrency: "Pattern where players use real-world money to acquire in-game currency for purchases or trades within the game world",
+  M_DeceptiveLuxury: "Deceptive Luxury is a game design tactic that makes an item feel rare and exclusive so players will pay more for it, when the rarity was invented by the developer rather than being a real limit. The item's price reflects manufactured scarcity, not genuine value.",
+  M_RecurringFee: "Patterns that encourages players to maximize playtime to justify their spending.",
+  M_Gambling: "Using real money to participate in a game that involves an element of luck, with the possibility of receiving a prize as a reward.",
+  M_PowerCreep: "Patterns that diminishing the value of purchased items over time to drive new purchases.",
+  M_WasteAversion: "Patterns set small differences between in-game currency and item costs, prompting additional currency purchases.",
+  M_EasyToPurchase: "Interface design that reduces the friction or deliberation involved in spending real money, through purchase-by-default options, absent confirmation or refund steps, prompts triggered at the point of insufficient funds, or price presentation that makes an amount appear smaller than it is.",
+  M_UIMisdirection: "The user interface (i.e., not the NPC) contains elements designed to purposefully focus attention on specific options, or away from opportunities to opt-out.",
+  M_NeverEndingLure: "The “Never-Ending Lure” pattern is designed to convert non-paying players into paying ones (“First Charge Discount”) and encourage consistent long-term payments (“Accumulating Rewards”).",
+  S_ForcedFellowship: "Forced Fellowship is a game design tactic that turns real friendships into leverage: the game rewards you for pulling friends in, then makes it costly to stop playing because quitting would let those friends down.Design that uses the player's social ties, real or in-game, as the mechanism of recruitment or retention: rewarding the player for bringing others into the game, or making disengagement costly because absence burdens teammates, guildmates, or friends.",
+  S_FriendSpamImpersonation: "The game employs unsolicited messaging to a player's contact list or social media account.",
+  S_Reciprocity: "Patterns that instill a sense of obligation to reciprocate by donating resources to other players.",
+  S_EncouragesAntiSocialBehavior: "Patterns that incentivize players to engage in dishonest or harmful actions to gain an advantage.",
+  S_FearOfMissingOutFOMO: "Players are pressured to continue playing the game by the fear of missing out on rewards or falling behind other players.",
+  S_Competition: "Patterns that make players against each other in competition.",
+  P_EasyToGetHardToLose: "Design in which accumulated investment, time played, money spent, progress attained, or partially completed goals, raises the cost of leaving. Entry is low-friction; exit entails forfeiting value the player already holds.",
+  P_CompleteTheCollection: "The compulsion to acquire all the items, achievements, or hidden features in a game.",
+  P_IllusionOfControl: "Patterns that deceive players about their skill level to encourage more gameplay.",
+  P_AestheticManipulation: "The use of deceitful questions or manipulation of emotions and subconscious desires, mainly based on aesthetical game elements.",
+  P_OptimismAndFrequencyBiases: "Patterns that exploit cognitive biases and clustering illusions to overestimate event frequencies (e.g., winning streaks).",
+  P_RewardMania: "Reward structures in which the mechanism of delivery, its complexity, its unpredictability, or the out-of-game activity it demands, is what sustains engagement, rather than the value of the reward itself. The player invests disproportionate cognitive effort, repeated attempts, or external activity in pursuit of the reward system.",
+  Tech_FragmentedDownloads: "“Fragmented Downloads” are characterized by designs that obscure the true storage requirements of the game until the game starts. This is deceptive because it targets mobile users who are cautious about their device’s storage capacity and foments a space monopoly by the app against competitors.",
+};
+/* ================================================================
+   ████  END CONFIG  ████
+   ================================================================ */
+
+/* ---------------- derived taxonomy tables ---------------- */
+function camel(label){
+  return label.split(/[^A-Za-z0-9]+/).filter(Boolean)
+    .map(w => w[0].toUpperCase() + w.slice(1)).join("");
+}
+const ALL_LABELS = []; // {col, groupId, groupName, label, color}
+for (const g of CONFIG.groups)
+  for (const l of g.labels)
+    ALL_LABELS.push({ col: g.id + "_" + camel(l), groupId: g.id, groupName: g.name, label: l, color: g.color });
+const COL_BY_NAME = Object.fromEntries(ALL_LABELS.map(x => [x.col, x]));
+const ORDER = Object.fromEntries(ALL_LABELS.map((x,i) => [x.col, i]));
+function sortLabels(a){ return a.slice().sort((x,y)=>(ORDER[x]??999)-(ORDER[y]??999)); }
+
+/* ---------------- persistent state ----------------
+   Keys are deliberately NOT the labeler's or the adjudicator's. Same
+   browser origin: reusing theirs would clobber that tool's progress. */
+const LS_ANN  = "dpCoder.annotations.v1";
+const LS_SET  = "dpCoder.settings.v1";
+const LS_DATA = "dpCoder.dataset.v1";
+
+let rows = [];              // blind records (source order)
+let ann  = {};              // review_id -> annotation object
+let settings = { coderName: "", filter: "all", collapsed: {} };
+let visible = [];
+let cur = 0;
+let flagMode = false;
+let dirtySinceExport = false;
+let searchHl = -1;
+let armed = null;           // {text, start, end} — a selection waiting for a label
+
+function blankAnn(id){
+  return { review_id:id, labels:[], spans:[], none:false, confidence:"",
+           rule_applied:"", borderline:false, rationale:"", flagged:false,
+           saved:false, saved_at:"" };
+}
+function getAnn(id){ if(!ann[id]) ann[id] = blankAnn(id); return ann[id]; }
+
+function persist(){
+  try{
+    localStorage.setItem(LS_ANN, JSON.stringify(ann));
+    localStorage.setItem(LS_SET, JSON.stringify(settings));
+  }catch(e){ toast("localStorage save failed: " + e.message, true); }
+}
+function persistDataset(){
+  try{ localStorage.setItem(LS_DATA, JSON.stringify(rows)); }
+  catch(e){ toast("Dataset too large to cache in localStorage — labels still save; re-pick the file next session.", true); }
+}
+function markDirty(){ dirtySinceExport = true; document.getElementById("dirtyDot").classList.add("dirty"); }
+
+/* ---------------- coder identity ---------------- */
+function coderName(){ return (settings.coderName || "").trim(); }
+function requireCoder(){
+  if(coderName()) return true;
+  const el = document.getElementById("coderName");
+  el.classList.add("missing"); el.focus();
+  toast("Enter your coder id first — it is written to every row as coder_name.", true);
+  return false;
+}
+
+/* ---------------- toast ---------------- */
+let toastTimer = null;
+function toast(msg, err=false){
+  const t = document.getElementById("toast");
+  t.textContent = msg; t.classList.toggle("err", !!err); t.classList.add("show");
+  clearTimeout(toastTimer); toastTimer = setTimeout(()=>t.classList.remove("show"), err?3200:1600);
+}
+
+/* ---------------- JSONL parsing ---------------- */
+function parseJSONL(text){
+  const out = [], errs = [];
+  text.split(/\r?\n/).forEach((line,i)=>{
+    const s = line.trim(); if(!s) return;
+    try{ out.push(JSON.parse(s)); }catch(e){ errs.push(i+1); }
+  });
+  return { out, errs };
+}
+
+/* ---------------- dataset loading ---------------- */
+function loadDataset(objs, sourceName){
+  const clean = [], seen = new Set();
+  let leaked = 0;
+  for(const o of objs){
+    if(o == null) continue;
+    const id = String(o.review_id ?? "");
+    if(!id || seen.has(id)) continue;
+    seen.add(id);
+    /* A gold file would carry actual_labels. Loading one would un-blind
+       the study, so refuse the row rather than silently coding against it. */
+    if(o.actual_labels !== undefined || o.actual_labels_str !== undefined){ leaked++; continue; }
+    clean.push({
+      review_id:    id,
+      app_id:       o.app_id       ?? "",
+      game_name:    o.game_name    ?? "",
+      market:       o.market       ?? "",
+      review_date:  o.review_date  ?? "",
+      star_rating:  o.star_rating  ?? "",
+      review_text:  o.review_text  ?? "",
+      stratum:      o.stratum      ?? "",
+      seed_keyword: o.seed_keyword ?? "",
+      source_file:  o.source_file  ?? "",
+      casino:       o.casino       ?? "",
+      codebook_version: o.codebook_version || CONFIG.defaultCodebookVersion
+    });
+  }
+  if(leaked){
+    toast(`Refused ${leaked} row(s) carrying actual_labels — load validation_set_blind.jsonl, not validation_set.jsonl.`, true);
+  }
+  if(!clean.length){ toast("No usable rows in that file.", true); return; }
+  rows = clean;
+  persistDataset();
+  document.getElementById("fileInfo").textContent =
+    `${sourceName} · ${rows.length} reviews · cb ${rows[0].codebook_version}`;
+  rebuildFilterOptions();
+  applyFilter(settings.filter, true);
+  const firstUnlabeled = visible.findIndex(i => !getAnn(rows[i].review_id).saved);
+  cur = firstUnlabeled >= 0 ? firstUnlabeled : 0;
+  render();
+  const done = rows.filter(r => getAnn(r.review_id).saved).length;
+  toast(`Loaded ${rows.length} reviews from ${sourceName}` + (done ? ` · resumed with ${done} coded` : ""));
+}
+
+/* ---------------- filters ---------------- */
+function rebuildFilterOptions(){
+  const sel = document.getElementById("filterSel");
+  const opts = [
+    ["all","all"], ["unlabeled","unlabeled"], ["labeled","coded"],
+    ["borderline","borderline"], ["lowconf","low-confidence"],
+    ["flagged","flagged for discussion"], ["nospan","coded, no span"],
+    ["none","NONE"]
+  ];
+  for(const L of ALL_LABELS) opts.push(["label:"+L.col, "label: "+L.groupId+": "+L.label]);
+  sel.innerHTML = opts.map(([v,t])=>`<option value="${v}">${t}</option>`).join("");
+  sel.value = settings.filter && [...sel.options].some(o=>o.value===settings.filter) ? settings.filter : "all";
+}
+function rowMatches(i, f){
+  const a = getAnn(rows[i].review_id);
+  if(flagMode) return a.borderline || a.confidence === "L";
+  if(f === "all")        return true;
+  if(f === "unlabeled")  return !a.saved;
+  if(f === "labeled")    return a.saved;
+  if(f === "borderline") return a.borderline;
+  if(f === "lowconf")    return a.confidence === "L";
+  if(f === "flagged")    return a.flagged;
+  if(f === "nospan")     return a.saved && !a.none && a.spans.length === 0;
+  if(f === "none")       return a.none;
+  if(f.startsWith("label:")) return a.labels.includes(f.slice(6));
+  return true;
+}
+function applyFilter(f, keepPos=false){
+  settings.filter = f; persist();
+  const curId = (visible.length && rows[visible[cur]]) ? rows[visible[cur]].review_id : null;
+  visible = rows.map((_,i)=>i).filter(i => rowMatches(i, f));
+  if(!visible.length){ cur = 0; }
+  else if(keepPos && curId != null){
+    const p = visible.findIndex(i => rows[i].review_id === curId);
+    cur = p >= 0 ? p : 0;
+  } else cur = 0;
+}
+
+/* ---------------- rendering ---------------- */
+function starStr(n){
+  const v = parseInt(n,10);
+  if(isNaN(v) || v<1 || v>5) return n===""?"":String(n);
+  return "★".repeat(v) + "☆".repeat(5-v);
+}
+function esc(s){ return String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
+
+/* paint every attached span, coloured by its label's class */
+function renderSpans(text, spans){
+  const ranges = spans
+    .filter(s => Number.isInteger(s.start) && Number.isInteger(s.end) && s.end > s.start)
+    .map(s => ({ a:s.start, b:s.end, col:s.label }))
+    .sort((x,y)=> x.a - y.a || y.b - x.b);
+  let out = "", pos = 0;
+  for(const r of ranges){
+    if(r.a < pos) continue;                       // drop overlaps, first one wins
+    const L = COL_BY_NAME[r.col];
+    out += esc(text.slice(pos, r.a))
+        +  `<mark style="--sc:${L?L.color:"var(--accent)"}" title="${esc(r.col)}">`
+        +  esc(text.slice(r.a, r.b)) + `</mark>`;
+    pos = r.b;
+  }
+  return out + esc(text.slice(pos));
+}
+
+function buildGroupsUI(){
+  const wrap = document.getElementById("groupsScroll");
+  wrap.innerHTML = CONFIG.groups.map(g => `
+    <div class="group ${settings.collapsed[g.id]?"collapsed":""}" data-gid="${g.id}" style="--gc:${g.color}">
+      <button class="group-head" data-gid="${g.id}">
+        <span class="swatch" style="background:${g.color}"></span>
+        <span>${g.name}</span>
+        <span class="gcount"></span>
+        <span class="chev">▼</span>
+      </button>
+      <div class="chips">
+        ${g.labels.map(l => {
+          const col = g.id + "_" + camel(l);
+          return `<button class="chip" data-col="${col}" title="${col}">${esc(l)}<span class="spanct"></span></button>`;
+        }).join("")}
+      </div>
+    </div>`).join("");
+  wrap.querySelectorAll(".group-head").forEach(h => h.addEventListener("click", ()=>{
+    const gid = h.dataset.gid;
+    settings.collapsed[gid] = !settings.collapsed[gid];
+    persist();
+    document.querySelector(`.group[data-gid="${gid}"]`).classList.toggle("collapsed", !!settings.collapsed[gid]);
+  }));
+  wrap.querySelectorAll(".chip").forEach(c => {
+    c.addEventListener("click", ()=>{ chipClicked(c.dataset.col); c.blur(); });
+    c.addEventListener("mouseenter", ()=> showDef(c.dataset.col));
+  });
+  wrap.addEventListener("mouseleave", ()=> showDef(null));
+}
+
+function showDef(col){
+  const el = document.getElementById("defStrip");
+  const L = col && COL_BY_NAME[col];
+  if(!L){ el.innerHTML = `<span class="placeholder">Hover a label to see its codebook definition.</span>`; return; }
+  el.innerHTML = `<b>${esc(L.groupName)}: ${esc(L.label)}</b> — ${esc(DEFS[col] || "no definition in codebook")}`;
+}
+
+function currentRow(){ return visible.length ? rows[visible[cur]] : null; }
+
+function render(){
+  const has = rows.length > 0;
+  document.getElementById("emptyState").hidden = has;
+  document.getElementById("reviewCard").hidden = !has;
+  if(!has){ renderProgress(); return; }
+
+  if(!visible.length){
+    document.getElementById("metaLine").innerHTML = "";
+    document.getElementById("reviewText").textContent = "— no rows match this filter —";
+    document.getElementById("rowStateLine").innerHTML = "";
+    document.getElementById("reviewId").textContent = "";
+    document.getElementById("spanBox").innerHTML = "";
+    renderControls(null);
+    renderProgress();
+    return;
+  }
+  const r = currentRow(), a = getAnn(r.review_id);
+
+  /* Blind by construction: stratum, seed_keyword and source_file are
+     carried into the output but never rendered — a seed keyword all but
+     names the label. */
+  let meta = `<span class="game">${esc(r.game_name||"(unknown game)")}</span>`;
+  if(r.market)       meta += `<span class="meta-pill">${esc(r.market)}</span>`;
+  if(r.star_rating!=="") meta += `<span class="stars">${esc(starStr(r.star_rating))}</span>`;
+  if(r.review_date)  meta += `<span>${esc(r.review_date)}</span>`;
+  if(r.codebook_version) meta += `<span class="meta-pill" title="codebook you are coding against">cb ${esc(r.codebook_version)}</span>`;
+  document.getElementById("metaLine").innerHTML = meta;
+
+  const st = [];
+  if(a.saved) st.push(`<span class="st-labeled">✓ coded ${esc((a.saved_at||"").slice(0,19))}</span>`);
+  else        st.push(`<span class="st-none">not coded</span>`);
+  if(a.borderline) st.push(`<span class="st-border">borderline</span>`);
+  if(a.flagged)    st.push(`<span class="st-flagged">⚑ flagged for discussion</span>`);
+  document.getElementById("rowStateLine").innerHTML = st.join(" · ");
+
+  document.getElementById("reviewText").innerHTML =
+    r.review_text ? renderSpans(r.review_text, a.spans) : "(empty review_text)";
+
+  document.getElementById("reviewId").textContent = `review_id: ${r.review_id}`;
+
+  renderSpanBox(r, a);
+  renderControls(r);
+  renderProgress();
+  applyLabelSearch();
+}
+
+function renderSpanBox(r, a){
+  const box = document.getElementById("spanBox");
+  if(!a.spans.length){
+    box.innerHTML = `<div class="shead">evidence spans</div>
+      <div class="snone">None yet. Select the phrase in the review that decided a label,
+      then click that label to attach it.</div>`;
+    return;
+  }
+  const cards = a.spans.map((s,i) => {
+    const L = COL_BY_NAME[s.label];
+    return `<div class="scard" style="border-left-color:${L?L.color:"var(--line)"}">
+        <div class="sbody">
+          <div class="slab">${esc(L ? L.groupId+": "+L.label : s.label)}</div>
+          <div class="stext">“${esc(s.text)}”</div>
+        </div>
+        <button class="sdel" data-i="${i}" title="Remove this span">✕</button>
+      </div>`;
+  }).join("");
+  box.innerHTML = `<div class="shead">evidence spans · ${a.spans.length}</div>` + cards;
+  box.querySelectorAll(".sdel").forEach(b => b.addEventListener("click", ()=>{
+    removeSpan(parseInt(b.dataset.i,10));
+  }));
+}
+
+function renderControls(r){
+  const a = r ? getAnn(r.review_id) : null;
+  const labs = a ? a.labels : [];
+  document.querySelectorAll(".chip").forEach(c => {
+    const on = labs.includes(c.dataset.col);
+    c.classList.toggle("on", on);
+    const n = a ? a.spans.filter(s => s.label === c.dataset.col).length : 0;
+    c.querySelector(".spanct").textContent = n ? "⌇"+n : "";
+  });
+  for(const g of CONFIG.groups){
+    const n = labs.filter(col => COL_BY_NAME[col] && COL_BY_NAME[col].groupId === g.id).length;
+    const el = document.querySelector(`.group[data-gid="${g.id}"] .gcount`);
+    if(el) el.textContent = n ? n + " ✓" : "";
+  }
+  document.getElementById("noneToggle").classList.toggle("on", !!(a && a.none));
+  document.querySelectorAll("#confSeg button").forEach(b => b.classList.toggle("on", !!a && b.dataset.conf === a.confidence));
+  document.getElementById("borderlineBtn").classList.toggle("on", !!(a && a.borderline));
+  const ra = document.getElementById("ruleApplied");
+  if(a && ra.value !== a.rule_applied) ra.value = a.rule_applied;
+  const rt = document.getElementById("rationale");
+  if(a && rt.value !== a.rationale) rt.value = a.rationale;
+}
+
+function renderProgress(){
+  const total = rows.length;
+  const coded = rows.filter(r => getAnn(r.review_id).saved).length;
+  const bl    = rows.filter(r => getAnn(r.review_id).borderline).length;
+  const fl    = rows.filter(r => getAnn(r.review_id).flagged).length;
+  const parts = [`<b>${coded}</b> / ${total} coded`, `${bl} borderline`];
+  if(fl) parts.push(`${fl} flagged`);
+  if(coderName()) parts.push(`coder ${esc(coderName())}`);
+  document.getElementById("progressText").innerHTML = parts.join(" · ");
+  document.getElementById("posText").textContent =
+    visible.length ? `row ${cur+1}/${visible.length}${flagMode?" [flagged mode]":""}` : "0 rows in filter";
+}
+
+/* ---------------- span capture ----------------
+   Offsets are into review_text, computed by walking the text nodes of
+   #reviewText in document order — the rendered node is split by <mark>,
+   so a plain Range offset is not usable on its own. */
+function globalOffset(container, node, offset){
+  const walk = document.createTreeWalker(container, NodeFilter.SHOW_TEXT);
+  let acc = 0, n;
+  while((n = walk.nextNode())){
+    if(n === node) return acc + offset;
+    acc += n.nodeValue.length;
+  }
+  return -1;
+}
+function captureSelection(){
+  const r = currentRow(); if(!r) return;
+  const sel = window.getSelection();
+  const box = document.getElementById("reviewText");
+  if(!sel || sel.isCollapsed || sel.rangeCount === 0){
+    /* a plain click inside the review means "never mind" */
+    if(armed && sel && sel.anchorNode && box.contains(sel.anchorNode)) disarm();
+    return;
+  }
+  const rng = sel.getRangeAt(0);
+  if(!box.contains(rng.startContainer) || !box.contains(rng.endContainer)) return;
+
+  let start = globalOffset(box, rng.startContainer, rng.startOffset);
+  let end   = globalOffset(box, rng.endContainer,   rng.endOffset);
+  if(start < 0 || end < 0) return;
+  if(end < start){ const t = start; start = end; end = t; }
+
+  /* trim whitespace the drag picked up, then verify against the source */
+  const src = r.review_text || "";
+  while(start < end && /\s/.test(src[start]))   start++;
+  while(end > start && /\s/.test(src[end - 1])) end--;
+  if(end <= start) return;
+  const text = src.slice(start, end);
+  if(!text.trim()) return;
+
+  armed = { text, start, end };
+  document.getElementById("selQuote").textContent = "“" + text + "”";
+  document.getElementById("selBar").classList.add("show");
+  document.getElementById("labelPane").classList.add("arming");
+}
+function disarm(){
+  armed = null;
+  document.getElementById("selBar").classList.remove("show");
+  document.getElementById("labelPane").classList.remove("arming");
+}
+
+/* ---------------- mutation ---------------- */
+function withCur(fn){
+  const r = currentRow(); if(!r) return;
+  fn(getAnn(r.review_id), r);
+  persist(); markDirty(); render();
+}
+
+/* A chip click means "attach the armed span" when one is waiting, and
+   "toggle the label" otherwise. */
+function chipClicked(col){
+  if(armed){ attachSpan(col); return; }
+  toggleLabel(col);
+}
+function attachSpan(col){
+  const s = armed;
+  withCur(a=>{
+    if(!a.labels.includes(col)){ a.labels = sortLabels(a.labels.concat([col])); a.none = false; }
+    const dup = a.spans.some(x => x.label === col && x.start === s.start && x.end === s.end);
+    if(!dup) a.spans.push({ label: col, text: s.text, start: s.start, end: s.end });
+    a.spans.sort((x,y)=> x.start - y.start || (ORDER[x.label]??999)-(ORDER[y.label]??999));
+  });
+  disarm();
+  window.getSelection().removeAllRanges();
+  const L = COL_BY_NAME[col];
+  toast(`Span attached to ${L ? L.groupId+": "+L.label : col}.`);
+}
+function toggleLabel(col){
+  withCur(a=>{
+    const i = a.labels.indexOf(col);
+    if(i >= 0){
+      a.labels.splice(i,1);
+      const had = a.spans.length;
+      a.spans = a.spans.filter(s => s.label !== col);   // spans die with their label
+      if(had !== a.spans.length) toast("Label removed — its spans went with it.");
+    }else{
+      a.labels.push(col); a.none = false;               // any label clears NONE
+    }
+    a.labels = sortLabels(a.labels);
+  });
+}
+function removeSpan(i){
+  withCur(a=>{ if(i >= 0 && i < a.spans.length) a.spans.splice(i,1); });
+}
+function toggleNone(){
+  withCur(a=>{
+    a.none = !a.none;
+    if(a.none){ a.labels = []; a.spans = []; }          // NONE clears all labels
+  });
+}
+function setConf(c){ withCur(a=>{ a.confidence = (a.confidence === c ? "" : c); }); }
+function toggleBorderline(){ withCur(a=>{ a.borderline = !a.borderline; }); }
+
+/* labels_str is ALWAYS computed, never stored/edited */
+function labelsStr(a){
+  return a.labels.map(col=>{
+    const L = COL_BY_NAME[col];
+    return L ? `${L.groupId}: ${L.label}` : col;
+  }).join("; ");
+}
+
+/* ---------------- save / navigate ---------------- */
+function validateForSave(a){
+  if(!a.none && a.labels.length === 0)
+    return "Pick ≥1 label or toggle NONE (N) before saving.";
+  return null;
+}
+function saveAndNext(){
+  const r = currentRow(); if(!r) return;
+  if(!requireCoder()) return;
+  const a = getAnn(r.review_id);
+  const err = validateForSave(a);
+  if(err){ toast(err, true); return; }
+  a.saved = true;
+  a.flagged = false;
+  a.saved_at = new Date().toISOString();
+  persist(); markDirty();
+  disarm();
+  goNext(true);
+}
+function skipFlag(){
+  const r = currentRow(); if(!r) return;
+  const a = getAnn(r.review_id);
+  a.flagged = true;
+  persist(); markDirty();
+  toast("Flagged for discussion: " + r.review_id);
+  disarm();
+  goNext(false);
+}
+function goNext(afterSave){
+  /* In "unlabeled" filter the row just saved falls out of the filter:
+     recompute and stay at the same visible index (now the next row). */
+  const sensitive = afterSave && (settings.filter === "unlabeled" || flagMode);
+  if(sensitive){
+    const oldCur = cur;
+    applyFilter(settings.filter, false);
+    cur = Math.min(oldCur, Math.max(0, visible.length - 1));
+  } else if(cur < visible.length - 1){
+    cur++;
+  } else {
+    toast(afterSave ? "Saved — end of list." : "End of list.");
+  }
+  disarm();
+  render();
+}
+function goPrev(){ if(cur > 0){ cur--; disarm(); render(); } }
+
+/* ---------------- fuzzy label search ---------------- */
+function fuzzyMatch(q, s){
+  q = q.toLowerCase(); s = s.toLowerCase();
+  let i = 0;
+  for(const ch of s){ if(ch === q[i]) i++; if(i === q.length) return true; }
+  return q.length === 0;
+}
+function searchMatches(){
+  const q = document.getElementById("labelSearch").value.trim();
+  const chips = [...document.querySelectorAll(".chip")];
+  if(!q) return { q, matches: [] };
+  const matches = chips.filter(c => {
+    const L = COL_BY_NAME[c.dataset.col];
+    return L && (fuzzyMatch(q, L.label) || fuzzyMatch(q, L.col));
+  });
+  return { q, matches };
+}
+function applyLabelSearch(){
+  const { q, matches } = searchMatches();
+  const set = new Set(matches);
+  document.querySelectorAll(".chip").forEach(c=>{
+    c.classList.toggle("hidden", !!q && !set.has(c));
+    c.classList.remove("hl");
+  });
+  document.querySelectorAll(".group").forEach(g=>{
+    if(!q){ g.classList.toggle("collapsed", !!settings.collapsed[g.dataset.gid]); return; }
+    const any = [...g.querySelectorAll(".chip")].some(c => !c.classList.contains("hidden"));
+    g.classList.toggle("collapsed", !any);
+  });
+  if(q && matches.length){
+    if(searchHl < 0 || searchHl >= matches.length) searchHl = 0;
+    matches[searchHl].classList.add("hl");
+  }
+}
+
+/* ---------------- export ----------------
+   Column order follows labeled_data/*.jsonl so the agreement files drop
+   straight into the same readers. Added on the end: coder_name (who
+   coded it), assigned_labels / assigned_spans (the blind-set slots) and
+   source_file (provenance carried through from the blind set). */
+const IDENTITY_COLS = ["review_id","app_id","game_name","market","review_date",
+                       "star_rating","review_text","stratum","seed_keyword","casino"];
+function exportColumns(){
+  return [
+    ...IDENTITY_COLS,
+    ...ALL_LABELS.map(L=>L.col),
+    "none","labels_str","confidence","rule_applied","borderline","rationale",
+    "flagged","pass","codebook_version","saved","saved_at",
+    "labels","assigned_labels","assigned_spans","coder_name","source_file"
+  ];
+}
+function rowRecord(r){
+  const a = getAnn(r.review_id);
+  const rec = {};
+  for(const c of IDENTITY_COLS) rec[c] = r[c];
+  for(const L of ALL_LABELS) rec[L.col] = a.labels.includes(L.col) ? 1 : 0;
+  rec.none = a.none ? 1 : 0;
+  rec.labels_str = labelsStr(a);
+  rec.confidence = a.confidence;
+  rec.rule_applied = a.rule_applied;
+  rec.borderline = a.borderline ? 1 : 0;
+  rec.rationale = a.rationale;
+  rec.flagged = a.flagged ? 1 : 0;
+  rec.pass = CONFIG.pass;
+  rec.codebook_version = r.codebook_version;
+  rec.saved = a.saved ? 1 : 0;
+  rec.saved_at = a.saved_at || "";
+  rec.labels = a.labels.slice();
+  rec.assigned_labels = a.labels.slice();
+  rec.assigned_spans = a.spans.map(s => ({ label:s.label, text:s.text, start:s.start, end:s.end }));
+  rec.coder_name = coderName();
+  rec.source_file = r.source_file || "";
+  return rec;
+}
+function csvCell(v){
+  if(v === null || v === undefined) v = "";
+  if(Array.isArray(v)) v = v.length && typeof v[0] === "object" ? JSON.stringify(v) : v.join(";");
+  else if(typeof v === "object") v = JSON.stringify(v);
+  v = String(v);
+  return /[",\n\r]/.test(v) ? '"' + v.replace(/"/g,'""') + '"' : v;
+}
+function download(name, text, mime){
+  const blob = new Blob([text], {type: mime});
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob); a.download = name;
+  document.body.appendChild(a); a.click();
+  setTimeout(()=>{ URL.revokeObjectURL(a.href); a.remove(); }, 400);
+}
+function slug(s){ return s.replace(/[^A-Za-z0-9._-]+/g,"_").replace(/^_|_$/g,"") || "coder"; }
+function exportLabels(){
+  if(!rows.length){ toast("Nothing to export — load the blind set first.", true); return; }
+  if(!requireCoder()) return;
+  const cols = exportColumns();
+  const recs = rows.map(rowRecord);
+  const uncoded = recs.filter(x => !x.saved).length;
+
+  const csv = cols.map(csvCell).join(",") + "\n" +
+    recs.map(rec => cols.map(c => csvCell(rec[c])).join(",")).join("\n") + "\n";
+  const jsonl = recs.map(rec => JSON.stringify(rec)).join("\n") + "\n";
+
+  const stamp = new Date().toISOString().replace(/[:T]/g,"-").slice(0,19);
+  const base = `coder_${slug(coderName())}_${stamp}`;
+  download(base + ".jsonl", jsonl, "application/x-ndjson");
+  download(base + ".csv",   csv,   "text/csv");
+
+  dirtySinceExport = false;
+  document.getElementById("dirtyDot").classList.remove("dirty");
+  toast(`Exported ${recs.length} rows as ${base}.jsonl`
+        + (uncoded ? ` · ${uncoded} still uncoded` : ""));
+}
+
+/* ---------------- import previous work ---------------- */
+function importWork(objs){
+  let n = 0, otherCoder = null;
+  for(const o of objs){
+    if(!o) continue;
+    const id = String(o.review_id ?? "");
+    if(!id) continue;
+    if(o.coder_name && coderName() && o.coder_name !== coderName()) otherCoder = o.coder_name;
+    const a = getAnn(id);
+    const labs = Array.isArray(o.labels) ? o.labels
+               : Array.isArray(o.assigned_labels) ? o.assigned_labels
+               : ALL_LABELS.filter(L => Number(o[L.col]) === 1).map(L => L.col);
+    a.labels = sortLabels(labs.filter(c => COL_BY_NAME[c]));
+    a.spans = (Array.isArray(o.assigned_spans) ? o.assigned_spans : [])
+      .filter(s => s && COL_BY_NAME[s.label])
+      .map(s => ({ label:s.label, text:String(s.text ?? ""),
+                   start:Number(s.start), end:Number(s.end) }))
+      .filter(s => Number.isInteger(s.start) && Number.isInteger(s.end) && s.end > s.start);
+    a.none        = Number(o.none) === 1 || o.none === true;
+    a.confidence  = o.confidence || "";
+    a.rule_applied= o.rule_applied != null ? String(o.rule_applied) : "";
+    a.borderline  = Number(o.borderline) === 1 || o.borderline === true;
+    a.rationale   = o.rationale != null ? String(o.rationale) : "";
+    a.flagged     = Number(o.flagged) === 1 || o.flagged === true;
+    a.saved       = Number(o.saved) === 1 || o.saved === true;
+    a.saved_at    = o.saved_at || "";
+    ann[id] = a; n++;
+  }
+  persist(); markDirty();
+  applyFilter(settings.filter, true);
+  render();
+  toast(`Imported ${n} row(s), merged by review_id.`);
+  if(otherCoder) toast(`Heads up: that file was coded by "${otherCoder}", not "${coderName()}".`, true);
+}
+
+/* ---------------- keyboard ---------------- */
+function inTextField(el){
+  return el && (el.tagName === "TEXTAREA" ||
+    (el.tagName === "INPUT" && ["text","search"].includes(el.type)));
+}
+document.addEventListener("keydown", (e)=>{
+  const cheat  = document.getElementById("cheat");
+  const search = document.getElementById("labelSearch");
+  const active = document.activeElement;
+
+  if(cheat.classList.contains("show")){
+    if(e.key === "Escape" || e.key === "?"){ cheat.classList.remove("show"); e.preventDefault(); }
+    return;
+  }
+  if(active === search){
+    const { matches } = searchMatches();
+    if(e.key === "ArrowDown"){ searchHl = Math.min(searchHl+1, matches.length-1); applyLabelSearch(); e.preventDefault(); return; }
+    if(e.key === "ArrowUp"){   searchHl = Math.max(searchHl-1, 0); applyLabelSearch(); e.preventDefault(); return; }
+    if((e.key === " " || e.key === "Enter") && matches.length && searchHl >= 0){
+      chipClicked(matches[searchHl].dataset.col); e.preventDefault(); return;
+    }
+    if(e.key === "Escape"){ search.value=""; applyLabelSearch(); search.blur(); e.preventDefault(); }
+    return;
+  }
+  if(inTextField(active)){
+    if(e.key === "Enter" && (active.tagName !== "TEXTAREA" || e.ctrlKey || e.metaKey)){
+      active.blur(); saveAndNext(); e.preventDefault();
+    }
+    if(e.key === "Escape") active.blur();
+    return;
+  }
+  switch(e.key){
+    case "Enter":      saveAndNext();  e.preventDefault(); break;
+    case "ArrowRight": goNext(false);  e.preventDefault(); break;
+    case "ArrowLeft":  goPrev();       e.preventDefault(); break;
+    case "n": case "N": toggleNone();       e.preventDefault(); break;
+    case "b": case "B": toggleBorderline(); e.preventDefault(); break;
+    case "s": case "S": skipFlag();         e.preventDefault(); break;
+    case "g": case "G": toggleFlagMode();   e.preventDefault(); break;
+    case "1": setConf("H"); e.preventDefault(); break;
+    case "2": setConf("M"); e.preventDefault(); break;
+    case "3": setConf("L"); e.preventDefault(); break;
+    case "Escape": if(armed){ disarm(); e.preventDefault(); } break;
+    case "/": search.focus(); e.preventDefault(); break;
+    case "?": cheat.classList.add("show"); e.preventDefault(); break;
+  }
+});
+
+/* ---------------- review-flagged mode ---------------- */
+function toggleFlagMode(){
+  flagMode = !flagMode;
+  document.getElementById("flagModeBtn").classList.toggle("on", flagMode);
+  applyFilter(settings.filter, false);
+  render();
+  toast(flagMode
+    ? `Review mode: ${visible.length} borderline / low-confidence rows`
+    : "Back to normal filtering.");
+}
+
+/* ---------------- wiring ---------------- */
+function readFileAs(input, cb){
+  const f = input.files && input.files[0]; if(!f) return;
+  const rd = new FileReader();
+  rd.onload = () => cb(String(rd.result), f.name);
+  rd.readAsText(f);
+  input.value = "";
+}
+document.getElementById("loadBtn").addEventListener("click", ()=>document.getElementById("fileInput").click());
+document.getElementById("fileInput").addEventListener("change", e=>{
+  readFileAs(e.target, (text,name)=>{
+    const { out, errs } = parseJSONL(text);
+    if(errs.length) toast(`Skipped ${errs.length} malformed line(s): ${errs.slice(0,5).join(", ")}${errs.length>5?"…":""}`, true);
+    loadDataset(out, name);
+  });
+});
+document.getElementById("importBtn").addEventListener("click", ()=>document.getElementById("importInput").click());
+document.getElementById("importInput").addEventListener("change", e=>{
+  readFileAs(e.target, (text)=>{
+    const { out, errs } = parseJSONL(text);
+    if(errs.length) toast(`Skipped ${errs.length} malformed line(s) in that file.`, true);
+    importWork(out);
+  });
+});
+document.getElementById("exportBtn").addEventListener("click", exportLabels);
+document.getElementById("codebookBtn").addEventListener("click", ()=>window.open(CONFIG.codebookHref, "_blank"));
+document.getElementById("prevBtn").addEventListener("click", goPrev);
+document.getElementById("saveBtn").addEventListener("click", saveAndNext);
+document.getElementById("skipBtn").addEventListener("click", e=>{ skipFlag(); e.currentTarget.blur(); });
+document.getElementById("noneToggle").addEventListener("click", e=>{ toggleNone(); e.currentTarget.blur(); });
+document.getElementById("borderlineBtn").addEventListener("click", e=>{ toggleBorderline(); e.currentTarget.blur(); });
+document.querySelectorAll("#confSeg button").forEach(b =>
+  b.addEventListener("click", e=>{ setConf(b.dataset.conf); e.currentTarget.blur(); }));
+document.getElementById("helpBtn").addEventListener("click", ()=>document.getElementById("cheat").classList.add("show"));
+document.getElementById("ruleApplied").addEventListener("input", e=>{
+  const r = currentRow(); if(!r) return;
+  getAnn(r.review_id).rule_applied = e.target.value; persist(); markDirty();
+});
+document.getElementById("rationale").addEventListener("input", e=>{
+  const r = currentRow(); if(!r) return;
+  getAnn(r.review_id).rationale = e.target.value; persist(); markDirty();
+});
+document.getElementById("labelSearch").addEventListener("input", ()=>{ searchHl = 0; applyLabelSearch(); });
+document.getElementById("filterSel").addEventListener("change", e=>{ applyFilter(e.target.value, false); render(); });
+
+const coderInput = document.getElementById("coderName");
+coderInput.addEventListener("input", e=>{
+  settings.coderName = e.target.value;
+  e.target.classList.toggle("missing", !coderName());
+  persist(); renderProgress();
+});
+
+/* span capture: any selection finished inside the review text arms it */
+document.getElementById("reviewText").addEventListener("mouseup", ()=> setTimeout(captureSelection, 0));
+document.getElementById("reviewText").addEventListener("keyup", e=>{
+  if(e.shiftKey) setTimeout(captureSelection, 0);
+});
+document.getElementById("selBar").addEventListener("click", disarm);
+
+window.addEventListener("beforeunload", (e)=>{
+  if(dirtySinceExport){ e.preventDefault(); e.returnValue = ""; }
+});
+
+/* ---------------- boot ---------------- */
+(function boot(){
+  try{
+    const s = localStorage.getItem(LS_SET);
+    if(s) settings = { ...settings, ...JSON.parse(s) };
+    const a = localStorage.getItem(LS_ANN);
+    if(a) ann = JSON.parse(a) || {};
+  }catch(e){ /* fresh start on corrupt storage */ }
+
+  /* older saves predate spans — normalise so nothing else has to guard */
+  for(const k in ann) if(!Array.isArray(ann[k].spans)) ann[k].spans = [];
+
+  coderInput.value = settings.coderName || "";
+  coderInput.classList.toggle("missing", !coderName());
+
+  buildGroupsUI();
+
+  try{
+    const d = localStorage.getItem(LS_DATA);
+    if(d){
+      const cached = JSON.parse(d);
+      if(Array.isArray(cached) && cached.length) loadDataset(cached, "cached session");
+    }
+  }catch(e){ /* ignore */ }
+
+  rebuildFilterOptions();
+  applyFilter(settings.filter || "all", false);
+  render();
+})();
+</script>
+</body>
+</html>

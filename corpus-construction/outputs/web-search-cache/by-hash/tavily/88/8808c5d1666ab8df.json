@@ -1,0 +1,91 @@
+{
+  "query": "Total Battle game \"open silver\" what is it",
+  "sent_query": "Total Battle game \"open silver\" what is it",
+  "query_hash": "8808c5d1666ab8df",
+  "answer": "In Total Battle, silver is a currency earned through gameplay, used for army upgrades and mansions. Players often seek strategies to maximize silver gain. Hacks and tips circulate for efficient silver accumulation.",
+  "sources": [
+    {
+      "title": "Total Battle - How to get Silver?",
+      "url": "https://www.youtube.com/watch?v=TcbN_xszcv8",
+      "host": "youtube.com"
+    },
+    {
+      "title": "How to increase silver in Total Battle?",
+      "url": "https://www.facebook.com/groups/1772671209903522/posts/2340815483089089",
+      "host": "facebook.com"
+    },
+    {
+      "title": "Stop Paying Silver Tax | Total Battle",
+      "url": "https://www.youtube.com/watch?v=8cYrnooXQHU",
+      "host": "youtube.com"
+    },
+    {
+      "title": "Total Battle - Jogo de Guerra Tática",
+      "url": "https://totalbattle.com",
+      "host": "totalbattle.com"
+    },
+    {
+      "title": "How is everyone actually getting more silver right now?",
+      "url": "https://www.reddit.com/r/TotalBattle/comments/1sqtlt0/how_is_everyone_actually_getting_more_silver",
+      "host": "reddit.com"
+    }
+  ],
+  "backend": "tavily",
+  "cached": false,
+  "cost_usd": 0.008,
+  "latency_s": 3.248,
+  "n_results": 5,
+  "domains": [],
+  "error": null,
+  "ts": "2026-08-22T16:27:15+00:00",
+  "raw": {
+    "query": "Total Battle game open silver what is it",
+    "follow_up_questions": null,
+    "answer": "In Total Battle, silver is a currency earned through gameplay, used for army upgrades and mansions. Players often seek strategies to maximize silver gain. Hacks and tips circulate for efficient silver accumulation.",
+    "images": [],
+    "results": [
+      {
+        "url": "https://www.youtube.com/watch?v=TcbN_xszcv8",
+        "title": "Total Battle - How to get Silver?",
+        "content": "In this #gamingvideo I discuss ways and means to earn silver in game of total battle and how to overcome silver issue. If you find this",
+        "score": 0.43568602,
+        "raw_content": null,
+        "id": "b03fd0-00"
+      },
+      {
+        "url": "https://www.facebook.com/groups/1772671209903522/posts/2340815483089089",
+        "title": "How to increase silver in Total Battle?",
+        "content": "Hey guys I always have a shortage for the silver I can't really do my army. I have 9 mansions level 20 with one level 29 and 15 farms \nAny recommandations",
+        "score": 0.2851385,
+        "raw_content": null,
+        "id": "abbb8c-01"
+      },
+      {
+        "url": "https://www.youtube.com/watch?v=8cYrnooXQHU",
+        "title": "Stop Paying Silver Tax | Total Battle",
+        "content": "Silver Tax Hack! Transfer Millions Without Losing 20%! --- In this video, I break down the smartest way to transfer silver from your",
+        "score": 0.24955739,
+        "raw_content": null,
+        "id": "25fa1a-02"
+      },
+      {
+        "url": "https://totalbattle.com",
+        "title": "Total Battle - Jogo de Guerra Tática",
+        "content": "Os dados inseridos não são válidos\n\nOcorreu um erro, entre em contato com o suporte.\n\nA senha foi alterada\n\nExclusão de conta\n\nA conta %name% será excluída em %time%. Se você quiser continuar jogando com ela, cancele o processo de exclusão quando quiser.\n\nSuporte\n\nEntrar\n\nCadastrar-se\n\nPortuguês (Brasil)\n\n Bahasa Indonesia  Deutsch  English  Español  Français  Italiano  Nederlands  Norsk  Polski  Português (Brasil)  Svenska  Türkçe  Русский  العربية  日本語  简体中文  繁體中文  한국어\n\n### Ficha técnica [...] ### Ficha técnica\n\nSCOREWARRIOR LIMITED\n\nNúmero DUNS\n\n534523904\n\nNúmero de registro da empresa\n\nÓrgão de registro\n\nDepartment of Registrar of Companies and Intellectual Property  \n Corner Makariou III Avenue and Karpenisiou Street  \n “XENIOS” Building  \n 1427 Nicosia, Cyprus  \n www.companies.gov.cy\n\nEndereço registrado\n\n16 Spyrou Kyprianou Avenue  \n Devine Clock Tower, 1st Floor  \n 3070 Limassol, Cyprus\n\nTadeush Sladkovich\n\n+357 25354581",
+        "score": 0.14902319,
+        "raw_content": null,
+        "id": "75ffdb-03"
+      },
+      {
+        "url": "https://www.reddit.com/r/TotalBattle/comments/1sqtlt0/how_is_everyone_actually_getting_more_silver",
+        "title": "How is everyone actually getting more silver right now?",
+        "content": "Feels like silver is the one thing everything comes back to at the moment.\n\nCurious how people are actually keeping up with it:\n\n• What’s your main",
+        "score": 0.032629862,
+        "raw_content": null,
+        "id": "b43641-04"
+      }
+    ],
+    "response_time": 1.82,
+    "request_id": "b81d96a1-5132-45af-b381-b1378aa349e6"
+  }
+}

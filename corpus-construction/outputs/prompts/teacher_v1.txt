@@ -2,7 +2,7 @@
 # Everything above the sentinel line is metadata. Sending it to a model changes the
 # cached prefix on every build and destroys prompt caching. Use load_prompt().
 #
-# built_at            : 2026-08-21T13:11:06+05:30
+# built_at            : 2026-08-22T14:48:02+05:30
 # codebook_file       : ../../codebook_versions/codebook_v0.20.json
 # codebook_version    : 0.20
 # prompt_version      : p1
@@ -11,15 +11,15 @@
 # boundary_rules      : True
 # n_labels            : 29
 # none_exemplar_id    : 331c695a-8b57-4a46-b4d2-00fcdff9ec1a
-# prompt_sha256       : 519268bfa1e4012551f7cca35e5e42e04d6d0825d7b4b78df2a10f2c70425f74
-# chars               : 91567
-# approx_tokens       : 22891  (chars/4, rough)
+# prompt_sha256       : e8cd52987c330b045724a453e3260a30fcf0ac5cbe9da931bed4e7b65e94d9e7
+# chars               : 92331
+# approx_tokens       : 23082  (chars/4, rough)
 #
 # section approx tokens:
 #   role              : 61
-#   rules             : 709
+#   rules             : 819
 #   search_policy     : 103
-#   labels            : 21160
+#   labels            : 21242
 #   output_spec       : 518
 #   none_exemplar     : 240
 #
@@ -42,9 +42,9 @@ R7. Assign labels irrespective of the reviewer's approval or disapproval.
 R8. Code the mechanic described, not the reviewer's evaluation of it. "Generous battle pass" and "predatory battle pass" both describe a battle pass.
 R9. When two labels both fit and no boundary rule separates them, assign both.
 R10. If a game mechanic is not clear from the review's context, an external search can be used. Justify the search and tag the search query along with the review.
-R11. Where the span attributes the described behaviour to a bug, glitch, error, or technical fault, assign NONE, even if the behaviour would otherwise satisfy a label. Dark patterns are design choices; malfunctions are not. Applies only where the bug attribution is attached to the specific behaviour being coded. A general statement that a game is buggy, glitchy, or broken does not suppress labels on other spans in the same review. Exception: Look at Mandatory Marathon's "Loss caused by malfunction" rule.
-R12. Code only mechanics the span describes as present in the game. Requests, suggestions, wishes, and hypotheticals about mechanics the game does not have ("they should add…", "make us watch an ad to get coins", "if only there were…") are not codable, even where the named mechanic matches a label.
-R13. Code only design encountered within the game application. Advertising the developer places in third-party apps, store-listing content, and marketing material are outside the unit even where the behaviour would satisfy a label: including deceptive dismissal controls, emotional appeals to install or return, and misrepresented gameplay. Push notifications sent by the installed game are within scope, being part of the installed product. Where a review describes both out-of-game marketing and in-game design, code the in-game spans only.
+R11. Assign NONE when the text attributes a specific behavior to a bug, glitch, error, or technical fault, as dark patterns are deliberate design choices rather than technical malfunctions. A general mention that a game is buggy does not suppress labels on unrelated, functional design behaviors. However, assign the relevant dark pattern label if the underlying game rule itself imposes a penalty, even if a malfunction triggered it. For instance, if a crash causes a player to lose daily rewards or forfeit match progress, assign the appropriate label because missing a login or quitting a session carries that explicit design penalty regardless of why it happened.
+R12. Code only the mechanics that the text explicitly describes as currently present in the game. Requests, suggestions, or hypothetical additions, such as wishing for a feature or asking to watch ads for coins, do not trigger tags for the proposed mechanics. However, this restriction applies exclusively to the non-existent feature itself. If the text mentions an existing game behavior or pattern alongside a suggestion, that active mechanic remains fully codable under any label it matches.
+R13. Code only design encountered within the game application. Advertising the developer places in third-party apps, store-listing content, and marketing material are outside the unit even where the behaviour would satisfy a label: including deceptive dismissal controls, emotional appeals to install or return, and misrepresented gameplay. Push notifications sent by the installed game are within scope, being part of the installed product. Where a review describes both out-of-game marketing and in-game design, code the in-game spans only. Exception: Look at Friend Spam and Impersonation's "Destination of the message" rule.
 
 ===========================================================================
 
@@ -115,7 +115,7 @@ CLASS: TEMPORAL
 
   Boundary rules:
     vs Playing by Appointment:
-      Daily Rewards covers the incentive and its penalty: a login calendar, a resetting task list, a streak, or the loss of one. Assign Playing by Appointment additionally only where the span shows the daily schedule gating progress: the player unable to advance, or advancing only at the rate the daily cycle allows, because the appointment must be kept. A daily reward that adds value without conditioning progress is Daily Rewards alone. Where both are present, assign both under R9.
+      Assign Daily Rewards when the text describes a daily login incentive with an active consequence for missing a day, such as a broken streak, a lost calendar slot, a reset task list, or simply forfeiting that day's reward opportunity. Assign Playing by Appointment additionally when the daily cycle directly gates overall game progression rather than just a standalone reward, meaning the player cannot advance further until the real-world time gate resets. When a daily reward mechanism itself acts as the barrier controlling player progression, assign both tags under R9.
 
   Counterexample (does NOT get this label):
     "Can be fun. However as you progress you must do more an more for the same reward. For an example, to get 100 coins in a day when you first start off you may have to complete 10 levels. Fair enough. When you get to higher levels you need to complete 25 levels in a day. Pretty tough since you are far in the game, you would think the reward would be 250 coins. Nope, still 100. Also you only get 1 coin for donating a life. A whole one coin. At least make it 5 coins."
@@ -253,12 +253,10 @@ CLASS: MONETARY
     powerful items, or privileges, with payment required at a later stage. [dp-combo]
 
   Boundary rules:
-    vs Free workaround:
-      Pay to Progress holds whenever payment is described as a route past a progress obstacle, even if the reviewer names a free alternative (asking friends, waiting, watching an ad). The existence of a non-monetary bypass does not nullify the label; code the bypass separately if it satisfies its own label.
     vs Paid removal of artificial friction:
-      Where payment is described as removing, skipping, or unlocking a restriction rather than buying advancement, ad removal, inventory or loadout actions, convenience functions, assign Pay to Progress only where the span shows the restriction standing between the player and continued play or progress. Friction described purely as an annoyance, with no progress consequence in the span, does not trigger it.
-    vs Free versus paid:
-      Words that presuppose a paid alternative like "free coins", "free version", "f2p", "without paying", establish the paid route as present in the span; the reviewer need not name the purchase. Assign where the span also shows the free route falling short of progress: not enough free resources to clear a level, free players unable to advance, progress possible only with care. Where the contrast appears with no progress consequence, it does not trigger the label.
+      Assign Pay to Progress when payment removes, skips, or unlocks an artificial barrier that directly blocks continued play or advancement. Friction described strictly as an annoyance or a convenience feature, with no progress consequence, does not trigger this tag. For example, paying to bypass a mandatory cooldown timer or an ad break that halts gameplay qualifies, whereas paying for expanded inventory space, cosmetic removals, or purely quality of life tweaks does not.
+    vs Free alternative:
+      Assign Pay to Progress when the text uses terms that imply a paid alternative, such as "free coins," "f2p," or "without paying," even if the purchase option is not explicitly named. This contrast establishes that the free path requires extra effort, meticulous play, or excessive grinding compared to a paid shortcut. The tag applies as long as the free route falls short of smooth advancement, forcing the player into a longer or more tedious process to progress. If the contrast between free and paid is mentioned without any impact on player progress, it does not trigger the label.
 
   Counterexample (does NOT get this label):
     "This is good game but as it got updated, so there is new feature of voice talk. But we have to pay nd refill it after once it gets blank. But its a request for the ludo team to make it free because no one ll going to pay for that. thats the concern..so it ll be easy for us to play wid friends and also we can talk...thank you!"
@@ -266,7 +264,9 @@ CLASS: MONETARY
       The payment specified here is not linked to the progression in-game, it's linked to an additional, optional feature "voice talk".
 
   Worked example:
-    ""After level 100 it does get alot harder and you will run out of lives multiple times but without spending money you just ask your friends and team for lives to continue playing""
+    ""After level 100 it does get alot harder and you will run out of lives multiple times but without spending money you just ask your friends and team for lives to continue playing"
+
+    Justification: The paid alternative does not require the player to ask for lives to continue playing, they need to put in extra efforts to progress or pay."
     Labels assigned: M_PayToProgress, S_Reciprocity
 
   Worked example:
@@ -301,11 +301,11 @@ CLASS: MONETARY
     Labels assigned: T_PlayingByAppointment, M_PayToProgress, M_IntermediateCurrency
 
   Worked example:
-    "I love the game but im starting to realize how much $ im spending. What really has me pissed off is me paying $2.99 to play sammy madness I got a snake by the 6th level and it cost me 1.6k gems to continue!! Then I got it again on the 11th level but of course it always asks for more gems than u have! Its wrong to take people's money and gems like that. If we pay to play it there's NO REASON WE SHOULD BE EMPTY HANDED AND OUT OF GEMS ITS RIDICULOUS! its turning me off of this game
+    "1: The main issue is Network problem. Plz solve this. 2: I'm playing this game for 2 year's. At start it was a very good game, but similarly updates were coming. Every update had one thing that affect a real and good user. 3: It provide the facility of buying bundles, gun skins and other collections only by diamonds. Why not gold. 4: Hacking is also very common in this game. A lot of hackers destroying the real game of a good player. Gold must be used to buy bundles & skins etc.😈😈😈.
 
 
-    Justification: It is implied that the money spent is to purchase gems, and the gems are used to play the game."
-    Labels assigned: M_IntermediateCurrency, M_Gambling, M_WasteAversion
+    Justification: Shows the case of polymorphic currency where two types of currency "coins" and "diamonds" are present and the reviewer is asking for "coins" to be used to purchase items implying that they are non-interchangable."
+    Labels assigned: M_IntermediateCurrency
 
 [M_DeceptiveLuxury]  Deceptive Luxury
 
@@ -325,8 +325,8 @@ CLASS: MONETARY
   Boundary rules:
     vs Scarcity without monetization:
       Deceptive Luxury requires the scarcity to bear on price or purchase. Availability restrictions with no monetary consequence in the span (regional exclusives, location-gated content, low spawn rates) are not Deceptive Luxury
-    vs Gacha Rarity:
-      The source of the scarcity decides it. Where the scarcity is the draw rate of a chance mechanic, the improbability is the wager and any money named is the price of attempts rather than the price of the item: code Gambling and Reward Mania. Where the scarcity is constructed around the item itself: limited-time availability, urgency, exclusivity, a second-chance offer at higher cost, or a rarity tier carrying its own price, code Deceptive Luxury. Where a chance mechanic delivers an item that is itself scarce, both sources are present: assign all three under R9, the draw rate being the wager and the constructed scarcity being the item's. The Deceptive Luxury component still requires the scarcity to bear on price or purchase, per the Scarcity without monetization rule.
+    vs Gambling and Reward Mania:
+      Assign Gambling and Reward Mania when scarcity comes from the odds of a chance mechanic, treating the low draw rate as the wager and the payment as the cost of attempts rather than the item itself. Assign Deceptive Luxury when scarcity is built directly into the item through artificial limits like time caps, exclusivity, urgency, or dedicated rarity pricing. If a chance mechanic yields an item that also features built-in scarcity, assign both rule sets under R9 because both sources are active. Note that Deceptive Luxury still requires the item's scarcity to directly affect its price or purchase terms.
 
   Counterexample (does NOT get this label):
     "after the new update whenever I switch to any of my mythic guns I just start lagging mid game, so many bugs in the game, now I can't use any of my mythic just legendarys and prestige guns, please fix this"
@@ -380,9 +380,9 @@ CLASS: MONETARY
     vs Intermediate Currency:
       Where real money is converted into in-game currency and that currency is then wagered, assign both Gambling and Intermediate Currency under R9. The intervening currency layer does not nullify Gambling ("using real money" is satisfied by the funding chain), and the wagering does not absorb Intermediate Currency. Assign Gambling alone where the stake is currency earned in-game with no purchase described.
     vs Reward Mania:
-      Gambling's real-money element must be present in the span. Naming gacha, loot boxes, crates, spin wheels, or a summon system, and describing their odds, establishes chance-based delivery but not a monetary stake then code Reward Mania. Assign Gambling where the span describes money spent, a purchased stake, or a described wager of earned currency (per the Intermediate Currency rule). Do not supply the monetary element from the fact that the mechanic is normally monetised. Where the span carries both the chance-based delivery and the monetary stake, assign both under R9: Gambling for the stake, Reward Mania for the variable schedule.
+      Assign Reward Mania when the text describes a chance-based delivery system like gacha, loot boxes, crates, spin wheels, or summons without explicitly mentioning a monetary stake. Assign Gambling only when the text explicitly describes spent money, a purchased stake, or a wager using paid or earned intermediate currency, rather than assuming monetization just because the mechanic usually costs money. When the text contains both the chance-based mechanic and an explicit monetary stake, assign both tags under R9: Gambling for the stake and Reward Mania for the variable reward schedule.
     vs Pay to Progress:
-      Where payment continues, retries, or protects a wager already in play: buying another round, or saving accumulated winnings from a loss, the payment is internal to the chance mechanic and codes Gambling alone. Assign Pay to Progress additionally only where the span shows payment advancing the player outside the wager: unlocking content, clearing a gate, or restoring the ability to play the game generally.
+      Assign Gambling alone when payment is used internally within a chance mechanic, such as buying another round, retrying a bet, or protecting accumulated winnings from a loss. Assign Pay to Progress additionally only when the payment advances the player outside the wager itself, such as unlocking gated content, restoring general access to the game, or progressing beyond a roadblock.
 
   Counterexample (does NOT get this label):
     "used to be fun but loosing interest fast the odds of getting the newer stuff they offer is very slim unless you spend big money been trying for 2 years to get the dragons from pastures what little I spend is not enough gets old fast"
@@ -434,7 +434,7 @@ CLASS: MONETARY
 
   Boundary rules:
     vs NONE:
-      Waste Aversion covers value the player holds but cannot fully use: currency stranded because prices and pack sizes don't align, holdings forfeited because capacity is finite, or holdings falling short of a stated cost or threshold. Assign only where the span shows the shortfall or forfeit realised: an amount left over, something given up to make room, capacity paid for, or a specific gap between what the player has and what is required. A shortfall counts as realised whether or not the player completes the purchase, declining the prompt evidences it (R7, R8). Naming currency, items, or capacity without showing value stranded, given up, or falling short codes NONE.
+      Assign Waste Aversion when the text explicitly demonstrates stranded, forfeited, or insufficient value. This includes leftover currency caused by misaligned pack prices, lost holdings due to inventory limits, or a specific shortfall below an item's cost. The shortfall or loss must be realized, meaning the text shows the leftover amount, capacity paid for, items sacrificed, or the specific gap to a target, even if the player ultimately declines the purchase. Simply mentioning currency, items, or inventory limits without showing actual wasted value or a concrete shortfall codes NONE.
 
   Counterexample (does NOT get this label):
     "Love the game...... But at some point it gets frustrating no daily bonus or side games and i believe when you get to a certain level you shouldnt start merging from the scratch and its frustrating how do i get rid of some baskets that are not needed???? And the pottery level is annoying and time wasting."
@@ -466,7 +466,7 @@ CLASS: MONETARY
 
   Boundary rules:
     vs Purchase solicitation:
-      Purchase prompts, pop-ups, or offers pushed at the player assign Easy to Purchase where the span shows the prompt intercepting play: triggered on insufficient funds or a spent resource, interrupting a session, or requiring dismissal to continue. Solicitation named only as advertising volume, with no interception and no friction removed, is not sufficient and codes NONE under R2.
+      Assign Easy to Purchase when a buying prompt directly intercepts gameplay, such as pop-ups triggered by insufficient funds or a spent resource, offers that interrupt a session, or prompts that require explicit dismissal to continue. Simply describing high advertising volume without an active interception or removed friction is not sufficient and codes NONE under R2.
 
   Counterexample (does NOT get this label):
     "Personally rate 3 * now, but think most people would still enjoy it. / This game used to be really fun & relaxing. Predictable in a good way. You can eventually progress, not being stuck on any level for too long. They didn't extort players for money. I actually *liked* paying for boosts. 5*s. Then in January 2022 it updated n that all changed. Too many events & "offers." It stresses me out & instead of playing it for hours, I avoid it for days. / Still better than most other big match 3 games."
@@ -479,10 +479,11 @@ CLASS: MONETARY
     Labels assigned: M_EasyToPurchase
 
   Worked example:
-    "More frustrating than enjoyable. Not a game you'd pick up if you had a free 5 minutes because it takes that long to load it and cancel the offers to play. Almost impossible to progress without payments or watching boring ads. Many of your earned rewards need to be purchased. Shields are very few so rebuilding is frequent. Game crashes and freezing is common. Often having to close and reload and because it takes so long to load many of the rewards you've built up are lost or stolen.
+    "Its a fun game. However, after awhile it basically cheats. Why? Of course because it wants you to buy stuff. I am NOT a fan of the way games try and make money nowadays and this basically well done game follows along the norm. Let us try the game. . .if we like it charge us a reasonable price; $5, $15, $25 or whatever. Nope, they prey on the addictiveness. Just one more packet of goodies, lives, etc for $10. No wait! I can get a good savings by buying the $100 pack of goodies. Ridiculous.
 
-    Justification: "cancel the offers to play" implies that the reviewer has to opt-out of payment offers and they are shown as default options when the game boots up."
-    Labels assigned: T_Grinding, T_Advertisement, M_PayToProgress, M_EasyToPurchase
+    Justification:
+    Assign Easy to Purchase for Anchoring Tricks to "Just one more packet of goodies... for $10. No wait! I can get a good savings by buying the $100 pack of goodies." The text explicitly demonstrates how placing a higher-priced option alongside a smaller pack alters the perception of value, framing the larger bundle as a deal to drive higher spending."
+    Labels assigned: M_EasyToPurchase
 
 [M_UIMisdirection]  UI Misdirection
 
@@ -517,9 +518,6 @@ CLASS: MONETARY
     - Accumulating Rewards: involves granting privileges, special offers, and rewards to players who spend above certain monetary thresholds. Zhang et al. 2025. [low-level]
 
   Boundary rules:
-    vs Premium Currency:
-      it focuses on a one-time-only purchase to mislead players into feeling
-      that they have taken advantage of the purchase unlike Premium Currency which is a permanent effect.
     vs Pay to Win:
       Unlike Pay to Win, where players directly spend
       money to gain in-game advantages, this pattern does not emphasize helping players progress faster.
@@ -530,6 +528,12 @@ CLASS: MONETARY
 
     Justification: Span "That 89p first purchase" names a reduced-price entry purchase framed explicitly as the first one which is First Charge Discount [low-level]."
     Labels assigned: M_NeverEndingLure
+
+  Worked example:
+    "It's all fun and games until you hit level 8 and you lose the given shield. Players with higher levels will turn you into a punching bag. You may need a shield, but you'll have to buy one that costs a lot of gems and would only last for a few hours to 3 days (depending on the price). Definitely "pay to win" and has got that "VIP system" . If you're not willing to pay for upgrades, then this game's not for you. 🚮
+
+    Justification: A web search reveals that "VIP system" is a privilege granted to players who spend above certain thresholds."
+    Labels assigned: M_NeverEndingLure, M_PayToProgress, S_Competition
 
 ---------------------------------------------------------------------------
 CLASS: SOCIAL
@@ -626,7 +630,7 @@ CLASS: SOCIAL
     vs Permitted harm:
       Design that permits, enables, or fails to prevent players harming one another is not sufficient. Assign only where the span shows a reward, advantage, or incentive flowing to the player who acts harmfully: plunder taken, ranking or progression gained, rewards for deception or betrayal. Statements that developers "allow", "let it happen", or decline to intervene describe absent moderation, not incentive, and code NONE. Where the span carries both the harmful act and the gain it produces for the aggressor, assign the label.
     vs Reward for gameplay elements:
-      Reward for game play elements defeating, raiding, or taking from another player is ordinary competitive design and codes Competition, not ASB. Assign ASB where the span describes the conduct as asymmetric or dishonest beyond sanctioned play: stronger players rewarded for attacking weaker ones, bullying, exploiting a mechanic to take from players who cannot respond, deception or betrayal.
+      Reward for game play elements defeating, raiding, or taking from another player is ordinary competitive design and codes Competition, not Encourages Anti-Social Behavior. Assign Encourages Anti-Social Behavior where the span describes the conduct as asymmetric or dishonest beyond sanctioned play: stronger players rewarded for attacking weaker ones, bullying, exploiting a mechanic to take from players who cannot respond, deception or betrayal.
 
   Counterexample (does NOT get this label):
     "1: The main issue is Network problem. Plz solve this. 2: I'm playing this game for 2 year's. At start it was a very good game, but similarly updates were coming. Every update had one thing that affect a real and good user. 3: It provide the facility of buying bundles, gun skins and other collections only by diamonds. Why not gold. 4: Hacking is also very common in this game. A lot of hackers destroying the real game of a good player. Gold must be used to buy bundles & skins etc.😈😈😈."
@@ -757,7 +761,7 @@ CLASS: PSYCHOLOGICAL
     vs UI Misdirection:
       Where the deception is in what the interface says: misleading or ambiguous wording, a question whose phrasing obscures what it does, headline figures read as actual figures, code Aesthetic Manipulation ("deceitful questions", text). Where the deception is in where the interface puts things: attention drawn to a selected element, an opt-out or exit from a purchase is hard to reach or routed elsewhere, a control that acts differently from its position, code UI Misdirection. A single prompt can carry both under R9: misleading copy on a button that is also the default.
     vs Undisclosed Purchase terms:
-      Assign Aesthetic Manipulation where the span shows a material term of a purchase: an expiry or time limit on what was bought, automatic renewal, an exclusion on what the purchase counts toward, or a restriction on how it may be used withheld from the player until after the transaction, with the span placing the player's knowledge of the term after the point of sale. The deception is the omission at the point of sale: the emotional and subconscious appeal that drives the purchase operates through what the offer does not say. The label attaches to the withholding, not to the restriction itself. A term the span shows as disclosed before purchase is not Aesthetic Manipulation. Where the span shows the term stated but displaced: fine print, a default the player must go looking for, a disclosure routed away from the offer the deception is in placement and codes UI Misdirection.
+      Assign Aesthetic Manipulation when a material term of a purchase is completely omitted before the sale and only revealed afterward, such as post-purchase expiration dates, hidden auto-renewals, or undisclosed usage restrictions. The core violation is the total withholding of information at the point of sale, relying on what the offer hides rather than the restriction itself. If the term is fully disclosed beforehand, it is not Aesthetic Manipulation. However, if the term is stated before purchase but hidden or obscured through fine print, displaced disclosures, or buried defaults, the violation lies in its placement and codes UI Misdirection.
 
   Counterexample (does NOT get this label):
     "Devs really hate Rin I guess. We get Sakura and Saber faces yearly but we're lucky if we get a Rin-face after years. Ishtar/Ereshkigal were the whole reason I started playing. Get them to bond 15 and there's no reason to keep playing. To top it off, summer servants have been so toned down that we're lucky if they have a swimsuit. We now get random outfits for most of their ascensions. Global players' opinions don't matter. We don't get surveys. The story is stalling. Rates/pity are terrible."
@@ -796,7 +800,7 @@ CLASS: PSYCHOLOGICAL
     additional attention and resources to social activities outside of the game, such as following the
     game’s social media accounts or participating in related online communities. [low-level]
     - Variable Rewards (Sousa & Oliveira 2023): “Irregular or unexpected rewards have a greater potential to generate addiction compared to rewards provided on a predictable schedule.” Alt (Hadan 2024): “Patterns that offer unpredictable or random rewards to enhance game addiction.” darkpattern.games: “Unpredictable or random rewards are more addictive than a predictable schedule.” [low-level]
-    - Gacha mechanics [indicators]
+    - Gacha mechanics like pulls, rolls, banners. [indicators]
 
   Boundary rules:
     vs Alleged rigging:

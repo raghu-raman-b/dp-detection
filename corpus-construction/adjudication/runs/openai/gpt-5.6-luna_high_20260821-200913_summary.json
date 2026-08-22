@@ -1,0 +1,36 @@
+{
+  "tag": "gpt-5.6-luna_high_20260821-200913",
+  "n": 611,
+  "prompt_sha256": "86f79c9ed908ffe942c975f5cc84485a1bade5e1794a5cfbeeb9e715f0a15791",
+  "prompt_file": "../adjudication/prompts/adjudicate_v1.txt",
+  "model": "gpt-5.6-luna",
+  "reasoning_effort": "high",
+  "web_search": true,
+  "pricing": {
+    "model": "gpt-5.6-luna",
+    "as_of": "2026-08-21",
+    "input": 0.2,
+    "cached_input": 0.02,
+    "cache_write": 0.25,
+    "output": 1.2
+  },
+  "ok": 611,
+  "parsed": 608,
+  "truncated": 0,
+  "searched": 14,
+  "contract_errors": 7,
+  "verdict_counts": {
+    "supported": 573,
+    "unsupported": 107,
+    "wrong_label": 49
+  },
+  "none_check_counts": {
+    "agree": 235,
+    "disagree": 10
+  },
+  "cache_hit_rate": 0.9895,
+  "mean_output_tokens": 655.2,
+  "mean_reasoning_tokens": 438.2,
+  "spend_usd": 0.815806,
+  "usd_per_row": 0.0013352
+}

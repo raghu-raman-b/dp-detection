@@ -1,0 +1,194 @@
+{
+  "tag": "claude-sonnet-5_medium_teacher_v2_full",
+  "generated": "2026-08-22T22:11:42",
+  "provider": "anthropic",
+  "model": "claude-sonnet-5",
+  "model_version": "claude-sonnet-5",
+  "reasoning_effort": "medium",
+  "web_search": true,
+  "prompt_file": "/home/prex_san/Documents/dp-detection/corpus-construction/outputs/prompts/teacher_v2_full.txt",
+  "prompt_stem": "teacher_v2_full",
+  "prompt_sha256": "6529a474a2b03d2c00556c78075130b0f05d7cd7d1a637f241279393194c422c",
+  "gold_file": "/home/prex_san/Documents/dp-detection/corpus-construction/tuning/tuning_set_50.jsonl",
+  "n_requests": 50,
+  "n_scored": 50,
+  "micro_f1": 0.7607,
+  "micro_p": 0.8052,
+  "micro_r": 0.7209,
+  "example_f1": 0.7088,
+  "exact_match": 0.5,
+  "class_macro_f1": 0.6563,
+  "meso_macro_f1": 0.745,
+  "meso_macro_n_labels": 10,
+  "none_p": 0.5,
+  "none_r": 0.7,
+  "none_f1": 0.5833,
+  "tp": 62,
+  "fp": 15,
+  "fn": 24,
+  "missed_but_named_in_analysis": 6,
+  "per_label_f1": {
+    "M_DeceptiveLuxury": 0.6667,
+    "M_EasyToPurchase": 0.5,
+    "M_Gambling": 0.0,
+    "M_IntermediateCurrency": 0.5,
+    "M_NeverEndingLure": 0.0,
+    "M_PayToProgress": 0.9231,
+    "M_PowerCreep": 1.0,
+    "M_RecurringFee": 0.0,
+    "M_UIMisdirection": 1.0,
+    "M_WasteAversion": 0.6667,
+    "P_AestheticManipulation": 0.0,
+    "P_CompleteTheCollection": 0.9091,
+    "P_EasyToGetHardToLose": 1.0,
+    "P_IllusionOfControl": 0.8571,
+    "P_OptimismAndFrequencyBiases": 0.0,
+    "P_RewardMania": 0.8,
+    "S_Competition": 0.6154,
+    "S_EncouragesAntiSocialBehavior": 1.0,
+    "S_FearOfMissingOutFOMO": 0.0,
+    "S_ForcedFellowship": 1.0,
+    "S_FriendSpamImpersonation": 0.0,
+    "S_Reciprocity": 0.5,
+    "T_Advertisement": 1.0,
+    "T_DailyRewards": 1.0,
+    "T_Grinding": 0.5455,
+    "T_InfiniteTreadmill": 1.0,
+    "T_MandatoryMarathon": 0.0,
+    "T_PlayingByAppointment": 0.8,
+    "Tech_FragmentedDownloads": 0.0
+  },
+  "per_label_support": {
+    "M_DeceptiveLuxury": 2,
+    "M_EasyToPurchase": 2,
+    "M_Gambling": 2,
+    "M_IntermediateCurrency": 4,
+    "M_NeverEndingLure": 0,
+    "M_PayToProgress": 18,
+    "M_PowerCreep": 2,
+    "M_RecurringFee": 1,
+    "M_UIMisdirection": 3,
+    "M_WasteAversion": 2,
+    "P_AestheticManipulation": 2,
+    "P_CompleteTheCollection": 5,
+    "P_EasyToGetHardToLose": 1,
+    "P_IllusionOfControl": 3,
+    "P_OptimismAndFrequencyBiases": 1,
+    "P_RewardMania": 6,
+    "S_Competition": 8,
+    "S_EncouragesAntiSocialBehavior": 1,
+    "S_FearOfMissingOutFOMO": 0,
+    "S_ForcedFellowship": 1,
+    "S_FriendSpamImpersonation": 1,
+    "S_Reciprocity": 3,
+    "T_Advertisement": 2,
+    "T_DailyRewards": 2,
+    "T_Grinding": 5,
+    "T_InfiniteTreadmill": 1,
+    "T_MandatoryMarathon": 1,
+    "T_PlayingByAppointment": 7,
+    "Tech_FragmentedDownloads": 0
+  },
+  "class_f1": {
+    "Monetary": 0.88,
+    "Psychological": 1.0,
+    "Social": 0.7,
+    "Technical": 0.0,
+    "Temporal": 0.7742,
+    "None": 0.5833
+  },
+  "top_over_labelled": [
+    [
+      "T_Grinding",
+      3
+    ],
+    [
+      "M_PayToProgress",
+      3
+    ],
+    [
+      "M_IntermediateCurrency",
+      2
+    ],
+    [
+      "T_PlayingByAppointment",
+      2
+    ],
+    [
+      "S_Competition",
+      1
+    ]
+  ],
+  "top_under_labelled": [
+    [
+      "S_Competition",
+      4
+    ],
+    [
+      "P_RewardMania",
+      2
+    ],
+    [
+      "S_Reciprocity",
+      2
+    ],
+    [
+      "M_Gambling",
+      2
+    ],
+    [
+      "T_Grinding",
+      2
+    ]
+  ],
+  "api_errors": 0,
+  "parsed": 50,
+  "truncated": 0,
+  "labels_emitted": 77,
+  "bad_codes": 0,
+  "dup_labels_r1": 2,
+  "missing_span_r3": 0,
+  "span_not_verbatim": 2,
+  "span_loose": 1,
+  "span_verbatim_rate": 0.974,
+  "pricing": {
+    "model": "claude-sonnet-5",
+    "as_of": "2026-08-22",
+    "input": 2.0,
+    "cached_input": 0.2,
+    "cache_write": 2.5,
+    "output": 10.0,
+    "search_per_call": 0.01,
+    "search_backend": "anthropic_builtin",
+    "intro_until": "2026-08-31",
+    "list_input": 3.0,
+    "list_cached_input": 0.3,
+    "list_cache_write": 3.75,
+    "list_output": 15.0
+  },
+  "tokens": {
+    "input_tokens": 1974287,
+    "cached_tokens": 1962327,
+    "cache_write_tokens": 981,
+    "uncached_input_tokens": 10979,
+    "output_tokens": 53826,
+    "reasoning_tokens": 0
+  },
+  "cache_hit_rate": 0.9939,
+  "mean_output_tokens": 1076.5,
+  "mean_reasoning_tokens": 0.0,
+  "spend_usd": 0.955136,
+  "usd_per_review": 0.01910272,
+  "projected_usd_at_200000": 3820.54,
+  "cost_share": {
+    "cached": 0.4109,
+    "cache_write": 0.0026,
+    "uncached_input": 0.023,
+    "output": 0.5635
+  },
+  "latency_p50": 12.78,
+  "latency_p95": 24.22,
+  "latency_mean": 13.41,
+  "search_rate": 0.0,
+  "perreview_file": "/home/prex_san/Documents/dp-detection/corpus-construction/outputs/run-stats/claude-sonnet-5/medium/teacher_v2_full/claude-sonnet-5_medium_teacher_v2_full_perreview.jsonl"
+}

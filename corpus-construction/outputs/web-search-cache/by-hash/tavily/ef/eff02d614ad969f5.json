@@ -1,0 +1,91 @@
+{
+  "query": "why is a welkin pass in Genshin Impact",
+  "sent_query": "why is a welkin pass in Genshin Impact",
+  "query_hash": "eff02d614ad969f5",
+  "answer": "The Welkin Pass in Genshin Impact provides 300 Genesis Crystals and 90 Primogems daily for 30 days, totaling 3,000 Primogems, significantly more than free daily logins. It offers the best value for obtaining Primogems compared to buying Genesis Crystals directly.",
+  "sources": [
+    {
+      "title": "Welkin or Battle pass? : r/Genshin_Impact",
+      "url": "https://www.reddit.com/r/Genshin_Impact/comments/1axbtmq/welkin_or_battle_pass",
+      "host": "reddit.com"
+    },
+    {
+      "title": "Is Genshin Impact Welkin Moon Worth It for Beginner Players? - GPDS GAME SHOP",
+      "url": "https://gpdsgameshop.com/blog/is-the-genshin-impact-welkin-moon-worth-it",
+      "host": "gpdsgameshop.com"
+    },
+    {
+      "title": "Blessing of the Welkin Moon - Genshin Impact Wiki - Fandom",
+      "url": "https://genshin-impact.fandom.com/wiki/Blessing_of_the_Welkin_Moon",
+      "host": "genshin-impact.fandom.com"
+    },
+    {
+      "title": "The value of Welkin vs the value of Genesis Crystals",
+      "url": "https://www.hoyolab.com/article/27166378",
+      "host": "hoyolab.com"
+    },
+    {
+      "title": "Are Welkin and Battle Pass worth buying in Genshin Impact?",
+      "url": "https://www.facebook.com/groups/genshinimpactofficial/posts/1877119969398127",
+      "host": "facebook.com"
+    }
+  ],
+  "backend": "tavily",
+  "cached": false,
+  "cost_usd": 0.008,
+  "latency_s": 3.417,
+  "n_results": 5,
+  "domains": [],
+  "error": null,
+  "ts": "2026-08-22T12:25:47+00:00",
+  "raw": {
+    "query": "why is a welkin pass in Genshin Impact",
+    "follow_up_questions": null,
+    "answer": "The Welkin Pass in Genshin Impact provides 300 Genesis Crystals and 90 Primogems daily for 30 days, totaling 3,000 Primogems, significantly more than free daily logins. It offers the best value for obtaining Primogems compared to buying Genesis Crystals directly.",
+    "images": [],
+    "results": [
+      {
+        "url": "https://www.reddit.com/r/Genshin_Impact/comments/1axbtmq/welkin_or_battle_pass",
+        "title": "Welkin or Battle pass? : r/Genshin_Impact",
+        "content": "Welkin gives you more primogems in total if you log in every day, and the Battle Pass gives you a bunch of other resources (like more and XP)",
+        "score": 0.8830044,
+        "raw_content": null,
+        "id": "0652eb-00"
+      },
+      {
+        "url": "https://gpdsgameshop.com/blog/is-the-genshin-impact-welkin-moon-worth-it",
+        "title": "Is Genshin Impact Welkin Moon Worth It for Beginner Players? - GPDS GAME SHOP",
+        "content": "## Understanding the True Value\n\nThe math is simple and straightforward. Buying the Welkin pass gives you 300 Genesis Crystals immediately. You convert these crystals directly into Primogems in the game menu at a 1:1 rate.\n\nAfter that initial bonus, you receive 90 Primogems every single day you open the game for the next 30 days. The daily reward refreshes at 4 AM PHT (GMT+8).\n\nHere is the final math: [...] If you log in every day, this ₱249 pass is the absolute best way to get Primogems in the entire game. It gives you 3,000 total Primogems over a period of 30 days. That works out to exactly 18 wishes plus 120 Primogems saved toward your 19th.\n\nThis makes the Welkin Moon the single highest-value purchase you can buy in Genshin Impact, Filipino gamer or otherwise. The math works out to roughly 10× the value of buying raw Genesis Crystals at the same price point. [...] The Welkin Moon gives you almost 10× more value for the exact same price.\n\nEven with the game's first-time top-up bonus, the Welkin still wins by a massive amount. The first-time buyer bonus doubles your crystals to 600 for ₱249. The Welkin pass gives you 3,000.\n\nFrom a pure mathematical standpoint, there is no better return on your money in the entire Genshin Impact economy.",
+        "score": 0.81133276,
+        "raw_content": null,
+        "id": "370f09-01"
+      },
+      {
+        "url": "https://genshin-impact.fandom.com/wiki/Blessing_of_the_Welkin_Moon",
+        "title": "Blessing of the Welkin Moon - Genshin Impact Wiki - Fandom",
+        "content": "Each time you purchase Blessing of the Welkin Moon, you will immediately receive 300 Genesis Crystals and 30 days of the Blessing. During this 30-day period,",
+        "score": 0.5749443,
+        "raw_content": null,
+        "id": "eeca7b-02"
+      },
+      {
+        "url": "https://www.hoyolab.com/article/27166378",
+        "title": "The value of Welkin vs the value of Genesis Crystals",
+        "content": "a player who buys Welkins gets to make 4 wishes for every 3 wishes made by a F2P player. you are getting 460% more for your money than the player above. I buy",
+        "score": 0.52334785,
+        "raw_content": null,
+        "id": "e3c8b0-03"
+      },
+      {
+        "url": "https://www.facebook.com/groups/genshinimpactofficial/posts/1877119969398127",
+        "title": "Are Welkin and Battle Pass worth buying in Genshin Impact?",
+        "content": "Hello guys,\n\nAsk: is it worth it to purchase monthly welkins? Or Battle Pass on next reset?",
+        "score": 0.4457955,
+        "raw_content": null,
+        "id": "409871-04"
+      }
+    ],
+    "response_time": 2.52,
+    "request_id": "374539dd-3f4b-4cdf-86df-2ab48b7d9fd8"
+  }
+}

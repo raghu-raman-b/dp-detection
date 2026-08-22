@@ -1,0 +1,91 @@
+{
+  "query": "Monopoly GO dice event reward expire",
+  "sent_query": "Monopoly GO dice event reward expire",
+  "query_hash": "49d47bea3facf4a7",
+  "answer": "Monopoly GO dice event reward links typically expire within one day. To claim rewards, use them promptly. Expired links cannot be redeemed.",
+  "sources": [
+    {
+      "title": "Do others have issues with Monopoly Go rewards expiring too quickly?",
+      "url": "https://www.facebook.com/groups/935040604232613/posts/2008793120190684",
+      "host": "facebook.com"
+    },
+    {
+      "title": "Monopoly Go Homestead Ride Ends Soon! 25,000+ Free Dice Rewards ...",
+      "url": "https://www.mmoexp.com/News/monopoly-go-homestead-ride-ends-soon-25-000-free-dice-rewards-how-to-get-them-fast.html",
+      "host": "mmoexp.com"
+    },
+    {
+      "title": "Monopoly GO! Free Dice Links Today - Updated August 19, 2026",
+      "url": "https://monopolygo.wiki/latest-reward-links",
+      "host": "monopolygo.wiki"
+    },
+    {
+      "title": "Monopoly GO! Wiki",
+      "url": "https://monopolygo.wiki",
+      "host": "monopolygo.wiki"
+    },
+    {
+      "title": "Monopoly Go free dice links (August 2026)",
+      "url": "https://www.pcgamesn.com/monopoly-go/dice-links-free",
+      "host": "pcgamesn.com"
+    }
+  ],
+  "backend": "tavily",
+  "cached": false,
+  "cost_usd": 0.008,
+  "latency_s": 2.521,
+  "n_results": 5,
+  "domains": [],
+  "error": null,
+  "ts": "2026-08-22T16:12:11+00:00",
+  "raw": {
+    "query": "Monopoly GO dice event reward expire",
+    "follow_up_questions": null,
+    "answer": "Monopoly GO dice event reward links typically expire within one day. To claim rewards, use them promptly. Expired links cannot be redeemed.",
+    "images": [],
+    "results": [
+      {
+        "url": "https://www.facebook.com/groups/935040604232613/posts/2008793120190684",
+        "title": "Do others have issues with Monopoly Go rewards expiring too quickly?",
+        "content": "Anyone else use monopoly go rewards? After waiting 3 days for new rewards; they posted new free 25 dice only to expire 30 minutes later.",
+        "score": 0.7999589,
+        "raw_content": null,
+        "id": "595b18-00"
+      },
+      {
+        "url": "https://www.mmoexp.com/News/monopoly-go-homestead-ride-ends-soon-25-000-free-dice-rewards-how-to-get-them-fast.html",
+        "title": "Monopoly Go Homestead Ride Ends Soon! 25,000+ Free Dice Rewards ...",
+        "content": "Since these links usually expire within one or two days, claiming them immediately is essential. If your dice supply runs low, many players also",
+        "score": 0.7917732,
+        "raw_content": null,
+        "id": "bc009f-01"
+      },
+      {
+        "url": "https://monopolygo.wiki/latest-reward-links",
+        "title": "Monopoly GO! Free Dice Links Today - Updated August 19, 2026",
+        "content": "Skip to content\n\nMonopoly GO! WikiMonopoly GO! Wiki\n\nreward links\n\n# Monopoly GO! Free Dice Links Today - Updated August 19, 2026\n\nClaim active Monopoly GO free dice links and other official rewards before they expire.\n\nMonopolyGO.wikiPublished\n\nClaim the latest official Monopoly GO reward links for free dice, event currency, sticker packs, and other limited-time bonuses. [...] Open each reward link on a device with Monopoly GO installed. Each gift can only be claimed once per account and expires at the time shown.\n\nUpdated EDT\n\n### Free Rolls Reward Link\n\n Rolls60 ×Rolls\n\nAvailable through EDT\n\nClaim reward\n\n### Free Rolls Reward Link\n\n Rolls25 ×Rolls\n\nAvailable through EDT\n\nClaim reward\n\n### Free Rolls Reward Link\n\nNew\n\n Rolls25 ×Rolls\n\nAvailable through EDT\n\nClaim reward\n\n### Free Daffy Duck Reward Link\n\n Daffy Duck1 ×Daffy Duck\n\nAvailable through EST [...] Claim reward\n\n### Free Milhouse Reward Link\n\n Milhouse1 ×Milhouse\n\nAvailable through EST\n\nClaim reward\n\n## How Monopoly GO reward links work\n\nReward links are official gift URLs released for a limited time. If the game says a reward was already claimed, that specific gift has already been redeemed on your account.\n\n## Can reward links include more than dice?",
+        "score": 0.78473216,
+        "raw_content": null,
+        "id": "a4be15-02"
+      },
+      {
+        "url": "https://monopolygo.wiki",
+        "title": "Monopoly GO! Wiki",
+        "content": "## Latest updates\n\nView all posts\n\n\n\nArticle\n\n### Monopoly GO! Free Dice Links Today - Updated August 14, 2026\n\nClaim active Monopoly GO free dice links and other official rewards before they expire.\n\nRead more\n\n\n\nArticle\n\n### Today's Events (Aug 14, 2026) - Blocks Boutique\n\nAll Monopoly GO events and tournaments starting today, Aug 14, 2026. Updated daily by MOGO Wiki.\n\nRead more\n\n\n\nArticle\n\n### Today's Events (Aug 13, 2026) [...] All Monopoly GO events and tournaments starting today, Aug 13, 2026. Updated daily by MOGO Wiki.\n\nRead more\n\n\n\nArticle\n\n### Today's Events (Aug 12, 2026)\n\nAll Monopoly GO events and tournaments starting today, Aug 12, 2026. Updated daily by MOGO Wiki.\n\nRead more\n\n\n\nEvent Post\n\n### Community Deluxe Drop: Starts August 12, 2026 - Rewards & Guide\n\nCommunity Deluxe Drop starts August 12, 2026. See Prize Drop rewards, milestone points, dates, and Peg-E tips for Monopoly GO.\n\nRead more\n\n\n\nArticle [...] Skip to content\n\nMonopoly GO! WikiMonopoly GO! Wiki\n\nNews, events, and guides\n\n# MONOPOLY GO! news, free dice, sticker trading, and daily events\n\nTips, free dice, sticker trading for Monopoly GO! Get daily free dice links, event and tournament updates, and stickers to complete your albums.\n\n\n\nArticle\n\n## Today's Events (Aug 15, 2026)\n\nAll Monopoly GO events and tournaments starting today, Aug 15, 2026. Updated daily by MOGO Wiki.\n\nMonopolyGO.wikiRead story\n\nRecently published\n\n## Latest updates",
+        "score": 0.7783298,
+        "raw_content": null,
+        "id": "4cf851-03"
+      },
+      {
+        "url": "https://www.pcgamesn.com/monopoly-go/dice-links-free",
+        "title": "Monopoly Go free dice links (August 2026)",
+        "content": "Your net worth determines how much progress you've made in the game. With each new net worth milestone you hit, you earn in-game goodies, including hundreds of free dice rolls.\n\nHere are in-game ways to earn free Monopoly Go dice rolls:\n\nIf Monopoly Go dice links aren't working, there's a strong possibility that they may have expired. Dice links generally last for one day before expiring, so you need to be fast if you want to claim them all. [...] There's also the possibility that you may have already redeemed the free dice. If this is the case, you should see a message appear that reads, \"This reward has already been claimed.\" Meanwhile, expired codes appear as \"Sorry, this code cannot be claimed.\"\n\nIf you're getting an issue where the link isn't launching the Monopoly Go app and is sending you to your platform's app store instead, try redeeming them through a different browser, even if your current one has worked previously. [...] PCGamesN is always tracking what is happening in the game, so check our schedule to see all the new Monopoly Go events ahead of time. And see below for a list of expired links, tips on getting more rolls, and if you're just starting out then we have a guide on how to how to redeem links.\n\nTo use Monopoly Go dice links, you will need to be at least level 15 to unlock albums. Once you've reached this level, simply click on the links to claim in-game rewards.",
+        "score": 0.7608822,
+        "raw_content": null,
+        "id": "d92c99-04"
+      }
+    ],
+    "response_time": 1.06,
+    "request_id": "1ed8ebb2-b3e1-4c52-9a0e-8a87456dca5c"
+  }
+}

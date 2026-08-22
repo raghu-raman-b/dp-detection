@@ -1,0 +1,91 @@
+{
+  "query": "what is a welkin pass in Genshin Impact",
+  "sent_query": "what is a welkin pass in Genshin Impact",
+  "query_hash": "9873e2ba07f9d447",
+  "answer": "The Welkin Pass is a $4.99 monthly subscription in Genshin Impact that gives 90 Primogems daily for 30 days and 300 Genesis Crystals. It's a cost-effective way to earn in-game currency. It requires daily logins.",
+  "sources": [
+    {
+      "title": "Should You Get the Genshin Impact Welkin Moon Pass - Siliconera",
+      "url": "https://www.siliconera.com/should-you-get-the-genshin-impact-welkin-moon-pass",
+      "host": "siliconera.com"
+    },
+    {
+      "title": "Welkin or Battle pass? : r/Genshin_Impact - Reddit",
+      "url": "https://www.reddit.com/r/Genshin_Impact/comments/1axbtmq/welkin_or_battle_pass",
+      "host": "reddit.com"
+    },
+    {
+      "title": "Blessing of the Welkin Moon",
+      "url": "https://genshin-impact.fandom.com/wiki/Blessing_of_the_Welkin_Moon",
+      "host": "genshin-impact.fandom.com"
+    },
+    {
+      "title": "Are Welkin and Battle Pass worth buying in Genshin Impact?",
+      "url": "https://www.facebook.com/groups/genshinimpactofficial/posts/1877119969398127",
+      "host": "facebook.com"
+    },
+    {
+      "title": "Genshin Welkin Moon 2025: $5 vs $50 Value Guide - BitTopup",
+      "url": "https://bittopup.com/article/Genshin-Welkin-Moon-2025-5-vs-50-Value-Guide",
+      "host": "bittopup.com"
+    }
+  ],
+  "backend": "tavily",
+  "cached": false,
+  "cost_usd": 0.008,
+  "latency_s": 2.853,
+  "n_results": 5,
+  "domains": [],
+  "error": null,
+  "ts": "2026-08-22T16:04:56+00:00",
+  "raw": {
+    "query": "what is a welkin pass in Genshin Impact",
+    "follow_up_questions": null,
+    "answer": "The Welkin Pass is a $4.99 monthly subscription in Genshin Impact that gives 90 Primogems daily for 30 days and 300 Genesis Crystals. It's a cost-effective way to earn in-game currency. It requires daily logins.",
+    "images": [],
+    "results": [
+      {
+        "url": "https://www.siliconera.com/should-you-get-the-genshin-impact-welkin-moon-pass",
+        "title": "Should You Get the Genshin Impact Welkin Moon Pass - Siliconera",
+        "content": "The Blessing of the Welkin Moon, or Welkin Moon, is a subscription that you can pay for in Genshin Impact in order to receive 90 Primogems every day for 30 days. Since this does require some real-world money, it’s important to consider the pros and cons before paying for it. Whether you purchase this or not depends entirely on how much you play and what kind of person you are.\n\nRecommended Videos\n\n## Why you should get the Welkin Moon in Genshin Impact [...] For starters, the Welkin Moon costs $4.99 and the maximum amount of Primogems you can get is 3000. You receive a total of 2700 from the daily Primogems, as well as 300 Genesis Crystals after you make the purchase. 3000 Primogems equates to around 20 pulls. That’s not too bad, considering that hard pity for a character is 90 pulls. [...] As a note, it costs $49.99 to get 3280 Genesis Crystals in the store. That’s not including the first-time purchase bonus. You can get the 3000 all at once, of course. But it costs significantly more to receive the same amount of in-game currency as the Welkin Moon. If you log in every day, plan on playing Genshin Impact seriously, and can spare the money, then the Welkin Moon is a great investment.\n\n## Why you shouldn’t get the Welkin Moon in Genshin Impact",
+        "score": 0.9037116,
+        "raw_content": null,
+        "id": "e0ffa8-00"
+      },
+      {
+        "url": "https://www.reddit.com/r/Genshin_Impact/comments/1axbtmq/welkin_or_battle_pass",
+        "title": "Welkin or Battle pass? : r/Genshin_Impact - Reddit",
+        "content": "Welkin gives you more primogems in total if you log in every day, and the Battle Pass gives you a bunch of other resources (like more and XP)",
+        "score": 0.8399576,
+        "raw_content": null,
+        "id": "da5cfa-01"
+      },
+      {
+        "url": "https://genshin-impact.fandom.com/wiki/Blessing_of_the_Welkin_Moon",
+        "title": "Blessing of the Welkin Moon",
+        "content": "Game Systems\n\nThe Blessing of the Welkin Moon is a US$4.99 (€4.99) 30 day subscription offer in _Genshin Impact_. Upon buying the blessing, players will immediately obtain 300 Genesis Crystals and will continue to receive 90 Primogems every day they log in for the next 30 days. Failure to log in will result in a day being deducted from the Blessing without the player receiving any Primogems. [...] |  |\n| Genshin Impact |  Character  Teyvat  Factions  Manga  Book  Soundtrack  Timeline  Comics  Game System  Version  Voice Actor  Typeface |\n|  |\n| Activities |  Domain  Event  Expedition  Fishing  Genius Invokation TCG  Imaginarium Theater  Ley Line Outcrop  Miliastra Wonderland  Repertoire of Myriad Melodies  Reset  Spiral Abyss  Stygian Onslaught |\n|  |\n| Exploration |  Statue of The Seven  Teleport Waypoint  Shrine of Depths  Oculus  Crimson Agate  Key Sigil  Lumenspar  Spirit Carp | [...] Advertisement \n\n## Genshin Impact Fandom Wiki",
+        "score": 0.8106142,
+        "raw_content": null,
+        "id": "90586c-02"
+      },
+      {
+        "url": "https://www.facebook.com/groups/genshinimpactofficial/posts/1877119969398127",
+        "title": "Are Welkin and Battle Pass worth buying in Genshin Impact?",
+        "content": "Welkin is probably much worth it since you get 90 per day then 300 crystals upon purchase. BP gives you resources(mora, exp, talents, BP weapon",
+        "score": 0.7274535,
+        "raw_content": null,
+        "id": "3bb9fb-03"
+      },
+      {
+        "url": "https://bittopup.com/article/Genshin-Welkin-Moon-2025-5-vs-50-Value-Guide",
+        "title": "Genshin Welkin Moon 2025: $5 vs $50 Value Guide - BitTopup",
+        "content": "Even the biggest direct purchase ($99.99) still costs $0.0154 per Primogem. Six months of Welkin ($29.94) nets you 18,000 Primogems, while that $29.99 Genesis package gives you 1,980 crystals. We’re talking over 9x more currency for basically the same cost.\n\nThe Battle Pass ($9.99) runs $0.00756 per Primogem plus all those progression materials. It’s a different beast entirely - Welkin’s pure currency efficiency versus Battle Pass’s mixed resource approach. [...] BitTopup Logo\n\nDirect Top-Up\n\nhow to top-up in bittopupGame\n\nhow to top-up in bittopupCard\n\nhow to top-up in bittopup\n\nBitTopup Logohow to top-up in bittopup\n\n# Genshin Welkin Moon 2025: $5 vs $50 Value Guide\n\nQuick Answer: Blessing of the Welkin Moon offers exceptional value at $4.99 for 3,000 Primogem-equivalents over 30 days, making it the most cost-effective purchase in Genshin Impact. Requires daily logins and suits committed players better than casual gamers. [...] You can stack up to 180 days (six purchases max), which honestly feels pretty generous. Go beyond that limit and the game just refunds you 330 Genesis Crystals instead - kind of a weird way to handle it, but at least you’re not losing money.\n\nFor convenient Genshin Impact Welkin Top Up options, BitTopup provides secure transactions with competitive pricing, fast delivery, and comprehensive customer support across all major payment methods.\n\n## The Numbers Game: Where Welkin Actually Shines",
+        "score": 0.60805947,
+        "raw_content": null,
+        "id": "7c6f93-04"
+      }
+    ],
+    "response_time": 1.44,
+    "request_id": "81ff7989-e006-440d-b4de-920acd34bdb4"
+  }
+}

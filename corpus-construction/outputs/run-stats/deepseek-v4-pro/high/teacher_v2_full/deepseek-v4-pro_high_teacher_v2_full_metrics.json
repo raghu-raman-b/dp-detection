@@ -1,0 +1,202 @@
+{
+  "tag": "deepseek-v4-pro_high_teacher_v2_full",
+  "generated": "2026-08-22T23:04:21",
+  "provider": "deepseek",
+  "model": "deepseek-v4-pro",
+  "model_version": "deepseek-v4-pro",
+  "reasoning_effort": "high",
+  "web_search": true,
+  "prompt_file": "/home/prex_san/Documents/dp-detection/corpus-construction/outputs/prompts/teacher_v2_full.txt",
+  "prompt_stem": "teacher_v2_full",
+  "prompt_sha256": "6529a474a2b03d2c00556c78075130b0f05d7cd7d1a637f241279393194c422c",
+  "gold_file": "/home/prex_san/Documents/dp-detection/corpus-construction/tuning/tuning_set_50.jsonl",
+  "n_requests": 50,
+  "n_scored": 50,
+  "micro_f1": 0.8068,
+  "micro_p": 0.7889,
+  "micro_r": 0.8256,
+  "example_f1": 0.7685,
+  "exact_match": 0.52,
+  "class_macro_f1": 0.7181,
+  "meso_macro_f1": 0.8069,
+  "meso_macro_n_labels": 10,
+  "none_p": 0.6364,
+  "none_r": 0.7,
+  "none_f1": 0.6667,
+  "tp": 71,
+  "fp": 19,
+  "fn": 15,
+  "missed_but_named_in_analysis": 3,
+  "per_label_f1": {
+    "M_DeceptiveLuxury": 0.6667,
+    "M_EasyToPurchase": 0.5,
+    "M_Gambling": 0.0,
+    "M_IntermediateCurrency": 0.8889,
+    "M_NeverEndingLure": 0.0,
+    "M_PayToProgress": 0.9231,
+    "M_PowerCreep": 0.8,
+    "M_RecurringFee": 1.0,
+    "M_UIMisdirection": 1.0,
+    "M_WasteAversion": 1.0,
+    "P_AestheticManipulation": 0.0,
+    "P_CompleteTheCollection": 0.9091,
+    "P_EasyToGetHardToLose": 0.0,
+    "P_IllusionOfControl": 0.8571,
+    "P_OptimismAndFrequencyBiases": 0.0,
+    "P_RewardMania": 0.6667,
+    "S_Competition": 0.8571,
+    "S_EncouragesAntiSocialBehavior": 1.0,
+    "S_FearOfMissingOutFOMO": 0.0,
+    "S_ForcedFellowship": 1.0,
+    "S_FriendSpamImpersonation": 1.0,
+    "S_Reciprocity": 0.5,
+    "T_Advertisement": 1.0,
+    "T_DailyRewards": 1.0,
+    "T_Grinding": 0.6667,
+    "T_InfiniteTreadmill": 1.0,
+    "T_MandatoryMarathon": 1.0,
+    "T_PlayingByAppointment": 0.8,
+    "Tech_FragmentedDownloads": 0.0
+  },
+  "per_label_support": {
+    "M_DeceptiveLuxury": 2,
+    "M_EasyToPurchase": 2,
+    "M_Gambling": 2,
+    "M_IntermediateCurrency": 4,
+    "M_NeverEndingLure": 0,
+    "M_PayToProgress": 18,
+    "M_PowerCreep": 2,
+    "M_RecurringFee": 1,
+    "M_UIMisdirection": 3,
+    "M_WasteAversion": 2,
+    "P_AestheticManipulation": 2,
+    "P_CompleteTheCollection": 5,
+    "P_EasyToGetHardToLose": 1,
+    "P_IllusionOfControl": 3,
+    "P_OptimismAndFrequencyBiases": 1,
+    "P_RewardMania": 6,
+    "S_Competition": 8,
+    "S_EncouragesAntiSocialBehavior": 1,
+    "S_FearOfMissingOutFOMO": 0,
+    "S_ForcedFellowship": 1,
+    "S_FriendSpamImpersonation": 1,
+    "S_Reciprocity": 3,
+    "T_Advertisement": 2,
+    "T_DailyRewards": 2,
+    "T_Grinding": 5,
+    "T_InfiniteTreadmill": 1,
+    "T_MandatoryMarathon": 1,
+    "T_PlayingByAppointment": 7,
+    "Tech_FragmentedDownloads": 0
+  },
+  "class_f1": {
+    "Monetary": 0.9231,
+    "Psychological": 0.9524,
+    "Social": 0.9091,
+    "Technical": 0.0,
+    "Temporal": 0.8571,
+    "None": 0.6667
+  },
+  "top_over_labelled": [
+    [
+      "T_Grinding",
+      5
+    ],
+    [
+      "M_PayToProgress",
+      3
+    ],
+    [
+      "T_PlayingByAppointment",
+      2
+    ],
+    [
+      "P_RewardMania",
+      2
+    ],
+    [
+      "M_Gambling",
+      2
+    ]
+  ],
+  "top_under_labelled": [
+    [
+      "P_RewardMania",
+      2
+    ],
+    [
+      "S_Reciprocity",
+      2
+    ],
+    [
+      "S_Competition",
+      2
+    ],
+    [
+      "M_Gambling",
+      2
+    ],
+    [
+      "P_AestheticManipulation",
+      2
+    ]
+  ],
+  "api_errors": 0,
+  "parsed": 50,
+  "truncated": 0,
+  "labels_emitted": 90,
+  "bad_codes": 0,
+  "dup_labels_r1": 0,
+  "missing_span_r3": 0,
+  "span_not_verbatim": 0,
+  "span_loose": 0,
+  "span_verbatim_rate": 1.0,
+  "pricing": {
+    "model": "deepseek-v4-pro",
+    "as_of": "2026-08-22",
+    "input": 0.66,
+    "cached_input": 0.022,
+    "cache_write": 0.0,
+    "output": 1.98,
+    "window": "off_peak",
+    "search_per_call": 0.008,
+    "search_backend": "tavily",
+    "peak_hours_utc": [
+      [
+        1,
+        4
+      ],
+      [
+        6,
+        10
+      ]
+    ],
+    "window_pinned": false,
+    "window_resolved_at": "2026-08-22T16:31:03+00:00"
+  },
+  "tokens": {
+    "input_tokens": 1258055,
+    "cached_tokens": 1209216,
+    "cache_write_tokens": 0,
+    "uncached_input_tokens": 48839,
+    "output_tokens": 223836,
+    "reasoning_tokens": 206496
+  },
+  "cache_hit_rate": 0.9612,
+  "mean_output_tokens": 4476.7,
+  "mean_reasoning_tokens": 4129.9,
+  "spend_usd": 0.526032,
+  "usd_per_review": 0.01052064,
+  "projected_usd_at_200000": 2104.13,
+  "cost_share": {
+    "cached": 0.0506,
+    "cache_write": 0.0,
+    "uncached_input": 0.0613,
+    "output": 0.8425
+  },
+  "latency_p50": 48.94,
+  "latency_p95": 210.52,
+  "latency_mean": 64.62,
+  "search_rate": 0.06,
+  "perreview_file": "/home/prex_san/Documents/dp-detection/corpus-construction/outputs/run-stats/deepseek-v4-pro/high/teacher_v2_full/deepseek-v4-pro_high_teacher_v2_full_perreview.jsonl"
+}

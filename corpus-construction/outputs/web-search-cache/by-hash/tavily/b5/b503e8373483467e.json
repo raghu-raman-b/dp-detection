@@ -1,0 +1,91 @@
+{
+  "query": "All in Hole Black Hole Games bag empty coins used after returning",
+  "sent_query": "All in Hole Black Hole Games bag empty coins used after returning",
+  "query_hash": "b503e8373483467e",
+  "answer": "In \"All in Hole,\" players earn coins by progressing through levels and helping teammates. Coins are used for in-game purchases like extra time and lives. The game does not refund spent coins.",
+  "sources": [
+    {
+      "title": "All In Hole Gameplay Part 1 - Blackhole Puzzle Game",
+      "url": "https://www.youtube.com/watch?v=EJbxydzZ4pc",
+      "host": "youtube.com"
+    },
+    {
+      "title": "All in Hole: Black Hole Games - App Store",
+      "url": "https://apps.apple.com/lt/app/all-in-hole-black-hole-games/id6503284107",
+      "host": "apps.apple.com"
+    },
+    {
+      "title": "All in Hole: Black Hole Games - Overview - Apple App Store - US - App Information, Downloads, Revenues, Category Rankings, Keyword Rankings, Ratings, and Reviews",
+      "url": "https://app.sensortower.com/overview/6503284107?country=US",
+      "host": "app.sensortower.com"
+    },
+    {
+      "title": "🕹 Gameplay — All in hole Help Center",
+      "url": "https://homa.helpshift.com/hc/en/9-all-in-hole/section/37-gameplay-1719416354",
+      "host": "homa.helpshift.com"
+    },
+    {
+      "title": "Issues and Advice for All in Hole Game Players",
+      "url": "https://www.facebook.com/groups/764044492298012/posts/1041243724578086",
+      "host": "facebook.com"
+    }
+  ],
+  "backend": "tavily",
+  "cached": false,
+  "cost_usd": 0.008,
+  "latency_s": 2.851,
+  "n_results": 5,
+  "domains": [],
+  "error": null,
+  "ts": "2026-08-22T17:01:12+00:00",
+  "raw": {
+    "query": "All in Hole Black Hole Games bag empty coins used after returning",
+    "follow_up_questions": null,
+    "answer": "In \"All in Hole,\" players earn coins by progressing through levels and helping teammates. Coins are used for in-game purchases like extra time and lives. The game does not refund spent coins.",
+    "images": [],
+    "results": [
+      {
+        "url": "https://www.youtube.com/watch?v=EJbxydzZ4pc",
+        "title": "All In Hole Gameplay Part 1 - Blackhole Puzzle Game",
+        "content": "Key Features:\n🕳️ Control a powerful black hole through stunning and colorful levels of relaxing games.\n🌟 Compete in eating games tournaments against players worldwide for top honors, eat, sort, solve puzzles, use the black hole power, and relax.\n🤝 Join teams, chat, and exchange hearts and coins with friends and fellow gamers.\n🍔 Collect and sort a variety of objects to unlock recipes and decorate cakes, is not just about eating games, is also about sorting goods with the black hole. [...] But if Relaxing games are not your thing, you can challenge yourself and compete against players from around the globe in thrilling puzzle black hole tournaments, where only the top contenders emerge victorious. In All in Hole you can join forces with fellow gamers, form teams, and exchange hearts and coins as you collaborate to conquer the puzzle and the feast hole together. [...] Welcome to All in Hole!, an addictive but relaxing black hole game, where you need to eat and sort to solve the puzzle! 🌭 Navigate through colorful levels and control the gravitational force of a black hole! Help Molly Solve puzzles🧩 as you dive into puzzle games and use the physics of a black hole, to eat all the required treats to advance, but remember, the end goal in these eating games is to relax!",
+        "score": 0.34680724,
+        "raw_content": null,
+        "id": "b28a22-00"
+      },
+      {
+        "url": "https://apps.apple.com/lt/app/all-in-hole-black-hole-games/id6503284107",
+        "title": "All in Hole: Black Hole Games - App Store",
+        "content": "join a crew to chat, share hearts and coins, and earn sweet bonuses together collect ingredients, unlock recipes, and decorate cakes",
+        "score": 0.3145667,
+        "raw_content": null,
+        "id": "348787-01"
+      },
+      {
+        "url": "https://app.sensortower.com/overview/6503284107?country=US",
+        "title": "All in Hole: Black Hole Games - Overview - Apple App Store - US - App Information, Downloads, Revenues, Category Rankings, Keyword Rankings, Ratings, and Reviews",
+        "content": "All in Hole is the oddly satisfying black-hole puzzle where you guide Molly the mole on a snack-swallowing adventure. Slide a tiny hole, devour small objects to grow, and use playful physics to gobble every target treat. Whether you’re here to zen out or chase trophies, All in Hole serves up quick, colorful levels that feel great to master.  \n  \nWhy you’ll love it  \n- Smooth, tactile physics — swipe, scoop, and watch the hole snap up anything in its path [...] 'All in Hole', published by a France-based company and offers in-app purchases ranging from $0.99 to $19.99 per item. The app was last updated on 05 August 2026. Released in US on 07 June 2024 and globally on 27 August 2024. 'All in Hole' belongs to the 'Games' category maintaining a content rating of '4+'. In US, 'All in Hole' ranked 138th on the 'Top Free iPhone Apps' chart and 19th on the 'Top Grossing iPhone Apps' chart in the 'Games/Puzzle' category. Additionally, ranked 164th on the 'Top [...] | Title | Duration | Price |\n --- \n| Coins very small | One-Time | $1.99 |\n| Pro Pack | One-Time | $6.99 |\n| Small Pack | One-Time | $9.99 |\n| Coins small | One-Time | $7.99 |\n| Medium Pack | One-Time | $19.99 |\n| Molly's Gift | One-Time | $0.99 |\n| Molly's Offer (Medium) | One-Time | $5.99 |\n| Coins medium | One-Time | $14.99 |\n| Offer - Starter Plus | One-Time | $2.99 |\n| Beginner Pack | One-Time | $4.99 |\n\n## Summary",
+        "score": 0.2977205,
+        "raw_content": null,
+        "id": "47bf84-02"
+      },
+      {
+        "url": "https://homa.helpshift.com/hc/en/9-all-in-hole/section/37-gameplay-1719416354",
+        "title": "🕹 Gameplay — All in hole Help Center",
+        "content": "There are several ways of earning free coins in the game.Each time you help a teammate.When you progress in the events like Level Chest and ...\n How many lives can I have stored?\n\n  You can store 5 lives in your inbox.\n How can I pause the game?\n\n  You can tap on the pause button on the top right corner of the screen. You can also choose your game settings such as music, sound, haptic, ...\n Can I play All in Hole from my computer? [...] In bonus levels, your goal is to collect as many coins as possible until you run out of time. The coins collected will be added to your coin...\n What is Molly's Bag?\n\n  To get Molly's bag bonus, you must beat levels without losing. For every level you beat, you will earn free boosters to help you at the begi...\n Where are the items that I get? [...] All in Hole is only available on iOS and Android mobile devices.\n I accidentally spent coins on the Extra Time/Lives/Booster pop-up!\n\n  As there is not any second confirmation button for in-game purchases (like extra time, life packages, boosters), please be careful not to pr...\n How do I report a bug/issue?\n\n  How to Report a BugIf you encounter a bug while playing, follow these steps to report it:1. Take a Screenshot or Record the Issue: If possib...\n What is Pack Progression?",
+        "score": 0.255495,
+        "raw_content": null,
+        "id": "45c116-03"
+      },
+      {
+        "url": "https://www.facebook.com/groups/764044492298012/posts/1041243724578086",
+        "title": "Issues and Advice for All in Hole Game Players",
+        "content": "Does anybody else think 900 coins to revive is a lot. It takes me forever to collect coins 😣😣",
+        "score": 0.12985472,
+        "raw_content": null,
+        "id": "cd42f8-04"
+      }
+    ],
+    "response_time": 1.76,
+    "request_id": "280b850d-03a8-435e-9456-138939b9322d"
+  }
+}

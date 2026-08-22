@@ -1,0 +1,765 @@
+# BUILD LOG -- NOT PART OF THE PROMPT.
+# Everything above the sentinel line is metadata. Sending it to a model changes the
+# cached prefix on every build and destroys prompt caching. Use load_prompt().
+#
+# built_at                 : 2026-08-22T15:28:23+05:30
+# codebook_file            : ../../codebook_versions/codebook_final.json
+# codebook_version         : 0.20
+# prompt_version           : v2
+# mode                     : boundary
+# flags                    : {'indicators': True, 'boundary_rules': True, 'counterexamples': True, 'worked_examples': False, 'rule_examples': False}
+# n_labels                 : 29
+# none_exemplar_id         : 331c695a-8b57-4a46-b4d2-00fcdff9ec1a
+# positive_exemplar_id     : 9d76ef06-a218-4ef4-b835-75443f4ec987
+# rule_examples_rendered   : 0
+# counterexamples_rendered : 25
+# worked_examples_rendered : 0  (0 with a Why: block)
+# prompt_sha256            : 013bb31c5857ba04fa67a71af1365b0128246dbdc30ea325ba8ea927329625cf
+# chars                    : 70791
+# approx_tokens            : 17697  (chars/4, rough)
+#
+# section approx tokens:
+#   role              : 75
+#   rules             : 819
+#   search_policy     : 103
+#   labels            : 15149
+#   output_spec       : 662
+#   exemplars         : 789
+#
+=============================== PROMPT BODY ===============================
+You are coding ONE app-store review of a mobile game against the codebook below.
+
+A review usually describes more than one mechanic. Assign every label the review
+supports, not the single best one (R9). Read the review closely first, including what
+the reviewer describes without naming, then decide.
+
+===========================================================================
+
+GLOBAL RULES
+
+R1. One review is one unit. Assign each applicable meso label at most once per review, regardless of how many times the pattern appears in the text.
+R2. Assign a label only when the review describes a game mechanic or design behaviour. Never assign from rating, tone, or general dissatisfaction alone.
+R3. Record the exact quoted span that triggered each label. A label with no recorded span is invalid and must be removed.
+R4. Assign the label the recorded span satisfies. Never assign because the game is known to contain the pattern, or because the pattern usually co-occurs with one already assigned.
+R5. Every entry in a label's indicators list is an instance of that pattern, whether tagged [low-level], [dp-combo], or [indicators]. A span that names an instance assigns its meso label; a meso label assigns its high-level class. Alternate definitions (Alt. def.) are restatements of the meso definition, not instances.
+R6. When no meso label satisfies R2 and R3, assign NONE. NONE is a blank cell.
+R7. Assign labels irrespective of the reviewer's approval or disapproval.
+R8. Code the mechanic described, not the reviewer's evaluation of it. "Generous battle pass" and "predatory battle pass" both describe a battle pass.
+R9. When two labels both fit and no boundary rule separates them, assign both.
+R10. If a game mechanic is not clear from the review's context, an external search can be used. Justify the search and tag the search query along with the review.
+R11. Assign NONE when the text attributes a specific behavior to a bug, glitch, error, or technical fault, as dark patterns are deliberate design choices rather than technical malfunctions. A general mention that a game is buggy does not suppress labels on unrelated, functional design behaviors. However, assign the relevant dark pattern label if the underlying game rule itself imposes a penalty, even if a malfunction triggered it. For instance, if a crash causes a player to lose daily rewards or forfeit match progress, assign the appropriate label because missing a login or quitting a session carries that explicit design penalty regardless of why it happened.
+R12. Code only the mechanics that the text explicitly describes as currently present in the game. Requests, suggestions, or hypothetical additions, such as wishing for a feature or asking to watch ads for coins, do not trigger tags for the proposed mechanics. However, this restriction applies exclusively to the non-existent feature itself. If the text mentions an existing game behavior or pattern alongside a suggestion, that active mechanic remains fully codable under any label it matches.
+R13. Code only design encountered within the game application. Advertising the developer places in third-party apps, store-listing content, and marketing material are outside the unit even where the behaviour would satisfy a label: including deceptive dismissal controls, emotional appeals to install or return, and misrepresented gameplay. Push notifications sent by the installed game are within scope, being part of the installed product. Where a review describes both out-of-game marketing and in-game design, code the in-game spans only. Exception: Look at Friend Spam and Impersonation's "Destination of the message" rule.
+
+===========================================================================
+
+WEB SEARCH
+
+R10 permits a search. Operationally:
+  - At most one search per review.
+  - Search only to resolve what a term the reviewer used refers to: a named game mode,
+    event, currency, item, or feature you cannot identify from the review text. The game
+    name is supplied for this purpose.
+  - Report every search in the output: the query and what it established. If you did not
+    search, report that.
+
+===========================================================================
+
+LABELS
+
+29 labels in 5 classes. A label assigns its class; you output meso codes only.
+
+---------------------------------------------------------------------------
+CLASS: TEMPORAL
+  Temporal DPs manipulate the amount of time spent on gameplay, i.e., expected versus actual time, leading players to feel that their time has been unfairly exploited [87].
+---------------------------------------------------------------------------
+
+[T_PlayingByAppointment]  Playing by Appointment
+
+  Definition:
+    Requires players play at specific times (and or dates) as defined by the game, rather than the players. When mechanics result in player playing according to the schedules the game offers, rather than their personal desires (an obligation).
+
+  Indicators (each is an instance of this pattern; see R5):
+    - (Alt. def.) (Hadan et al. 2024): “Patterns that forces players to adhere to the game’s schedule.”
+    - Evil Battle Pass (Zhang et al.): “Players are required to spend excessive time completing tasks, risking expiration of the battle pass and loss of rewards, even if they have paid for it in advance.” [low-level]
+    - Wait to Play (Hadan et al. 2024): “Patterns that impose arbitrary wait times on players through in-game timers.”
+    darkpattern.games: “In-game timers that make you arbitrarily wait for something.” [low-level]
+    - Trapping starter kits: This pattern particularly entices new players to log in and play continuously for the first few
+    days after creating new accounts. These designs often use in-game rewards as incentives, creating
+    a situation where new players lose the opportunity to obtain these rewards if they fail to log in and
+    complete tasks within the specified timeframe. [dp-combo]
+
+  Boundary rules:
+    vs Non-dark scheduling:
+      Zagal et al.: “Nullified if completing appointments is not required for progress. In other words, when appointment is combined with progress it becomes dark.”
+    vs Fear of missing out:
+      Where a reward expires on the game's clock and the span describes the schedule or the loss, code Playing by Appointment. Code FOMO only where the span describes anticipatory pressure i.e., the player continuing, returning, or feeling anxious in order not to miss out or fall behind. Both apply under R9 only if the span carries the schedule and the felt pressure.
+    vs Recurring Fee:
+      A paid pass or subscription alone is Recurring Fee. Assign Playing by Appointment additionally only where the span describes the pass's clock operating on the player: tasks that must be completed before expiry, rewards forfeited by not playing within the window, or pressure to play to a schedule set by the pass. Price, duration, or poor value alone do not trigger it. Where both are present, assign both under R9.
+    vs Resource depletion without stated wait:
+      Wait to Play requires the span to describe the wait or its regeneration schedule (lives/energy refilling over time, a build timer, a cooldown, a cooldown-skip offer).
+
+[T_DailyRewards]  Daily Rewards
+
+  Definition:
+    Motivates players to log in daily by providing incentives, while also penalising them for failing to do so.
+
+  Indicators (each is an instance of this pattern; see R5):
+    - Daily log-in reward calendars [indicators]
+    - Daily task lists with resetting rewards [indicators]
+    - (Alt. def.) (Hadan et al. 2024): “Patterns that encourage players to revisit the game daily.”
+    - (Alt. def.) darkpattern.games: “Encourages return visits every day and punishes you for missing a day.”
+    - Trapping starter kits: This pattern particularly entices new players to log in and play continuously for the first few
+    days after creating new accounts. These designs often use in-game rewards as incentives, creating
+    a situation where new players lose the opportunity to obtain these rewards if they fail to log in and
+    complete tasks within the specified timeframe. [dp-combo]
+
+  Boundary rules:
+    vs Playing by Appointment:
+      Assign Daily Rewards when the text describes a daily login incentive with an active consequence for missing a day, such as a broken streak, a lost calendar slot, a reset task list, or simply forfeiting that day's reward opportunity. Assign Playing by Appointment additionally when the daily cycle directly gates overall game progression rather than just a standalone reward, meaning the player cannot advance further until the real-world time gate resets. When a daily reward mechanism itself acts as the barrier controlling player progression, assign both tags under R9.
+
+  Counterexample (does NOT get this label):
+    "Can be fun. However as you progress you must do more an more for the same reward. For an example, to get 100 coins in a day when you first start off you may have to complete 10 levels. Fair enough. When you get to higher levels you need to complete 25 levels in a day. Pretty tough since you are far in the game, you would think the reward would be 250 coins. Nope, still 100. Also you only get 1 coin for donating a life. A whole one coin. At least make it 5 coins."
+    Why not:
+      Assign only where the span describes the game rewarding the daily return or penalising a missed day: a login calendar, a resetting task list, a streak. A daily rate used by the reviewer to describe an exchange rate or earning ceiling ("100 coins a day takes 25 levels") measures the economy, it does not describe a daily-return incentive.
+
+  Counterexample (does NOT get this label):
+    "There is a lot to be said about why this deserves zero stars. There are constant pop ups that get in the way. Also, the game only seems to reward you if you stop playing for weeks at a time. When you come back, you will get enough from a chest to play again. but if you keep playing for a few days, that amount dwindles to nothing. Some consistency would be nice."
+    Why not:
+      Chest rewards scale with time away and dwindle with continued play. Daily Rewards requires the game to incentivise daily return and penalise missing a day; this is the inverse, and codes Playing by Appointment for the schedule imposed. Do not assign because a chest or reward cadence is named (R4).
+
+[T_Grinding]  Grinding
+
+  Definition:
+    “Performing repetitive and tedious tasks” in order to make progress in a game. Emphasizes time invested over skill and in worst cases could be conducted unattended by the player.
+
+  Indicators (each is an instance of this pattern; see R5):
+    - (Alt. def.) (Hadan et al. 2024): “Patterns that requires players to perform repetitive tasks.”
+    - (Alt. def.) (Sousa & Oliveira 2023): “Being compelled to complete monotonous tasks in order to make progress.”
+    - (Alt. def.) (Dahlan & Susanty 2022): “It is forcing players to perform repetitive tasks to make progress in the game.”
+    - Try now, Pay later (Zhang et. al): This pattern offers players the chance to initially try premium experiences,
+    powerful items, or privileges, with payment required at a later stage. [dp-combo]
+    - Trapping starter kits: This pattern particularly entices new players to log in and play continuously for the first few
+    days after creating new accounts. These designs often use in-game rewards as incentives, creating
+    a situation where new players lose the opportunity to obtain these rewards if they fail to log in and
+    complete tasks within the specified timeframe. [dp-combo]
+
+  Boundary rules:
+    vs Slow Progress:
+      Assign where the span describes the activity required for progress as repetitive, tedious, or requiring the same task be repeated: replaying levels, farming, repeated attempts. A statement that progress is slow, hard, or time-consuming, without describing what the player must repeatedly do, is not Grinding on its own; where the slowness is attributed to payment being the alternative, code Pay to Progress alone.
+    vs Gameplay described as repetitive:
+      Assign where the span identifies the repeated activity: replaying levels, farming, repeated attempts, a task cycle the player must run to advance. A general characterisation of the game as repetitive, boring, monotonous, or "the same thing over and over," with no activity named and no link to progress, is an evaluation of quality and codes NONE under R2.
+
+  Counterexample (does NOT get this label):
+    "Not fun any more. You made all of the level, even the supposedly easy ones so hard to win that it takes too long to make any progress without spending money."
+    Why not:
+      Refers to slow progress and payment being an alternative. Does not specify repetitive action.
+
+[T_Advertisement]  Advertisement
+
+  Definition:
+    Compelled to view advertisements or incentivized to do so through the promise of rewards.
+
+  Indicators (each is an instance of this pattern; see R5):
+    - (Alt. def.) darkpattern.games: “Forced to watch ads or given rewards for watching ads.”
+
+  Counterexample (does NOT get this label):
+    "If I wanted to play a matching(candy crush style) puzzle game I already have a couple favorites that I like to play. The game is nothing like the ad I kept seeing, I even thought well if I get to a certain level it would open up the puzzles that are on the ad but no...will be deleting this game from my phone. It's a shame that it couldn't be what was advertised that looked fun."
+    Why not:
+      Assign only where the span describes advertisements encountered within the game: forced ad views, ad-gated continues, or rewards for watching. External or store-front advertising, including misleading ads that prompted the install, does not trigger Advertisement.
+
+  Counterexample (does NOT get this label):
+    "I don't need to be told to buy 10-15 times every time I run out of energy, open the game, or come back from an ad! also, unskippable animations everywhere. my first review was posted in 2025. I thought I would give the game another try and see if they improved anything. it's only gotten worse. I wish I could give it -1 star. Now part of the unskippable pop-up lineup are the forced events. whether you want to participate or not, you are. and they have to remind you constantly that you are"
+    Why not:
+      Only mentions the ads does not relate the ads to being forced to watch or being incentivized to watch.
+
+[T_InfiniteTreadmill]  Infinite Treadmill
+
+  Definition:
+    Patterns that continually expand the game to never allow players to complete.
+
+  Indicators (each is an instance of this pattern; see R5):
+    - (Alt. def.) darkpattern.games: “Impossible to win or complete the game.”
+
+  Boundary rules:
+    vs High level number or long play history:
+      Assign only where the span describes the game itself extending beyond completion: content added faster than it can be cleared, a goal that recedes as it is approached, no attainable end state, or the reviewer stating the game cannot be finished. A large level number, a high rank, a long tenure, or a report that the game "never ends" as a figure of speech for tedium is not sufficient.
+
+  Counterexample (does NOT get this label):
+    "This game would be 5 stars if I could get rid of the Mysterious Fossil order. I never got enough treasure maps when doing all the shell missions and any attempts to spam shell for no reason have resulted in 0 treasure maps. Im over it, only having three available missions ruins my game play."
+    Why not:
+      An order the reviewer cannot complete and cannot remove, blocking one of three mission slots. Infinite Treadmill requires the game itself extending beyond completion: content outpacing the player, a receding goal, no attainable end state. A single uncompletable objective inside an otherwise finite game is a blocked quest, not a treadmill.
+
+[T_MandatoryMarathon]  Mandatory Marathon
+
+  Definition:
+    Design that prevents the player from stopping at a moment of their choosing, requiring continuation to a stopping point defined by the game. Includes absent or restricted saving, checkpoint-only progress, and sessions or matches that cannot be exited without forfeiting progress.
+
+  Indicators (each is an instance of this pattern; see R5):
+    - Can’t Pause or Save (Hadan et al. 2024): “Patterns that force players to continue playing before they can save progress.” [low-level]
+
+  Boundary rules:
+    vs Unskippable sequence:
+      Mandatory Marathon requires that the player be prevented from ending a session or losing progress. Unskippable cutscenes, encounters, or animations within a session do not trigger it unless the review states the player could not stop playing or lost progress.
+    vs Loss caused by malfunction:
+      Where a session ends through a crash, freeze, or disconnection, assign Mandatory Marathon where the same forfeit would follow a deliberate exit: the loss is the game's exit rule, which the malfunction only triggered. R11 suppresses only where the loss itself is the fault: progress not saved, rewards not credited, a state that no exit rule would have produced.
+
+  Counterexample (does NOT get this label):
+    "Revisiting this after a few years. Still annoyingly reliant on the user having a high-end phone. Now I have one, and the problems arise with consistency and the intention of making the game fun. Unskippable encounters where the pokemon is supposed to be "given" to you are a mess. Adventure sync is good. Weird geographic limitations on pokemon feel ridiculous, but it's whatever. Wish spawn rates were higher in less populated areas, but I get it. Battles are fun."
+    Why not:
+      "Unskippable encounters" specifies presence of elements that cannot be skipped but it is not related to progress.
+
+---------------------------------------------------------------------------
+CLASS: MONETARY
+  Monetary DPs cause players to unexpectedly invest more financial resources, ultimately causing them to regret or lose track of their expenditures [87].
+---------------------------------------------------------------------------
+
+[M_PayToProgress]  Pay to Progress
+
+  Definition:
+    Patterns that require the players to spend money to progress in-game.
+
+  Indicators (each is an instance of this pattern; see R5):
+    - Pay to Skip (Sousa & Oliveira 2023): “Permitting or actively promoting players to spend money to speed up their progress in the game.” Alt (Hadan 2024): “Patterns that allows players players to pay to bypass undesired obstacles.” Alt (Dahlan & Susanty 2022): “Allowing or even encouraging players to spend money to make progress in the game easier and faster.” darkpattern.games: “Spend money to avoid waiting for a timer to expire.” [low-level]
+    - Pay to Win (Hadan et al. 2024): “Patterns that grant advantages to players who spend money.” Zagal et al.’s “Monetized Rivalries”: “Exploits Player competitiveness; encouraging them to spend money they would not otherwise in order to achieve in-game status such as a high placement on a leader board.” darkpattern.games: “A player can spend real money to purchase something that gives them an advantage in the game.” [low-level]
+    - Pay Wall (Sousa & Oliveira 2023): “The game reaches a point where further progress is contingent on making a payment.” Alt (Hadan 2024): “Patterns that make the game unplayable without payment.” darkpattern.games: “The game becomes impossible to continue playing without payment.” [low-level]
+    - Narrative Obligation (King et al. 2023): “the game’s narrative structure makes the purchase of in-game items a regular or repetitive part of gameplay. Although in-game currency may be earned, this is generally at a slow rate, so players may be forced to spend to keep the game flowing.” [low-level]
+    - Try now, Pay later (Zhang et. al): This pattern offers players the chance to initially try premium experiences,
+    powerful items, or privileges, with payment required at a later stage. [dp-combo]
+
+  Boundary rules:
+    vs Paid removal of artificial friction:
+      Assign Pay to Progress when payment removes, skips, or unlocks an artificial barrier that directly blocks continued play or advancement. Friction described strictly as an annoyance or a convenience feature, with no progress consequence, does not trigger this tag. For example, paying to bypass a mandatory cooldown timer or an ad break that halts gameplay qualifies, whereas paying for expanded inventory space, cosmetic removals, or purely quality of life tweaks does not.
+    vs Free alternative:
+      Assign Pay to Progress when the text uses terms that imply a paid alternative, such as "free coins," "f2p," or "without paying," even if the purchase option is not explicitly named. This contrast establishes that the free path requires extra effort, meticulous play, or excessive grinding compared to a paid shortcut. The tag applies as long as the free route falls short of smooth advancement, forcing the player into a longer or more tedious process to progress. If the contrast between free and paid is mentioned without any impact on player progress, it does not trigger the label.
+
+  Counterexample (does NOT get this label):
+    "This is good game but as it got updated, so there is new feature of voice talk. But we have to pay nd refill it after once it gets blank. But its a request for the ludo team to make it free because no one ll going to pay for that. thats the concern..so it ll be easy for us to play wid friends and also we can talk...thank you!"
+    Why not:
+      The payment specified here is not linked to the progression in-game, it's linked to an additional, optional feature "voice talk".
+
+[M_IntermediateCurrency]  Intermediate Currency
+
+  Definition:
+    Pattern where players use real-world money to acquire in-game currency for purchases or trades within the game world
+
+  Indicators (each is an instance of this pattern; see R5):
+    - Premium Currency (Sousa & Oliveira 2023): “The true cost of in-game items is concealed by the exchange rate between real-world currency and virtual currency.” Alt (Hadan 2024): “Patterns that disguises item real prices by introducing exchange rates.” darkpattern.games: “Exchange rate between real money and in-game currency disguises the real price of items.” [low-level]
+    - Polymorphic Currency:is the use of multiple, purpose-specific in-game currencies within a
+    single game that can either be purchased with real-world money or earned by in-game activities.
+    The malicious part is that they are non-interchangeable. Zhang et al. 2025. [low-level]
+    - Bulk Purchase: King et al. 2023: “the player may only purchase in-game currency in set pack sizes, with a bulk-buy discount to encourage larger purchases” [low-level]
+    - Leftovers: King et al. 2023: “the pricing of items is not aligned to the pack sizes, meaning that players must often purchase more currency than required.” [low-level]
+
+  Boundary rules:
+    vs Purchases denominated in currency:
+      Direction of the transaction decides it. Where the currency is the object acquired: "buy coins", "buy gems", "top up", real money is the consideration and the conversion is in the span, even if money is not named or priced. Where the currency is the means of payment: "bought with coins", "cost me 1,600 gems", the span shows spending inside the game economy and does not establish the conversion; assign only if money entering the currency is described elsewhere in the review.
+
+  Counterexample (does NOT get this label):
+    "Love to play this game, my only issue is the weapon that are energy consumption 10 when you purchase them with in game credits you only get 1 not like the weapons that are lower energy consumption where you get 2. I am guessing its the same with the weapons that are a higher energy consumption for example 12 or higher. That's my reason for the 4 star rating."
+    Why not:
+      Names an in-game currency and an explicit purchase made with it, but no real money enters anywhere in the span. Intermediate Currency's indicator is a relation i.e., real money exchanged for virtual currency, with the exchange rate obscuring true cost, not the presence of a currency or of purchases denominated in it. Assign only where the span describes money converted into the currency.
+
+[M_DeceptiveLuxury]  Deceptive Luxury
+
+  Definition:
+    Deceptive Luxury is a game design tactic that makes an item feel rare and exclusive so players will pay more for it, when the rarity was invented by the developer rather than being a real limit. The item's price reflects manufactured scarcity, not genuine value.
+
+  Indicators (each is an instance of this pattern; see R5):
+    - Artificial Scarcity (Hadan et al. 2024): “Patterns that use limited-time offers to manipulate player decisions.” darkpattern.games: “Limited time offers with unnecessary urgency.” [low-level]
+    - Remedy Consumption: is a pattern where players are given a second opportunity to correct
+    a missed purchase of some limited, valuable in-game items. This involves intentional artificial
+    scarcity for these in-game items, which compels players to expend additional effort or incur further
+    costs (compared to the first time) to obtain them. Zhang et al. 2025. [low-level]
+    - Rarity Level (Zhang et al.): in-game items are often designed with varying levels of rarity. For
+    instance, character skins are ranked from B rank to S++ rank, with
+    higher ranks featuring more intricate designs and commanding higher prices [dp-enhancer]. Mention of rarity tied to price, purchase, or manufactured scarcity implies presence of pattern.
+
+  Boundary rules:
+    vs Scarcity without monetization:
+      Deceptive Luxury requires the scarcity to bear on price or purchase. Availability restrictions with no monetary consequence in the span (regional exclusives, location-gated content, low spawn rates) are not Deceptive Luxury
+    vs Gambling and Reward Mania:
+      Assign Gambling and Reward Mania when scarcity comes from the odds of a chance mechanic, treating the low draw rate as the wager and the payment as the cost of attempts rather than the item itself. Assign Deceptive Luxury when scarcity is built directly into the item through artificial limits like time caps, exclusivity, urgency, or dedicated rarity pricing. If a chance mechanic yields an item that also features built-in scarcity, assign both rule sets under R9 because both sources are active. Note that Deceptive Luxury still requires the item's scarcity to directly affect its price or purchase terms.
+
+  Counterexample (does NOT get this label):
+    "after the new update whenever I switch to any of my mythic guns I just start lagging mid game, so many bugs in the game, now I can't use any of my mythic just legendarys and prestige guns, please fix this"
+    Why not:
+      Mention of rarity or tier names (mythic, legendary, S-rank, prestige) is a dp-enhancer, not a low-level indicator, and does not lift to Deceptive Luxury under R5. Require a span tying the rarity to price, purchase, or manufactured scarcity.
+
+[M_RecurringFee]  Recurring Fee
+
+  Definition:
+    Patterns that encourages players to maximize playtime to justify their spending.
+
+  Indicators (each is an instance of this pattern; see R5):
+    - (Alt. def.) darkpattern.games: Involves monthly/yearly subscriptions which encourages the player to play as much as possible to get their money's worth.
+    - Battle passes, MMO-subscriptions [indicators]
+
+[M_Gambling]  Gambling
+
+  Definition:
+    Using real money to participate in a game that involves an element of luck, with the possibility of receiving a prize as a reward.
+
+  Indicators (each is an instance of this pattern; see R5):
+    - Loot Boxes (Hadan 2024, “Gambling / Loot Boxes”): “Patterns that encourages players to spend money on chance-based rewards.” darkpattern.games (“Gambling / Loot Boxes”): “Spending real money to play a game of chance for a reward.” [low-level]
+    - Risk Conversion: offers players an alternative way to achieve their goals, such as obtaining
+    an extremely rare item, by spending a substantial amount of money to circumvent the uncertainties
+    inherent in gambling mechanics. However, the actual amount players spend is significantly higher
+    than if they had opted for gambling mechanics. This pattern specifically targets risk-averse players. Zhang et al. 2025 [low-level]
+    - Bundle Bonus: encourages players to engage in multiple gambling attempts at once rather
+    than a single one. For instance, if a player undertakes 10 in-game lottery activities at once, they
+    receive an additional opportunity for free, incentivizing bulk gambling. . Zhang et al. 2025. [low-level]
+
+  Boundary rules:
+    vs Intermediate Currency:
+      Where real money is converted into in-game currency and that currency is then wagered, assign both Gambling and Intermediate Currency under R9. The intervening currency layer does not nullify Gambling ("using real money" is satisfied by the funding chain), and the wagering does not absorb Intermediate Currency. Assign Gambling alone where the stake is currency earned in-game with no purchase described.
+    vs Reward Mania:
+      Assign Reward Mania when the text describes a chance-based delivery system like gacha, loot boxes, crates, spin wheels, or summons without explicitly mentioning a monetary stake. Assign Gambling only when the text explicitly describes spent money, a purchased stake, or a wager using paid or earned intermediate currency, rather than assuming monetization just because the mechanic usually costs money. When the text contains both the chance-based mechanic and an explicit monetary stake, assign both tags under R9: Gambling for the stake and Reward Mania for the variable reward schedule.
+    vs Pay to Progress:
+      Assign Gambling alone when payment is used internally within a chance mechanic, such as buying another round, retrying a bet, or protecting accumulated winnings from a loss. Assign Pay to Progress additionally only when the payment advances the player outside the wager itself, such as unlocking gated content, restoring general access to the game, or progressing beyond a roadblock.
+
+  Counterexample (does NOT get this label):
+    "used to be fun but loosing interest fast the odds of getting the newer stuff they offer is very slim unless you spend big money been trying for 2 years to get the dragons from pastures what little I spend is not enough gets old fast"
+    Why not:
+      "Odds… very slim unless you spend big money" uses chance language, but the structure is a price gate i.e., money is described as reliably obtaining the item, not as buying more attempts at it. Gambling requires an element of luck present in the span; "odds" in the colloquial sense of "unlikely" does not establish a randomised mechanic. Where payment is the dependable route to the item, code Pay to Progress.
+
+[M_PowerCreep]  Power Creep
+
+  Definition:
+    Patterns that diminishing the value of purchased items over time to drive new purchases.
+
+  Indicators (each is an instance of this pattern; see R5):
+    - (Alt. def.) darkpattern.games: “A permanently purchased item in the game becomes less valuable over time.”
+
+  Boundary rules:
+    vs Incomplete on purchase:
+      Power Creep requires the span to show a purchased item losing value after acquisition, through updates, new releases, or rebalancing. An item that is underpowered or unusable at the point of sale and requires further payment to reach full function is not Power Creep; code Pay to Progress where the further payment buys progress or advantage.
+
+  Counterexample (does NOT get this label):
+    "This game is fun. Everyone sould get it. Three major problems with this game is the acoins are stupid because they are first of all very hard to get but also everything that you can get with them is CRAZY expensive. Second issue is some of the mechs are unfair like one of the newer ones can literally "save" which means that if you think you killed it, it is still alive with all of it's health. Third issue is literally everything is overpriced and way too hard to get. Otherwise it is a good game."
+    Why not:
+      Names a newer item as stronger or unfair, but shows nothing the player already holds losing value. Power Creep requires devaluation of an acquired item through updates, releases, or rebalancing. A complaint that a recent addition is overpowered describes balance between items, not value lost after purchase; the recency qualifier lifts to Power Creep only where it is attached to a capability the player's older holdings are said to no longer have.
+
+[M_WasteAversion]  Waste Aversion
+
+  Definition:
+    Patterns set small differences between in-game currency and item costs, prompting additional currency purchases.
+
+  Indicators (each is an instance of this pattern; see R5):
+    - (Alt. def.) darkpattern.games: “Capped inventory forces you to destroy items or upgrade inventory. Also, having small amounts of left over premium currency.”
+
+  Boundary rules:
+    vs NONE:
+      Assign Waste Aversion when the text explicitly demonstrates stranded, forfeited, or insufficient value. This includes leftover currency caused by misaligned pack prices, lost holdings due to inventory limits, or a specific shortfall below an item's cost. The shortfall or loss must be realized, meaning the text shows the leftover amount, capacity paid for, items sacrificed, or the specific gap to a target, even if the player ultimately declines the purchase. Simply mentioning currency, items, or inventory limits without showing actual wasted value or a concrete shortfall codes NONE.
+
+  Counterexample (does NOT get this label):
+    "Love the game...... But at some point it gets frustrating no daily bonus or side games and i believe when you get to a certain level you shouldnt start merging from the scratch and its frustrating how do i get rid of some baskets that are not needed???? And the pottery level is annoying and time wasting."
+    Why not:
+      Asks how to dispose of unwanted items, but no capacity limit is shown operating: nothing is full, nothing is given up, nothing is bought to make room. Names the holding without the forfeit.
+
+[M_EasyToPurchase]  Easy to Purchase
+
+  Definition:
+    Interface design that reduces the friction or deliberation involved in spending real money, through purchase-by-default options, absent confirmation or refund steps, prompts triggered at the point of insufficient funds, or price presentation that makes an amount appear smaller than it is.
+
+  Indicators (each is an instance of this pattern; see R5):
+    - Anchoring Tricks (Hadan et al. 2024): “Patterns that place inexpensive items next to expensive ones to create the illusion of affordability.” darkpattern.games: “Placing a cheap item next to an expensive item to make it look more affordable.” [low-level]
+    - Accidental Purchases (Hadan et al. 2024): “Patterns that use visual design or default options to deceive players into making unintended purchases.” darkpattern.games: “Making it easy to accidentally spend money with no confirmation or ability to undo or refund the action.” [low-level]
+    - Low Barrier: King et al. 2023 “Default To Purchase”: “instances where the player was directed to purchase in-game items or in-game currency as a default action; if they do not wish to purchase, they must opt-out.” [low-level]
+    - Prompted to Buy: King et al. 2023: “if the player attempts to buy an item with insufficient credit, the user interface displays a prompt for the user to purchase additional in-game currency with real money.” [low-level]
+
+  Boundary rules:
+    vs Purchase solicitation:
+      Assign Easy to Purchase when a buying prompt directly intercepts gameplay, such as pop-ups triggered by insufficient funds or a spent resource, offers that interrupt a session, or prompts that require explicit dismissal to continue. Simply describing high advertising volume without an active interception or removed friction is not sufficient and codes NONE under R2.
+
+  Counterexample (does NOT get this label):
+    "Personally rate 3 * now, but think most people would still enjoy it. / This game used to be really fun & relaxing. Predictable in a good way. You can eventually progress, not being stuck on any level for too long. They didn't extort players for money. I actually *liked* paying for boosts. 5*s. Then in January 2022 it updated n that all changed. Too many events & "offers." It stresses me out & instead of playing it for hours, I avoid it for days. / Still better than most other big match 3 games."
+    Why not:
+      Reports that purchase offers are numerous and stressful, but describes no mechanism by which they reduce friction or deliberation: no default selection to opt out of, no insufficient-funds prompt, no missing confirmation, no misleading price framing. Volume of solicitation is not itself a friction-reducing design; every indicator for this label names a mechanism, and naming "offers" instantiates none of them.
+
+[M_UIMisdirection]  UI Misdirection
+
+  Definition:
+    The user interface (i.e., not the NPC) contains elements designed to purposefully focus attention on specific options, or away from opportunities to opt-out.
+
+  Indicators (each is an instance of this pattern; see R5):
+    - Exciting UI Effect: King et al. 2023: “the use of colors and animation to direct the player’s attention to selected UI elements (such as the ‘buy in-game currency’ button)”; “[the buy button] was attracting more attention than the rest of the screen”; “a pleasing sound effect described as ‘an angelic choir’ and ‘a heavenly sound’ to accompany the appearance of the in-game currency storefront.” [low-level]
+
+  Boundary rules:
+    vs Attention-directing without an opt-out:
+      The definition has two arms and either is sufficient. Assign where the span describes the interface directing attention toward an option: colour, animation, placement, or size drawing the player to a button, offer, or currency purchase. Also assign where the span describes the interface obstructing an opt-out: a close, cancel, skip, or exit control that is absent, hidden, undersized, delayed, or placed where a mis-tap selects the opposite action, or a screen the player must dismiss before continuing.
+    vs UI complaint:
+      A statement that the interface is cluttered, ugly, unintuitive, or badly designed is an evaluation of quality and codes NONE under R2. Assign where the span attributes the design to a purpose the interface serves against the player's intent, whether the reviewer states that purpose ('confusing so you buy stuff') or describes the obstruction itself ('no way to close it').
+
+  Counterexample (does NOT get this label):
+    "I don't play much games. in fact only had candy crash as the only game i have on my phone. but it has become really annoying. the suggestion feature is extremely misguiding and distracting. if you follow the suggestions, you can never finish a game. if you try to ignore the suggestions you loose concentration trying hard not to follow the suggestion. i don't understand why isn't there an option to turn the suggestion off. i am deleting this app/game immediately. i hope you change this."
+    Why not:
+      The UI directs attention to a specific option and offers no way to dismiss it, but nothing in the span connects that direction to spending. UI Misdirection lifts to Monetary under R5, so the attention-direction must bear on a purchase or an opt-out from one.
+
+[M_NeverEndingLure]  Never-Ending Lure
+
+  Definition:
+    The “Never-Ending Lure” pattern is designed to convert non-paying players into paying ones (“First Charge Discount”) and encourage consistent long-term payments (“Accumulating Rewards”).
+
+  Indicators (each is an instance of this pattern; see R5):
+    - First Charge Discount: happens when in-game items or currencies are offered at significantly reduced prices for the player’s first purchase, and then revert to the original higher price for subsequent purchases. This pattern distorts the player’s perception of in-game items’ true value. Zhang et al. 2025.[low-level]
+    - Accumulating Rewards: involves granting privileges, special offers, and rewards to players who spend above certain monetary thresholds. Zhang et al. 2025. [low-level]
+
+  Boundary rules:
+    vs Pay to Win:
+      Unlike Pay to Win, where players directly spend
+      money to gain in-game advantages, this pattern does not emphasize helping players progress faster.
+      Instead, it offers players a special, privileged, and extraordinary status that is visible to other players.
+
+---------------------------------------------------------------------------
+CLASS: SOCIAL
+  Social DPs exploit players’ social connections from the real world and in-game to deceive or manipulate them, thereby putting their social standing and relationships at risk [74, 87].
+---------------------------------------------------------------------------
+
+[S_ForcedFellowship]  Forced Fellowship
+
+  Definition:
+    Forced Fellowship is a game design tactic that turns real friendships into leverage: the game rewards you for pulling friends in, then makes it costly to stop playing because quitting would let those friends down.Design that uses the player's social ties, real or in-game, as the mechanism of recruitment or retention: rewarding the player for bringing others into the game, or making disengagement costly because absence burdens teammates, guildmates, or friends.
+
+  Indicators (each is an instance of this pattern; see R5):
+    - Social Pyramid Scheme (Sousa & Oliveira 2023): “Players are incentivized to invite friends to join the game and are encouraged to continue spreading the invitation to others in their social circle.” Alt (Hadan 2024): “Patterns that reward players for inviting friends.” Alt (Dahlan & Susanty 2022): “Encouraging or sometimes forcing players to invite people to join them in the game to gain in-game incentives or make progress.” darkpattern.games: “You get a bonus for inviting your friends and then they have to invite their friends.” [low-level]
+    - Social Obligation / Guilds (Sousa & Oliveira 2023): “Due to a sense of responsibility towards one's friends, players may feel compelled to play the game even when they would prefer not to.” Alt (Hadan 2024): “Patterns that create a sense of obligation to avoid letting down friends in the game.” darkpattern.games: “To avoid letting down your friends, you are obligated to play when you don't want to.” [low-level]
+
+  Boundary rules:
+    vs Reciprocity:
+      If the player is asked to bring NEW people into the game, code Forced Fellowship
+        (Social Pyramid Scheme). If the player exchanges resources, lives, or favours with
+        people ALREADY playing, code Reciprocity. If the player is described as playing
+        when they'd rather not, so as not to burden others, code Forced Fellowship (Social Obligation).
+    vs Coerced grouping:
+      Where the span shows the player compelled into a group to obtain protection or mechanical advantage against other players, or to obtain rewards with no obligation to those group members described, Forced Fellowship does not apply.
+
+  Counterexample (does NOT get this label):
+    "Nice distraction and my alliance is filled with lovely people!"
+    Why not:
+      Names an in-game social group without describing recruitment pressure or obligation to keep playing; the Social Obligation indicator requires the player be shown playing when they would rather not
+
+[S_FriendSpamImpersonation]  Friend Spam / Impersonation
+
+  Definition:
+    The game employs unsolicited messaging to a player's contact list or social media account.
+
+  Indicators (each is an instance of this pattern; see R5):
+    - Alt (Hadan 2024): “Patterns that send spam to players’ contact lists or social media accounts.”
+    - (Alt. def.) darkpattern.games: “The game sends spam to your contact list or social media account.”
+    - Game uses access to the player’s contact list / social graph [indicators]
+
+  Boundary rules:
+    vs Access Requests:
+      Assign only where something is sent, posted, or the player is prompted to send or post. A request for access to contacts or a social account, a required social login, and progress or saving gated behind either, describe permission sought and not messaging performed, then code NONE.
+    vs Destination of the message:
+      The label attaches to the game acting through the player's own identity, whatever the destination. Content published as the player: a social post, a message to contacts, an invitation sent in their name, or a store review written under their account, assigns Friend Spam / Impersonation. R13 does not exclude it: the act is performed by the installed product using the player's account, not placed by the developer in a third-party surface.
+
+  Counterexample (does NOT get this label):
+    "Only play when I'm bored of my other games. Game is SUPER laggy. No matter what I do, and it's not my phone or internet causing it. Game allows the same person to attack you over and over again, even if you have them blocked on fb. Too many pop ups when you're close to running out of dice. Game wants you to spend money and it's not worth it. Buying cards with in game money just gives you repeat cards (and I've spent over 60 mil in 1 setting.) Over all good concept, but not properly executed."
+    Why not:
+      The player has linked a Facebook account, but the game is never described acting on it: nothing is sent, posted, or solicited. The indicator requires the game to request or exercise access to the contact list; a player-initiated social login is a precondition the player granted, not an instance of the pattern. Assign only where the span describes something the game sent.
+
+  Counterexample (does NOT get this label):
+    "I enjoy it but can only play as guest. As I don't have Facebook I don't use Facebook. So this is a game I want to keep but can't as progress is not saved if you play as guest. please change this. Please make it possible to sign up with email or phone number or something else. Not everyone uses Facebook."
+    Why not:
+      "can only play as guest… progress is not saved if you play as guest"  Facebook required for account persistence, no messaging or posting described. Codes NONE.
+
+[S_Reciprocity]  Reciprocity
+
+  Definition:
+    Patterns that instill a sense of obligation to reciprocate by donating resources to other players.
+
+  Indicators (each is an instance of this pattern; see R5):
+    - (Alt. def.) darkpattern.games: “Feeling obligated to return a favor, share resources, trade an item, etc.”
+
+  Counterexample (does NOT get this label):
+    "I did not expect that this game is so good. Interesting story , beautiful animation, lots of different kind of games on different levels , great teams and possibility to help each other and communicate. Àso, it feels so real, like I am building my own kingdom with my friends and having an awesome and magical journey. I did not find anything negative. 5 stars from me."
+    Why not:
+      Names a social group and a general possibility of mutual help, but no resource-transfer mechanism: nothing is sent, requested, gifted, donated, or exchanged, and no object of the favour is identified. Assign only where the span names the transfer itself (send or ask for lives, gift, donate troops, request help). A team, guild, alliance, or clan named alongside cooperative or communicative play, with no favour mechanism identified, codes NONE under R2.
+
+[S_EncouragesAntiSocialBehavior]  Encourages Anti-Social Behavior
+
+  Definition:
+    Patterns that incentivize players to engage in dishonest or harmful actions to gain an advantage.
+
+  Indicators (each is an instance of this pattern; see R5):
+    - (Alt. def.) darkpattern.games: “The game incentivizes players to lie, cheat, or backstab other players to get ahead.”
+
+  Boundary rules:
+    vs Permitted harm:
+      Design that permits, enables, or fails to prevent players harming one another is not sufficient. Assign only where the span shows a reward, advantage, or incentive flowing to the player who acts harmfully: plunder taken, ranking or progression gained, rewards for deception or betrayal. Statements that developers "allow", "let it happen", or decline to intervene describe absent moderation, not incentive, and code NONE. Where the span carries both the harmful act and the gain it produces for the aggressor, assign the label.
+    vs Reward for gameplay elements:
+      Reward for game play elements defeating, raiding, or taking from another player is ordinary competitive design and codes Competition, not Encourages Anti-Social Behavior. Assign Encourages Anti-Social Behavior where the span describes the conduct as asymmetric or dishonest beyond sanctioned play: stronger players rewarded for attacking weaker ones, bullying, exploiting a mechanic to take from players who cannot respond, deception or betrayal.
+
+  Counterexample (does NOT get this label):
+    "1: The main issue is Network problem. Plz solve this. 2: I'm playing this game for 2 year's. At start it was a very good game, but similarly updates were coming. Every update had one thing that affect a real and good user. 3: It provide the facility of buying bundles, gun skins and other collections only by diamonds. Why not gold. 4: Hacking is also very common in this game. A lot of hackers destroying the real game of a good player. Gold must be used to buy bundles & skins etc.😈😈😈."
+    Why not:
+      Reports of other players hacking, cheating, or using bots describe player conduct, not a game pattern incentivising it. Assign only where the span shows the design rewarding or encouraging dishonest or harmful action.
+
+[S_FearOfMissingOutFOMO]  Fear of Missing Out (FOMO)
+
+  Definition:
+    Players are pressured to continue playing the game by the fear of missing out on rewards or falling behind other players.
+
+  Indicators (each is an instance of this pattern; see R5):
+    - (Alt. def.) (Hadan 2024): “Patterns that induce anxiety that players will miss exciting or important events if they stop playing.”
+    - (Alt. def.) darkpattern.games: “If you stop playing you'll miss out on something or be left behind and unable to catch up.”
+
+[S_Competition]  Competition
+
+  Definition:
+    Patterns that make players against each other in competition.
+
+  Indicators (each is an instance of this pattern; see R5):
+    - (Alt. def.) darkpattern.games: “The game makes you compete against other players.”
+
+---------------------------------------------------------------------------
+CLASS: PSYCHOLOGICAL
+  Psychological DPs and practices manipulate players’ minds, emotions, and cognition, inducing them to make poor decisions through psychological tricks [74].
+---------------------------------------------------------------------------
+
+[P_EasyToGetHardToLose]  Easy to Get, Hard to Lose
+
+  Definition:
+    Design in which accumulated investment, time played, money spent, progress attained, or partially completed goals, raises the cost of leaving. Entry is low-friction; exit entails forfeiting value the player already holds.
+
+  Indicators (each is an instance of this pattern; see R5):
+    - Invested (Endowed) Value (Sousa & Oliveira 2023): “Having invested significant time and money into advancing one's status in the game, it can be challenging to abandon those gains.” Alt (Hadan 2024): “Patterns that make it hard for players to discard investments in time and money.” darkpattern.games (“Invested / Endowed Value”): “Having already spent time and money to improve your status in the game, it's difficult to throw it away.” [low-level]
+    - Endowed Progress (Hadan et al. 2024, “Badges / Endowed Progress”): “Patterns that discourage players from abandoning partially completed goals.” darkpattern.games (“Badges / Endowed Progress”): “Reluctancy to abandon a partially completed goal, even one forced upon the player.” [low-level]
+    - Try now, Pay later (Zhang et. al): This pattern offers players the chance to initially try premium experiences,
+    powerful items, or privileges, with payment required at a later stage. [dp-combo]
+
+  Counterexample (does NOT get this label):
+    "I got a new phone and I synced both phone and now my last war account is missing.... they want me to start over from scratch when I was a level 23... I want my old account back but I don't know how to get it. After contacting the developer to get my account back, providing screenshots of me paying from the email that was linked and so on... I will never plat another game from this developer or any other affiliate... I put a couple grand into the account. they really didn't care about my recovery"
+    Why not:
+      Assign only where the span shows accumulated investment operating on the player's choice to keep playing or to leave: reluctance to quit, difficulty abandoning progress, or a partially completed goal pulling the player back. Reporting a sum spent, a level reached, or value lost is not sufficient. Where investment is described as already forfeited and the player is disengaging, assign NONE.
+
+[P_CompleteTheCollection]  Complete the Collection
+
+  Definition:
+    The compulsion to acquire all the items, achievements, or hidden features in a game.
+
+  Indicators (each is an instance of this pattern; see R5):
+    - Collection screens emphasizing unowned items over achieved ones [indicators]
+    - (Alt. def.) (Hadan 2024): “Patterns that capitalize on players’ strong desire to achieve in-game collections and achievements.”
+    - (Alt. def.) (Zhang et al. 2025): “drives players to feel compelled to acquire all in-game items, achievements, or myths (secret achievements for the player to discover).”
+    - (Alt. def.) darkpattern.games: “The urge to collect all the items, achievements or secrets in a game.”
+
+[P_IllusionOfControl]  Illusion of Control
+
+  Definition:
+    Patterns that deceive players about their skill level to encourage more gameplay.
+
+  Indicators (each is an instance of this pattern; see R5):
+    - (Alt. def.) darkpattern.games: “The game cheats or hides information to make you think you're better than you actually are.”
+
+  Boundary rules:
+    vs Alleged rigging:
+      Assign where the span asserts that the game conceals or manipulates the determination of outcomes, a non-random deal, a fixed win ratio, engineered near-misses, matchmaking or difficulty tuned to a hidden schedule, whether the deception is framed as being about the player's skill or about the game's odds. Do not assign from an unlucky or losing run alone, or from a general accusation of unfairness with no mechanism described in the span. Loss streaks also encourage more gameplay.
+    vs Optimism and Frequency Biases:
+      Where the span asserts that the game determines or tunes outcomes: a non-random deal, a fixed win ratio, difficulty or matchmaking on a hidden schedule, code Illusion of Control. Where the span describes the player's perception of frequency: near-wins felt as frequent, a run of almost-successes, a sense that a win is imminent, code Optimism and Frequency Biases. Engineered near-misses commonly carry both: the alleged design (IoC) and the perceptual effect it produces (O&FB). Assign both under R9 only where the span carries the manipulation claim and the frequency perception; a near-miss reported without any claim of manipulation is O&FB alone.
+
+  Counterexample (does NOT get this label):
+    "I spent almost $100 on in game currency, bet minimum bets the entire time, and i lost my money and smashed my phone because I didn't win a SINGLE free game and I was broke in 20 min. Whats the point in getting this if your NEVER going to win.."
+    Why not:
+      "didn't win a SINGLE free game" reports a losing run, not a misrepresented skill level or concealed information; no fixed ratio is asserted, so the rule from the coins review doesn't reach it.
+
+  Counterexample (does NOT get this label):
+    "There is a lot to be said about why this deserves zero stars. There are constant pop ups that get in the way. Also, the game only seems to reward you if you stop playing for weeks at a time. When you come back, you will get enough from a chest to play again. but if you keep playing for a few days, that amount dwindles to nothing. Some consistency would be nice."
+    Why not:
+      Chest payouts scaled to time away is a resource allocation rule, not a claim about outcomes of play. Illusion of Control requires the game to misrepresent the player's skill or conceal how results are determined; nothing here is hidden: the reviewer states the rule plainly, and the mechanic discourages rather than encourages continued play. Codes Playing by Appointment for the schedule imposed.
+
+[P_AestheticManipulation]  Aesthetic Manipulation
+
+  Definition:
+    The use of deceitful questions or manipulation of emotions and subconscious desires, mainly based on aesthetical game elements.
+
+  Indicators (each is an instance of this pattern; see R5):
+    - (Alt. def.) (Zhang et al. 2025): “involves using misleading questions or exploiting emotional and subconscious desires to influence player behaviour.”
+    - (Alt. def.) darkpattern.games : “Trick questions or toying with emotions or our subconscious desires.”
+    - (Alt. def.) (Hadan 2024): “Patterns that subtly influence players’ aesthetic preferences through text, graphics, or sounds.”
+    - Frequently enhanced with "cuteness/kawaii" where aesthetically pleasing characters / elements are used to influence player behaviour.
+
+  Boundary rules:
+    vs UI Misdirection:
+      Where the deception is in what the interface says: misleading or ambiguous wording, a question whose phrasing obscures what it does, headline figures read as actual figures, code Aesthetic Manipulation ("deceitful questions", text). Where the deception is in where the interface puts things: attention drawn to a selected element, an opt-out or exit from a purchase is hard to reach or routed elsewhere, a control that acts differently from its position, code UI Misdirection. A single prompt can carry both under R9: misleading copy on a button that is also the default.
+    vs Undisclosed Purchase terms:
+      Assign Aesthetic Manipulation when a material term of a purchase is completely omitted before the sale and only revealed afterward, such as post-purchase expiration dates, hidden auto-renewals, or undisclosed usage restrictions. The core violation is the total withholding of information at the point of sale, relying on what the offer hides rather than the restriction itself. If the term is fully disclosed beforehand, it is not Aesthetic Manipulation. However, if the term is stated before purchase but hidden or obscured through fine print, displaced disclosures, or buried defaults, the violation lies in its placement and codes UI Misdirection.
+
+  Counterexample (does NOT get this label):
+    "Devs really hate Rin I guess. We get Sakura and Saber faces yearly but we're lucky if we get a Rin-face after years. Ishtar/Ereshkigal were the whole reason I started playing. Get them to bond 15 and there's no reason to keep playing. To top it off, summer servants have been so toned down that we're lucky if they have a swimsuit. We now get random outfits for most of their ascensions. Global players' opinions don't matter. We don't get surveys. The story is stalling. Rates/pity are terrible."
+    Why not:
+      Names character appeal as the reason for starting, seasonal swimsuit variants, and per-ascension outfits: the cuteness/kawaii enhancer throughout. Codes NONE: the span reports the reviewer's own preference and complains the aesthetic offering has been reduced. Aesthetic Manipulation requires the design deploying aesthetics to influence behaviour, not a reviewer stating what they find appealing.
+
+[P_OptimismAndFrequencyBiases]  Optimism and Frequency Biases
+
+  Definition:
+    Patterns that exploit cognitive biases and clustering illusions to overestimate event frequencies (e.g., winning streaks).
+
+  Indicators (each is an instance of this pattern; see R5):
+    - Frequently enhanced by “The Power of NPCs” demonstrating gambling with free trials
+    - darkpattern.games: “Overestimating the frequency of something because we've seen it recently or memorably.”
+
+[P_RewardMania]  Reward Mania
+
+  Definition:
+    Reward structures in which the mechanism of delivery, its complexity, its unpredictability, or the out-of-game activity it demands, is what sustains engagement, rather than the value of the reward itself. The player invests disproportionate cognitive effort, repeated attempts, or external activity in pursuit of the reward system.
+
+  Indicators (each is an instance of this pattern; see R5):
+    - Overloading (Zhang et al.):occurs in in-game mechanisms, such as reward systems or gambling, that are
+    designed to be overly complex, thereby enticing players to invest significant effort in understanding
+    and engaging with them. [low-level]
+    - Sycophant (Zhang et al.): “Sycophant” refers to the use of rewards within the game to encourage players to allocate
+    additional attention and resources to social activities outside of the game, such as following the
+    game’s social media accounts or participating in related online communities. [low-level]
+    - Variable Rewards (Sousa & Oliveira 2023): “Irregular or unexpected rewards have a greater potential to generate addiction compared to rewards provided on a predictable schedule.” Alt (Hadan 2024): “Patterns that offer unpredictable or random rewards to enhance game addiction.” darkpattern.games: “Unpredictable or random rewards are more addictive than a predictable schedule.” [low-level]
+    - Gacha mechanics like pulls, rolls, banners. [indicators]
+
+  Boundary rules:
+    vs Alleged rigging:
+      An assertion that outcomes are rigged, fixed, or predetermined does not nullify Reward Mania. The Variable Rewards indicator concerns the delivery schedule as presented to and experienced by the player; a reviewer's claim that the randomness is fake is a claim about the mechanism behind it, and codes Illusion of Control. Where the span carries both, assign both under R9.
+    vs Gambling:
+      Gambling requires a wager. Reward Mania does not: it covers the delivery of rewards, not their purchase. Where the span describes only unpredictable or repeated delivery with no stake described, assign Reward Mania alone.
+    vs Reward described only by its value:
+      Assign where the span describes how rewards are delivered: unpredictable outcomes, repeated attempts needed to obtain a specific item, duplicate or unwanted drops from a randomised pool, or complexity in how the reward system works. A complaint that a reward is too small, too slow, or not worth the effort describes the reward's value rather than its delivery and does not assign Reward Mania on its own.
+
+---------------------------------------------------------------------------
+CLASS: TECHNICAL
+  The Technical pattern, deceives users or players by obscuring or misrepresenting the technical aspects of the game application.
+---------------------------------------------------------------------------
+
+[Tech_FragmentedDownloads]  Fragmented Downloads
+
+  Definition:
+    “Fragmented Downloads” are characterized by designs that obscure the true storage requirements of the game until the game starts. This is deceptive because it targets mobile users who are cautious about their device’s storage capacity and foments a space monopoly by the app against competitors.
+
+  Indicators (each is an instance of this pattern; see R5):
+    - Small advertised App Store size vs. large mandatory in-game download [indicators]
+    - “Download wall” blocking progress past the tutorial [indicators]
+    - Missing animations / assets with in-place “downloading” prompts when packages are declined [indicators]
+
+  Counterexample (does NOT get this label):
+    "I like that some levels are challenging, while some are easy. It makes me want to play all the more but, having to update the game constantly is tiring especially if I just want to play offline. I've been trying to update it for a while now but, it just won't work. Missed several team tournaments because of this."
+    Why not:
+      "having to update the game constantly… I just want to play offline" describes recurring store updates, not obscured storage requirements. Fragmented Downloads requires an indicator to be present: advertised size below actual mandatory download, a download wall gating progress, or in-place download prompts for missing assets. Frequency of updates, or updates failing, does not lift to the label.
+
+===========================================================================
+
+OUTPUT
+
+Return one JSON object and nothing else. No prose before it, no prose after it, no markdown
+code fences. The keys must appear in exactly this order:
+
+{
+  "analysis": "<Work out what the review is actually describing, before you choose any
+                label. The mechanics the reviewer names outright; the mechanics they
+                describe without naming; what their account of their own play implies
+                about how the game is built. Write this FIRST.>",
+  "labels": [
+    {
+      "label": "<one code from the list below>",
+      "span": "<the exact words from the review that carry this mechanic, copied
+                character for character from the review text>",
+      "rule_applied": "<the codebook material this label rests on: the indicator the span
+                        matches, the boundary rule that settled it, or the word
+                        definition if the span meets the canonical definition directly>",
+      "rationale": "<one line: why this span satisfies this label. If the mechanic is
+                     implied rather than stated, say what the span implies and how.>"
+    }
+  ],
+  "invoked_web_search": <true|false>,
+  "search_query": <null or the query string>,
+  "search_result": <null or a short statement of what the search established>
+}
+
+Constraints:
+  - "labels" may contain only these 29 codes, spelled exactly:
+
+    M_DeceptiveLuxury
+    M_EasyToPurchase
+    M_Gambling
+    M_IntermediateCurrency
+    M_NeverEndingLure
+    M_PayToProgress
+    M_PowerCreep
+    M_RecurringFee
+    M_UIMisdirection
+    M_WasteAversion
+    P_AestheticManipulation
+    P_CompleteTheCollection
+    P_EasyToGetHardToLose
+    P_IllusionOfControl
+    P_OptimismAndFrequencyBiases
+    P_RewardMania
+    S_Competition
+    S_EncouragesAntiSocialBehavior
+    S_FearOfMissingOutFOMO
+    S_ForcedFellowship
+    S_FriendSpamImpersonation
+    S_Reciprocity
+    T_Advertisement
+    T_DailyRewards
+    T_Grinding
+    T_InfiniteTreadmill
+    T_MandatoryMarathon
+    T_PlayingByAppointment
+    Tech_FragmentedDownloads
+
+  - An empty "labels" array means NONE (R6). Never write the string "None" as a label.
+    Never invent a code that is not in the list.
+  - Each label appears at most once (R1), no matter how many times the review mentions it.
+  - Every label carries a span, and the span is a verbatim substring of the review text
+    (R3). A mechanic can be implied rather than stated; the span is then the exact words
+    that carry the implication, and "rationale" explains the step.
+  - Write "analysis" first and let it do the reasoning. Do not decide the labels and then
+    write a justification for them.
+
+===========================================================================
+
+EXAMPLES
+
+Review:
+  "unless you pay real money you dont get to finish alot of the albums and customer service is a joke they make it almost impossible to get all the golds they make sure you cant get them all so you dont finish unless you buy the wilds"
+
+Output:
+  {
+    "analysis": "The reviewer is describing sticker album completion in a collection game. Three things are being described at once. Progress through the albums is gated behind real money: finishing is stated to be impossible without paying. The albums themselves are a set the player is working to complete, and the reviewer frames not finishing as the harm. And the golds are made scarce by the developer, with a purchasable item, the wilds, offered as the way to obtain them anyway. I do not know from the review alone what golds and wilds are as game items, so that needs resolving before the third reading can be checked.",
+    "labels": [
+      {
+        "label": "M_PayToProgress",
+        "span": "unless you pay real money you dont get to finish alot of the albums",
+        "rule_applied": "definition",
+        "rationale": "Progress through the albums is available on payment and stated to be unavailable without it."
+      },
+      {
+        "label": "P_CompleteTheCollection",
+        "span": "they make it almost impossible to get all the golds",
+        "rule_applied": "definition",
+        "rationale": "The player is working toward a complete set and the review frames the missing pieces as what keeps them playing and paying."
+      },
+      {
+        "label": "M_DeceptiveLuxury",
+        "span": "they make sure you cant get them all so you dont finish unless you buy the wilds",
+        "rule_applied": "Remedy Consumption",
+        "rationale": "The golds are made deliberately unobtainable and the wilds are sold as a second route to the same limited items, which is Remedy Consumption."
+      }
+    ],
+    "invoked_web_search": true,
+    "search_query": "Monopoly Go gold stickers wild stickers",
+    "search_result": "Golds are restricted from ordinary trading and wilds convert into any missing sticker and are sold in bundles."
+  }
+
+---------------------------------------------------------------------------
+
+Review:
+  "The game itself seems to be good but after one day of play I decided to uninstall it. The reasons? 1. The controls in general are quite slow, even when you set sensibilities to its high 2. The matching times takes forever. I have been waiting for 5 min without starting a match. 3. The size of the maps in Royale are HUGE. Even if you choose the smallest map it takes forever to engage with enemies since the maps are that big."
+
+Output:
+  {
+    "analysis": "Wait to Play requires a wait the game imposes as a gate like energy or lives regenerating, build and upgrade timers, cooldowns, cooldown-skip offers. Waits arising from the operation of the service rather than from a designed gate like matchmaking and queue times, loading, downloads, server latency, lag are not Playing by Appointment, however long the span says they last.",
+    "labels": [],
+    "invoked_web_search": false,
+    "search_query": null,
+    "search_result": null
+  }

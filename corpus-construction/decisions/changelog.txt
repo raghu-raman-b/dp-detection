@@ -1,0 +1,916 @@
+adjudication applied 20260822-133651
+snapshot: /home/prex_san/Documents/dp-detection/corpus-construction/labeled_data_pre_adjudication/20260822-133651
+decisions: /home/prex_san/Documents/dp-detection/corpus-construction/decisions/decisions.jsonl
+upheld 497, changed 114, skipped 0
+
+random.jsonl:12  64eb239e-ee58-4e4f-9ba8-11e533ac2f9e
+    before : ['P_EasyToGetHardToLose']
+    after  : ['NONE']
+    removed: ['P_EasyToGetHardToLose']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+random.jsonl:37  95ddadb3-82cd-4042-8a51-cf8b3ed164c2
+    before : ['P_RewardMania']
+    after  : ['NONE']
+    removed: ['P_RewardMania']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+random.jsonl:43  932e7b35-3e7b-4631-b285-137efdbbf10c
+    before : ['M_Gambling', 'P_RewardMania']
+    after  : ['P_RewardMania']
+    removed: ['M_Gambling']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+random.jsonl:50  b06927cb-5b00-4a77-ac6b-bfb034c82ad2
+    before : ['T_Grinding', 'M_PayToProgress', 'M_IntermediateCurrency']
+    after  : ['T_Grinding', 'M_PayToProgress']
+    removed: ['M_IntermediateCurrency']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+random.jsonl:67  8989e02d-de3d-4e98-8e54-bf5c973b17fc
+    before : ['NONE']
+    after  : ['S_Reciprocity']
+    removed: -
+    added  : ['S_Reciprocity']
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+random.jsonl:82  201672d6-579d-44c3-a1df-55a3f8182969
+    before : ['T_PlayingByAppointment', 'T_DailyRewards']
+    after  : ['T_PlayingByAppointment']
+    removed: ['T_DailyRewards']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+random.jsonl:88  fa8a7068-ea26-4411-aabf-51e9c71cd000
+    before : ['M_PayToProgress', 'S_Competition']
+    after  : ['S_Competition']
+    removed: ['M_PayToProgress']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+random.jsonl:93  6660a737-d91c-4308-8d22-70a8966cbcad
+    before : ['T_Grinding', 'T_Advertisement', 'M_PayToProgress', 'M_EasyToPurchase']
+    after  : ['T_Grinding', 'T_Advertisement', 'M_PayToProgress']
+    removed: ['M_EasyToPurchase']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=0  contract_errors=0
+    note   : -
+
+random.jsonl:98  3d49bd3b-97f1-433d-9320-a54482230cf7
+    before : ['T_Advertisement']
+    after  : ['NONE']
+    removed: ['T_Advertisement']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+random.jsonl:108  ca58ab5e-d48a-4825-9466-c658f4181913
+    before : ['T_Grinding', 'M_EasyToPurchase', 'P_IllusionOfControl', 'P_OptimismAndFrequencyBiases']
+    after  : ['T_Grinding', 'P_IllusionOfControl', 'P_OptimismAndFrequencyBiases']
+    removed: ['M_EasyToPurchase']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+random.jsonl:112  71e6a514-2f77-40d4-9a65-8e7cf9d8b15a
+    before : ['NONE']
+    after  : ['S_Competition']
+    removed: -
+    added  : ['S_Competition']
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+random.jsonl:119  ba770afd-a279-4357-a430-bfd2b1a61095
+    before : ['M_PayToProgress', 'M_IntermediateCurrency', 'S_Competition', 'P_RewardMania']
+    after  : ['M_PayToProgress', 'S_Competition', 'P_RewardMania']
+    removed: ['M_IntermediateCurrency']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+random.jsonl:125  4f02baf0-78f0-49ff-95dd-2615d274d41f
+    before : ['P_IllusionOfControl']
+    after  : ['NONE']
+    removed: ['P_IllusionOfControl']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+random.jsonl:129  689a44b0-6773-4d74-9c96-212af71b943e
+    before : ['T_Grinding']
+    after  : ['NONE']
+    removed: ['T_Grinding']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+random.jsonl:131  23593c7d-c699-4800-9382-a6b62b0f9baa
+    before : ['M_PayToProgress', 'M_IntermediateCurrency']
+    after  : ['M_PayToProgress']
+    removed: ['M_IntermediateCurrency']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+random.jsonl:136  9bcde9d9-c88a-45bf-888c-7c72f86d816e
+    before : ['T_Grinding']
+    after  : ['NONE']
+    removed: ['T_Grinding']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+random.jsonl:155  4c228163-ef98-4de8-89f3-b0287b6b626f
+    before : ['M_Gambling', 'M_EasyToPurchase', 'S_Competition', 'P_CompleteTheCollection', 'P_RewardMania']
+    after  : ['M_Gambling', 'M_EasyToPurchase', 'S_Competition', 'P_RewardMania']
+    removed: ['P_CompleteTheCollection']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+random.jsonl:156  c5415e92-4208-4cdd-b745-bf838625d99c
+    before : ['T_Advertisement', 'M_PayToProgress']
+    after  : ['T_Advertisement']
+    removed: ['M_PayToProgress']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+random.jsonl:171  0bc09fc3-6436-4a24-855e-0fdc56887918
+    before : ['M_PayToProgress', 'M_RecurringFee', 'S_Reciprocity']
+    after  : ['M_RecurringFee', 'S_Reciprocity']
+    removed: ['M_PayToProgress']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+random.jsonl:175  6c3b0d94-e8e9-489d-9f2e-7255e4693048
+    before : ['P_RewardMania']
+    after  : ['NONE']
+    removed: ['P_RewardMania']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+random.jsonl:192  fdfb3f26-0573-4cac-a0e2-ea5571bb5ad2
+    before : ['NONE']
+    after  : ['T_Grinding']
+    removed: -
+    added  : ['T_Grinding']
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+random.jsonl:207  fafa9f4d-6bf8-4204-a4b8-b2746d4e2165
+    before : ['NONE']
+    after  : ['M_IntermediateCurrency']
+    removed: -
+    added  : ['M_IntermediateCurrency']
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+random.jsonl:209  e01c9ca3-6f2b-48b7-9efa-29730c872c74
+    before : ['M_PayToProgress', 'M_EasyToPurchase', 'P_RewardMania']
+    after  : ['M_EasyToPurchase', 'P_RewardMania']
+    removed: ['M_PayToProgress']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+random.jsonl:210  21021f9a-e106-4e51-b01d-3fe4a4c941fc
+    before : ['T_PlayingByAppointment', 'P_RewardMania']
+    after  : ['T_PlayingByAppointment']
+    removed: ['P_RewardMania']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+random.jsonl:222  039f69e1-0fd5-4d57-b784-467f5cadbf9c
+    before : ['T_PlayingByAppointment', 'T_Grinding']
+    after  : ['T_PlayingByAppointment']
+    removed: ['T_Grinding']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+random.jsonl:223  00254dff-2a4f-4a76-8344-a897e51b270e
+    before : ['T_PlayingByAppointment', 'M_PayToProgress']
+    after  : ['M_PayToProgress']
+    removed: ['T_PlayingByAppointment']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+random.jsonl:224  a39ea8b5-2c69-4bf5-b81e-741d04e1ad8e
+    before : ['T_Grinding', 'M_PayToProgress', 'M_RecurringFee', 'S_Competition']
+    after  : ['M_RecurringFee']
+    removed: ['M_PayToProgress', 'S_Competition', 'T_Grinding']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+random.jsonl:227  e98165f8-f214-4471-9150-1ec15ab7ab03
+    before : ['T_PlayingByAppointment', 'M_PayToProgress', 'M_IntermediateCurrency', 'M_RecurringFee']
+    after  : ['M_PayToProgress', 'M_IntermediateCurrency', 'M_RecurringFee']
+    removed: ['T_PlayingByAppointment']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+random.jsonl:231  a3376f46-6e7f-41f3-942a-d8013defbe15
+    before : ['T_Grinding', 'P_RewardMania']
+    after  : ['P_RewardMania']
+    removed: ['T_Grinding']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+random.jsonl:253  4338e73b-012b-4e1d-9541-327bcac7d19d
+    before : ['T_PlayingByAppointment', 'M_PayToProgress', 'P_CompleteTheCollection']
+    after  : ['T_PlayingByAppointment', 'P_CompleteTheCollection']
+    removed: ['M_PayToProgress']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+random.jsonl:256  2a47018e-91ee-4951-958d-c05cc28f4587
+    before : ['M_IntermediateCurrency', 'M_Gambling', 'P_IllusionOfControl', 'P_RewardMania']
+    after  : ['M_Gambling', 'P_IllusionOfControl', 'P_RewardMania']
+    removed: ['M_IntermediateCurrency']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+random.jsonl:260  432d7a64-e295-4aed-bb30-8ae44f9ddd45
+    before : ['M_PayToProgress', 'M_IntermediateCurrency', 'M_Gambling']
+    after  : ['M_IntermediateCurrency', 'M_Gambling']
+    removed: ['M_PayToProgress']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+random.jsonl:265  39ce0b69-664f-4516-a675-ee02b99f5de5
+    before : ['NONE']
+    after  : ['S_Competition']
+    removed: -
+    added  : ['S_Competition']
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+random.jsonl:268  c1a9f304-9cc1-4eb5-84f0-7988297fe423
+    before : ['M_Gambling', 'P_RewardMania']
+    after  : ['M_Gambling']
+    removed: ['P_RewardMania']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+random.jsonl:269  2d02f707-8956-411f-8a4b-9a811690713c
+    before : ['T_Advertisement', 'M_Gambling', 'P_IllusionOfControl']
+    after  : ['T_Advertisement', 'M_Gambling']
+    removed: ['P_IllusionOfControl']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+random.jsonl:274  6ccb26a7-01e3-41a3-ba1a-bddba2063257
+    before : ['M_PayToProgress']
+    after  : ['M_Gambling']
+    removed: ['M_PayToProgress']
+    added  : ['M_Gambling']
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+random.jsonl:277  44ffac0f-4a9a-4d35-9229-bd04c2899a0f
+    before : ['T_PlayingByAppointment']
+    after  : ['NONE']
+    removed: ['T_PlayingByAppointment']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+random.jsonl:278  6c5d7d04-fdd4-470b-b066-19b7577ab1eb
+    before : ['M_DeceptiveLuxury', 'P_RewardMania']
+    after  : ['P_RewardMania']
+    removed: ['M_DeceptiveLuxury']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+random.jsonl:281  3c46f5e0-6091-43dc-94a0-e3af3259a63d
+    before : ['T_PlayingByAppointment', 'T_DailyRewards', 'M_PayToProgress', 'M_WasteAversion']
+    after  : ['T_DailyRewards', 'M_PayToProgress', 'M_WasteAversion']
+    removed: ['T_PlayingByAppointment']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+random.jsonl:294  5731c92c-86c2-4e00-adf2-8ed16079f93f
+    before : ['T_Advertisement']
+    after  : ['NONE']
+    removed: ['T_Advertisement']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+random.jsonl:297  4a0aeff6-812c-4e8b-9daf-f80309fe976f
+    before : ['M_PayToProgress', 'P_IllusionOfControl']
+    after  : ['M_PayToProgress']
+    removed: ['P_IllusionOfControl']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+targeted.jsonl:3  e40670bf-b49c-4be5-82a7-90a7f5a043a6
+    before : ['P_IllusionOfControl']
+    after  : ['S_Competition']
+    removed: ['P_IllusionOfControl']
+    added  : ['S_Competition']
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+targeted.jsonl:4  237222c6-fe6d-447f-a253-21b9e6d5e4b8
+    before : ['P_CompleteTheCollection', 'P_AestheticManipulation']
+    after  : ['P_AestheticManipulation']
+    removed: ['P_CompleteTheCollection']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+targeted.jsonl:5  6877b6bf-e9e0-4c86-a196-e7c85a51529f
+    before : ['M_UIMisdirection', 'S_Competition']
+    after  : ['M_UIMisdirection']
+    removed: ['S_Competition']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+targeted.jsonl:6  381d6aa4-f76b-48a9-b135-41dc2eba05d7
+    before : ['NONE']
+    after  : ['M_PayToProgress']
+    removed: -
+    added  : ['M_PayToProgress']
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+targeted.jsonl:7  86de0e5d-8187-4dfd-b8c3-05e5b271d89e
+    before : ['T_Advertisement', 'P_IllusionOfControl']
+    after  : ['T_Advertisement']
+    removed: ['P_IllusionOfControl']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+targeted.jsonl:12  cbcde992-08aa-4bfb-a653-a944e4b733aa
+    before : ['M_EasyToPurchase', 'M_UIMisdirection']
+    after  : ['M_UIMisdirection']
+    removed: ['M_EasyToPurchase']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+targeted.jsonl:17  029f43ac-6d1b-4526-bc71-f6dcedfc1a40
+    before : ['T_Advertisement', 'M_PayToProgress', 'M_EasyToPurchase']
+    after  : ['T_Advertisement', 'M_EasyToPurchase']
+    removed: ['M_PayToProgress']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=1
+    note   : -
+
+targeted.jsonl:18  2de52e7e-5a10-443e-bc49-22debed5a9f6
+    before : ['P_IllusionOfControl']
+    after  : ['M_PayToProgress', 'S_Competition']
+    removed: ['P_IllusionOfControl']
+    added  : ['M_PayToProgress', 'S_Competition']
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+targeted.jsonl:34  d64287d3-4179-440e-81b1-8aa1e5c20d7c
+    before : ['T_PlayingByAppointment', 'T_InfiniteTreadmill', 'P_CompleteTheCollection', 'P_RewardMania']
+    after  : ['T_PlayingByAppointment', 'T_InfiniteTreadmill', 'P_CompleteTheCollection']
+    removed: ['P_RewardMania']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+targeted.jsonl:37  b93c432d-19c0-4c6c-a2d4-bb9b21a436f3
+    before : ['M_Gambling', 'P_CompleteTheCollection', 'P_AestheticManipulation', 'P_RewardMania']
+    after  : ['P_CompleteTheCollection', 'P_AestheticManipulation', 'P_RewardMania']
+    removed: ['M_Gambling']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+targeted.jsonl:38  2414fb3d-38e2-4e14-a8af-925f764d2abd
+    before : ['NONE']
+    after  : ['S_Competition']
+    removed: -
+    added  : ['S_Competition']
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+targeted.jsonl:39  49a53e7c-0564-46c6-995f-1d8bc418c80a
+    before : ['P_CompleteTheCollection', 'P_RewardMania']
+    after  : ['P_CompleteTheCollection']
+    removed: ['P_RewardMania']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+targeted.jsonl:41  1214c7f9-0b70-49cb-9106-8910e6cf0c72
+    before : ['M_PayToProgress', 'P_CompleteTheCollection', 'P_RewardMania']
+    after  : ['M_PayToProgress', 'P_CompleteTheCollection']
+    removed: ['P_RewardMania']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+targeted.jsonl:42  22a4d473-12bd-4528-b142-3aaf8990eef2
+    before : ['NONE']
+    after  : ['S_Competition']
+    removed: -
+    added  : ['S_Competition']
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+targeted.jsonl:47  b6745663-5486-4e5b-9066-8a889055d8bc
+    before : ['M_PayToProgress', 'M_IntermediateCurrency', 'P_CompleteTheCollection']
+    after  : ['M_IntermediateCurrency']
+    removed: ['M_PayToProgress', 'P_CompleteTheCollection']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+targeted.jsonl:48  51f0cc7f-6032-4a17-b23f-a32b34efdf81
+    before : ['M_PayToProgress', 'P_IllusionOfControl']
+    after  : ['M_PayToProgress']
+    removed: ['P_IllusionOfControl']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+targeted.jsonl:50  add7ee47-c58d-4032-9e8a-eb88407ad5c3
+    before : ['M_PayToProgress', 'P_CompleteTheCollection']
+    after  : ['M_PayToProgress']
+    removed: ['P_CompleteTheCollection']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+targeted.jsonl:53  3db5f780-e8e1-44a1-b538-63120ac046a6
+    before : ['M_WasteAversion']
+    after  : ['NONE']
+    removed: ['M_WasteAversion']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+targeted.jsonl:56  3e3fa1a1-0d32-4f50-8bbd-f4c47b1bab01
+    before : ['P_CompleteTheCollection', 'P_RewardMania']
+    after  : ['NONE']
+    removed: ['P_CompleteTheCollection', 'P_RewardMania']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+targeted.jsonl:67  2471db11-2c61-415a-8af4-33b80a05c759
+    before : ['T_PlayingByAppointment', 'T_Grinding', 'M_PowerCreep']
+    after  : ['M_PowerCreep']
+    removed: ['T_Grinding', 'T_PlayingByAppointment']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+targeted.jsonl:71  727cc804-9d4b-48ef-8774-2799a2a8de08
+    before : ['M_PayToProgress', 'M_Gambling', 'M_PowerCreep', 'P_RewardMania']
+    after  : ['M_PayToProgress', 'M_PowerCreep', 'P_RewardMania']
+    removed: ['M_Gambling']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+targeted.jsonl:76  ce92d6ba-cc5f-40a1-bc8e-27a82fa0a8f8
+    before : ['T_DailyRewards', 'T_Advertisement']
+    after  : ['T_Advertisement']
+    removed: ['T_DailyRewards']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+targeted.jsonl:85  7732d254-0a39-4614-acf4-e67840e14b76
+    before : ['NONE']
+    after  : ['M_IntermediateCurrency']
+    removed: -
+    added  : ['M_IntermediateCurrency']
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+targeted.jsonl:96  2c22245d-b227-4e37-857e-5621d6180436
+    before : ['S_Competition']
+    after  : ['NONE']
+    removed: ['S_Competition']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+targeted.jsonl:98  61f112a4-95e0-4f20-8fbc-51d0affb59cc
+    before : ['S_EncouragesAntiSocialBehavior', 'S_Competition']
+    after  : ['NONE']
+    removed: ['S_Competition', 'S_EncouragesAntiSocialBehavior']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+targeted.jsonl:100  ef91e19d-3bcc-46ef-8044-a36f2e3c1924
+    before : ['T_DailyRewards']
+    after  : ['NONE']
+    removed: ['T_DailyRewards']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+targeted.jsonl:101  c63003ef-dcdd-4ef2-a54e-0c9b0dfe931a
+    before : ['T_DailyRewards', 'T_Grinding', 'P_RewardMania']
+    after  : ['T_Grinding']
+    removed: ['P_RewardMania', 'T_DailyRewards']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+targeted.jsonl:102  e378d996-c52a-42b4-930f-76794d7bf0b0
+    before : ['T_DailyRewards']
+    after  : ['NONE']
+    removed: ['T_DailyRewards']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+targeted.jsonl:103  bf773126-3694-4ed1-be93-16d88b6d5375
+    before : ['T_DailyRewards', 'T_Grinding', 'P_RewardMania']
+    after  : ['T_DailyRewards', 'P_RewardMania']
+    removed: ['T_Grinding']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+targeted.jsonl:112  016f5120-aadb-4da9-9738-a7061ee64552
+    before : ['M_PayToProgress', 'S_Competition', 'P_IllusionOfControl']
+    after  : ['M_PayToProgress', 'P_IllusionOfControl']
+    removed: ['S_Competition']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+targeted.jsonl:115  36f1d468-c710-4385-b20c-bef7f3da1d5a
+    before : ['M_PayToProgress', 'M_Gambling', 'P_RewardMania']
+    after  : ['P_RewardMania']
+    removed: ['M_Gambling', 'M_PayToProgress']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+targeted.jsonl:116  03e1dcd5-9c13-4b7f-a9e1-d2ebdc8f5773
+    before : ['M_PayToProgress', 'P_IllusionOfControl', 'P_OptimismAndFrequencyBiases']
+    after  : ['M_Gambling', 'P_IllusionOfControl', 'P_OptimismAndFrequencyBiases']
+    removed: ['M_PayToProgress']
+    added  : ['M_Gambling']
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+targeted.jsonl:124  da13d098-3944-4e0b-aa94-c064a56edd83
+    before : ['M_PayToProgress', 'M_IntermediateCurrency', 'P_CompleteTheCollection']
+    after  : ['M_PayToProgress', 'P_CompleteTheCollection']
+    removed: ['M_IntermediateCurrency']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+targeted.jsonl:132  07dd542b-2a71-4772-8a68-538115f1f826
+    before : ['M_PayToProgress', 'S_Reciprocity']
+    after  : ['S_Reciprocity']
+    removed: ['M_PayToProgress']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+targeted.jsonl:138  7b22427c-a48e-43ed-9ce6-22cb9355edcb
+    before : ['M_PayToProgress', 'P_IllusionOfControl']
+    after  : ['T_Advertisement', 'M_PayToProgress', 'P_IllusionOfControl']
+    removed: -
+    added  : ['T_Advertisement']
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+targeted.jsonl:141  2c77b939-5fb2-4f16-b42c-faf0d8d562cb
+    before : ['S_Reciprocity']
+    after  : ['NONE']
+    removed: ['S_Reciprocity']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+targeted.jsonl:144  6b11ebd6-7dec-4773-9b21-acf32b86feb1
+    before : ['T_PlayingByAppointment', 'S_Competition']
+    after  : ['S_Competition', 'P_EasyToGetHardToLose']
+    removed: ['T_PlayingByAppointment']
+    added  : ['P_EasyToGetHardToLose']
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+targeted.jsonl:153  1f623e69-6e47-49d1-b04e-fd6797d4a03e
+    before : ['T_PlayingByAppointment', 'T_DailyRewards', 'T_Grinding', 'M_PayToProgress', 'M_UIMisdirection']
+    after  : ['T_PlayingByAppointment', 'T_DailyRewards', 'T_Grinding', 'M_PayToProgress']
+    removed: ['M_UIMisdirection']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+targeted.jsonl:157  13186524-2bae-4628-a233-080867142dd1
+    before : ['M_PayToProgress']
+    after  : ['NONE']
+    removed: ['M_PayToProgress']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+targeted.jsonl:164  3b2d1b76-4fbc-4b67-817d-835a4e767a81
+    before : ['M_WasteAversion', 'P_RewardMania']
+    after  : ['P_RewardMania']
+    removed: ['M_WasteAversion']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+targeted.jsonl:170  635d8b94-c698-45f8-8b0c-3c3b00549ef6
+    before : ['M_PayToProgress', 'S_Competition']
+    after  : ['M_PayToProgress']
+    removed: ['S_Competition']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+targeted.jsonl:178  56085521-faa3-477b-a919-31df7ead915f
+    before : ['T_PlayingByAppointment', 'M_PayToProgress', 'P_RewardMania']
+    after  : ['T_PlayingByAppointment', 'P_RewardMania']
+    removed: ['M_PayToProgress']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+targeted.jsonl:185  eb23247b-5a24-4e89-b7e1-f3d8735a50de
+    before : ['M_Gambling', 'P_IllusionOfControl']
+    after  : ['M_Gambling']
+    removed: ['P_IllusionOfControl']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+targeted.jsonl:188  5f3e71b5-200c-45a3-b90e-e08b0dc0e1a3
+    before : ['P_IllusionOfControl', 'P_OptimismAndFrequencyBiases', 'P_RewardMania']
+    after  : ['P_IllusionOfControl', 'P_RewardMania']
+    removed: ['P_OptimismAndFrequencyBiases']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+targeted.jsonl:189  50e11e4d-bbce-4be4-9f35-e82892ab9b17
+    before : ['M_NeverEndingLure']
+    after  : ['NONE']
+    removed: ['M_NeverEndingLure']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+targeted.jsonl:190  5ca5f32a-173f-4d54-a9a4-5a7301d09b66
+    before : ['M_PayToProgress', 'M_EasyToPurchase']
+    after  : ['M_EasyToPurchase']
+    removed: ['M_PayToProgress']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+targeted.jsonl:191  ec8c8f01-cbae-4106-b13d-fa66a6668aac
+    before : ['T_Grinding', 'M_EasyToPurchase']
+    after  : ['T_Grinding']
+    removed: ['M_EasyToPurchase']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+targeted.jsonl:194  d7cff53f-e300-478b-8f41-6cc2b5b1fd5b
+    before : ['M_PayToProgress', 'P_IllusionOfControl']
+    after  : ['M_PayToProgress']
+    removed: ['P_IllusionOfControl']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+targeted.jsonl:197  8bf89aa9-d6e8-4c85-a91b-7c66d3e54041
+    before : ['M_RecurringFee', 'P_IllusionOfControl']
+    after  : ['M_RecurringFee']
+    removed: ['P_IllusionOfControl']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+targeted.jsonl:198  7c824455-edad-4894-a990-d80a3a6de48f
+    before : ['M_IntermediateCurrency', 'M_PowerCreep', 'P_IllusionOfControl']
+    after  : ['M_IntermediateCurrency', 'P_IllusionOfControl']
+    removed: ['M_PowerCreep']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+targeted.jsonl:200  ce1c6456-5d34-4001-a1a8-8b5991ef8ffb
+    before : ['M_PayToProgress', 'M_NeverEndingLure', 'S_Competition', 'P_IllusionOfControl']
+    after  : ['M_PayToProgress', 'S_Competition', 'P_IllusionOfControl']
+    removed: ['M_NeverEndingLure']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+targeted.jsonl:202  745d6f06-943e-44f6-95a3-da49b352c150
+    before : ['Tech_FragmentedDownloads']
+    after  : ['NONE']
+    removed: ['Tech_FragmentedDownloads']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+targeted.jsonl:206  65c2fcfc-24f4-4f69-a7f7-469d297712b0
+    before : ['Tech_FragmentedDownloads']
+    after  : ['NONE']
+    removed: ['Tech_FragmentedDownloads']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+targeted.jsonl:216  fd8ef7be-59cb-494a-b1ec-36466c3b7217
+    before : ['T_PlayingByAppointment', 'M_PayToProgress']
+    after  : ['M_PayToProgress']
+    removed: ['T_PlayingByAppointment']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+targeted.jsonl:223  0d51230a-abd7-4b94-8a44-d5585e2e274d
+    before : ['P_EasyToGetHardToLose']
+    after  : ['NONE']
+    removed: ['P_EasyToGetHardToLose']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+targeted.jsonl:231  48a0f44f-ee21-4578-bea1-064959f37193
+    before : ['M_PayToProgress', 'S_FriendSpamImpersonation']
+    after  : ['S_FriendSpamImpersonation']
+    removed: ['M_PayToProgress']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+targeted.jsonl:239  9ec3ea95-a4e9-4d28-aaa9-460756a3ed3a
+    before : ['P_IllusionOfControl']
+    after  : ['NONE']
+    removed: ['P_IllusionOfControl']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+targeted.jsonl:246  05811972-83e4-483b-bb81-3ef8236bd73f
+    before : ['Tech_FragmentedDownloads']
+    after  : ['NONE']
+    removed: ['Tech_FragmentedDownloads']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+targeted.jsonl:248  1979b061-0e1b-4e4f-afb6-8e88d535d9ca
+    before : ['T_PlayingByAppointment']
+    after  : ['NONE']
+    removed: ['T_PlayingByAppointment']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+targeted.jsonl:249  975eda69-ed9c-4d2e-b2d0-636805caa311
+    before : ['M_PayToProgress']
+    after  : ['NONE']
+    removed: ['M_PayToProgress']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+targeted.jsonl:251  2d118652-5693-499a-8f3f-d02d0b405cd4
+    before : ['M_UIMisdirection', 'Tech_FragmentedDownloads']
+    after  : ['Tech_FragmentedDownloads']
+    removed: ['M_UIMisdirection']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+targeted.jsonl:257  e92fc4f7-bdda-4f54-a8e2-aa591fbc7945
+    before : ['T_Grinding', 'S_ForcedFellowship', 'S_FriendSpamImpersonation']
+    after  : ['T_Grinding', 'S_FriendSpamImpersonation']
+    removed: ['S_ForcedFellowship']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+targeted.jsonl:265  26b701e6-545c-4a13-b0ed-1bf4537a6852
+    before : ['S_EncouragesAntiSocialBehavior', 'S_Competition']
+    after  : ['S_Competition']
+    removed: ['S_EncouragesAntiSocialBehavior']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+targeted.jsonl:266  9732d9ca-fff5-4074-8563-cfa456c0c560
+    before : ['T_MandatoryMarathon', 'S_Competition']
+    after  : ['S_Competition']
+    removed: ['T_MandatoryMarathon']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+targeted.jsonl:271  dd15233d-c792-45c7-b296-e32a8dd333a7
+    before : ['T_MandatoryMarathon', 'S_Competition']
+    after  : ['S_Competition']
+    removed: ['T_MandatoryMarathon']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+targeted.jsonl:276  1aa0112c-6622-44c7-9cb7-bf5ffc4cbfec
+    before : ['NONE']
+    after  : ['M_UIMisdirection']
+    removed: -
+    added  : ['M_UIMisdirection']
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+targeted.jsonl:279  8ea602c4-9bd4-4084-ab66-911bb8013984
+    before : ['T_Advertisement']
+    after  : ['NONE']
+    removed: ['T_Advertisement']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+targeted.jsonl:300  2f50b132-9762-4f48-ae35-487f414aa41a
+    before : ['S_Reciprocity', 'S_EncouragesAntiSocialBehavior']
+    after  : ['S_Reciprocity']
+    removed: ['S_EncouragesAntiSocialBehavior']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+targeted.jsonl:303  77357e2c-603b-402a-9994-5f62c18f5f39
+    before : ['T_PlayingByAppointment', 'S_ForcedFellowship', 'P_CompleteTheCollection', 'P_RewardMania']
+    after  : ['T_PlayingByAppointment', 'S_ForcedFellowship', 'P_RewardMania']
+    removed: ['P_CompleteTheCollection']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+targeted.jsonl:304  5e6a5625-5291-4f0e-897c-1b63c1a26494
+    before : ['M_Gambling', 'S_ForcedFellowship', 'P_CompleteTheCollection', 'P_RewardMania']
+    after  : ['M_Gambling', 'S_ForcedFellowship', 'P_RewardMania']
+    removed: ['P_CompleteTheCollection']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+targeted.jsonl:306  57add346-8b93-4249-be50-1a39331cf79b
+    before : ['M_PayToProgress', 'M_DeceptiveLuxury', 'M_EasyToPurchase', 'S_ForcedFellowship']
+    after  : ['M_PayToProgress', 'M_DeceptiveLuxury', 'S_ForcedFellowship']
+    removed: ['M_EasyToPurchase']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+targeted.jsonl:308  3646be19-52ee-4d3c-8980-17794a7b0ce1
+    before : ['S_ForcedFellowship', 'P_CompleteTheCollection']
+    after  : ['S_ForcedFellowship']
+    removed: ['P_CompleteTheCollection']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -
+
+targeted.jsonl:311  33053c02-de5e-44b2-9912-615efa66a5a5
+    before : ['M_Gambling', 'S_ForcedFellowship', 'S_Competition', 'P_CompleteTheCollection', 'P_RewardMania']
+    after  : ['S_ForcedFellowship', 'P_CompleteTheCollection', 'P_RewardMania']
+    removed: ['M_Gambling', 'S_Competition']
+    added  : -
+    model  : gpt-5.6-luna gpt-5.6-luna_high_20260821-200913  contested=1  contract_errors=0
+    note   : -

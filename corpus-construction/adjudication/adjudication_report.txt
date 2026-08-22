@@ -1,0 +1,117 @@
+ADJUDICATION REPORT
+source        : /home/prex_san/Documents/dp-detection/corpus-construction/scripts/adjudicated.jsonl
+rows          : 611  (labeled 363, unlabeled 248)
+call errors   : 0
+contract errs : 7   <- read these rows with suspicion
+
+VERDICTS ON ASSIGNED LABELS
+---------------------------
+  label instances checked : 729
+  supported               :   573   78.6%
+  unsupported             :   107   14.7%
+  wrong_label             :    49    6.7%
+
+NONE ROWS
+---------
+  unlabeled rows checked  : 248
+  model says a label applies: 10    4.0%
+
+BY SOURCE FILE
+--------------
+                           rows  contested    rate  labels  unsup  wrong  none!
+  targeted.jsonl            311         97   31.2%     464     71     35      5
+  random.jsonl              300         50   16.7%     265     36     14      5
+
+BY STRATUM
+----------
+                           rows  contested    rate  labels  unsup  wrong  none!
+  targeted                  311         97   31.2%     464     71     35      5
+  random                    300         50   16.7%     265     36     14      5
+
+BY CODEBOOK VERSION AT LABELLING
+--------------------------------
+                           rows  contested    rate  labels  unsup  wrong  none!
+  0.16                      354         65   18.4%     313     48     18      6
+  0.19                      198         63   31.8%     323     47     24      3
+  0.20                       59         19   32.2%      93     12      7      1
+
+PER LABEL (assigned label -> what the checker said)
+---------------------------------------------------
+  label                                n   sup  unsup  wrong  contest rate
+  M_PayToProgress                    125    99     17      9         20.8%
+  S_Competition                       63    56      5      2         11.1%
+  P_RewardMania                       60    48      7      5         20.0%
+  T_PlayingByAppointment              55    46      7      2         16.4%
+  P_IllusionOfControl                 45    34      9      2         24.4%
+  M_IntermediateCurrency              36    27      4      5         25.0%
+  M_Gambling                          34    28      0      6         17.6%
+  T_Grinding                          32    25      7      0         21.9%
+  P_CompleteTheCollection             30    22      4      4         26.7%
+  T_Advertisement                     27    23      4      0         14.8%
+  M_EasyToPurchase                    23    16      5      2         30.4%
+  T_DailyRewards                      22    13      7      2         40.9%
+  S_Reciprocity                       19    16      3      0         15.8%
+  M_UIMisdirection                    17    14      2      1         17.6%
+  T_MandatoryMarathon                 16     9      7      0         43.8%
+  M_WasteAversion                     15    13      2      0         13.3%
+  M_RecurringFee                      13    13      0      0          0.0%
+  M_PowerCreep                        12    11      1      0          8.3%
+  S_ForcedFellowship                  12    10      1      1         16.7%
+  P_EasyToGetHardToLose               11     8      3      0         27.3%
+  P_OptimismAndFrequencyBiases        11     7      1      3         36.4%
+  P_AestheticManipulation             11     8      1      2         27.3%
+  S_EncouragesAntiSocialBehavior       8     5      2      1         37.5%
+  M_NeverEndingLure                    7     2      4      1         71.4%
+  M_DeceptiveLuxury                    7     6      0      1         14.3%
+  Tech_FragmentedDownloads             6     2      4      0         66.7%
+  T_InfiniteTreadmill                  5     5      0      0          0.0%
+  S_FriendSpamImpersonation            4     4      0      0          0.0%
+  S_FearOfMissingOutFOMO               3     3      0      0          0.0%
+
+PROPOSED SWAPS (wrong_label)
+----------------------------
+     5  M_Gambling -> P_RewardMania
+     4  M_IntermediateCurrency -> M_PayToProgress
+     3  P_CompleteTheCollection -> P_RewardMania
+     2  M_PayToProgress -> T_PlayingByAppointment
+     2  M_PayToProgress -> M_IntermediateCurrency
+     2  M_PayToProgress -> M_Gambling
+     2  P_RewardMania -> P_CompleteTheCollection
+     2  T_DailyRewards -> T_PlayingByAppointment
+     2  P_OptimismAndFrequencyBiases -> P_IllusionOfControl
+     1  M_PayToProgress -> M_EasyToPurchase
+     1  P_RewardMania -> M_EasyToPurchase
+     1  P_RewardMania -> T_PlayingByAppointment
+     1  M_IntermediateCurrency -> M_Gambling
+     1  P_RewardMania -> M_Gambling
+     1  M_DeceptiveLuxury -> P_RewardMania
+     1  T_PlayingByAppointment -> T_DailyRewards
+     1  M_UIMisdirection -> P_AestheticManipulation
+     1  P_IllusionOfControl -> S_Competition
+     1  P_CompleteTheCollection -> P_AestheticManipulation
+     1  S_Competition -> M_UIMisdirection
+     1  M_EasyToPurchase -> M_UIMisdirection
+     1  M_Gambling -> M_UIMisdirection
+     1  P_AestheticManipulation -> P_RewardMania
+     1  P_IllusionOfControl -> M_PayToProgress
+     1  M_PayToProgress -> S_Competition
+     1  M_PayToProgress -> P_RewardMania
+     1  T_PlayingByAppointment -> P_EasyToGetHardToLose
+     1  S_Competition -> M_PayToProgress
+     1  P_OptimismAndFrequencyBiases -> P_RewardMania
+     1  P_AestheticManipulation -> M_IntermediateCurrency
+     1  M_NeverEndingLure -> M_PayToProgress
+     1  S_ForcedFellowship -> S_FriendSpamImpersonation
+     1  S_EncouragesAntiSocialBehavior -> S_Competition
+     1  M_EasyToPurchase -> M_DeceptiveLuxury
+
+LABELS PROPOSED ON NONE ROWS
+----------------------------
+     4  S_Competition
+     2  M_IntermediateCurrency
+     1  S_Reciprocity
+     1  T_Grinding
+     1  M_PayToProgress
+     1  M_UIMisdirection
+
+(no ../adjudication/decisions/decisions.jsonl yet — rulings section will appear once you export)

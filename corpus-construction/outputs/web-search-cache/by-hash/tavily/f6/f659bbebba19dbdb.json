@@ -1,0 +1,91 @@
+{
+  "query": "Bingo Blitz spend coins after losing round to claim a photo complete the set",
+  "sent_query": "Bingo Blitz spend coins after losing round to claim a photo complete the set",
+  "query_hash": "f659bbebba19dbdb",
+  "answer": "To claim a photo after losing a round in Bingo Blitz, spend coins to complete the Challenge Round. Photos are needed to complete sets. Coins can be spent directly in the game.",
+  "sources": [
+    {
+      "title": "Round Challenge - BingoBlitz",
+      "url": "https://www.bingoblitz.com/support/round-challenge",
+      "host": "bingoblitz.com"
+    },
+    {
+      "title": "My Bingo Blitz Guide : r/SwagBucks",
+      "url": "https://www.reddit.com/r/SwagBucks/comments/1heh92e/my_bingo_blitz_guide",
+      "host": "reddit.com"
+    },
+    {
+      "title": "All About the New Look - BingoBlitz",
+      "url": "https://www.bingoblitz.com/support/10228",
+      "host": "bingoblitz.com"
+    },
+    {
+      "title": "Bingo Blitz Game Changes and Credit Issues",
+      "url": "https://www.facebook.com/groups/924481981256536/posts/2115682662136456",
+      "host": "facebook.com"
+    },
+    {
+      "title": "Bingo Blitz Support - Free Bingo Games Online",
+      "url": "https://www.bingoblitz.com/support",
+      "host": "bingoblitz.com"
+    }
+  ],
+  "backend": "tavily",
+  "cached": false,
+  "cost_usd": 0.008,
+  "latency_s": 2.428,
+  "n_results": 5,
+  "domains": [],
+  "error": null,
+  "ts": "2026-08-22T17:15:15+00:00",
+  "raw": {
+    "query": "Bingo Blitz spend coins after losing round to claim a photo complete the set",
+    "follow_up_questions": null,
+    "answer": "To claim a photo after losing a round in Bingo Blitz, spend coins to complete the Challenge Round. Photos are needed to complete sets. Coins can be spent directly in the game.",
+    "images": [],
+    "results": [
+      {
+        "url": "https://www.bingoblitz.com/support/round-challenge",
+        "title": "Round Challenge - BingoBlitz",
+        "content": "Complete the Challenge Round and win amazing rewards! Miss the Coin Minigame? No worries! complete the goal and win awesome rewards every time you step into a",
+        "score": 0.43712714,
+        "raw_content": null,
+        "id": "032915-00"
+      },
+      {
+        "url": "https://www.reddit.com/r/SwagBucks/comments/1heh92e/my_bingo_blitz_guide",
+        "title": "My Bingo Blitz Guide : r/SwagBucks",
+        "content": "You need pictures to complete a city, which you get from getting bingos. New pictures are marked with a red tab on your bingo cards. It means",
+        "score": 0.36895174,
+        "raw_content": null,
+        "id": "65559a-01"
+      },
+      {
+        "url": "https://www.bingoblitz.com/support/10228",
+        "title": "All About the New Look - BingoBlitz",
+        "content": "At the top right of your screen, you’ll find your Bingo Bank, Daily Spin, and Gift Center.\n\nYour piggy bank collects Credits until its belly is filled and you can smash it open to claim what’s inside!\n\nYour Daily Spin is a free bonus you get every day you enter the game. Spin the wheel to reveal your gift!\n\nYour Gift Center is a spot to collect gifts from us, your Blitz Buds, and Blitzy or his friends!\n\nTo keep confusion at bay, we’ve put all necessary actions on your menu! [...] When entering a Bingo Room in the new Bingo Blitz experience, you’ll find easier access to everything you need right from your Card selection screen.\n\nAccept friend requests, collect gifts from Blitz Buds, or access the Bingo Store or Chef feature all without leaving your room! You can now start or keep playing after completing any action you need.\n\nNo matter the Bingo Room you enter, your Lobby icons will always stay on your screen to ensure easy access to all parts of the game. [...] Choose your favorite Slot Room and make those reels spin for amazing Coin rewards! If you’re not sure where to play, you can always check the number of players and how many Items you’ve collected at the bottom of each Slot icon.\n\nIf you get bored of winning, you can always return to your Bingo Map by clicking the ‘Return to Map’ button in the Menu.",
+        "score": 0.2517447,
+        "raw_content": null,
+        "id": "642256-02"
+      },
+      {
+        "url": "https://www.facebook.com/groups/924481981256536/posts/2115682662136456",
+        "title": "Bingo Blitz Game Changes and Credit Issues",
+        "content": "Now after you complete a room it just takes credits galore, used to be a fun game. Too bad that it’s become all about buying now. Way to ruin a great",
+        "score": 0.23403922,
+        "raw_content": null,
+        "id": "0f287e-03"
+      },
+      {
+        "url": "https://www.bingoblitz.com/support",
+        "title": "Bingo Blitz Support - Free Bingo Games Online",
+        "content": "### Lost Items\n\nIf the answer is yes, then you’ll be happy to know that Blitzy has prepared this article in which you’ll find all you need in the case of a “lost or missing item”. First, it is very important to know that once an item has been won, that item cannot be lost. However, sometimes, minor […]](\n\n#### Technical Tricks\n\n### Connecting Accounts [...] ### Lost Items\n\nIf the answer is yes, then you’ll be happy to know that Blitzy has prepared this article in which you’ll find all you need in the case of a “lost or missing item”. First, it is very important to know that once an item has been won, that item cannot be lost. However, sometimes, minor […]](\n\n#### Technical Tricks\n\n### Connecting Accounts [...] #### Technical Tricks\n\n### How do I stop receiving your marketing emails?\n\n#### Technical Tricks\n\n### How to Open a Support Ticket\n\n#### Technical Tricks\n\n### How to recover your Bingo Blitz account – on iOS\n\n#### Technical Tricks\n\n### Lost Items\n\n#### Technical Tricks\n\n### What To Do In Case Of Technical Difficulties\n\n#### Technical Tricks\n\n### Connect to Facebook\n\n#### Purchases & PLUS\n\n### Bingo Blitz PLUS – Your Bingo, PLUS More\n\n#### Purchases & PLUS\n\n### How To Find Your Receipt",
+        "score": 0.15384161,
+        "raw_content": null,
+        "id": "86e19e-04"
+      }
+    ],
+    "response_time": 1.41,
+    "request_id": "0c35d8fc-877b-4b44-aadb-21c69a00402c"
+  }
+}

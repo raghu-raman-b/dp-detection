@@ -1,0 +1,91 @@
+{
+  "query": "what is \"the pass\" in Fishdom game",
+  "sent_query": "what is \"the pass\" in Fishdom game",
+  "query_hash": "a1ba75b7d053a7df",
+  "answer": "The Fishdom game offers a monthly Season Pass that provides access to exclusive rewards and super challenges. It ends after the event concludes. The pass is optional and can be purchased for real money.",
+  "sources": [
+    {
+      "title": "What is the monthly pass in Fishdom?",
+      "url": "https://www.facebook.com/groups/fishdomgroup/posts/2493854731121782",
+      "host": "facebook.com"
+    },
+    {
+      "title": "🎟️ Season Challenges — Fishdom Help Center",
+      "url": "https://playrix.helpshift.com/hc/en/4-fishdom/faq/4134-season-challenges-1757580206?l=en",
+      "host": "playrix.helpshift.com"
+    },
+    {
+      "title": "Fishdom - Apps on Google Play",
+      "url": "https://play.google.com/store/apps/details?id=com.playrix.fishdomdd.gplay&hl=en_US",
+      "host": "play.google.com"
+    },
+    {
+      "title": "The Season Pass is here! Level up your game and unlock a ...",
+      "url": "https://www.facebook.com/Fishdom/posts/the-season-pass-is-here-level-up-your-game-and-unlock-a-whole-new-world-of-rewar/1339564511618240?locale=ar_AR",
+      "host": "facebook.com"
+    },
+    {
+      "title": "What is the point of the \"gold pass\"?",
+      "url": "https://www.facebook.com/groups/fishdomgroup/posts/1682887682218495",
+      "host": "facebook.com"
+    }
+  ],
+  "backend": "tavily",
+  "cached": false,
+  "cost_usd": 0.008,
+  "latency_s": 2.999,
+  "n_results": 5,
+  "domains": [],
+  "error": null,
+  "ts": "2026-08-22T16:07:51+00:00",
+  "raw": {
+    "query": "what is the pass in Fishdom game",
+    "follow_up_questions": null,
+    "answer": "The Fishdom game offers a monthly Season Pass that provides access to exclusive rewards and super challenges. It ends after the event concludes. The pass is optional and can be purchased for real money.",
+    "images": [],
+    "results": [
+      {
+        "url": "https://www.facebook.com/groups/fishdomgroup/posts/2493854731121782",
+        "title": "What is the monthly pass in Fishdom?",
+        "content": "It's called the golden pass to pay an extremely high amount of unaffordable ££££ for a useless pass. Pass everyone on your team gets a gold voucher! it lasts",
+        "score": 0.75181264,
+        "raw_content": null,
+        "id": "3734da-00"
+      },
+      {
+        "url": "https://playrix.helpshift.com/hc/en/4-fishdom/faq/4134-season-challenges-1757580206?l=en",
+        "title": "🎟️ Season Challenges — Fishdom Help Center",
+        "content": "Access to super rewards and free energy. A Gold Pass purchased for one event ceases to function immediately after the event concludes.",
+        "score": 0.69274646,
+        "raw_content": null,
+        "id": "de2781-01"
+      },
+      {
+        "url": "https://play.google.com/store/apps/details?id=com.playrix.fishdomdd.gplay&hl=en_US",
+        "title": "Fishdom - Apps on Google Play",
+        "content": "Solve epic match-3 and merge puzzles to create perfect homes for adorable fish!\n\nUpdated on\n\nAug 18, 2026\n\nAvailable on\n\nAndroid, Windows\n\nPuzzle\n\nMatch 3\n\nMatch 3 adventure\n\nCasual\n\nSingle player\n\nStylized\n\nMiscellaneous\n\nPuzzles\n\nAquarium\n\nOffline\n\nEvents & offers\n\nUpdate available\n\nVacation Collection\n\nEnds on 08/29\n\nJewel Pass\n\n## Data safety\n\narrow\\_forward [...] Fishdom is free to play, but some in-game elements (including randomized items) can be purchased for real money.  \n   \nA Wi-Fi or internet connection is not required to play.  \n \\An internet connection is required to access competitions and additional features.\"  \n   \nDo you like Fishdom? Follow us!  \nFacebook: facebook.com/Fishdom   \nInstagram: [...] Dive into the fantastic world of Fishdom! You're in for an ocean of exciting levels, scores of adorable fish and pets, and a sea of captivating events!  \n   \nExplore incredible underwater adventures! Unlock aquariums and decorate them to your taste, creating perfect homes for cute fish and their friends.  \n   \nGame Features:  \n● Original gameplay: beat match-3 levels to create the perfect home for your fish!  \n● Thousands of captivating levels with powerful boosters!",
+        "score": 0.6141863,
+        "raw_content": null,
+        "id": "aea0e6-02"
+      },
+      {
+        "url": "https://www.facebook.com/Fishdom/posts/the-season-pass-is-here-level-up-your-game-and-unlock-a-whole-new-world-of-rewar/1339564511618240?locale=ar_AR",
+        "title": "The Season Pass is here! Level up your game and unlock a ...",
+        "content": "Season Pass are monthly events where you can complete daily missions to earn points and level up your pass, unlocking exclusive rewards along",
+        "score": 0.21782835,
+        "raw_content": null,
+        "id": "ef987c-03"
+      },
+      {
+        "url": "https://www.facebook.com/groups/fishdomgroup/posts/1682887682218495",
+        "title": "What is the point of the \"gold pass\"?",
+        "content": "What is the point of the \"gold pass\"?",
+        "score": 0.06716035,
+        "raw_content": null,
+        "id": "769959-04"
+      }
+    ],
+    "response_time": 1.62,
+    "request_id": "3a5b6c34-3352-4241-9a22-c393aa00b456"
+  }
+}

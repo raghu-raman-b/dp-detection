@@ -2,12 +2,20 @@
 """
 compute_stats.py -- turn one run into a report, an error-review sheet, and a metrics row.
 
-Writes:
-    <OUT_ROOT>/<provider>/<model>/<tag>_report.txt   full numeric report
-    <OUT_ROOT>/<provider>/<model>/<tag>_errors.md    every disagreement, for triage
-    <OUT_ROOT>/<provider>/<model>/<tag>_perreview.jsonl  gold vs pred per review
-    <OUT_ROOT>/<provider>/<model>/metrics.jsonl      one row per run, appended
-    <OUT_ROOT>/index.jsonl                           same row, all providers
+With no arguments it scores EVERY run under outputs/runs and overwrites what was there
+before, mirroring that tree path-for-path:
+
+    outputs/runs/     <model>/<effort>/<prompt>/<tag>_responses.jsonl
+    outputs/run-stats/<model>/<effort>/<prompt>/<tag>_report.txt      full numeric report
+                                                <tag>_errors.md      every disagreement
+                                                <tag>_perreview.jsonl  gold vs pred
+                                                <tag>_metrics.json   the metrics row
+    outputs/run-stats/index.jsonl                                    one row per run
+
+index.jsonl is REBUILT from the runs discovered on each pass, never appended: rescoring
+everything with an append would give you N copies of every row on the Nth pass. Rebuilding
+from the discovered runs is also what drops stats whose run has since been deleted -- the
+orphaned directory stays on disk, but it cannot leak into a comparison.
 
 Metric stack at n=50:
   micro-F1          primary tuning signal
@@ -19,15 +27,23 @@ No macro over all 29 labels: most have support 1-2 and one decision swings it 3+
 """
 
 from __future__ import annotations
-import json, re, statistics, sys
+import argparse, json, re, statistics, sys
 from collections import Counter, defaultdict
 from datetime import datetime
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).parent))
+from runner_common import discover_runs, resolve, run_tags, show  # shared with the runners
+from build_prompt import derive_code                              # codebook code derivation
+
 # ============================== CONFIG ==============================
-RUN_DIR      = "../outputs/runs/kimi"
-RUN_TAG      = "kimi-k3_high_20260821-150150"                # "" = most recent run in RUN_DIR
+# Defaults only -- everything here is overridable on the command line, because the run
+# tree now has a directory per (model, effort, prompt) and hand-editing two constants
+# between every scoring pass was the friction that made runs go unscored.
+RUNS_ROOT    = "../outputs/runs"                   # scored in full when --run-dir is omitted
+RUN_TAG      = ""                                  # "" = the only/most recent run in the dir
 GOLD_FILE    = "../tuning/tuning_set_50.jsonl"     # the file WITH actual_labels
+CODEBOOK     = "../../codebook_versions/codebook_final.json"  # the legal-code vocabulary
 OUT_ROOT     = "../outputs/run-stats"
 PROJECT_TO   = 200_000
 MIN_SUPPORT  = 3                   # labels below this are listed, never averaged
@@ -62,15 +78,6 @@ def provider_of(model: str) -> str:
         if k in model.lower():
             return v
     return "unknown"
-
-
-def find_run(run_dir: Path, tag: str) -> str:
-    if tag:
-        return tag
-    files = sorted(run_dir.glob("*_responses.jsonl"))
-    if not files:
-        sys.exit(f"no *_responses.jsonl in {run_dir}")
-    return files[-1].name.replace("_responses.jsonl", "")
 
 
 def pct(x: float) -> str:
@@ -118,6 +125,14 @@ def load_gold(path: Path):
         text[row["review_id"]] = row.get("review_text", "")
         game[row["review_id"]] = row.get("game_name", "")
     return gold, text, game
+
+
+def load_legal_codes(path: Path) -> set[str]:
+    """The full codebook vocabulary, not the codes this gold sample happens to exercise --
+    a label with zero support in a 50-review draw is still legal, and scoring it as an
+    'out-of-vocab' code would fail the compliance gate for guessing right on something rare."""
+    labels = json.loads(path.read_text(encoding="utf-8"))["labels"]
+    return {derive_code(lab) for lab in labels}
 
 
 def validate(parsed: dict | None, review_text: str, legal: set) -> dict:
@@ -286,14 +301,42 @@ def write_error_review(path: Path, tag: str, meta0: dict, ids, gold, pred,
 
 # ---------------------------------------------------------------- main
 
-def main() -> None:
-    run_dir = Path(RUN_DIR)
-    tag = find_run(run_dir, RUN_TAG)
-    resp = {r["request_id"]: r for r in jsonl(run_dir / f"{tag}_responses.jsonl")}
-    meta = {m["request_id"]: m for m in jsonl(run_dir / f"{tag}_meta.jsonl")}
-    gold, gold_text, gold_game = load_gold(Path(GOLD_FILE))
-    legal = {c for s in gold.values() for c in s}
+def parse_args() -> "argparse.Namespace":
+    ap = argparse.ArgumentParser(
+        description="Score runs against gold. With no arguments, scores every run under "
+                    "outputs/runs and rebuilds the index.",
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+    ap.add_argument("--run-dir", default="",
+                    help="score only this run directory (default: score all of them)")
+    ap.add_argument("--tag", default=RUN_TAG,
+                    help="run tag inside --run-dir; omitted = every tag there")
+    ap.add_argument("--gold", default=GOLD_FILE)
+    ap.add_argument("--codebook", default=CODEBOOK,
+                    help="codebook JSON that defines the legal label vocabulary")
+    ap.add_argument("--out-root", default=OUT_ROOT)
+    ap.add_argument("--runs-root", default=RUNS_ROOT)
+    ap.add_argument("--list", action="store_true",
+                    help="list the run directories found and exit")
+    return ap.parse_args()
 
+
+def score_run(run_dir: Path, tag: str, gold_file: Path, gold_bundle: tuple,
+              legal: set[str], out_dir: Path, print_report: bool) -> dict | None:
+    """Score one run into out_dir and return its metrics row, or None if it is not
+    scorable. Returning None rather than exiting matters: in a batch, one unusable run
+    must not take the other nineteen down with it."""
+    resp = {r["request_id"]: r for r in jsonl(run_dir / f"{tag}_responses.jsonl")
+            if not r.get("superseded")}
+    # Superseded rows are earlier failed attempts at a review that a --resume pass has
+    # since relabelled. They stay on disk as evidence; counting them here would charge
+    # the run twice for one review.
+    meta = {m["request_id"]: m for m in jsonl(run_dir / f"{tag}_meta.jsonl")
+            if not m.get("superseded")}
+    gold, gold_text, gold_game = gold_bundle
+
+    if not meta:
+        print(f"  SKIP {tag}: no usable rows in {tag}_meta.jsonl")
+        return None
     any_meta = next(iter(meta.values()))
     model = any_meta.get("model", "unknown")
     provider = provider_of(model)
@@ -338,7 +381,8 @@ def main() -> None:
 
     ids = [i for i in gold if i in pred]
     if not ids:
-        sys.exit("no scorable rows; check GOLD_FILE and the review_id join")
+        print(f"  SKIP {tag}: no review_id overlaps {show(gold_file)}")
+        return None
 
     # ---- quality -------------------------------------------------------------
     tp = sum(len(pred[i] & gold[i]) for i in ids)
@@ -410,7 +454,7 @@ def main() -> None:
     add(f"prompt           {any_meta.get('prompt_file')}")
     add(f"prompt sha256    {any_meta.get('prompt_sha256')}")
     add(f"cache key/mode   {any_meta.get('cache_key')} / {any_meta.get('cache_mode')}")
-    add(f"gold             {GOLD_FILE}")
+    add(f"gold             {gold_file}")
     add(f"scored           {len(ids)} of {comp['n']} requests")
     add("")
     add("-" * 78); add("RELIABILITY"); add("-" * 78)
@@ -508,7 +552,6 @@ def main() -> None:
     add("=" * 78)
 
     # ---- write ---------------------------------------------------------------
-    out_dir = Path(OUT_ROOT) / provider / model
     out_dir.mkdir(parents=True, exist_ok=True)
     (out_dir / f"{tag}_report.txt").write_text("\n".join(L) + "\n", encoding="utf-8")
 
@@ -541,8 +584,11 @@ def main() -> None:
         "reasoning_effort": any_meta.get("reasoning_effort"),
         "web_search": any_meta.get("web_search"),
         "prompt_file": any_meta.get("prompt_file"),
+        # the prompt is an ablation axis now, so the comparison needs to be able to
+        # name it without hashing: teacher_v2_bare vs teacher_v2_full
+        "prompt_stem": Path(any_meta.get("prompt_file") or "").name.rsplit(".txt", 1)[0],
         "prompt_sha256": any_meta.get("prompt_sha256"),
-        "gold_file": GOLD_FILE, "n_requests": comp["n"], "n_scored": len(ids),
+        "gold_file": str(gold_file), "n_requests": comp["n"], "n_scored": len(ids),
         "micro_f1": round(mf, 4), "micro_p": round(mp, 4), "micro_r": round(mr, 4),
         "example_f1": round(ex_f1, 4), "exact_match": round(exact, 4),
         "class_macro_f1": round(class_macro, 4),
@@ -572,19 +618,125 @@ def main() -> None:
         "search_rate": round(comp["searched"]/max(comp["ok"], 1), 4),
         "perreview_file": str(out_dir / f"{tag}_perreview.jsonl"),
     }
-    line = json.dumps(row, ensure_ascii=False) + "\n"
-    with open(out_dir / "metrics.jsonl", "a", encoding="utf-8") as f:
-        f.write(line)
-    Path(OUT_ROOT).mkdir(parents=True, exist_ok=True)
-    with open(Path(OUT_ROOT) / "index.jsonl", "a", encoding="utf-8") as f:
-        f.write(line)
+    (out_dir / f"{tag}_metrics.json").write_text(
+        json.dumps(row, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
-    print("\n".join(L))
-    print(f"wrote {out_dir / (tag + '_report.txt')}")
-    print(f"wrote {out_dir / (tag + '_perreview.jsonl')}")
-    if WRITE_MD:
-        print(f"wrote {md_path}")
-    print(f"appended {out_dir / 'metrics.jsonl'} and {Path(OUT_ROOT) / 'index.jsonl'}")
+    if print_report:
+        print("\n".join(L))
+        print(f"wrote {show(out_dir / (tag + '_report.txt'))}")
+        print(f"wrote {show(out_dir / (tag + '_perreview.jsonl'))}")
+        if WRITE_MD:
+            print(f"wrote {show(md_path)}")
+        print(f"wrote {show(out_dir / (tag + '_metrics.json'))}")
+    return row
+
+
+def run_is_complete(run_dir: Path) -> bool | None:
+    """What the runner's checkpoint says. None when there is no checkpoint (an older
+    run, or one written by hand)."""
+    cp = run_dir / "checkpoint.json"
+    if not cp.exists():
+        return None
+    try:
+        return bool(json.loads(cp.read_text(encoding="utf-8")).get("complete"))
+    except json.JSONDecodeError:
+        return None
+
+
+def main() -> None:
+    a = parse_args()
+    runs_root, gold_file, out_root = resolve(a.runs_root), resolve(a.gold), resolve(a.out_root)
+    codebook_file = resolve(a.codebook)
+
+    if a.list:
+        for d in discover_runs(runs_root):
+            print(show(d))
+        return
+
+    if a.run_dir:
+        run_dirs = [resolve(a.run_dir)]
+        single = True
+    else:
+        run_dirs = discover_runs(runs_root)
+        single = False
+        if not run_dirs:
+            sys.exit(f"no runs under {show(runs_root)}; nothing to score")
+
+    if not gold_file.exists():
+        sys.exit(f"gold file not found: {show(gold_file)}")
+    if not codebook_file.exists():
+        sys.exit(f"codebook file not found: {show(codebook_file)}")
+    gold_bundle = load_gold(gold_file)
+    legal = load_legal_codes(codebook_file)
+
+    # Every (run_dir, tag) pair to score. A directory normally holds one run, but a
+    # config re-run under a different tag would leave two, and both deserve scoring.
+    jobs = []
+    for d in run_dirs:
+        for tag in ([a.tag] if a.tag else run_tags(d)):
+            jobs.append((d, tag))
+    if not jobs:
+        sys.exit("no *_responses.jsonl found in the selected run director(y|ies)")
+
+    if not single:
+        print(f"scoring {len(jobs)} run(s) under {show(runs_root)} -> {show(out_root)}\n")
+
+    rows, skipped = [], []
+    for run_dir, tag in jobs:
+        # Mirror the runs tree by RELATIVE PATH rather than by re-deriving
+        # model/effort/prompt from the metadata: the mirror then cannot drift from
+        # whatever the runner actually wrote.
+        try:
+            rel = run_dir.relative_to(runs_root)
+        except ValueError:
+            rel = Path(run_dir.name)
+        out_dir = out_root / rel
+
+        complete = run_is_complete(run_dir)
+        if complete is False:
+            print(f"  NOTE {tag}: checkpoint says this run never finished")
+        try:
+            row = score_run(run_dir, tag, gold_file, gold_bundle, legal, out_dir,
+                            print_report=single)
+        except Exception as e:                 # one bad run must not end the batch
+            print(f"  SKIP {tag}: {type(e).__name__}: {e}")
+            row = None
+        if row is None:
+            skipped.append(tag)
+            continue
+        row["run_dir"] = str(run_dir)
+        row["run_complete"] = complete
+        rows.append(row)
+        if not single:
+            n = max(row["n_requests"], 1)
+            print(f"  {row['micro_f1']:.3f} micro-F1   parsed {row['parsed']}/{n}   "
+                  f"${row['spend_usd']:.4f}   {tag}")
+
+    # index.jsonl is rebuilt, never appended -- see the module docstring.
+    out_root.mkdir(parents=True, exist_ok=True)
+    if single:
+        # A single-run rescore must not blow away the rows for every other run, so merge
+        # this row into whatever the index already holds, keyed on the run directory.
+        # The exists() guard has to happen BEFORE jsonl() opens the file: as a
+        # comprehension filter it runs per row, which is too late on the first
+        # --run-dir score of a fresh checkout, where no index exists yet.
+        index_path = out_root / "index.jsonl"
+        existing = ({r.get("run_dir"): r for r in jsonl(index_path)}
+                    if index_path.exists() else {})
+        for r in rows:
+            existing[r["run_dir"]] = r
+        rows = sorted(existing.values(), key=lambda r: -r.get("micro_f1", 0))
+    else:
+        rows.sort(key=lambda r: -r.get("micro_f1", 0))
+    with open(out_root / "index.jsonl", "w", encoding="utf-8") as f:
+        for r in rows:
+            f.write(json.dumps(r, ensure_ascii=False) + "\n")
+
+    print(f"\nindex   {len(rows)} run(s) -> {show(out_root / 'index.jsonl')}")
+    if skipped:
+        print(f"skipped {len(skipped)}: {', '.join(skipped)}")
+    if not single:
+        print(f"next: python compare_runs.py")
 
 
 if __name__ == "__main__":

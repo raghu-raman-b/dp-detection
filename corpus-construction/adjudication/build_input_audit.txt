@@ -1,0 +1,45 @@
+adjudication input build
+source dir : /home/prex_san/Documents/dp-detection/corpus-construction/labeled_data
+out        : /home/prex_san/Documents/dp-detection/corpus-construction/adjudication/input/adjudication_input.jsonl
+
+per file:
+  random.jsonl           300 rows   labeled  139   unlabeled  161
+  targeted.jsonl         311 rows   labeled  224   unlabeled   87
+  TOTAL                  611 rows   labeled  363   unlabeled  248
+
+label instances : 729
+repeated review_ids : 0   (kept as is; row_uid keeps write-back unambiguous)
+labels with zero support : none
+
+data problems : 0
+
+per-label support:
+  T_PlayingByAppointment             55
+  T_DailyRewards                     22
+  T_Grinding                         32
+  T_Advertisement                    27
+  T_InfiniteTreadmill                 5
+  T_MandatoryMarathon                16
+  M_PayToProgress                   125
+  M_IntermediateCurrency             36
+  M_DeceptiveLuxury                   7
+  M_RecurringFee                     13
+  M_Gambling                         34
+  M_PowerCreep                       12
+  M_WasteAversion                    15
+  M_EasyToPurchase                   23
+  M_UIMisdirection                   17
+  M_NeverEndingLure                   7
+  S_ForcedFellowship                 12
+  S_FriendSpamImpersonation           4
+  S_Reciprocity                      19
+  S_EncouragesAntiSocialBehavior      8
+  S_FearOfMissingOutFOMO              3
+  S_Competition                      63
+  P_EasyToGetHardToLose              11
+  P_CompleteTheCollection            30
+  P_IllusionOfControl                45
+  P_AestheticManipulation            11
+  P_OptimismAndFrequencyBiases       11
+  P_RewardMania                      60
+  Tech_FragmentedDownloads            6
