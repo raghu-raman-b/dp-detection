@@ -78,8 +78,12 @@ resolve, show, payload_for = rc.resolve, rc.show, rc.payload_for
 DEFAULT_MODEL   = "kimi-k3"
 DEFAULT_EFFORT  = "high"            # low | high | max   (KIMI DIFF 2; no "medium")
 DEFAULT_PROMPT  = "../outputs/prompts/teacher_v2_full.txt"
-DEFAULT_REVIEWS = "../tuning/tuning_set_50_blind.jsonl"   # blind: no gold in this process
-OUT_ROOT        = "../outputs/runs"
+# The review set and the run tree both come from --eval-set
+# (runner_common.EVAL_SETS), asked interactively when the flag is omitted:
+#   tuning      ../tuning/tuning_set_50_blind.jsonl      -> ../outputs/runs
+#   validation  ../validation/validation_set_blind.jsonl -> ../outputs/validation/runs
+# Both are blind files: no gold ever enters this process. --reviews and
+# --out-root still override, for a one-off against some other file.
 BASE_URL        = "https://api.moonshot.ai/v1"
 
 MAX_OUTPUT      = 8192      # reasoning counts against this; too low = truncated JSON
@@ -118,6 +122,7 @@ class RunConfig:
     prompt_file: Path
     reviews_file: Path
     out_root: Path
+    eval_set: str
     web_search: bool
     max_output: int
     parse_retries: int
@@ -137,6 +142,7 @@ def build_config(a: argparse.Namespace) -> RunConfig:
     cfg = RunConfig(
         model=a.model, effort=a.effort,
         prompt_file=resolve(a.prompt), reviews_file=resolve(a.reviews),
+        eval_set=a.eval_set,
         out_root=resolve(a.out_root), web_search=not a.no_web_search,
         max_output=a.max_output, parse_retries=a.parse_retries, retries=a.retries,
         max_tool_rounds=a.max_tool_rounds, limit=a.limit,
@@ -518,7 +524,7 @@ def actual_run(cfg: RunConfig, a: argparse.Namespace) -> None:
         rc.write_checkpoint(paths, {
             "tag": paths.tag, "model": cfg.model, "reasoning_effort": cfg.effort,
             "prompt_file": str(cfg.prompt_file), "prompt_sha256": cfg.prompt_sha,
-            "reviews_file": str(cfg.reviews_file), "n_selected": len(rows),
+            "eval_set": cfg.eval_set, "reviews_file": str(cfg.reviews_file), "n_selected": len(rows),
             "started": started, "complete": complete, "spend_usd": round(spend, 6),
             "extra_tool_loop_calls": n_extra_calls, **counters})
 
@@ -632,7 +638,7 @@ def actual_run(cfg: RunConfig, a: argparse.Namespace) -> None:
         "max_tool_rounds": cfg.max_tool_rounds,
         "temperature": TEMPERATURE if SEND_TEMPERATURE else "default",
         "prompt_file": str(cfg.prompt_file), "prompt_sha256": cfg.prompt_sha,
-        "reviews_file": str(cfg.reviews_file),
+        "eval_set": cfg.eval_set, "reviews_file": str(cfg.reviews_file),
         "max_output": cfg.max_output, "parse_retries": cfg.parse_retries,
         "extra_tool_loop_calls": n_extra_calls,
         "manifest": rc.run_manifest(cfg.prompt_file, __file__),
@@ -667,8 +673,13 @@ def parse_args() -> argparse.Namespace:
                     help="KIMI DIFF 2: no 'medium', so not comparable to the Luna sweep")
     ap.add_argument("--prompt", default=DEFAULT_PROMPT,
                     help="built prompt file; its stem names the output directory")
-    ap.add_argument("--reviews", default=DEFAULT_REVIEWS)
-    ap.add_argument("--out-root", default=OUT_ROOT)
+    ap.add_argument("--eval-set", choices=sorted(rc.EVAL_SETS), default=None,
+                    help="tuning (the 50, burned on selection) or validation "
+                         "(the 75, reported); asked interactively when omitted")
+    ap.add_argument("--reviews", default=None,
+                    help="override the review file --eval-set would pick")
+    ap.add_argument("--out-root", default=None,
+                    help="override the run tree --eval-set would pick")
 
     ap.add_argument("--resume", action="store_true",
                     help="continue an interrupted run, skipping reviews already done")
@@ -692,6 +703,13 @@ def parse_args() -> argparse.Namespace:
     a = ap.parse_args()
     if a.resume and a.overwrite:
         ap.error("--resume and --overwrite are opposites; pick one")
+
+    # --eval-set picks the review file and the run tree together. Keeping them
+    # in one switch is what stops a validation run landing in the tuning tree.
+    a.eval_set = rc.resolve_eval_set(a.eval_set, what="label")
+    _sel = rc.EVAL_SETS[a.eval_set]
+    a.reviews = a.reviews or _sel["reviews"]
+    a.out_root = a.out_root or _sel["runs"]
     return a
 
 

@@ -118,8 +118,12 @@ DEFAULT_EFFORT  = "high"            # low | medium | high | xhigh | max  (CLAUDE
                                      # -- ignored on models without effort (CLAUDE DIFF 10)
 EFFORT_CHOICES  = ("low", "medium", "high", "xhigh", "max")
 DEFAULT_PROMPT  = "../outputs/prompts/teacher_v2_full.txt"
-DEFAULT_REVIEWS = "../tuning/tuning_set_50_blind.jsonl"   # blind: no gold in this process
-OUT_ROOT        = "../outputs/runs"
+# The review set and the run tree both come from --eval-set
+# (runner_common.EVAL_SETS), asked interactively when the flag is omitted:
+#   tuning      ../tuning/tuning_set_50_blind.jsonl      -> ../outputs/runs
+#   validation  ../validation/validation_set_blind.jsonl -> ../outputs/validation/runs
+# Both are blind files: no gold ever enters this process. --reviews and
+# --out-root still override, for a one-off against some other file.
 
 MAX_OUTPUT      = 8192      # thinking counts against this; too low = truncated JSON
 MAX_OUTPUT_CAP  = 32768     # ceiling for the truncation bump
@@ -194,6 +198,7 @@ class RunConfig:
     prompt_file: Path
     reviews_file: Path
     out_root: Path
+    eval_set: str
     web_search: bool
     max_output: int
     parse_retries: int
@@ -232,6 +237,7 @@ def build_config(a: argparse.Namespace) -> RunConfig:
     cfg = RunConfig(
         model=a.model, effort=effort,
         prompt_file=resolve(a.prompt), reviews_file=resolve(a.reviews),
+        eval_set=a.eval_set,
         out_root=resolve(a.out_root), web_search=not a.no_web_search,
         max_output=a.max_output, parse_retries=a.parse_retries, retries=a.retries,
         limit=a.limit,
@@ -672,7 +678,7 @@ def actual_run(cfg: RunConfig, a: argparse.Namespace) -> None:
         rc.write_checkpoint(paths, {
             "tag": paths.tag, "model": cfg.model, "reasoning_effort": cfg.effort,
             "prompt_file": str(cfg.prompt_file), "prompt_sha256": cfg.prompt_sha,
-            "reviews_file": str(cfg.reviews_file), "n_selected": len(rows),
+            "eval_set": cfg.eval_set, "reviews_file": str(cfg.reviews_file), "n_selected": len(rows),
             "started": started, "complete": complete, "spend_usd": round(spend, 6),
             "extra_pause_calls": n_extra_calls, **counters})
 
@@ -811,7 +817,7 @@ def actual_run(cfg: RunConfig, a: argparse.Namespace) -> None:
         "temperature": "unsupported", "fallbacks": USE_FALLBACKS,
         "reasoning_tokens_reported": False,        # CLAUDE DIFF 2
         "prompt_file": str(cfg.prompt_file), "prompt_sha256": cfg.prompt_sha,
-        "reviews_file": str(cfg.reviews_file),
+        "eval_set": cfg.eval_set, "reviews_file": str(cfg.reviews_file),
         "max_output": cfg.max_output, "parse_retries": cfg.parse_retries,
         "extra_pause_calls": n_extra_calls,
         "manifest": rc.run_manifest(cfg.prompt_file, __file__),
@@ -852,8 +858,13 @@ def parse_args() -> argparse.Namespace:
                          "model. Must be < max_tokens, min 1024")
     ap.add_argument("--prompt", default=DEFAULT_PROMPT,
                     help="built prompt file; its stem names the output directory")
-    ap.add_argument("--reviews", default=DEFAULT_REVIEWS)
-    ap.add_argument("--out-root", default=OUT_ROOT)
+    ap.add_argument("--eval-set", choices=sorted(rc.EVAL_SETS), default=None,
+                    help="tuning (the 50, burned on selection) or validation "
+                         "(the 75, reported); asked interactively when omitted")
+    ap.add_argument("--reviews", default=None,
+                    help="override the review file --eval-set would pick")
+    ap.add_argument("--out-root", default=None,
+                    help="override the run tree --eval-set would pick")
 
     ap.add_argument("--resume", action="store_true",
                     help="continue an interrupted run, skipping reviews already done")
@@ -879,6 +890,13 @@ def parse_args() -> argparse.Namespace:
     a = ap.parse_args()
     if a.resume and a.overwrite:
         ap.error("--resume and --overwrite are opposites; pick one")
+
+    # --eval-set picks the review file and the run tree together. Keeping them
+    # in one switch is what stops a validation run landing in the tuning tree.
+    a.eval_set = rc.resolve_eval_set(a.eval_set, what="label")
+    _sel = rc.EVAL_SETS[a.eval_set]
+    a.reviews = a.reviews or _sel["reviews"]
+    a.out_root = a.out_root or _sel["runs"]
     return a
 
 

@@ -33,6 +33,7 @@ from datetime import datetime
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
+import runner_common as rc                                        # EVAL_SETS + set resolution
 from runner_common import discover_runs, resolve, run_tags, show  # shared with the runners
 from build_prompt import derive_code                              # codebook code derivation
 
@@ -40,11 +41,15 @@ from build_prompt import derive_code                              # codebook cod
 # Defaults only -- everything here is overridable on the command line, because the run
 # tree now has a directory per (model, effort, prompt) and hand-editing two constants
 # between every scoring pass was the friction that made runs go unscored.
-RUNS_ROOT    = "../outputs/runs"                   # scored in full when --run-dir is omitted
+# The runs tree, the gold file and the stats tree all come from --eval-set
+# (runner_common.EVAL_SETS), asked interactively when the flag is omitted:
+#   tuning      ../outputs/runs            vs ../tuning/tuning_set_50.jsonl
+#                 -> ../outputs/run-stats
+#   validation  ../outputs/validation/runs vs ../validation/gold_set.jsonl
+#                 -> ../outputs/validation/run-stats
+# --runs-root / --gold / --out-root still override any of the three.
 RUN_TAG      = ""                                  # "" = the only/most recent run in the dir
-GOLD_FILE    = "../tuning/tuning_set_50.jsonl"     # the file WITH actual_labels
 CODEBOOK     = "../../codebook_versions/codebook_final.json"  # the legal-code vocabulary
-OUT_ROOT     = "../outputs/run-stats"
 PROJECT_TO   = 200_000
 MIN_SUPPORT  = 3                   # labels below this are listed, never averaged
 TOP_ERRORS   = 12                  # disagreements printed in the txt report
@@ -310,14 +315,30 @@ def parse_args() -> "argparse.Namespace":
                     help="score only this run directory (default: score all of them)")
     ap.add_argument("--tag", default=RUN_TAG,
                     help="run tag inside --run-dir; omitted = every tag there")
-    ap.add_argument("--gold", default=GOLD_FILE)
+    ap.add_argument("--eval-set", choices=sorted(rc.EVAL_SETS), default=None,
+                    help="tuning (the 50, burned on selection) or validation "
+                         "(the 75, reported); asked interactively when omitted")
+    ap.add_argument("--gold", default=None,
+                    help="override the gold file --eval-set would pick")
     ap.add_argument("--codebook", default=CODEBOOK,
                     help="codebook JSON that defines the legal label vocabulary")
-    ap.add_argument("--out-root", default=OUT_ROOT)
-    ap.add_argument("--runs-root", default=RUNS_ROOT)
+    ap.add_argument("--out-root", default=None,
+                    help="override the stats tree --eval-set would pick")
+    ap.add_argument("--runs-root", default=None,
+                    help="override the runs tree --eval-set would pick")
     ap.add_argument("--list", action="store_true",
                     help="list the run directories found and exit")
-    return ap.parse_args()
+    a = ap.parse_args()
+
+    # One switch moves the runs tree, the gold file and the stats tree together.
+    # Scoring a validation run against the tuning gold is the mistake this
+    # prevents, and it is a mistake that produces a plausible-looking number.
+    a.eval_set = rc.resolve_eval_set(a.eval_set, what="score")
+    _sel = rc.EVAL_SETS[a.eval_set]
+    a.runs_root = a.runs_root or _sel["runs"]
+    a.out_root = a.out_root or _sel["stats"]
+    a.gold = a.gold or str(rc.resolve_gold(a.eval_set))
+    return a
 
 
 def score_run(run_dir: Path, tag: str, gold_file: Path, gold_bundle: tuple,

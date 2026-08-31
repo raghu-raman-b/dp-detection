@@ -1,0 +1,1959 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DP Gold — multi-coder adjudication bench</title>
+<style>
+  /* ============================================================
+     DP GOLD — visual system
+     Forked from dp_coder.html: same dark "coding bench" theme and the
+     same taxonomy hues. Span *capture* removed; a per-coder span
+     OVERLAY, a label x coder matrix and an evidence drawer added.
+
+     The coder ramp (--k0..--k5, --korig) is deliberately outside the
+     taxonomy hues: those are already spent on label identity, so
+     reusing them would make "who said it" and "what they said" the
+     same colour.
+     ============================================================ */
+  :root{
+    --bg:        #101318;
+    --panel:     #171b22;
+    --panel-2:   #1e2430;
+    --line:      #2a3140;
+    --ink:       #e8ecf3;
+    --ink-dim:   #97a1b3;
+    --ink-faint: #5d6779;
+    --accent:    #ffb454;   /* action / focus */
+    --danger:    #ff6b6b;
+    --ok:        #6fd08c;
+
+    --c-T:    #f2b544;  /* Temporal  — amber   */
+    --c-M:    #63d68b;  /* Monetary  — green   */
+    --c-S:    #5aa9f5;  /* Social    — blue    */
+    --c-P:    #c48af7;  /* Psych     — violet  */
+    --c-Tech: #59d6d0;  /* Technical — teal    */
+
+    --k0:#ff8fab; --k1:#7cc4ff; --k2:#ffd166; --k3:#9ef0a0;
+    --k4:#c9a6ff; --k5:#f79f79; --k6:#8ae0d0; --k7:#e0a3d8;
+    --korig:#cfd6e4;
+
+    --mono: "SF Mono", "Cascadia Code", Consolas, "Liberation Mono", monospace;
+    --sans: -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html,body{ height:100%; }
+  body{
+    background:var(--bg); color:var(--ink); font-family:var(--sans);
+    font-size:15px; overflow:hidden;
+  }
+  button{ font-family:inherit; cursor:pointer; }
+  input,select,textarea{ font-family:inherit; color:var(--ink); }
+  ::selection{ background:#3d5170; }
+
+  /* ---------- app frame: header / main / footer ---------- */
+  #app{ display:flex; flex-direction:column; height:100vh; }
+
+  header{
+    display:flex; flex-direction:column; align-items:stretch; gap:7px;
+    padding:8px 14px; background:var(--panel); border-bottom:1px solid var(--line);
+  }
+  .hrow{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+  header .brand{
+    font-family:var(--mono); font-size:14px; font-weight:700; letter-spacing:.5px;
+    color:var(--accent); margin-right:6px; white-space:nowrap;
+  }
+  header .brand small{ color:var(--ink-faint); font-weight:400; }
+  .hgroup{ display:flex; align-items:center; gap:6px; }
+  .hgroup label{ font-size:11px; color:var(--ink-dim); text-transform:uppercase; letter-spacing:.6px; }
+
+  .btn{
+    background:var(--panel-2); border:1px solid var(--line); color:var(--ink);
+    border-radius:6px; padding:5px 11px; font-size:13px;
+  }
+  .btn:hover{ border-color:var(--ink-faint); }
+  .btn.primary{ background:var(--accent); border-color:var(--accent); color:#1a1204; font-weight:600; }
+  .btn.primary:hover{ filter:brightness(1.08); }
+  .btn.ghost{ background:transparent; }
+  .btn:disabled{ opacity:.35; cursor:default; }
+  .btn:disabled:hover{ border-color:var(--line); filter:none; }
+
+  input[type=text], input[type=number], select, textarea{
+    background:var(--panel-2); border:1px solid var(--line); border-radius:6px;
+    padding:5px 8px; font-size:13px;
+  }
+  input:focus, select:focus, textarea:focus{ outline:none; border-color:var(--accent); }
+  input:disabled, select:disabled, textarea:disabled{ opacity:.35; }
+
+  #dirtyDot{
+    width:9px; height:9px; border-radius:50%; background:var(--ink-faint);
+    display:inline-block; margin-left:2px;
+  }
+  #dirtyDot.dirty{ background:var(--danger); box-shadow:0 0 6px var(--danger); }
+
+  /* ---------- the 4-step gate ---------- */
+  #stepper{ gap:6px; }
+  .step{
+    display:flex; align-items:center; gap:6px;
+    border:1px solid var(--line); border-radius:8px; padding:4px 9px;
+    background:var(--bg); opacity:.45;
+  }
+  .step.active{ opacity:1; border-color:var(--accent); }
+  .step.done{ opacity:1; border-color:#33465c; }
+  .step .sn{
+    font-family:var(--mono); font-size:10.5px; width:16px; height:16px; line-height:16px;
+    text-align:center; border-radius:50%; background:var(--panel-2); color:var(--ink-faint);
+  }
+  .step.active .sn{ background:var(--accent); color:#1a1204; font-weight:700; }
+  .step.done  .sn{ background:#33465c; color:var(--ink); }
+  .step.done  .sn::after{ content:""; }
+  .step .sinfo{ font-family:var(--mono); font-size:11.5px; color:var(--ink-dim); }
+  .step label{ font-size:11px; color:var(--ink-dim); text-transform:uppercase; letter-spacing:.6px; }
+  #nCoders{ width:56px; font-family:var(--mono); }
+  #ackWrap{ display:flex; align-items:center; gap:5px; font-size:11.5px;
+            color:var(--danger); text-transform:none; letter-spacing:0; }
+  .stepArrow{ color:var(--ink-faint); font-size:11px; }
+
+  /* ---------- the collapsed status bar (step 4) ---------- */
+  #statusBar{ font-family:var(--mono); font-size:11.5px; color:var(--ink-dim); gap:14px; }
+  #statusBar b{ color:var(--ink); }
+  #statusBar .sep{ color:var(--ink-faint); }
+  #statusBar .ck{ display:flex; align-items:center; gap:5px; cursor:pointer; }
+  #sbAlpha{ color:var(--ink); }
+  #sbAlpha .tagdo{ color:var(--ink-faint); font-size:10px; text-transform:uppercase; letter-spacing:.6px; }
+  .kdot{ display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:3px; vertical-align:middle; }
+
+  /* ---------- main split ---------- */
+  main{ flex:1; display:flex; min-height:0; }
+  main.locked, footer.locked{ opacity:.25; pointer-events:none; }
+
+  /* left: review card + overlay */
+  #reviewPane{
+    width:52%; min-width:0; padding:22px 28px; overflow-y:auto;
+    border-right:1px solid var(--line);
+  }
+  #emptyState{ color:var(--ink-faint); margin-top:9vh; text-align:center; line-height:1.9; }
+  #emptyState .big{ font-size:19px; color:var(--ink-dim); }
+  #emptyState code{ font-family:var(--mono); color:var(--accent); font-size:13px; }
+  #emptyState ol{ text-align:left; max-width:44ch; margin:14px auto 0; padding-left:20px; }
+  #emptyState li{ margin-bottom:5px; }
+
+  .meta-line{
+    display:flex; flex-wrap:wrap; gap:6px 14px; align-items:baseline;
+    font-family:var(--mono); font-size:12.5px; color:var(--ink-dim); margin-bottom:6px;
+  }
+  .meta-line .game{ font-size:15px; color:var(--ink); font-weight:700; }
+  .meta-line .stars{ color:var(--c-T); letter-spacing:1px; }
+  .meta-pill{
+    background:var(--panel-2); border:1px solid var(--line); border-radius:20px;
+    padding:1px 9px; font-size:11.5px;
+  }
+
+  #rowStateLine{ font-family:var(--mono); font-size:11.5px; margin:2px 0 12px; min-height:15px;
+                 display:flex; flex-wrap:wrap; gap:10px; }
+  #rowStateLine .st-ruled   { color:var(--ok); }
+  #rowStateLine .st-contest { color:var(--accent); }
+  #rowStateLine .st-changed { color:var(--c-S); }
+  #rowStateLine .st-none    { color:var(--ink-faint); }
+  #rowStateLine .st-warn    { color:var(--danger); }
+
+  #coderLegend{ display:flex; flex-wrap:wrap; gap:6px; margin-bottom:14px; }
+  .lchip{
+    display:flex; align-items:center; gap:5px; border:1px solid var(--line);
+    border-radius:16px; padding:2px 10px; font-family:var(--mono); font-size:11.5px;
+    color:var(--ink-dim); background:var(--bg); user-select:none;
+  }
+  .lchip:hover{ border-color:var(--ink-faint); color:var(--ink); }
+  .lchip.solo{ border-color:var(--accent); color:var(--ink); }
+  .lchip.muted{ opacity:.35; }
+  .lchip .sw{ width:9px; height:9px; border-radius:2px; }
+  .lchip .cst{ color:var(--ink-faint); font-size:10px; }
+
+  #reviewText{
+    font-size:19px; line-height:2.05; color:var(--ink); white-space:pre-wrap;
+    max-width:72ch;
+  }
+  /* one wrapper per boundary-cut segment; one nested .ovline per coder */
+  #reviewText .ov{ border-radius:2px; }
+  #reviewText .ov.dim{ opacity:.3; }
+  #reviewText .ovline{
+    text-decoration-line:underline; text-decoration-thickness:2px;
+    text-decoration-skip-ink:none;
+  }
+  #reviewText .ovmore{ font-family:var(--mono); font-size:9px; color:var(--ink-faint); }
+  #reviewId{ margin-top:22px; font-family:var(--mono); font-size:11px; color:var(--ink-faint); }
+  #overlayKey{ margin-top:10px; font-family:var(--mono); font-size:11px; color:var(--ink-faint); }
+
+  /* right: matrix + drawer */
+  #rightPane{
+    width:48%; min-width:430px; display:flex; flex-direction:column; min-height:0;
+    background:var(--panel);
+  }
+
+  #matrixWrap{ overflow:auto; padding:10px 12px 4px; flex:0 0 auto; max-height:44%; }
+  table.mx{ width:100%; border-collapse:collapse; font-size:12.5px; }
+  table.mx th{
+    position:sticky; top:0; z-index:2; background:var(--panel);
+    font-family:var(--mono); font-size:10.5px; font-weight:600; color:var(--ink-dim);
+    text-transform:uppercase; letter-spacing:.5px; text-align:center;
+    padding:4px 3px; border-bottom:1px solid var(--line); white-space:nowrap;
+  }
+  table.mx th.lbl{ text-align:left; padding-left:6px; }
+  table.mx th .kdot{ margin:0 0 3px; display:block; margin-left:auto; margin-right:auto; }
+  table.mx td{ padding:3px 3px; border-bottom:1px solid #20262f; text-align:center; }
+  table.mx td.lbl{
+    text-align:left; padding-left:6px; font-family:var(--mono); font-size:11.5px;
+    color:var(--ink-dim); white-space:nowrap; max-width:190px; overflow:hidden; text-overflow:ellipsis;
+  }
+  table.mx tr.mxrow{ cursor:pointer; }
+  table.mx tr.mxrow:hover td{ background:#1b212b; }
+  table.mx tr.mxrow.sel td{ background:#232c3a; }
+  table.mx tr.mxrow.sel td.lbl{ color:var(--ink); }
+  table.mx tr.mxrow .sw{
+    display:inline-block; width:7px; height:7px; border-radius:2px; margin-right:5px;
+    vertical-align:middle;
+  }
+  table.mx .g-yes{ color:var(--ok); font-weight:700; }
+  table.mx .g-no { color:var(--ink-faint); }
+  table.mx .g-abs{ color:var(--accent); }        /* abstain */
+  table.mx .g-gone{ color:#4a5364; }             /* absent from file */
+  table.mx .spanct{ font-family:var(--mono); font-size:8.5px; opacity:.8; vertical-align:super; }
+  table.mx td.kn{ font-family:var(--mono); font-size:11px; color:var(--ink-dim); white-space:nowrap; }
+  table.mx tr.adv-in  td.kn{ color:var(--ok); }
+  table.mx tr.adv-out td.kn{ color:var(--danger); }
+  table.mx td.fin input{ width:15px; height:15px; accent-color:var(--accent); cursor:pointer; }
+  table.mx tr.rowNone td.lbl{ color:var(--ink-faint); font-style:italic; }
+  table.mx tr.rowBad td.lbl{ color:var(--danger); }
+  table.mx tr.rowBad td.fin input{ cursor:not-allowed; }
+  .mxAdvisory{ font-family:var(--mono); font-size:10.5px; color:var(--ink-faint); padding:4px 6px 0; }
+  .mxAdvisory b{ color:var(--accent); }
+  .mxEmpty{ color:var(--ink-faint); font-style:italic; font-size:12.5px; padding:10px 6px; }
+
+  #searchWrap{ padding:6px 12px; border-top:1px solid var(--line); }
+  #labelSearch{ width:100%; font-family:var(--mono); }
+  #searchHint{ font-size:10.5px; color:var(--ink-faint); margin-top:3px; padding-left:2px; }
+  #searchResults{ display:flex; flex-wrap:wrap; gap:5px; margin-top:6px; }
+  #searchResults .sres{
+    border:1px solid var(--line); border-radius:16px; background:var(--bg);
+    padding:2px 10px; font-size:12px; color:var(--ink-dim); user-select:none; cursor:pointer;
+  }
+  #searchResults .sres:hover{ border-color:var(--gc,var(--accent)); color:var(--ink); }
+  #searchResults .sres.hl{ outline:2px solid var(--accent); outline-offset:1px; color:var(--ink); }
+
+  #defStrip{
+    border-top:1px solid var(--line); padding:8px 12px; min-height:50px; max-height:104px;
+    overflow-y:auto; font-size:12px; line-height:1.5; color:var(--ink-dim); background:var(--panel);
+  }
+  #defStrip b{ color:var(--ink); font-size:12.5px; }
+  #defStrip .placeholder{ color:var(--ink-faint); font-style:italic; }
+
+  #drawer{ flex:1; overflow-y:auto; padding:10px 12px; border-top:1px solid var(--line); min-height:0; }
+  #drawer .dhead{
+    font-family:var(--mono); font-size:10.5px; color:var(--ink-dim);
+    text-transform:uppercase; letter-spacing:.6px; margin-bottom:8px;
+  }
+  #drawer .dhead b{ color:var(--ink); }
+  .ecard{
+    border:1px solid var(--line); border-left-width:3px; border-radius:8px;
+    padding:7px 10px; margin-bottom:7px; background:var(--bg);
+  }
+  .ecard .ehead{ display:flex; align-items:baseline; gap:8px; font-family:var(--mono); font-size:11.5px; }
+  .ecard .ewho{ font-weight:700; color:var(--ink); }
+  .ecard .emeta{ margin-left:auto; color:var(--ink-faint); font-size:10.5px; }
+  .ecard .emeta .bd{ color:var(--danger); }
+  .ecard .emeta .cf{ color:var(--accent); }
+  .ecard .espan{ font-size:12.5px; color:var(--ink-dim); font-style:italic; margin-top:4px; }
+  .ecard .espan .off{ font-family:var(--mono); font-style:normal; font-size:10px; color:var(--ink-faint); margin-left:6px; }
+  .ecard .espan.bad{ color:var(--danger); }
+  .ecard .erule{ font-family:var(--mono); font-size:10.5px; color:var(--ink-faint); margin-top:4px; }
+  .ecard .erat{ font-size:12.5px; color:var(--ink-dim); margin-top:4px; white-space:pre-wrap; }
+  .ecard .enospan{ font-size:12px; color:var(--ink-faint); font-style:italic; margin-top:3px; }
+  #drawer .dfoot{ font-family:var(--mono); font-size:11px; color:var(--ink-faint); margin-top:6px; }
+  #drawer .dplaceholder{ color:var(--ink-faint); font-style:italic; font-size:12.5px; }
+
+  #ruleBox{
+    border-top:1px solid var(--line); padding:9px 12px; display:grid;
+    grid-template-columns:1fr 1fr; gap:7px 12px; background:var(--panel); flex:0 0 auto;
+  }
+  #ruleBox .full{ grid-column:1 / -1; }
+  .j-label{ font-size:10.5px; color:var(--ink-dim); text-transform:uppercase; letter-spacing:.6px; margin-bottom:3px; display:block; }
+  #decisionRule{ width:100%; }
+  #disputedBtn{ width:100%; }
+  #disputedBtn.on{ background:var(--danger); border-color:var(--danger); color:#20090b; font-weight:700; }
+  #note{ width:100%; resize:vertical; min-height:40px; max-height:110px; font-size:12.5px; }
+
+  /* ---------- footer bar ---------- */
+  footer{
+    display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+    padding:8px 14px; background:var(--panel); border-top:1px solid var(--line);
+  }
+  #progressText{ font-family:var(--mono); font-size:12.5px; color:var(--ink-dim); }
+  #progressText b{ color:var(--ink); }
+  #posText{ font-family:var(--mono); font-size:12px; color:var(--ink-faint); }
+  #filterSel{ max-width:220px; }
+  #contestedBtn.on{ background:var(--accent); border-color:var(--accent); color:#1a1204; font-weight:600; }
+  .spacer{ flex:1; }
+
+  /* toast */
+  #toast{
+    position:fixed; bottom:64px; left:50%; transform:translateX(-50%);
+    background:#2c3444; border:1px solid var(--line); color:var(--ink);
+    padding:8px 16px; border-radius:8px; font-size:13px; opacity:0;
+    pointer-events:none; transition:opacity .15s; z-index:50; max-width:70vw;
+  }
+  #toast.show{ opacity:1; }
+  #toast.err{ border-color:var(--danger); color:#ffc9c9; }
+
+  /* cheat sheet */
+  #cheat{
+    position:fixed; inset:0; background:rgba(8,10,14,.78); z-index:100;
+    display:none; align-items:center; justify-content:center;
+  }
+  #cheat.show{ display:flex; }
+  #cheat .card{
+    background:var(--panel); border:1px solid var(--line); border-radius:12px;
+    padding:22px 28px; max-width:640px; width:92%; max-height:88vh; overflow-y:auto;
+  }
+  #cheat h2{ font-size:15px; margin-bottom:12px; color:var(--accent); font-family:var(--mono); }
+  #cheat table{ width:100%; border-collapse:collapse; font-size:13px; }
+  #cheat td{ padding:4px 6px; border-bottom:1px solid var(--line); color:var(--ink-dim); }
+  #cheat td:first-child{ width:180px; }
+  #cheat kbd{
+    font-family:var(--mono); font-size:11.5px; background:var(--panel-2);
+    border:1px solid var(--line); border-bottom-width:2px; border-radius:4px; padding:1px 6px;
+    color:var(--ink);
+  }
+  #cheat .note{ font-size:12px; color:var(--ink-faint); margin-top:12px; line-height:1.6; }
+  #cheat .close{ margin-top:14px; }
+  #cheat .reset{ margin-top:14px; margin-left:8px; }
+  #cheat .reset:hover{ border-color:var(--danger); color:var(--danger); }
+
+  /* scrollbars */
+  ::-webkit-scrollbar{ width:10px; height:10px; }
+  ::-webkit-scrollbar-thumb{ background:var(--line); border-radius:5px; }
+  ::-webkit-scrollbar-track{ background:transparent; }
+
+  @media (max-width:1000px){
+    main{ flex-direction:column; overflow-y:auto; }
+    #reviewPane,#rightPane{ width:100%; min-width:0; }
+    #matrixWrap{ max-height:none; }
+    body{ overflow:auto; }
+  }
+</style>
+</head>
+<body>
+<div id="app">
+
+  <header>
+    <div class="hrow">
+      <span class="brand">DP&nbsp;GOLD <small>· panel adjudication</small></span>
+      <div class="spacer"></div>
+      <button class="btn ghost" id="codebookBtn" title="Open the codebook in a new tab">Codebook ↗</button>
+      <button class="btn" id="importBtn" data-minstep="4"
+              title="Restore rulings from a previously exported gold_provenance.json">Import rulings…</button>
+      <input type="file" id="importInput" accept=".json,.jsonl,.txt" hidden>
+      <button class="btn primary" id="exportBtn" data-minstep="4"
+              title="Write gold_set.jsonl + gold_set_blind.jsonl + provenance + changes">Export gold set</button>
+      <span id="dirtyDot" title="red = rulings not yet exported to file"></span>
+      <button class="btn ghost" id="helpBtn" title="Keyboard shortcuts (?)">?</button>
+    </div>
+
+    <div class="hrow" id="stepper">
+      <div class="step" data-s="1">
+        <span class="sn">1</span>
+        <button class="btn" id="origBtn">Load original labels…</button>
+        <input type="file" id="origInput" accept=".jsonl,.json,.txt" hidden>
+        <span class="sinfo" id="origInfo">validation_set.jsonl</span>
+      </div>
+      <span class="stepArrow">▸</span>
+      <div class="step" data-s="2">
+        <span class="sn">2</span>
+        <label for="nCoders">coders</label>
+        <input type="number" id="nCoders" min="1" max="8" value="4" data-minstep="1">
+        <button class="btn" id="nCodersBtn" data-minstep="1">Set</button>
+      </div>
+      <span class="stepArrow">▸</span>
+      <div class="step" data-s="3">
+        <span class="sn">3</span>
+        <button class="btn" id="coderBtn" data-minstep="2">Add coder file…</button>
+        <input type="file" id="coderInput" accept=".jsonl,.json,.txt" hidden>
+        <span class="sinfo" id="rosterInfo">none loaded</span>
+      </div>
+      <span class="stepArrow">▸</span>
+      <div class="step" data-s="4">
+        <span class="sn">4</span>
+        <label id="ackWrap" hidden><input type="checkbox" id="ackIncomplete"> incomplete coding acknowledged</label>
+        <button class="btn primary" id="beginBtn" data-minstep="3">Begin adjudication →</button>
+      </div>
+    </div>
+
+    <div class="hrow" id="statusBar" hidden>
+      <span id="sbOrig"></span>
+      <span class="sep">│</span>
+      <span id="sbCoders"></span>
+      <span class="sep">│</span>
+      <span id="sbAlpha"></span>
+      <label class="ck" title="master_flow counts the author as a fifth coder; off by default because the author's set is what is being challenged, not a fifth ballot">
+        <input type="checkbox" id="countAuthor"> count author
+      </label>
+      <div class="spacer"></div>
+      <span id="sbProgress"></span>
+    </div>
+  </header>
+
+  <main class="locked">
+    <section id="reviewPane">
+      <div id="emptyState">
+        <div class="big">No adjudication session</div>
+        <ol>
+          <li>Load <code>validation_set.jsonl</code> — the file <b>with</b> <code>actual_labels</code>,
+              not the blind one.</li>
+          <li>Say how many coders you are fusing.</li>
+          <li>Add each coder's <code>coder_&lt;id&gt;_&lt;stamp&gt;.jsonl</code>
+              from <code>dp_coder.html</code>.</li>
+          <li>Rule each review; export <code>gold_set.jsonl</code>.</li>
+        </ol>
+        <p>Rulings autosave to this browser (localStorage).<br>
+           Nothing leaves your machine until you click <b>Export gold set</b>.</p>
+        <p>Press <b>?</b> anytime for keyboard shortcuts.</p>
+      </div>
+
+      <div id="reviewCard" hidden>
+        <div class="meta-line" id="metaLine"></div>
+        <div id="rowStateLine"></div>
+        <div id="coderLegend"></div>
+        <div id="reviewText"></div>
+        <div id="overlayKey"></div>
+        <div id="reviewId"></div>
+      </div>
+    </section>
+
+    <section id="rightPane">
+      <div id="matrixWrap">
+        <table class="mx">
+          <thead id="mxHead"></thead>
+          <tbody id="mxBody"></tbody>
+        </table>
+        <div class="mxAdvisory" id="mxAdvisory"></div>
+      </div>
+
+      <div id="searchWrap">
+        <input type="text" id="labelSearch" placeholder="/  add a label nobody proposed…" autocomplete="off">
+        <div id="searchHint">↑↓ move · Enter/Space add to ruling · Esc clear</div>
+        <div id="searchResults"></div>
+      </div>
+
+      <div id="defStrip"><span class="placeholder">Select a matrix row to see its codebook definition.</span></div>
+
+      <div id="drawer"><span class="dplaceholder">Select a label in the matrix to see who chose it and why.</span></div>
+
+      <div id="ruleBox">
+        <div>
+          <span class="j-label">decision rule</span>
+          <select id="decisionRule">
+            <option value="">— unset —</option>
+            <option value="kept_original">kept original</option>
+            <option value="majority">majority</option>
+            <option value="minority_persuaded">minority persuaded</option>
+            <option value="codebook_boundary">codebook boundary rule</option>
+            <option value="evidence_span">evidence span decided it</option>
+            <option value="other">other (see note)</option>
+          </select>
+        </div>
+        <div>
+          <span class="j-label">disputed · D</span>
+          <button class="btn" id="disputedBtn">not disputed</button>
+        </div>
+        <div class="full">
+          <span class="j-label">adjudication note (goes to the sidecar, never to the gold file) — Ctrl+Enter rules</span>
+          <textarea id="note" rows="2"></textarea>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="locked">
+    <button class="btn" id="prevBtn" title="Previous (←)">← Prev</button>
+    <button class="btn primary" id="ruleBtn" title="Mark this review ruled + next (Enter)">Rule + Next ⏎</button>
+    <button class="btn" id="skipBtn" title="Move on without ruling (S)">Skip</button>
+
+    <span id="posText"></span>
+    <span id="progressText"></span>
+
+    <div class="spacer"></div>
+
+    <div class="hgroup">
+      <label for="filterSel">filter</label>
+      <select id="filterSel"></select>
+    </div>
+    <button class="btn" id="contestedBtn" title="Cycle only reviews the coders disagreed on (G)">Contested only</button>
+  </footer>
+</div>
+
+<div id="toast"></div>
+
+<div id="cheat">
+  <div class="card">
+    <h2>Keyboard shortcuts</h2>
+    <table>
+      <tr><td><kbd>Enter</kbd></td><td>Rule this review + advance (also <kbd>Ctrl+Enter</kbd> inside the note)</td></tr>
+      <tr><td><kbd>←</kbd> / <kbd>→</kbd></td><td>Previous / next review (no ruling)</td></tr>
+      <tr><td><kbd>↑</kbd> <kbd>↓</kbd></td><td>Move the matrix selection (drives the evidence drawer)</td></tr>
+      <tr><td><kbd>Space</kbd></td><td>Toggle the selected matrix row into the ruling</td></tr>
+      <tr><td><kbd>1</kbd>…<kbd>9</kbd></td><td>Toggle matrix row 1–9 <b>(differs from dp_coder, where these set confidence)</b></td></tr>
+      <tr><td><kbd>N</kbd></td><td>Rule NONE (clears every label)</td></tr>
+      <tr><td><kbd>A</kbd></td><td>Apply the majority vote to this review</td></tr>
+      <tr><td><kbd>R</kbd></td><td>Reset the ruling to the original labels</td></tr>
+      <tr><td><kbd>D</kbd> / <kbd>B</kbd></td><td>Toggle "disputed" (the panel could not agree)</td></tr>
+      <tr><td><kbd>S</kbd></td><td>Skip without ruling</td></tr>
+      <tr><td><kbd>G</kbd> / <kbd>C</kbd></td><td>Toggle contested-only mode</td></tr>
+      <tr><td><kbd>/</kbd></td><td>Search for a label nobody proposed</td></tr>
+      <tr><td><kbd>Esc</kbd></td><td>Clear search / close this sheet</td></tr>
+      <tr><td><kbd>?</kbd></td><td>Show / hide this sheet</td></tr>
+    </table>
+    <p class="note">
+      The α shown in the header is <b>display-only</b> — a steer for the meeting, not the
+      reportable statistic. Compute that in Python with a bootstrap CI.<br>
+      Glyphs: <b>✓</b> assigned · <b>·</b> coded but not assigned ·
+      <b>–</b> abstained (row exported with saved:0) · <b>⌀</b> absent from that coder's file.
+      Abstentions and absences never count toward k/N.
+    </p>
+    <button class="btn close" onclick="document.getElementById('cheat').classList.remove('show')">Close (Esc)</button>
+    <button class="btn reset" id="resetBtn">Reset session…</button>
+  </div>
+</div>
+
+<script>
+/* ================================================================
+   ████  CONFIG — EDIT HERE  ████
+   Taxonomy copied VERBATIM from dp_coder.html. It must stay in step
+   with the codebook, with build_prompt.py, and with LABEL_CODES in
+   build_input.py. Retyping it is how the 29 codes silently drift.
+
+   INPUT   validation_set.jsonl  (build_validation_set.py, OUT)
+         + N x coder_<id>_<stamp>.jsonl  (dp_coder.html, Download labels)
+   OUTPUT  gold_set.jsonl / gold_set_blind.jsonl  — byte-compatible with
+           build_validation_set.py's own output, so the teacher runners,
+           compute_run_stats.py and compare_runs.py consume them unchanged.
+         + gold_provenance.json / gold_changes.csv  — the audit trail.
+   ================================================================ */
+const CONFIG = {
+  defaultCodebookVersion: "0.20",
+  codebookHref: "dp-codebook.html",
+  goldCoderId: "adjudicated_panel",  // written to the gold file's coder_id slot
+  maxCoders: 8,
+  countOriginalAsVoter: false,       // author is what's being challenged, not a 5th ballot
+  groups: [
+    { id:"T", name:"Temporal", color:"var(--c-T)", labels:[
+      "Playing by Appointment", "Daily Rewards", "Grinding", "Advertisement",
+      "Infinite Treadmill", "Mandatory Marathon"
+    ]},
+    { id:"M", name:"Monetary", color:"var(--c-M)", labels:[
+      "Pay to Progress", "Intermediate Currency", "Deceptive Luxury",
+      "Recurring Fee", "Gambling", "Power Creep", "Waste Aversion",
+      "Easy to Purchase", "UI Misdirection", "Never-Ending Lure"
+    ]},
+    { id:"S", name:"Social", color:"var(--c-S)", labels:[
+      "Forced Fellowship", "Friend Spam / Impersonation", "Reciprocity",
+      "Encourages Anti-Social Behavior", "Fear of Missing Out (FOMO)", "Competition"
+    ]},
+    { id:"P", name:"Psychological", color:"var(--c-P)", labels:[
+      "Easy to Get Hard to Lose", "Complete the Collection", "Illusion of Control",
+      "Aesthetic Manipulation", "Optimism and Frequency Biases", "Reward Mania"
+    ]},
+    { id:"Tech", name:"Technical", color:"var(--c-Tech)", labels:[
+      "Fragmented Downloads"
+    ]}
+  ]
+};
+
+/* canonical_definition for each label, lifted from codebook v0.20. */
+const DEFS = {
+  T_PlayingByAppointment: "Requires players play at specific times (and or dates) as defined by the game, rather than the players. When mechanics result in player playing according to the schedules the game offers, rather than their personal desires (an obligation).",
+  T_DailyRewards: "Motivates players to log in daily by providing incentives, while also penalising them for failing to do so.",
+  T_Grinding: "“Performing repetitive and tedious tasks” in order to make progress in a game. Emphasizes time invested over skill and in worst cases could be conducted unattended by the player.",
+  T_Advertisement: "Compelled to view advertisements or incentivized to do so through the promise of rewards.",
+  T_InfiniteTreadmill: "Patterns that continually expand the game to never allow players to complete.",
+  T_MandatoryMarathon: "Design that prevents the player from stopping at a moment of their choosing, requiring continuation to a stopping point defined by the game. Includes absent or restricted saving, checkpoint-only progress, and sessions or matches that cannot be exited without forfeiting progress.",
+  M_PayToProgress: "Patterns that require the players to spend money to progress in-game.",
+  M_IntermediateCurrency: "Pattern where players use real-world money to acquire in-game currency for purchases or trades within the game world",
+  M_DeceptiveLuxury: "Deceptive Luxury is a game design tactic that makes an item feel rare and exclusive so players will pay more for it, when the rarity was invented by the developer rather than being a real limit. The item's price reflects manufactured scarcity, not genuine value.",
+  M_RecurringFee: "Patterns that encourages players to maximize playtime to justify their spending.",
+  M_Gambling: "Using real money to participate in a game that involves an element of luck, with the possibility of receiving a prize as a reward.",
+  M_PowerCreep: "Patterns that diminishing the value of purchased items over time to drive new purchases.",
+  M_WasteAversion: "Patterns set small differences between in-game currency and item costs, prompting additional currency purchases.",
+  M_EasyToPurchase: "Interface design that reduces the friction or deliberation involved in spending real money, through purchase-by-default options, absent confirmation or refund steps, prompts triggered at the point of insufficient funds, or price presentation that makes an amount appear smaller than it is.",
+  M_UIMisdirection: "The user interface (i.e., not the NPC) contains elements designed to purposefully focus attention on specific options, or away from opportunities to opt-out.",
+  M_NeverEndingLure: "The “Never-Ending Lure” pattern is designed to convert non-paying players into paying ones (“First Charge Discount”) and encourage consistent long-term payments (“Accumulating Rewards”).",
+  S_ForcedFellowship: "Forced Fellowship is a game design tactic that turns real friendships into leverage: the game rewards you for pulling friends in, then makes it costly to stop playing because quitting would let those friends down.Design that uses the player's social ties, real or in-game, as the mechanism of recruitment or retention: rewarding the player for bringing others into the game, or making disengagement costly because absence burdens teammates, guildmates, or friends.",
+  S_FriendSpamImpersonation: "The game employs unsolicited messaging to a player's contact list or social media account.",
+  S_Reciprocity: "Patterns that instill a sense of obligation to reciprocate by donating resources to other players.",
+  S_EncouragesAntiSocialBehavior: "Patterns that incentivize players to engage in dishonest or harmful actions to gain an advantage.",
+  S_FearOfMissingOutFOMO: "Players are pressured to continue playing the game by the fear of missing out on rewards or falling behind other players.",
+  S_Competition: "Patterns that make players against each other in competition.",
+  P_EasyToGetHardToLose: "Design in which accumulated investment, time played, money spent, progress attained, or partially completed goals, raises the cost of leaving. Entry is low-friction; exit entails forfeiting value the player already holds.",
+  P_CompleteTheCollection: "The compulsion to acquire all the items, achievements, or hidden features in a game.",
+  P_IllusionOfControl: "Patterns that deceive players about their skill level to encourage more gameplay.",
+  P_AestheticManipulation: "The use of deceitful questions or manipulation of emotions and subconscious desires, mainly based on aesthetical game elements.",
+  P_OptimismAndFrequencyBiases: "Patterns that exploit cognitive biases and clustering illusions to overestimate event frequencies (e.g., winning streaks).",
+  P_RewardMania: "Reward structures in which the mechanism of delivery, its complexity, its unpredictability, or the out-of-game activity it demands, is what sustains engagement, rather than the value of the reward itself. The player invests disproportionate cognitive effort, repeated attempts, or external activity in pursuit of the reward system.",
+  Tech_FragmentedDownloads: "“Fragmented Downloads” are characterized by designs that obscure the true storage requirements of the game until the game starts. This is deceptive because it targets mobile users who are cautious about their device’s storage capacity and foments a space monopoly by the app against competitors.",
+};
+/* ================================================================
+   ████  END CONFIG  ████
+   ================================================================ */
+
+/* ---------------- derived taxonomy tables (verbatim from dp_coder.html) ---------------- */
+function camel(label){
+  return label.split(/[^A-Za-z0-9]+/).filter(Boolean)
+    .map(w => w[0].toUpperCase() + w.slice(1)).join("");
+}
+const ALL_LABELS = []; // {col, groupId, groupName, label, color}
+for (const g of CONFIG.groups)
+  for (const l of g.labels)
+    ALL_LABELS.push({ col: g.id + "_" + camel(l), groupId: g.id, groupName: g.name, label: l, color: g.color });
+const COL_BY_NAME = Object.fromEntries(ALL_LABELS.map(x => [x.col, x]));
+const ORDER = Object.fromEntries(ALL_LABELS.map((x,i) => [x.col, i]));
+function sortLabels(a){ return a.slice().sort((x,y)=>(ORDER[x]??999)-(ORDER[y]??999)); }
+const CLASS_IDS = CONFIG.groups.map(g => g.id);
+
+const NONE_ROW = "__NONE__";
+const AU = "__AU__";                 // the author/original pseudo-coder column
+const KRAMP = ["--k0","--k1","--k2","--k3","--k4","--k5","--k6","--k7"];
+
+/* ---------------- persistent state ----------------
+   Namespace is deliberately NOT dpCoder.* or dpAdjudicator.*. Same
+   browser origin: reusing theirs would clobber a coder's live work. */
+const LS_SESSION = "dpGold.session.v1";
+const LS_ORIG    = "dpGold.original.v1";
+const LS_CODERS  = "dpGold.coders.v1";
+const LS_RULINGS = "dpGold.rulings.v1";
+
+let ORIG = [];          // original records, file order, keys untouched
+let ORIG_BY_ID = {};
+let ORIG_KEYS = [];     // authoritative export key order, taken from line 1
+let origMeta = { file:"", n:0, codebook_version:"" };
+
+let nCoders = 0;
+let ROSTER = [];        // ordered; index -> colour
+let VOTES  = {};        // coder_id -> review_id -> Vote
+
+let ruling = {};        // review_id -> Ruling
+let step = 0;
+
+let visible = [], cur = 0, selRow = null, solo = null;
+let contestedMode = false, dirtySinceExport = false, searchHl = -1;
+let settings = { filter:"all", countAuthor:false };
+
+/* ---------------- utilities (verbatim from dp_coder.html) ---------------- */
+let toastTimer = null;
+function toast(msg, err=false){
+  const t = document.getElementById("toast");
+  t.textContent = msg; t.classList.toggle("err", !!err); t.classList.add("show");
+  clearTimeout(toastTimer); toastTimer = setTimeout(()=>t.classList.remove("show"), err?4200:1800);
+}
+function parseJSONL(text){
+  const out = [], errs = [];
+  text.split(/\r?\n/).forEach((line,i)=>{
+    const s = line.trim(); if(!s) return;
+    try{ out.push(JSON.parse(s)); }catch(e){ errs.push(i+1); }
+  });
+  return { out, errs };
+}
+function esc(s){ return String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
+function starStr(n){
+  const v = parseInt(n,10);
+  if(isNaN(v) || v<1 || v>5) return n===""?"":String(n);
+  return "★".repeat(v) + "☆".repeat(5-v);
+}
+function csvCell(v){
+  if(v === null || v === undefined) v = "";
+  if(Array.isArray(v)) v = v.length && typeof v[0] === "object" ? JSON.stringify(v) : v.join(";");
+  else if(typeof v === "object") v = JSON.stringify(v);
+  v = String(v);
+  return /[",\n\r]/.test(v) ? '"' + v.replace(/"/g,'""') + '"' : v;
+}
+function download(name, text, mime){
+  const blob = new Blob([text], {type: mime});
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob); a.download = name;
+  document.body.appendChild(a); a.click();
+  setTimeout(()=>{ URL.revokeObjectURL(a.href); a.remove(); }, 400);
+}
+function slug(s){ return String(s).replace(/[^A-Za-z0-9._-]+/g,"_").replace(/^_|_$/g,"") || "coder"; }
+function readFileAs(input, cb){
+  const f = input.files && input.files[0]; if(!f) return;
+  const rd = new FileReader();
+  rd.onload = () => cb(String(rd.result), f.name);
+  rd.readAsText(f);
+  input.value = "";
+}
+function inTextField(){
+  const t = document.activeElement;
+  return t && (t.tagName === "INPUT" || t.tagName === "TEXTAREA" || t.tagName === "SELECT");
+}
+function fuzzyMatch(q, s){
+  q = q.toLowerCase(); s = s.toLowerCase();
+  let i = 0;
+  for(const ch of s){ if(ch === q[i]) i++; if(i === q.length) return true; }
+  return q.length === 0;
+}
+function sameSet(a, b){
+  if(a.length !== b.length) return false;
+  const s = new Set(a);
+  return b.every(x => s.has(x));
+}
+function markDirty(){
+  dirtySinceExport = true;
+  document.getElementById("dirtyDot").classList.add("dirty");
+}
+function persist(){
+  try{
+    localStorage.setItem(LS_RULINGS, JSON.stringify(ruling));
+    localStorage.setItem(LS_SESSION, JSON.stringify({ step, nCoders, ...settings }));
+    localStorage.setItem(LS_CODERS, JSON.stringify({ ROSTER, VOTES }));
+  }catch(e){ toast("localStorage save failed: " + e.message, true); }
+}
+function persistOriginal(){
+  try{ localStorage.setItem(LS_ORIG, JSON.stringify({ ORIG, ORIG_KEYS, origMeta })); }
+  catch(e){ toast("Original set too large to cache — rulings still save; re-pick the file next session.", true); }
+}
+
+/* ================================================================
+   LOADING — step 1: the original labeled set
+   ================================================================ */
+function originalLabelsOf(o){
+  if(Array.isArray(o.actual_labels)) return o.actual_labels;
+  if(typeof o.actual_labels_str === "string")
+    return o.actual_labels_str.split(";").map(s=>s.trim()).filter(Boolean);
+  return null;                                   // null === not a labeled set
+}
+
+function loadOriginal(objs, name){
+  if(!objs.length){ toast("That file has no JSON lines.", true); return; }
+
+  /* The mirror of dp_coder's refusal. A blind file here would silently
+     seed every ruling from nothing. */
+  const unlabeled = objs.filter(o => originalLabelsOf(o) === null).length;
+  if(unlabeled === objs.length){
+    toast("That is the blind set — no actual_labels anywhere. Load validation_set.jsonl, the file WITH the labels.", true);
+    return;
+  }
+  if(unlabeled){
+    toast(`Refused: ${unlabeled} of ${objs.length} rows carry no actual_labels. That is not a complete original set.`, true);
+    return;
+  }
+  if(objs.some(o => !o.review_id)){
+    toast("Refused: some rows have no review_id.", true); return;
+  }
+  const ids = objs.map(o => String(o.review_id));
+  const dupes = ids.length - new Set(ids).size;
+
+  const keys = Object.keys(objs[0]);
+  const heterogeneous = objs.some(o => Object.keys(o).length !== keys.length);
+
+  ORIG = []; ORIG_BY_ID = {};
+  const seen = new Set();
+  const unknown = new Set();
+  for(const o of objs){
+    const id = String(o.review_id);
+    if(seen.has(id)) continue;                   // keep first
+    seen.add(id);
+    const rec = { ...o };
+    rec.review_id = id;
+    rec.actual_labels = sortLabels(originalLabelsOf(o).filter(Boolean));
+    rec.actual_labels.forEach(c => { if(!COL_BY_NAME[c]) unknown.add(c); });
+    ORIG.push(rec); ORIG_BY_ID[id] = rec;
+  }
+  ORIG_KEYS = keys;
+  origMeta = {
+    file: name, n: ORIG.length,
+    codebook_version: ORIG[0].codebook_version || CONFIG.defaultCodebookVersion
+  };
+
+  document.getElementById("origInfo").textContent = `${name} · ${ORIG.length} rows · cb ${origMeta.codebook_version}`;
+  persistOriginal();
+  setStep(1);
+
+  const warns = [];
+  if(dupes) warns.push(`${dupes} duplicate review_id kept-first`);
+  if(heterogeneous) warns.push("rows have differing key sets — line 1's order is authoritative");
+  if(unknown.size) warns.push(`codes not in codebook v${origMeta.codebook_version}: ${[...unknown].join(", ")}`);
+  toast(`Loaded ${ORIG.length} original rows` + (warns.length ? " · " + warns.join(" · ") : ""), warns.length>0);
+}
+
+/* ================================================================
+   LOADING — step 3: coder files from dp_coder.html
+   ================================================================ */
+function looksLikeCoderFile(objs){
+  return objs.some(o =>
+    Array.isArray(o.labels) || Array.isArray(o.assigned_labels) ||
+    o.coder_name !== undefined || ALL_LABELS.some(L => o[L.col] !== undefined));
+}
+
+/* Offsets SHOULD be exact — blind and non-blind share byte-identical
+   review_text — but prove it. A repair means the coder worked from a
+   different revision of the file, which is worth knowing loudly. */
+function reconcileSpan(s, text){
+  const a = Number(s.start), b = Number(s.end), t = String(s.text ?? "");
+  if(Number.isInteger(a) && Number.isInteger(b) && b > a && b <= text.length && text.slice(a,b) === t)
+    return { label:s.label, text:t, start:a, end:b, ok:true, repaired:false };
+  const i = t ? text.indexOf(t) : -1;
+  if(i >= 0) return { label:s.label, text:t, start:i, end:i+t.length, ok:true, repaired:true };
+  return { label:s.label, text:t, start:-1, end:-1, ok:false, repaired:false };
+}
+
+/* dp_coder's own tolerance: labels from `labels`, else `assigned_labels`,
+   else the 29 binary columns; booleans as 0/1 or true/false. */
+function normalizeVote(o, text){
+  const labs = Array.isArray(o.labels) ? o.labels
+             : Array.isArray(o.assigned_labels) ? o.assigned_labels
+             : ALL_LABELS.filter(L => Number(o[L.col]) === 1).map(L => L.col);
+  const known   = labs.filter(c => COL_BY_NAME[c]);
+  const unknown = labs.filter(c => c && !COL_BY_NAME[c]);
+  const spans = (Array.isArray(o.assigned_spans) ? o.assigned_spans : [])
+    .filter(s => s && s.label)
+    .map(s => reconcileSpan(s, text));
+  return {
+    saved: Number(o.saved) === 1 || o.saved === true,
+    labels: sortLabels(known),
+    spans,
+    confidence: o.confidence || "",
+    borderline: Number(o.borderline) === 1 || o.borderline === true,
+    rule_applied: o.rule_applied != null ? String(o.rule_applied) : "",
+    rationale: o.rationale != null ? String(o.rationale) : "",
+    saved_at: o.saved_at || "",
+    unknown_codes: unknown
+  };
+}
+
+function deriveCoderId(objs, filename){
+  const counts = {};
+  for(const o of objs){
+    const n = String(o.coder_name ?? "").trim();
+    if(n) counts[n] = (counts[n] || 0) + 1;
+  }
+  const names = Object.keys(counts);
+  if(names.length){
+    names.sort((a,b) => counts[b] - counts[a]);
+    return { id: names[0], alternatives: names.slice(1) };
+  }
+  /* fall back to the filename: coder_<id>_<YYYY-MM-DD-HH-MM-SS>.jsonl */
+  let base = String(filename).replace(/\.(jsonl|json|txt)$/i, "");
+  base = base.replace(/^coder[_-]/i, "").replace(/[_-]\d{4}-\d{2}-\d{2}-\d{2}-\d{2}-\d{2}$/, "");
+  return { id: slug(base), alternatives: [] };
+}
+
+function loadCoderFile(objs, filename){
+  if(!objs.length){ toast("That file has no JSON lines.", true); return; }
+  if(!looksLikeCoderFile(objs)){
+    toast("That does not look like a dp_coder export — no labels, no coder_name, no label columns.", true);
+    return;
+  }
+  if(objs.some(o => o.actual_labels !== undefined)){
+    toast("That is the original labeled set, not a coder file.", true); return;
+  }
+
+  const { id: rawId, alternatives } = deriveCoderId(objs, filename);
+  let coder_id = rawId, dupe_suffix = "";
+  if(ROSTER.some(c => c.file === filename && c.coder_id.startsWith(rawId))){
+    toast(`"${filename}" is already loaded.`, true); return;
+  }
+  let n = 2;
+  while(ROSTER.some(c => c.coder_id === coder_id)){ dupe_suffix = "#" + n; coder_id = rawId + dupe_suffix; n++; }
+
+  const votes = {};
+  const missing = [], extra = [], unknown = new Set();
+  let repaired = 0, nSaved = 0, nSpans = 0;
+
+  for(const o of objs){
+    const id = String(o.review_id ?? "");
+    if(!id) continue;
+    const src = ORIG_BY_ID[id];
+    if(!src){ extra.push(id); continue; }
+    const v = normalizeVote(o, String(src.review_text ?? ""));
+    v.unknown_codes.forEach(c => unknown.add(c));
+    repaired += v.spans.filter(s => s.repaired).length;
+    nSpans   += v.spans.length;
+    if(v.saved) nSaved++;
+    votes[id] = v;
+  }
+  for(const r of ORIG) if(!votes[r.review_id]) missing.push(r.review_id);
+
+  if(!Object.keys(votes).length){
+    toast("That file does not cover the original set — zero matching review_ids.", true); return;
+  }
+
+  const entry = {
+    coder_id, raw_name: rawId, file: filename, loaded_at: new Date().toISOString(),
+    colorVar: KRAMP[ROSTER.length % KRAMP.length],
+    n_rows: Object.keys(votes).length, n_saved: nSaved,
+    n_unsaved: Object.keys(votes).length - nSaved,
+    n_spans: nSpans, repaired_spans: repaired,
+    missing_ids: missing, extra_ids: extra,
+    unknown_codes: [...unknown], dupe_suffix, warnings: []
+  };
+  if(dupe_suffix)     entry.warnings.push(`duplicate coder id — renamed to ${coder_id}`);
+  if(alternatives.length) entry.warnings.push(`coder_name varies in-file; also saw ${alternatives.join(", ")}`);
+  if(missing.length)  entry.warnings.push(`${missing.length} review(s) missing from the file`);
+  if(extra.length)    entry.warnings.push(`${extra.length} review_id(s) not in the original set, ignored`);
+  if(repaired)        entry.warnings.push(`${repaired} span offset(s) repaired by text search`);
+  if(unknown.size)    entry.warnings.push(`codes not in the codebook: ${[...unknown].join(", ")}`);
+  if(entry.n_unsaved) entry.warnings.push(`${entry.n_unsaved} row(s) exported but never coded (abstain)`);
+
+  ROSTER.push(entry);
+  VOTES[coder_id] = votes;
+  persist();
+
+  renderRoster();
+  if(ROSTER.length >= nCoders) setStep(3); else setStep(2);
+
+  toast(`${coder_id} labels loaded — ${nSaved}/${ORIG.length} coded`
+        + (entry.warnings.length ? " · " + entry.warnings.join(" · ") : ""),
+        entry.warnings.length > 0);
+}
+
+function renderRoster(){
+  const el = document.getElementById("rosterInfo");
+  if(!ROSTER.length){ el.textContent = nCoders ? `0 / ${nCoders} loaded` : "none loaded"; }
+  else el.innerHTML = ROSTER.map(c =>
+      `<span class="kdot" style="background:var(${c.colorVar})"></span>${esc(c.coder_id)}`
+      + `<span style="color:var(--ink-faint)"> ${c.n_saved}/${ORIG.length}</span>`
+    ).join(" &nbsp;") + `<span style="color:var(--ink-faint)"> · ${ROSTER.length}/${nCoders}</span>`;
+
+  const incomplete = ROSTER.some(c => c.n_saved < ORIG.length);
+  const ack = document.getElementById("ackWrap");
+  ack.hidden = !(incomplete && ROSTER.length >= nCoders);
+  syncGates();
+}
+
+/* ================================================================
+   STEP MACHINE
+   ================================================================ */
+function setStep(s){ step = Math.max(step, s); persist(); syncGates(); }
+
+function syncGates(){
+  document.querySelectorAll("[data-minstep]").forEach(el =>
+    el.disabled = step < Number(el.dataset.minstep));
+
+  /* step 4 additionally needs the roster full and, if any coder is
+     short, an explicit acknowledgement — a 3-way majority masquerading
+     as a 4-way one is exactly the error this guards. */
+  const begin = document.getElementById("beginBtn");
+  const ackEl = document.getElementById("ackIncomplete");
+  const ackNeeded = !document.getElementById("ackWrap").hidden;
+  if(!begin.disabled)
+    begin.disabled = ROSTER.length !== nCoders || (ackNeeded && !ackEl.checked);
+
+  document.querySelectorAll(".step").forEach(el => {
+    const s = Number(el.dataset.s);
+    el.classList.toggle("done", step >= s);
+    el.classList.toggle("active", step === s - 1);
+  });
+  document.getElementById("stepper").hidden   = step >= 4;
+  document.getElementById("statusBar").hidden = step <  4;
+  document.querySelector("main").classList.toggle("locked", step < 4);
+  document.querySelector("footer").classList.toggle("locked", step < 4);
+}
+
+function setCoderCount(n){
+  n = Math.max(1, Math.min(CONFIG.maxCoders, parseInt(n,10) || 0));
+  if(ROSTER.length > n){
+    if(!confirm(`You have ${ROSTER.length} coder file(s) loaded. Setting ${n} will drop the extras. Continue?`)) return;
+    ROSTER.slice(n).forEach(c => delete VOTES[c.coder_id]);
+    ROSTER = ROSTER.slice(0, n);
+  }
+  nCoders = n;
+  document.getElementById("nCoders").value = n;
+  renderRoster();
+  setStep(ROSTER.length >= nCoders ? 3 : 2);
+}
+
+function seedRulings(){
+  for(const r of ORIG){
+    if(ruling[r.review_id]) continue;               // a reload or import wins
+    ruling[r.review_id] = {
+      review_id: r.review_id,
+      final_labels: r.actual_labels.slice(),        // seeded from the author's set
+      ruled:false, ruled_at:"", note:"", decision_rule:"", disputed:false, seeded:true
+    };
+  }
+}
+function beginAdjudication(){
+  if(ROSTER.length !== nCoders){ toast(`Load all ${nCoders} coder files first.`, true); return; }
+  seedRulings();
+  rebuildFilterOptions();
+  applyFilter(settings.filter || "all", false);
+  const firstUnruled = visible.findIndex(i => !ruling[ORIG[i].review_id].ruled);
+  cur = firstUnruled >= 0 ? firstUnruled : 0;
+  setStep(4);
+  render();
+}
+
+/* ================================================================
+   DERIVATIONS
+   ================================================================ */
+function columns(){
+  return [{ key:AU, coder_id:"au", colorVar:"--korig", isAuthor:true }]
+    .concat(ROSTER.map(c => ({ key:c.coder_id, coder_id:c.coder_id, colorVar:c.colorVar, isAuthor:false })));
+}
+function voteOf(key, id){
+  if(key === AU) return { saved:true, labels:(ORIG_BY_ID[id]?.actual_labels)||[], spans:[],
+                          confidence:"", borderline:false, rule_applied:"", rationale:"" };
+  return (VOTES[key] || {})[id];
+}
+function voteState(key, id){
+  if(key === AU) return "coded";
+  const v = voteOf(key, id);
+  if(!v) return "absent";
+  return v.saved ? "coded" : "abstain";
+}
+/* The real voters: coders who actually coded this row. Abstain and absent
+   are excluded from both numerator and denominator everywhere. */
+function voters(id){
+  const out = [];
+  for(const c of ROSTER) if(voteState(c.coder_id, id) === "coded") out.push(c.coder_id);
+  return out;
+}
+function ballots(id, withAuthor){
+  const out = voters(id).map(cid => new Set(VOTES[cid][id].labels));
+  if(withAuthor ?? settings.countAuthor) out.push(new Set(ORIG_BY_ID[id].actual_labels));
+  return out;
+}
+function tally(id, col){
+  let k = 0, n = 0;
+  for(const cid of voters(id)){
+    n++;
+    const has = col === NONE_ROW ? VOTES[cid][id].labels.length === 0
+                                 : VOTES[cid][id].labels.includes(col);
+    if(has) k++;
+  }
+  if(settings.countAuthor){
+    n++;
+    const au = ORIG_BY_ID[id].actual_labels;
+    const has = col === NONE_ROW ? au.length === 0 : au.includes(col);
+    if(has) k++;
+  }
+  return { k, n };
+}
+function labelUnion(id){
+  const s = new Set(ORIG_BY_ID[id].actual_labels);
+  for(const cid of voters(id)) VOTES[cid][id].labels.forEach(l => s.add(l));
+  ruling[id].final_labels.forEach(l => s.add(l));
+  const known   = [...s].filter(c => COL_BY_NAME[c]);
+  const unknown = [...s].filter(c => !COL_BY_NAME[c]).sort();
+  return sortLabels(known).concat(unknown);
+}
+function isContested(id){
+  const b = ballots(id, false);
+  if(b.length < 2) return false;
+  const first = [...b[0]].sort().join("|");
+  return b.some(s => [...s].sort().join("|") !== first);
+}
+function isUnanimous(id){ return ballots(id, false).length >= 2 && !isContested(id); }
+function isChanged(id){ return !sameSet(ruling[id].final_labels, ORIG_BY_ID[id].actual_labels); }
+function wantsDiscussion(id){
+  /* dp_coder clears `flagged` on save, so it is always 0 in a saved row.
+     Its own "review flagged" mode uses this predicate instead. */
+  return voters(id).some(cid => {
+    const v = VOTES[cid][id];
+    return v.borderline || v.confidence === "L";
+  });
+}
+function majorityFor(id){
+  const out = [];
+  for(const col of labelUnion(id)){
+    if(!COL_BY_NAME[col]) continue;
+    const { k, n } = tally(id, col);
+    if(n && k > n/2) out.push(col);
+  }
+  return sortLabels(out);
+}
+function nRuled(){ return ORIG.filter(r => ruling[r.review_id].ruled).length; }
+function nChanged(){ return ORIG.filter(r => isChanged(r.review_id)).length; }
+function nContested(){ return ORIG.filter(r => isContested(r.review_id)).length; }
+function nDisputed(){ return ORIG.filter(r => ruling[r.review_id].disputed).length; }
+
+/* ================================================================
+   AGREEMENT — Krippendorff's alpha with MASI distance. DISPLAY ONLY:
+   a steer for the meeting, never the reportable statistic. No CI here.
+   ================================================================ */
+function masiDist(A, B){
+  if(A.size === 0 && B.size === 0) return 0;
+  let inter = 0;
+  for(const x of A) if(B.has(x)) inter++;
+  const uni = A.size + B.size - inter;
+  const J = uni === 0 ? 1 : inter / uni;
+  let M;
+  if(inter === A.size && inter === B.size) M = 1;        // identical
+  else if(inter === A.size || inter === B.size) M = 2/3; // one contains the other
+  else if(inter > 0) M = 1/3;                            // intersecting
+  else M = 0;                                            // disjoint
+  return 1 - J * M;
+}
+/* Standard alpha for an arbitrary distance:
+     Do = (1/n) * SUM_u [ SUM_{i!=j} d(c_ui,c_uj) / (m_u - 1) ]
+     De = (1/(n(n-1))) * SUM over all ordered pairs in the pooled values
+     alpha = 1 - Do/De                                            */
+function krippendorffAlpha(units, dist){
+  const us = units.filter(u => u.length >= 2);
+  if(!us.length) return null;
+  let n = 0; for(const u of us) n += u.length;
+  if(n < 2) return null;
+
+  let Do = 0;
+  for(const u of us){
+    let s = 0;
+    for(let i=0;i<u.length;i++) for(let j=0;j<u.length;j++) if(i!==j) s += dist(u[i], u[j]);
+    Do += s / (u.length - 1);
+  }
+  Do /= n;
+
+  const pool = [];
+  for(const u of us) for(const v of u) pool.push(v);
+  let De = 0;
+  for(let i=0;i<pool.length;i++) for(let j=0;j<pool.length;j++) if(i!==j) De += dist(pool[i], pool[j]);
+  De /= (n * (n - 1));
+
+  if(De === 0) return Do === 0 ? 1 : null;
+  return 1 - Do / De;
+}
+/* Memoised: the ballots only move when coder files load or the author
+   toggle flips, but render() runs on every keystroke, and a cold
+   recompute is ~n^2 over the pooled values. */
+let _agCache = null, _agKey = "";
+function computeAgreement(){
+  const key = ROSTER.map(c => c.coder_id).join("|") + "/" + (settings.countAuthor ? 1 : 0) + "/" + ORIG.length;
+  if(_agKey === key) return _agCache;
+  _agKey = key; _agCache = computeAgreementUncached();
+  return _agCache;
+}
+function computeAgreementUncached(){
+  if(!ORIG.length || !ROSTER.length) return null;
+  const units = ORIG.map(r => ballots(r.review_id));
+  const overall = krippendorffAlpha(units, masiDist);
+  const perClass = {};
+  for(const gid of CLASS_IDS){
+    const cu = units.map(u => u.map(s => new Set([...s].filter(c => COL_BY_NAME[c] && COL_BY_NAME[c].groupId === gid))));
+    perClass[gid] = krippendorffAlpha(cu, masiDist);
+  }
+  const nUnits = units.filter(u => u.length >= 2).length;
+  return { alpha: overall, perClass, nUnits };
+}
+function fmtA(a){ return a === null || a === undefined || isNaN(a) ? "n/a" : a.toFixed(3); }
+
+/* ================================================================
+   RULING MUTATION
+   ================================================================ */
+function currentRow(){ return visible.length ? ORIG[visible[cur]] : null; }
+function curRuling(){ const r = currentRow(); return r ? ruling[r.review_id] : null; }
+function withCur(fn){
+  const r = currentRow(); if(!r) return;
+  fn(ruling[r.review_id]);
+  ruling[r.review_id].seeded = false;
+  persist(); markDirty(); render();
+}
+function toggleFinal(col){
+  if(col === NONE_ROW) return setNone();
+  if(!COL_BY_NAME[col]){
+    toast(`"${col}" is not in codebook v${origMeta.codebook_version} — it cannot enter the gold set.`, true);
+    return;
+  }
+  withCur(d => {
+    const i = d.final_labels.indexOf(col);
+    if(i >= 0) d.final_labels.splice(i, 1);
+    else d.final_labels = sortLabels(d.final_labels.concat([col]));
+  });
+}
+function setNone(){ withCur(d => { d.final_labels = []; }); }
+function applyMajority(){
+  const r = currentRow(); if(!r) return;
+  withCur(d => { d.final_labels = majorityFor(r.review_id); d.decision_rule = "majority"; });
+  toast("Applied the majority vote.");
+}
+function resetToOriginal(){
+  const r = currentRow(); if(!r) return;
+  withCur(d => { d.final_labels = ORIG_BY_ID[r.review_id].actual_labels.slice();
+                 d.decision_rule = "kept_original"; });
+  toast("Reset to the original labels.");
+}
+function toggleDisputed(){ withCur(d => { d.disputed = !d.disputed; }); }
+function ruleAndNext(){
+  const r = currentRow(); if(!r) return;
+  const d = ruling[r.review_id];
+  d.ruled = true; d.ruled_at = new Date().toISOString();
+  persist(); markDirty();
+  goNext(true);
+}
+function goNext(afterRule=false){
+  if(cur < visible.length - 1) cur++;
+  else toast(afterRule ? "Ruled — end of list." : "End of list.");
+  selRow = null;
+  render();
+}
+function goPrev(){ if(cur > 0){ cur--; selRow = null; render(); } }
+
+/* ================================================================
+   FILTERS
+   ================================================================ */
+const FILTERS = [
+  ["all",        "all reviews"],
+  ["contested",  "contested (coders disagreed)"],
+  ["unanimous",  "unanimous"],
+  ["unruled",    "not yet ruled"],
+  ["ruled",      "ruled"],
+  ["changed",    "changed vs original"],
+  ["discuss",    "borderline / low-confidence"],
+  ["nocoverage", "no coder coverage"],
+];
+function rebuildFilterOptions(){
+  const sel = document.getElementById("filterSel");
+  sel.innerHTML = FILTERS.map(([v,t]) => `<option value="${v}">${t}</option>`).join("");
+  sel.value = settings.filter || "all";
+}
+function rowMatches(i, f){
+  const id = ORIG[i].review_id;
+  if(contestedMode && !isContested(id)) return false;
+  switch(f){
+    case "contested":  return isContested(id);
+    case "unanimous":  return isUnanimous(id);
+    case "unruled":    return !ruling[id].ruled;
+    case "ruled":      return ruling[id].ruled;
+    case "changed":    return isChanged(id);
+    case "discuss":    return wantsDiscussion(id);
+    case "nocoverage": return voters(id).length === 0;
+    default:           return true;
+  }
+}
+function applyFilter(f, keepPos=true){
+  settings.filter = f; persist();
+  const curId = currentRow() ? currentRow().review_id : null;
+  visible = ORIG.map((_,i)=>i).filter(i => rowMatches(i, f));
+  if(!visible.length) cur = 0;
+  else if(keepPos && curId != null){
+    const p = visible.findIndex(i => ORIG[i].review_id === curId);
+    cur = p >= 0 ? p : 0;
+  } else cur = 0;
+}
+
+/* ================================================================
+   SPAN OVERLAY — boundary-cut sweep.
+   dp_coder's renderSpans drops overlapping ranges ("first one wins"),
+   which is right for one coder and hides the entire signal for five.
+   Cutting at every boundary makes each segment flat, so no offset is
+   ever applied twice and the segments tile the string exactly.
+   ================================================================ */
+function collectSpans(id){
+  const out = [];
+  for(const c of ROSTER){
+    if(voteState(c.coder_id, id) !== "coded") continue;
+    if(solo && solo !== c.coder_id) continue;
+    for(const s of VOTES[c.coder_id][id].spans)
+      if(s.ok) out.push({ coder_id:c.coder_id, colorVar:c.colorVar, label:s.label, start:s.start, end:s.end });
+  }
+  return out;
+}
+function buildOverlaySegments(text, spans){
+  const cuts = new Set([0, text.length]);
+  for(const s of spans)
+    if(s.start >= 0 && s.end <= text.length && s.end > s.start){ cuts.add(s.start); cuts.add(s.end); }
+  const pts = [...cuts].sort((a,b) => a - b);
+  const segs = [];
+  for(let i = 0; i < pts.length - 1; i++){
+    const a = pts[i], b = pts[i+1];
+    if(b <= a) continue;
+    segs.push({ a, b, owners: spans.filter(s => s.start <= a && s.end >= b) });
+  }
+  return segs;
+}
+function renderOverlay(text, spans, focusCol){
+  let html = "";
+  for(const seg of buildOverlaySegments(text, spans)){
+    const raw = esc(text.slice(seg.a, seg.b));
+    if(!seg.owners.length){ html += raw; continue; }
+    const on = focusCol ? seg.owners.filter(o => o.label === focusCol) : seg.owners;
+    if(!on.length){ html += `<span class="ov dim">${raw}</span>`; continue; }
+    const byCoder = [...new Map(on.map(o => [o.coder_id, o])).values()];
+    const title = on.map(o => `${o.coder_id}: ${o.label}`).join("  |  ");
+    /* nest one span per coder: text-decoration survives line wrapping,
+       a positioned box-shadow would not */
+    let inner = raw;
+    const shown = byCoder.slice(0, 4);
+    shown.slice().reverse().forEach((o, j) => {
+      const depth = shown.length - 1 - j;
+      inner = `<span class="ovline" style="text-decoration-color:var(${o.colorVar});`
+            + `text-underline-offset:${2 + depth * 3}px">${inner}</span>`;
+    });
+    const more = byCoder.length > 4 ? `<sup class="ovmore">+${byCoder.length - 4}</sup>` : "";
+    html += `<span class="ov" data-n="${byCoder.length}" title="${esc(title)}"`
+          + ` style="background:rgba(255,180,84,${(0.05 * byCoder.length).toFixed(3)})">`
+          + inner + more + `</span>`;
+  }
+  return html;
+}
+
+/* ================================================================
+   RENDERING
+   ================================================================ */
+function render(){
+  if(step < 4) return;
+  const r = currentRow();
+  document.getElementById("emptyState").hidden = !!r;
+  document.getElementById("reviewCard").hidden = !r;
+  if(!r){
+    document.getElementById("mxBody").innerHTML = "";
+    document.getElementById("mxHead").innerHTML = "";
+    document.getElementById("drawer").innerHTML = `<span class="dplaceholder">No review matches this filter.</span>`;
+    renderProgress();
+    return;
+  }
+  renderMeta(r);
+  renderLegend(r);
+  renderReviewText(r);
+  renderMatrix(r);
+  renderDrawer(r);
+  renderRuleBox(r);
+  renderProgress();
+  renderStatus();
+}
+
+function renderMeta(r){
+  const bits = [];
+  bits.push(`<span class="game">${esc(r.game_name || "—")}</span>`);
+  if(r.market)      bits.push(`<span class="meta-pill">${esc(r.market)}</span>`);
+  if(r.star_rating !== "" && r.star_rating != null)
+    bits.push(`<span class="stars">${esc(starStr(r.star_rating))}</span>`);
+  if(r.review_date) bits.push(`<span>${esc(r.review_date)}</span>`);
+  if(r.stratum)     bits.push(`<span class="meta-pill">${esc(r.stratum)}</span>`);
+  if(r.sample_bucket) bits.push(`<span class="meta-pill">${esc(r.sample_bucket)}</span>`);
+  bits.push(`<span class="meta-pill">cb ${esc(r.codebook_version || origMeta.codebook_version)}</span>`);
+  document.getElementById("metaLine").innerHTML = bits.join("");
+
+  const id = r.review_id, d = ruling[id], st = [];
+  st.push(d.ruled ? `<span class="st-ruled">✓ ruled</span>`
+                  : `<span class="st-none">not ruled</span>`);
+  if(isContested(id)) st.push(`<span class="st-contest">contested</span>`);
+  else if(isUnanimous(id)) st.push(`<span class="st-none">unanimous</span>`);
+  if(isChanged(id)) st.push(`<span class="st-changed">changed vs original</span>`);
+  else if(d.seeded) st.push(`<span class="st-none">seeded from original</span>`);
+  if(d.disputed) st.push(`<span class="st-warn">disputed</span>`);
+  if(wantsDiscussion(id)) st.push(`<span class="st-contest">⚑ borderline / low-confidence</span>`);
+  const nv = voters(id).length;
+  if(nv === 0) st.push(`<span class="st-warn">⚑ no coder coverage</span>`);
+  else if(nv < ROSTER.length) st.push(`<span class="st-warn">${ROSTER.length - nv} coder(s) abstained/absent</span>`);
+  document.getElementById("rowStateLine").innerHTML = st.join("");
+  document.getElementById("reviewId").textContent = "review_id  " + id;
+}
+
+function renderLegend(r){
+  const id = r.review_id;
+  const html = ROSTER.map(c => {
+    const stt = voteState(c.coder_id, id);
+    const v = voteOf(c.coder_id, id);
+    const tag = stt === "absent" ? "absent" : stt === "abstain" ? "abstain"
+              : `${v.labels.length} lab · ${v.spans.length} span`;
+    return `<span class="lchip ${solo===c.coder_id?"solo":""} ${stt!=="coded"?"muted":""}" data-coder="${esc(c.coder_id)}"
+                  title="click to show only this coder's spans">
+              <span class="sw" style="background:var(${c.colorVar})"></span>${esc(c.coder_id)}
+              <span class="cst">${tag}</span></span>`;
+  }).join("");
+  document.getElementById("coderLegend").innerHTML = html;
+}
+
+function renderReviewText(r){
+  const text = String(r.review_text ?? "");
+  const spans = collectSpans(r.review_id);
+  const focus = (selRow && selRow !== NONE_ROW) ? selRow : null;
+  document.getElementById("reviewText").innerHTML = renderOverlay(text, spans, focus);
+
+  const counts = {};
+  for(const s of spans) counts[s.coder_id] = (counts[s.coder_id] || 0) + 1;
+  const bad = ROSTER.reduce((a,c) => a + (voteState(c.coder_id, r.review_id)==="coded"
+      ? VOTES[c.coder_id][r.review_id].spans.filter(s => !s.ok).length : 0), 0);
+  const key = [];
+  if(spans.length) key.push("stacked underlines = more coders on that phrase");
+  if(solo) key.push(`showing only ${solo} — click the chip again to clear`);
+  if(focus) key.push(`focused on ${focus}`);
+  if(bad) key.push(`${bad} span(s) had unrecoverable offsets — see the drawer`);
+  if(!spans.length && !bad) key.push("no evidence spans on this review");
+  document.getElementById("overlayKey").textContent = key.join(" · ");
+}
+
+function glyph(key, id, col){
+  const stt = voteState(key, id);
+  if(stt === "absent")  return `<span class="g-gone" title="not in this coder's file">⌀</span>`;
+  if(stt === "abstain") return `<span class="g-abs" title="exported but never coded — does not count toward k/N">–</span>`;
+  const v = voteOf(key, id);
+  const has = col === NONE_ROW ? v.labels.length === 0 : v.labels.includes(col);
+  if(!has) return `<span class="g-no">·</span>`;
+  const n = col === NONE_ROW ? 0 : v.spans.filter(s => s.label === col).length;
+  return `<span class="g-yes">✓${n ? `<span class="spanct">${n}</span>` : ""}</span>`;
+}
+
+function renderMatrix(r){
+  const id = r.review_id, d = ruling[id];
+  const cols = columns();
+
+  document.getElementById("mxHead").innerHTML =
+    `<tr><th class="lbl">label</th>`
+    + cols.map(c => `<th title="${esc(c.isAuthor ? "author / original labels" : c.coder_id)}">`
+        + `<span class="kdot" style="background:var(${c.colorVar})"></span>`
+        + esc(c.coder_id.length > 5 ? c.coder_id.slice(0,5) : c.coder_id) + `</th>`).join("")
+    + `<th>k/N</th><th>✓</th></tr>`;
+
+  const rows = labelUnion(id);
+  const body = [];
+  for(const col of rows){
+    const L = COL_BY_NAME[col];
+    const bad = !L || /[+&,]/.test(col);
+    const { k, n } = tally(id, col);
+    const inFinal = d.final_labels.includes(col);
+    const advIn  = n && k > n/2 && !inFinal;
+    const advOut = n && k === 0 && inFinal;
+    body.push(
+      `<tr class="mxrow ${selRow===col?"sel":""} ${advIn?"adv-in":""} ${advOut?"adv-out":""} ${bad?"rowBad":""}" data-col="${esc(col)}">`
+      + `<td class="lbl" title="${esc(bad ? col + " — not a codebook v" + origMeta.codebook_version + " label" : col)}">`
+      + (L ? `<span class="sw" style="background:${L.color}"></span>` : `⚠ `) + esc(col) + `</td>`
+      + cols.map(c => `<td>${glyph(c.key, id, col)}</td>`).join("")
+      + `<td class="kn">${n ? `${k}/${n}` : "—"}</td>`
+      + `<td class="fin"><input type="checkbox" ${inFinal?"checked":""} ${bad?"disabled":""}`
+      + ` title="${bad?"not a codebook label — cannot enter the gold set":"include in the gold labels"}"></td></tr>`);
+  }
+
+  /* NONE is presentational: it is the empty label set, never a code. */
+  const noneT = tally(id, NONE_ROW);
+  const noneOn = d.final_labels.length === 0;
+  body.push(
+    `<tr class="mxrow rowNone ${selRow===NONE_ROW?"sel":""}" data-col="${NONE_ROW}">`
+    + `<td class="lbl" title="no deceptive pattern — the empty label set">— NONE —</td>`
+    + cols.map(c => `<td>${glyph(c.key, id, NONE_ROW)}</td>`).join("")
+    + `<td class="kn">${noneT.n ? `${noneT.k}/${noneT.n}` : "—"}</td>`
+    + `<td class="fin"><input type="checkbox" ${noneOn?"checked":""} title="rule NONE"></td></tr>`);
+
+  document.getElementById("mxBody").innerHTML = body.join("");
+
+  const maj = majorityFor(id);
+  const parts = [];
+  parts.push(`majority: <b>${maj.length ? esc(maj.join(", ")) : "NONE"}</b>`);
+  if(!sameSet(maj, d.final_labels)) parts.push(`press <b>A</b> to apply`);
+  parts.push(`ruling: ${d.final_labels.length ? esc(d.final_labels.join(", ")) : "NONE"}`);
+  document.getElementById("mxAdvisory").innerHTML = parts.join(" &nbsp;·&nbsp; ");
+}
+
+function showDef(col){
+  const el = document.getElementById("defStrip");
+  if(!col || col === NONE_ROW){
+    el.innerHTML = col === NONE_ROW
+      ? `<b>NONE</b> — no identifiable mechanic is reported. R1: sentiment alone is never a label.`
+      : `<span class="placeholder">Select a matrix row to see its codebook definition.</span>`;
+    return;
+  }
+  const L = COL_BY_NAME[col];
+  if(!L){ el.innerHTML = `<b>${esc(col)}</b> — <span style="color:var(--danger)">not a label in codebook v${esc(origMeta.codebook_version)}.</span>`; return; }
+  el.innerHTML = `<b>${esc(L.groupName)}: ${esc(L.label)}</b> <span style="color:var(--ink-faint)">(${esc(L.col)})</span><br>${esc(DEFS[col] || "—")}`;
+}
+
+function renderDrawer(r){
+  const el = document.getElementById("drawer");
+  if(!selRow){
+    el.innerHTML = `<span class="dplaceholder">Select a label in the matrix to see who chose it and why.</span>`;
+    return;
+  }
+  const id = r.review_id;
+  const cols = columns();
+  const picked = [], notPicked = [], abstained = [], absent = [];
+
+  for(const c of cols){
+    const stt = voteState(c.key, id);
+    if(stt === "abstain"){ abstained.push(c.coder_id); continue; }
+    if(stt === "absent"){ absent.push(c.coder_id); continue; }
+    const v = voteOf(c.key, id);
+    const has = selRow === NONE_ROW ? v.labels.length === 0 : v.labels.includes(selRow);
+    (has ? picked : notPicked).push({ c, v });
+  }
+
+  const head = `<div class="dhead">evidence · <b>${esc(selRow === NONE_ROW ? "NONE" : selRow)}</b>`
+             + ` — ${picked.length} of ${picked.length + notPicked.length} who coded this review</div>`;
+
+  const cards = picked.map(({c, v}) => {
+    const meta = [];
+    if(v.confidence) meta.push(`<span class="cf">${esc(v.confidence)}</span>`);
+    if(v.borderline) meta.push(`<span class="bd">borderline</span>`);
+    const spans = selRow === NONE_ROW ? [] : v.spans.filter(s => s.label === selRow);
+    const spanHtml = spans.length
+      ? spans.map(s => s.ok
+          ? `<div class="espan">“${esc(s.text)}”<span class="off">[${s.start}–${s.end}]${s.repaired?" repaired":""}</span></div>`
+          : `<div class="espan bad">⚠ offset lost — “${esc(s.text)}”</div>`).join("")
+      : `<div class="enospan">${c.isAuthor ? "original set carries no spans" : "no span attached to this label"}</div>`;
+    return `<div class="ecard" style="border-left-color:var(${c.colorVar})">`
+      + `<div class="ehead"><span class="ewho">${esc(c.coder_id)}</span>`
+      + (c.isAuthor ? `<span style="color:var(--ink-faint);font-size:10.5px">original</span>` : "")
+      + `<span class="emeta">${meta.join(" · ")}</span></div>`
+      + spanHtml
+      + (v.rule_applied ? `<div class="erule">rule: ${esc(v.rule_applied)}</div>` : "")
+      + (v.rationale ? `<div class="erat">${esc(v.rationale)}</div>` : "")
+      + `</div>`;
+  }).join("");
+
+  const foot = [];
+  if(notPicked.length) foot.push(`not selected by: ${notPicked.map(x=>esc(x.c.coder_id)).join(", ")}`);
+  if(abstained.length) foot.push(`abstained: ${abstained.map(esc).join(", ")}`);
+  if(absent.length)    foot.push(`absent: ${absent.map(esc).join(", ")}`);
+
+  el.innerHTML = head
+    + (cards || `<span class="dplaceholder">Nobody selected this label.</span>`)
+    + (foot.length ? `<div class="dfoot">${foot.join(" · ")}</div>` : "");
+}
+
+function renderRuleBox(r){
+  const d = ruling[r.review_id];
+  document.getElementById("decisionRule").value = d.decision_rule || "";
+  const b = document.getElementById("disputedBtn");
+  b.classList.toggle("on", !!d.disputed);
+  b.textContent = d.disputed ? "disputed" : "not disputed";
+  const n = document.getElementById("note");
+  if(document.activeElement !== n) n.value = d.note || "";
+}
+
+function renderProgress(){
+  document.getElementById("posText").textContent =
+    visible.length ? `row ${cur+1}/${visible.length}` : "no rows in filter";
+  document.getElementById("progressText").innerHTML =
+    `<b>${nRuled()}</b>/${ORIG.length} ruled · ${nChanged()} changed · ${nContested()} contested`;
+}
+
+function renderStatus(){
+  document.getElementById("sbOrig").innerHTML =
+    `orig <b>${esc(origMeta.file)}</b> · ${ORIG.length} · cb ${esc(origMeta.codebook_version)}`;
+  document.getElementById("sbCoders").innerHTML = ROSTER.map(c =>
+    `<span class="kdot" style="background:var(${c.colorVar})"></span>${esc(c.coder_id)}`).join(" ");
+  const ag = computeAgreement();
+  document.getElementById("sbAlpha").innerHTML = ag
+    ? `α <b>${fmtA(ag.alpha)}</b> MASI `
+      + `<span class="tagdo" title="per-class α — ${CLASS_IDS.map(g=>g+" "+fmtA(ag.perClass[g])).join(", ")}">`
+      + `display-only</span>`
+    : "";
+  document.getElementById("sbProgress").innerHTML =
+    `<b>${nRuled()}</b>/${ORIG.length} ruled · ${nChanged()} changed · ${nContested()} contested`;
+  document.getElementById("countAuthor").checked = !!settings.countAuthor;
+}
+
+/* ---------------- label search: add a label nobody proposed ---------------- */
+function searchMatches(){
+  const q = document.getElementById("labelSearch").value.trim();
+  if(!q) return { q, matches: [] };
+  return { q, matches: ALL_LABELS.filter(L => fuzzyMatch(q, L.label) || fuzzyMatch(q, L.col)) };
+}
+function applyLabelSearch(){
+  const { q, matches } = searchMatches();
+  const box = document.getElementById("searchResults");
+  if(!q){ box.innerHTML = ""; return; }
+  if(searchHl < 0 || searchHl >= matches.length) searchHl = 0;
+  box.innerHTML = matches.map((L,i) =>
+    `<span class="sres ${i===searchHl?"hl":""}" data-col="${L.col}" style="--gc:${L.color}"
+           title="${esc(L.col)}">${esc(L.groupId)}: ${esc(L.label)}</span>`).join("")
+    || `<span class="dplaceholder">no label matches “${esc(q)}”</span>`;
+}
+function commitSearch(){
+  const { matches } = searchMatches();
+  if(!matches.length) return;
+  const L = matches[Math.max(0, Math.min(searchHl, matches.length-1))];
+  toggleFinal(L.col);
+  selRow = L.col; showDef(L.col);
+  document.getElementById("labelSearch").value = "";
+  applyLabelSearch();
+  render();
+}
+
+/* ================================================================
+   EXPORT — the schema contract.
+   goldRecord walks ORIG_KEYS so key ORDER and key SET come from the
+   input file itself. That is what makes the output byte-comparable
+   with build_validation_set.py's, and why `casino` (present in coder
+   exports, absent from validation_set.jsonl) can never leak in.
+   ================================================================ */
+const BLIND_DROP = ["actual_labels","actual_labels_str","sample_bucket","from_codebook"];
+
+function goldRecord(id){
+  const src = ORIG_BY_ID[id], d = ruling[id];
+  const fin = sortLabels(d.final_labels.filter(c => COL_BY_NAME[c]));
+  const out = {};
+  for(const k of ORIG_KEYS){
+    switch(k){
+      case "actual_labels":     out[k] = fin.slice();              break;
+      case "actual_labels_str": out[k] = fin.join("; ");           break;  // SHORT codes
+      case "assigned_labels":   out[k] = [];                       break;  // survives blinding
+      case "assigned_spans":    out[k] = [];                       break;  // survives blinding
+      case "coder_id":          out[k] = CONFIG.goldCoderId;       break;
+      case "coder_notes":       out[k] = "";                       break;  // note -> sidecar
+      default:                  out[k] = src[k];                            // verbatim
+    }
+  }
+  return out;
+}
+function blindRecord(g){ const b = { ...g }; for(const k of BLIND_DROP) delete b[k]; return b; }
+
+/* The blind file is fed straight to the teacher models. Anything
+   label-bearing in it invalidates the single number this project
+   reports, so prove it clean rather than trusting the construction. */
+function leakGuard(blind){
+  const bad = [];
+  const codes = ALL_LABELS.map(L => L.col);
+  for(const rec of blind){
+    for(const [k, v] of Object.entries(rec)){
+      if(BLIND_DROP.includes(k) || /actual_label/i.test(k)){ bad.push(`${rec.review_id}: key ${k}`); continue; }
+      if(k === "review_text" || k === "game_name") continue;   // a real review may say "gambling"
+      const s = typeof v === "string" ? v : JSON.stringify(v ?? "");
+      for(const c of codes) if(s.includes(c)) bad.push(`${rec.review_id}: ${k} contains ${c}`);
+    }
+  }
+  return bad;
+}
+
+function provenanceDoc(){
+  const ag = computeAgreement();
+  return {
+    tool: "dp_gold.html", tool_version: "1.0",
+    generated_at: new Date().toISOString(),
+    original_file: origMeta.file,
+    codebook_version: origMeta.codebook_version,
+    n_reviews: ORIG.length,
+    count_original_as_voter: !!settings.countAuthor,
+    agreement_display_only: true,
+    agreement: ag ? { alpha_masi: ag.alpha, per_class: ag.perClass, n_units: ag.nUnits,
+                      note: "computed in-browser without a confidence interval; not the reportable statistic" }
+                  : null,
+    coders: ROSTER.map(c => ({ ...c })),
+    counts: {
+      ruled: nRuled(), unruled: ORIG.length - nRuled(),
+      changed: nChanged(), contested: nContested(),
+      unanimous: ORIG.filter(r => isUnanimous(r.review_id)).length,
+      disputed: nDisputed(),
+      none_before: ORIG.filter(r => r.actual_labels.length === 0).length,
+      none_after:  ORIG.filter(r => ruling[r.review_id].final_labels.length === 0).length,
+    },
+    reviews: ORIG.map(r => {
+      const id = r.review_id, d = ruling[id], orig = r.actual_labels;
+      return {
+        review_id: id,
+        original_labels: orig.slice(),
+        final_labels: d.final_labels.slice(),
+        added:   d.final_labels.filter(c => !orig.includes(c)),
+        removed: orig.filter(c => !d.final_labels.includes(c)),
+        changed: isChanged(id),
+        ruled: d.ruled, ruled_at: d.ruled_at,
+        decision_rule: d.decision_rule, disputed: d.disputed, note: d.note,
+        contested: isContested(id), unanimous: isUnanimous(id),
+        n_voters: voters(id).length,
+        n_abstain: ROSTER.filter(c => voteState(c.coder_id, id) === "abstain").length,
+        n_absent:  ROSTER.filter(c => voteState(c.coder_id, id) === "absent").length,
+        votes: Object.fromEntries(ROSTER.map(c => {
+          const st = voteState(c.coder_id, id);
+          if(st !== "coded") return [c.coder_id, { status: st }];
+          const v = VOTES[c.coder_id][id];
+          return [c.coder_id, {
+            status: "coded", labels: v.labels.slice(), none: v.labels.length === 0,
+            confidence: v.confidence, borderline: v.borderline,
+            rule_applied: v.rule_applied, rationale: v.rationale,
+            spans: v.spans.map(s => ({ label:s.label, text:s.text, start:s.start, end:s.end,
+                                       ok:s.ok, repaired:s.repaired }))
+          }];
+        }))
+      };
+    })
+  };
+}
+
+function changesCsv(){
+  const cols = ["review_id","game_name","market","original_labels","final_labels","added","removed",
+                "changed","n_coders_coded","n_abstain","unanimous","contested","ruled",
+                "decision_rule","disputed","note"];
+  const lines = [cols.map(csvCell).join(",")];
+  for(const r of ORIG){
+    const id = r.review_id, d = ruling[id], orig = r.actual_labels;
+    const row = {
+      review_id: id, game_name: r.game_name, market: r.market,
+      original_labels: orig, final_labels: d.final_labels,
+      added: d.final_labels.filter(c => !orig.includes(c)),
+      removed: orig.filter(c => !d.final_labels.includes(c)),
+      changed: isChanged(id) ? 1 : 0,
+      n_coders_coded: voters(id).length,
+      n_abstain: ROSTER.filter(c => voteState(c.coder_id, id) !== "coded").length,
+      unanimous: isUnanimous(id) ? 1 : 0,
+      contested: isContested(id) ? 1 : 0,
+      ruled: d.ruled ? 1 : 0,
+      decision_rule: d.decision_rule, disputed: d.disputed ? 1 : 0, note: d.note
+    };
+    lines.push(cols.map(c => csvCell(row[c])).join(","));
+  }
+  return lines.join("\n") + "\n";
+}
+
+function exportGold(){
+  if(!ORIG.length){ toast("Nothing to export.", true); return; }
+  const unruled = ORIG.length - nRuled();
+  if(unruled && !confirm(
+      `${unruled} of ${ORIG.length} reviews are not ruled.\n\n`
+    + `Export anyway? Unruled rows keep their seeded original labels and are recorded `
+    + `as ruled:false in gold_provenance.json.`)) return;
+
+  const gold  = ORIG.map(r => goldRecord(r.review_id));
+  const blind = gold.map(blindRecord);
+
+  const leaks = leakGuard(blind);
+  if(leaks.length){
+    console.error("dp_gold leakGuard:", leaks);
+    toast(`EXPORT ABORTED — the blind file would leak labels: ${leaks.slice(0,3).join(" · ")}`, true);
+    return;
+  }
+  if(gold.length !== ORIG.length){ toast("EXPORT ABORTED — row count mismatch.", true); return; }
+  const gk = Object.keys(gold[0]).length, bk = Object.keys(blind[0]).length;
+  const expectedDrop = ORIG_KEYS.filter(k => BLIND_DROP.includes(k)).length;
+  if(bk !== gk - expectedDrop){ toast("EXPORT ABORTED — blind key count is wrong.", true); return; }
+
+  const stamp = new Date().toISOString().replace(/[:T]/g,"-").slice(0,19);
+  download("gold_set.jsonl",       gold.map(x => JSON.stringify(x)).join("\n") + "\n",  "application/x-ndjson");
+  download("gold_set_blind.jsonl", blind.map(x => JSON.stringify(x)).join("\n") + "\n", "application/x-ndjson");
+  download(`gold_provenance_${stamp}.json`, JSON.stringify(provenanceDoc(), null, 2), "application/json");
+  download(`gold_changes_${stamp}.csv`, changesCsv(), "text/csv");
+
+  dirtySinceExport = false;
+  document.getElementById("dirtyDot").classList.remove("dirty");
+  toast(`Exported ${gold.length} rows · ${nChanged()} changed`
+        + (unruled ? ` · ${unruled} unruled` : "") + " · gold_set.jsonl + blind + provenance + changes");
+}
+
+/* ---------------- import rulings from a provenance file ---------------- */
+function importRulings(doc){
+  const list = Array.isArray(doc) ? doc : (doc && Array.isArray(doc.reviews) ? doc.reviews : null);
+  if(!list){ toast("That is not a gold_provenance.json (no reviews array).", true); return; }
+  let n = 0, skipped = 0;
+  for(const x of list){
+    const id = String(x.review_id ?? "");
+    if(!id || !ORIG_BY_ID[id]){ skipped++; continue; }
+    if(!ruling[id]) ruling[id] = { review_id:id, final_labels:[], ruled:false, ruled_at:"",
+                                   note:"", decision_rule:"", disputed:false, seeded:true };
+    const d = ruling[id];
+    if(Array.isArray(x.final_labels)) d.final_labels = sortLabels(x.final_labels.filter(c => COL_BY_NAME[c]));
+    d.ruled         = x.ruled === true || Number(x.ruled) === 1;
+    d.ruled_at      = x.ruled_at || "";
+    d.note          = x.note || "";
+    d.decision_rule = x.decision_rule || "";
+    d.disputed      = x.disputed === true || Number(x.disputed) === 1;
+    d.seeded        = false;
+    n++;
+  }
+  persist(); markDirty(); render();
+  toast(`Restored ${n} ruling(s)` + (skipped ? ` · ${skipped} unknown review_id skipped` : ""), skipped>0);
+}
+
+/* ================================================================
+   WIRING
+   ================================================================ */
+document.getElementById("origBtn").addEventListener("click", ()=>document.getElementById("origInput").click());
+document.getElementById("origInput").addEventListener("change", e=>{
+  readFileAs(e.target, (text, name)=>{
+    const { out, errs } = parseJSONL(text);
+    if(errs.length) toast(`Skipped ${errs.length} malformed line(s): ${errs.slice(0,5).join(", ")}${errs.length>5?"…":""}`, true);
+    loadOriginal(out, name);
+  });
+});
+document.getElementById("nCodersBtn").addEventListener("click", ()=>setCoderCount(document.getElementById("nCoders").value));
+document.getElementById("nCoders").addEventListener("keydown", e=>{ if(e.key === "Enter") setCoderCount(e.target.value); });
+document.getElementById("coderBtn").addEventListener("click", ()=>document.getElementById("coderInput").click());
+document.getElementById("coderInput").addEventListener("change", e=>{
+  readFileAs(e.target, (text, name)=>{
+    const { out, errs } = parseJSONL(text);
+    if(errs.length) toast(`Skipped ${errs.length} malformed line(s) in ${name}.`, true);
+    loadCoderFile(out, name);
+  });
+});
+document.getElementById("ackIncomplete").addEventListener("change", syncGates);
+document.getElementById("beginBtn").addEventListener("click", beginAdjudication);
+
+document.getElementById("codebookBtn").addEventListener("click", ()=>window.open(CONFIG.codebookHref, "_blank"));
+document.getElementById("exportBtn").addEventListener("click", exportGold);
+document.getElementById("importBtn").addEventListener("click", ()=>document.getElementById("importInput").click());
+document.getElementById("importInput").addEventListener("change", e=>{
+  readFileAs(e.target, (text)=>{
+    try{ importRulings(JSON.parse(text)); }
+    catch(err){
+      const { out } = parseJSONL(text);
+      if(out.length) importRulings(out); else toast("Could not parse that file.", true);
+    }
+  });
+});
+document.getElementById("helpBtn").addEventListener("click", ()=>document.getElementById("cheat").classList.add("show"));
+document.getElementById("resetBtn").addEventListener("click", ()=>{
+  if(!confirm("Reset the whole session? Original set, coder files and every ruling are cleared from this browser.")) return;
+  if(!confirm("This cannot be undone. Export first if you have unsaved rulings.\n\nReally reset?")) return;
+  [LS_SESSION, LS_ORIG, LS_CODERS, LS_RULINGS].forEach(k => localStorage.removeItem(k));
+  location.reload();
+});
+
+document.getElementById("prevBtn").addEventListener("click", goPrev);
+document.getElementById("ruleBtn").addEventListener("click", e=>{ ruleAndNext(); e.currentTarget.blur(); });
+document.getElementById("skipBtn").addEventListener("click", e=>{ goNext(); e.currentTarget.blur(); });
+document.getElementById("disputedBtn").addEventListener("click", e=>{ toggleDisputed(); e.currentTarget.blur(); });
+document.getElementById("decisionRule").addEventListener("change", e=>{
+  const d = curRuling(); if(!d) return;
+  d.decision_rule = e.target.value; persist(); markDirty();
+});
+document.getElementById("note").addEventListener("input", e=>{
+  const d = curRuling(); if(!d) return;
+  d.note = e.target.value; persist(); markDirty();
+});
+document.getElementById("filterSel").addEventListener("change", e=>{ applyFilter(e.target.value); render(); });
+document.getElementById("contestedBtn").addEventListener("click", e=>{ toggleContested(); e.currentTarget.blur(); });
+document.getElementById("countAuthor").addEventListener("change", e=>{
+  settings.countAuthor = e.target.checked; persist(); render();
+});
+document.getElementById("labelSearch").addEventListener("input", ()=>{ searchHl = 0; applyLabelSearch(); });
+
+/* matrix: click a row to select it, click the checkbox to rule it in */
+document.getElementById("mxBody").addEventListener("click", e=>{
+  const tr = e.target.closest("tr.mxrow"); if(!tr) return;
+  const col = tr.dataset.col;
+  if(e.target.matches("input[type=checkbox]")){
+    if(e.target.disabled) return;
+    selRow = col; toggleFinal(col); showDef(col); return;
+  }
+  selRow = col; showDef(col); render();
+});
+document.getElementById("coderLegend").addEventListener("click", e=>{
+  const chip = e.target.closest(".lchip"); if(!chip) return;
+  solo = solo === chip.dataset.coder ? null : chip.dataset.coder;
+  render();
+});
+document.getElementById("searchResults").addEventListener("click", e=>{
+  const s = e.target.closest(".sres"); if(!s) return;
+  toggleFinal(s.dataset.col); selRow = s.dataset.col; showDef(s.dataset.col);
+  document.getElementById("labelSearch").value = ""; applyLabelSearch(); render();
+});
+
+function toggleContested(){
+  contestedMode = !contestedMode;
+  document.getElementById("contestedBtn").classList.toggle("on", contestedMode);
+  applyFilter(settings.filter);
+  render();
+  toast(contestedMode ? `Contested only: ${visible.length} review(s)` : "Back to normal filtering.");
+}
+function moveSel(delta){
+  const rows = [...document.querySelectorAll("#mxBody tr.mxrow")].map(t => t.dataset.col);
+  if(!rows.length) return;
+  let i = rows.indexOf(selRow);
+  i = i < 0 ? (delta > 0 ? 0 : rows.length - 1) : (i + delta + rows.length) % rows.length;
+  selRow = rows[i]; showDef(selRow); render();
+}
+function toggleNth(n){
+  const rows = [...document.querySelectorAll("#mxBody tr.mxrow")].map(t => t.dataset.col);
+  if(n < 1 || n > rows.length) return;
+  selRow = rows[n-1]; showDef(selRow); toggleFinal(rows[n-1]);
+}
+
+/* ---------------- keyboard (same guard order as dp_coder.html) ---------------- */
+document.addEventListener("keydown", e=>{
+  const cheat = document.getElementById("cheat");
+  if(cheat.classList.contains("show")){
+    if(e.key === "Escape" || e.key === "?") cheat.classList.remove("show");
+    return;
+  }
+  if(e.key === "?" && !inTextField()){ cheat.classList.add("show"); return; }
+
+  const search = document.getElementById("labelSearch");
+  if(document.activeElement === search){
+    if(e.key === "Escape"){ search.value = ""; applyLabelSearch(); search.blur(); e.preventDefault(); }
+    else if(e.key === "ArrowDown"){ searchHl++; applyLabelSearch(); e.preventDefault(); }
+    else if(e.key === "ArrowUp"){ searchHl = Math.max(0, searchHl-1); applyLabelSearch(); e.preventDefault(); }
+    else if(e.key === "Enter" || e.key === " "){ commitSearch(); e.preventDefault(); }
+    return;
+  }
+  if(inTextField()){
+    if(e.key === "Enter" && (e.ctrlKey || e.metaKey)){ ruleAndNext(); e.preventDefault(); }
+    return;
+  }
+  if(step < 4) return;
+
+  switch(e.key){
+    case "Enter":      ruleAndNext(); e.preventDefault(); break;
+    case "ArrowLeft":  goPrev(); e.preventDefault(); break;
+    case "ArrowRight": goNext(); e.preventDefault(); break;
+    case "ArrowUp":    moveSel(-1); e.preventDefault(); break;
+    case "ArrowDown":  moveSel(1);  e.preventDefault(); break;
+    case " ":          if(selRow) toggleFinal(selRow); e.preventDefault(); break;
+    case "/":          search.focus(); e.preventDefault(); break;
+    case "Escape":     selRow = null; showDef(null); render(); break;
+    default: {
+      const k = e.key.toLowerCase();
+      if(k === "n"){ setNone(); }
+      else if(k === "a"){ applyMajority(); }
+      else if(k === "r"){ resetToOriginal(); }
+      else if(k === "d" || k === "b"){ toggleDisputed(); }
+      else if(k === "s"){ goNext(); }
+      else if(k === "g" || k === "c"){ toggleContested(); }
+      else if(/^[1-9]$/.test(e.key)){ toggleNth(Number(e.key)); }
+      else return;
+      e.preventDefault();
+    }
+  }
+});
+
+window.addEventListener("beforeunload", (e)=>{
+  if(dirtySinceExport){ e.preventDefault(); e.returnValue = ""; }
+});
+
+/* ---------------- boot ---------------- */
+(function boot(){
+  let sess = null;
+  try{
+    const s = localStorage.getItem(LS_SESSION);
+    if(s){ sess = JSON.parse(s); settings.filter = sess.filter || "all";
+           settings.countAuthor = !!sess.countAuthor; nCoders = sess.nCoders || 0; }
+    const o = localStorage.getItem(LS_ORIG);
+    if(o){
+      const p = JSON.parse(o);
+      if(p && Array.isArray(p.ORIG) && p.ORIG.length){
+        ORIG = p.ORIG; ORIG_KEYS = p.ORIG_KEYS || Object.keys(ORIG[0]);
+        origMeta = p.origMeta || origMeta;
+        ORIG_BY_ID = Object.fromEntries(ORIG.map(r => [r.review_id, r]));
+      }
+    }
+    const c = localStorage.getItem(LS_CODERS);
+    if(c){ const p = JSON.parse(c); ROSTER = p.ROSTER || []; VOTES = p.VOTES || {}; }
+    const rl = localStorage.getItem(LS_RULINGS);
+    if(rl) ruling = JSON.parse(rl) || {};
+  }catch(err){ /* fresh start on corrupt storage */ }
+
+  if(nCoders) document.getElementById("nCoders").value = nCoders;
+  if(ORIG.length)
+    document.getElementById("origInfo").textContent =
+      `${origMeta.file} · ${ORIG.length} rows · cb ${origMeta.codebook_version}`;
+  renderRoster();
+
+  /* Restore the furthest step the cached state actually supports. */
+  let want = 0;
+  if(ORIG.length) want = 1;
+  if(ORIG.length && nCoders) want = 2;
+  if(ORIG.length && nCoders && ROSTER.length >= nCoders) want = 3;
+  const savedStep = sess ? (sess.step || 0) : 0;
+  step = Math.min(savedStep, want === 3 && savedStep >= 4 ? 4 : want);
+
+  if(step >= 4){
+    seedRulings();
+    rebuildFilterOptions();
+    applyFilter(settings.filter, false);
+    const firstUnruled = visible.findIndex(i => !ruling[ORIG[i].review_id].ruled);
+    cur = firstUnruled >= 0 ? firstUnruled : 0;
+    syncGates();
+    render();
+    toast(`Resumed · ${nRuled()}/${ORIG.length} ruled`);
+  }else{
+    rebuildFilterOptions();
+    syncGates();
+    if(savedStep >= 4 && want < 3)
+      toast("Cached session incomplete — re-add the missing files to resume.", true);
+  }
+})();
+</script>
+</body>
+</html>

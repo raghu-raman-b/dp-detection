@@ -39,6 +39,34 @@ score difference is attributable to exactly one addition.
 
 ---
 
+## 0b. Which set? — `--eval-set`
+
+Every script below (the four runners, `compute_run_stats.py`, `compare_runs.py`) starts by
+asking which review set you mean. Answer at the prompt, or pass `--eval-set` to skip it.
+
+| | `tuning` | `validation` |
+|---|---|---|
+| reviews | `../tuning/tuning_set_50_blind.jsonl` (50) | `../validation/validation_set_blind.jsonl` (75) |
+| gold | `../tuning/tuning_set_50.jsonl` | `../validation/gold_set.jsonl` |
+| runs | `../outputs/runs/` | `../outputs/validation/runs/` |
+| stats | `../outputs/run-stats/` | `../outputs/validation/run-stats/` |
+| comparison | `../outputs/comparison/` | `../outputs/validation/comparison/` |
+| role | selection only, **burned** | the reporting set, scored **once** |
+
+One switch moves the review file, the run tree, the gold file, the stats tree and the
+comparison tree together. That is the point: a validation run cannot land in the tuning
+tree, and a validation run cannot be scored against the tuning gold. Both mistakes produce
+a plausible-looking number, which is the kind that survives to a table.
+
+`--reviews`, `--out-root`, `--gold`, `--runs-root` and `--index` still override individually
+for a one-off. A non-interactive caller (no tty) that omits `--eval-set` gets `tuning`, so
+existing scripts keep doing exactly what they did before.
+
+**Validation gold falls back.** Until `dp_gold.html` has produced `gold_set.jsonl`, the
+validation set scores against `validation_set.jsonl` — the author's single-coder labels —
+and every script says so on stderr. That is a usable smoke test and is **not** a reportable
+agreement number.
+
 ## 1. Check the config — no API calls, no cost
 
 ```bash
@@ -66,10 +94,12 @@ cost estimate and the projection at 200k.
 python run_teacher_openai.py --actual --prompt ../outputs/prompts/teacher_v2_bare.txt
 ```
 
-Defaults: `--model gpt-5.6-luna --effort high`, the blind tuning 50, web search on.
-Sequential on purpose — the first call writes the cached prefix, every later call reads it.
+Defaults: `--model gpt-5.6-luna --effort high`, web search on, and whichever blind set
+`--eval-set` resolved to (§0b). Sequential on purpose — the first call writes the cached
+prefix, every later call reads it.
 
-Output goes to one directory per `(model, effort, prompt)`:
+Output goes to one directory per `(model, effort, prompt)`, under the tree the eval set
+chose — `../outputs/runs/` for tuning, `../outputs/validation/runs/` for validation:
 
 ```
 ../outputs/runs/gpt-5.6-luna/high/teacher_v2_bare/
@@ -276,9 +306,11 @@ drift apart silently.
 python compute_run_stats.py
 ```
 
-With no arguments it scores **every** run under `../outputs/runs` against
-`../tuning/tuning_set_50.jsonl` and overwrites what was there before, mirroring the runs
-tree exactly:
+It asks for the eval set (§0b), then scores **every** run in that set's tree against that
+set's gold, overwriting what was there before and mirroring the runs tree exactly. For
+`tuning` that is `../outputs/runs` against `../tuning/tuning_set_50.jsonl`; for
+`validation`, `../outputs/validation/runs` against `../validation/gold_set.jsonl`, written
+under `../outputs/validation/run-stats/`:
 
 ```
 ../outputs/run-stats/gpt-5.6-luna/high/teacher_v2_bare/
@@ -311,7 +343,8 @@ from *never mentioned* (an attention problem — fix the examples).
 python compare_runs.py
 ```
 
-It asks how many runs to compare. `0` compares everything in the index; a number walks a
+It asks for the eval set (§0b), which picks the index it reads and the tree it writes to,
+then asks how many runs to compare. `0` compares everything in the index; a number walks a
 menu per run — model, then reasoning level, then prompt — offering only what exists.
 
 ```
@@ -330,7 +363,8 @@ prompt for gpt-5.6-luna [high]:
 tag for this comparison: bare-vs-full
 ```
 
-Writes `../outputs/comparison/bare-vs-full/` — `comparison_report.txt`, `comparison.csv`,
+Writes `../outputs/comparison/bare-vs-full/` (or `../outputs/validation/comparison/…` for
+the validation set) — `comparison_report.txt`, `comparison.csv`,
 `selection.json` (what was compared, so the directory is self-describing), and `figures/`
 including `6_prompt_sweep.png`, the ablation curve across bare → boundary → full.
 
@@ -432,7 +466,9 @@ time.
    above the sentinel contains a timestamp, which would break caching on every call.
 2. **The tuning 50 is burned.** It drove prompt tuning and model selection, so its numbers
    are max-over-configs statistics and never appear in the paper. Only the frozen winner
-   touches the 75 adjudicated set, exactly once.
+   touches the 75 adjudicated set, exactly once. `--eval-set validation` is not a thing to
+   reach for while iterating: the separate tree makes the mistake visible, it does not make
+   it harmless. Freeze the configuration first, then run the 75 once.
 3. **Check the pricing date.** `PRICING_TABLE` in `runner_common.py` carries an `as_of`
    date. Rates move; the paper needs the ones that were live for the run.
 4. **A truncated run is not scorable.** `TRUNCATED` in the log or `truncated > 0` in the

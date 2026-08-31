@@ -1,2 +1,2 @@
 corpus-construction/samples/pool.jsonl filter=lfs diff=lfs merge=lfs -text
-corpus-construction/dataset/final_dataset.jsonl filter=lfs diff=lfs merge=lfs -text
+corpus-construction/dataset/dataset_to_label.jsonl filter=lfs diff=lfs merge=lfs -text

@@ -38,12 +38,18 @@ from datetime import datetime
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
+import runner_common as rc                  # EVAL_SETS + set resolution
 from runner_common import resolve, show     # shared with the runners
 from build_prompt import MODES              # prompt-ablation order: bare, boundary, full
 
 # ============================== CONFIG ==============================
-OUT_ROOT        = "../outputs/comparison"
-INDEX_FILE      = "../outputs/run-stats/index.jsonl"
+# The stats index and the comparison tree both come from --eval-set
+# (runner_common.EVAL_SETS), asked interactively when the flag is omitted:
+#   tuning      ../outputs/run-stats/index.jsonl
+#                 -> ../outputs/comparison
+#   validation  ../outputs/validation/run-stats/index.jsonl
+#                 -> ../outputs/validation/comparison
+# --index / --out-root still override either.
 PRIMARY         = "micro_f1"        # ranking metric
 PROJECT_TO      = 200_000
 BOOTSTRAP_N     = 2000
@@ -878,10 +884,24 @@ def parse_args() -> argparse.Namespace:
     ap.add_argument("--select", action="append", default=[], metavar="MODEL:EFFORT:PROMPT",
                     help="pick a run without the menu; repeat once per run")
     ap.add_argument("--tag", default="", help="names the output directory")
-    ap.add_argument("--index", default=INDEX_FILE)
-    ap.add_argument("--out-root", default=OUT_ROOT)
+    ap.add_argument("--eval-set", choices=sorted(rc.EVAL_SETS), default=None,
+                    help="tuning (the 50, burned on selection) or validation "
+                         "(the 75, reported); asked interactively when omitted")
+    ap.add_argument("--index", default=None,
+                    help="override the stats index --eval-set would pick")
+    ap.add_argument("--out-root", default=None,
+                    help="override the comparison tree --eval-set would pick")
     ap.add_argument("--yes", action="store_true", help="overwrite an existing tag without asking")
-    return ap.parse_args()
+    a = ap.parse_args()
+
+    # The index and the output tree move together: a comparison of validation runs
+    # written into outputs/comparison/ would sit indistinguishable beside the
+    # selection tables it must never be confused with.
+    a.eval_set = rc.resolve_eval_set(a.eval_set, what="compare")
+    _sel = rc.EVAL_SETS[a.eval_set]
+    a.index = a.index or _sel["stats"] + "/index.jsonl"
+    a.out_root = a.out_root or _sel["compare"]
+    return a
 
 
 def main() -> None:

@@ -476,6 +476,115 @@ def resolve(p: str | Path) -> Path:
     return p if p.is_absolute() else (SCRIPT_DIR / p).resolve()
 
 
+# ------------------------------------------------------------- evaluation sets
+
+# Two review sets, two output trees, one switch. The separation is not cosmetic:
+# master_flow's standing rule is that nothing which touched prompt tuning or
+# provider selection may appear in a reported evaluation, and the surest way to
+# honour that is for the two to never share a directory.
+#
+#   tuning      the 50. Burned. Drove prompt and provider choice, so every number
+#               on it is a max-over-configs statistic and is never reported.
+#   validation  the 75. The reporting set, scored once against adjudicated gold.
+#
+# `gold` is a candidate list: the first file that exists wins. Validation prefers
+# the adjudicated panel gold and falls back to the author's single-coder labels so
+# the plumbing is usable before the adjudication meeting -- resolve_gold() says so
+# loudly when that happens.
+EVAL_SETS = {
+    "tuning": {
+        "n": 50,
+        "blurb": "selection only. Burned: these numbers drove prompt and provider\n"
+                 "choice and never appear in the paper.",
+        "reviews": "../tuning/tuning_set_50_blind.jsonl",
+        "gold":    ["../tuning/tuning_set_50.jsonl"],
+        "runs":    "../outputs/runs",
+        "stats":   "../outputs/run-stats",
+        "compare": "../outputs/comparison",
+    },
+    "validation": {
+        "n": 75,
+        "blurb": "the reporting set. Scored once, against the adjudicated gold.",
+        "reviews": "../validation/validation_set_blind.jsonl",
+        "gold":    ["../validation/gold_set.jsonl",
+                    "../validation/validation_set.jsonl"],
+        "runs":    "../outputs/validation/runs",
+        "stats":   "../outputs/validation/run-stats",
+        "compare": "../outputs/validation/comparison",
+    },
+}
+DEFAULT_EVAL_SET = "tuning"
+
+
+def _count_lines(p: Path) -> int | None:
+    try:
+        with open(p, encoding="utf-8") as fh:
+            return sum(1 for line in fh if line.strip())
+    except OSError:
+        return None
+
+
+def resolve_eval_set(explicit: str | None = None, *, what: str = "label") -> str:
+    """Which review set this invocation is about.
+
+    An explicit --eval-set always wins. Otherwise ask, when there is a human to
+    ask; a non-interactive caller keeps the historical default so existing
+    scripts and cron jobs do not silently change which set they touch."""
+    if explicit:
+        if explicit not in EVAL_SETS:
+            sys.exit(f"unknown --eval-set {explicit!r}; choose from {', '.join(EVAL_SETS)}")
+        return explicit
+    if not sys.stdin.isatty():
+        print(f"--eval-set not given and no tty; defaulting to {DEFAULT_EVAL_SET}",
+              file=sys.stderr)
+        return DEFAULT_EVAL_SET
+
+    names = list(EVAL_SETS)
+    print(f"\nWhich review set to {what}?\n")
+    for i, name in enumerate(names, 1):
+        s = EVAL_SETS[name]
+        n = _count_lines(resolve(s["reviews"]))
+        have = f"{n} reviews" if n is not None else "FILE NOT FOUND"
+        print(f"  {i}) {name:<11} {have:<18} {s['reviews']}")
+        print(f"     {'':<11} {'-> ' + s['runs']}")
+        for line in s["blurb"].split("\n"):
+            print(f"     {'':<11} {line}")
+        print()
+    while True:
+        try:
+            raw = input(f"set [1-{len(names)}, or a name]: ").strip().lower()
+        except (EOFError, KeyboardInterrupt):
+            sys.exit("\naborted")
+        if raw in EVAL_SETS:
+            return raw
+        if raw.isdigit() and 1 <= int(raw) <= len(names):
+            return names[int(raw) - 1]
+        print(f"  pick 1-{len(names)} or one of: {', '.join(names)}")
+
+
+def resolve_gold(eval_set: str, explicit: str | None = None) -> Path:
+    """The gold file for a set: an explicit --gold, else the first candidate that
+    exists. Falling back to the author's single-coder labels on the validation set
+    is legitimate for a smoke test and illegitimate as a reported number, so it is
+    never silent."""
+    if explicit:
+        return resolve(explicit)
+    cands = EVAL_SETS[eval_set]["gold"]
+    for i, c in enumerate(cands):
+        p = resolve(c)
+        if p.exists():
+            if i > 0:
+                print(f"\n  !! {Path(cands[0]).name} not found -- scoring against "
+                      f"{p.name} instead.\n"
+                      f"     Those are the author's single-coder labels, not the "
+                      f"adjudicated panel gold.\n"
+                      f"     Usable as a smoke test. Not reportable as agreement.\n",
+                      file=sys.stderr)
+            return p
+    sys.exit(f"no gold file for '{eval_set}'; looked for: "
+             + ", ".join(cands))
+
+
 def show(p: Path) -> str:
     """Paths in the log are for copy-pasting into the next command, so prefer a short
     relative one -- but a chain of ../.. climbing out of the repo is worse than absolute."""
