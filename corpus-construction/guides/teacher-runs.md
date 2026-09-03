@@ -491,3 +491,54 @@ time.
    `n_web_searches` is taken from the API's own accounting on every runner.
 9. **Don't disable the search cache for a real run.** `--no-search-cache` makes the run
    unreproducible: the evidence the teacher saw stops being recoverable.
+
+---
+
+## The production pass: `annotate_corpus.py`
+
+`run_teacher_*.py` exist to *choose* a configuration over 50 reviews.
+`annotate_corpus.py` *applies* the chosen one to `dataset/dataset_to_label.jsonl`
+(199,721 reviews — the 200k pool minus the 279 hand-labelled reviews that were also
+sampled into it). The configuration is not a knob here: it is
+`gpt-5.6-luna / high / teacher_v2_full`, which is what
+`outputs/comparison/models_and_providers_v2/selection.json` selected, and changing it
+makes the corpus inconsistent with the numbers the paper reports.
+
+```bash
+python annotate_corpus.py --check                  # offline: config, projections
+python annotate_corpus.py --probe                  # 2 live calls: this account's real limits
+python annotate_corpus.py --actual --limit 200 --max-spend 1.00   # staged
+python annotate_corpus.py --actual --workers 11    # the corpus
+python annotate_corpus.py --actual --resume        # after any stop
+```
+
+Output is one flat directory, `outputs/llm_annotation/`, because this is a single run
+and the `<model>/<effort>/<prompt>` tree exists only to keep an ablation's runs apart.
+`raw_responses.jsonl.gz` carries the complete `model_dump()` of every attempt — that is
+the fine-tuning artifact, and `output_text` alone is not a substitute for it.
+
+### Rules that are easy to break, continued
+
+10. **Never fan out onto a cold cache.** The prompt is ~98k characters. Warm, its input
+    costs ~$0.0007/review; cold and paying the 1.25x cache-write rate, ~$0.0065 — about
+    **$1,290 against $136** over the full corpus, which is 3x the entire run's bill. The
+    script labels the first 20 reviews sequentially, prints `CACHE CONFIRMED` with the
+    measured hit rate, and only then adds workers. Do not raise `--workers` past what
+    `--probe` reports, and do not skip the warm-up with `--seq-warmup 0`.
+
+11. **One cache key cannot take the traffic.** OpenAI documents overflow routing above
+    ~15 requests/minute per `prompt_cache_key`, and at ~13s/review that is crossed at 4
+    workers. So the key is sharded, one shard per worker slot, each seeing ~4.5 req/min.
+    `--workers` therefore sets the shard count too; the shards are what make the
+    concurrency safe, not an optimisation on top of it.
+
+12. **Cached tokens still cost quota.** Prompt caching cuts the price of the prefix by
+    90%; it does not cut its TPM. Budget the *full* ~26.9k tokens/review. At tier 4
+    (2M TPM) that is ~11 workers and ~67 hours — the ceiling is the token budget, not
+    parallelism, so adding workers past 11 buys 429s rather than throughput.
+
+13. **A cache warning means stop.** `!! CACHE DEGRADED` means later calls are paying
+    ~9.5x for input. Ctrl-C is graceful: in-flight calls finish and are written (they
+    are already billed), the worker count that broke the cache is recorded in
+    `checkpoint.json`, and the next `--resume` holds strictly below it. A second Ctrl-C
+    force-exits and loses whatever was in the air.
