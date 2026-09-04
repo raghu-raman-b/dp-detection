@@ -570,6 +570,39 @@ def heat(value: float, good: float, ok: float) -> str:
     return "green" if value >= good else ("yellow" if value >= ok else "red")
 
 
+class G:
+    """Display glyphs, downgraded to ASCII where the console cannot encode them.
+
+    A legacy Windows codepage (cp1252 is still the default for a bare cmd.exe, and for
+    a redirected stream) raises UnicodeEncodeError on the block and braille characters.
+    Raised from the progress line that runs under the writer's lock, that would take
+    down the run -- for decoration. So the glyph set is chosen once, at startup, by
+    asking the actual stream whether it can encode them."""
+
+    FANCY = {"spin": "\u280b\u2819\u2839\u2838\u283c\u2834\u2826\u2827"
+                     "\u2807\u280f",
+             "full": "\u2588", "empty": "\u00b7", "rule": "\u2500",
+             "ok": "\u2713", "bad": "\u2717", "star": "\u2726",
+             "parts": " \u258f\u258e\u258d\u258c\u258b\u258a\u2589\u2588"}
+    PLAIN = {"spin": "|/-\\", "full": "#", "empty": ".", "rule": "-",
+             "ok": "OK", "bad": "XX", "star": "*", "parts": " ...::::#"}
+
+    _g = FANCY
+
+    @classmethod
+    def pick(cls) -> None:
+        enc = getattr(sys.stdout, "encoding", None) or "ascii"
+        probe = "".join(cls.FANCY.values())
+        try:
+            probe.encode(enc)
+            cls._g = cls.FANCY
+        except (UnicodeEncodeError, LookupError):
+            cls._g = cls.PLAIN
+
+    def __class_getitem__(cls, key):
+        return cls._g[key]
+
+
 class Progress:
     """Live one-line status, redrawn in place on a terminal.
 
@@ -587,18 +620,49 @@ class Progress:
     log file into one enormous line, so there the periodic lines are all that is
     written."""
 
-    BLOCKS = " ▏▎▍▌▋▊▉█"       # sub-cell fill, so the bar moves on every review
 
-    def __init__(self, every: int, window: int = 300):
+    def __init__(self, every: int, window: int = 300, beat: float = 1.0):
         self.every = max(1, every)
         self.t0 = time.monotonic()
         self.marks: deque[float] = deque(maxlen=window)
         self.tty = sys.stdout.isatty()
         self.width = 0
+        self.plock = threading.Lock()
+        self.state: tuple | None = None     # last completion's counters
+        self.inflight = 0                   # calls currently out to the API
+        self.spin = 0
+        self.beat = beat
+        self._stop = threading.Event()
+        self._thread: threading.Thread | None = None
         try:
             self.cols = os.get_terminal_size().columns
         except OSError:
             self.cols = 100
+
+    # -- the heartbeat ------------------------------------------------------------
+    # A completion-driven redraw is only as live as the completions. At one worker and
+    # ~20s per review the line would sit unchanged for twenty seconds at a time, which
+    # reads as a hang -- the exact thing this display exists to disprove. So a daemon
+    # thread redraws once a second from the last known counters, advancing the clock,
+    # the ETA and a spinner. It never touches the writer's lock, so it cannot deadlock
+    # against a worker; it only ever holds its own print lock.
+
+    def start(self) -> None:
+        if not self.tty or self._thread:
+            return
+        self._thread = threading.Thread(target=self._pulse, daemon=True,
+                                        name="progress")
+        self._thread.start()
+
+    def stop(self) -> None:
+        self._stop.set()
+
+    def _pulse(self) -> None:
+        while not self._stop.wait(self.beat):
+            with self.plock:
+                if self.state is not None:
+                    self.spin += 1
+                    self._redraw()
 
     def rate_per_min(self) -> float:
         """Reviews per minute over the rolling window."""
@@ -613,8 +677,8 @@ class Progress:
         frac = min(max(frac, 0.0), 1.0)
         filled = frac * cells
         whole = int(filled)
-        rest = self.BLOCKS[int((filled - whole) * 8)] if whole < cells else ""
-        return ("█" * whole + rest).ljust(cells, "·")
+        rest = G["parts"][int((filled - whole) * 8)] if whole < cells else ""
+        return (G["full"] * whole + rest).ljust(cells, G["empty"])
 
     def line(self, label, done, total, workers, cache, ok, errs, spend):
         """Returns (plain, coloured). Plain is what the widths are measured on."""
@@ -626,12 +690,16 @@ class Progress:
         wide = self.cols >= 118
 
         seg = []                                   # (plain, colour, bold)
+        if self.tty:
+            spin = G["spin"]
+            seg.append((spin[self.spin % len(spin)] + " ", "cyan", False))
         seg.append((f"[{label}] ", "cyan", True))
         if cells:
             seg.append((self.bar(frac, cells) + " ", "green", False))
         seg.append((f"{frac*100:5.1f}% ", "green", True))
         seg.append((f" {done:,}/{total:,} ", "", True))
-        seg.append((f" w={workers} ", "magenta", False))
+        seg.append((f" w={workers}", "magenta", False))
+        seg.append((f"+{self.inflight} " if self.inflight else " ", "grey", False))
         seg.append((f" {rpm:5.1f}/min ", "yellow", False))
         seg.append((f" cache {cache:.0%} ", heat(cache, 0.80, 0.50), False))
         seg.append((f" ok {ok:,} ", "green", False))
@@ -646,22 +714,40 @@ class Progress:
 
     def tick(self, *args) -> None:
         """Called on every completion, under the writer's lock."""
-        self.marks.append(time.monotonic())
-        plain, coloured = self.line(*args)
-        done = args[1]
-        if done % self.every == 0:
-            self.clear()
-            print(coloured, flush=True)
-        elif self.tty:
-            pad = " " * max(self.width - len(plain), 0)
-            self.width = len(plain)
-            print("\r" + coloured + pad, end="", flush=True)
+        with self.plock:
+            self.marks.append(time.monotonic())
+            self.state = args
+            done = args[1]
+            if done % self.every == 0:
+                self._clear()
+                print(self.line(*args)[1], flush=True)
+            else:
+                self._redraw()
 
-    def clear(self) -> None:
-        """Wipe the in-place line so a permanent print does not land on top of it."""
+    def _redraw(self) -> None:
+        """In-place update from the stored counters. Caller holds plock."""
+        if not self.tty or self.state is None:
+            return
+        plain, coloured = self.line(*self.state)
+        pad = " " * max(self.width - len(plain), 0)
+        self.width = len(plain)
+        print("\r" + coloured + pad, end="", flush=True)
+
+    def _clear(self) -> None:
+        """Caller holds plock."""
         if self.tty and self.width:
             print("\r" + " " * self.width + "\r", end="", flush=True)
             self.width = 0
+
+    def clear(self) -> None:
+        with self.plock:
+            self._clear()
+
+    def emit(self, lines) -> None:
+        """Print permanent lines without the heartbeat scribbling over them."""
+        with self.plock:
+            self._clear()
+            print("\n".join(lines), flush=True)
 
 
 CLASS_NAMES = {"M": "Monetary", "P": "Psychological", "S": "Social",
@@ -720,7 +806,7 @@ class LiveStats:
         lines = []
         for lab, at, seen in out:
             total = len(self.legal) or 29
-            lines.append(C.p(f"  \u2726 first {lab}", "magenta", True)
+            lines.append(C.p(f"  {G['star']} first {lab}", "magenta", True)
                          + C.p(f"  at review {at:,}   ({seen}/{total} of the codebook "
                                f"seen)", "grey"))
         return lines
@@ -731,8 +817,8 @@ class LiveStats:
             return []
         w = 34
         pct = lambda k, d: (k / d * 100.0) if d else 0.0
-        lines = [C.p(f"  \u2500\u2500 corpus so far  ({self.n:,} reviews) "
-                     + "\u2500" * 28, "grey")]
+        lines = [C.p(f"  {G['rule'] * 2} corpus so far  ({self.n:,} reviews) "
+                     + G["rule"] * 28, "grey")]
 
         none_pct = pct(self.none, self.n)
         lines.append("   " + C.p("NONE", "", True)
@@ -755,7 +841,7 @@ class LiveStats:
             peak = top[0][1]
             lines.append(C.p("   top", "grey"))
             for lab, n in top:
-                bar = "\u2588" * max(1, round(n / peak * 18))
+                bar = G["full"] * max(1, round(n / peak * 18))
                 lines.append(f"     {lab:<{w}} " + C.p(bar, "green")
                              + C.p(f" {n:,}  {pct(n, self.n_labels):.1f}%", "grey"))
 
@@ -916,8 +1002,7 @@ class Writer:
             if self.stats.due():
                 extra_lines += [""] + self.stats.digest() + [""]
             if extra_lines:
-                self.progress.clear()
-                print("\n".join(extra_lines), flush=True)
+                self.progress.emit(extra_lines)
 
             # A review that errored or would not parse carries NO label. It is written
             # to disk as evidence (with parsed=null and the error in error_message --
@@ -1159,6 +1244,7 @@ def run_level(client, cfg: RunConfig, rows, workers: int, writer: Writer,
                 break
 
         while pending:
+            writer.progress.inflight = len(pending)
             done_futs, pending = wait(pending, return_when=FIRST_COMPLETED)
             for fut in done_futs:
                 row, shard, res = fut.result()
@@ -1181,6 +1267,7 @@ def run_level(client, cfg: RunConfig, rows, workers: int, writer: Writer,
             for _ in range(len(done_futs)):
                 if not submit_one():
                     break
+            writer.progress.inflight = len(pending)
 
         if STOP.is_set() or writer.stop_reason:
             ex.shutdown(wait=True, cancel_futures=True)
@@ -1374,6 +1461,7 @@ def actual_run(cfg: RunConfig, a: argparse.Namespace) -> None:
             "tier": cfg.tier}
 
     signal.signal(signal.SIGINT, _sigint_handler)
+    writer.progress.start()
     client = make_client(max_workers)
     stopped = None
 
@@ -1390,7 +1478,7 @@ def actual_run(cfg: RunConfig, a: argparse.Namespace) -> None:
             stopped = (f"cache never warmed: {base:.1%} mean hit rate over the "
                        f"sequential phase, floor is {CACHE_FLOOR:.0%}")
         else:
-            print(C.p(f"\n  ✓ CACHE CONFIRMED: {base:.1%} mean hit rate over "
+            print(C.p(f"\n  {G['ok']} CACHE CONFIRMED: {base:.1%} mean hit rate over "
                   f"{len(watch.measured)} measured calls.", "green", True))
             print(f"  This is the baseline. Every later level is judged against it, "
                   f"with a {CACHE_DROP_TOL:.0%} tolerance.\n")
@@ -1412,12 +1500,12 @@ def actual_run(cfg: RunConfig, a: argparse.Namespace) -> None:
                                        lv, writer, watch, ramp, f"ramp:{lv}")
                 roll = watch.rolling()
                 if broke:
-                    print(C.p(f"  ✗ {lv} workers DEGRADED the cache "
+                    print(C.p(f"  {G['bad']} {lv} workers DEGRADED the cache "
                           f"({roll:.1%} vs {base:.1%} baseline)", "red", True))
                     print(f"     ramp stops here: every level above this one would pay "
                           f"~9.5x for input and prove nothing new.")
                     break
-                print(C.p(f"  ✓ {lv} workers OK", "green", True)
+                print(C.p(f"  {G['ok']} {lv} workers OK", "green", True)
                       + C.p(f"  (cache {roll:.1%}, spend ${writer.spend:.4f})", "grey"))
                 if got < n:
                     break
@@ -1443,6 +1531,8 @@ def actual_run(cfg: RunConfig, a: argparse.Namespace) -> None:
             stopped = "interrupted (Ctrl-C)"
         if writer.stop_reason and not stopped:
             stopped = writer.stop_reason
+        writer.progress.stop()
+        writer.progress.inflight = 0
         if stopped and ramp.get("workers_current"):
             ramp["stopped_at_workers"] = ramp["workers_current"]
         writer.close()
@@ -1520,7 +1610,7 @@ def actual_run(cfg: RunConfig, a: argparse.Namespace) -> None:
         print(f"!!   python annotate_corpus.py --actual --resume", file=sys.stderr)
         print("!" * 72 + "\n", file=sys.stderr)
         sys.exit(2)
-    print(C.p("\n  ✓ DONE", "green", True)
+    print(C.p(f"\n  {G['ok']} DONE", "green", True)
           + C.p(f"   raw responses for FT: {show(paths.raw)}", "grey"))
 
 
@@ -1613,6 +1703,7 @@ def parse_args() -> argparse.Namespace:
 
 def main() -> None:
     C.enable()
+    G.pick()
     a = parse_args()
     cfg = build_config(a)
     if a.check:
