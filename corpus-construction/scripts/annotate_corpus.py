@@ -1606,12 +1606,20 @@ def actual_run(cfg: RunConfig, a: argparse.Namespace) -> None:
 
     throttle = Throttle(max_workers, cooldown=a.throttle_cooldown,
                         recover_after=a.throttle_recover)
-    if state.get("throttle_limit") and a.resume:
-        # A level the API already refused is not worth rediscovering at full price.
+    if state.get("throttle_limit") and a.resume and not cfg.workers:
+        # A level the API already refused is not worth rediscovering at full price --
+        # but ONLY when the worker count was derived rather than asked for. Carrying a
+        # collapsed limit across restarts made --workers a lie: a checkpoint that ended
+        # at 1 pinned every later run to 1 no matter what was typed, with no way back
+        # except --throttle-recover. An explicit --workers is an instruction, not a
+        # suggestion, and the throttle will re-discover the ceiling if it is wrong.
         throttle.limit = max(1, min(throttle.limit, int(state["throttle_limit"])))
         if throttle.limit < max_workers:
             print(f"  starting at {throttle.limit} workers: the previous pass was rate "
-                  f"limited above that")
+                  f"limited above that (pass --workers N to override)")
+    elif state.get("throttle_limit") and a.resume:
+        print(f"  ignoring the checkpoint's throttle limit of "
+              f"{state['throttle_limit']}: --workers {cfg.workers} was given explicitly")
     ramp.update(throttle.state())
 
     signal.signal(signal.SIGINT, _sigint_handler)
