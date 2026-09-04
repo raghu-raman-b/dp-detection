@@ -1,0 +1,10 @@
+# Created by venv; see https://docs.python.org/3/library/venv.html
+*
+
+# The annotation run output is a deliverable, not venv noise. Git will not descend
+# into an excluded directory, so every parent has to be re-included by name -- a
+# negation on the leaf alone would never be reached.
+!corpus-construction/
+!corpus-construction/outputs/
+!corpus-construction/outputs/llm_annotation/
+!corpus-construction/outputs/llm_annotation/*
