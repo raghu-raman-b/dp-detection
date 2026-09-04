@@ -1,0 +1,91 @@
+{
+  "query": "Homescapes lives energy regeneration time",
+  "sent_query": "Homescapes lives energy regeneration time",
+  "query_hash": "1672f03fb3d83bb0",
+  "answer": "In Homescapes, it takes 30 minutes for a life to regenerate, and lives refill fully at the start of a new in-game day. Energy points also regenerate every 3 minutes.",
+  "sources": [
+    {
+      "title": "Lives | Homescapes Wiki",
+      "url": "https://homescapes.fandom.com/wiki/Lives",
+      "host": "homescapes.fandom.com"
+    },
+    {
+      "title": "Is it normal to wait 30 minutes for energy in Homescapes?",
+      "url": "https://www.facebook.com/groups/homescapesfans/posts/2098909623835806",
+      "host": "facebook.com"
+    },
+    {
+      "title": "Help with energy points : r/HomescapesOfficial",
+      "url": "https://www.reddit.com/r/HomescapesOfficial/comments/13s4ovb/help_with_energy_points",
+      "host": "reddit.com"
+    },
+    {
+      "title": "How much time a day do you spend playing Homescapes ...",
+      "url": "https://www.facebook.com/homescapes/posts/how-much-time-a-day-do-you-spend-playing-homescapes-be-it-20-minutes-or-4-hours-/775972406138305",
+      "host": "facebook.com"
+    },
+    {
+      "title": "What are Lives and how to refill them?",
+      "url": "https://playrix.helpshift.com/hc/en/14-homescapes/faq/17443-what-are-lives-and-how-to-refill-them-1772585325?l=en",
+      "host": "playrix.helpshift.com"
+    }
+  ],
+  "backend": "tavily",
+  "cached": false,
+  "cost_usd": 0.008,
+  "latency_s": 2.121,
+  "n_results": 5,
+  "domains": [],
+  "error": null,
+  "ts": "2026-09-04T10:10:12+00:00",
+  "raw": {
+    "query": "Homescapes lives energy regeneration time",
+    "follow_up_questions": null,
+    "answer": "In Homescapes, it takes 30 minutes for a life to regenerate, and lives refill fully at the start of a new in-game day. Energy points also regenerate every 3 minutes.",
+    "images": [],
+    "results": [
+      {
+        "url": "https://homescapes.fandom.com/wiki/Lives",
+        "title": "Lives | Homescapes Wiki",
+        "content": "It takes 30 minutes to refill a life. Your lives also refill entirely at the start of a new in-game day. You can see your Lives and how much time you have until",
+        "score": 0.78886026,
+        "raw_content": null,
+        "id": "edb1d7-00"
+      },
+      {
+        "url": "https://www.facebook.com/groups/homescapesfans/posts/2098909623835806",
+        "title": "Is it normal to wait 30 minutes for energy in Homescapes?",
+        "content": "Every 3 minutes you should be getting 1 energy. So in 30 minutes your energy should have increased by 10 You should contact customer support .",
+        "score": 0.70726365,
+        "raw_content": null,
+        "id": "804d35-01"
+      },
+      {
+        "url": "https://www.reddit.com/r/HomescapesOfficial/comments/13s4ovb/help_with_energy_points",
+        "title": "Help with energy points : r/HomescapesOfficial",
+        "content": "Switch on airplane mode, close down homescapes app, go to the clock, advance it 3-4 hours, reopen homescapes, close it again, readjust the clock",
+        "score": 0.5758033,
+        "raw_content": null,
+        "id": "c583ea-02"
+      },
+      {
+        "url": "https://www.facebook.com/homescapes/posts/how-much-time-a-day-do-you-spend-playing-homescapes-be-it-20-minutes-or-4-hours-/775972406138305",
+        "title": "How much time a day do you spend playing Homescapes ...",
+        "content": "How much time a day do you spend playing Homescapes?📱 Be it 20 minutes or 4 hours (oh, those unlimited lives...), it's very important to maintain",
+        "score": 0.41009519,
+        "raw_content": null,
+        "id": "cfab7d-03"
+      },
+      {
+        "url": "https://playrix.helpshift.com/hc/en/14-homescapes/faq/17443-what-are-lives-and-how-to-refill-them-1772585325?l=en",
+        "title": "What are Lives and how to refill them?",
+        "content": "Lives are refilled automatically as time passes: it takes 30 minutes to refill one life · You can request Free Lives from your teammates: you can do it for free!",
+        "score": 0.21437915,
+        "raw_content": null,
+        "id": "8e6e0f-04"
+      }
+    ],
+    "response_time": 1.14,
+    "request_id": "8e7690bb-f22a-41bb-9f12-fe890a5bc940"
+  }
+}

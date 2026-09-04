@@ -1,0 +1,91 @@
+{
+  "query": "Last War Survival game base upgrade timer mechanic",
+  "sent_query": "Last War Survival game base upgrade timer mechanic",
+  "query_hash": "ab16253c16e5993c",
+  "answer": "In Last War Survival, base upgrades have varying timers; higher-level buildings reduce upgrade times. Alliances can further shorten these times. Tech Center upgrades significantly speed up construction.",
+  "sources": [
+    {
+      "title": "Buildings Guide & Upgrade Requirements - Last War: Survival | Cpt Hedgehog's Battle HQ",
+      "url": "https://cpt-hedge.com/buildings",
+      "host": "cpt-hedge.com"
+    },
+    {
+      "title": "Best HQ Upgrade Strategy for Last War Survival: Full Guide - Joytify United States Blog",
+      "url": "https://www.joytify.com/blog/en-us/other/rpg-last-war-survival-headquarters-upgrades-strategy",
+      "host": "joytify.com"
+    },
+    {
+      "title": "Last War Tutorial: Best guides for Last War: Survival Game",
+      "url": "https://www.lastwartutorial.com",
+      "host": "lastwartutorial.com"
+    },
+    {
+      "title": "Progression Roadmap | Last War Vault",
+      "url": "https://lastwarvault.com/guides/general/progression-guide",
+      "host": "lastwarvault.com"
+    },
+    {
+      "title": "Buildings upgrade times : r/LastWarMobileGame",
+      "url": "https://www.reddit.com/r/LastWarMobileGame/comments/1bo2ghw/buildings_upgrade_times",
+      "host": "reddit.com"
+    }
+  ],
+  "backend": "tavily",
+  "cached": false,
+  "cost_usd": 0.008,
+  "latency_s": 2.438,
+  "n_results": 5,
+  "domains": [],
+  "error": null,
+  "ts": "2026-09-04T10:54:11+00:00",
+  "raw": {
+    "query": "Last War Survival game base upgrade timer mechanic",
+    "follow_up_questions": null,
+    "answer": "In Last War Survival, base upgrades have varying timers; higher-level buildings reduce upgrade times. Alliances can further shorten these times. Tech Center upgrades significantly speed up construction.",
+    "images": [],
+    "results": [
+      {
+        "url": "https://cpt-hedge.com/buildings",
+        "title": "Buildings Guide & Upgrade Requirements - Last War: Survival | Cpt Hedgehog's Battle HQ",
+        "content": "With the tech center you can unlock a variety of researches that will all around improve your base. From buffs to reduce construction times to various attack and defense buffs.### Training Base\n\nProvides hero experience for your heroes. Higher levels increase the amount of experience gained.### Wall\n\nThe wall defines how quickly your base gets damaged when on fire and how quickly it can restore to full health. Higher levels also reduce the casualty rate of troops when breached. [...] Allows you to research 4 Armaments for your troops to unlock T11 troops.### Barracks\n\nTrain and upgrade your troops in the barracks. Higher levels unlock more advanced troop types and increase training amounts.### Builder's Hut\n\nA cosy home for your builders. Higher levels increase the default time reduction for building upgrades.### Chip Lab\n\nAllows you to craft drone skill chips from materials. Higher levels unlock legendary chips.### Coin Vault [...] Generates oil for you. Higher levels increase oil production rate.### Recon Plane\n\nAllows you to scout other players. Higher levels increase the speed at which your planes move.### Smelter\n\nGenerates ore for upgrading your hero gear. Higher levels increase ore production rate.### Squad\n\nAllows you to create squads of heroes. Higher levels increase the march speed of the specific squad.### Tactical Institute",
+        "score": 0.5248093,
+        "raw_content": null,
+        "id": "8ea5b3-00"
+      },
+      {
+        "url": "https://www.joytify.com/blog/en-us/other/rpg-last-war-survival-headquarters-upgrades-strategy",
+        "title": "Best HQ Upgrade Strategy for Last War Survival: Full Guide - Joytify United States Blog",
+        "content": "Your HQ is the heart of your base and if it’s falling behind, you’re basically playing on hard mode. This Last War Survival Headquarters Upgrades Strategy will show you how to hit every Last War HQ requirement without wasting time, speedups, or resources. Think of it as your blueprint for powering up fast while staying battle-ready.\n\nLet’s get those Headquarters running!\n\nSee Also: Last War Hero Tier List: Best Heroes Ranked\n\nJOYTIFY TOP UP: PAY LESS, PLAY MORE!\n\nlast war survival\n\ngenshin [...] Overbuilding Too Early: Dumping resources into farms or depots you don’t need yet delays your HQ timing.\n Neglecting Walls: Getting stuck at an HQ level because your wall is two levels too low is painful.\n Ignoring Hospitals: Skipping hospital upgrades leads to permanent troop loss in PvP.\n Not Hoarding Resources: Upgrading HQ without enough stored food/iron means you sit idle for days.\n\nAvoid these mistakes and your HQ path will stay smooth.\n\n## Resource & Time Hacks for Last War HQ Upgrades [...] If you’re running low on speedups or resources, don’t stress — you can top up Last War Survival instantly with Joytify! Joytify offers safe, fast, and reliable recharge services so you can focus on hitting that next Last War HQ milestone without waiting days.\n\n## FAQs\n\nYour HQ is the foundation of your base's strength. If it falls behind, you'll struggle with resource production, unit capacity, and overall progression, making the game significantly harder.",
+        "score": 0.468621,
+        "raw_content": null,
+        "id": "d0f0d5-01"
+      },
+      {
+        "url": "https://www.lastwartutorial.com",
+        "title": "Last War Tutorial: Best guides for Last War: Survival Game",
+        "content": "🌸 Season 4 – Week 4 Copper War, Warbreaker, Ruinstriker, Warlord’s Atomic Breath, Trade Baron, City Level 7 unlock\n\n🌸 Season 4 – Tactics CardsCore, battle, resource cards: Upgrade the cards and leverage their base/basics effects, tactical skills and random stats.\n\n🌸 Season 4 – Week 3Sarah UR, Hunting Oni, Trade Posts Unlock, City level 5-6 unlock, Adam Exclusive Weapon, Faction Awards, Hero Swap EXP [...] + Troops – Soldiers: how to train and upgrade them\n  + Stores – Buy items for speedup, powerups\n  + Squads – How to place heroes\n  + VIP Program – Powerful boosts purchased through diamonds\n  + The Capitol – Title assignment, boosts and how to request them\n Top Picks\n  + ✨ Copilot v2: Buildings, Heroes, Overlord calculators\n  + Tricks/Cheats – List of all those little tricks you want to know\n  + Transfer Surge – Server Transfers\n  + 🦍 Overlord Gorilla\n  + ✈️ Sky Battlefront [...] + Desert Storm – Periodic event with lots of rewards\n  + General’s Trial\n  + Zombie Siege – Zombie waves attack bases of your alliance\n  + Winter Storm Battlefield – 5vs5 periodic battlefield\n  + ☄️Meteorite Iron War – Meteorites are falling, dispatch troops to gather resources and win amazing rewards\n  + ✈️ Sky Battlefront\n  + Count Master – Survive the math challenges\n One-off Events\n  + 🦃Thanksgiving Event\n  + 🎁Christmas Celebration",
+        "score": 0.39901572,
+        "raw_content": null,
+        "id": "e78240-02"
+      },
+      {
+        "url": "https://lastwarvault.com/guides/general/progression-guide",
+        "title": "Progression Roadmap | Last War Vault",
+        "content": "### What to Do\n\n Push HQ to 30 — this is the finish line for pre-season. Upgrade times hit weeks at this stage\n Unlock T10 troops — Tech Centre 30 is required. This is one of the biggest power spikes in the game\n Start second squad investment — with your Tank squad strong, begin building Aircraft\n Max gold gear on main squad — finish any remaining pieces\n Push hero stars to 5 — long-term goal. Continue using Universal Legendary Shards on your priority heroes\n\n### Preparing for Seasons [...] Goal: Blast through the early game. Resources are plentiful and timers are short. Everything you do here is about reaching the mid game as fast as possible.\n\n### What to Do [...] 4. Skipping economic research — construction and research speed bonuses compound over hundreds of upgrades. Build the foundation before the combat stats\n5. Opening resource chests too early — resources in your base can be stolen. Resources in your inventory are safe. Only open when you need to spend immediately\n6. Spending gems on summons — gems should go to VIP levels. VIP 6 (second builder) is the single most impactful purchase in the game",
+        "score": 0.37772483,
+        "raw_content": null,
+        "id": "00a090-03"
+      },
+      {
+        "url": "https://www.reddit.com/r/LastWarMobileGame/comments/1bo2ghw/buildings_upgrade_times",
+        "title": "Buildings upgrade times : r/LastWarMobileGame",
+        "content": "I'm in a good alliance, so my time will be shorter cause we have researched and paid for faster construction time and reduce cost on buildings.",
+        "score": 0.3078161,
+        "raw_content": null,
+        "id": "3a663e-04"
+      }
+    ],
+    "response_time": 1.46,
+    "request_id": "6ab90ba2-46c4-45e3-9765-e7195fd46ca6"
+  }
+}

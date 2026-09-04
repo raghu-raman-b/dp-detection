@@ -1,0 +1,91 @@
+{
+  "query": "Total Battle War Strategy what is open silver",
+  "sent_query": "Total Battle War Strategy what is open silver",
+  "query_hash": "a7da0b6d6a26f53c",
+  "answer": "Open silver in Total Battle is a crucial resource used for training armies, hiring mercenaries, and researching technologies. It's generated in city mansions and gathered from various sources. Managing silver efficiently is key to strategy success.",
+  "sources": [
+    {
+      "title": "Total Battle: Strategy Games - Apps on Google Play",
+      "url": "https://play.google.com/store/apps/details?id=com.totalbattle&hl=en_US",
+      "host": "play.google.com"
+    },
+    {
+      "title": "Stop Paying Silver Tax | Total Battle",
+      "url": "https://www.youtube.com/watch?v=8cYrnooXQHU",
+      "host": "youtube.com"
+    },
+    {
+      "title": "Total Battle | How to Get Resources",
+      "url": "https://www.youtube.com/watch?v=GdqmXw4Gkic",
+      "host": "youtube.com"
+    },
+    {
+      "title": "Total Battle Beginner Guide: Best Economy & Hero Setup",
+      "url": "https://www.ldshop.gg/blog/guide/total-battle-beginner-guide.html",
+      "host": "ldshop.gg"
+    },
+    {
+      "title": "Total Battle: Play free online browser strategy war game",
+      "url": "https://totalbattle.com",
+      "host": "totalbattle.com"
+    }
+  ],
+  "backend": "tavily",
+  "cached": false,
+  "cost_usd": 0.008,
+  "latency_s": 2.552,
+  "n_results": 5,
+  "domains": [],
+  "error": null,
+  "ts": "2026-09-04T13:39:27+00:00",
+  "raw": {
+    "query": "Total Battle War Strategy what is open silver",
+    "follow_up_questions": null,
+    "answer": "Open silver in Total Battle is a crucial resource used for training armies, hiring mercenaries, and researching technologies. It's generated in city mansions and gathered from various sources. Managing silver efficiently is key to strategy success.",
+    "images": [],
+    "results": [
+      {
+        "url": "https://play.google.com/store/apps/details?id=com.totalbattle&hl=en_US",
+        "title": "Total Battle: Strategy Games - Apps on Google Play",
+        "content": "Build your empire and prepare for war with Total Battle, a multiplayer war strategy game that pits you against enemy factions across ancient civilizations, magic kingdoms and great empires.  \n  \nBecome immersed in your own world while battling for glory. Enjoy this multiplayer online strategy building game and show off your castle defense skills and tactical war strategies. Command and conquer kingdoms and castles, occupy forts, and feel the rush in this fantasy MMO RTS 4X game. [...] ● Join a clan of like-minded people, play with friends, and achieve your goals together in this online 4X strategy game.  \n● Capture territory, climb to the top of the war rankings, and enlist the support of thousands of allies to help you achieve world domination  \n  \nTotal Battle is a war strategy game with various historical epochs: from ancient times to medieval and then to the age of discovery. Join the online battle strategy game, build an empire, and win!  \n  \nOfficial Site: [...] ● Strategy games require you to make the right choices for managing the troops in your army—each unit has unique abilities for going to war against monsters and other players  \n● Dozens of types of magic enemies of different levels  \n  \n  \nWAR STRATEGY GAMES & MULTIPLAYER BATTLES  \n● An MMO 4X real-time strategy game with PvE and PvP modes  \n● A massive open world with hundreds of kingdoms and millions of lords' castles",
+        "score": 0.57006866,
+        "raw_content": null,
+        "id": "062f02-00"
+      },
+      {
+        "url": "https://www.youtube.com/watch?v=8cYrnooXQHU",
+        "title": "Stop Paying Silver Tax | Total Battle",
+        "content": "alt, that is good because you want your Silver City alt to get there first. The reason why you want to time it right is because the last thing you want is to have a portal open whilst your bubble is up because if an enemy attacks that portal, they can get into your city without having to take down the city walls. The less time that that portal is open and available, the less vulnerable you are. That's why I send them both simultaneously. So, let's do it. Let's attack this cursed citadel and [...] order to launch the attack on my Silver City. If instead I start a march for my main account on a citadel, then use my silver city to kill the citadel and place a portal in that spot, my main army will continue marching to it and attack the portal when it arrives at the spot where the citadel was. This allows me to attack my silver city via the portal without being forced to drop the shield of peace on either city. This is genius. It is genius. However, after doing a few experiments myself and [...] alt is going to make it back to your city before your main account makes it to the citadel. If your alt account does make it back before your main account makes it to the citadel, then send your army to a clan fort. Get it out of the city. That's probably the best option. However, if you can time it right so that the silver alt is marching back whilst the main is attacking the portal, you won't need to worry about sending it to the fort. So, we've got 15 seconds left. As you can see, they're",
+        "score": 0.5565207,
+        "raw_content": null,
+        "id": "ad66cf-01"
+      },
+      {
+        "url": "https://www.youtube.com/watch?v=GdqmXw4Gkic",
+        "title": "Total Battle | How to Get Resources",
+        "content": "by Thelensia or in the Summoning Circle. One of the most important resources in the game is Silver. Silver is used to train your army, resurrect troops in some tournaments, and hire mercenaries in the Trade Routes tournament. It can also be converted into Scientific Tractates, which allow your Clan to research Clan technologies, and it's useful for many other things too! Silver is produced in the Mansions in your City. Upgrade your Mansions and build more of them to increase the amount of [...] the amount of Silver that gets produced and the speed at which it is generated. Just like with building resources, you can gather Silver in Mines on the World Map, take it from opponents' Cities and Mines, purchase it in the store, and obtain it in Clan chests or as a reward in tournaments. Thelensia and the Summoning Circle can also grant you Silver! One of the main resources for maintaining and training troops is Food. Food is produced in Farmers' Houses in your City or in similar Farmers' [...] All about clans part 1:  \n_______________________________________________________________________\nTotal Battle is a massively multiplayer online (MMO) strategy game. It has more than 10 million active players, is regularly updated, and features loads of events with entertaining gameplay. You have to be a wise politician and a master of strategy to become the strongest ruler in the Total Battle lands. \n\nPlay Total Battle Now! -  \nOur Facebook - \nApple Store -  \nGoogle Play -",
+        "score": 0.54594,
+        "raw_content": null,
+        "id": "9a0572-02"
+      },
+      {
+        "url": "https://www.ldshop.gg/blog/guide/total-battle-beginner-guide.html",
+        "title": "Total Battle Beginner Guide: Best Economy & Hero Setup",
+        "content": "Total Battle Beginner Guide\n\nTotal Battle Beginner Guide\n\n## Economy First\n\nMost rookies jump into the game and immediately start pumping out guardsmen like crazy. That is a trap. Troops consume food, die instantly against high-tier stacks, and drain your precious silver when you try to revive them.\n\n### Silver Over Soldiers\n\n### Capital RushingTotal Battle Capital Rushing\n\nTotal Battle Capital Rushing\n\n## Troop Management [...] Half editor, half hardcore gamer, I spent my career at the intersection of search intent and player experience. I know the ranking math, but I also know the frustration of a 3 a.m. dead-end in a hidden quest. Having shipped tens of thousands of words in original guides and reviews, I’ve mastered the art of stripping back complex systems into readable, actionable insights. I don't write for bots; I build roadmaps for the community.\n\n【New User Discount】4.99$ Any Pack | Total Battle: War Strategy [...] ### S-Tier Early Captains\n\nTotal Battle Haemon\n\nTotal Battle Haemon\n\nTotal Battle Ayrin\n\nTotal Battle Ayrin\n\nTotal Battle Thaddeus\n\nTotal Battle Thaddeus\n\nPro Tip on Gear: Do not just look at raw combat stats. Put \"Honored Ruler\" equipment sets on your economy-focused Captains like Helen, Aurora, and Farhad. The gear boosts your silver and resource production into overdrive.\n\n## Joining the Top Tier",
+        "score": 0.2797281,
+        "raw_content": null,
+        "id": "fd50f2-03"
+      },
+      {
+        "url": "https://totalbattle.com",
+        "title": "Total Battle: Play free online browser strategy war game",
+        "content": "Вы ввели неверные данные\n\nПроизошла ошибка, обратитесь в поддержку\n\nПароль был изменен\n\nУдаление аккаунта\n\nУчётная запись %name% будет удалена через %time%. Если вы хотите продолжить игру через эту учётную запись, вы можете отменить удаление в любой момент.\n\n  Svenska  Türkçe  Русский  العربية  日本語  简体中文  繁體中文  한국어\n\n### О компании\n\nSCOREWARRIOR LIMITED\n\nНомер DUNS\n\n534523904\n\nРегистрационный номер компании\n\n348535\n\nРегистрационный орган [...] Department of Registrar of Companies and Intellectual Property  \n Corner Makariou III Avenue and Karpenisiou Street  \n “XENIOS” Building  \n 1427 Nicosia, Cyprus  \n www.companies.gov.cy\n\nЮридический адрес\n\n16 Spyrou Kyprianou Avenue  \n Devine Clock Tower, 1st Floor  \n 3070 Limassol, Cyprus\n\nTadeush Sladkovich\n\n+357 25354581\n\nЭлектронная почта",
+        "score": 0.20577498,
+        "raw_content": null,
+        "id": "6ade2b-04"
+      }
+    ],
+    "response_time": 1.56,
+    "request_id": "8da53778-db42-45db-b68c-6e3c35f0d817"
+  }
+}

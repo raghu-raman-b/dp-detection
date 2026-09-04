@@ -1,0 +1,91 @@
+{
+  "query": "Merge Cooking game buy more board slots parts refrigerator inventory",
+  "sent_query": "Merge Cooking game buy more board slots parts refrigerator inventory",
+  "query_hash": "5cc3bb3de997c123",
+  "answer": "To buy more board slots in Merge Cooking, watch ads or complete tasks. The game allows you to merge items to free up space. Inventory management is key to expanding your board.",
+  "sources": [
+    {
+      "title": "Discuss Everything About Merge Cooking",
+      "url": "https://merge-cooking-theme-restaurant.fandom.com/f",
+      "host": "merge-cooking-theme-restaurant.fandom.com"
+    },
+    {
+      "title": "Merge Cooking Game How to Use Inventory",
+      "url": "https://www.tiktok.com/content/merge-cooking-game-how-to-use-inventory",
+      "host": "tiktok.com"
+    },
+    {
+      "title": "Questions and Answers for Merge Cooking:Theme Restaurant ...",
+      "url": "https://www.appgamer.com/merge-cookingtheme-restaurant/answers",
+      "host": "appgamer.com"
+    },
+    {
+      "title": "How to manage inventory and space in Merge Cooking ...",
+      "url": "https://www.facebook.com/groups/764037108676390/posts/1055011406245624",
+      "host": "facebook.com"
+    },
+    {
+      "title": "Board organization? : r/MergeCooking",
+      "url": "https://www.reddit.com/r/MergeCooking/comments/1ntkyj2/board_organization",
+      "host": "reddit.com"
+    }
+  ],
+  "backend": "tavily",
+  "cached": false,
+  "cost_usd": 0.008,
+  "latency_s": 2.864,
+  "n_results": 5,
+  "domains": [],
+  "error": null,
+  "ts": "2026-09-04T10:36:36+00:00",
+  "raw": {
+    "query": "Merge Cooking game buy more board slots parts refrigerator inventory",
+    "follow_up_questions": null,
+    "answer": "To buy more board slots in Merge Cooking, watch ads or complete tasks. The game allows you to merge items to free up space. Inventory management is key to expanding your board.",
+    "images": [],
+    "results": [
+      {
+        "url": "https://merge-cooking-theme-restaurant.fandom.com/f",
+        "title": "Discuss Everything About Merge Cooking",
+        "content": "On my phone, the game offers the ability to open a tray of the items you've been awarded but haven't added to board/inventory yet so you can choose what to add",
+        "score": 0.40726325,
+        "raw_content": null,
+        "id": "dfda03-00"
+      },
+      {
+        "url": "https://www.tiktok.com/content/merge-cooking-game-how-to-use-inventory",
+        "title": "Merge Cooking Game How to Use Inventory",
+        "content": "Dive into the merge cooking game and master inventory strategies! Experience kitchen chaos in multiplayer cooking fun!See more videos about",
+        "score": 0.38748226,
+        "raw_content": null,
+        "id": "018e26-01"
+      },
+      {
+        "url": "https://www.appgamer.com/merge-cookingtheme-restaurant/answers",
+        "title": "Questions and Answers for Merge Cooking:Theme Restaurant ...",
+        "content": "How do you get to the advanced level when everything is 2x? Can I delete the old recipes to have more space in the inventory? How do you get free (with ads)",
+        "score": 0.24532945,
+        "raw_content": null,
+        "id": "982ae9-02"
+      },
+      {
+        "url": "https://www.facebook.com/groups/764037108676390/posts/1055011406245624",
+        "title": "How to manage inventory and space in Merge Cooking ...",
+        "content": "Yall help how do you do anything I just got to the noodle maker and I'm like all my board is full of generators and cooking units how do they even expect",
+        "score": 0.23538111,
+        "raw_content": null,
+        "id": "d99943-03"
+      },
+      {
+        "url": "https://www.reddit.com/r/MergeCooking/comments/1ntkyj2/board_organization",
+        "title": "Board organization? : r/MergeCooking",
+        "content": "How are you guys keeping your board so empty?? Genuinely so confused by why 3/4 of my board are taken up by generators and equipment. I’m only at level",
+        "score": 0.14089116,
+        "raw_content": null,
+        "id": "0611cd-04"
+      }
+    ],
+    "response_time": 1.88,
+    "request_id": "6b1375bc-92c8-4323-801c-a2fd11889d57"
+  }
+}

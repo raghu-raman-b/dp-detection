@@ -1,0 +1,81 @@
+{
+  "tag": "v2_vs_v3",
+  "generated": "2026-09-04T19:53:49",
+  "mode": "explicit",
+  "index": "/home/prex_san/Documents/dp-detection/corpus-construction/outputs/prompt-eval/run-stats/index.jsonl",
+  "primary_metric": "micro_f1",
+  "flags": {
+    "GOLD_UNIFORM": "true",
+    "PROMPT_UNIFORM": "false",
+    "GATE_MODE": "explicit",
+    "N_GATE_FAILURES": "0",
+    "N_DISQUALIFIED": "0",
+    "GATE": "pass"
+  },
+  "selection": {
+    "run_id": "gpt-5.6-luna_high_teacher_v3_full",
+    "selection_criterion": "max micro_f1 among named runs",
+    "ranked_on": "micro_f1",
+    "tie_break_rule": "gate_pass > lower $/200k > lower latency_p95 > lexical run_id",
+    "margin": 0.02751287725699185,
+    "p_win_vs_runner_up": 0.7335,
+    "runner_up_run_id": "gpt-5.6-luna_high_teacher_v2_full"
+  },
+  "runs": [
+    {
+      "run_id": "gpt-5.6-luna_high_teacher_v3_full",
+      "model": "gpt-5.6-luna",
+      "reasoning_effort": "high",
+      "prompt_stem": "teacher_v3_full",
+      "prompt_sha256": "a6ae58246360888865a93ebc4230e22033ab72c93b27e04bfcfe7d3908f9f662",
+      "gold_file": "/home/prex_san/Documents/dp-detection/corpus-construction/prompt_eval/gold_set.jsonl",
+      "run_dir": "/home/prex_san/Documents/dp-detection/corpus-construction/outputs/prompt-eval/runs/gpt-5.6-luna/high/teacher_v3_full",
+      "micro_f1": 0.7812,
+      "gate_failures": []
+    },
+    {
+      "run_id": "gpt-5.6-luna_high_teacher_v2_full",
+      "model": "gpt-5.6-luna",
+      "reasoning_effort": "high",
+      "prompt_stem": "teacher_v2_full",
+      "prompt_sha256": "aad355174ac44da072eee2003a4d2ed48038e273fcdc70e5c51dffa8e4a54416",
+      "gold_file": "/home/prex_san/Documents/dp-detection/corpus-construction/prompt_eval/gold_set.jsonl",
+      "run_dir": "/home/prex_san/Documents/dp-detection/corpus-construction/outputs/prompt-eval/runs/gpt-5.6-luna/high/teacher_v2_full",
+      "micro_f1": 0.7541,
+      "gate_failures": []
+    },
+    {
+      "run_id": "gpt-5.6-luna_medium_teacher_v3_full",
+      "model": "gpt-5.6-luna",
+      "reasoning_effort": "medium",
+      "prompt_stem": "teacher_v3_full",
+      "prompt_sha256": "a6ae58246360888865a93ebc4230e22033ab72c93b27e04bfcfe7d3908f9f662",
+      "gold_file": "/home/prex_san/Documents/dp-detection/corpus-construction/prompt_eval/gold_set.jsonl",
+      "run_dir": "/home/prex_san/Documents/dp-detection/corpus-construction/outputs/prompt-eval/runs/gpt-5.6-luna/medium/teacher_v3_full",
+      "micro_f1": 0.7241,
+      "gate_failures": []
+    },
+    {
+      "run_id": "gpt-5.6-luna_xhigh_teacher_v2_full",
+      "model": "gpt-5.6-luna",
+      "reasoning_effort": "xhigh",
+      "prompt_stem": "teacher_v2_full",
+      "prompt_sha256": "aad355174ac44da072eee2003a4d2ed48038e273fcdc70e5c51dffa8e4a54416",
+      "gold_file": "/home/prex_san/Documents/dp-detection/corpus-construction/prompt_eval/gold_set.jsonl",
+      "run_dir": "/home/prex_san/Documents/dp-detection/corpus-construction/outputs/prompt-eval/runs/gpt-5.6-luna/xhigh/teacher_v2_full",
+      "micro_f1": 0.678,
+      "gate_failures": []
+    },
+    {
+      "run_id": "gpt-5.6-luna_medium_teacher_v2_full",
+      "model": "gpt-5.6-luna",
+      "reasoning_effort": "medium",
+      "prompt_stem": "teacher_v2_full",
+      "prompt_sha256": "aad355174ac44da072eee2003a4d2ed48038e273fcdc70e5c51dffa8e4a54416",
+      "gold_file": "/home/prex_san/Documents/dp-detection/corpus-construction/prompt_eval/gold_set.jsonl",
+      "run_dir": "/home/prex_san/Documents/dp-detection/corpus-construction/outputs/prompt-eval/runs/gpt-5.6-luna/medium/teacher_v2_full",
+      "micro_f1": 0.5926,
+      "gate_failures": []
+    }
+  ]
+}

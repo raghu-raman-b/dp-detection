@@ -1,0 +1,91 @@
+{
+  "query": "Mystery Town Merge Games energy mechanic",
+  "sent_query": "Mystery Town Merge Games energy mechanic",
+  "query_hash": "67e9c1d183d15311",
+  "answer": "In Mystery Town Merge Games, energy is earned daily and refills slowly. Players can use energy to tap producers, but it caps and recharges without increase. Some players find the energy system frustrating due to slow recharge rates.",
+  "sources": [
+    {
+      "title": "Mystery Town: Merge Games - App Store",
+      "url": "https://apps.apple.com/gb/app/mystery-town-merge-games/id6503603603",
+      "host": "apps.apple.com"
+    },
+    {
+      "title": "Mystery Town: Merge Games - Apps on Google Play",
+      "url": "https://play.google.com/store/apps/details?id=com.cedargames.mysterytown&hl=en_US",
+      "host": "play.google.com"
+    },
+    {
+      "title": "Mystery Town: Merge Games Tips: Level Up Fast and ...",
+      "url": "https://kashkick.com/guide/game-tips/mystery-town-tips",
+      "host": "kashkick.com"
+    },
+    {
+      "title": "[REQUEST] Merge games with no timers or energy",
+      "url": "https://www.reddit.com/r/AndroidGaming/comments/1cy0j1z/request_merge_games_with_no_timers_or_energy",
+      "host": "reddit.com"
+    },
+    {
+      "title": "What to do with excess energy in game?",
+      "url": "https://www.facebook.com/groups/mysterytownofficialcommunity/posts/1430700524933636",
+      "host": "facebook.com"
+    }
+  ],
+  "backend": "tavily",
+  "cached": false,
+  "cost_usd": 0.008,
+  "latency_s": 2.78,
+  "n_results": 5,
+  "domains": [],
+  "error": null,
+  "ts": "2026-09-04T10:10:49+00:00",
+  "raw": {
+    "query": "Mystery Town Merge Games energy mechanic",
+    "follow_up_questions": null,
+    "answer": "In Mystery Town Merge Games, energy is earned daily and refills slowly. Players can use energy to tap producers, but it caps and recharges without increase. Some players find the energy system frustrating due to slow recharge rates.",
+    "images": [],
+    "results": [
+      {
+        "url": "https://apps.apple.com/gb/app/mystery-town-merge-games/id6503603603",
+        "title": "Mystery Town: Merge Games - App Store",
+        "content": "The energy takes a while to refresh. The game plays well but is ruined by the aggressively pushed microtransactions. The energy cap cannot be raised, and it's",
+        "score": 0.7206637,
+        "raw_content": null,
+        "id": "08fc11-00"
+      },
+      {
+        "url": "https://play.google.com/store/apps/details?id=com.cedargames.mysterytown&hl=en_US",
+        "title": "Mystery Town: Merge Games - Apps on Google Play",
+        "content": "Mel\n\n Flag inappropriate\n Show review history\n\nJuly 21, 2025\n\nThis game has nice graphics and is very playable up until about level 18. After that, progress is painfully slow unless you're prepared to spend real money to get enough energy to create the matches you need. It's taken over 48 hours to create one item that I need. If there was a better balance between energy recharge rate and the cost to create items, it would be worthwhile. Edit: game is not too difficult. Game is flawed. [...] Embark on a mysterious investigation in Mystery Town: Merge Games！  \nCan you merge everything into better and more useful items to solve thrilling puzzles? In Mystery Town, every match counts! Uncover hidden secrets and discover that here, the right merge can change everything.  \n  \nWelcome to Mystery Town, where you can unlock new themed adventures every week—experience cooking delicious food, hunt for clues, catch culprits in new cases, and rebuild parts of the town you'll love. [...] Step into a world where your merge skills help you restore a broken town, uncover hidden truths, and perhaps even find love. Join Aurora on an exciting quest and discover the truth about her uncle's sudden disappearance.  \n  \n🧩 MATCH & MERGE  \n• Match & Merge: Drag identical items to upgrade them into powerful tools.  \n• Complete orders to help upgrade buildings and restore the town. Start with your house!",
+        "score": 0.5596998,
+        "raw_content": null,
+        "id": "6c45b7-01"
+      },
+      {
+        "url": "https://kashkick.com/guide/game-tips/mystery-town-tips",
+        "title": "Mystery Town: Merge Games Tips: Level Up Fast and ...",
+        "content": "Each tap on a producer costs one energy. You receive a daily energy allowance and energy refills slowly over time when depleted. You can also",
+        "score": 0.5148644,
+        "raw_content": null,
+        "id": "10aacd-02"
+      },
+      {
+        "url": "https://www.reddit.com/r/AndroidGaming/comments/1cy0j1z/request_merge_games_with_no_timers_or_energy",
+        "title": "[REQUEST] Merge games with no timers or energy",
+        "content": "I actually found some modded merge games that give unlimited energy (or gems, but it's effectively the same), and kind of as expected they get",
+        "score": 0.34092444,
+        "raw_content": null,
+        "id": "8f432a-03"
+      },
+      {
+        "url": "https://www.facebook.com/groups/mysterytownofficialcommunity/posts/1430700524933636",
+        "title": "What to do with excess energy in game?",
+        "content": "Am I missing out anything? Seems like I have completed the game but I am still having energy as rewards when I clear the orders. What am I going to do",
+        "score": 0.063302755,
+        "raw_content": null,
+        "id": "4c78cf-04"
+      }
+    ],
+    "response_time": 1.86,
+    "request_id": "6ca51935-e06d-4288-a77e-c2d2a87a78e8"
+  }
+}

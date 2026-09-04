@@ -1,0 +1,91 @@
+{
+  "query": "Teen Patti GOLD forced contact list permission notifications what for",
+  "sent_query": "Teen Patti GOLD forced contact list permission notifications what for",
+  "query_hash": "2ab363ed9fc0ec78",
+  "answer": "Teen Patti GOLD requires contact list permission for push notifications and updates. It's essential for app functionality. Some users report scamming issues. Verify app legitimacy before use.",
+  "sources": [
+    {
+      "title": "Teen Patti Gold Rush Ka Review - Apps on Google ...",
+      "url": "https://pcs.mahaonline.gov.in/latest-how-teen-patti-gold-rush-ka-review-works-on-android-and-iphone",
+      "host": "pcs.mahaonline.gov.in"
+    },
+    {
+      "title": "How To Turn Off Notifications On Teen Patti Gold? 2024",
+      "url": "https://www.youtube.com/watch?v=si_EqdQeQgk",
+      "host": "youtube.com"
+    },
+    {
+      "title": "Scam app teen patti - Google Play Community",
+      "url": "https://support.google.com/googleplay/thread/402770643/scam-app-teen-patti?hl=en",
+      "host": "support.google.com"
+    },
+    {
+      "title": "Can't see family link purchase approval notifications?",
+      "url": "https://www.reddit.com/r/googleplay/comments/195x3ik/cant_see_family_link_purchase_approval",
+      "host": "reddit.com"
+    },
+    {
+      "title": "How is the Teen Patti app still operating in India despite ...",
+      "url": "https://www.quora.com/How-is-the-Teen-Patti-app-still-operating-in-India-despite-gambling-being-considered-illegal",
+      "host": "quora.com"
+    }
+  ],
+  "backend": "tavily",
+  "cached": false,
+  "cost_usd": 0.008,
+  "latency_s": 2.567,
+  "n_results": 5,
+  "domains": [],
+  "error": null,
+  "ts": "2026-09-04T10:11:19+00:00",
+  "raw": {
+    "query": "Teen Patti GOLD forced contact list permission notifications what for",
+    "follow_up_questions": null,
+    "answer": "Teen Patti GOLD requires contact list permission for push notifications and updates. It's essential for app functionality. Some users report scamming issues. Verify app legitimacy before use.",
+    "images": [],
+    "results": [
+      {
+        "url": "https://pcs.mahaonline.gov.in/latest-how-teen-patti-gold-rush-ka-review-works-on-android-and-iphone",
+        "title": "Teen Patti Gold Rush Ka Review - Apps on Google ...",
+        "content": "For example, notification permission prompts, background activity limits, and device storage behavior can affect login reliability and loading times, which",
+        "score": 0.44825777,
+        "raw_content": null,
+        "id": "9ed537-00"
+      },
+      {
+        "url": "https://www.youtube.com/watch?v=si_EqdQeQgk",
+        "title": "How To Turn Off Notifications On Teen Patti Gold? 2024",
+        "content": "Tap on the settings option. Locate the Notifications option and tap on the toggle switch right next to it to turn off the Notifications on Teen",
+        "score": 0.2764565,
+        "raw_content": null,
+        "id": "b7019c-01"
+      },
+      {
+        "url": "https://support.google.com/googleplay/thread/402770643/scam-app-teen-patti?hl=en",
+        "title": "Scam app teen patti - Google Play Community",
+        "content": "\"Google is not responsible for and does not endorse any Content made available through Google Play that originates from a source other than Google\"\n\nOriginal PosterAbhay Borkar 57 marked this as an answer\n\nHelpful?\n\n11\n\nUpvote\n\nDownvote\n\nView conversation\n\nAll Replies\n\nImage 2 Byteguy Diamond Product Expert\n\nRecommended Answer\n\nJan 17, 2026\n\n1/17/2026, 6:40:07 PM\n\nGet link\n\nReport abuse\n\nAnytime that you are asked to pay money to get money you can be 100% sure that it is a scam. [...] Skip to main content\n\n\n\nSubscribe\n\nCommunity content may not be verified or up-to-date.Learn more.\n\nRecommended Answer\n\nImage 1 Byteguy Diamond Product Expert\n\nJan 17, 2026\n\n1/17/2026, 6:40:07 PM\n\nGet link\n\nReport abuse\n\nAnytime that you are asked to pay money to get money you can be 100% sure that it is a scam. [...] There are, literally, millions of apps available in the Google Play Store and an estimated 100,000 new apps are added every month. Google tries to find the bad ones and remove them but they can't catch them all.Unfortunately, some developers have learned to abuse the Early Release program to get around Google's oversight and block reviews so users can't warn other users about the scam.\n\nAs laid out in the terms of service:",
+        "score": 0.10737215,
+        "raw_content": null,
+        "id": "bb77fb-02"
+      },
+      {
+        "url": "https://www.reddit.com/r/googleplay/comments/195x3ik/cant_see_family_link_purchase_approval",
+        "title": "Can't see family link purchase approval notifications?",
+        "content": "Can't see family link purchase approval notifications? ask a parent for approval to make an in-app purchase. I didn't get any notifications.",
+        "score": 0.039405376,
+        "raw_content": null,
+        "id": "d5216a-03"
+      },
+      {
+        "url": "https://www.quora.com/How-is-the-Teen-Patti-app-still-operating-in-India-despite-gambling-being-considered-illegal",
+        "title": "How is the Teen Patti app still operating in India despite ...",
+        "content": "How is the Teen Patti app still operating in India despite gambling being considered illegal?",
+        "score": 0.0335294,
+        "raw_content": null,
+        "id": "5582fe-04"
+      }
+    ],
+    "response_time": 1.55,
+    "request_id": "8239a1df-f506-4c66-b60b-f91226e0987e"
+  }
+}

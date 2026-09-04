@@ -1,0 +1,91 @@
+{
+  "query": "\"All in Hole\" mobile game what happens to coins when offline",
+  "sent_query": "\"All in Hole\" mobile game what happens to coins when offline",
+  "query_hash": "3a218d47ed078472",
+  "answer": "Coins in All in Hole are used to continue gameplay after swallowing a bomb. They do not accumulate offline. Coins are earned through gameplay.",
+  "sources": [
+    {
+      "title": "[Teeny Tiny Teardown] All in Hole (Homa Games)",
+      "url": "https://someselectedstories.substack.com/p/teeny-tiny-teardown-all-in-hole-homa",
+      "host": "someselectedstories.substack.com"
+    },
+    {
+      "title": "All in Hole: Black Hole Games - App Store",
+      "url": "https://apps.apple.com/us/app/all-in-hole-black-hole-games/id6503284107",
+      "host": "apps.apple.com"
+    },
+    {
+      "title": "All in hole kashkick : r/SwagBucks",
+      "url": "https://www.reddit.com/r/SwagBucks/comments/1j4tnks/all_in_hole_kashkick",
+      "host": "reddit.com"
+    },
+    {
+      "title": "Should the cost of coins to rejoin levels in All in Hole be ...",
+      "url": "https://www.facebook.com/groups/764044492298012/posts/1111456640890127",
+      "host": "facebook.com"
+    },
+    {
+      "title": "All in Hole: Black Hole Games - Apps on Google Play",
+      "url": "https://play.google.com/store/apps/details?id=com.homagames.studio.allinhole&hl=en_US",
+      "host": "play.google.com"
+    }
+  ],
+  "backend": "tavily",
+  "cached": false,
+  "cost_usd": 0.008,
+  "latency_s": 2.359,
+  "n_results": 5,
+  "domains": [],
+  "error": null,
+  "ts": "2026-09-04T10:56:14+00:00",
+  "raw": {
+    "query": "All in Hole mobile game what happens to coins when offline",
+    "follow_up_questions": null,
+    "answer": "Coins in All in Hole are used to continue gameplay after swallowing a bomb. They do not accumulate offline. Coins are earned through gameplay.",
+    "images": [],
+    "results": [
+      {
+        "url": "https://someselectedstories.substack.com/p/teeny-tiny-teardown-all-in-hole-homa",
+        "title": "[Teeny Tiny Teardown] All in Hole (Homa Games)",
+        "content": "The only currency in the game is coins, and one can argue that the currency sits relatively weak in the game for the first 50 levels or so. It is very easy to pass levels and the author never once had to use the currency while researching this piece. That, as we will get to, makes the IAP offers less valuable during the onboarding journey as the player does not necessarily need the currency that early on. [...] In other games, the currency can be used outside of the core action phase for skins / consumables, but even that sits relatively weak during onboarding as the game feels extremely generous (no pinch at all in the first hour of gameplay)\n\n## MONETIZATION\n\nAs said, the game has several types of bundles, which all relies on currencies as the main value proposition (besides the no-ads pack for $9.99). [...] Besides coins, as we mentioned, there is a “no ads” bundle. The player will actually make an conscious choice at one point in the play experience to active ads. This seem to be an increasing trend in hybrid-casual games, and it is very clear that the player will understand that ads now appears in the game experience.\n\n## ENDING NOTES",
+        "score": 0.6892434,
+        "raw_content": null,
+        "id": "dfc3c6-00"
+      },
+      {
+        "url": "https://apps.apple.com/us/app/all-in-hole-black-hole-games/id6503284107",
+        "title": "All in Hole: Black Hole Games - App Store",
+        "content": "with coins, which is nice as these are used to continue your game if you accidentally swallow a bomb. A good tip for new players: the timer doesn’t start until you start moving, so take a minute at the beginning of each level to actually look at your goals and memorize them! This makes the levels a lot smoother, especially on the harder ones. [...] I love this game and play it daily. In late March/early April 2025, it started to glitch and tell me I had no internet connection most of the time when I wanted to buy something. My connection was fine, all of my other apps connected as normal, so the connection problem was definitely in this game. I reached out to help and support and was told to delete the game and re-download it, and to screen shot my progress so my levels could be restored. I did so on or around April 10th, and now it’s [...] This is the first game I’ve considered buying ad-free not because the ads are too much, but because they’re actually very reasonable and I want to use my money to show companies that I appreciate less obtrusive ads. You get no ads when you first start and are learning the game mechanics, and after that it’s one quick ad that you can click out of every two games (with each game being about 3 and a half minutes that’s about one short ad every 7 minutes). When other games put in long,",
+        "score": 0.56258565,
+        "raw_content": null,
+        "id": "5dd2cf-01"
+      },
+      {
+        "url": "https://www.reddit.com/r/SwagBucks/comments/1j4tnks/all_in_hole_kashkick",
+        "title": "All in hole kashkick : r/SwagBucks",
+        "content": "quick question, what do the coins do in the game? can you level up ... You can indeed dig out the entire plot (A game about digging a hole).",
+        "score": 0.37621105,
+        "raw_content": null,
+        "id": "c1f465-02"
+      },
+      {
+        "url": "https://www.facebook.com/groups/764044492298012/posts/1111456640890127",
+        "title": "Should the cost of coins to rejoin levels in All in Hole be ...",
+        "content": "I think we as players and fans of the game should create a petition to lower the coins to rejoin the level, as 900 is way to much. I have put in so much",
+        "score": 0.26978138,
+        "raw_content": null,
+        "id": "1b9b45-03"
+      },
+      {
+        "url": "https://play.google.com/store/apps/details?id=com.homagames.studio.allinhole&hl=en_US",
+        "title": "All in Hole: Black Hole Games - Apps on Google Play",
+        "content": "## What’s new\n\nContent rating\n\n## App support\n\n## More by Homa\n\nThumbnail image\nThumbnail image\nThumbnail image\nThumbnail image\nThumbnail image\nThumbnail image\n\n## Similar games\n\nThumbnail image\nThumbnail image\nThumbnail image\nThumbnail image\nThumbnail image\nThumbnail image\n\nPlay Pass\n\nPlay Points\n\nGift cards\n\nRedeem\n\nRefund policy\n\nParent Guide\n\nFamily sharing\n\nTerms of Service\n\nPrivacy\n\nAbout Google Play\n\nDevelopers\n\nGoogle Store [...] Icon image\n\nIcon image\n\n# All in Hole: Black Hole Games\n\nContent rating\nContent rating\nScreenshot image\nScreenshot image\nScreenshot image\nScreenshot image\nScreenshot image\nScreenshot image\nScreenshot image\nScreenshot image\nScreenshot image\nScreenshot image\nScreenshot image\nScreenshot image\nScreenshot image\nScreenshot image\nScreenshot image\nScreenshot image\nScreenshot image\nScreenshot image\n\n## About this game\n\n## Data safety\n\nIcon image\nIcon image\nIcon image\nIcon image\n\n## Ratings and reviews",
+        "score": 0.18510641,
+        "raw_content": null,
+        "id": "e99ec3-04"
+      }
+    ],
+    "response_time": 1.2,
+    "request_id": "fc3418b0-e8db-4dca-8386-bb8d488db938"
+  }
+}

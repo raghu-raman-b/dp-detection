@@ -1,0 +1,91 @@
+{
+  "query": "what is the golden blitz in Monopoly Go",
+  "sent_query": "what is the golden blitz in Monopoly Go",
+  "query_hash": "f93bd0eb4f928981",
+  "answer": "Golden Blitz in Monopoly Go is a limited-time event allowing players to trade two specific golden stickers up to five times daily. The event usually lasts 15-24 hours. The exact dates and stickers vary.",
+  "sources": [
+    {
+      "title": "Golden Blitz Schedule - When is the Next Golden Blitz Event?",
+      "url": "https://www.supercheats.com/monopoly-go-walkthrough-guide/golden-blitz-schedule-when-is-the-next-golden-blitz-event",
+      "host": "supercheats.com"
+    },
+    {
+      "title": "Monopoly GO Next Golden Blitz Countdown: When, What Sticker ...",
+      "url": "https://www.mmoexp.com/News/monopoly-go-next-golden-blitz-countdown-when-what-sticker-full-preparation-guide.html",
+      "host": "mmoexp.com"
+    },
+    {
+      "title": "How does golden blitz work? : r/Monopoly_GO - Reddit",
+      "url": "https://www.reddit.com/r/Monopoly_GO/comments/1eg1ahz/how_does_golden_blitz_work",
+      "host": "reddit.com"
+    },
+    {
+      "title": "Golden Blitz | MOGO Wiki",
+      "url": "https://monopolygo.wiki/tag/golden-blitz",
+      "host": "monopolygo.wiki"
+    },
+    {
+      "title": "IT'S OFFICIAL - THE COMMUNITY GOLDEN BLITZ IS LIVE! It's time ...",
+      "url": "https://www.facebook.com/MonopolyGO/posts/-its-official-the-community-golden-blitz-is-live-its-time-to-swap-the-gold-stick/1076740598607691",
+      "host": "facebook.com"
+    }
+  ],
+  "backend": "tavily",
+  "cached": false,
+  "cost_usd": 0.008,
+  "latency_s": 2.716,
+  "n_results": 5,
+  "domains": [],
+  "error": null,
+  "ts": "2026-09-04T13:21:48+00:00",
+  "raw": {
+    "query": "what is the golden blitz in Monopoly Go",
+    "follow_up_questions": null,
+    "answer": "Golden Blitz in Monopoly Go is a limited-time event allowing players to trade two specific golden stickers up to five times daily. The event usually lasts 15-24 hours. The exact dates and stickers vary.",
+    "images": [],
+    "results": [
+      {
+        "url": "https://www.supercheats.com/monopoly-go-walkthrough-guide/golden-blitz-schedule-when-is-the-next-golden-blitz-event",
+        "title": "Golden Blitz Schedule - When is the Next Golden Blitz Event?",
+        "content": "## What is Golden Blitz in Monopoly Go?\n\nGolden Blitz is a trading event on Monopoly Go which usually lasts for about 15-24 hours during that time there are two golden stickers which the game allows you to trade. Usually the two stickers change each event, and sometimes the same stickers are repeated for inclusion in the event at a later date during the course of the season. [...] The winning stickers, and the ones to be featured in the next Golden Blitz on Monopoly GO are Honey, I'm Home (Set 13) and Rudy Root (set 14) in this event that runs for 24 hours.\n\nPlease check back soon, as we will continue to update this page with any news when we get it.\n\nHead to our Monopoly Go Facebook community if you would like to plan any trades.\n\nCommunity Golden Blitz\n\nCommunity Golden Blitz [...] During the Monopoly Origins season, gold stickers can be found in any of the normal packs, there are no golden packs this season. However the drop rate for gold stickers is low and will be different for each star value of card and each star level of pack. If you want to get gold stickers, you just have to keep getting packs, the probability is low to pull gold stickers in any of the packs, so the more packs you get the more chances you'll get of finding a gold sticker.",
+        "score": 0.9338243,
+        "raw_content": null,
+        "id": "95d479-00"
+      },
+      {
+        "url": "https://www.mmoexp.com/News/monopoly-go-next-golden-blitz-countdown-when-what-sticker-full-preparation-guide.html",
+        "title": "Monopoly GO Next Golden Blitz Countdown: When, What Sticker ...",
+        "content": "Golden Blitz is one of the most popular limited-time events in Monopoly GO because it allows players to trade normally locked Gold Stickers.",
+        "score": 0.9094659,
+        "raw_content": null,
+        "id": "dfda7d-01"
+      },
+      {
+        "url": "https://www.reddit.com/r/Monopoly_GO/comments/1eg1ahz/how_does_golden_blitz_work",
+        "title": "How does golden blitz work? : r/Monopoly_GO - Reddit",
+        "content": "So golden blitz are events. Not run very often, but usually get a couple throughout each album. MoGo pick two golds you can trade in each blitz.",
+        "score": 0.8993429,
+        "raw_content": null,
+        "id": "3c6879-02"
+      },
+      {
+        "url": "https://monopolygo.wiki/tag/golden-blitz",
+        "title": "Golden Blitz | MOGO Wiki",
+        "content": "Skip to content\n\nMonopoly GO! WikiMonopoly GO! Wiki\n\nMOGO Wiki topic\n\n# Golden Blitz\n\nUpcoming Golden Blitz dates, featured gold stickers, and trading guidance.\n\n\n\nArticle\n\n## Next Golden Blitz: Family Portrait and The Goods\n\nThe next Golden Blitz event is here, allowing players to trade two specific golden stickers up to five times daily. Insider members can use Sticker Finder in the MOGO Wiki Tools app for faster, easier trading and exclusive benefits.\n\nMOGO Wiki (Staff)Read more\n\n\n\nArticle [...] The next Golden Blitz event is here, allowing players to trade two specific golden stickers up to five times daily. Insider members can use Sticker Finder in the MOGO Wiki Tools app for faster, easier trading and exclusive benefits.\n\nMOGO Wiki (Staff)Read more\n\n\n\nArticle\n\n## Next Golden Blitz: Carl Carlson and Mr. Snrub [...] The next Golden Blitz event is here, allowing players to trade two specific golden stickers up to five times daily. Insider members can use Sticker Finder in the MOGO Wiki Tools app for faster, easier trading and exclusive benefits.\n\nMOGO Wiki (Staff)Read more\n\n\n\nArticle\n\n## Next Golden Blitz: Shutdown and Lenny Leonard",
+        "score": 0.7892503,
+        "raw_content": null,
+        "id": "ef2fcf-03"
+      },
+      {
+        "url": "https://www.facebook.com/MonopolyGO/posts/-its-official-the-community-golden-blitz-is-live-its-time-to-swap-the-gold-stick/1076740598607691",
+        "title": "IT'S OFFICIAL - THE COMMUNITY GOLDEN BLITZ IS LIVE! It's time ...",
+        "content": "The two tradeable golden stickers are- 4* Lil' Swashbuckler (set 11) 5* Steam City (set 15) As always, please refer to our blitz trading rules",
+        "score": 0.444493,
+        "raw_content": null,
+        "id": "adbef2-04"
+      }
+    ],
+    "response_time": 1.69,
+    "request_id": "8d51acdf-0b47-4af3-9b12-871985378286"
+  }
+}

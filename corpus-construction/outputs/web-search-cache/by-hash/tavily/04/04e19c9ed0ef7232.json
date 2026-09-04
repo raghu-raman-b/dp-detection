@@ -1,0 +1,91 @@
+{
+  "query": "Dice Dreams card album in-app purchase deal cards duplicates",
+  "sent_query": "Dice Dreams card album in-app purchase deal cards duplicates",
+  "query_hash": "04e19c9ed0ef7232",
+  "answer": "In-app purchases in Dice Dreams can result in receiving duplicate cards, and some users report issues with incomplete purchases. Players can disable in-app purchases in device settings.",
+  "sources": [
+    {
+      "title": "Swap Go！Sticker & Dice Rewards - App Store",
+      "url": "https://apps.apple.com/td/app/swap-go-sticker-dice-rewards/id6477522457",
+      "host": "apps.apple.com"
+    },
+    {
+      "title": "dicedreams.com is rated \"Bad\" with 1.5 / 5 on Trustpilot",
+      "url": "https://www.trustpilot.com/review/dicedreams.com",
+      "host": "trustpilot.com"
+    },
+    {
+      "title": "Dice Dreams™️ - Apps on Google Play",
+      "url": "https://play.google.com/store/apps/details?id=com.superplaystudios.dicedreams&hl=en_US",
+      "host": "play.google.com"
+    },
+    {
+      "title": "Beware : r/DiceDreams",
+      "url": "https://www.reddit.com/r/DiceDreams/comments/1f2v6zw/beware",
+      "host": "reddit.com"
+    },
+    {
+      "title": "Why are duplicate stickers given as prizes in Dice Dreams?",
+      "url": "https://www.facebook.com/groups/1564845677540673/posts/1875272836497954",
+      "host": "facebook.com"
+    }
+  ],
+  "backend": "tavily",
+  "cached": false,
+  "cost_usd": 0.008,
+  "latency_s": 2.566,
+  "n_results": 5,
+  "domains": [],
+  "error": null,
+  "ts": "2026-09-04T10:17:59+00:00",
+  "raw": {
+    "query": "Dice Dreams card album in-app purchase deal cards duplicates",
+    "follow_up_questions": null,
+    "answer": "In-app purchases in Dice Dreams can result in receiving duplicate cards, and some users report issues with incomplete purchases. Players can disable in-app purchases in device settings.",
+    "images": [],
+    "results": [
+      {
+        "url": "https://apps.apple.com/td/app/swap-go-sticker-dice-rewards/id6477522457",
+        "title": "Swap Go！Sticker & Dice Rewards - App Store",
+        "content": "Earn free dice, collect daily rewards, and complete your card albums faster than ever! ... cards you need and trade your duplicates instantly. Our smart",
+        "score": 0.49465415,
+        "raw_content": null,
+        "id": "08648a-00"
+      },
+      {
+        "url": "https://www.trustpilot.com/review/dicedreams.com",
+        "title": "dicedreams.com is rated \"Bad\" with 1.5 / 5 on Trustpilot",
+        "content": "## Half purchases\nMore than once when you close to finishing the album, you don't get what you pay for. No wilds or new cards when they advertise it. This isn't the first. I write to support and get no response. Don't put your own money into it.\n\nMay 3, 2026\n\nUnprompted review\n\nUseful\n\nShare\n\nAdvertisement\n\nImage 40\n\nMarni Melton US•1 review\n\nApr 14, 2026\n\nImage 41: Rated 1 out of 5 stars [...] ## Every time I purchase something I don't…\nEvery time I purchase something I don't get all my purchase so I contact sorry I try to put in my receipt and it kicks me out. What a rip off BEWARE DO NOT BUT ANYTHING HERE\n\nMay 23, 2026\n\nUnprompted review\n\nUseful 1\n\nShare\n\nSee 1 more review by Kristen\n\nAdvertisement\n\nImage 33\n\nDarrell Barrett CA•2 reviews\n\nMay 16, 2026\n\nImage 34: Rated 1 out of 5 stars [...] Preys on kids and the vulnerable. For example it is impossible to keep a second virtual pet going without watching adverts all day, or spending a fortune on virtual treats. Ridiculous that this is all... See more\n\nUseful\n\nShare\n\nNU\n\nNunya Oct 28, 2025\n\nImage 6: Rated 1 out of 5 stars\n\nDO NOT MAKE ANY PURCHASES THEY WILL ROB YOU !! TOO MUCH TO SAY HERE BUT THEY ARE IRRESPONSIBLE AND NOT TAKING ACCOUNTABILITY! 😤\n\nUseful\n\nShare\n\nCU\n\ncustomer Jan 30, 2026\n\nImage 7: Rated 1 out of 5 stars",
+        "score": 0.40924495,
+        "raw_content": null,
+        "id": "bc106d-01"
+      },
+      {
+        "url": "https://play.google.com/store/apps/details?id=com.superplaystudios.dicedreams&hl=en_US",
+        "title": "Dice Dreams™️ - Apps on Google Play",
+        "content": "Build your empire, attack your friends' boards, and earn awesome prizes and coins! Will you be the master of the dice board game? With a variety of exciting challenges, there's always something new and thrilling to go for in Dice Dreams. So start building and become the ultimate Dice Dreams champion!  \n  \n🎯 Dice Dreams is free on all devices with in-app purchases.  \n  \n🎯 Follow Dice Dreams on Facebook for exclusive offers and bonuses!  \n  \n🎯 Are you having problems? [...] Icon image\n\n# Dice Dreams™️\n\nContains adsIn-app purchases\n\nIcon image\n\n4.2star\n\n1.95M reviews\n\nContent rating\n\nRated for 3+\n\nContent rating\n\nRated for 3+\n\nIn-Game Purchases (Includes Random Items)\n\nLearn more\n\n## About this game [...] Please contact via email us at support@superplay.co  \n  \nDice Dreams™ is intended for those 18 and older. Dice Dreams™ does not require payment to download and play, but it also allows you to purchase virtual items with real money inside the game, including random items. You can disable in-app purchases in your device's settings. Dice Dreams™ may also contain advertising.",
+        "score": 0.3625634,
+        "raw_content": null,
+        "id": "d5de0a-02"
+      },
+      {
+        "url": "https://www.reddit.com/r/DiceDreams/comments/1f2v6zw/beware",
+        "title": "Beware : r/DiceDreams",
+        "content": "You say you've purchase things in app before, Apple waits to charge for this stuff. They let it build and then send all on the same day",
+        "score": 0.2503263,
+        "raw_content": null,
+        "id": "3b49e3-03"
+      },
+      {
+        "url": "https://www.facebook.com/groups/1564845677540673/posts/1875272836497954",
+        "title": "Why are duplicate stickers given as prizes in Dice Dreams?",
+        "content": "Am I missing something cause I don't understand why we keep getting more and more of the same stickers as prizes for accomplishments we make, how",
+        "score": 0.20572707,
+        "raw_content": null,
+        "id": "8488d3-04"
+      }
+    ],
+    "response_time": 1.65,
+    "request_id": "21567759-7eae-4bcd-9607-c04f48aa65a5"
+  }
+}

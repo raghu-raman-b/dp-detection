@@ -1,0 +1,91 @@
+{
+  "query": "Clash of Clans request troops clan bug",
+  "sent_query": "Clash of Clans request troops clan bug",
+  "query_hash": "c6c3851f329dbe1d",
+  "answer": "A known bug in Clash of Clans prevents clan members from seeing troop requests; reinstalling the game and clearing cache does not fix it. The issue may relate to network problems during the donation process. Updates may have changed the request system.",
+  "sources": [
+    {
+      "title": "Nobody can see my request for troops | Fandom - Clash of Clans Wiki",
+      "url": "https://clashofclans.fandom.com/f/p/4400000000000000159",
+      "host": "clashofclans.fandom.com"
+    },
+    {
+      "title": "PLEASE FIX THE DISAPPEARING CLAN CASTLE TROOP BUG - Reddit",
+      "url": "https://www.reddit.com/r/ClashOfClans/comments/1tqc1yu/please_fix_the_disappearing_clan_castle_troop_bug",
+      "host": "reddit.com"
+    },
+    {
+      "title": "Possibly a glitch or bug while putting troops in war cc - Arqade",
+      "url": "https://gaming.stackexchange.com/questions/220751/possibly-a-glitch-or-bug-while-putting-troops-in-war-cc",
+      "host": "gaming.stackexchange.com"
+    },
+    {
+      "title": "No Clan Castle Request? IT'S NOT A BUG! Clash of Clans [Filipino]",
+      "url": "https://www.youtube.com/watch?v=-9chiTuEZy4",
+      "host": "youtube.com"
+    },
+    {
+      "title": "Major Update Change to Clan Castle Requests in Clash of Clans",
+      "url": "https://www.youtube.com/watch?v=f2x0mPlMCEs",
+      "host": "youtube.com"
+    }
+  ],
+  "backend": "tavily",
+  "cached": false,
+  "cost_usd": 0.008,
+  "latency_s": 1.89,
+  "n_results": 5,
+  "domains": [],
+  "error": null,
+  "ts": "2026-09-04T10:11:03+00:00",
+  "raw": {
+    "query": "Clash of Clans request troops clan bug",
+    "follow_up_questions": null,
+    "answer": "A known bug in Clash of Clans prevents clan members from seeing troop requests; reinstalling the game and clearing cache does not fix it. The issue may relate to network problems during the donation process. Updates may have changed the request system.",
+    "images": [],
+    "results": [
+      {
+        "url": "https://clashofclans.fandom.com/f/p/4400000000000000159",
+        "title": "Nobody can see my request for troops | Fandom - Clash of Clans Wiki",
+        "content": "I am facing the same issue. My clan members are not able to see my request, i have un installed and re installed the game , clear the cache but",
+        "score": 0.68748367,
+        "raw_content": null,
+        "id": "68661b-00"
+      },
+      {
+        "url": "https://www.reddit.com/r/ClashOfClans/comments/1tqc1yu/please_fix_the_disappearing_clan_castle_troop_bug",
+        "title": "PLEASE FIX THE DISAPPEARING CLAN CASTLE TROOP BUG - Reddit",
+        "content": "Apparently it's related to a network hiccup during the donation process so the donated troop is removed from the request but not delivered to",
+        "score": 0.6811549,
+        "raw_content": null,
+        "id": "f747e9-01"
+      },
+      {
+        "url": "https://gaming.stackexchange.com/questions/220751/possibly-a-glitch-or-bug-while-putting-troops-in-war-cc",
+        "title": "Possibly a glitch or bug while putting troops in war cc - Arqade",
+        "content": "I would advise you to check your clan perks. Since the last update, clans earn experience while warring. The reward for a clan reaching level 5",
+        "score": 0.6745014,
+        "raw_content": null,
+        "id": "eceb9c-02"
+      },
+      {
+        "url": "https://www.youtube.com/watch?v=-9chiTuEZy4",
+        "title": "No Clan Castle Request? IT'S NOT A BUG! Clash of Clans [Filipino]",
+        "content": "Use my code: https://link.clashofclans.com/en/?action=SupportCreator&id=lazer Follow me on: Twitch: https://www.twitch.tv/exgbossla 2nd",
+        "score": 0.55565286,
+        "raw_content": null,
+        "id": "63b505-03"
+      },
+      {
+        "url": "https://www.youtube.com/watch?v=f2x0mPlMCEs",
+        "title": "Major Update Change to Clan Castle Requests in Clash of Clans",
+        "content": "Sneak Peek 1 is Here for Clash of Clans April 2021 Update! The Clan Castle Request system is the first item being overhauled with Max'd",
+        "score": 0.4129331,
+        "raw_content": null,
+        "id": "84152f-04"
+      }
+    ],
+    "response_time": 0.99,
+    "request_id": "0fde76df-f823-4127-a7fe-4a53f6e41587"
+  }
+}

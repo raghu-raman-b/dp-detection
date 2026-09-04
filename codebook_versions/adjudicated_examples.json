@@ -1,0 +1,536 @@
+{
+ "schema": "adjudicated_examples/1",
+ "prompt_version": "v3",
+ "source_codebook": "codebook_final.json (v0.20)",
+ "source_reviews": "corpus-construction/gold_set/gold_set.jsonl (adjudicated panel, 2026-09-04)",
+ "review_doc": "corpus-construction/prompt_v3_examples.md",
+ "generated": "2026-09-04",
+ "note": "Two worked examples per meso label, drawn from the adjudicated gold set and written in the shape the teacher model must emit. 'apt' is the cleanest instance of the pattern; 'coverage' extends it to a second arm, another indicator, a boundary call, an implied mechanic, or a global-rule interaction. Spans are verbatim substrings of the review text. rule_applied is either the word 'definition', an indicator name copied from that label's own indicators list, or a boundary rule written 'vs <vs_label>' that is listed under that same label.",
+ "examples": [
+  {
+   "anchor_label": "T_PlayingByAppointment",
+   "role": "apt",
+   "review_id": "f9424404-513f-41a9-a3b9-a97670e89512",
+   "span": "login every 2-3 hours 24/7",
+   "rule_applied": "definition",
+   "rationale": "The game sets a 2-3 hour login cycle the player must keep to, so play happens on the game's schedule rather than the player's.",
+   "editorial_note": "Cleanest reading of the canonical definition: an explicit clock the player must obey. No indicator or boundary needed."
+  },
+  {
+   "anchor_label": "T_PlayingByAppointment",
+   "role": "coverage",
+   "review_id": "ab9a6418-85dc-4e82-a279-bab6e1e5e148",
+   "span": "The openning time for the chests is too long, 1 or 2 hours is fine, but 8 and 12 hours?!...come on!",
+   "rule_applied": "Wait to Play",
+   "rationale": "The span names an in-game timer and its length, which is the Wait to Play instance of this pattern.",
+   "editorial_note": "Reaches the same label through an indicator instead of the definition, and via a timer rather than a login schedule. Clears the 'vs Resource depletion without stated wait' boundary because the wait's duration is stated."
+  },
+  {
+   "anchor_label": "T_DailyRewards",
+   "role": "apt",
+   "review_id": "50be85ac-f98c-4d2c-a70c-4465974027c0",
+   "span": "I had a login streak of 53 that I just lost today for no reason. I did not miss yesterday's login.",
+   "rule_applied": "definition",
+   "rationale": "A login streak that resets on a missed day is a daily incentive with a penalty attached, which is the definition.",
+   "editorial_note": "Single-label, unanimous, and the mechanic is stated outright. Also shows R11's second half: the reviewer disputes missing a day, but the reset is the game's own rule, so the label stands whatever triggered it."
+  },
+  {
+   "anchor_label": "T_DailyRewards",
+   "role": "coverage",
+   "review_id": "c63003ef-dcdd-4ef2-a54e-0c9b0dfe931a",
+   "span": "wad impossible to keep track of them without relying on the daily quests and such.",
+   "rule_applied": "Daily task lists with resetting rewards",
+   "rationale": "The span names a daily quest system that governs what the player does each session, which is the resetting task-list indicator.",
+   "editorial_note": "The non-streak arm of the label: a daily task list counts with no streak, no calendar and no stated penalty. It is also the review that turned up the gold-set gap — the 'vs Playing by Appointment' boundary requires both labels here, because the daily quest cycle is what the player relies on to advance rather than a standalone reward. `T_PlayingByAppointment` has been added to the gold set (see `gold_set/post_adjudication_edits.md`), so this example now teaches the R9 co-assignment too."
+  },
+  {
+   "anchor_label": "T_Grinding",
+   "role": "apt",
+   "review_id": "e92fc4f7-bdda-4f54-a8e2-aa591fbc7945",
+   "span": "takes quite a long time to unlock new heros...I have done close to 100 fights and still have the first two heros",
+   "rule_applied": "vs Slow Progress",
+   "rationale": "The span names the repeated activity (fights) and ties it to progress (unlocking heroes), not merely that progress is slow.",
+   "editorial_note": "The exact discrimination the label needs: a repeated activity is named. Without the '100 fights' this would be slow progress and code nothing."
+  },
+  {
+   "anchor_label": "T_Grinding",
+   "role": "coverage",
+   "review_id": "042ee18e-d78e-4a0f-9cc2-2b1e10cc46e6",
+   "span": "'Groundhog Day', meaning that I show up, complete tasks, spend gold and potion, spend real money, then come back tomorrow and do it all over again.",
+   "rule_applied": "vs Gameplay described as repetitive",
+   "rationale": "The span sets out the actual task cycle the player runs each day, so it is the repeated activity and not a general complaint that the game is repetitive.",
+   "editorial_note": "The other Grinding boundary. 'Groundhog Day' alone would be an evaluation of quality under R2; the enumerated cycle is what lifts it to the label."
+  },
+  {
+   "anchor_label": "T_Advertisement",
+   "role": "apt",
+   "review_id": "86de0e5d-8187-4dfd-b8c3-05e5b271d89e",
+   "span": "Too much ads are shown after every over and every wicket fell",
+   "rule_applied": "definition",
+   "rationale": "Ads are forced at fixed in-game events, so the player is compelled to view them to keep playing.",
+   "editorial_note": "The compelled-viewing arm of the definition, stated plainly and coded unanimously."
+  },
+  {
+   "anchor_label": "T_Advertisement",
+   "role": "coverage",
+   "review_id": "ce92d6ba-cc5f-40a1-bc8e-27a82fa0a8f8",
+   "span": "way too many ads and paid popups. I've never seen a game ask u to watch an ad just to claim a daily reward",
+   "rule_applied": "definition",
+   "rationale": "The ad is the price of a reward, which is the incentivised-viewing arm of the definition.",
+   "editorial_note": "The second arm of the same definition: rewarded ads rather than forced ads. Also shows that ad volume alone is not the trigger - the reward gate is."
+  },
+  {
+   "anchor_label": "T_InfiniteTreadmill",
+   "role": "apt",
+   "review_id": "f62c8a1f-91fc-4866-b267-977172fa2db3",
+   "span": "No new levels for 2 weeks and get a champions league. Its a money grab and I fell for it. Get new levels on 3/2/26 only to go maybe 50 levels and no more levels. Come to 3/3, another champions league",
+   "rule_applied": "definition",
+   "rationale": "The player clears everything available and is cycled back into a repeating league while more levels are added, so completion keeps receding.",
+   "editorial_note": "The definition in its most concrete form: content is added as fast as it is cleared, with dates given."
+  },
+  {
+   "anchor_label": "T_InfiniteTreadmill",
+   "role": "coverage",
+   "review_id": "042ee18e-d78e-4a0f-9cc2-2b1e10cc46e6",
+   "span": "There is no real progress or advancement; there is no pot of gold at the end of this rainbow.",
+   "rule_applied": "vs High level number or long play history",
+   "rationale": "The span asserts there is no attainable end state, which is what the boundary requires, rather than reporting a high level or a long tenure.",
+   "editorial_note": "Guards the label's most common false positive. The same review's level counts and long play history would not qualify; the stated absence of an end state does."
+  },
+  {
+   "anchor_label": "T_MandatoryMarathon",
+   "role": "apt",
+   "review_id": "443ba104-8abc-48c7-b8a7-b875ec52b05b",
+   "span": "I get penalized for leaving matches early on top of that and I wasn't even the one who quit the match!",
+   "rule_applied": "vs Loss caused by malfunction",
+   "rationale": "Being penalised for leaving a match early is the game's own exit rule, so the label holds even though a crash is what triggered it here.",
+   "editorial_note": "The definition plus the R11 interaction in one span. The forfeit would follow a deliberate exit identically, which is exactly what the boundary tests."
+  },
+  {
+   "anchor_label": "T_MandatoryMarathon",
+   "role": "coverage",
+   "review_id": "fe4ad63c-0bee-4c2e-814f-1e4f46f14d3d",
+   "span": "you have to put all buildings in place first before you can save it and continue",
+   "rule_applied": "Can’t Pause or Save",
+   "rationale": "The player cannot save partway and must carry the edit through to a state the game defines, which is the Can't Pause or Save instance.",
+   "editorial_note": "Coverage on three fronts: the saving arm rather than the session arm, no malfunction anywhere near it, and R12 - the review is mostly a feature request, but this clause describes a mechanic that exists today, so it codes."
+  },
+  {
+   "anchor_label": "M_PayToProgress",
+   "role": "apt",
+   "review_id": "da13d098-3944-4e0b-aa94-c064a56edd83",
+   "span": "you can't do anything without using in app purchases",
+   "rule_applied": "Pay Wall",
+   "rationale": "Progress is stated to be unavailable without payment, which is the Pay Wall instance.",
+   "editorial_note": "The label at its most direct: payment named, progress named, no inference required."
+  },
+  {
+   "anchor_label": "M_PayToProgress",
+   "role": "coverage",
+   "review_id": "07dd542b-2a71-4772-8a68-538115f1f826",
+   "span": "Unless you're willing to pay for them",
+   "rule_applied": "vs Free alternative",
+   "rationale": "The span sets a paid route against a free one for the boosters progress requires, so the free path falls short of smooth advancement.",
+   "editorial_note": "The implied case. Five words, no mechanic named, and the label rests entirely on the free/paid contrast the boundary rule licenses."
+  },
+  {
+   "anchor_label": "M_IntermediateCurrency",
+   "role": "apt",
+   "review_id": "b6745663-5486-4e5b-9066-8a889055d8bc",
+   "span": "buying gems",
+   "rule_applied": "vs Purchases denominated in currency",
+   "rationale": "The currency is the object being acquired, so real money is the consideration and the conversion sits inside the span.",
+   "editorial_note": "The direction-of-transaction test in its simplest form. Two words, and they settle it because gems are what is bought, not what is spent."
+  },
+  {
+   "anchor_label": "M_IntermediateCurrency",
+   "role": "coverage",
+   "review_id": "fb70e577-e644-4af9-88a1-773476a5b805",
+   "span": "it just want you to top up to get this or that.",
+   "rule_applied": "definition",
+   "rationale": "A search establishes that 'top up' is the game's term for buying diamonds with real money, so the span describes money converted into in-game currency.",
+   "editorial_note": "Requires R10. 'Top up' is not resolvable from the review text alone, so the label depends on a search resolving the term. The search is shown with the entry below.",
+   "invoked_web_search": true,
+   "search_query": "Free Fire what does top up mean diamonds",
+   "search_result": "\"Top up\" is Free Fire's term for buying diamonds, the game's premium currency, with real money."
+  },
+  {
+   "anchor_label": "M_DeceptiveLuxury",
+   "role": "apt",
+   "review_id": "57add346-8b93-4249-be50-1a39331cf79b",
+   "span": "advertising \"special\" or \"limited time\" deals",
+   "rule_applied": "Artificial Scarcity",
+   "rationale": "Time-limited offers create urgency the developer invented, and the scarcity is attached to a purchase, which is Artificial Scarcity.",
+   "editorial_note": "The commonest instance of the label, and it clears the 'vs Scarcity without monetization' boundary because the scarcity is on an offer."
+  },
+  {
+   "anchor_label": "M_DeceptiveLuxury",
+   "role": "coverage",
+   "review_id": "71d54398-28c7-4f4a-a67d-0914206f59c6",
+   "span": "still $600-$800 just to guarantee the unit you want. 4% chance to pull any SSR at any time",
+   "rule_applied": "Remedy Consumption + Artificial Scarcity",
+   "rationale": "Pulls are made scarce at a 4% rate, and a guaranteed unit is then sold as a second, far more expensive route to the same item, so the player pays extra to escape the scarcity.",
+   "editorial_note": "Two indicators combining, which is how this label usually presents at the top end. Rarity Level is tagged [dp-enhancer] in the codebook, not a standalone assigning indicator — it prices the SSR tier, but what assigns the label is the manufactured scarcity plus the paid remedy."
+  },
+  {
+   "anchor_label": "M_RecurringFee",
+   "role": "apt",
+   "review_id": "6088dbf1-7d56-4302-945e-72fd73832609",
+   "span": "season pass",
+   "rule_applied": "Battle passes, MMO-subscriptions",
+   "rationale": "A paid seasonal pass is named as bought and present, which is the listed indicator.",
+   "editorial_note": "Unanimous, single-label, and the indicator is named outright."
+  },
+  {
+   "anchor_label": "M_RecurringFee",
+   "role": "coverage",
+   "review_id": "d96bbc2c-73bb-4af5-9597-34a44117c7f5",
+   "span": "season pass",
+   "rule_applied": "Battle passes, MMO-subscriptions",
+   "rationale": "A season pass is a recurring paid subscription; the reviewer's poor opinion of its value does not change what the mechanic is.",
+   "editorial_note": "R8 in action. Same indicator, but the surrounding text calls it 'a total rip off' - the mechanic is coded, the evaluation is not."
+  },
+  {
+   "anchor_label": "M_Gambling",
+   "role": "apt",
+   "review_id": "a59f5319-a1b7-4991-8c6b-d2d2ca56265c",
+   "span": "(~$140 for 50% to get a 'rate up' character)",
+   "rule_applied": "definition",
+   "rationale": "Real money is staked against a stated probability with a character as the prize, which is the definition exactly.",
+   "editorial_note": "Money, chance and prize all inside one span. Nothing has to be inferred."
+  },
+  {
+   "anchor_label": "M_Gambling",
+   "role": "coverage",
+   "review_id": "c1a9f304-9cc1-4eb5-84f0-7988297fe423",
+   "span": "slot games there are less costly options",
+   "rule_applied": "definition",
+   "rationale": "Slots are a chance mechanic and the span sets their real-money cost against cheaper alternatives, so real money is being spent for luck-based prizes.",
+   "editorial_note": "The label read straight off the definition where the reviewer never says 'I gambled'. The whole of it is carried by 'slot games' plus 'less costly' — a chance mechanic and a real cost."
+  },
+  {
+   "anchor_label": "M_PowerCreep",
+   "role": "apt",
+   "review_id": "2471db11-2c61-415a-8af4-33b80a05c759",
+   "span": "You will spend months upgrading troops and defenses just to be nerfed",
+   "rule_applied": "definition",
+   "rationale": "Investment the player already made is devalued afterwards by rebalancing, which is the definition.",
+   "editorial_note": "Loss strictly after acquisition, caused by a developer change. Unanimous."
+  },
+  {
+   "anchor_label": "M_PowerCreep",
+   "role": "coverage",
+   "review_id": "b0a2aece-2b3e-4026-966b-7836e3cfc6bc",
+   "span": "old characters started falling off which I hope they could climb back up. And now the Meta shifts now are extremely fast..",
+   "rule_applied": "definition",
+   "rationale": "Characters the player already owns are described as having fallen off as the meta moved, which is purchased value diminishing over time.",
+   "editorial_note": "Devaluation by drift rather than by an explicit nerf, and no purchase named in the span — the definition still reaches it. Contrast with the apt example, where a developer nerf is stated."
+  },
+  {
+   "anchor_label": "M_WasteAversion",
+   "role": "apt",
+   "review_id": "bc0d6ee6-1f01-4101-8c25-fc4da5a1ef7c",
+   "span": "The limited space is bothersome too and you have to use diamonds to buy more storage",
+   "rule_applied": "definition",
+   "rationale": "The board is full and capacity has to be bought, so the shortfall is realised rather than merely possible.",
+   "editorial_note": "The capped-inventory arm with the loss actually realised: the board is full and capacity has to be bought."
+  },
+  {
+   "anchor_label": "M_WasteAversion",
+   "role": "coverage",
+   "review_id": "31c8de21-5262-4e88-9d3c-feaffe08ec14",
+   "span": "I run out of space on the board and have to delete items I spent time on.",
+   "rule_applied": "definition",
+   "rationale": "Items the player invested time in are destroyed to make room, so value is forfeited outright rather than repurchased.",
+   "editorial_note": "The forfeiture arm rather than the purchase arm — nothing is bought, value is simply destroyed. Same definition, opposite resolution, which is why both examples cite it."
+  },
+  {
+   "anchor_label": "M_EasyToPurchase",
+   "role": "apt",
+   "review_id": "2b915fb2-6ff4-4351-9b2f-e8db5661e0a5",
+   "span": "accidentally brought a pack when I double tapped the screen",
+   "rule_applied": "Accidental Purchases",
+   "rationale": "A purchase completed on a stray double tap means no confirmation step stood between the player and spending.",
+   "editorial_note": "Friction removed at the moment of payment, stated plainly. Unanimous."
+  },
+  {
+   "anchor_label": "M_EasyToPurchase",
+   "role": "coverage",
+   "review_id": "cbcde992-08aa-4bfb-a653-a944e4b733aa",
+   "span": "Every time you open the main menu you get a minimum of 10 pop up ads to buy gear/equipment",
+   "rule_applied": "vs Purchase solicitation",
+   "rationale": "The offers intercept the session on every menu open and each must be dismissed to continue, which is interception rather than ad volume.",
+   "editorial_note": "Guards the label's main false positive. High ad volume alone codes NONE under R2; it is the interception and the forced dismissal that qualify."
+  },
+  {
+   "anchor_label": "M_UIMisdirection",
+   "role": "apt",
+   "review_id": "d8278e85-b5f2-45ef-88ad-ea3370a5195d",
+   "span": "Loaded it up for the first time in a week to a flashing button I didn't recognise. Clicked the button \"DO YOU WANT TO PAY US $8?!\"",
+   "rule_applied": "Exciting UI Effect",
+   "rationale": "Animation is used to pull the player onto a button, and what it opens is a purchase prompt.",
+   "editorial_note": "The attention-directing arm, with the animation and the purchase destination both in the span."
+  },
+  {
+   "anchor_label": "M_UIMisdirection",
+   "role": "coverage",
+   "review_id": "cbcde992-08aa-4bfb-a653-a944e4b733aa",
+   "span": "with small x buttons in the corner.",
+   "rule_applied": "vs Attention-directing without an opt-out",
+   "rationale": "The close control is undersized and pushed to the corner, so the opt-out is obstructed by its size and placement.",
+   "editorial_note": "The second arm of the same boundary: obstructing the exit rather than highlighting the option. Six words carry it."
+  },
+  {
+   "anchor_label": "M_NeverEndingLure",
+   "role": "apt",
+   "review_id": "4a9d42d6-ad1d-4d3e-9cd1-5b16339524b0",
+   "span": "it discounts first time buyers",
+   "rule_applied": "First Charge Discount",
+   "rationale": "A discount reserved for a player's first purchase is the First Charge Discount instance, aimed at converting a non-payer into a payer.",
+   "editorial_note": "The indicator named almost word for word."
+  },
+  {
+   "anchor_label": "M_NeverEndingLure",
+   "role": "coverage",
+   "review_id": "97c23c8d-b858-4afa-83b1-ebd08d56badc",
+   "span": "awesome the beginner packs really help get you started",
+   "rule_applied": "First Charge Discount",
+   "rationale": "Beginner packs are the cheap entry bundle that converts a new player into a paying one, whatever the reviewer thinks of them.",
+   "editorial_note": "A five-star review praising the mechanic. R7 and R8 both apply: presence is coded independently of approval, and this is the only positive-valence example in the set."
+  },
+  {
+   "anchor_label": "S_ForcedFellowship",
+   "role": "apt",
+   "review_id": "57add346-8b93-4249-be50-1a39331cf79b",
+   "span": "got a free champion and silver from a referral",
+   "rule_applied": "Social Pyramid Scheme",
+   "rationale": "The game pays in-game rewards for bringing a new person in, which is the Social Pyramid Scheme instance.",
+   "editorial_note": "Recruitment rewarded, stated directly. Clears the 'vs Reciprocity' boundary because the person is new to the game."
+  },
+  {
+   "anchor_label": "S_ForcedFellowship",
+   "role": "coverage",
+   "review_id": "b4d6e64c-bd0c-49aa-9023-ed3f59bc63bf",
+   "span": "My real friends downlded & \"joined\" my team, but no success on their end or mine & NO coins rewarded!",
+   "rule_applied": "vs Reciprocity",
+   "rationale": "Coins are the stated reward for getting friends to download and join, so the mechanic recruits new players rather than trading favours with existing ones.",
+   "editorial_note": "The boundary that separates this from Reciprocity, and the reward is established by the reviewer complaining it did not arrive - the mechanic is still described."
+  },
+  {
+   "anchor_label": "S_FriendSpamImpersonation",
+   "role": "apt",
+   "review_id": "b4d6e64c-bd0c-49aa-9023-ed3f59bc63bf",
+   "span": "I decided 2 form a team, so invites were sent 2 gaming friends fr other apps, FB friends etc.",
+   "rule_applied": "vs Destination of the message",
+   "rationale": "Invitations go out through the player's own contacts and Facebook account, so the game acts under the player's identity and something is actually sent.",
+   "editorial_note": "Messaging performed, not permission requested. R13 does not exclude it because the installed game is what sends."
+  },
+  {
+   "anchor_label": "S_FriendSpamImpersonation",
+   "role": "coverage",
+   "review_id": "e92fc4f7-bdda-4f54-a8e2-aa591fbc7945",
+   "span": "\"share to unlock this hero\" won't unlock the hero for me",
+   "rule_applied": "definition",
+   "rationale": "The game posts under the player's own account as the condition for an unlock, which is unsolicited messaging sent through the player's social account.",
+   "editorial_note": "The prompted-to-post case rather than the already-sent case. R11 does not suppress it: the share-to-unlock mechanic is designed, only its execution failed."
+  },
+  {
+   "anchor_label": "S_Reciprocity",
+   "role": "apt",
+   "review_id": "07dd542b-2a71-4772-8a68-538115f1f826",
+   "span": "Ppl can gift lives to each other",
+   "rule_applied": "definition",
+   "rationale": "Players send resources to one another, which is the donation-and-return mechanic the definition describes.",
+   "editorial_note": "Unanimous and unambiguous: resources move between players."
+  },
+  {
+   "anchor_label": "S_Reciprocity",
+   "role": "coverage",
+   "review_id": "681563e1-227c-4af2-8a1f-a145f3a795ca",
+   "span": "Gift exchange screens",
+   "rule_applied": "definition",
+   "rationale": "A gift exchange between players is named as a present feature; the complaint is that its screens are slow, not that it does not exist.",
+   "editorial_note": "R11 discrimination. The review is largely about glitches, but the exchange system itself is functioning design, so the label survives."
+  },
+  {
+   "anchor_label": "S_EncouragesAntiSocialBehavior",
+   "role": "apt",
+   "review_id": "ee8d0008-1f3c-400d-bbbe-d29e8a7c0405",
+   "span": "game modes where strong players steal from weaker players",
+   "rule_applied": "definition",
+   "rationale": "The reviewer describes game modes built so that strong players take from weak ones, so the harmful behaviour is what the design is for rather than a side effect of it.",
+   "editorial_note": "Deliberate design read straight from the definition: a mode exists whose purpose is predation. The developer's intent is what carries it, not a reward the span has to name."
+  },
+  {
+   "anchor_label": "S_EncouragesAntiSocialBehavior",
+   "role": "coverage",
+   "review_id": "64e4aba6-ce6d-420a-b5cb-4422c11c4186",
+   "span": "Some players can also misuse this feature to grab the credits of the corresponding players.",
+   "rule_applied": "vs Permitted harm",
+   "rationale": "The span carries both the harmful act and the gain it produces for the aggressor, who ends up with the other player's credits.",
+   "editorial_note": "The other boundary. Design that merely permits harm codes NONE; here the aggressor's gain is stated, which is what makes it an incentive."
+  },
+  {
+   "anchor_label": "S_FearOfMissingOutFOMO",
+   "role": "apt",
+   "review_id": "f9424404-513f-41a9-a3b9-a97670e89512",
+   "span": "pressure to login every 2-3 hours 24/7 is constant with Arms Race or keep it open all day long so you don't miss treasure digs",
+   "rule_applied": "definition",
+   "rationale": "The player is pressured to stay in the game so as not to miss timed events, which is the anticipatory pressure the definition describes.",
+   "editorial_note": "The clearest split against Playing by Appointment: the same review yields both labels from different spans. Note the discriminating boundary rule is written on Playing by Appointment's side, so from here it is the definition that applies."
+  },
+  {
+   "anchor_label": "S_FearOfMissingOutFOMO",
+   "role": "coverage",
+   "review_id": "f09401aa-1aef-4c8b-ac3a-92eec49af44d",
+   "span": "and will lose all your winning streak rewards",
+   "rule_applied": "definition",
+   "rationale": "The player is pressured to keep winning so as not to forfeit accumulated rewards and fall behind on the leaderboard.",
+   "editorial_note": "The falling-behind arm rather than the missing-an-event arm, and the pressure is social (leaderboard position) rather than scheduled."
+  },
+  {
+   "anchor_label": "S_Competition",
+   "role": "apt",
+   "review_id": "ce1c6456-5d34-4001-a1a8-8b5991ef8ffb",
+   "span": "you notice you are always competing with gamers way above your paygrade",
+   "rule_applied": "definition",
+   "rationale": "The game puts the player against other players, which is the definition.",
+   "editorial_note": "Competition stated in the reviewer's own words."
+  },
+  {
+   "anchor_label": "S_Competition",
+   "role": "coverage",
+   "review_id": "a12fb168-3791-4d93-8cee-9b38fceb3059",
+   "span": "The match making",
+   "rule_applied": "definition",
+   "rationale": "Matchmaking exists to pair the player against other players, so competition is implied by the mechanic being named.",
+   "editorial_note": "The implied case. Two words, no competitive language at all, and the label rests on what matchmaking necessarily is."
+  },
+  {
+   "anchor_label": "P_EasyToGetHardToLose",
+   "role": "apt",
+   "review_id": "12105fcc-1fe5-46c6-8d77-d0bd2a11d6f1",
+   "span": "If I didnt have so much time invested I would not continue playing.",
+   "rule_applied": "Invested (Endowed) Value",
+   "rationale": "The player states directly that accumulated time is the only reason they have not left, which is the raised cost of leaving.",
+   "editorial_note": "The player names the mechanism on themselves. Unanimous, single-label."
+  },
+  {
+   "anchor_label": "P_EasyToGetHardToLose",
+   "role": "coverage",
+   "review_id": "042ee18e-d78e-4a0f-9cc2-2b1e10cc46e6",
+   "span": "It's a way to get you drawn in and invested in the game, so you feel obligated to keep playing.",
+   "rule_applied": "Invested (Endowed) Value",
+   "rationale": "The review attributes the retention to design: investment is built up so that leaving feels costly.",
+   "editorial_note": "Same indicator reached from the design side rather than the self-report side, and inside a three-label review where it must be separated from Grinding and Infinite Treadmill."
+  },
+  {
+   "anchor_label": "P_CompleteTheCollection",
+   "role": "apt",
+   "review_id": "49a53e7c-0564-46c6-995f-1d8bc418c80a",
+   "span": "but the new sticker album has been made to be to difficult to get the non tradable gold cards",
+   "rule_applied": "definition",
+   "rationale": "Album completion is what is driving the player, and the missing cards are what keeps them playing.",
+   "editorial_note": "A named collection with the missing pieces framed as the hook."
+  },
+  {
+   "anchor_label": "P_CompleteTheCollection",
+   "role": "coverage",
+   "review_id": "da13d098-3944-4e0b-aa94-c064a56edd83",
+   "span": "never be able to complete the card packs",
+   "rule_applied": "definition",
+   "rationale": "The player is working toward a complete set of card packs and frames not finishing it as the harm.",
+   "editorial_note": "The collection drive with payment gating it, so the example also shows Complete the Collection and Pay to Progress coexisting on separate spans under R9."
+  },
+  {
+   "anchor_label": "P_IllusionOfControl",
+   "role": "apt",
+   "review_id": "2fd4ef32-a33b-44ed-a921-2889ba6e0375",
+   "span": "Dice rolls are not random at all, they are preplanned",
+   "rule_applied": "vs Alleged rigging",
+   "rationale": "The span names a mechanism - a winner fixed at the start with the dice fed to match - so it is a claim about concealed determination, not a bad run.",
+   "editorial_note": "The boundary satisfied at its cleanest: a specific mechanism is described."
+  },
+  {
+   "anchor_label": "P_IllusionOfControl",
+   "role": "coverage",
+   "review_id": "a12fb168-3791-4d93-8cee-9b38fceb3059",
+   "span": "The match making, completely illogical,if you play good,game will give you bad teammates expecting you to carry and if you play bad,game will give you more bad teammates saying that it's so called \"skill based matching\"",
+   "rule_applied": "vs Alleged rigging",
+   "rationale": "Matchmaking is described as tuned to the player's performance rather than to a fair pairing, which is difficulty on a hidden schedule.",
+   "editorial_note": "Rigging without randomness. The mechanism is matchmaking rather than an RNG, which the boundary lists but which is easy to miss."
+  },
+  {
+   "anchor_label": "P_AestheticManipulation",
+   "role": "apt",
+   "review_id": "4a9d42d6-ad1d-4d3e-9cd1-5b16339524b0",
+   "span": "it makes you feel like you've earned prizes, but you've earned the right to buy the prizes",
+   "rule_applied": "vs UI Misdirection",
+   "rationale": "The deception is in what the offer says - a prize presented as won when it is actually an offer to buy - so it is misleading wording, not placement.",
+   "editorial_note": "The wording/placement split that separates this label from UI Misdirection, with both labels live in the same review."
+  },
+  {
+   "anchor_label": "P_AestheticManipulation",
+   "role": "coverage",
+   "review_id": "c2c60604-401f-416e-9489-a53cbaa6a968",
+   "span": "I end a game it sometimes show that i played brilliant moves but when I review it it doesn't show any brilliant move this wastes my free review",
+   "rule_applied": "vs UI Misdirection",
+   "rationale": "The game tells the player they played brilliantly and then does not bear it out, so flattering feedback is used against what the player is actually shown.",
+   "editorial_note": "The emotional arm rather than the purchase arm - no money anywhere in the span. The lowest-support example in the set; see the support table."
+  },
+  {
+   "anchor_label": "P_OptimismAndFrequencyBiases",
+   "role": "apt",
+   "review_id": "41a6813f-af68-497a-ac7b-2532b4659186",
+   "span": "you come close, but NOTHING is won or any game with REAL MONEY or prizes are always just a few points or coins away from a jackpot",
+   "rule_applied": "definition",
+   "rationale": "The span reports repeated near-wins as the player perceives them, with no claim that the game fixes outcomes.",
+   "editorial_note": "O&FB alone. The absence of a manipulation claim is what keeps Illusion of Control off, which is the boundary working in the negative direction."
+  },
+  {
+   "anchor_label": "P_OptimismAndFrequencyBiases",
+   "role": "coverage",
+   "review_id": "03e1dcd5-9c13-4b7f-a9e1-d2ebdc8f5773",
+   "span": "You can be down to one card and have 10 cards left in your deck and end up going through those 10 cards and still have one card left. Even if you pay the astronomical coins to get another handful of cards, you still have the same card left.",
+   "rule_applied": "definition",
+   "rationale": "The one-card-away situation repeating is the player overestimating how close a win is, which is the clustering illusion the definition names.",
+   "editorial_note": "The paired case: contrast directly with the apt example. Same near-miss perception, but this review also claims the deal is rigged, so Illusion of Control is assigned alongside under R9. The rule that pairs them is written on Illusion of Control's side, so from here it is the definition."
+  },
+  {
+   "anchor_label": "P_RewardMania",
+   "role": "apt",
+   "review_id": "f9424404-513f-41a9-a3b9-a97670e89512",
+   "span": "This is a gacha game and 4x",
+   "rule_applied": "Gacha mechanics",
+   "rationale": "Gacha is a chance-based delivery system, and no stake is described in the span, so the label applies without Gambling.",
+   "editorial_note": "The indicator alone, and the 'vs Gambling' boundary resolving to Reward Mania by itself because no wager is named."
+  },
+  {
+   "anchor_label": "P_RewardMania",
+   "role": "coverage",
+   "review_id": "b0a2aece-2b3e-4026-966b-7836e3cfc6bc",
+   "span": "how much rewards we get.. it's so low each patch barely gives us enough to hit hard pity.",
+   "rule_applied": "vs Reward described only by its value",
+   "rationale": "Hard pity is the pull-count mechanism, so the span describes how rewards are delivered even though the reviewer's complaint is about their size.",
+   "editorial_note": "The hardest call for this label. The surface complaint is value, which alone would code nothing; naming the pity system is what makes it delivery."
+  },
+  {
+   "anchor_label": "Tech_FragmentedDownloads",
+   "role": "apt",
+   "review_id": "a4d925c0-1248-4d12-ad93-5b8b1ced3b8d",
+   "span": "I thought I already download the file but I still get an additional download",
+   "rule_applied": "Small advertised App Store size vs. large mandatory in-game download",
+   "rationale": "The install appeared complete and the game then demanded more downloading, so the true requirement was not what was shown up front.",
+   "editorial_note": "The core deception - hidden storage cost - stated in one clause. Unanimous."
+  },
+  {
+   "anchor_label": "Tech_FragmentedDownloads",
+   "role": "coverage",
+   "review_id": "2d118652-5693-499a-8f3f-d02d0b405cd4",
+   "span": "Maps, outfits, and other resource packs are downloading automatically in the background. The main issue is that even when I manually go to the settings and turn OFF the \"Auto-Download\" feature",
+   "rule_applied": "Missing animations / assets with in-place “downloading” prompts when packages are declined",
+   "rationale": "The real storage and data cost is spread across resource packs pulled after install, and declining them does not stop the download.",
+   "editorial_note": "R11 discrimination. The reviewer files it as a bug, but the fragmented resource-pack architecture is the design; only the ignored setting would be the fault."
+  }
+ ]
+}

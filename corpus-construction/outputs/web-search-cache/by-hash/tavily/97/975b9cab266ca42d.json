@@ -1,0 +1,91 @@
+{
+  "query": "Dice Dreams sticker album card deals new cards duplicates",
+  "sent_query": "Dice Dreams sticker album card deals new cards duplicates",
+  "query_hash": "975b9cab266ca42d",
+  "answer": "Duplicate stickers are common in Dice Dreams, often given as prizes. Players trade duplicates on platforms like Facebook and Reddit. Stickers can be bought from shops for 1-5 crowns.",
+  "sources": [
+    {
+      "title": "Why are duplicate stickers given as prizes in Dice Dreams? - Facebook",
+      "url": "https://www.facebook.com/groups/1564845677540673/posts/1875272836497954",
+      "host": "facebook.com"
+    },
+    {
+      "title": "Need cards/stickers to complete your collection? : r/DiceDreams - Reddit",
+      "url": "https://www.reddit.com/r/DiceDreams/comments/1fulqkr/need_cardsstickers_to_complete_your_collection",
+      "host": "reddit.com"
+    },
+    {
+      "title": "Buy Dice Dreams Stickers | Shop From 1-5 Crowns Cards",
+      "url": "https://www.buymmog.com/dice-dreams-stickers",
+      "host": "buymmog.com"
+    },
+    {
+      "title": "DICE DREAMS | STICKER TRADING GROUP - Facebook",
+      "url": "https://www.facebook.com/groups/1564845677540673",
+      "host": "facebook.com"
+    },
+    {
+      "title": "Album & Collections: Stickers — Dice With Buddies Help Center",
+      "url": "https://scopely.helpshift.com/hc/en/35-dice-with-buddies-1584720821/faq/6606-album-collections-stickers",
+      "host": "scopely.helpshift.com"
+    }
+  ],
+  "backend": "tavily",
+  "cached": false,
+  "cost_usd": 0.008,
+  "latency_s": 2.933,
+  "n_results": 5,
+  "domains": [],
+  "error": null,
+  "ts": "2026-09-04T13:36:52+00:00",
+  "raw": {
+    "query": "Dice Dreams sticker album card deals new cards duplicates",
+    "follow_up_questions": null,
+    "answer": "Duplicate stickers are common in Dice Dreams, often given as prizes. Players trade duplicates on platforms like Facebook and Reddit. Stickers can be bought from shops for 1-5 crowns.",
+    "images": [],
+    "results": [
+      {
+        "url": "https://www.facebook.com/groups/1564845677540673/posts/1875272836497954",
+        "title": "Why are duplicate stickers given as prizes in Dice Dreams? - Facebook",
+        "content": "It's silly when you have three new albums with 1 stickers on each, yet the game keep cursing you with duplicate stickers every time.",
+        "score": 0.6877354,
+        "raw_content": null,
+        "id": "ebcf29-00"
+      },
+      {
+        "url": "https://www.reddit.com/r/DiceDreams/comments/1fulqkr/need_cardsstickers_to_complete_your_collection",
+        "title": "Need cards/stickers to complete your collection? : r/DiceDreams - Reddit",
+        "content": "I have duplicates of almost every card/sticker. card shop near me are selling these!!!",
+        "score": 0.64880073,
+        "raw_content": null,
+        "id": "80750a-01"
+      },
+      {
+        "url": "https://www.buymmog.com/dice-dreams-stickers",
+        "title": "Buy Dice Dreams Stickers | Shop From 1-5 Crowns Cards",
+        "content": "Seed Feed Set 3-9 4 Crowns\n\n$   ~~$~~\n\nDice Dreams Lily Zen  Set 6-5 4 Crowns\n\nLily Zen Set 6-5 4 Crowns\n\n$   ~~$~~\n\nDice Dreams Chaos Corner  Set 11-4 4 Crowns\n\nChaos Corner Set 11-4 4 Crowns\n\n$   ~~$~~\n\nDice Dreams River Ride  Set 5-9 4 Crowns\n\nRiver Ride Set 5-9 4 Crowns\n\n$   ~~$~~\n\nDice Dreams Lucky Arc  Set 10-6 4 Crowns\n\nLucky Arc Set 10-6 4 Crowns\n\n$   ~~$~~\n\nDice Dreams Honey Time  Set 4-9 4 Crowns\n\nHoney Time Set 4-9 4 Crowns\n\n$   ~~$~~\n\nDice Dreams Bloom Crown  Set 7-6 4 Crowns [...] Dice Dreams Feather Flight  Set 5-10 5 Crowns\n\nFeather Flight Set 5-10 5 Crowns\n\n$   ~~$~~\n\nDice Dreams Just Fishin’  Set 12-7 5 Crowns\n\nJust Fishin’ Set 12-7 5 Crowns\n\n$   ~~$~~\n\nDice Dreams Baby Plant  Set 9-6 5 Crowns\n\nBaby Plant Set 9-6 5 Crowns\n\n$   ~~$~~\n\nDice Dreams Garden Class  Set 9-7 5 Crowns\n\nGarden Class Set 9-7 5 Crowns\n\n$   ~~$~~\n\nDice Dreams Paint Away  Set 6-9 5 Crowns\n\nPaint Away Set 6-9 5 Crowns\n\n$   ~~$~~\n\nDice Dreams Fisher Fit  Set 12-5 5 Crowns [...] $   ~~$~~\n\nDice Dreams Sale Away  Set 11-7 5 Crowns\n\nSale Away Set 11-7 5 Crowns\n\n$   ~~$~~\n\nDice Dreams Art Walk  Set 6-8 5 Crowns\n\nArt Walk Set 6-8 5 Crowns\n\n$   ~~$~~\n\nDice Dreams Cheers!  Set 8-7 5 Crowns\n\nCheers! Set 8-7 5 Crowns\n\n$   ~~$~~\n\nDice Dreams Pass It On  Set 11-6 5 Crowns\n\nPass It On Set 11-6 5 Crowns\n\n$   ~~$~~\n\nDice Dreams Shore Thing  Set 8-4 4 Crowns\n\nShore Thing Set 8-4 4 Crowns\n\n$   ~~$~~\n\nDice Dreams Creative Corner  Set 6-7 4 Crowns\n\nCreative Corner Set 6-7 4 Crowns",
+        "score": 0.5786631,
+        "raw_content": null,
+        "id": "63734c-02"
+      },
+      {
+        "url": "https://www.facebook.com/groups/1564845677540673",
+        "title": "DICE DREAMS | STICKER TRADING GROUP - Facebook",
+        "content": "Join us and start sharing or trading your duplicate cards with active members today!",
+        "score": 0.54913354,
+        "raw_content": null,
+        "id": "78b0cd-03"
+      },
+      {
+        "url": "https://scopely.helpshift.com/hc/en/35-dice-with-buddies-1584720821/faq/6606-album-collections-stickers",
+        "title": "Album & Collections: Stickers — Dice With Buddies Help Center",
+        "content": "This will happen to all sticker packs except the Lucky and Wild Stickers.. Also, duplicate sticker stars earned do not carry over to the next Album.  \n  \nNEW addition! (Recompletion Album)Bonus Album or Recompletion Albumwill open after completing the main Sticker Album.You can get stickers for the Bonus Album or Recompletion Album from opening all types of Sticker Packs obtained in the game. The album can be completed up to 3 times. First, the main album, and then twice for recompletion. [...] Gold packs: Contains 4 sticker cards. (minimum of 1 - 3 stars sticker)\n\nDiamond Packs: Contains 4 sticker cards. (minimum of 1 - 4 stars)\n\nMagical Packs: Contains 4 sticker cards. (one 5-star sticker card guaranteed -can be duplicate-)\n\nEpic Packs:Contains a single card of the epic set. [...] Targeted Lucky Packs: these special lucky packs contain an unowned (ONE) sticker with a determined rarity depending on the number of stars shown.  Please note that you can get a duplicate sticker if you already own all of the identified rarities.\n\nCan carry over (not theme bound)\n\nLucky Packs: Contains 1 sticker card. (one unowned sticker card guaranteed, Does not include Epic Set Sticker Cards)",
+        "score": 0.52568597,
+        "raw_content": null,
+        "id": "2d79db-04"
+      }
+    ],
+    "response_time": 1.94,
+    "request_id": "875faf80-a0d4-4952-a894-62d92e3b5a03"
+  }
+}

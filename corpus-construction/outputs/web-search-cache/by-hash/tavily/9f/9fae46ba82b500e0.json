@@ -1,0 +1,91 @@
+{
+  "query": "Monopoly GO gold stickers duplicates what are they album trade limit per day",
+  "sent_query": "Monopoly GO gold stickers duplicates what are they album trade limit per day",
+  "query_hash": "9fae46ba82b500e0",
+  "answer": "In Monopoly GO, duplicate gold stickers can be traded with others, and the daily trade limit is five stickers.",
+  "sources": [
+    {
+      "title": "Monopoly Go: How To Trade During Golden Blitz And Earn ...",
+      "url": "https://www.iggm.com/news/monopoly-go-how-to-trade-during-golden-blitz-and-earn-more-golden-stickers",
+      "host": "iggm.com"
+    },
+    {
+      "title": "Monopoly Go! Golden Blitz | Monopoly Wiki | Fandom",
+      "url": "https://monopoly.fandom.com/wiki/Monopoly_Go!_Golden_Blitz",
+      "host": "monopoly.fandom.com"
+    },
+    {
+      "title": "Monopoly GO! Golden Blitz Event – Complete Guide ...",
+      "url": "https://www.ldshop.gg/blog/monopoly-go/golden-blitz-event.html",
+      "host": "ldshop.gg"
+    },
+    {
+      "title": "Why is there a limit on Monopoly Go golden stickers?",
+      "url": "https://www.facebook.com/groups/935040604232613/posts/1680559633014036",
+      "host": "facebook.com"
+    },
+    {
+      "title": "how does the golden blitz work? : r/Monopoly_GO",
+      "url": "https://www.reddit.com/r/Monopoly_GO/comments/1bkimb3/how_does_the_golden_blitz_work",
+      "host": "reddit.com"
+    }
+  ],
+  "backend": "tavily",
+  "cached": false,
+  "cost_usd": 0.008,
+  "latency_s": 2.556,
+  "n_results": 5,
+  "domains": [],
+  "error": null,
+  "ts": "2026-09-04T13:47:08+00:00",
+  "raw": {
+    "query": "Monopoly GO gold stickers duplicates what are they album trade limit per day",
+    "follow_up_questions": null,
+    "answer": "In Monopoly GO, duplicate gold stickers can be traded with others, and the daily trade limit is five stickers.",
+    "images": [],
+    "results": [
+      {
+        "url": "https://www.iggm.com/news/monopoly-go-how-to-trade-during-golden-blitz-and-earn-more-golden-stickers",
+        "title": "Monopoly Go: How To Trade During Golden Blitz And Earn ...",
+        "content": "you can make use of your duplicate stickers while helping others complete their albums. The trading limit is usually 5 trades per day.",
+        "score": 0.8884594,
+        "raw_content": null,
+        "id": "29a25e-00"
+      },
+      {
+        "url": "https://monopoly.fandom.com/wiki/Monopoly_Go!_Golden_Blitz",
+        "title": "Monopoly Go! Golden Blitz | Monopoly Wiki | Fandom",
+        "content": "To initiate a trade in the Golden Blitz event, simply tap on the Golden Blitz icon and you will be presented with two cards on the screen. From these options, select the sticker you wish to trade. It's important to note that you can only send a gold sticker if you have a duplicate of it in your collection. Once you have made your selection, choose the friend you want to send the sticker to and complete the trade. Remember that there is a maximum limit of five trades per day that you can make [...] # Monopoly Go! Golden Blitz\n\nGolden sticker banner.\n\nGolden sticker banner.\n\nGolden Blitz was introduced to Monopoly Go! as a dedicated event for players to trade their gold stickers. During this event, players have the opportunity to trade maximum five of the gold stickers per day that are featured in the event. It is important to note that gold sticker trading is only available while the Golden Blitz event is running.\n\n## How to trade Gold Stickers?[] [...] that you can make during this event. The stickers that are sent to you by other players will be available for you to receive the next time you log into the game.",
+        "score": 0.8342047,
+        "raw_content": null,
+        "id": "827375-01"
+      },
+      {
+        "url": "https://www.ldshop.gg/blog/monopoly-go/golden-blitz-event.html",
+        "title": "Monopoly GO! Golden Blitz Event – Complete Guide ...",
+        "content": "Trading Limit: During the event, you can send up to 5 of the event's exclusive gold stickers per day – and this limit is independent of your",
+        "score": 0.8025714,
+        "raw_content": null,
+        "id": "866de4-02"
+      },
+      {
+        "url": "https://www.facebook.com/groups/935040604232613/posts/1680559633014036",
+        "title": "Why is there a limit on Monopoly Go golden stickers?",
+        "content": "I don’t understand why Monopoly go puts a limit on the number of golden stickers you can send/trade. Why limit something that we have to wait",
+        "score": 0.44160134,
+        "raw_content": null,
+        "id": "a603ba-03"
+      },
+      {
+        "url": "https://www.reddit.com/r/Monopoly_GO/comments/1bkimb3/how_does_the_golden_blitz_work",
+        "title": "how does the golden blitz work? : r/Monopoly_GO",
+        "content": "i have the two stickers that are rumoured to be in the golden blitz. am i able to trade the for other gold stickers or does it not work like that? thanks 🫶",
+        "score": 0.3078785,
+        "raw_content": null,
+        "id": "5e586a-04"
+      }
+    ],
+    "response_time": 1.4,
+    "request_id": "c520a36d-0dff-4269-940a-65e320df6007"
+  }
+}

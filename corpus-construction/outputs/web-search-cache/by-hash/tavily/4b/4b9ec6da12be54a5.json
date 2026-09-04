@@ -1,0 +1,91 @@
+{
+  "query": "Dark War Survival game events leaderboard compete against other players",
+  "sent_query": "Dark War Survival game events leaderboard compete against other players",
+  "query_hash": "4b9ec6da12be54a5",
+  "answer": "Dark War Survival features events where players compete against others for leaderboard rankings and rewards. Alliances play a key role in coordinated progression. Toxic environments are reported.",
+  "sources": [
+    {
+      "title": "Events | Dark War survival Wiki | Fandom",
+      "url": "https://dark-war-survival.fandom.com/wiki/Events",
+      "host": "dark-war-survival.fandom.com"
+    },
+    {
+      "title": "Dark War:Survival",
+      "url": "https://darkwar-survival.com",
+      "host": "darkwar-survival.com"
+    },
+    {
+      "title": "Dark War Survival Alliance Guide",
+      "url": "https://www.bluestacks.com/blog/game-guides/dark-war-survival-2/dws-alliance-guide-en.html",
+      "host": "bluestacks.com"
+    },
+    {
+      "title": "!!Warning!! Avoid Dark War Survival Due to Toxic ...",
+      "url": "https://www.reddit.com/r/darkwarsurvival/comments/1ha4uj8/warning_avoid_dark_war_survival_due_to_toxic",
+      "host": "reddit.com"
+    },
+    {
+      "title": "Can a free-to-play player keep up in Whiteout Survival?",
+      "url": "https://www.facebook.com/groups/whiteoutsurvivalcommunity/posts/1471611924604264",
+      "host": "facebook.com"
+    }
+  ],
+  "backend": "tavily",
+  "cached": false,
+  "cost_usd": 0.008,
+  "latency_s": 2.587,
+  "n_results": 5,
+  "domains": [],
+  "error": null,
+  "ts": "2026-09-04T12:58:36+00:00",
+  "raw": {
+    "query": "Dark War Survival game events leaderboard compete against other players",
+    "follow_up_questions": null,
+    "answer": "Dark War Survival features events where players compete against others for leaderboard rankings and rewards. Alliances play a key role in coordinated progression. Toxic environments are reported.",
+    "images": [],
+    "results": [
+      {
+        "url": "https://dark-war-survival.fandom.com/wiki/Events",
+        "title": "Events | Dark War survival Wiki | Fandom",
+        "content": "# Events\n\n## Contents\n\n## Overview[]\n\nThis section highlights various recurring and faction-based events in the game. Players can engage in these events to earn rewards, compete with others, and contribute to their alliances.\n\nFor more info see: Apocalypse Guide\n\n## List of Events[]\n\n### Attack on Titan[]\n\nDescription: Join the zombie siege campaign and defend the shelter against a giant Titan threat.\nKey Features:\n\nReplayability: This event can be replayed with new task sets for rewards. [...] Description: Compete to earn points by using resources and accelerating progress.\nMechanics:\n\nFaction Buffs: Similar rewards and mechanics apply, with buffs rotating between factions.\nRewards: Includes jackpots, ranking rewards, and milestone bonuses.\nReplayability: This event recurs, giving players repeated opportunities to rank and earn.\n\n### Faction Trials[] [...] | Level | Difficulty X-1 | Difficulty X-20 |\n --- \n| 1 |  |  |\n| 2 |  |  |\n| 3 |  |  |\n| 4 |  |  |\n| 5 |  |  |\n| 6 |  |  |\n| 7 |  |  |\n| 8 |  |  |\n| 9 |  |  |\n| 10 | 2,3M | 3,0M |\n| 11 | 2,7M | 3,6M |\n| 12 | 3,4M | 3,8M |\n| 13 | 3,7M | 4,1M |\n| 14 |  |  |\n| 15 |  |  |\n| 16 | 4,6M | 5,1M |\n| 17 | 4,9M | 5,5M |\n| 18 | 5,3M | 5,9M |\n| 19 | 5,7M | 6,3M |\n| 20 | 6,1M | 6,8M |\n| 21 | 6,6M | 7,3M |\n| 22 | 7,1M | 7,7M |\n| 23 | 7,5M | 8,2M |\n| 24 |  | 8,7M |\n| 25 | 8,5M | 9,2M |\n| 26 | 9,0M | 9,7M |",
+        "score": 0.7487387,
+        "raw_content": null,
+        "id": "99cd9c-00"
+      },
+      {
+        "url": "https://darkwar-survival.com",
+        "title": "Dark War:Survival",
+        "content": "and win rewards!\n\n and win rewards!\n\nGo [...] Image 1\n\nImage 2EnglishImage 3\n\nالعربيةDeutschEspañolFrançaisIndonesiaItaliano日本語한국어PolskiPortuguêsPусскийไทยTürkçeTiếngViệt简体中文繁體中文\n\nLogin\n\nImage 4\n\nDiscord's 150K Member Milestone\n\nImage 5\n\n[Dawnfall] event has started!\n\nLATEST CONTENT\n\nImage 6\n\n[Dawnfall] event has started!\n\nImage 7\n\nAugust 21 Update Notice\n\nImage 8\n\nAugust 14 Update Notice\n\nImage 9\n\nAugust 7 Update Notice\n\nImage 10\n\nJuly 31 Update Notice\n\nImage 11\n\nDiscord's 150K Member Milestone\n\nImage 12\n\nJuly 24 Update Notice\n\nImage 13 [...] Image 44\n\nImage 45 Membership Center\n\nImage 46\n\nImage 47 Official Mall\n\nImage 48\n\n1\n\nImage 49 Invite Event\n\nImage 50\n\nImage 51 Contact GM\n\nImage 52\n\nImage 53 Redeem Gift Code\n\nImage 54\n\nImage 55 Log Out\n\nImage 56\n\nImage 57\n\nEnglishImage 58\n\nالعربيةDeutschEnglishEspañolFrançaisIndonesiaItaliano日本語한국어PolskiPortuguêsPусскийไทยTürkçeTiếngViệt简体中文繁體中文\n\nImage 59\n\nImage 60\n\nImage 61\n\nImage 62\n\nRecharge Dawn Badges, invite friends\n\n Recharge Dawn Badges, invite friends\n\nand win rewards!",
+        "score": 0.29896238,
+        "raw_content": null,
+        "id": "da4ed6-01"
+      },
+      {
+        "url": "https://www.bluestacks.com/blog/game-guides/dark-war-survival-2/dws-alliance-guide-en.html",
+        "title": "Dark War Survival Alliance Guide",
+        "content": "Alliances are more than a social feature in Dark War Survival, they are the backbone of coordinated progression, defense, and competitive edge.",
+        "score": 0.27884355,
+        "raw_content": null,
+        "id": "a51a9b-02"
+      },
+      {
+        "url": "https://www.reddit.com/r/darkwarsurvival/comments/1ha4uj8/warning_avoid_dark_war_survival_due_to_toxic",
+        "title": "!!Warning!! Avoid Dark War Survival Due to Toxic ...",
+        "content": "I've seen players get anxious, depressed, and isolated due to the game's toxic environment and game mechanics. Unless you're willing to tolerate",
+        "score": 0.16498712,
+        "raw_content": null,
+        "id": "5e4f61-03"
+      },
+      {
+        "url": "https://www.facebook.com/groups/whiteoutsurvivalcommunity/posts/1471611924604264",
+        "title": "Can a free-to-play player keep up in Whiteout Survival?",
+        "content": "Can a free-to-play player keep up in Whiteout Survival?\nI’m very active in all events, whether Alliance events or the regular ones.\nI’m thinking of",
+        "score": 0.06570681,
+        "raw_content": null,
+        "id": "7fcec3-04"
+      }
+    ],
+    "response_time": 1.61,
+    "request_id": "2506604d-258e-456b-92d6-235df492a623"
+  }
+}

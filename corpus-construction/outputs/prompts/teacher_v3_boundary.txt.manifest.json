@@ -1,0 +1,30 @@
+{
+  "prompt_version": "v3",
+  "mode": "boundary",
+  "codebook_version": "0.21",
+  "flags": {
+    "indicators": true,
+    "boundary_rules": true,
+    "counterexamples": true,
+    "worked_examples": false,
+    "rule_examples": false
+  },
+  "n_labels": 29,
+  "none_exemplar_id": "331c695a-8b57-4a46-b4d2-00fcdff9ec1a",
+  "positive_exemplar_id": "9d76ef06-a218-4ef4-b835-75443f4ec987",
+  "rule_examples_rendered": 0,
+  "counterexamples_rendered": 25,
+  "worked_examples_rendered": 0,
+  "worked_examples_with_why": 0,
+  "prompt_sha256": "1103dc085a30f00270048b795a46b0c78976b20c6b621c9d60822b7890639c8a",
+  "chars": 69209,
+  "approx_tokens": 17302,
+  "section_approx_tokens": {
+    "role": 75,
+    "rules": 819,
+    "search_policy": 103,
+    "labels": 14754,
+    "output_spec": 662,
+    "exemplars": 789
+  }
+}

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-build_prompt.py  --  v2  (PROMPT_VERSION p2)
+build_prompt.py  --  v3  (PROMPT_VERSION v3)
 
 Deterministically renders the teacher prompt from the dark-patterns codebook JSON.
 
@@ -45,11 +45,11 @@ from pathlib import Path
 
 # ------------------------------------------------------------------------- config
 
-CODEBOOK = "../../codebook_versions/codebook_final.json"
+CODEBOOK = "../../codebook_versions/codebook_adjudicated.json"
 OUT_DIR = "../outputs/prompts"
 OUT_STEM = "teacher"
 
-PROMPT_VERSION = "v2"
+PROMPT_VERSION = "v3"
 
 # The ablation. Each mode is the one above it plus one more kind of codebook material,
 # so a score difference is attributable to exactly one addition.
@@ -398,6 +398,9 @@ def render_label(label: dict, code: str, flags: dict, used_ids: set[str]) -> str
 
     if flags["worked_examples"]:
         for we in label.get("worked_examples", []):
+            # Skip the pinned global exemplars. They are already rendered in full at the
+            # bottom of the prompt; an entry kept here is a lookup source for find_review(),
+            # not a second copy to show the model.
             if we.get("review_id") in used_ids:
                 continue
             out.append("")
@@ -405,7 +408,23 @@ def render_label(label: dict, code: str, flags: dict, used_ids: set[str]) -> str
             out.append(block('"' + str(we["text"]).strip() + '"', "    "))
             assigned = ", ".join(we.get("labels_assigned", [])) or "(none)"
             out.append(f"    Labels assigned: {assigned}")
-            if we.get("justification"):
+
+            # v0.21 examples carry the anchor label's own span / rule / rationale, in the
+            # field names of the output contract, so the example demonstrates the shape of
+            # the answer as well as the answer. v0.20-shaped entries fall through to the
+            # older "Why:" block, which keeps this renderer working on either codebook.
+            if we.get("span"):
+                out.append(f"    {code}:")
+                out.append(block('span          "' + str(we["span"]).strip() + '"', "      "))
+                out.append(block("rule_applied  " + str(we["rule_applied"]).strip(), "      "))
+                out.append(block("rationale     " + str(we["rationale"]).strip(), "      "))
+                if we.get("invoked_web_search"):
+                    # One block, not two: block() strips the string it is given, so a second
+                    # call would lose the continuation line's alignment.
+                    sq = str(we.get("search_query", "")).strip()
+                    sr = str(we.get("search_result", "")).strip()
+                    out.append(block(f'web search    "{sq}"\n              -> {sr}', "      "))
+            elif we.get("justification"):
                 out.append("    Why:")
                 out.append(block(we["justification"], "      "))
 

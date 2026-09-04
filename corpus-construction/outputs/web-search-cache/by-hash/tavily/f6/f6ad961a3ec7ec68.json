@@ -1,0 +1,91 @@
+{
+  "query": "what is resin in Genshin Impact and resin overflow system",
+  "sent_query": "what is resin in Genshin Impact and resin overflow system",
+  "query_hash": "f6ad961a3ec7ec68",
+  "answer": "Original Resin is a resource in Genshin Impact used for farming and challenges. It regenerates over time and can be converted into Condensed Resin. The daily cap for Original Resin is 200.",
+  "sources": [
+    {
+      "title": "the resin system in genshin is very ANNOYING",
+      "url": "https://www.reddit.com/r/GenshinImpact/comments/1mhqgi4/the_resin_system_in_genshin_is_very_annoying",
+      "host": "reddit.com"
+    },
+    {
+      "title": "When are we getting resin overcap? Genshin Impact",
+      "url": "https://www.hoyolab.com/article/42777278",
+      "host": "hoyolab.com"
+    },
+    {
+      "title": "Resin Recharge Rate and Resin Cap Guide | Genshin Impact｜Game8",
+      "url": "https://game8.co/games/Genshin-Impact/archives/297554",
+      "host": "game8.co"
+    },
+    {
+      "title": "Original Resin",
+      "url": "https://genshin-impact.fandom.com/wiki/Original_Resin",
+      "host": "genshin-impact.fandom.com"
+    },
+    {
+      "title": "What is the difference between original resin and fragile ...",
+      "url": "https://www.facebook.com/groups/genshin.impact.community1/posts/963787001943734",
+      "host": "facebook.com"
+    }
+  ],
+  "backend": "tavily",
+  "cached": false,
+  "cost_usd": 0.008,
+  "latency_s": 2.246,
+  "n_results": 5,
+  "domains": [],
+  "error": null,
+  "ts": "2026-09-04T10:16:43+00:00",
+  "raw": {
+    "query": "what is resin in Genshin Impact and resin overflow system",
+    "follow_up_questions": null,
+    "answer": "Original Resin is a resource in Genshin Impact used for farming and challenges. It regenerates over time and can be converted into Condensed Resin. The daily cap for Original Resin is 200.",
+    "images": [],
+    "results": [
+      {
+        "url": "https://www.reddit.com/r/GenshinImpact/comments/1mhqgi4/the_resin_system_in_genshin_is_very_annoying",
+        "title": "the resin system in genshin is very ANNOYING",
+        "content": "resin overflow system. You actually get 180 daily resin, because that's the amount that generates in 24 hours. 200 is just the max you can have",
+        "score": 0.7474137,
+        "raw_content": null,
+        "id": "ca5fcb-00"
+      },
+      {
+        "url": "https://www.hoyolab.com/article/42777278",
+        "title": "When are we getting resin overcap? Genshin Impact",
+        "content": "Every single hoyo game has some sort of resin overflow mechanic. have INSANELY high resin overflows with up to 2400(I. If we had an overflow of",
+        "score": 0.73755574,
+        "raw_content": null,
+        "id": "f996f0-01"
+      },
+      {
+        "url": "https://game8.co/games/Genshin-Impact/archives/297554",
+        "title": "Resin Recharge Rate and Resin Cap Guide | Genshin Impact｜Game8",
+        "content": "The Resin Recharge Rate is 1 Resin per 8 minutes, which yields a total of 7 resins an hour. This is a pretty lengthy time but not all activities consume Original Resin, and it also recovers while the game is closed. Make sure to always spend Original Resin in time to maximize its use!\n\nIn Version 4.7 Developers Discussion, the resin cap is increased from 160 to 200, which means the resin recharge rate now takes 26 hours for the entire resin counter to fully replenish! [...] Fragile Resin is an item used to restore Original Resin without spending Primogems. Each Fragile Resin is worth 60 Original Resin. You can get these from Events, the Battle Pass, and Adventure Rank level ups!\n\nHow to Get Fragile Resin and Effects\n\n### Restore with Transient Resin [...] Original Resin is best used to farm Leyline Outcrops for Hero's Wit and other Character EXP Material, or Challenge Domains for Talent Ascension Materials, Artifacts, and Weapon Ascension Materials.\n\n### Convert into Condensed Resin\n\nYou can store up to 200 Original Resin for later use by converting it into Condensed Resin, at a maximum of 5. Once converted, you will be able to save resin for Domains and Ley Lines and use them on another day!\n\nHow to Get Condensed Resin",
+        "score": 0.72207695,
+        "raw_content": null,
+        "id": "9722fe-02"
+      },
+      {
+        "url": "https://genshin-impact.fandom.com/wiki/Original_Resin",
+        "title": "Original Resin",
+        "content": "How to Obtain  \n\n### Source 1\n\nRegeneration over time\n\n### Source 2\n\nFragile Resin\n\n### Source 3\n\nPrimogems\n\n### Source 4\n\nTransient Resin\n\nOriginal Resin serves as the energy resource in _Genshin Impact_. Original Resin is used to claim challenge rewards from Ley Line Blossoms, Petrified Trees (Domains), and Trounce Blossoms (Bosses), as well as Event-exclusive challenges. [...] |  |\n| Genshin Impact |  Character  Teyvat  Factions  Manga  Book  Soundtrack  Timeline  Comics  Game System  Version  Voice Actor  Typeface |\n|  |\n| Activities |  Domain  Event  Expedition  Fishing  Genius Invokation TCG  Imaginarium Theater  Ley Line Outcrop  Miliastra Wonderland  Repertoire of Myriad Melodies  Reset  Spiral Abyss  Stygian Onslaught |\n|  |\n| Exploration |  Statue of The Seven  Teleport Waypoint  Shrine of Depths  Oculus  Crimson Agate  Key Sigil  Lumenspar  Spirit Carp | [...] Crafting \n\n           Alchemy\n           Creation\n           Cooking\n           Forging\n           Processing\n\n       Other Systems\n\n           Inventory\n           Archive\n           Tutorials\n           Account\n           Co-Op Mode\n           Controls\n           Friends\n           Profile\n           Settings\n\n       Community\n\n           Genshin Impact\n           miHoYo\n           HOYO-MiX\n           HoYoLAB\n           Glossary\n\n\n\n## Original Resin\n\nImage 3: Item Original Resin",
+        "score": 0.65940565,
+        "raw_content": null,
+        "id": "da9896-03"
+      },
+      {
+        "url": "https://www.facebook.com/groups/genshin.impact.community1/posts/963787001943734",
+        "title": "What is the difference between original resin and fragile ...",
+        "content": "Can anyone explain original resin and fragile resin to me \n\nI get that fragile resin is used to collect original resin and original resin is used to farm",
+        "score": 0.033415657,
+        "raw_content": null,
+        "id": "878328-04"
+      }
+    ],
+    "response_time": 1.33,
+    "request_id": "1a3ccd02-44e0-4c12-be6a-4520b81cd5ae"
+  }
+}

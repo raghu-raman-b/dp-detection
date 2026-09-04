@@ -76,6 +76,39 @@ CLASS_OF = {"T": "Temporal", "M": "Monetary", "S": "Social",
             "P": "Psychological", "Tech": "Technical"}
 CLASS_COLOR = {"T": "#0072B2", "M": "#D55E00", "S": "#009E73",
                "P": "#CC79A7", "Tech": "#E69F00"}
+
+# Model is a categorical dimension -- identity, no order -- so it gets fixed hues, assigned
+# in this order and never cycled through a colormap. Blue is deliberately absent: it is the
+# ordinal ramp below, and reasoning effort has the stronger claim on it. The order was chosen
+# by enumerating orderings of the remaining hues and keeping the best-separated one; at every
+# prefix length the worst ADJACENT pair holds CVD dE 9.1 and normal-vision dE 22.9.
+MODEL_COLORS = ["#eb6834", "#1baf7a", "#eda100", "#008300",
+                "#e87ba4", "#4a3aa7", "#e34948"]
+
+# When effort is NOT drawn as a ramp, blue is free and the full eight-hue order is available.
+# That matters at eight providers: seven hues wrap and paint two different models alike.
+MODEL_COLORS_FULL = ["#2a78d6", "#eb6834", "#1baf7a", "#eda100",
+                     "#e87ba4", "#008300", "#4a3aa7", "#e34948"]
+
+# Reference lines are annotation, not series, so they are drawn from reserved colours that the
+# categorical order never assigns: a dotted red mean and a solid blue best.
+REF_MEAN_COLOR = "#e34948"
+REF_BEST_COLOR = "#2a78d6"
+
+# Reasoning effort is ORDINAL (none < low < ... < max), so it gets one hue read light->dark
+# rather than categorical hues -- a rainbow here would hide the ordering. Steps are drawn from
+# the blue ramp, and the subset for each tier-count is the one that maximises the smallest
+# adjacent lightness gap. Up to five tiers those gaps clear the 0.06 floor outright. Six tiers
+# squeeze one gap to 0.049; that is accepted ONLY because effort is redundantly encoded on the
+# x-axis, so colour reinforces the tier and never has to carry it alone.
+EFFORT_STEPS = {
+    1: ["#0d366b"],
+    2: ["#86b6ef", "#0d366b"],
+    3: ["#86b6ef", "#256abf", "#0d366b"],
+    4: ["#86b6ef", "#3987e5", "#1c5cab", "#0d366b"],
+    5: ["#86b6ef", "#3987e5", "#256abf", "#184f95", "#0d366b"],
+    6: ["#86b6ef", "#5598e7", "#3987e5", "#256abf", "#184f95", "#0d366b"],
+}
 # ====================================================================
 
 
@@ -526,6 +559,9 @@ def ask_tag(a: argparse.Namespace) -> str:
 # ---------------------------------------------------------------- rendering
 
 def fmt_metric(v) -> str:
+    # None means the metric was suppressed for that eval set, not that it scored zero.
+    if v is None:
+        return "n/a"
     return f"{v:.3f}"
 
 
@@ -587,13 +623,38 @@ def readable_label(r: dict, dims: tuple) -> str:
             parts.append(display_effort(effort_of(r)))
         elif d == "prompt":
             parts.append(display_prompt(prompt_of(r)))
-    return ", ".join(parts) if parts else display_model(r.get("model"))
+    # colon-joined: "gpt-5.6-luna:high" reads as one run identity, where a comma read as two
+    return ":".join(parts) if parts else display_model(r.get("model"))
 
 
 def varying_dims(rows: list[dict]) -> dict:
     return {"model": len({r.get("model") for r in rows}) > 1,
             "effort": len({effort_of(r) for r in rows}) > 1,
             "prompt": len({prompt_of(r) for r in rows}) > 1}
+
+
+def constant_note(rows: list[dict]) -> str:
+    """The dimensions this comparison HOLDS FIXED, named for the figure title.
+
+    A held-fixed dimension appears nowhere else on the chart -- it is not an axis, a colour
+    or a legend entry, precisely because it does not vary -- so a reader looking at a prompt
+    ablation cannot otherwise tell which model produced it. Naming it is what makes the figure
+    readable on its own, away from the report.
+    """
+    vary = varying_dims(rows)
+    parts = []
+    if not vary["model"]:
+        parts.append(display_model(rows[0].get("model")))
+    if not vary["prompt"]:
+        parts.append(display_prompt(prompt_of(rows[0])))
+    if not vary["effort"]:
+        parts.append(f"{display_effort(effort_of(rows[0]))} reasoning")
+    return ", ".join(parts)
+
+
+def titled(ax, title: str, rows: list[dict]) -> None:
+    note = constant_note(rows)
+    ax.set_title(f"{title}\n{note}" if note else title, fontsize=10.5, linespacing=1.35)
 
 
 def rank_key(r: dict, cost_key: str) -> tuple:
@@ -615,15 +676,68 @@ def style() -> None:
     })
 
 
+def baseline_refs(set_name: str) -> dict | None:
+    """Summarise another eval set's runs, to be drawn as reference lines on this comparison.
+
+    A prompt-eval score has no meaning on its own -- the set is 30 items and its own leaderboard
+    only says which config won a thin race. Showing where the reporting set's mean and best sit
+    turns it into a statement about whether the arm is competitive at all.
+    """
+    spec = rc.EVAL_SETS.get(set_name)
+    if not spec:
+        return None
+    idx = resolve(spec["stats"] + "/index.jsonl")
+    if not idx.exists():
+        return None
+    rows = [r for r in jsonl(idx) if r.get(PRIMARY) is not None]
+    if not rows:
+        return None
+    best = max(rows, key=lambda r: r[PRIMARY])
+    return {"set": set_name, "n_runs": len(rows),
+            "mean": sum(r[PRIMARY] for r in rows) / len(rows),
+            "best": best[PRIMARY],
+            "best_run": f"{display_model(best.get('model'))}:{effort_of(best)}",
+            "n_items": best.get("n_scored")}
+
+
+def draw_baseline_refs(ax, refs: dict, matplotlib) -> list:
+    """Two horizontal rules plus the legend handles that name them."""
+    if not refs:
+        return []
+    ax.axhline(refs["mean"], color=REF_MEAN_COLOR, linestyle=":", linewidth=1.8, zorder=1)
+    ax.axhline(refs["best"], color=REF_BEST_COLOR, linestyle="-", linewidth=1.8, zorder=1)
+    L = matplotlib.lines.Line2D
+    return [L([0], [0], color=REF_MEAN_COLOR, linestyle=":", linewidth=1.8,
+              label=f"{refs['set']} mean ({refs['mean']:.3f})"),
+            L([0], [0], color=REF_BEST_COLOR, linestyle="-", linewidth=1.8,
+              label=f"{refs['set']} best: {refs['best_run']} ({refs['best']:.3f})")]
+
+
+def _spans_decades(rows: list[dict], cost_key: str, factor: float = 8.0) -> bool:
+    """True when the cost range is wide enough that a linear axis would flatten the low end."""
+    vals = [r.get(cost_key) for r in rows if (r.get(cost_key) or 0) > 0]
+    return bool(vals) and max(vals) / min(vals) >= factor
+
+
 def savefig(fig, name: str, fig_dir: Path) -> str:
     import matplotlib.pyplot as plt
+    from matplotlib.legend import Legend
+    # Legends parked outside the axes -- and any second legend, which has to be re-attached
+    # through add_artist -- are invisible to tight_layout, so without naming them here the
+    # saved bbox crops them mid-word.
+    extra = []
+    for ax in fig.axes:
+        if ax.get_legend() is not None:
+            extra.append(ax.get_legend())
+        extra.extend(a for a in ax.artists if isinstance(a, Legend))
     fig.tight_layout()
-    fig.savefig(fig_dir / name, dpi=DPI, bbox_inches="tight", facecolor="white")
+    fig.savefig(fig_dir / name, dpi=DPI, bbox_inches="tight", facecolor="white",
+                bbox_extra_artists=extra or None)
     plt.close(fig)
     return name
 
 
-def fig_quality_vs_cost(fig_dir, ranked, cost_key, plt, matplotlib) -> str:
+def fig_quality_vs_cost(fig_dir, ranked, cost_key, plt, matplotlib, refs=None) -> str:
     front = pareto(ranked, cost_key)
     vary = varying_dims(ranked)
     if vary["model"]:
@@ -638,23 +752,65 @@ def fig_quality_vs_cost(fig_dir, ranked, cost_key, plt, matplotlib) -> str:
     else:
         color_dim, group_of = "run", (lambda r: rid(r))
         order = [rid(r) for r in ranked]
-    palette = plt.cm.tab10.colors
-    color_of = {g: palette[i % 10] for i, g in enumerate(order)}
-    label_dims = tuple(d for d in ("model", "effort", "prompt") if vary[d] and d != color_dim)
+    eff_order = [e for e in EFFORT_ORDER if e in {effort_of(r) for r in ranked}]
+
+    # Everything that separates runs within a colour group, used for the legend suffix.
+    suffix_dims = tuple(d for d in ("model", "effort", "prompt") if vary[d] and d != color_dim)
+
+    # When a colour group holds exactly one configuration -- a provider sweep, where each model
+    # appears at a single effort -- the differing dims are a property OF that group, so they
+    # belong in the legend ("gpt-5.6-luna:high") rather than annotated onto the point. That
+    # keeps the plot area clear and still names every run. Groups spanning several runs cannot
+    # be described by one suffix, so those keep the on-point annotation.
+    group_suffix = {}
+    for g in order:
+        vals = {readable_label(r, suffix_dims) for r in ranked if group_of(r) == g}
+        group_suffix[g] = vals.pop() if len(vals) == 1 else None
+    suffix_in_legend = bool(suffix_dims) and all(group_suffix[g] for g in order)
+
+    # Effort rides on the marker fill only when the legend is not already spelling it out.
+    # Doing both states the same thing twice and spends the blue slot that an eight-provider
+    # sweep needs; and once effort is on the fill, annotating "low" / "medium" onto the points
+    # just restates the fill legend, so it drops out of the on-point label too.
+    fill_by_effort = vary["effort"] and color_dim != "effort" and not suffix_in_legend
+    label_dims = tuple(d for d in suffix_dims if not (d == "effort" and fill_by_effort))
+
+    # Hues are chosen only now, because which palette applies depends on fill_by_effort: the
+    # ramp claims blue, so the blue-free seven are all that is left to a model. With the ramp
+    # off, the full eight are available, which is what an eight-provider sweep needs to avoid
+    # wrapping. Colouring BY effort is the ordinal case and takes the ramp itself.
+    if color_dim == "effort":
+        _s = EFFORT_STEPS.get(len(order), EFFORT_STEPS[max(EFFORT_STEPS)])
+        color_of = {g: _s[i] for i, g in enumerate(order)}
+    else:
+        _pal = MODEL_COLORS if fill_by_effort else MODEL_COLORS_FULL
+        color_of = {g: _pal[i % len(_pal)] for i, g in enumerate(order)}
+
     def group_label(g):
-        return {"model": display_model, "prompt": display_prompt, "effort": display_effort}.get(
-            color_dim, lambda x: x)(g)
+        base = {"model": display_model, "prompt": display_prompt,
+                "effort": display_effort}.get(color_dim, lambda x: x)(g)
+        return f"{base}:{group_suffix[g]}" if suffix_in_legend else base
 
     # Only the Pareto-frontier points get a direct label -- with dozens of runs, labeling
     # every point makes the dense/cheap end unreadable; the frontier is the analytically
     # relevant subset, and every run's full identity is already in the LEADERBOARD table.
     front_order = {id(r): i for i, r in enumerate(front)}  # sorted by cost_key already
-    fig, ax = plt.subplots(figsize=(8.5, 5.5))
+
+    # Two channels: effort rides on the marker FILL as an ordinal ramp, the colour group keeps
+    # the marker EDGE, so a point can be placed by tier without hunting for an annotation.
+    steps = EFFORT_STEPS.get(len(eff_order), EFFORT_STEPS[max(EFFORT_STEPS)])
+    effort_color = {e: steps[i] for i, e in enumerate(eff_order)}
+
+    fig, ax = plt.subplots(figsize=(9.2, 5.5))
     for r in ranked:
-        ax.scatter(r[cost_key], r[PRIMARY], s=130, color=color_of[group_of(r)],
-                   edgecolor="white", linewidth=1.3, zorder=3)
+        g = color_of[group_of(r)]
+        ax.scatter(r[cost_key], r[PRIMARY], s=145, zorder=3,
+                   color=effort_color[effort_of(r)] if fill_by_effort else g,
+                   edgecolor=g if fill_by_effort else "white",
+                   linewidth=2.0 if fill_by_effort else 1.3)
         fi = front_order.get(id(r))
-        txt = readable_label(r, label_dims) if label_dims and fi is not None else ""
+        txt = ("" if suffix_in_legend
+               else readable_label(r, label_dims) if label_dims and fi is not None else "")
         if txt:
             ax.annotate(txt, (r[cost_key], r[PRIMARY]), fontsize=7.5,
                         xytext=(8, 10 if fi % 2 == 0 else -16), textcoords="offset points",
@@ -662,16 +818,33 @@ def fig_quality_vs_cost(fig_dir, ranked, cost_key, plt, matplotlib) -> str:
     if len(front) > 1:
         ax.plot([r[cost_key] for r in front], [r[PRIMARY] for r in front],
                 "--", color="0.4", linewidth=1.4, zorder=2)
-    handles = [matplotlib.lines.Line2D([0], [0], marker="o", linestyle="", markersize=8,
-                                       markerfacecolor=color_of[g], markeredgecolor="white",
-                                       label=group_label(g)) for g in order]
+    handles = [matplotlib.lines.Line2D(
+        [0], [0], marker="o", linestyle="", markersize=8.5,
+        markerfacecolor="white" if fill_by_effort else color_of[g],
+        markeredgecolor=color_of[g] if fill_by_effort else "white",
+        markeredgewidth=2.0 if fill_by_effort else 1.3,
+        label=group_label(g)) for g in order]
     if len(front) > 1:
         handles.append(matplotlib.lines.Line2D([0], [0], color="0.4", linestyle="--",
                                                 label="Pareto frontier"))
+    handles += draw_baseline_refs(ax, refs, matplotlib)
     ax.set_xlabel(f"projected cost at {PROJECT_TO:,} reviews (USD)")
     ax.set_ylabel("micro-F1")
-    ax.set_title(f"Quality vs cost (color: {color_dim})")
-    ax.legend(handles=handles, fontsize=7.5, loc="best", framealpha=0.9)
+    titled(ax, "Quality vs cost", ranked)
+    leg1 = ax.legend(handles=handles, title=color_dim, fontsize=7.5, title_fontsize=8,
+                     loc="upper left", bbox_to_anchor=(1.02, 1.0),
+                     framealpha=0.9, borderaxespad=0)
+    leg1._legend_box.align = "left"
+    if fill_by_effort:
+        ax.add_artist(leg1)
+        eff_h = [matplotlib.lines.Line2D([0], [0], marker="o", linestyle="", markersize=8.5,
+                                         markerfacecolor=effort_color[e],
+                                         markeredgecolor="0.45", markeredgewidth=0.8,
+                                         label=display_effort(e)) for e in eff_order]
+        leg2 = ax.legend(handles=eff_h, title="reasoning  (fill)", fontsize=7.5,
+                         title_fontsize=8, loc="lower left", bbox_to_anchor=(1.02, 0.0),
+                         framealpha=0.9, borderaxespad=0)
+        leg2._legend_box.align = "left"
     return savefig(fig, "1_quality_vs_cost.png", fig_dir)
 
 
@@ -681,7 +854,7 @@ def fig_precision_recall(fig_dir, ranked, cis, plt, np) -> str:
     labels = [readable_label(r, dims) for r in ranked]
     fig, ax = plt.subplots(figsize=(max(7, 1.7 * len(ranked)), 4.8))
     x = np.arange(len(ranked)); w = 0.26
-    palette = plt.cm.tab10.colors
+    palette = MODEL_COLORS
     ax.bar(x - w, [r["micro_p"] for r in ranked], w, label="precision", color=palette[0])
     ax.bar(x, [r["micro_r"] for r in ranked], w, label="recall", color=palette[1])
     f1s = [r[PRIMARY] for r in ranked]
@@ -692,7 +865,7 @@ def fig_precision_recall(fig_dir, ranked, cis, plt, np) -> str:
     ax.bar(x + w, f1s, w, yerr=err, capsize=3, label="micro-F1", color=palette[2])
     ax.set_xticks(x); ax.set_xticklabels(labels, rotation=25, ha="right")
     ax.set_ylim(0, 1.02); ax.set_ylabel("score")
-    ax.set_title("Precision, recall, micro-F1 (whiskers: 95% paired bootstrap CI)")
+    titled(ax, "Precision, recall and micro-F1", ranked)
     ax.legend(fontsize=8)
     return savefig(fig, "2_precision_recall.png", fig_dir)
 
@@ -717,13 +890,13 @@ def fig_label_heatmap(fig_dir, ranked, heat_cmap, plt, np) -> str | None:
         for j in range(len(ranked)):
             if not np.isnan(M[i, j]):
                 ax.text(j, i, f"{M[i,j]:.2f}", ha="center", va="center", fontsize=6)
-    ax.set_title(f"Per-label F1 (* support below {MIN_SUPPORT})")
+    titled(ax, "Per-label F1", ranked)
     ax.grid(False)
     fig.colorbar(im, ax=ax, shrink=0.7, label="F1")
     return savefig(fig, "3_label_heatmap.png", fig_dir)
 
 
-def fig_reasoning_sweep(fig_dir, rows, cost_key, plt) -> str | None:
+def fig_reasoning_sweep(fig_dir, rows, cost_key, plt, matplotlib=None, refs=None) -> str | None:
     by_model = defaultdict(list)
     for r in rows:
         by_model[r["model"]].append(r)
@@ -733,25 +906,70 @@ def fig_reasoning_sweep(fig_dir, rows, cost_key, plt) -> str | None:
     sweeps = {m: v for m, v in sweeps.items() if len(v) > 1}
     if not sweeps:
         return None
-    palette = plt.cm.tab10.colors
+    import matplotlib.lines as mlines
     order = [e for e in EFFORT_ORDER if any(effort_of(r) == e for v in sweeps.values() for r in v)]
-    fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(7, 6.2), sharex=True)
-    for i, (m, v) in enumerate(sweeps.items()):
-        xs = [order.index(effort_of(r)) for r in v]
-        c = palette[i % 10]
-        ax1.plot(xs, [r[PRIMARY] for r in v], "o-", color=c, label=display_model(m))
-        ax2.plot(xs, [r[cost_key] for r in v], "o-", color=c, label=display_model(m))
+
+    # Two encodings ride on one mark, because the reader has two questions: the LINE colour
+    # says which model, the MARKER FILL says which tier. Every model is measured at the same
+    # tiers, so a shared effort ramp lets a tier be compared straight across models without
+    # tracing down to the axis. Each dimension gets its own legend, keyed to its own channel.
+    steps = EFFORT_STEPS.get(len(order), EFFORT_STEPS[max(EFFORT_STEPS)])
+    effort_color = {e: steps[i] for i, e in enumerate(order)}
+    # Keyed on the sorted model name, the same rule fig_quality_vs_cost uses, so a model wears
+    # one colour across every figure in a comparison. Insertion order would repaint it per plot.
+    model_color = {m: MODEL_COLORS[i % len(MODEL_COLORS)]
+                   for i, m in enumerate(sorted(sweeps))}
+
+    fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(FIG_WIDTH + 1.6, 6.6), sharex=True)
+    for ax, key in ((ax1, PRIMARY), (ax2, cost_key)):
+        for m, v in sweeps.items():
+            xs = [order.index(effort_of(r)) for r in v]
+            ys = [r[key] for r in v]
+            ax.plot(xs, ys, "-", color=model_color[m], linewidth=2, zorder=2)
+            # markers drawn separately so fill (tier) and edge (model) can disagree
+            ax.scatter(xs, ys, s=95, zorder=3, linewidth=1.7,
+                       c=[effort_color[effort_of(r)] for r in v],
+                       edgecolors=model_color[m])
+        ax.grid(True, alpha=0.25, linewidth=0.6)
+        ax.set_axisbelow(True)
     ax1.set_ylabel("micro-F1")
-    ax2.set_ylabel(f"USD at {PROJECT_TO:,}")
+    # Cost spans a couple of orders of magnitude across providers, so a linear axis pins the
+    # cheap half flat against the baseline and hides exactly the differences worth reading.
+    if _spans_decades(rows, cost_key):
+        ax2.set_yscale("log")
+        ax2.set_ylabel(f"USD at {PROJECT_TO:,}  (log)")
+    else:
+        ax2.set_ylabel(f"USD at {PROJECT_TO:,}")
     ax2.set_xticks(range(len(order))); ax2.set_xticklabels([display_effort(e) for e in order])
+    ax2.set_xlim(-0.35, len(order) - 0.65)
     ax2.set_xlabel("reasoning effort")
-    ax1.set_title("Reasoning effort: quality")
-    ax2.set_title("Reasoning effort: cost")
-    ax1.legend(fontsize=7, loc="best")
+    titled(ax1, "Reasoning effort: quality", rows)
+    ax2.set_title("Reasoning effort: cost", fontsize=10.5)
+
+    if refs and matplotlib:
+        ref_h = draw_baseline_refs(ax1, refs, matplotlib)
+    else:
+        ref_h = []
+    model_h = [mlines.Line2D([0], [0], color=model_color[m], linewidth=2, marker="o",
+                             markersize=7, markerfacecolor="white",
+                             markeredgecolor=model_color[m], markeredgewidth=1.7,
+                             label=display_model(m)) for m in sweeps] + ref_h
+    effort_h = [mlines.Line2D([0], [0], linestyle="", marker="o", markersize=8.5,
+                              markerfacecolor=effort_color[e], markeredgecolor="0.45",
+                              markeredgewidth=0.8, label=display_effort(e)) for e in order]
+    leg_m = ax1.legend(handles=model_h, title="model  (line)", fontsize=7.5,
+                       title_fontsize=8, loc="upper left", bbox_to_anchor=(1.02, 1.0),
+                       framealpha=0.9, borderaxespad=0)
+    leg_m._legend_box.align = "left"
+    ax1.add_artist(leg_m)
+    leg_e = ax2.legend(handles=effort_h, title="reasoning  (fill)", fontsize=7.5,
+                       title_fontsize=8, loc="upper left", bbox_to_anchor=(1.02, 1.0),
+                       framealpha=0.9, borderaxespad=0)
+    leg_e._legend_box.align = "left"
     return savefig(fig, "4_reasoning_sweep.png", fig_dir)
 
 
-def fig_prompt_sweep(fig_dir, rows, cost_key, plt) -> str | None:
+def fig_prompt_sweep(fig_dir, rows, cost_key, plt, matplotlib=None, refs=None) -> str | None:
     by_cfg = defaultdict(list)
     for r in rows:
         by_cfg[(r.get("model"), effort_of(r))].append(r)
@@ -760,22 +978,56 @@ def fig_prompt_sweep(fig_dir, rows, cost_key, plt) -> str | None:
                for k, v in by_cfg.items() if len({prompt_of(r) for r in v}) > 1}
     if not psweeps:
         return None
-    palette = plt.cm.tab10.colors
-    fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(max(7, 1.9 * len(order_p)), 6.6), sharex=True)
-    for i, ((m, eff), v) in enumerate(psweeps.items()):
+    # One line per configuration. When the only thing separating those lines is reasoning
+    # effort -- a v2-vs-v3 sweep on a single model -- the lines are an ORDINAL family, so they
+    # take the effort ramp light->dark and the legend reads as a ladder. Mixed model/effort
+    # families fall back to categorical model hues, where there is no order to convey.
+    keys = list(psweeps)
+    eff_order = [e for e in EFFORT_ORDER if e in {eff for _, eff in keys}]
+    ordinal = len({m for m, _ in keys}) == 1 and len(eff_order) > 1
+    if ordinal:
+        steps = EFFORT_STEPS.get(len(eff_order), EFFORT_STEPS[max(EFFORT_STEPS)])
+        color_for = {k: steps[eff_order.index(k[1])] for k in keys}
+    else:
+        color_for = {k: MODEL_COLORS[i % len(MODEL_COLORS)]
+                     for i, k in enumerate(sorted(keys))}
+
+    fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(max(7.6, 2.1 * len(order_p)), 6.6),
+                                   sharex=True)
+    # Legend order follows the effort ladder, not the dict's insertion order, so an ordinal
+    # family reads none -> max top to bottom instead of arriving in leaderboard order.
+    for (m, eff) in sorted(keys, key=lambda k: (k[0], EFFORT_ORDER.index(k[1])
+                                                if k[1] in EFFORT_ORDER else -1)):
+        v = psweeps[(m, eff)]
         xs = [order_p.index(prompt_of(r)) for r in v]
-        c = palette[i % 10]
-        lab = f"{display_model(m)}, {display_effort(eff)}"
-        ax1.plot(xs, [r[PRIMARY] for r in v], "o-", color=c, label=lab)
-        ax2.plot(xs, [r[cost_key] for r in v], "o-", color=c, label=lab)
+        c = color_for[(m, eff)]
+        lab = f"{display_model(m)}:{display_effort(eff)}"
+        for ax, key in ((ax1, PRIMARY), (ax2, cost_key)):
+            ax.plot(xs, [r[key] for r in v], "-", color=c, linewidth=2, zorder=2)
+            ax.scatter(xs, [r[key] for r in v], s=85, color=c, edgecolors="white",
+                       linewidth=1.4, zorder=3, label=lab if ax is ax1 else None)
+    for ax in (ax1, ax2):
+        ax.grid(True, alpha=0.25, linewidth=0.6)
+        ax.set_axisbelow(True)
     ax1.set_ylabel("micro-F1")
-    ax2.set_ylabel(f"USD at {PROJECT_TO:,}")
+    if _spans_decades(rows, cost_key):
+        ax2.set_yscale("log")
+        ax2.set_ylabel(f"USD at {PROJECT_TO:,}  (log)")
+    else:
+        ax2.set_ylabel(f"USD at {PROJECT_TO:,}")
     ax2.set_xticks(range(len(order_p)))
     ax2.set_xticklabels([display_prompt(p) for p in order_p], rotation=15, ha="right")
+    ax2.set_xlim(-0.35, len(order_p) - 0.65)
     ax2.set_xlabel("prompt")
-    ax1.set_title("Prompt ablation: quality")
-    ax2.set_title("Prompt ablation: cost")
-    ax1.legend(fontsize=7, loc="best")
+    titled(ax1, "Prompt ablation: quality", rows)
+    ax2.set_title("Prompt ablation: cost", fontsize=10.5)
+    if refs and matplotlib:
+        h, _ = ax1.get_legend_handles_labels()
+        ax1.legend(handles=h + draw_baseline_refs(ax1, refs, matplotlib))
+    leg = ax1.legend(title="model:reasoning", fontsize=7.5, title_fontsize=8,
+                     loc="upper left", bbox_to_anchor=(1.02, 1.0), framealpha=0.9,
+                     borderaxespad=0)
+    leg._legend_box.align = "left"
     return savefig(fig, "6_prompt_sweep.png", fig_dir)
 
 
@@ -785,7 +1037,7 @@ def fig_compliance(fig_dir, rows, plt, np) -> str:
     labels = [readable_label(r, dims) for r in rows]
     fig, ax = plt.subplots(figsize=(max(7, 1.8 * len(rows)), 4.4))
     x = np.arange(len(rows)); w = 0.27
-    palette = plt.cm.tab10.colors
+    palette = MODEL_COLORS
     ax.bar(x - w, [r.get("parsed", 0) / max(r.get("n_requests", 1), 1) for r in rows], w,
            label="parse rate", color=palette[0])
     ax.bar(x, [r.get("span_verbatim_rate", 0) for r in rows], w,
@@ -795,7 +1047,7 @@ def fig_compliance(fig_dir, rows, plt, np) -> str:
     ax.axhline(GATE_SPAN_VERBATIM, color="crimson", ls=":", lw=1.2,
                label=f"span gate {GATE_SPAN_VERBATIM}")
     ax.set_xticks(x); ax.set_xticklabels(labels, rotation=25, ha="right")
-    ax.set_ylim(0, 1.05); ax.set_title("Compliance rates")
+    ax.set_ylim(0, 1.05); titled(ax, "Compliance rates", rows)
     ax.legend(fontsize=8)
     return savefig(fig, "5_compliance.png", fig_dir)
 
@@ -830,12 +1082,13 @@ def fig_meso_confusion(fig_dir, top_pairs: list, plt, np) -> str | None:
     ax.set_yticks(y); ax.set_yticklabels(labels)
     ax.invert_yaxis()
     ax.set_xlabel("substitution count (gold missed, same-class label predicted)")
-    ax.set_title("Meso confusion: top same-class substitutions")
+    ax.set_title("Meso confusion", fontsize=10.5)
     return savefig(fig, "8_meso_confusion.png", fig_dir)
 
 
 def make_figures(fig_dir: Path, rows: list[dict], ranked: list[dict], cost_key: str,
-                 cis: dict, gold_count: dict, meso_pairs: list) -> list[str]:
+                 cis: dict, gold_count: dict, meso_pairs: list,
+                 refs: dict | None = None) -> list[str]:
     try:
         import matplotlib
         matplotlib.use("Agg")
@@ -851,15 +1104,15 @@ def make_figures(fig_dir: Path, rows: list[dict], ranked: list[dict], cost_key: 
         "dpheat", ["#FFFFFF", "#BFE3F2", "#4FA8D8", "#2B5FA8", "#1B2E6E"])
     made = []
     if ranked:
-        made.append(fig_quality_vs_cost(fig_dir, ranked, cost_key, plt, matplotlib))
+        made.append(fig_quality_vs_cost(fig_dir, ranked, cost_key, plt, matplotlib, refs))
         made.append(fig_precision_recall(fig_dir, ranked, cis, plt, np))
         h = fig_label_heatmap(fig_dir, ranked, heat_cmap, plt, np)
         if h:
             made.append(h)
-    r = fig_reasoning_sweep(fig_dir, rows, cost_key, plt)
+    r = fig_reasoning_sweep(fig_dir, rows, cost_key, plt, matplotlib, refs)
     if r:
         made.append(r)
-    p = fig_prompt_sweep(fig_dir, rows, cost_key, plt)
+    p = fig_prompt_sweep(fig_dir, rows, cost_key, plt, matplotlib, refs)
     if p:
         made.append(p)
     if rows:
@@ -892,6 +1145,9 @@ def parse_args() -> argparse.Namespace:
     ap.add_argument("--out-root", default=None,
                     help="override the comparison tree --eval-set would pick")
     ap.add_argument("--yes", action="store_true", help="overwrite an existing tag without asking")
+    ap.add_argument("--baseline-from", default=None, choices=sorted(rc.EVAL_SETS),
+                    help="draw that eval set's mean (dotted red) and best (solid blue) "
+                         "micro-F1 as reference lines on the quality figures")
     a = ap.parse_args()
 
     # The index and the output tree move together: a comparison of validation runs
@@ -919,6 +1175,18 @@ def main() -> None:
     if out_dir.exists() and not a.yes:
         if ask(f"{show(out_dir)} exists. overwrite? [y/N] ").lower() not in ("y", "yes"):
             sys.exit("aborted.")
+
+    # Reference lines borrowed from another eval set. Pointing this at the comparison's own
+    # set would draw its own mean back onto itself, so that case is refused, not drawn.
+    refs = None
+    if a.baseline_from == a.eval_set:
+        print(f"--baseline-from {a.baseline_from} is this comparison's own eval set; ignored",
+              file=sys.stderr)
+    elif a.baseline_from:
+        refs = baseline_refs(a.baseline_from)
+        if refs is None:
+            print(f"--baseline-from {a.baseline_from}: no scored runs; no reference lines",
+                  file=sys.stderr)
 
     cost_key = f"projected_usd_at_{PROJECT_TO}"
     for r in selected:
@@ -978,6 +1246,15 @@ def main() -> None:
         add(line)
     add("")
     sidecar["flags"] = flags
+    if refs:
+        # The lines are only interpretable if the reader can see what they were computed from.
+        add("")
+        add("BASELINE REFERENCE  (drawn on the quality figures, not part of this ranking)")
+        add("-" * 92)
+        add(f"source_eval_set={refs['set']} n_runs={refs['n_runs']} n_items={refs['n_items']}")
+        add(f"mean_{PRIMARY}={refs['mean']:.4f}  (red dotted)")
+        add(f"best_{PRIMARY}={refs['best']:.4f}  run={refs['best_run']}  (blue solid)")
+        sidecar["baseline_reference"] = refs
 
     if not ranked:
         out_dir.mkdir(parents=True, exist_ok=True)
@@ -1036,7 +1313,7 @@ def main() -> None:
             "rank": i, "run_id": rid(r), "delta_from_top": r.get(PRIMARY, 0) - top_f1,
             "micro_f1": r.get(PRIMARY, 0), "micro_p": r.get("micro_p", 0),
             "micro_r": r.get("micro_r", 0), "class_macro_f1": r.get("class_macro_f1", 0),
-            "meso_macro_f1": r.get("meso_macro_f1", 0),
+            "meso_macro_f1": r.get("meso_macro_f1"),   # None = suppressed on this eval set
             "all_label_macro_f1": all_label_macro_f1(r), "exact_match": r.get("exact_match", 0),
             "jaccard_mean": jm, "masi_mean": ms, "none_p": r.get("none_p", 0),
             "none_r": r.get("none_r", 0), "none_f1": r.get("none_f1", 0),
@@ -1387,7 +1664,7 @@ def main() -> None:
         meso_pairs_for_fig = [(p["class"], p["gold_label"], p["pred_label"], p["n"])
                               for p in meso_pairs_for_fig]
         notes = make_figures(out_dir / "figures", rows, ranked, cost_key, cis,
-                             gold_count_for_fig, meso_pairs_for_fig)
+                             gold_count_for_fig, meso_pairs_for_fig, refs)
 
     (out_dir / "selection.json").write_text(json.dumps({
         "tag": tag, "generated": datetime.now().isoformat(timespec="seconds"),

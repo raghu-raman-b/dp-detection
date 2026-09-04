@@ -1,0 +1,91 @@
+{
+  "query": "RAID Shadow Legends missions not getting credit bugs",
+  "sent_query": "RAID Shadow Legends missions not getting credit bugs",
+  "query_hash": "b314548e35314cec",
+  "answer": "Some RAID Shadow Legends missions may not credit players due to bugs, often requiring leaving group or raid settings to receive credit. Players report issues with specific missions not updating or rewarding progress. Developer support is often sought for fixes.",
+  "sources": [
+    {
+      "title": "Not getting credit for world quests while in group or raid",
+      "url": "https://us.forums.blizzard.com/en/wow/t/not-getting-credit-for-world-quests-while-in-group-or-raid/384951",
+      "host": "us.forums.blizzard.com"
+    },
+    {
+      "title": "Arbiter Mission not updated no reward given | Raid Forum",
+      "url": "https://forum.plarium.com/en/raid-shadow-legends/674_game-discussion/594702_arbiter-mission-not-updated-no-reward-given",
+      "host": "forum.plarium.com"
+    },
+    {
+      "title": "Hey Raiders,\nDue to technical... - Raid: Shadow Legends",
+      "url": "https://www.facebook.com/RaidShadowLegends/posts/hey-raidersdue-to-technical-issues-after-last-weeks-game-update-some-players-exp/1289561069874024",
+      "host": "facebook.com"
+    },
+    {
+      "title": "Arbiter Mission is bugged, anyone know a fix? Support is ...",
+      "url": "https://www.reddit.com/r/RaidShadowLegends/comments/v1296p/arbiter_mission_is_bugged_anyone_know_a_fix",
+      "host": "reddit.com"
+    },
+    {
+      "title": "Destiny 2 Known Issues and Vital Information – Bungie Help",
+      "url": "https://help.bungie.net/hc/en-us/articles/39007140765204-Destiny-2-Known-Issues-and-Vital-Information",
+      "host": "help.bungie.net"
+    }
+  ],
+  "backend": "tavily",
+  "cached": false,
+  "cost_usd": 0.008,
+  "latency_s": 2.314,
+  "n_results": 5,
+  "domains": [],
+  "error": null,
+  "ts": "2026-09-04T10:17:16+00:00",
+  "raw": {
+    "query": "RAID Shadow Legends missions not getting credit bugs",
+    "follow_up_questions": null,
+    "answer": "Some RAID Shadow Legends missions may not credit players due to bugs, often requiring leaving group or raid settings to receive credit. Players report issues with specific missions not updating or rewarding progress. Developer support is often sought for fixes.",
+    "images": [],
+    "results": [
+      {
+        "url": "https://us.forums.blizzard.com/en/wow/t/not-getting-credit-for-world-quests-while-in-group-or-raid/384951",
+        "title": "Not getting credit for world quests while in group or raid",
+        "content": "You have to leave raid groups to get credit. There are some WQ that even though you are in a group require you to collect an item yourself to",
+        "score": 0.51442534,
+        "raw_content": null,
+        "id": "b56526-00"
+      },
+      {
+        "url": "https://forum.plarium.com/en/raid-shadow-legends/674_game-discussion/594702_arbiter-mission-not-updated-no-reward-given",
+        "title": "Arbiter Mission not updated no reward given | Raid Forum",
+        "content": "Any damage dealt before you get the mission will not count. the quest was def bugged for me but I got it done from getting credit from the wrong version of the",
+        "score": 0.4833807,
+        "raw_content": null,
+        "id": "6cc8b0-01"
+      },
+      {
+        "url": "https://www.facebook.com/RaidShadowLegends/posts/hey-raidersdue-to-technical-issues-after-last-weeks-game-update-some-players-exp/1289561069874024",
+        "title": "Hey Raiders,\nDue to technical... - Raid: Shadow Legends",
+        "content": "😭\n⛏️ [...] '%3E%3Cpath d='M15.9963 8c0 4.4179-3.5811 7.9993-7.9986 7.9993-4.4176 0-7.9987-3.5814-7.9987-7.9992 0-4.4179 3.5811-7.9992 7.9987-7.9992 4.4175 0 7.9986 3.5813 7.9986 7.9992Z' fill='url(%23paint0_linear_15251_63610)'/%3E%3Cpath d='M15.9973 7.9992c0 4.4178-3.5811 7.9992-7.9987 7.9992C3.5811 15.9984 0 12.417 0 7.9992S3.5811 0 7.9986 0c4.4176 0 7.9987 3.5814 7.9987 7.9992Z' fill='url(%23paint1_radial_15251_63610)'/%3E%3Cpath d='M7.9996 5.9081c-.3528-.8845-1.1936-1.507-2.1748-1.507-1.4323 0-2.4254 [...] ## Raid: Shadow Legends's Post\n\n### Raid: Shadow Legends Verified account",
+        "score": 0.2504913,
+        "raw_content": null,
+        "id": "f19d17-02"
+      },
+      {
+        "url": "https://www.reddit.com/r/RaidShadowLegends/comments/v1296p/arbiter_mission_is_bugged_anyone_know_a_fix",
+        "title": "Arbiter Mission is bugged, anyone know a fix? Support is ...",
+        "content": "Arbiter Mission is bugged, anyone know a fix? I used a 3rd to see if it was a visual bug but it did not help. Has anyone had this issue and",
+        "score": 0.14296049,
+        "raw_content": null,
+        "id": "c80799-03"
+      },
+      {
+        "url": "https://help.bungie.net/hc/en-us/articles/39007140765204-Destiny-2-Known-Issues-and-Vital-Information",
+        "title": "Destiny 2 Known Issues and Vital Information – Bungie Help",
+        "content": "Adrenaline Junkie is not activating by kills from Hellion.\n The Desert Perpetual vendor is checking for space in the kinetic slot inventory instead of the energy slot when players attempt to purchase the Epic Raid version of Cusp Sempiternal.\n Players who earn the Epic Raid version of Cusp Sempiternal are unable to purchase higher-tier versions from the raid vendor.\n Heavy Crossbows are not piercing non-champion immunity shields with Anti-Barrier bow eqiuipped. [...] Renegades \n\n We've identified an issue where Renegades campaign activities and Lawless Frontier Jobs default to Normal difficulty. Players can set the difficulty to Expert when launching into these activities if they would like to earn greater rewards. Completing Jobs on either difficulty will not impact Legendary campaign completion triumphs.\n\nActivities and Portal [...] Players experiencing issues meditating at Ikora to unlock additional subclass options should check if they have acquired the \"Exotic Subclass\" quests, and try abandoning those.\n The Sintering lore book is not counting as fully completed when all lore entries have been acquired.",
+        "score": 0.043548565,
+        "raw_content": null,
+        "id": "ceddaa-04"
+      }
+    ],
+    "response_time": 1.31,
+    "request_id": "d0a95c25-2798-4170-8f75-6486198b3db1"
+  }
+}

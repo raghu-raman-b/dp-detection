@@ -1,0 +1,91 @@
+{
+  "query": "Clash of Clans upgrade timer wait time",
+  "sent_query": "Clash of Clans upgrade timer wait time",
+  "query_hash": "400551150c98e3d0",
+  "answer": "The longest upgrade in Clash of Clans takes 18 days. Higher Town Hall levels have longer upgrade times. The shortest upgrades are a few hours.",
+  "sources": [
+    {
+      "title": "Cost and Time Reductions! × Clash of Clans",
+      "url": "https://supercell.com/en/games/clashofclans/blog/news/cost-and-time-reductions-december-2023",
+      "host": "supercell.com"
+    },
+    {
+      "title": "Long upgrade times are the best part of COC",
+      "url": "https://www.reddit.com/r/ClashOfClans/comments/qv4xlq/long_upgrade_times_are_the_best_part_of_coc",
+      "host": "reddit.com"
+    },
+    {
+      "title": "Clash of Clans Upgrade Tracker - Clash Ninja",
+      "url": "https://www.clash.ninja/upgrade-tracker/overview",
+      "host": "clash.ninja"
+    },
+    {
+      "title": "What is the longest upgrade in COC? How much time does ...",
+      "url": "https://www.quora.com/What-is-the-longest-upgrade-in-COC-How-much-time-does-it-take",
+      "host": "quora.com"
+    },
+    {
+      "title": "How long will it take to max a Town Hall level?",
+      "url": "https://www.clash.ninja/guides/how-long-to-max-th",
+      "host": "clash.ninja"
+    }
+  ],
+  "backend": "tavily",
+  "cached": false,
+  "cost_usd": 0.008,
+  "latency_s": 2.767,
+  "n_results": 5,
+  "domains": [],
+  "error": null,
+  "ts": "2026-09-04T10:08:52+00:00",
+  "raw": {
+    "query": "Clash of Clans upgrade timer wait time",
+    "follow_up_questions": null,
+    "answer": "The longest upgrade in Clash of Clans takes 18 days. Higher Town Hall levels have longer upgrade times. The shortest upgrades are a few hours.",
+    "images": [],
+    "results": [
+      {
+        "url": "https://supercell.com/en/games/clashofclans/blog/news/cost-and-time-reductions-december-2023",
+        "title": "Cost and Time Reductions! × Clash of Clans",
+        "content": "|  |  |  |  |  |\n ---  --- \n| Level | Old Upgrade Time | New Upgrade Time | Old Upgrade Cost | New Upgrade Cost |\n| 8 | 0 d 8 h | 0 d 6 h | 28K Elixir | 28K Elixir |\n| 10 | 0 d 12 h | 0 d 10 h | 75K Elixir | 75K Elixir |\n| 11 | 0 d 16 h | 0 d 12 h | 100K Elixir | 100K Elixir |\n| 12 | 0 d 20 h | 0 d 16 h | 200K Elixir | 200K Elixir |\n| 13 | 1 d 16 h | 0 d 20 h | 400K Elixir | 400K Elixir |\n| 14 | 3 d 8 h | 1 d 16 h | 800K Elixir | 800K Elixir | [...] |  |  |  |  |  |\n ---  --- \n| Level | Old Upgrade Time | New Upgrade Time | Old Upgrade Cost | New Upgrade Cost |\n| 1 | 12 d 6 h | 12 d 0 h | 14M Elixir | 10M Elixir |\n| 2 | 14 d 6 h | 12 d 12 h | 16.5M Elixir | 12M Elixir |\n| 3 | 16 d 0 h | 12 d 18 h | 17.5M Elixir | 14M Elixir |\n| 4 | 18 d 0 h | 13 d 0 h | 18.5M Elixir | 16M Elixir |\n| 5 | 19 d 0 h | 13 d 6 h | 19.75M Elixir | 19.75M Elixir |\n| 6 | 19 d 6 h | 13 d 12 h | 20M Elixir | 20M Elixir | [...] P.E.K.K.A\n\n|  |  |  |  |  |\n ---  --- \n| Level | Old Upgrade Time | New Upgrade Time | Old Upgrade Cost | New Upgrade Cost |\n| 5 | 3 d 12 h | 2 d 16 h | 3.2M Elixir | 3.2M Elixir |\n| 6 | 4 d 18 h | 3 d 12 h | 4.2M Elixir | 4.2M Elixir |\n| 7 | 6 d 0 h | 4 d 18 h | 5.2M Elixir | 5.2M Elixir |\n| 8 | 9 d 0 h | 6 d 0 h | 7M Elixir | 7M Elixir |\n| 9 | 10 d 0 h | 7 d 0 h | 8.5M Elixir | 8.5M Elixir |\n| 10 | 16 d 12 h | 13 d 0 h | 18M Elixir | 18M Elixir |\n\nMinion",
+        "score": 0.7132923,
+        "raw_content": null,
+        "id": "efbd57-00"
+      },
+      {
+        "url": "https://www.reddit.com/r/ClashOfClans/comments/qv4xlq/long_upgrade_times_are_the_best_part_of_coc",
+        "title": "Long upgrade times are the best part of COC",
+        "content": "the longest timers be 1 day, but have several upgrades per TH level. So at TH10 there can be 5 cannon upgrades. But at TH11 there are 7. But",
+        "score": 0.6999322,
+        "raw_content": null,
+        "id": "955dd4-01"
+      },
+      {
+        "url": "https://www.clash.ninja/upgrade-tracker/overview",
+        "title": "Clash of Clans Upgrade Tracker - Clash Ninja",
+        "content": "## Rotation Lock:\n\nSupercell Creators\n\n# Clash of Clans Upgrade Tracker\n\n## What is the Upgrade Tracker?\n\nThink you have fully upgraded your Clash of Clans village only to find more upgrades you had missed? Got full gold and elixir storages but no builder available for another 5 days? [...] The Clash Ninja Upgrade Tracker allows you to keep track of what your builders are upgrading and your lab is researching in Clash of Clans. This allows you to see what upgrades are remaining for your Town Hall and Builder Hall level. You can also plan out your builder queues to help avoid not having builders free when you need them.\n\n## Features\n\nOur Upgrade Tracker can do a lot:\n\n## Ready to get started?\n\nGreat, click the link below to create an account and add your first village: [...] Village Overview\nUpgrade Planner\n\n# You Village Overview\n\nKeep track of your current upgrades and see what else still requires upgrading.\n\n# Builder Planner\n\nPlan out your upgrades to keep your builders busy and organised.\n\n# Not logged in\n\nYou need to be logged into your Clash Ninja account to do this:\n\n© 2026 www.clash.ninja\n\nThis material is unofficial and is not endorsed by Supercell. For more information see Supercell's Fan Content Policy: www.supercell.com/fan-content-policy",
+        "score": 0.32165226,
+        "raw_content": null,
+        "id": "5504df-02"
+      },
+      {
+        "url": "https://www.quora.com/What-is-the-longest-upgrade-in-COC-How-much-time-does-it-take",
+        "title": "What is the longest upgrade in COC? How much time does ...",
+        "content": "What is the longest upgrade in COC? How much time does it take?",
+        "score": 0.11206474,
+        "raw_content": null,
+        "id": "d9357f-03"
+      },
+      {
+        "url": "https://www.clash.ninja/guides/how-long-to-max-th",
+        "title": "How long will it take to max a Town Hall level?",
+        "content": "If you are wondering how long each Town Hall level takes to complete, this guide has the answers. Unlocking all 5 builders will speed up your Clash of Clans",
+        "score": 0.063233286,
+        "raw_content": null,
+        "id": "ce7731-04"
+      }
+    ],
+    "response_time": 1.56,
+    "request_id": "17238d9d-51c6-4f1a-b627-0c57f8ce3951"
+  }
+}

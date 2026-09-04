@@ -1,0 +1,91 @@
+{
+  "query": "All in Hole Black Hole Games game bag coins lost leaving",
+  "sent_query": "All in Hole Black Hole Games game bag coins lost leaving",
+  "query_hash": "c86a38b09f9d2316",
+  "answer": "All in Hole is a black hole puzzle game where players lose coins when the app freezes. Players can buy coins in-app, but purchases may not complete if the app freezes. The game has a high cost for reviving after losing.",
+  "sources": [
+    {
+      "title": "‎All in Hole: Black Hole Games App - App Store",
+      "url": "https://apps.apple.com/gb/app/all-in-hole-black-hole-games/id6503284107",
+      "host": "apps.apple.com"
+    },
+    {
+      "title": "All In Hole: rigged extravaganza : r/riggedgames",
+      "url": "https://www.reddit.com/r/riggedgames/comments/1icngic/all_in_hole_rigged_extravaganza",
+      "host": "reddit.com"
+    },
+    {
+      "title": "🕹 Gameplay — All in hole Help Center",
+      "url": "https://homa.helpshift.com/hc/en/9-all-in-hole/section/37-gameplay-1719416354",
+      "host": "homa.helpshift.com"
+    },
+    {
+      "title": "Hole Em All: Collect Master - Apps on Google Play",
+      "url": "https://play.google.com/store/apps/details?id=and.brainworks.holeemall&hl=en_US",
+      "host": "play.google.com"
+    },
+    {
+      "title": "Issues and Advice for All in Hole Game Players",
+      "url": "https://www.facebook.com/groups/764044492298012/posts/1041243724578086",
+      "host": "facebook.com"
+    }
+  ],
+  "backend": "tavily",
+  "cached": false,
+  "cost_usd": 0.008,
+  "latency_s": 2.556,
+  "n_results": 5,
+  "domains": [],
+  "error": null,
+  "ts": "2026-09-04T13:28:05+00:00",
+  "raw": {
+    "query": "All in Hole Black Hole Games game bag coins lost leaving",
+    "follow_up_questions": null,
+    "answer": "All in Hole is a black hole puzzle game where players lose coins when the app freezes. Players can buy coins in-app, but purchases may not complete if the app freezes. The game has a high cost for reviving after losing.",
+    "images": [],
+    "results": [
+      {
+        "url": "https://apps.apple.com/gb/app/all-in-hole-black-hole-games/id6503284107",
+        "title": "‎All in Hole: Black Hole Games App - App Store",
+        "content": "I’ve been playing this game for months. I absolutely love it and I’m on level 1159. But over the last few days it will freeze so I can’t move and then I run out of time and lose the stuff in Molly’s bag. If I try to make a purchase of coins if I eat a bomb or run out of time, it just buffers. This just happened again and I paid £5.99 for a bundle and the money has come out of my account but because the app froze only seconds after I paid, I didn’t get anything from the bundle. This is the [...] Age Rating\n:   4+ \n\n     4+\n     Learn More\n     Contains  \n      Advertising  \n      Messaging and Chat\n\nIn-App Purchases\n:   Yes \n\n     Coins very small £1.99\n     Molly's Gift £0.99\n     Pro Pack £6.99\n     Small Pack £9.99\n     Coins small £7.99\n     Offer - Starter Plus £2.99\n     Beginner Pack £4.99\n     Molly's Offer (Medium) £5.99\n     Medium Pack £19.99\n     Treasure Pass £9.99\n     Learn More\n\nCopyright\n:    © Homa Games 2024\n\n- Developer Website\n- Privacy Policy\n\n## Supports [...] \"All in Hole is the oddly satisfying black-hole puzzle where you guide Molly the mole on a snack-swallowing adventure. Slide a tiny hole, devour small objects to grow, and use playful physics to gobble every target treat. Whether you’re here to zen out or chase trophies, All in Hole serves up quick, colorful levels that feel great to master. Why you’ll love it - Smooth, tactile physics — swipe, scoop, and watch the hole snap up anything in its path - Smart goals — sort and swallow only what’s",
+        "score": 0.59372765,
+        "raw_content": null,
+        "id": "66f5ad-00"
+      },
+      {
+        "url": "https://www.reddit.com/r/riggedgames/comments/1icngic/all_in_hole_rigged_extravaganza",
+        "title": "All In Hole: rigged extravaganza : r/riggedgames",
+        "content": "It operates normally for the most part until you get to higher levels and the game starts trying to house the coins you have collected. keeping",
+        "score": 0.34099028,
+        "raw_content": null,
+        "id": "f89abc-01"
+      },
+      {
+        "url": "https://homa.helpshift.com/hc/en/9-all-in-hole/section/37-gameplay-1719416354",
+        "title": "🕹 Gameplay — All in hole Help Center",
+        "content": "In bonus levels, your goal is to collect as many coins as possible until you run out of time. The coins collected will be added to your coin...\n What is Molly's Bag?\n\n  To get Molly's bag bonus, you must beat levels without losing. For every level you beat, you will earn free boosters to help you at the begi...\n Where are the items that I get? [...] There are several ways of earning free coins in the game.Each time you help a teammate.When you progress in the events like Level Chest and ...\n How many lives can I have stored?\n\n  You can store 5 lives in your inbox.\n How can I pause the game?\n\n  You can tap on the pause button on the top right corner of the screen. You can also choose your game settings such as music, sound, haptic, ...\n Can I play All in Hole from my computer? [...] All in Hole is only available on iOS and Android mobile devices.\n I accidentally spent coins on the Extra Time/Lives/Booster pop-up!\n\n  As there is not any second confirmation button for in-game purchases (like extra time, life packages, boosters), please be careful not to pr...\n How do I report a bug/issue?\n\n  How to Report a BugIf you encounter a bug while playing, follow these steps to report it:1. Take a Screenshot or Record the Issue: If possib...\n What is Pack Progression?",
+        "score": 0.33561262,
+        "raw_content": null,
+        "id": "c739bc-02"
+      },
+      {
+        "url": "https://play.google.com/store/apps/details?id=and.brainworks.holeemall&hl=en_US",
+        "title": "Hole Em All: Collect Master - Apps on Google Play",
+        "content": "• Climb the leaderboard in solo or team adventures with your crew  \n• Join frequent special events packed with surprises & rewards in the hole game  \n  \nHole Em All is the ultimate black hole puzzle experience for fans of hole games, built for pure joy and smooth fun, whether you're on a quick break or diving in for a full chill session. So go ahead, settle in, slide a black hole across creative maps, spot target items, and absorb them all! [...] BRAINWORKS PUBLISHING PTE. LTD.\n\n3.8star\n\n## Similar games\n\narrow\\_forward\n\nThumbnail image\n\nGoods Hunt - Hole It All\n\nLIHUHU PTE. LTD.\n\n4.7star\n\nThumbnail image\n\nAll in Hole: Black Hole Games\n\n4.9star\n\nThumbnail image\n\nHole Puzzle: Collect master!\n\nFreeplay Inc\n\n4.7star\n\nThumbnail image\n\nSuck it Up ™ - Hole Them All\n\nTactile Games\n\n4.5star\n\nThumbnail image\n\n3.2star\n\nThumbnail image\n\nMatch Factory!\n\n4.8star\n\nflagFlag as inappropriate [...] March 6, 2025\n\nLaggy on certain levels, the timer keeps going but you can't move, then you to lose, and you lose your power ups \"basket\" for the next level. Ads start at lvl 20, and become longer the more you play. Bombs are designed to make you lose, and then need to spend coins to keep going. But at 900 coins per life, that's insane! It was pretty fun, until I hit the paywall at lvl 50. Graphics are really nice tho, very pretty\n\n202 people found this review helpful",
+        "score": 0.27227345,
+        "raw_content": null,
+        "id": "e3690f-03"
+      },
+      {
+        "url": "https://www.facebook.com/groups/764044492298012/posts/1041243724578086",
+        "title": "Issues and Advice for All in Hole Game Players",
+        "content": "Does anybody else think 900 coins to revive is a lot. It takes me forever to collect coins 😣😣",
+        "score": 0.23398674,
+        "raw_content": null,
+        "id": "7cb054-04"
+      }
+    ],
+    "response_time": 1.5,
+    "request_id": "4c41fcbd-c737-4888-87ea-af45009483fc"
+  }
+}

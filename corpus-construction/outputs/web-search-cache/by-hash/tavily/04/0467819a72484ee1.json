@@ -1,0 +1,91 @@
+{
+  "query": "Total Battle War Strategy \"open silver\" what is it",
+  "sent_query": "Total Battle War Strategy \"open silver\" what is it",
+  "query_hash": "0467819a72484ee1",
+  "answer": "Silver in Total Battle is a crucial in-game currency for upgrades and resources. Players often seek efficient ways to earn it, such as mining and completing quests. High-level units and strategic gameplay can boost silver acquisition.",
+  "sources": [
+    {
+      "title": "Total Battle: Strategy Games - Apps on Google Play",
+      "url": "https://play.google.com/store/apps/details?id=com.totalbattle&hl=en_US",
+      "host": "play.google.com"
+    },
+    {
+      "title": "I'm not getting enough silver, what am I doing wrong?",
+      "url": "https://www.reddit.com/r/TotalBattle/comments/1fnhq7f/im_not_getting_enough_silver_what_am_i_doing_wrong",
+      "host": "reddit.com"
+    },
+    {
+      "title": "How to increase silver in Total Battle?",
+      "url": "https://www.facebook.com/groups/1772671209903522/posts/2340815483089089",
+      "host": "facebook.com"
+    },
+    {
+      "title": "Total Battle Beginner Guide: Best Economy & Hero Setup",
+      "url": "https://www.ldshop.gg/blog/guide/total-battle-beginner-guide.html",
+      "host": "ldshop.gg"
+    },
+    {
+      "title": "Total Battle: Тактическая Военная Игра",
+      "url": "https://totalbattle.com",
+      "host": "totalbattle.com"
+    }
+  ],
+  "backend": "tavily",
+  "cached": false,
+  "cost_usd": 0.008,
+  "latency_s": 2.849,
+  "n_results": 5,
+  "domains": [],
+  "error": null,
+  "ts": "2026-09-04T11:01:11+00:00",
+  "raw": {
+    "query": "Total Battle War Strategy open silver what is it",
+    "follow_up_questions": null,
+    "answer": "Silver in Total Battle is a crucial in-game currency for upgrades and resources. Players often seek efficient ways to earn it, such as mining and completing quests. High-level units and strategic gameplay can boost silver acquisition.",
+    "images": [],
+    "results": [
+      {
+        "url": "https://play.google.com/store/apps/details?id=com.totalbattle&hl=en_US",
+        "title": "Total Battle: Strategy Games - Apps on Google Play",
+        "content": "● Strategy games require you to make the right choices for managing the troops in your army—each unit has unique abilities for going to war against monsters and other players  \n● Dozens of types of magic enemies of different levels  \n  \n  \nWAR STRATEGY GAMES & MULTIPLAYER BATTLES  \n● An MMO 4X real-time strategy game with PvE and PvP modes  \n● A massive open world with hundreds of kingdoms and millions of lords' castles [...] Battle alongside legendary heroes who’ll defend their territory at all costs and wage war against monsters, barbarians, wizards, elves, and other foes. Build a base and establish a strong tower defense strategy to win all the king’s battles in this medieval strategy war game and become the Lord of all the Kingdoms!  \n  \nBUILD YOUR EMPIRE & DEFEND YOURSELF IN TIMES OF WAR  \n● Build a base for your military, which lies at the heart of your castle [...] Build your empire and prepare for war with Total Battle, a multiplayer war strategy game that pits you against enemy factions across ancient civilizations, magic kingdoms and great empires.  \n  \nBecome immersed in your own world while battling for glory. Enjoy this multiplayer online strategy building game and show off your castle defense skills and tactical war strategies. Command and conquer kingdoms and castles, occupy forts, and feel the rush in this fantasy MMO RTS 4X game.",
+        "score": 0.8666343818097464,
+        "raw_content": null,
+        "id": "b7dc4d-00"
+      },
+      {
+        "url": "https://www.reddit.com/r/TotalBattle/comments/1fnhq7f/im_not_getting_enough_silver_what_am_i_doing_wrong",
+        "title": "I'm not getting enough silver, what am I doing wrong?",
+        "content": "Level 1 spears will carry just as much silver. Whenever you leave the game, send all three out to mine the biggest silver mines you can finish.",
+        "score": 0.8423060846883483,
+        "raw_content": null,
+        "id": "27c462-01"
+      },
+      {
+        "url": "https://www.facebook.com/groups/1772671209903522/posts/2340815483089089",
+        "title": "How to increase silver in Total Battle?",
+        "content": "Hey guys I always have a shortage for the silver I can't really do my army. I have 9 mansions level 20 with one level 29 and 15 farms \nAny recommandations",
+        "score": 0.8315985227867357,
+        "raw_content": null,
+        "id": "62e0fe-02"
+      },
+      {
+        "url": "https://www.ldshop.gg/blog/guide/total-battle-beginner-guide.html",
+        "title": "Total Battle Beginner Guide: Best Economy & Hero Setup",
+        "content": "Silver rules everything: You need millions of silver for high-level Academy research and Capital upgrades. If you waste it keeping a low-tier",
+        "score": 0.8262987549534571,
+        "raw_content": null,
+        "id": "b617c1-03"
+      },
+      {
+        "url": "https://totalbattle.com",
+        "title": "Total Battle: Тактическая Военная Игра",
+        "content": "Вы ввели неверные данные\n\nПроизошла ошибка, обратитесь в поддержку\n\nПароль был изменен\n\nУдаление аккаунта\n\nУчётная запись %name% будет удалена через %time%. Если вы хотите продолжить игру через эту учётную запись, вы можете отменить удаление в любой момент.\n\n  Svenska  Türkçe  Русский  العربية  日本語  简体中文  繁體中文  한국어\n\n### О компании\n\nSCOREWARRIOR LIMITED\n\nНомер DUNS\n\n534523904\n\nРегистрационный номер компании\n\n348535\n\nРегистрационный орган [...] Department of Registrar of Companies and Intellectual Property  \n Corner Makariou III Avenue and Karpenisiou Street  \n “XENIOS” Building  \n 1427 Nicosia, Cyprus  \n www.companies.gov.cy\n\nЮридический адрес\n\n16 Spyrou Kyprianou Avenue  \n Devine Clock Tower, 1st Floor  \n 3070 Limassol, Cyprus\n\nTadeush Sladkovich\n\n+357 25354581\n\nЭлектронная почта",
+        "score": 0.18219064270815205,
+        "raw_content": null,
+        "id": "550233-04"
+      }
+    ],
+    "response_time": 1.8,
+    "request_id": "561c69d3-2818-4019-aab5-07cde456d8f1"
+  }
+}

@@ -1,0 +1,243 @@
+============================================================================================
+PROVIDER / MODEL COMPARISON
+============================================================================================
+generated=2026-09-04T19:36:55
+tag=v3_all
+index=../outputs/prompt-eval/run-stats/index.jsonl
+runs=3 of_3_in_index
+ranked_on=micro_f1
+CONCURRENCY=1 PROJECT_TO=200000 BOOTSTRAP_N=2000 MIN_SUPPORT=3
+
+--------------------------------------------------------------------------------------------
+FLAGS
+--------------------------------------------------------------------------------------------
+GATE=pass
+GATE_MODE=explicit
+GOLD_UNIFORM=true
+N_DISQUALIFIED=0
+N_GATE_FAILURES=0
+PROMPT_UNIFORM=true
+
+
+BASELINE REFERENCE  (drawn on the quality figures, not part of this ranking)
+--------------------------------------------------------------------------------------------
+source_eval_set=validation n_runs=3 n_items=75
+mean_micro_f1=0.7573  (red dotted)
+best_micro_f1=0.8000  run=gpt-5.6-luna:xhigh  (blue solid)
+--------------------------------------------------------------------------------------------
+RUN METADATA
+--------------------------------------------------------------------------------------------
+  run_id                                  model              effort  prompt_name      prompt_sha    seed  temperature  max_tokens  eval_set_n  codebook_version  started_at           finished_at          
+                                                                                                                                   n                                                                       
+  gpt-5.6-luna_high_teacher_v3_full       gpt-5.6-luna       high    teacher_v3_full  a6ae58246360  n/a   n/a          8192        30          0.21              2026-09-04T18:48:59  2026-09-04T18:53:37  
+  gpt-5.6-luna_medium_teacher_v3_full     gpt-5.6-luna       medium  teacher_v3_full  a6ae58246360  n/a   n/a          8192        30          0.21              2026-09-04T19:32:19  2026-09-04T19:36:00  
+  deepseek-v4-flash_high_teacher_v3_full  deepseek-v4-flash  high    teacher_v3_full  a6ae58246360  n/a   default      8192        30          0.21              2026-09-04T19:12:25  2026-09-04T19:23:24  
+
+--------------------------------------------------------------------------------------------
+COMPLIANCE GATE FAILURES
+--------------------------------------------------------------------------------------------
+  (none)
+
+--------------------------------------------------------------------------------------------
+LEADERBOARD
+--------------------------------------------------------------------------------------------
+  rank  run_id                                  d_top   microF1  P      R      clsMac  mesoMac  allMac  exact  Jaccard  MASI   NoneP  NoneR  $/rev     $/200k  p50   p95   wallclk_h  tok_in  tok_out  var    
+                                                F1      F1       F1     F1     F1      F1       F1      rate   0-1      0-1    0-1    0-1    USD       USD     s     s     h@200k     n/rev   n/rev           
+  1     gpt-5.6-luna_high_teacher_v3_full       +0.000  0.781    0.806  0.758  0.590   n/a      0.401   0.567  0.683    0.645  0.556  0.714  $0.00183  $367    6.2   22.4  515.6      30412   760      false  
+  2     gpt-5.6-luna_medium_teacher_v3_full     -0.057  0.724    0.840  0.636  0.520   n/a      0.335   0.533  0.650    0.612  0.500  0.857  $0.00142  $283    6.5   12.0  408.9      30395   415      false  
+  3     deepseek-v4-flash_high_teacher_v3_full  -0.243  0.538    0.737  0.424  0.424   n/a      0.199   0.467  0.550    0.522  0.438  1.000  $0.00280  $561    16.4  39.6  1203.9     30355   2648     false  
+
+--------------------------------------------------------------------------------------------
+PARETO -- micro_f1 vs projected_usd_at_200000
+--------------------------------------------------------------------------------------------
+  run_id                               micro_f1  projected_usd_at_200000  
+                                       F1        USD                      
+  gpt-5.6-luna_medium_teacher_v3_full  0.724     $283                     
+  gpt-5.6-luna_high_teacher_v3_full    0.781     $367                     
+  dominated=deepseek-v4-flash_high_teacher_v3_full
+
+--------------------------------------------------------------------------------------------
+PARETO -- micro_f1 vs wall_clock_hours_at_200k
+--------------------------------------------------------------------------------------------
+  run_id                               micro_f1  wall_clock_hours_at_200k  
+                                       F1        h@200k                    
+  gpt-5.6-luna_medium_teacher_v3_full  0.724     408.9                     
+  gpt-5.6-luna_high_teacher_v3_full    0.781     515.6                     
+  dominated=deepseek-v4-flash_high_teacher_v3_full
+
+--------------------------------------------------------------------------------------------
+SIGNIFICANCE  n_resamples=2000 shared_n=30
+SIG_THRESHOLD=0.95 GREY_ZONE=[0.05,0.95]
+--------------------------------------------------------------------------------------------
+  run_id                                  ci_lo  ci_hi  ci_width  
+                                          F1     F1     F1        
+  gpt-5.6-luna_high_teacher_v3_full       0.655  0.877  0.222     
+  gpt-5.6-luna_medium_teacher_v3_full     0.586  0.839  0.253     
+  deepseek-v4-flash_high_teacher_v3_full  0.344  0.712  0.368     
+
+  pairwise: P(row beats column) over resamples
+                        gpt-5.6-luna_hig  gpt-5.6-luna_med  deepseek-v4-flas  
+    gpt-5.6-luna_high_  -                 0.87 (+0.058)     1.00 (+0.245)     
+    gpt-5.6-luna_mediu  0.12 (-0.058)     -                 0.99 (+0.187)     
+    deepseek-v4-flash_  0.00 (-0.245)     0.00 (-0.187)     -                 
+
+MDE_AT_N=0.084
+
+--------------------------------------------------------------------------------------------
+UNIVERSAL FALSE NEGATIVES
+--------------------------------------------------------------------------------------------
+  T_MandatoryMarathon                  n=2 review_ids=8b4092da-3c5a-41fa-8d14-16c5737e6b85,f112aad7-3ccd-4220-ae49-34d217dda09d
+  M_UIMisdirection                     n=1 review_ids=5e2d7a91-2181-4ad5-b5fb-cc1f50805d82
+  S_Competition                        n=1 review_ids=6877b6bf-e9e0-4c86-a196-e7c85a51529f
+  S_Reciprocity                        n=1 review_ids=94246484-0b03-4247-91b7-a7b5e6c5ff5c
+  M_DeceptiveLuxury                    n=1 review_ids=991f5326-63fb-4951-8773-84050dd70912
+  M_NeverEndingLure                    n=1 review_ids=ac5fc6a4-b597-46f3-af5a-3735b3854e26
+
+--------------------------------------------------------------------------------------------
+UNIVERSAL FALSE POSITIVES
+--------------------------------------------------------------------------------------------
+  T_Advertisement                      n=1 review_ids=3dc64fb0-3b6a-4ba1-9966-79c09f33069c
+  S_Competition                        n=1 review_ids=e19dc016-9f44-4e0e-bc04-d5198a837c4a
+
+--------------------------------------------------------------------------------------------
+CROSS-RUN CONSENSUS
+--------------------------------------------------------------------------------------------
+unanimity_rate=0.533 n_unanimous_but_wrong=5
+unanimous_but_wrong_review_ids=5e2d7a91-2181-4ad5-b5fb-cc1f50805d82,8b4092da-3c5a-41fa-8d14-16c5737e6b85,94246484-0b03-4247-91b7-a7b5e6c5ff5c,991f5326-63fb-4951-8773-84050dd70912,e19dc016-9f44-4e0e-bc04-d5198a837c4a
+top_entropy_reviews:
+  review_id                             entropy_bits  n_exact_match_gold  
+                                        bits          n_runs              
+  036954c0-447e-460d-b81e-f26f940b2ac4  1.585         1                   
+  2f50b132-9762-4f48-ae35-487f414aa41a  1.585         1                   
+  6ccb26a7-01e3-41a3-ba1a-bddba2063257  1.585         1                   
+  7732d254-0a39-4614-acf4-e67840e14b76  1.585         1                   
+  201672d6-579d-44c3-a1df-55a3f8182969  0.918         1                   
+  3dc64fb0-3b6a-4ba1-9966-79c09f33069c  0.918         0                   
+  40767241-e96d-4020-a23b-8e08eb00ea95  0.918         2                   
+  42025004-6937-4657-ab75-72e97fe19166  0.918         2                   
+  47cb4d59-0121-40f1-9ffc-220c458bd581  0.918         2                   
+  5c0e0d12-6578-4169-ba24-c72a325799f1  0.918         1                   
+
+--------------------------------------------------------------------------------------------
+MESO CONFUSION
+--------------------------------------------------------------------------------------------
+  class  swap_count  
+         n           
+  M      2           
+  T      2           
+  P      1           
+top substitutions:
+  class  gold_label           pred_label               n  
+                                                          
+  T      T_MandatoryMarathon  T_Grinding               2  
+  M      M_NeverEndingLure    M_EasyToPurchase         1  
+  P      P_RewardMania        P_CompleteTheCollection  1  
+  M      M_EasyToPurchase     M_IntermediateCurrency   1  
+
+--------------------------------------------------------------------------------------------
+PREVALENCE  gold_consistent=true
+--------------------------------------------------------------------------------------------
+  label                           gold_n  run_1                                         run_2                                           run_3                                              
+                                                                                                                                                                                           
+  T_Advertisement                 5       gpt-5.6-luna_high_teacher_v3_full:5/1.000/+0  gpt-5.6-luna_medium_teacher_v3_full:6/1.200/+1  deepseek-v4-flash_high_teacher_v3_full:5/1.000/+0  
+  M_UIMisdirection                4       gpt-5.6-luna_high_teacher_v3_full:3/0.750/-1  gpt-5.6-luna_medium_teacher_v3_full:2/0.500/-2  deepseek-v4-flash_high_teacher_v3_full:0/0.000/-4  
+  M_IntermediateCurrency          3       gpt-5.6-luna_high_teacher_v3_full:3/1.000/+0  gpt-5.6-luna_medium_teacher_v3_full:3/1.000/+0  deepseek-v4-flash_high_teacher_v3_full:2/0.667/-1  
+  T_MandatoryMarathon             3       gpt-5.6-luna_high_teacher_v3_full:1/0.333/-2  gpt-5.6-luna_medium_teacher_v3_full:0/0.000/-3  deepseek-v4-flash_high_teacher_v3_full:1/0.333/-2  
+  T_PlayingByAppointment          3       gpt-5.6-luna_high_teacher_v3_full:3/1.000/+0  gpt-5.6-luna_medium_teacher_v3_full:3/1.000/+0  deepseek-v4-flash_high_teacher_v3_full:3/1.000/+0  
+  M_EasyToPurchase                2       gpt-5.6-luna_high_teacher_v3_full:2/1.000/+0  gpt-5.6-luna_medium_teacher_v3_full:1/0.500/-1  deepseek-v4-flash_high_teacher_v3_full:0/0.000/-2  
+  P_RewardMania                   2       gpt-5.6-luna_high_teacher_v3_full:3/1.500/+1  gpt-5.6-luna_medium_teacher_v3_full:0/0.000/-2  deepseek-v4-flash_high_teacher_v3_full:0/0.000/-2  
+  S_Reciprocity                   2       gpt-5.6-luna_high_teacher_v3_full:1/0.500/-1  gpt-5.6-luna_medium_teacher_v3_full:1/0.500/-1  deepseek-v4-flash_high_teacher_v3_full:0/0.000/-2  
+  T_DailyRewards                  2       gpt-5.6-luna_high_teacher_v3_full:2/1.000/+0  gpt-5.6-luna_medium_teacher_v3_full:3/1.500/+1  deepseek-v4-flash_high_teacher_v3_full:4/2.000/+2  
+  M_DeceptiveLuxury               1       gpt-5.6-luna_high_teacher_v3_full:0/0.000/-1  gpt-5.6-luna_medium_teacher_v3_full:0/0.000/-1  deepseek-v4-flash_high_teacher_v3_full:0/0.000/-1  
+  M_NeverEndingLure               1       gpt-5.6-luna_high_teacher_v3_full:0/0.000/-1  gpt-5.6-luna_medium_teacher_v3_full:0/0.000/-1  deepseek-v4-flash_high_teacher_v3_full:0/0.000/-1  
+  M_PayToProgress                 1       gpt-5.6-luna_high_teacher_v3_full:1/1.000/+0  gpt-5.6-luna_medium_teacher_v3_full:1/1.000/+0  deepseek-v4-flash_high_teacher_v3_full:1/1.000/+0  
+  M_WasteAversion                 1       gpt-5.6-luna_high_teacher_v3_full:1/1.000/+0  gpt-5.6-luna_medium_teacher_v3_full:1/1.000/+0  deepseek-v4-flash_high_teacher_v3_full:0/0.000/-1  
+  P_IllusionOfControl             1       gpt-5.6-luna_high_teacher_v3_full:1/1.000/+0  gpt-5.6-luna_medium_teacher_v3_full:1/1.000/+0  deepseek-v4-flash_high_teacher_v3_full:1/1.000/+0  
+  S_Competition                   1       gpt-5.6-luna_high_teacher_v3_full:2/2.000/+1  gpt-5.6-luna_medium_teacher_v3_full:1/1.000/+0  deepseek-v4-flash_high_teacher_v3_full:1/1.000/+0  
+  T_Grinding                      1       gpt-5.6-luna_high_teacher_v3_full:1/1.000/+0  gpt-5.6-luna_medium_teacher_v3_full:1/1.000/+0  deepseek-v4-flash_high_teacher_v3_full:0/0.000/-1  
+  M_Gambling                      0       gpt-5.6-luna_high_teacher_v3_full:1/n/a/+1    gpt-5.6-luna_medium_teacher_v3_full:1/n/a/+1    deepseek-v4-flash_high_teacher_v3_full:0/n/a/+0    
+  M_PowerCreep                    0       gpt-5.6-luna_high_teacher_v3_full:0/n/a/+0    gpt-5.6-luna_medium_teacher_v3_full:0/n/a/+0    deepseek-v4-flash_high_teacher_v3_full:0/n/a/+0    
+  M_RecurringFee                  0       gpt-5.6-luna_high_teacher_v3_full:0/n/a/+0    gpt-5.6-luna_medium_teacher_v3_full:0/n/a/+0    deepseek-v4-flash_high_teacher_v3_full:0/n/a/+0    
+  P_AestheticManipulation         0       gpt-5.6-luna_high_teacher_v3_full:0/n/a/+0    gpt-5.6-luna_medium_teacher_v3_full:0/n/a/+0    deepseek-v4-flash_high_teacher_v3_full:0/n/a/+0    
+  P_CompleteTheCollection         0       gpt-5.6-luna_high_teacher_v3_full:0/n/a/+0    gpt-5.6-luna_medium_teacher_v3_full:0/n/a/+0    deepseek-v4-flash_high_teacher_v3_full:1/n/a/+1    
+  P_EasyToGetHardToLose           0       gpt-5.6-luna_high_teacher_v3_full:0/n/a/+0    gpt-5.6-luna_medium_teacher_v3_full:0/n/a/+0    deepseek-v4-flash_high_teacher_v3_full:0/n/a/+0    
+  P_OptimismAndFrequencyBiases    0       gpt-5.6-luna_high_teacher_v3_full:0/n/a/+0    gpt-5.6-luna_medium_teacher_v3_full:0/n/a/+0    deepseek-v4-flash_high_teacher_v3_full:0/n/a/+0    
+  S_EncouragesAntiSocialBehavior  0       gpt-5.6-luna_high_teacher_v3_full:0/n/a/+0    gpt-5.6-luna_medium_teacher_v3_full:0/n/a/+0    deepseek-v4-flash_high_teacher_v3_full:0/n/a/+0    
+  S_FearOfMissingOutFOMO          0       gpt-5.6-luna_high_teacher_v3_full:0/n/a/+0    gpt-5.6-luna_medium_teacher_v3_full:0/n/a/+0    deepseek-v4-flash_high_teacher_v3_full:0/n/a/+0    
+  S_ForcedFellowship              0       gpt-5.6-luna_high_teacher_v3_full:0/n/a/+0    gpt-5.6-luna_medium_teacher_v3_full:0/n/a/+0    deepseek-v4-flash_high_teacher_v3_full:0/n/a/+0    
+  S_FriendSpamImpersonation       0       gpt-5.6-luna_high_teacher_v3_full:0/n/a/+0    gpt-5.6-luna_medium_teacher_v3_full:0/n/a/+0    deepseek-v4-flash_high_teacher_v3_full:0/n/a/+0    
+  T_InfiniteTreadmill             0       gpt-5.6-luna_high_teacher_v3_full:0/n/a/+0    gpt-5.6-luna_medium_teacher_v3_full:0/n/a/+0    deepseek-v4-flash_high_teacher_v3_full:0/n/a/+0    
+  Tech_FragmentedDownloads        0       gpt-5.6-luna_high_teacher_v3_full:1/n/a/+1    gpt-5.6-luna_medium_teacher_v3_full:0/n/a/+0    deepseek-v4-flash_high_teacher_v3_full:0/n/a/+0    
+  (per run cell: pred_count/ratio/signed_error)
+
+--------------------------------------------------------------------------------------------
+PER-LABEL FULL TABLE  (per-run precision/recall in sidecar only)
+--------------------------------------------------------------------------------------------
+  label                           support  best_f1  best_run_id                          median_f1  spread  
+                                  n        F1                                            F1         F1      
+  M_DeceptiveLuxury               1        0.000*   gpt-5.6-luna_medium_teacher_v3_full  0.000*     0.000*  
+  M_EasyToPurchase                2        1.000*   gpt-5.6-luna_high_teacher_v3_full    0.667*     1.000*  
+  M_Gambling                      0        0.000*   gpt-5.6-luna_medium_teacher_v3_full  0.000*     0.000*  
+  M_IntermediateCurrency          3        1.000    gpt-5.6-luna_medium_teacher_v3_full  1.000      0.200   
+  M_NeverEndingLure               1        0.000*   gpt-5.6-luna_medium_teacher_v3_full  0.000*     0.000*  
+  M_PayToProgress                 1        1.000*   gpt-5.6-luna_medium_teacher_v3_full  1.000*     0.000*  
+  M_PowerCreep                    0        0.000*   gpt-5.6-luna_medium_teacher_v3_full  0.000*     0.000*  
+  M_RecurringFee                  0        0.000*   gpt-5.6-luna_medium_teacher_v3_full  0.000*     0.000*  
+  M_UIMisdirection                4        0.857    gpt-5.6-luna_high_teacher_v3_full    0.667      0.857   
+  M_WasteAversion                 1        1.000*   gpt-5.6-luna_medium_teacher_v3_full  1.000*     1.000*  
+  P_AestheticManipulation         0        0.000*   gpt-5.6-luna_medium_teacher_v3_full  0.000*     0.000*  
+  P_CompleteTheCollection         0        0.000*   gpt-5.6-luna_medium_teacher_v3_full  0.000*     0.000*  
+  P_EasyToGetHardToLose           0        0.000*   gpt-5.6-luna_medium_teacher_v3_full  0.000*     0.000*  
+  P_IllusionOfControl             1        1.000*   gpt-5.6-luna_medium_teacher_v3_full  1.000*     0.000*  
+  P_OptimismAndFrequencyBiases    0        0.000*   gpt-5.6-luna_medium_teacher_v3_full  0.000*     0.000*  
+  P_RewardMania                   2        0.800*   gpt-5.6-luna_high_teacher_v3_full    0.000*     0.800*  
+  S_Competition                   1        0.000*   gpt-5.6-luna_medium_teacher_v3_full  0.000*     0.000*  
+  S_EncouragesAntiSocialBehavior  0        0.000*   gpt-5.6-luna_medium_teacher_v3_full  0.000*     0.000*  
+  S_FearOfMissingOutFOMO          0        0.000*   gpt-5.6-luna_medium_teacher_v3_full  0.000*     0.000*  
+  S_ForcedFellowship              0        0.000*   gpt-5.6-luna_medium_teacher_v3_full  0.000*     0.000*  
+  S_FriendSpamImpersonation       0        0.000*   gpt-5.6-luna_medium_teacher_v3_full  0.000*     0.000*  
+  S_Reciprocity                   2        0.667*   gpt-5.6-luna_medium_teacher_v3_full  0.667*     0.667*  
+  T_Advertisement                 5        0.909    gpt-5.6-luna_medium_teacher_v3_full  0.800      0.109   
+  T_DailyRewards                  2        1.000*   gpt-5.6-luna_high_teacher_v3_full    0.800*     0.333*  
+  T_Grinding                      1        1.000*   gpt-5.6-luna_medium_teacher_v3_full  1.000*     1.000*  
+  T_InfiniteTreadmill             0        0.000*   gpt-5.6-luna_medium_teacher_v3_full  0.000*     0.000*  
+  T_MandatoryMarathon             3        0.500    gpt-5.6-luna_high_teacher_v3_full    0.500      0.500   
+  T_PlayingByAppointment          3        1.000    gpt-5.6-luna_medium_teacher_v3_full  1.000      0.000   
+  Tech_FragmentedDownloads        0        0.000*   gpt-5.6-luna_medium_teacher_v3_full  0.000*     0.000*  
+  (* support < MIN_SUPPORT)
+
+--------------------------------------------------------------------------------------------
+REPEATABILITY  N_REPEAT_GROUPS=0 between_config_gap=0.243
+--------------------------------------------------------------------------------------------
+  (no config has more than one run)
+
+--------------------------------------------------------------------------------------------
+COMPLIANCE
+--------------------------------------------------------------------------------------------
+  run_id                                  span_verbatim  oov_rate  parse_fail  truncation  retry_n  empty_analysis  gate_pass  
+                                          rate           rate      rate        rate        n        rate            bool       
+  gpt-5.6-luna_high_teacher_v3_full       1.000          0.000     0.000       0.000       0        n/a             true       
+  gpt-5.6-luna_medium_teacher_v3_full     1.000          0.000     0.000       0.000       0        n/a             true       
+  deepseek-v4-flash_high_teacher_v3_full  1.000          0.000     0.000       0.000       1        n/a             true       
+
+--------------------------------------------------------------------------------------------
+COST
+--------------------------------------------------------------------------------------------
+  run_id                                  $/rev     $/200k  tok_in/rev  tok_out/rev  $/F1_point  
+                                          USD       USD     n           n            USD         
+  gpt-5.6-luna_high_teacher_v3_full       $0.00183  $367    30412       760          $1,462      
+  gpt-5.6-luna_medium_teacher_v3_full     $0.00142  $283    30395       415          ref         
+  deepseek-v4-flash_high_teacher_v3_full  $0.00280  $561    30355       2648         n/a         
+  ($/F1_point relative to the cheapest run on the quality-vs-cost frontier; 'ref' = that run itself)
+
+============================================================================================
+SELECTION
+============================================================================================
+run_id=gpt-5.6-luna_high_teacher_v3_full
+selection_criterion=max micro_f1 among named runs
+ranked_on=micro_f1
+tie_break_rule=gate_pass > lower $/200k > lower latency_p95 > lexical run_id
+margin=0.058
+p_win_vs_runner_up=0.867
+runner_up_run_id=gpt-5.6-luna_medium_teacher_v3_full
+============================================================================================

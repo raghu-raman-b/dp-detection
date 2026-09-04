@@ -1,0 +1,91 @@
+{
+  "query": "Match Masters game stickers trade",
+  "sent_query": "Match Masters game stickers trade",
+  "query_hash": "531f3018e564eba2",
+  "answer": "Match Masters allows players to trade stickers with others in the game via an official trading group on Facebook and through team exchanges. Stickers can also be obtained through daily tasks and events. The game includes a Lucky Wheel for additional sticker opportunities.",
+  "sources": [
+    {
+      "title": "Match Masters Stickers and Albums: Complete Guide For Beginners",
+      "url": "https://allloot.com/match-masters-stickers-albums",
+      "host": "allloot.com"
+    },
+    {
+      "title": "Match Masters Stickers Guide: How to Get Gold & Diamond Stickers Fast | MatchMastersGifts",
+      "url": "https://matchmastersgifts.com/match-masters-stickers-guide",
+      "host": "matchmastersgifts.com"
+    },
+    {
+      "title": "Match Masters Stickers Guide [How to Get Stickers] | MatchMastersCoin",
+      "url": "https://matchmasterscoin.com/match-masters-stickers",
+      "host": "matchmasterscoin.com"
+    },
+    {
+      "title": "Let's trade SEASONAL STICKERS today!! : r/MatchMasters",
+      "url": "https://www.reddit.com/r/MatchMasters/comments/od6kut/lets_trade_seasonal_stickers_today",
+      "host": "reddit.com"
+    },
+    {
+      "title": "Match.com",
+      "url": "https://en.wikipedia.org/wiki/Match.com",
+      "host": "en.wikipedia.org"
+    }
+  ],
+  "backend": "tavily",
+  "cached": false,
+  "cost_usd": 0.008,
+  "latency_s": 2.854,
+  "n_results": 5,
+  "domains": [],
+  "error": null,
+  "ts": "2026-09-04T10:13:33+00:00",
+  "raw": {
+    "query": "Match Masters game stickers trade",
+    "follow_up_questions": null,
+    "answer": "Match Masters allows players to trade stickers with others in the game via an official trading group on Facebook and through team exchanges. Stickers can also be obtained through daily tasks and events. The game includes a Lucky Wheel for additional sticker opportunities.",
+    "images": [],
+    "results": [
+      {
+        "title": "Match Masters Stickers and Albums: Complete Guide For Beginners",
+        "url": "https://allloot.com/match-masters-stickers-albums",
+        "content": "As I said earlier, you can trade your duplicate stickers with other players on the official Match Masters trading group on Facebook. This group has 1.6M members, so I’m sure that you’ll find a lot of players who want to trade. With that, here is how you can trade your stickers: [...] When you’re in a team, you can ask your teammates to send you their duplicate stickers as they don’t need them. But if you haven’t been in a team yet, then check out this Match Masters Teams Guide to learn how to join or create one. Alternatively, you can trade your duplicate stickers in the official Match Masters trading group on Facebook.\n\n### Buy stickers with coins [...] ## Conclusion\n\nMatch Masters albums can feel hard to complete at first (especially when the game keeps giving you duplicate stickers), but once you know how to collect stickers, things get a lot easier.\n\nSo to collect stickers every day:\n\n Claim the free gift links\n Complete your daily tasks\n Join events\n Trade your duplicates\n Ask your teammates for help",
+        "score": 0.8783249,
+        "raw_content": null,
+        "id": "edc5fd-00"
+      },
+      {
+        "title": "Match Masters Stickers Guide: How to Get Gold & Diamond Stickers Fast | MatchMastersGifts",
+        "url": "https://matchmastersgifts.com/match-masters-stickers-guide",
+        "content": "February 25, 2026 - Yes! The game features a 'Sticker Trade' section where you can swap stickers with friends or team members to help each other complete collections.",
+        "score": 0.8585411,
+        "raw_content": null,
+        "id": "3bf6d3-01"
+      },
+      {
+        "title": "Match Masters Stickers Guide [How to Get Stickers] | MatchMastersCoin",
+        "url": "https://matchmasterscoin.com/match-masters-stickers",
+        "content": "February 13, 2025 - Lucky Wheel: There is a big lucky wheel available and users can spin them to get amazing prizes. The game provides one spin daily and using the spin, use the wheel to get the sticker. Sticker Trade: In the sticker section, users can trade their stickers to get more as a bonus.",
+        "score": 0.8497846,
+        "raw_content": null,
+        "id": "736e15-02"
+      },
+      {
+        "title": "Let's trade SEASONAL STICKERS today!! : r/MatchMasters",
+        "url": "https://www.reddit.com/r/MatchMasters/comments/od6kut/lets_trade_seasonal_stickers_today",
+        "content": "Have sticker #5, 20, & 22 to trade. I need #9. https://launch.matchmasters.com/l/send/68ff897214185200a62332c3 · Say it with me. Rigged game after rigged game after rigged game after rigged game after rigged game after rigged game after rigged game after rigged game after rigged game after",
+        "score": 0.8156003,
+        "raw_content": null,
+        "id": "f759cc-03"
+      },
+      {
+        "title": "Match.com",
+        "url": "https://en.wikipedia.org/wiki/Match.com",
+        "content": "In 1993, Match.com was founded by Gary Kremen and Peng T. Ong and Simon Glinsky in San Francisco. At the beginning, Match.com was the name of the website, while the company that operated it was formally named Electric Classifieds Inc. Early on, Kremen was assisted by Ong, who helped in the design of the initial system, and Simon Glinsky, who co-wrote its business plan, developed product designs including matching criteria, services to LGBTQ communities, created business models and initial [...] On November 10, 2005, a class action was filed by Matthew Evans against Match.com in federal court in Los Angeles, alleging that Match.com employed fake members to send emails and go on dates with paying members. IAC repudiated the suit as baseless and was later dismissed by the United States District Court for the Central District of California on April 25, 2007. Similar suits were filed in June 2009 and December 2010, with the judges ruling that Match.com did not break user agreements. [...] models and initial marketing strategies and made early hires. Fran Maier later joined the company as its director of marketing. According to a retrospective from The Atlantic, Maier helped to implement Match.com's business strategy, which included a subscription model and the inclusion of diverse communities, including technology professionals and the lesbian, gay, bisexual, transgender and queer communities. Match.com became operational as a free beta version website during early 1995 and was",
+        "score": 0.041871805,
+        "raw_content": null,
+        "id": "dc9884-04"
+      }
+    ],
+    "response_time": 1.84,
+    "request_id": "e6697a49-fbbc-414a-868c-be4f9b05d6da"
+  }
+}

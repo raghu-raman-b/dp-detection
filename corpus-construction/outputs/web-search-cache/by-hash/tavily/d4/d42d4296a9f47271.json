@@ -1,0 +1,91 @@
+{
+  "query": "does Free Fire MAX have a specific download wall or storage requirement mechanic",
+  "sent_query": "does Free Fire MAX have a specific download wall or storage requirement mechanic",
+  "query_hash": "d42d4296a9f47271",
+  "answer": "Free Fire MAX requires at least 2 GB RAM and 2.5 GB storage. Recommended specs are 4 GB RAM and 4 GB storage. Ensure at least 2–3 GB free storage for installation.",
+  "sources": [
+    {
+      "title": "Free Fire MAX: everything about graphics, gameplay, and download options",
+      "url": "https://www.exitlag.com/blog/free-fire-max",
+      "host": "exitlag.com"
+    },
+    {
+      "title": "Free fire max - Google Play Community",
+      "url": "https://support.google.com/googleplay/thread/417261758/free-fire-max?hl=en",
+      "host": "support.google.com"
+    },
+    {
+      "title": "Free Fire MAX - Apps on Google Play",
+      "url": "https://play.google.com/store/apps/details?id=com.dts.freefiremax&hl=en_US",
+      "host": "play.google.com"
+    },
+    {
+      "title": "Free Fire: Minimum Requirements and Compatible Phones (Android and iOS)",
+      "url": "https://vandal.elespanol.com/en/free-fire/free-fire-minimum-requirements-and-compatible-phones-android-and-ios.html",
+      "host": "vandal.elespanol.com"
+    },
+    {
+      "title": "Unlock 120 FPS in Free Fire MAX 🔥 | Root Required | Ultra Smooth Gameplay",
+      "url": "https://www.youtube.com/watch?v=EHJv9QczVuA",
+      "host": "youtube.com"
+    }
+  ],
+  "backend": "tavily",
+  "cached": false,
+  "cost_usd": 0.008,
+  "latency_s": 2.554,
+  "n_results": 5,
+  "domains": [],
+  "error": null,
+  "ts": "2026-09-04T10:13:41+00:00",
+  "raw": {
+    "query": "does Free Fire MAX have a specific download wall or storage requirement mechanic",
+    "follow_up_questions": null,
+    "answer": "Free Fire MAX requires at least 2 GB RAM and 2.5 GB storage. Recommended specs are 4 GB RAM and 4 GB storage. Ensure at least 2–3 GB free storage for installation.",
+    "images": [],
+    "results": [
+      {
+        "url": "https://www.exitlag.com/blog/free-fire-max",
+        "title": "Free Fire MAX: everything about graphics, gameplay, and download options",
+        "content": "Specs aren’t just about “can it open?” They’re about “can it stay stable in ranked fights?” Free Fire MAX can run on lower specs, but it shines when your device has enough RAM and a decent chipset.\n\nHere’s a practical baseline:\n\nRequirement TypeMinimumRecommended\nOS Android 4.4 / iOS 11 Android 8.0+ / iOS 12+\nRAM 2 GB 4 GB+\nStorage~1.5 GB (varies)2.5 GB+\nCPU Dual-core 1.2 GHz Octa-core 2.0 GHz+ [...] ### Performance and device compatibility (what to expect)\n\nFree Fire MAX asks more from your phone—GPU, RAM, and storage—because HD assets are heavier. However, it’s still designed to run across a wide device range with performance settings.\n\nTypical outcomes:\n\n   Mid/high-end devices: more stable FPS and cleaner visuals\n   Low-end devices: better visuals _but_ higher chance of heat throttling or stutters\n   Storage impact: larger install size and more frequent asset downloads [...] iOS (App Store):\n\n1.   Open App Store\n2.   Search “Free Fire MAX”\n3.   Download and launch\n4.   Log in and confirm account sync\n\nPractical tips before installing:\n\n   Keep at least 2–3 GB free storage to avoid corrupted downloads\n   Update your OS first (older OS versions can cause crashes)\n   Use a stable Wi-Fi network for first-time asset downloads\n\nThis approach covers most regions and dramatically reduces risk compared to random third-party sources claiming “fast Free Fire MAX download.”",
+        "score": 0.643173,
+        "raw_content": null,
+        "id": "c5e864-00"
+      },
+      {
+        "url": "https://support.google.com/googleplay/thread/417261758/free-fire-max?hl=en",
+        "title": "Free fire max - Google Play Community",
+        "content": "The game requires at least 2GB of RAM and 4GB of storage space. Free Fire is a large app, so it will take some time to download.",
+        "score": 0.63452125,
+        "raw_content": null,
+        "id": "086b88-01"
+      },
+      {
+        "url": "https://play.google.com/store/apps/details?id=com.dts.freefiremax&hl=en_US",
+        "title": "Free Fire MAX - Apps on Google Play",
+        "content": "OS: Windows 10 (v2004)\n Storage: Solid state drive (SSD) with 10 GB of available storage space\n Graphics: IntelⓇ UHD Graphics 630 GPU or comparable\n Processor: 4 CPU physical cores\n Memory: 8 GB of RAM\n Windows admin account\n Hardware virtualization must be turned on\n\nTo learn more about these requirements, visit the Help Center\n\nIntel is a registered trademark of Intel Corporation or its subsidiaries. Windows is a trademark of the Microsoft group of companies. [...] Content rating\n\nRated 16+\n\nViolence\n\nUsers Interact, In-Game Purchases\n\nLearn more\n\n## Play on PC\n\nPlay this game on your Windows PC with Google Play Games\n\nLearn more\n\nOfficial Google experience\n\nBigger screen\n\nLevel up with improved controls\n\nSeamless sync across devices\\\n\nEarn Google Play Points\n\nMinimum requirements [...] Free Fire is a world-famous survival shooter game available on mobile. Each 10-minute game places you on a remote island where you are pit against 49 other players, all seeking survival. Players freely choose their starting point with their parachute, and aim to stay in the safe zone for as long as possible. Drive vehicles to explore the vast map, hide in the wild, or become invisible by proning under grass or rifts. Ambush, snipe, survive, there is only one goal: to survive and answer the call",
+        "score": 0.486015,
+        "raw_content": null,
+        "id": "213a8e-02"
+      },
+      {
+        "url": "https://vandal.elespanol.com/en/free-fire/free-fire-minimum-requirements-and-compatible-phones-android-and-ios.html",
+        "title": "Free Fire: Minimum Requirements and Compatible Phones (Android and iOS)",
+        "content": "Free Fire MAX: How to Download It for Free on Android and iOS\n\nFree Fire · 11 Jul 2026, 21:13\n\nLearn how to officially download Free Fire MAX for free on your Android or iOS device. Switch to the enhanced version and enjoy improved graphics!\n\nFree Fire: ALL Characters\n\nFree Fire: ALL Characters, How to Get Them, and Their Abilities\n\nFree Fire · 11 Jul 2026, 11:45 [...] How to Play on PC\n\nFree Fire MAX: How to Download and Play for Free on PC (Windows and Mac)  LEGAL\n\nFree Fire · 11 Jul 2026, 11:37\n\nFollow our step-by-step guide to download and play Free Fire or Free Fire MAX for free on Windows and Mac. This completely legal method uses the BlueStacks emulator.\n\nFree Fire: How to Get Gold Fast\n\nFree Fire: How to Get Gold Fast and Easily (All Methods)\n\nFree Fire · 11 Jul 2026, 10:46 [...] All compatible mobile devices and the minimum requirements your Android or iOS device must meet to play Free Fire MAX, the enhanced-graphics version of the Battle Royale.\n\nFree Fire FAQ: Frequently Asked Questions\n\nFree Fire FAQ: Frequently Asked Questions\n\nFree Fire · 9 Aug 2026, 17:40\n\nWe answer the most common questions you may have while playing Free Fire, Garena's popular mobile battle royale.\n\nFree Fire: BEST Weapons\n\nFree Fire: The BEST Weapons for Every Situation",
+        "score": 0.30719224,
+        "raw_content": null,
+        "id": "e94828-03"
+      },
+      {
+        "url": "https://www.youtube.com/watch?v=EHJv9QczVuA",
+        "title": "Unlock 120 FPS in Free Fire MAX 🔥 | Root Required | Ultra Smooth Gameplay",
+        "content": "Mix (50+)3:51 How to unlock “120 FPS” Option In Any Device Free Fire MAX 🗿RHK Tech 110K views • 7 months ago Live Playlist ()Mix (50+)2:47:57 963 Hz Frequency of God • Crown Chakra • Spiritual Awakening • Divine Connection Meditative Peace 109K views • 3 days ago Live Playlist ()Mix (50+)1:29:41 David Jeremiah Sermons 2026 💥🔥 The Rapture Is Near, But Not How You Expect 💥🙏 David Jeremiah 2026 Tin Nên Xem TV 10K views • 1 day ago Live Playlist ()Mix (50+)4:59 How to Download Old Free Fire 2022 [...] Image 26\n\n### How to Download Old Free Fire 2022 Version | Funny Way to Play Old Free Fire Again 🔥\n\n ᴘ⁴ᴍᴀx ☠️\n\n39 3d ago\n\nNew\n\nImage 27 2:13:59\n\nImage 28\n\n### Fall Asleep While I Operate Heavy Artillery\n\nsleepyslorgs\n\n524K 4d ago\n\nNew\n\nImage 29 12:18\n\nImage 30\n\n### How to Unlock 90/120 FPS in Free Fire Without Root | Smooth + No Lag Tutorial\n\nShoaib Updates\n\n22K 10mo ago\n\nImage 31 47:46\n\nImage 32\n\n### We Spent 100 Hours Making Giant Crochet Art!\n\nZHC Crafts\n\n883K 3d ago\n\nNew\n\nImage 33 2:00:00 [...] # Unlock 120 FPS in Free Fire MAX 🔥 | Root Required | Ultra Smooth Gameplay\n\nImage 7: Technical Krish\n\nTechnical Krish\n\n Technical Krish \n\n19K subscribers\n\nJoin\n\nSubscribe\n\nSubscribed\n\n121\n\nShare\n\nSave\n\nDownload\n\n Download \n\n6.7K views 3 months ago#RootAndroid#120FPS#FreeFireMAX\n\n 6,719 views • May 25, 2026 • #RootAndroid #120FPS #FreeFireMAX",
+        "score": 0.19627139,
+        "raw_content": null,
+        "id": "f593bb-04"
+      }
+    ],
+    "response_time": 1.65,
+    "request_id": "d54eaceb-4442-4d8a-a9ae-f52f146c0316"
+  }
+}

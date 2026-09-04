@@ -1,0 +1,188 @@
+{
+  "tag": "gpt-5.6-luna_high_teacher_v3_full",
+  "generated": "2026-09-04T19:53:36",
+  "provider": "openai",
+  "model": "gpt-5.6-luna",
+  "model_version": "gpt-5.6-luna",
+  "reasoning_effort": "high",
+  "web_search": true,
+  "prompt_file": "/home/prex_san/Documents/dp-detection/corpus-construction/outputs/prompts/teacher_v3_full.txt",
+  "prompt_stem": "teacher_v3_full",
+  "prompt_sha256": "a6ae58246360888865a93ebc4230e22033ab72c93b27e04bfcfe7d3908f9f662",
+  "gold_file": "/home/prex_san/Documents/dp-detection/corpus-construction/prompt_eval/gold_set.jsonl",
+  "n_requests": 30,
+  "n_scored": 30,
+  "micro_f1": 0.7812,
+  "micro_p": 0.8065,
+  "micro_r": 0.7576,
+  "example_f1": 0.7222,
+  "exact_match": 0.5667,
+  "class_macro_f1": 0.5896,
+  "meso_macro_f1": null,
+  "meso_macro_n_labels": 0,
+  "meso_macro_suppressed": true,
+  "none_p": 0.5556,
+  "none_r": 0.7143,
+  "none_f1": 0.625,
+  "tp": 25,
+  "fp": 6,
+  "fn": 8,
+  "missed_but_named_in_analysis": 2,
+  "per_label_f1": {
+    "M_DeceptiveLuxury": 0.0,
+    "M_EasyToPurchase": 1.0,
+    "M_Gambling": 0.0,
+    "M_IntermediateCurrency": 1.0,
+    "M_NeverEndingLure": 0.0,
+    "M_PayToProgress": 1.0,
+    "M_PowerCreep": 0.0,
+    "M_RecurringFee": 0.0,
+    "M_UIMisdirection": 0.8571,
+    "M_WasteAversion": 1.0,
+    "P_AestheticManipulation": 0.0,
+    "P_CompleteTheCollection": 0.0,
+    "P_EasyToGetHardToLose": 0.0,
+    "P_IllusionOfControl": 1.0,
+    "P_OptimismAndFrequencyBiases": 0.0,
+    "P_RewardMania": 0.8,
+    "S_Competition": 0.0,
+    "S_EncouragesAntiSocialBehavior": 0.0,
+    "S_FearOfMissingOutFOMO": 0.0,
+    "S_ForcedFellowship": 0.0,
+    "S_FriendSpamImpersonation": 0.0,
+    "S_Reciprocity": 0.6667,
+    "T_Advertisement": 0.8,
+    "T_DailyRewards": 1.0,
+    "T_Grinding": 1.0,
+    "T_InfiniteTreadmill": 0.0,
+    "T_MandatoryMarathon": 0.5,
+    "T_PlayingByAppointment": 1.0,
+    "Tech_FragmentedDownloads": 0.0
+  },
+  "per_label_support": {
+    "M_DeceptiveLuxury": 1,
+    "M_EasyToPurchase": 2,
+    "M_Gambling": 0,
+    "M_IntermediateCurrency": 3,
+    "M_NeverEndingLure": 1,
+    "M_PayToProgress": 1,
+    "M_PowerCreep": 0,
+    "M_RecurringFee": 0,
+    "M_UIMisdirection": 4,
+    "M_WasteAversion": 1,
+    "P_AestheticManipulation": 0,
+    "P_CompleteTheCollection": 0,
+    "P_EasyToGetHardToLose": 0,
+    "P_IllusionOfControl": 1,
+    "P_OptimismAndFrequencyBiases": 0,
+    "P_RewardMania": 2,
+    "S_Competition": 1,
+    "S_EncouragesAntiSocialBehavior": 0,
+    "S_FearOfMissingOutFOMO": 0,
+    "S_ForcedFellowship": 0,
+    "S_FriendSpamImpersonation": 0,
+    "S_Reciprocity": 2,
+    "T_Advertisement": 5,
+    "T_DailyRewards": 2,
+    "T_Grinding": 1,
+    "T_InfiniteTreadmill": 0,
+    "T_MandatoryMarathon": 3,
+    "T_PlayingByAppointment": 3,
+    "Tech_FragmentedDownloads": 0
+  },
+  "class_f1": {
+    "Monetary": 0.8421,
+    "Psychological": 0.8571,
+    "Social": 0.3333,
+    "Technical": 0.0,
+    "Temporal": 0.88,
+    "None": 0.625
+  },
+  "top_over_labelled": [
+    [
+      "S_Competition",
+      2
+    ],
+    [
+      "T_Advertisement",
+      1
+    ],
+    [
+      "Tech_FragmentedDownloads",
+      1
+    ],
+    [
+      "M_Gambling",
+      1
+    ],
+    [
+      "P_RewardMania",
+      1
+    ]
+  ],
+  "top_under_labelled": [
+    [
+      "T_MandatoryMarathon",
+      2
+    ],
+    [
+      "M_NeverEndingLure",
+      1
+    ],
+    [
+      "M_UIMisdirection",
+      1
+    ],
+    [
+      "M_DeceptiveLuxury",
+      1
+    ],
+    [
+      "S_Competition",
+      1
+    ]
+  ],
+  "api_errors": 0,
+  "parsed": 30,
+  "truncated": 0,
+  "labels_emitted": 31,
+  "bad_codes": 0,
+  "dup_labels_r1": 0,
+  "missing_span_r3": 0,
+  "span_not_verbatim": 0,
+  "span_loose": 0,
+  "span_verbatim_rate": 1.0,
+  "pricing": {
+    "model": "gpt-5.6-luna",
+    "as_of": "2026-08-21",
+    "input": 0.2,
+    "cached_input": 0.02,
+    "cache_write": 0.25,
+    "output": 1.2
+  },
+  "tokens": {
+    "input_tokens": 912357,
+    "cached_tokens": 868521,
+    "cache_write_tokens": 29949,
+    "uncached_input_tokens": 13887,
+    "output_tokens": 22800,
+    "reasoning_tokens": 16321
+  },
+  "cache_hit_rate": 0.952,
+  "mean_output_tokens": 760.0,
+  "mean_reasoning_tokens": 544.0,
+  "spend_usd": 0.054995,
+  "usd_per_review": 0.00183317,
+  "projected_usd_at_200000": 366.63,
+  "cost_share": {
+    "cached": 0.3159,
+    "cache_write": 0.1361,
+    "uncached_input": 0.0505,
+    "output": 0.4975
+  },
+  "latency_p50": 6.17,
+  "latency_p95": 22.39,
+  "latency_mean": 9.28,
+  "search_rate": 0.0667,
+  "perreview_file": "/home/prex_san/Documents/dp-detection/corpus-construction/outputs/prompt-eval/run-stats/gpt-5.6-luna/high/teacher_v3_full/gpt-5.6-luna_high_teacher_v3_full_perreview.jsonl"
+}

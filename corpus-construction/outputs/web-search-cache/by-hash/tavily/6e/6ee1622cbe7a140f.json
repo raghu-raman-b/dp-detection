@@ -1,0 +1,91 @@
+{
+  "query": "MONOPOLY GO dice event reward expires 2 days",
+  "sent_query": "MONOPOLY GO dice event reward expires 2 days",
+  "query_hash": "6ee1622cbe7a140f",
+  "answer": "Monopoly GO dice event rewards typically expire within two days. To claim them, use active links promptly. Some links may last up to a week.",
+  "sources": [
+    {
+      "title": "Monopoly GO Free Dice Rolls Links (Sep 2026)",
+      "url": "https://gamerant.com/monopoly-go-how-to-get-free-dice-roll-links-today",
+      "host": "gamerant.com"
+    },
+    {
+      "title": "Do others have issues with Monopoly Go rewards expiring ...",
+      "url": "https://www.facebook.com/groups/935040604232613/posts/2008793120190684",
+      "host": "facebook.com"
+    },
+    {
+      "title": "Monopoly GO! Wiki",
+      "url": "https://monopolygo.wiki",
+      "host": "monopolygo.wiki"
+    },
+    {
+      "title": "r/Monopoly_GO - Didn't get event rewards?",
+      "url": "https://www.reddit.com/r/Monopoly_GO/comments/1hp4x6q/didnt_get_event_rewards",
+      "host": "reddit.com"
+    },
+    {
+      "title": "How To Fix Event Rewards Not Received In Monopoly GO! ...",
+      "url": "https://www.youtube.com/watch?v=QR7GD4o7xzg",
+      "host": "youtube.com"
+    }
+  ],
+  "backend": "tavily",
+  "cached": false,
+  "cost_usd": 0.008,
+  "latency_s": 2.3,
+  "n_results": 5,
+  "domains": [],
+  "error": null,
+  "ts": "2026-09-04T10:11:40+00:00",
+  "raw": {
+    "query": "MONOPOLY GO dice event reward expires 2 days",
+    "follow_up_questions": null,
+    "answer": "Monopoly GO dice event rewards typically expire within two days. To claim them, use active links promptly. Some links may last up to a week.",
+    "images": [],
+    "results": [
+      {
+        "url": "https://gamerant.com/monopoly-go-how-to-get-free-dice-roll-links-today",
+        "title": "Monopoly GO Free Dice Rolls Links (Sep 2026)",
+        "content": "Yes. Most Monopoly GO dice links expire within two days, although some remain active for up to a week. Each Monopoly GO dice link can only be redeemed once per",
+        "score": 0.8593928,
+        "raw_content": null,
+        "id": "8d7691-00"
+      },
+      {
+        "url": "https://www.facebook.com/groups/935040604232613/posts/2008793120190684",
+        "title": "Do others have issues with Monopoly Go rewards expiring ...",
+        "content": "REWARDS Rewards are valid for few days. they don't work, they may have expired already been used n your account.",
+        "score": 0.6991933,
+        "raw_content": null,
+        "id": "d4ac2c-01"
+      },
+      {
+        "url": "https://monopolygo.wiki",
+        "title": "Monopoly GO! Wiki",
+        "content": "Acme Farm Partners starts August 26, 2026. See Partner Event rewards, milestone points, dates, and team-play tips for Monopoly GO.\n\nMonopolyGO.wikiRead story\n\nRecently published\n\n## Latest updates\n\nView all posts\n\n\n\nArticle\n\n### Monopoly GO! Free Dice Links Today - Updated August 25, 2026\n\nClaim active Monopoly GO free dice links and other official rewards before they expire.\n\nRead more\n\n\n\nArticle\n\n### Next Golden Blitz: Family Portrait and The Goods [...] Skip to content\n\nMonopoly GO! WikiMonopoly GO! Wiki\n\nNews, events, and guides\n\n# MONOPOLY GO! news, free dice, sticker trading, and daily events\n\nTips, free dice, sticker trading for Monopoly GO! Get daily free dice links, event and tournament updates, and stickers to complete your albums.\n\n\n\nEvent Post\n\n## Acme Farm Partners: Starts August 26, 2026 - Rewards & Guide [...] All Monopoly GO events and tournaments starting today, Aug 24, 2026. Updated daily by MOGO Wiki.\n\nRead more\n\n\n\nArticle\n\n### Today's Events (Aug 23, 2026)\n\nAll Monopoly GO events and tournaments starting today, Aug 23, 2026. Updated daily by MOGO Wiki.\n\nRead more\n\n\n\nArticle\n\n### Today's Events (Aug 22, 2026)\n\nAll Monopoly GO events and tournaments starting today, Aug 22, 2026. Updated daily by MOGO Wiki.\n\nRead more\n\nExplore MOGO Wiki\n\n## Browse timely topics\n\nAll news & guides",
+        "score": 0.598524,
+        "raw_content": null,
+        "id": "233804-02"
+      },
+      {
+        "url": "https://www.reddit.com/r/Monopoly_GO/comments/1hp4x6q/didnt_get_event_rewards",
+        "title": "r/Monopoly_GO - Didn't get event rewards?",
+        "content": "Looks like my final partner (who I had no way of communicating with) ended up finishing the final build in the very nick of time (note the green up arrows,",
+        "score": 0.22663853,
+        "raw_content": null,
+        "id": "4a8282-03"
+      },
+      {
+        "url": "https://www.youtube.com/watch?v=QR7GD4o7xzg",
+        "title": "How To Fix Event Rewards Not Received In Monopoly GO! ...",
+        "content": "How To Fix Event Rewards Not Received In Monopoly GO! Tutorial Today we talk about Fix Event Rewards Not Received In Monopoly GO,monopoly",
+        "score": 0.2099232,
+        "raw_content": null,
+        "id": "e34303-04"
+      }
+    ],
+    "response_time": 1.37,
+    "request_id": "532c782a-2721-45e7-a0eb-f9af4d958dd9"
+  }
+}

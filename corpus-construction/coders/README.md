@@ -1,6 +1,6 @@
 # coders/
 
-One `coder_<id>_<stamp>.jsonl` per human coder, exactly as `dp_coder.html`
+One `coder_<id>.jsonl` per human coder, exactly as `dp_coder.html`
 writes it ("Download labels"). Drop the files each coder returns in here and
 nothing else — `compute_agreement.py` treats **every** `*.jsonl` in this
 folder as a rater, so a stray file silently becomes a fifth opinion.

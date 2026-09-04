@@ -1,0 +1,91 @@
+{
+  "query": "Royal Match card collection sets event completing sets rewards",
+  "sent_query": "Royal Match card collection sets event completing sets rewards",
+  "query_hash": "15f2c52de284b368",
+  "answer": "The Royal Match card collection event spans 62 days, requiring completion of 15 sets for rewards. Completing all sets unlocks a grand prize of 10,000 Gold Coins, Boosters, and an exclusive badge. Card packs from various events are used to collect cards.",
+  "sources": [
+    {
+      "title": "Royal Match Cards [New Royal Collection Guide] • Old Cynic",
+      "url": "https://oldcynic.com/royal-match-cards-royal-collection",
+      "host": "oldcynic.com"
+    },
+    {
+      "title": "What is Collection? — Royal Match Help Center",
+      "url": "https://dreamgames.helpshift.com/hc/en/3-royal-match/faq/332-what-is-collection",
+      "host": "dreamgames.helpshift.com"
+    },
+    {
+      "title": "All about Collections in Royal Match",
+      "url": "https://play.google.com/store/apps/editorial?id=mc_games_editorialevergreen_royal_match_all_about_collection_postinstall_fcp&hl=en_US",
+      "host": "play.google.com"
+    },
+    {
+      "title": "Dark Collection Has a Third Round of Cards",
+      "url": "https://www.reddit.com/r/RoyalKingdomGame/comments/1ohtvs7/dark_collection_has_a_third_round_of_cards",
+      "host": "reddit.com"
+    },
+    {
+      "title": "How to complete the Royal Card collection?",
+      "url": "https://www.facebook.com/groups/royalmatchfan/posts/792060229729287",
+      "host": "facebook.com"
+    }
+  ],
+  "backend": "tavily",
+  "cached": false,
+  "cost_usd": 0.008,
+  "latency_s": 2.225,
+  "n_results": 5,
+  "domains": [],
+  "error": null,
+  "ts": "2026-09-04T10:14:44+00:00",
+  "raw": {
+    "query": "Royal Match card collection sets event completing sets rewards",
+    "follow_up_questions": null,
+    "answer": "The Royal Match card collection event spans 62 days, requiring completion of 15 sets for rewards. Completing all sets unlocks a grand prize of 10,000 Gold Coins, Boosters, and an exclusive badge. Card packs from various events are used to collect cards.",
+    "images": [],
+    "results": [
+      {
+        "url": "https://oldcynic.com/royal-match-cards-royal-collection",
+        "title": "Royal Match Cards [New Royal Collection Guide] • Old Cynic",
+        "content": "This post may contain speculation, opinion, and comedy. It is not advice and is solely for entertainment & informational purposes.\n\n## How Does the Royal Collection Work? (Royal Match Cards)\n\nThe Royal Collection is an event that runs over 62 days where you collect cards to complete sets to unlock rewards.\n\nThe ultimate goal is to collect each of the 135 available cards to complete all 15 sets to win a Grand Prize of 10,000 Gold Coins, Boosters, and an exclusive profile badge. [...] Royal Match Royal Collection Guide\n\nThe Royal Match Royal Collection Guide\n\nCards are collected via Card Packs, which are given as rewards from other events, like Propeller Madness, Team Treasure, King’s Cup, Royal Pass, and Book of Treasure.\n\nThere are 4 different coloured Card Packs available, each containing a different number of cards:\n\n Brown = 2 cards\n Green = 3 cards\n Blue = 4 cards\n Purple = 6 cards\n\nThere is also a special Red Card Pack that guarantees a minimum of 1 New card. [...] Here are the rewards for the Grand Royal Collection:\n\n 15,000 free coins\n 15 Rockets, 15 TNTs, and 15 Light Balls\n\n## Completing the Grand Royal Collection (Can You Still Share Cards?)\n\nHere is a screenshot of my completed Grand Royal Collection:\n\nOnce you’ve completed the Grand Royal Collection, you will no longer receive Card Packs as rewards.\n\nInstead, you’ll earn normal prizes, like Boosters, for example.\n\nThis time, your card collection doesn’t reset.",
+        "score": 0.8939131,
+        "raw_content": null,
+        "id": "ceb50a-00"
+      },
+      {
+        "url": "https://dreamgames.helpshift.com/hc/en/3-royal-match/faq/332-what-is-collection",
+        "title": "What is Collection? — Royal Match Help Center",
+        "content": "Collection is a time-limited feature where you collect cards from friends, events, tournaments, and chests to complete sets for great rewards.",
+        "score": 0.85216236,
+        "raw_content": null,
+        "id": "240181-01"
+      },
+      {
+        "url": "https://play.google.com/store/apps/editorial?id=mc_games_editorialevergreen_royal_match_all_about_collection_postinstall_fcp&hl=en_US",
+        "title": "All about Collections in Royal Match",
+        "content": "You'll earn these cards in packs as rewards for completing events, tournaments, and opening area chests. Collections can contain hundreds of cards – Space",
+        "score": 0.838376,
+        "raw_content": null,
+        "id": "c62c54-02"
+      },
+      {
+        "url": "https://www.reddit.com/r/RoyalKingdomGame/comments/1ohtvs7/dark_collection_has_a_third_round_of_cards",
+        "title": "Dark Collection Has a Third Round of Cards",
+        "content": "It's odd getting all new cards, at least to start. teheditor. •. 10mo ago. Royal Match did it. It's just to gain rewards for completing sets.",
+        "score": 0.7304634,
+        "raw_content": null,
+        "id": "c7f195-03"
+      },
+      {
+        "url": "https://www.facebook.com/groups/royalmatchfan/posts/792060229729287",
+        "title": "How to complete the Royal Card collection?",
+        "content": "When you complete nine unique cards in a set, you can claim the associated reward of the completed set. Sets are unlocked at a certain",
+        "score": 0.69622743,
+        "raw_content": null,
+        "id": "ad1ac3-04"
+      }
+    ],
+    "response_time": 1.23,
+    "request_id": "5a8a1cca-696c-46a2-a39e-d58480de7b01"
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "query": "Real Cricket game does the AI fielding catch balls in solo matches",
+  "sent_query": "Real Cricket game does the AI fielding catch balls in solo matches",
+  "query_hash": "9e31cc56297da890",
+  "answer": "In Real Cricket, AI fielders do catch balls in solo matches, but they often miss easy catches and behave unrealistically. The game emphasizes motion-captured fielding. Known issues persist with AI fielding.",
+  "sources": [
+    {
+      "title": "Cricket 24 - Megathread - Page 3 - Cricket 24 - Big Ant Studios Community Forum",
+      "url": "https://board.bigant.com/t/cricket-24-megathread/37?page=3",
+      "host": "board.bigant.com"
+    },
+    {
+      "title": "‎Real Cricket™ App - App Store",
+      "url": "https://apps.apple.com/in/app/real-cricket/id1577721431",
+      "host": "apps.apple.com"
+    },
+    {
+      "title": "Real Cricket™ - Apps on Google Play",
+      "url": "https://play.google.com/store/apps/details?id=com.nautilus.realcricket&hl=en_US",
+      "host": "play.google.com"
+    },
+    {
+      "title": "Have they fixed AI quick singles and dropped catches in ...",
+      "url": "https://www.facebook.com/groups/1558485564502270/posts/2753881604962654",
+      "host": "facebook.com"
+    }
+  ],
+  "backend": "tavily",
+  "cached": false,
+  "cost_usd": 0.008,
+  "latency_s": 3.308,
+  "n_results": 4,
+  "domains": [],
+  "error": null,
+  "ts": "2026-09-04T12:48:11+00:00",
+  "raw": {
+    "query": "Real Cricket game does the AI fielding catch balls in solo matches",
+    "follow_up_questions": null,
+    "answer": "In Real Cricket, AI fielders do catch balls in solo matches, but they often miss easy catches and behave unrealistically. The game emphasizes motion-captured fielding. Known issues persist with AI fielding.",
+    "images": [],
+    "results": [
+      {
+        "url": "https://board.bigant.com/t/cricket-24-megathread/37?page=3",
+        "title": "Cricket 24 - Megathread - Page 3 - Cricket 24 - Big Ant Studios Community Forum",
+        "content": "There are many bugs with fielding. The player does not throw the ball well as the throw bar automatically moves up and down. Even AI fielders would stand there instead of catching the ball, the ball would fall right next to them but they would not care. Fielders would dive or fall for no reason whatsoever. Fielding is not fiery or up to the mark. Even dive looks so stupid. I literally feel like playing a mobile cricket game. THIS NEEDS THE MOST ATTENTION NOW! [...] AI sometimes doesn’t play according to the required run rate. For instance, during the super over or in the last few overs when the run rate is high like 15, the AI would be leaving the ball, taking singles or not even take a chance.\n\n@JNT\\_BA I would like to suggest one more important improvement for Cricket 24, specifically regarding the off-side shot elevation. Currently, the unrealistic sky-high elevation of off-side shots looks quite odd and detracts from the overall realism of the game. [...] We can’t take runs after AI throws the ball and it deflects hitting the stumps. However, the AI seem to do it.\n\nIt would be great if you could also allow the option to select the fielding control, same as C19. For instance, pressing O for bowler’s end and X for keeper’s, instead of always holding R1 and then throwing it.\n\nIt would be a big, big improvement if we could restore or move our C22 customer teams to C24. Just the kits or roasters would do it.",
+        "score": 0.5769478,
+        "raw_content": null,
+        "id": "0ca50d-00"
+      },
+      {
+        "url": "https://apps.apple.com/in/app/real-cricket/id1577721431",
+        "title": "‎Real Cricket™ App - App Store",
+        "content": "are bowling in the worst way possible, they are getting a free wicket by catching or just by stumping. But when the team that I selected goes for fielding, they leave the most easiest catch ever. And when the free hit ball comes, they now have the audacity to catch the ball. Means they don’t know how to behave in serious situations. And yesterday while playing a match of India vs Zimbabwe, the batsman had chosen stroke and had diverted the ball in the late section as it shows whether it is [...] are bowling in the worst way possible, they are getting a free wicket by catching or just by stumping. But when the team that I selected goes for fielding, they leave the most easiest catch ever. And when the free hit ball comes, they now have the audacity to catch the ball. Means they don’t know how to behave in serious situations. And yesterday while playing a match of India vs Zimbabwe, the batsman had chosen stroke and had diverted the ball in the late section as it shows whether it is [...] Master 700+ batting shots from graceful drives to explosive slogs across Gold and Platinum categories. Every innings feels fresh and dynamic for online cricket fans.\nExperience Cricket Like Never Before!\nRC™ brings motion-captured fielding and catching to life, making every dive, throw, and celebration feel like real cricket on mobile.\nPlay Your Way with the Shot Map!",
+        "score": 0.53269315,
+        "raw_content": null,
+        "id": "beff29-01"
+      },
+      {
+        "url": "https://play.google.com/store/apps/details?id=com.nautilus.realcricket&hl=en_US",
+        "title": "Real Cricket™ - Apps on Google Play",
+        "content": "Icon image\n\n# Real Cricket™\n\nIcon image\nContent rating\nContent rating\nScreenshot image\nScreenshot image\nScreenshot image\nScreenshot image\nScreenshot image\nScreenshot image\nScreenshot image\nScreenshot image\nScreenshot image\nScreenshot image\nScreenshot image\nScreenshot image\nScreenshot image\nScreenshot image\nScreenshot image\nScreenshot image\nScreenshot image\nScreenshot image\nScreenshot image\nScreenshot image\nScreenshot image\nScreenshot image\nScreenshot image\nScreenshot image\n\n## About this game [...] ## About this game\n\n## Data safety\n\nIcon image\nIcon image\nIcon image\nIcon image\n\n## Ratings and reviews\n\n## What’s new\n\nContent rating\n\n## App support\n\n## More by KRAFTON, Inc.\n\nThumbnail image\nThumbnail image\nThumbnail image\nThumbnail image\nThumbnail image\n\n## Similar games\n\nThumbnail image\nThumbnail image\nThumbnail image\nThumbnail image\nThumbnail image\nThumbnail image\n\nPlay Pass\n\nPlay Points\n\nGift cards\n\nRedeem\n\nRefund policy\n\nParent Guide\n\nFamily sharing\n\nTerms of Service\n\nPrivacy [...] Privacy\n\nAbout Google Play\n\nDevelopers\n\nGoogle Store",
+        "score": 0.30878446,
+        "raw_content": null,
+        "id": "b042d7-02"
+      },
+      {
+        "url": "https://www.facebook.com/groups/1558485564502270/posts/2753881604962654",
+        "title": "Have they fixed AI quick singles and dropped catches in ...",
+        "content": "Have they fixed the silly quick singles that the AI do all the time?!? Also the number of dropped catches by the keeper? Cheers. \nNot bought the game as",
+        "score": 0.16020063,
+        "raw_content": null,
+        "id": "7ee8fb-03"
+      }
+    ],
+    "response_time": 2.24,
+    "request_id": "91d69317-7a42-411d-9e56-8732691333a2"
+  }
+}

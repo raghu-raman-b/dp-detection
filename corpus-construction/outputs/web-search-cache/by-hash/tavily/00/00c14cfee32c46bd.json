@@ -1,0 +1,91 @@
+{
+  "query": "Dice Dreams album cards duplicates deal new cards scam",
+  "sent_query": "Dice Dreams album cards duplicates deal new cards scam",
+  "query_hash": "00c14cfee32c46bd",
+  "answer": "Dice Dreams has been accused of scamming players with duplicate cards and new charges. Reviews highlight issues with monetization and lack of new cards. Players report feeling scammed and frustrated.",
+  "sources": [
+    {
+      "title": "Beware : r/DiceDreams - Reddit",
+      "url": "https://www.reddit.com/r/DiceDreams/comments/1f2v6zw/beware",
+      "host": "reddit.com"
+    },
+    {
+      "title": "Frustrations with Dice Dreams Game - Facebook",
+      "url": "https://www.facebook.com/groups/serembanstreetfood/posts/3878267335776151",
+      "host": "facebook.com"
+    },
+    {
+      "title": "Tycoons, get ready to roll in style—Signature Dice are coming soon!",
+      "url": "https://www.instagram.com/reel/DC98sW9PTuv?hl=en",
+      "host": "instagram.com"
+    },
+    {
+      "title": "Read Customer Service Reviews of dicedreams.com | 2 of 8 - Trustpilot",
+      "url": "https://www.trustpilot.com/review/dicedreams.com?page=2",
+      "host": "trustpilot.com"
+    },
+    {
+      "title": "Game Deconstruct — “Dice Dreams”",
+      "url": "https://medium.com/@jairajp1992/deconstructing-dice-dreams-1d19c157b219",
+      "host": "medium.com"
+    }
+  ],
+  "backend": "tavily",
+  "cached": false,
+  "cost_usd": 0.008,
+  "latency_s": 3.185,
+  "n_results": 5,
+  "domains": [],
+  "error": null,
+  "ts": "2026-09-04T10:18:05+00:00",
+  "raw": {
+    "query": "Dice Dreams album cards duplicates deal new cards scam",
+    "follow_up_questions": null,
+    "answer": "Dice Dreams has been accused of scamming players with duplicate cards and new charges. Reviews highlight issues with monetization and lack of new cards. Players report feeling scammed and frustrated.",
+    "images": [],
+    "results": [
+      {
+        "url": "https://www.reddit.com/r/DiceDreams/comments/1f2v6zw/beware",
+        "title": "Beware : r/DiceDreams - Reddit",
+        "content": "It's a scam. Also, these weren't charges from the past either. I went thru my charges and these are new charges that I got nothing for.",
+        "score": 0.6219319,
+        "raw_content": null,
+        "id": "5254a2-00"
+      },
+      {
+        "url": "https://www.facebook.com/groups/serembanstreetfood/posts/3878267335776151",
+        "title": "Frustrations with Dice Dreams Game - Facebook",
+        "content": ".. it's free to download but not free to play (spammers & scammers will be reported) I had 11 billion duplicates. Hardly getting new cards for",
+        "score": 0.6133529,
+        "raw_content": null,
+        "id": "d74362-01"
+      },
+      {
+        "url": "https://www.instagram.com/reel/DC98sW9PTuv?hl=en",
+        "title": "Tycoons, get ready to roll in style—Signature Dice are coming soon!",
+        "content": "This game seriously needs to provide more new cards when stickers are rewarded. It's not right to continue so many duplicates when albums can",
+        "score": 0.528753,
+        "raw_content": null,
+        "id": "2beee6-02"
+      },
+      {
+        "url": "https://www.trustpilot.com/review/dicedreams.com?page=2",
+        "title": "Read Customer Service Reviews of dicedreams.com | 2 of 8 - Trustpilot",
+        "content": "I was scammed by Dice Dream and Earnstar together. This company hasn't invited their customers, so reviews may not be representative",
+        "score": 0.3964893,
+        "raw_content": null,
+        "id": "2d6628-03"
+      },
+      {
+        "url": "https://medium.com/@jairajp1992/deconstructing-dice-dreams-1d19c157b219",
+        "title": "Game Deconstruct — “Dice Dreams”",
+        "content": "### Albums\n\nAlbums is like any other card collection event found in other game genres. Here you collect Card Packs from events as rewards or through special offers. Each card pack grants you stickers. Each sticker is a part of a set which is a part of the album. Players earn rewards for completing sets and albums.\n\nThere are different types of cards based on rarity.\n\n## Monetization\n\nDice Dreams has a main store and many special offers active at a time.\n\n### Main Store [...] Players can unlock these cards by unlocking new kingdoms. Each card has a crown collection target that can be achieved by completing buildings.\n\n### Attack\n\nThe attack minigame is similar to that in CM and yet different. You are taken to another Player’s kingdom where we can attack any of the structures to win coins. Reward depends on chance and to some extent player’s skill. It is executed in the below steps — [...] ## Minigames\n\nDice Dreams has gone beyond just the Raid / Attack mechanic of CM and expanded the whole set of minigames that can be played through the Dice outcomes. It has been packaged as a card collection where these minigames can be unlocked and upgraded. Apart from the minigames, this card collection also has cards for Coin and Roll outcome which increases the coins and rolls granted through the core action of roll.",
+        "score": 0.2930862,
+        "raw_content": null,
+        "id": "50a367-04"
+      }
+    ],
+    "response_time": 1.04,
+    "request_id": "3dbff3ab-1036-4020-ae5e-ea3402ca9f24"
+  }
+}

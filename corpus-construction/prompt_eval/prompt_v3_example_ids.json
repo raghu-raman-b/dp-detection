@@ -1,0 +1,719 @@
+{
+ "prompt_version": "v3",
+ "codebook_version": "0.20",
+ "generated": "2026-09-04",
+ "source": "corpus-construction/prompt_v3_examples.md",
+ "note": "Reviews promoted from the adjudicated gold set into the v3 prompt as worked examples. Any review listed here is contaminated for evaluation purposes and must be excluded from any set used to score a prompt that contains it.",
+ "not_excluded": {
+  "pinned_global_exemplars": [
+   "9d76ef06-a218-4ef4-b835-75443f4ec987",
+   "331c695a-8b57-4a46-b4d2-00fcdff9ec1a"
+  ],
+  "why": "Pinned in build_prompt.py and drawn from the codebook's own example pool, not from the gold set, so they never appear in the validation set and need no exclusion.",
+  "appendix_a_none_candidates": [
+   "6ccb26a7-01e3-41a3-ba1a-bddba2063257",
+   "3db5f780-e8e1-44a1-b538-63120ac046a6"
+  ],
+  "why_appendix_a": "Offered as possible NONE exemplars but not used: v3 keeps the pinned v2 NONE exemplar. They stay in the eval set. If a future prompt uses either, it must be added here and the eval set rebuilt."
+ },
+ "n_reviews": 45,
+ "n_label_instances": 58,
+ "reviews": [
+  {
+   "review_id": "03e1dcd5-9c13-4b7f-a9e1-d2ebdc8f5773",
+   "game_name": "Disney Solitaire",
+   "gold_labels": [
+    "M_Gambling",
+    "P_IllusionOfControl",
+    "P_OptimismAndFrequencyBiases",
+    "P_RewardMania"
+   ],
+   "used_for": [
+    {
+     "label": "P_OptimismAndFrequencyBiases",
+     "role": "coverage"
+    }
+   ]
+  },
+  {
+   "review_id": "042ee18e-d78e-4a0f-9cc2-2b1e10cc46e6",
+   "game_name": "Total Battle: War Strategy",
+   "gold_labels": [
+    "T_Grinding",
+    "T_InfiniteTreadmill",
+    "P_EasyToGetHardToLose"
+   ],
+   "used_for": [
+    {
+     "label": "P_EasyToGetHardToLose",
+     "role": "coverage"
+    },
+    {
+     "label": "T_Grinding",
+     "role": "coverage"
+    },
+    {
+     "label": "T_InfiniteTreadmill",
+     "role": "coverage"
+    }
+   ]
+  },
+  {
+   "review_id": "07dd542b-2a71-4772-8a68-538115f1f826",
+   "game_name": "Match Factory!",
+   "gold_labels": [
+    "M_PayToProgress",
+    "S_Reciprocity"
+   ],
+   "used_for": [
+    {
+     "label": "M_PayToProgress",
+     "role": "coverage"
+    },
+    {
+     "label": "S_Reciprocity",
+     "role": "apt"
+    }
+   ]
+  },
+  {
+   "review_id": "12105fcc-1fe5-46c6-8d77-d0bd2a11d6f1",
+   "game_name": "Bingo Blitz™️ - Bingo Games",
+   "gold_labels": [
+    "P_EasyToGetHardToLose"
+   ],
+   "used_for": [
+    {
+     "label": "P_EasyToGetHardToLose",
+     "role": "apt"
+    }
+   ]
+  },
+  {
+   "review_id": "2471db11-2c61-415a-8af4-33b80a05c759",
+   "game_name": "Clash of Clans",
+   "gold_labels": [
+    "T_Grinding",
+    "M_PowerCreep"
+   ],
+   "used_for": [
+    {
+     "label": "M_PowerCreep",
+     "role": "apt"
+    }
+   ]
+  },
+  {
+   "review_id": "2b915fb2-6ff4-4351-9b2f-e8db5661e0a5",
+   "game_name": "Dark War Survival",
+   "gold_labels": [
+    "M_EasyToPurchase"
+   ],
+   "used_for": [
+    {
+     "label": "M_EasyToPurchase",
+     "role": "apt"
+    }
+   ]
+  },
+  {
+   "review_id": "2d118652-5693-499a-8f3f-d02d0b405cd4",
+   "game_name": "BGMI: FPS Battle Royale",
+   "gold_labels": [
+    "Tech_FragmentedDownloads"
+   ],
+   "used_for": [
+    {
+     "label": "Tech_FragmentedDownloads",
+     "role": "coverage"
+    }
+   ]
+  },
+  {
+   "review_id": "2fd4ef32-a33b-44ed-a921-2889ba6e0375",
+   "game_name": "Ludo King®",
+   "gold_labels": [
+    "S_Competition",
+    "P_IllusionOfControl",
+    "P_OptimismAndFrequencyBiases"
+   ],
+   "used_for": [
+    {
+     "label": "P_IllusionOfControl",
+     "role": "apt"
+    }
+   ]
+  },
+  {
+   "review_id": "31c8de21-5262-4e88-9d3c-feaffe08ec14",
+   "game_name": "Merge Cooking®",
+   "gold_labels": [
+    "T_PlayingByAppointment",
+    "T_Advertisement",
+    "M_WasteAversion"
+   ],
+   "used_for": [
+    {
+     "label": "M_WasteAversion",
+     "role": "coverage"
+    }
+   ]
+  },
+  {
+   "review_id": "41a6813f-af68-497a-ac7b-2532b4659186",
+   "game_name": "Jackpot Party Casino Slots",
+   "gold_labels": [
+    "P_OptimismAndFrequencyBiases"
+   ],
+   "used_for": [
+    {
+     "label": "P_OptimismAndFrequencyBiases",
+     "role": "apt"
+    }
+   ]
+  },
+  {
+   "review_id": "443ba104-8abc-48c7-b8a7-b875ec52b05b",
+   "game_name": "Call of Duty®: Mobile",
+   "gold_labels": [
+    "T_MandatoryMarathon"
+   ],
+   "used_for": [
+    {
+     "label": "T_MandatoryMarathon",
+     "role": "apt"
+    }
+   ]
+  },
+  {
+   "review_id": "49a53e7c-0564-46c6-995f-1d8bc418c80a",
+   "game_name": "MONOPOLY GO!",
+   "gold_labels": [
+    "S_Reciprocity",
+    "P_CompleteTheCollection",
+    "P_RewardMania"
+   ],
+   "used_for": [
+    {
+     "label": "P_CompleteTheCollection",
+     "role": "apt"
+    }
+   ]
+  },
+  {
+   "review_id": "4a9d42d6-ad1d-4d3e-9cd1-5b16339524b0",
+   "game_name": "Match Masters",
+   "gold_labels": [
+    "M_PayToProgress",
+    "M_EasyToPurchase",
+    "M_NeverEndingLure",
+    "S_Competition",
+    "P_AestheticManipulation",
+    "P_RewardMania"
+   ],
+   "used_for": [
+    {
+     "label": "M_NeverEndingLure",
+     "role": "apt"
+    },
+    {
+     "label": "P_AestheticManipulation",
+     "role": "apt"
+    }
+   ]
+  },
+  {
+   "review_id": "50be85ac-f98c-4d2c-a70c-4465974027c0",
+   "game_name": "Township",
+   "gold_labels": [
+    "T_DailyRewards"
+   ],
+   "used_for": [
+    {
+     "label": "T_DailyRewards",
+     "role": "apt"
+    }
+   ]
+  },
+  {
+   "review_id": "57add346-8b93-4249-be50-1a39331cf79b",
+   "game_name": "RAID: Shadow Legends",
+   "gold_labels": [
+    "M_PayToProgress",
+    "M_DeceptiveLuxury",
+    "S_ForcedFellowship"
+   ],
+   "used_for": [
+    {
+     "label": "M_DeceptiveLuxury",
+     "role": "apt"
+    },
+    {
+     "label": "S_ForcedFellowship",
+     "role": "apt"
+    }
+   ]
+  },
+  {
+   "review_id": "6088dbf1-7d56-4302-945e-72fd73832609",
+   "game_name": "Cash Frenzy™ - Casino Slots",
+   "gold_labels": [
+    "M_RecurringFee"
+   ],
+   "used_for": [
+    {
+     "label": "M_RecurringFee",
+     "role": "apt"
+    }
+   ]
+  },
+  {
+   "review_id": "64e4aba6-ce6d-420a-b5cb-4422c11c4186",
+   "game_name": "Yalla Ludo - Ludo&Jackaroo",
+   "gold_labels": [
+    "T_MandatoryMarathon",
+    "S_EncouragesAntiSocialBehavior",
+    "S_Competition"
+   ],
+   "used_for": [
+    {
+     "label": "S_EncouragesAntiSocialBehavior",
+     "role": "coverage"
+    }
+   ]
+  },
+  {
+   "review_id": "681563e1-227c-4af2-8a1f-a145f3a795ca",
+   "game_name": "Pokémon GO",
+   "gold_labels": [
+    "S_Reciprocity"
+   ],
+   "used_for": [
+    {
+     "label": "S_Reciprocity",
+     "role": "coverage"
+    }
+   ]
+  },
+  {
+   "review_id": "71d54398-28c7-4f4a-a67d-0914206f59c6",
+   "game_name": "GODDESS OF VICTORY: NIKKE",
+   "gold_labels": [
+    "M_IntermediateCurrency",
+    "M_DeceptiveLuxury",
+    "M_Gambling",
+    "P_RewardMania"
+   ],
+   "used_for": [
+    {
+     "label": "M_DeceptiveLuxury",
+     "role": "coverage"
+    }
+   ]
+  },
+  {
+   "review_id": "86de0e5d-8187-4dfd-b8c3-05e5b271d89e",
+   "game_name": "Real Cricket™",
+   "gold_labels": [
+    "T_Advertisement",
+    "P_IllusionOfControl"
+   ],
+   "used_for": [
+    {
+     "label": "T_Advertisement",
+     "role": "apt"
+    }
+   ]
+  },
+  {
+   "review_id": "97c23c8d-b858-4afa-83b1-ebd08d56badc",
+   "game_name": "Dice Dreams™️",
+   "gold_labels": [
+    "M_NeverEndingLure"
+   ],
+   "used_for": [
+    {
+     "label": "M_NeverEndingLure",
+     "role": "coverage"
+    }
+   ]
+  },
+  {
+   "review_id": "a12fb168-3791-4d93-8cee-9b38fceb3059",
+   "game_name": "Moba Legends: 5v5!",
+   "gold_labels": [
+    "S_Competition",
+    "P_IllusionOfControl"
+   ],
+   "used_for": [
+    {
+     "label": "P_IllusionOfControl",
+     "role": "coverage"
+    },
+    {
+     "label": "S_Competition",
+     "role": "coverage"
+    }
+   ]
+  },
+  {
+   "review_id": "a4d925c0-1248-4d12-ad93-5b8b1ced3b8d",
+   "game_name": "Shadow Fight 4: Arena",
+   "gold_labels": [
+    "Tech_FragmentedDownloads"
+   ],
+   "used_for": [
+    {
+     "label": "Tech_FragmentedDownloads",
+     "role": "apt"
+    }
+   ]
+  },
+  {
+   "review_id": "a59f5319-a1b7-4991-8c6b-d2d2ca56265c",
+   "game_name": "Fate/Grand Order (English)",
+   "gold_labels": [
+    "M_PayToProgress",
+    "M_DeceptiveLuxury",
+    "M_Gambling",
+    "M_UIMisdirection",
+    "P_EasyToGetHardToLose",
+    "P_RewardMania"
+   ],
+   "used_for": [
+    {
+     "label": "M_Gambling",
+     "role": "apt"
+    }
+   ]
+  },
+  {
+   "review_id": "ab9a6418-85dc-4e82-a279-bab6e1e5e148",
+   "game_name": "Carrom Pool: Disc Game",
+   "gold_labels": [
+    "T_PlayingByAppointment",
+    "S_Competition"
+   ],
+   "used_for": [
+    {
+     "label": "T_PlayingByAppointment",
+     "role": "coverage"
+    }
+   ]
+  },
+  {
+   "review_id": "b0a2aece-2b3e-4026-966b-7836e3cfc6bc",
+   "game_name": "Genshin Impact",
+   "gold_labels": [
+    "M_DeceptiveLuxury",
+    "M_PowerCreep",
+    "P_EasyToGetHardToLose",
+    "P_RewardMania"
+   ],
+   "used_for": [
+    {
+     "label": "M_PowerCreep",
+     "role": "coverage"
+    },
+    {
+     "label": "P_RewardMania",
+     "role": "coverage"
+    }
+   ]
+  },
+  {
+   "review_id": "b4d6e64c-bd0c-49aa-9023-ed3f59bc63bf",
+   "game_name": "Match Masters",
+   "gold_labels": [
+    "S_ForcedFellowship",
+    "S_FriendSpamImpersonation"
+   ],
+   "used_for": [
+    {
+     "label": "S_ForcedFellowship",
+     "role": "coverage"
+    },
+    {
+     "label": "S_FriendSpamImpersonation",
+     "role": "apt"
+    }
+   ]
+  },
+  {
+   "review_id": "b6745663-5486-4e5b-9066-8a889055d8bc",
+   "game_name": "Travel Town - Merge Adventure",
+   "gold_labels": [
+    "M_PayToProgress",
+    "M_IntermediateCurrency",
+    "M_UIMisdirection"
+   ],
+   "used_for": [
+    {
+     "label": "M_IntermediateCurrency",
+     "role": "apt"
+    }
+   ]
+  },
+  {
+   "review_id": "bc0d6ee6-1f01-4101-8c25-fc4da5a1ef7c",
+   "game_name": "Travel Town - Merge Adventure",
+   "gold_labels": [
+    "M_WasteAversion"
+   ],
+   "used_for": [
+    {
+     "label": "M_WasteAversion",
+     "role": "apt"
+    }
+   ]
+  },
+  {
+   "review_id": "c1a9f304-9cc1-4eb5-84f0-7988297fe423",
+   "game_name": "Lotsa Slots - Casino Games",
+   "gold_labels": [
+    "M_IntermediateCurrency",
+    "M_Gambling",
+    "P_RewardMania"
+   ],
+   "used_for": [
+    {
+     "label": "M_Gambling",
+     "role": "coverage"
+    }
+   ]
+  },
+  {
+   "review_id": "c2c60604-401f-416e-9489-a53cbaa6a968",
+   "game_name": "Chess - Play and Learn Online",
+   "gold_labels": [
+    "P_AestheticManipulation"
+   ],
+   "used_for": [
+    {
+     "label": "P_AestheticManipulation",
+     "role": "coverage"
+    }
+   ]
+  },
+  {
+   "review_id": "c63003ef-dcdd-4ef2-a54e-0c9b0dfe931a",
+   "game_name": "Kingshot",
+   "gold_labels": [
+    "T_PlayingByAppointment",
+    "T_DailyRewards",
+    "T_Grinding"
+   ],
+   "used_for": [
+    {
+     "label": "T_DailyRewards",
+     "role": "coverage"
+    }
+   ]
+  },
+  {
+   "review_id": "cbcde992-08aa-4bfb-a653-a944e4b733aa",
+   "game_name": "Mech Arena - Shooting Game",
+   "gold_labels": [
+    "M_EasyToPurchase",
+    "M_UIMisdirection"
+   ],
+   "used_for": [
+    {
+     "label": "M_EasyToPurchase",
+     "role": "coverage"
+    },
+    {
+     "label": "M_UIMisdirection",
+     "role": "coverage"
+    }
+   ]
+  },
+  {
+   "review_id": "ce1c6456-5d34-4001-a1a8-8b5991ef8ffb",
+   "game_name": "War Robots Multiplayer Battles",
+   "gold_labels": [
+    "T_Advertisement",
+    "M_PayToProgress",
+    "S_Competition"
+   ],
+   "used_for": [
+    {
+     "label": "S_Competition",
+     "role": "apt"
+    }
+   ]
+  },
+  {
+   "review_id": "ce92d6ba-cc5f-40a1-bc8e-27a82fa0a8f8",
+   "game_name": "8 Ball Pool",
+   "gold_labels": [
+    "T_Advertisement"
+   ],
+   "used_for": [
+    {
+     "label": "T_Advertisement",
+     "role": "coverage"
+    }
+   ]
+  },
+  {
+   "review_id": "d8278e85-b5f2-45ef-88ad-ea3370a5195d",
+   "game_name": "Whiteout Survival",
+   "gold_labels": [
+    "M_UIMisdirection"
+   ],
+   "used_for": [
+    {
+     "label": "M_UIMisdirection",
+     "role": "apt"
+    }
+   ]
+  },
+  {
+   "review_id": "d96bbc2c-73bb-4af5-9597-34a44117c7f5",
+   "game_name": "Fishdom",
+   "gold_labels": [
+    "M_RecurringFee"
+   ],
+   "used_for": [
+    {
+     "label": "M_RecurringFee",
+     "role": "coverage"
+    }
+   ]
+  },
+  {
+   "review_id": "da13d098-3944-4e0b-aa94-c064a56edd83",
+   "game_name": "Mystery Town: Merge Games",
+   "gold_labels": [
+    "M_PayToProgress",
+    "M_IntermediateCurrency",
+    "P_CompleteTheCollection"
+   ],
+   "used_for": [
+    {
+     "label": "M_PayToProgress",
+     "role": "apt"
+    },
+    {
+     "label": "P_CompleteTheCollection",
+     "role": "coverage"
+    }
+   ]
+  },
+  {
+   "review_id": "e92fc4f7-bdda-4f54-a8e2-aa591fbc7945",
+   "game_name": "Shadow Fight 4: Arena",
+   "gold_labels": [
+    "T_Grinding",
+    "S_FriendSpamImpersonation"
+   ],
+   "used_for": [
+    {
+     "label": "S_FriendSpamImpersonation",
+     "role": "coverage"
+    },
+    {
+     "label": "T_Grinding",
+     "role": "apt"
+    }
+   ]
+  },
+  {
+   "review_id": "ee8d0008-1f3c-400d-bbbe-d29e8a7c0405",
+   "game_name": "Tiles Survive!",
+   "gold_labels": [
+    "M_PayToProgress",
+    "S_EncouragesAntiSocialBehavior",
+    "S_Competition"
+   ],
+   "used_for": [
+    {
+     "label": "S_EncouragesAntiSocialBehavior",
+     "role": "apt"
+    }
+   ]
+  },
+  {
+   "review_id": "f09401aa-1aef-4c8b-ac3a-92eec49af44d",
+   "game_name": "Homescapes",
+   "gold_labels": [
+    "M_PayToProgress",
+    "S_FearOfMissingOutFOMO",
+    "S_Competition",
+    "P_EasyToGetHardToLose"
+   ],
+   "used_for": [
+    {
+     "label": "S_FearOfMissingOutFOMO",
+     "role": "coverage"
+    }
+   ]
+  },
+  {
+   "review_id": "f62c8a1f-91fc-4866-b267-977172fa2db3",
+   "game_name": "Toon Blast",
+   "gold_labels": [
+    "T_InfiniteTreadmill",
+    "S_Competition"
+   ],
+   "used_for": [
+    {
+     "label": "T_InfiniteTreadmill",
+     "role": "apt"
+    }
+   ]
+  },
+  {
+   "review_id": "f9424404-513f-41a9-a3b9-a97670e89512",
+   "game_name": "Last War:Survival Game",
+   "gold_labels": [
+    "T_PlayingByAppointment",
+    "M_PayToProgress",
+    "S_FearOfMissingOutFOMO",
+    "S_Competition",
+    "P_RewardMania"
+   ],
+   "used_for": [
+    {
+     "label": "P_RewardMania",
+     "role": "apt"
+    },
+    {
+     "label": "S_FearOfMissingOutFOMO",
+     "role": "apt"
+    },
+    {
+     "label": "T_PlayingByAppointment",
+     "role": "apt"
+    }
+   ]
+  },
+  {
+   "review_id": "fb70e577-e644-4af9-88a1-773476a5b805",
+   "game_name": "Free Fire: 9th Anniversary",
+   "gold_labels": [
+    "M_IntermediateCurrency"
+   ],
+   "used_for": [
+    {
+     "label": "M_IntermediateCurrency",
+     "role": "coverage"
+    }
+   ]
+  },
+  {
+   "review_id": "fe4ad63c-0bee-4c2e-814f-1e4f46f14d3d",
+   "game_name": "Township",
+   "gold_labels": [
+    "T_MandatoryMarathon"
+   ],
+   "used_for": [
+    {
+     "label": "T_MandatoryMarathon",
+     "role": "coverage"
+    }
+   ]
+  }
+ ]
+}

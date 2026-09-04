@@ -1,0 +1,30 @@
+{
+  "tag": "deepseek-v4-flash_max_teacher_v2_full",
+  "model": "deepseek-v4-flash",
+  "reasoning_effort": "max",
+  "prompt_file": "/home/prex_san/Documents/dp-detection/corpus-construction/outputs/prompts/teacher_v2_full.txt",
+  "prompt_sha256": "aad355174ac44da072eee2003a4d2ed48038e273fcdc70e5c51dffa8e4a54416",
+  "eval_set": "tuning",
+  "reviews_file": "/home/prex_san/Documents/dp-detection/corpus-construction/tuning/tuning_set_50_blind.jsonl",
+  "n_selected": 50,
+  "started": "2026-09-04T15:49:37",
+  "complete": true,
+  "spend_usd": 0.203717,
+  "extra_tool_loop_calls": 6,
+  "search_spend_usd": 0.048,
+  "pricing_windows_seen": [
+    "off_peak"
+  ],
+  "ok": 50,
+  "parsed": 50,
+  "truncated": 0,
+  "searched": 5,
+  "contract_bad": 1,
+  "api_errors": 0,
+  "parse_failures": 0,
+  "retried": 5,
+  "extra_attempts": 5,
+  "superseded": 0,
+  "refusals": 0,
+  "updated": "2026-09-04T16:17:31"
+}

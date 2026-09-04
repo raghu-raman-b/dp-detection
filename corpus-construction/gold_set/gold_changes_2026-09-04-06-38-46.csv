@@ -1,0 +1,150 @@
+review_id,game_name,market,original_labels,final_labels,added,removed,changed,n_coders_coded,n_abstain,unanimous,contested,ruled,decision_rule,disputed,note
+ac5fc6a4-b597-46f3-af5a-3735b3854e26,Gossip Harbor: Merge & Story,UK,M_EasyToPurchase;M_NeverEndingLure,M_EasyToPurchase;M_NeverEndingLure,,,0,3,0,0,1,1,,0,"M_NeverEndingLure: not even 10 minutes into playing it, it notified me that I bought a starter pack
+M_EasyToPurchase: it notified me that I bought a starter pack. I didn't tap anything and my settings are set up to where I have to input my fingerprint or password to make a purchase and it did not do that. "
+2b915fb2-6ff4-4351-9b2f-e8db5661e0a5,Dark War Survival,UK,M_EasyToPurchase,M_EasyToPurchase,,,0,3,0,1,0,1,,0,"M_EasyToPurchase: accidentally brought a pack when I double tapped the screen
+"
+c1a9f304-9cc1-4eb5-84f0-7988297fe423,Lotsa Slots - Casino Games,US,M_Gambling,M_IntermediateCurrency;M_Gambling;P_RewardMania,M_IntermediateCurrency;P_RewardMania,,1,3,0,0,1,1,,0,"M_IntermediateCurrency: The bonus when buying is smaller
+M_Gambling: slot games there are less costly options
+P_RewardMania: slot games"
+2fd4ef32-a33b-44ed-a921-2889ba6e0375,Ludo King®,IN,P_IllusionOfControl;P_OptimismAndFrequencyBiases,S_Competition;P_IllusionOfControl;P_OptimismAndFrequencyBiases,S_Competition,,1,3,0,0,1,1,,0,"S_Competition: One player will get more and more 6s and another one will get 1 or 2 mostly
+P_IllusionOfControl: Dice rolls are not random at all, they are preplanned
+P_OptimismAndFrequencyBiases: One player will get more and more 6s and another one will get 1 or 2 mostly"
+a4d925c0-1248-4d12-ad93-5b8b1ced3b8d,Shadow Fight 4: Arena,IN,Tech_FragmentedDownloads,Tech_FragmentedDownloads,,,0,3,0,1,0,1,,0,Tech_FragmentedDownloads: I thought I already download the file but I still get an additional download
+47cb4d59-0121-40f1-9ffc-220c458bd581,Seaside Escape®: Merge & Story,UK,M_WasteAversion,M_WasteAversion,,,0,3,0,0,1,1,,0,"M_WasteAversion: After just over a week of play, game is now gridlocked. Way too many new things on a tiny board"
+86de0e5d-8187-4dfd-b8c3-05e5b271d89e,Real Cricket™,IN,T_Advertisement;P_IllusionOfControl,T_Advertisement;P_IllusionOfControl,,,0,3,0,1,0,1,,0,"T_Advertisement: Too much ads are shown after every over and every wicket fell
+P_IllusionOfControl: Opponent takes catches very easily while our team drops all the catches except one or two"
+e92fc4f7-bdda-4f54-a8e2-aa591fbc7945,Shadow Fight 4: Arena,IN,T_Grinding;S_FriendSpamImpersonation,T_Grinding;S_FriendSpamImpersonation,,,0,3,0,0,1,1,,0,"T_Grinding: takes quite a long time to unlock new heros...I have done close to 100 fights and still have the first two heros
+S_FriendSpamImpersonation: ""share to unlock this hero"" won't unlock the hero for me"
+f62c8a1f-91fc-4866-b267-977172fa2db3,Toon Blast,UK,T_InfiniteTreadmill;S_Competition,T_InfiniteTreadmill;S_Competition,,,0,3,0,0,1,1,,0,"T_InfiniteTreadmill: No new levels for 2 weeks and get a champions league. Its a money grab and I fell for it. Get new levels on 3/2/26 only to go maybe 50 levels and no more levels. Come to 3/3, another champions league
+S_Competition: champions league"
+c63003ef-dcdd-4ef2-a54e-0c9b0dfe931a,Kingshot,UK,T_DailyRewards;T_Grinding,T_PlayingByAppointment;T_DailyRewards;T_Grinding,T_PlayingByAppointment,,1,3,0,0,1,1,"DailyRewards ""vs Playing by Appointment"" boundary + R9: the daily quest cycle is what the player must rely on to advance, so the daily mechanism itself acts as the progression barrier.",0,"T_Grinding: and all the game ever had me do what click to upgrade this or research that or go there. 
+T_DailyRewards: wad impossible to keep track of them without relying on the daily quests and such.
+T_PlayingByAppointment: wad impossible to keep track of them without relying on the daily quests and such."
+57add346-8b93-4249-be50-1a39331cf79b,RAID: Shadow Legends,UK,M_PayToProgress;M_DeceptiveLuxury;S_ForcedFellowship,M_PayToProgress;M_DeceptiveLuxury;S_ForcedFellowship,,,0,3,0,0,1,1,,0,"M_PayToProgress: p2p is the best way to win this game
+M_DeceptiveLuxury: advertising ""special"" or ""limited time"" deals
+S_ForcedFellowship: got a free champion and silver from a referral"
+97c23c8d-b858-4afa-83b1-ebd08d56badc,Dice Dreams™️,UK,M_NeverEndingLure,M_NeverEndingLure,,,0,3,0,1,0,1,,0,M_NeverEndingLure: awesome the beginner packs really help get you started
+bc0d6ee6-1f01-4101-8c25-fc4da5a1ef7c,Travel Town - Merge Adventure,UK,M_WasteAversion,M_WasteAversion,,,0,3,0,0,1,1,,0,M_WasteAversion: The limited space is bothersome too and you have to use diamonds to buy more storage 
+ce92d6ba-cc5f-40a1-bc8e-27a82fa0a8f8,8 Ball Pool,IN,T_Advertisement,T_Advertisement,,,0,3,0,0,1,1,,0,T_Advertisement: way too many ads and paid popups. I've never seen a game ask u to watch an ad just to claim a daily reward
+5e2d7a91-2181-4ad5-b5fb-cc1f50805d82,Real Cricket™,IN,T_Advertisement,T_Advertisement;M_UIMisdirection,M_UIMisdirection,,1,3,0,1,0,1,,0,"T_Advertisement: After every over, an ad pops up.
+M_UIMisdirecton: If I accidentally tap the ad instead of cancel, the game closes and the ad opens."
+31c8de21-5262-4e88-9d3c-feaffe08ec14,Merge Cooking®,UK,T_PlayingByAppointment;T_Advertisement;M_WasteAversion,T_PlayingByAppointment;T_Advertisement;M_WasteAversion,,,0,3,0,1,0,1,,0,"T_PlayingByAppointment: time it takes to recharge items and how long it takes to 'cook' is frustrating
+T_Advertisement: I have to watch adds for a measly recharge only to run out again quickly.
+M_WasteAversion: I run out of space on the board and have to delete items I spent time on."
+991f5326-63fb-4951-8773-84050dd70912,Candy Crush Soda Saga,UK,M_DeceptiveLuxury,M_DeceptiveLuxury,,,0,3,0,0,1,1,,0,M_DeceptiveLuxury: purchased a weekly one time offer
+da13d098-3944-4e0b-aa94-c064a56edd83,Mystery Town: Merge Games,UK,M_PayToProgress;P_CompleteTheCollection,M_PayToProgress;M_IntermediateCurrency;P_CompleteTheCollection,M_IntermediateCurrency,,1,3,0,0,1,1,,0,"M_PayToProgress:  you can't do anything without using in app purchases; the energy cap will barely get you midway through an order unless you use all your gems
+M_IntermediateCurrency: gems. like everything just feels like a trap to get you to spend real money
+P_CompleteTheCollection: never be able to complete the card packs"
+50be85ac-f98c-4d2c-a70c-4465974027c0,Township,UK,T_DailyRewards,T_DailyRewards,,,0,3,0,1,0,1,,0,T_DailyRewards: I had a login streak of 53 that I just lost today for no reason. I did not miss yesterday's login.
+ee8d0008-1f3c-400d-bbbe-d29e8a7c0405,Tiles Survive!,IN,M_PayToProgress;S_EncouragesAntiSocialBehavior;S_Competition,M_PayToProgress;S_EncouragesAntiSocialBehavior;S_Competition,,,0,3,0,0,1,1,,0,"M_PayToProgress: Extremely pay2win
+S_EncouragesAntiSocialBehavior: game modes where strong players steal from weaker players
+S_Competition: a bunch of game modes where strong players steal from weaker players"
+f9424404-513f-41a9-a3b9-a97670e89512,Last War:Survival Game,UK,T_PlayingByAppointment;M_PayToProgress;S_FearOfMissingOutFOMO;S_Competition;P_RewardMania,T_PlayingByAppointment;M_PayToProgress;S_FearOfMissingOutFOMO;S_Competition;P_RewardMania,,,0,3,0,0,1,1,,0,"T_PlayingByAppointment: login every 2-3 hours 24/7 
+M_PayToProgress:Competing=who spends the most.
+S_FearOfMissingOutFOMO:pressure to login every 2-3 hours 24/7 is constant with Arms Race or keep it open all day long so you don't miss treasure digs
+S_Competiton:Competing=who spends the most
+P_RewardMania:This is a gacha game and 4x"
+6877b6bf-e9e0-4c86-a196-e7c85a51529f,Candy Crush Saga,US,M_UIMisdirection,M_UIMisdirection;S_Competition,S_Competition,,1,3,0,0,1,1,,0,"M_UIMisdirection: and are you sure you want to quit screens that you have to X out of before continuing. 
+S_Competition: pop up screens with weekly challenge score"
+2471db11-2c61-415a-8af4-33b80a05c759,Clash of Clans,UK,M_PowerCreep,T_Grinding;M_PowerCreep,T_Grinding,,1,3,0,0,1,1,,0,"T_Grinding: You will spend months upgrading troops; I've played over 10 years, it's just a chore at this point, not fun. 
+M_PowerCreep: You will spend months upgrading troops and defenses just to be nerfed"
+eb67d840-0a90-4d5a-875b-2ff49975ea31,Animals & Coins: Animal Run,UK,T_Advertisement,T_Advertisement,,,0,3,0,0,1,1,,0,T_Advertisement: The problem I have with all these games is the seemingly endless in-game ads and pop-ups that cascade one after another so much that by the time
+a59f5319-a1b7-4991-8c6b-d2d2ca56265c,Fate/Grand Order (English),UK,T_Grinding;M_DeceptiveLuxury;M_Gambling;M_UIMisdirection;P_EasyToGetHardToLose;P_RewardMania,M_PayToProgress;M_DeceptiveLuxury;M_Gambling;M_UIMisdirection;P_EasyToGetHardToLose;P_RewardMania,M_PayToProgress,T_Grinding,1,3,0,0,1,1,,0,"M_PayToProgress: That, and an incentive to roll the slots for things to reduce the amount of grind
+M_DeceptiveLuxury: majority of them are limited time only; (~$140 for 50% to get a 'rate up' character)
+M_Gambling: (~$140 for 50% to get a 'rate up' character)
+M_UIMisdirection: Every part of the game is set up to direct you towards the slot machine summoning system.
+P_EasyToGetHardToLose: Gameplay is mostly just grind to build sunk cost.
+P_RewardMania: Every part of the game is set up to direct you towards the slot machine summoning system."
+d8278e85-b5f2-45ef-88ad-ea3370a5195d,Whiteout Survival,UK,M_UIMisdirection,M_UIMisdirection,,,0,3,0,0,1,1,,0,"M_UIMisdirection: Loaded it up for the first time in a week to a flashing button I didn't recognise. Clicked the button ""DO YOU WANT TO PAY US $8?!""
+"
+366f36fc-4496-4a46-a01e-dc43d4e20e11,Bingo Voyage - Live Bingo Game,UK,,,,,0,3,0,1,0,1,,0,"NONE
+"
+03e1dcd5-9c13-4b7f-a9e1-d2ebdc8f5773,Disney Solitaire,UK,M_Gambling;P_IllusionOfControl;P_OptimismAndFrequencyBiases,M_Gambling;P_IllusionOfControl;P_OptimismAndFrequencyBiases;P_RewardMania,P_RewardMania,,1,3,0,0,1,1,,0,"M_Gambling: Even if you pay the astronomical coins to get another handful of cards, you still have the same card left.
+P_IllusionOfControl: This is incredibly rigged; designed to get you hooked early to develop into impossibility
+P_OptimismAndFrequencyBiases: . You can be down to one card and have 10 cards left in your deck and end up going through those 10 cards and still have one card left. Even if you pay the astronomical coins to get another handful of cards, you still have the same card left. 
+P_RewardMania: Even if you pay the astronomical coins to get another handful of cards, you still have the same card left. If you were to take an actual deck of cards, your chances would be significantly higher."
+3db5f780-e8e1-44a1-b538-63120ac046a6,Flambé®: Merge & Cook,UK,,,,,0,3,0,0,1,1,,0,NONE
+f09401aa-1aef-4c8b-ac3a-92eec49af44d,Homescapes,UK,M_PayToProgress;S_FearOfMissingOutFOMO;S_Competition;P_AestheticManipulation,M_PayToProgress;S_FearOfMissingOutFOMO;S_Competition;P_EasyToGetHardToLose,P_EasyToGetHardToLose,P_AestheticManipulation,1,3,0,0,1,1,,0,"M_PayToProgress: every time you lose the game reminds you that unless you pay up, you're going to go down on the leaderboard
+S_FearOfMissingOut: you're going to go down on the leaderboard and will lose all your winning streak rewards.
+S_Competition:  but I hate how the game tries to force you to be competitive.
+P_EasyToGetHardToLose: will lose all your winning streak rewards. "
+3dc64fb0-3b6a-4ba1-9966-79c09f33069c,Royal Kingdom,UK,T_Advertisement,M_UIMisdirection,M_UIMisdirection,T_Advertisement,1,3,0,0,1,1,,0,"M_UIMisdirection: What has put me off is the fact that to get out of the ad, you have to go into the play store"
+443ba104-8abc-48c7-b8a7-b875ec52b05b,Call of Duty®: Mobile,IN,T_MandatoryMarathon,T_MandatoryMarathon,,,0,3,0,1,0,1,,0,T_MandatoryMarathon: I get penalized for leaving matches early on top of that and I wasn't even the one who quit the match!
+549751b1-5735-41ac-94d3-d1bd62c47abf,Coin Master,UK,T_DailyRewards,T_DailyRewards,,,0,3,0,0,1,1,,0,"T_DailyRewards: said I broke my streak and though I did not, it sent me right back to the beginning"
+07dd542b-2a71-4772-8a68-538115f1f826,Match Factory!,UK,S_Reciprocity,M_PayToProgress;S_Reciprocity,M_PayToProgress,,1,3,0,1,0,1,,0,"M_PayToProgress: Unless you're willing to pay for them
+S_Reciprocity: Ppl can gift lives to each other"
+036954c0-447e-460d-b81e-f26f940b2ac4,Shadow Fight 4: Arena,IN,T_MandatoryMarathon,T_MandatoryMarathon,,,0,3,0,1,0,1,,0,T_MandatoryMarathon:  we playing the game and finally game has suddenly stopped and says YOU HAVE LOST and then nearly -30 to -50 gaming points are lessed from my Ranked game progress
+b0a2aece-2b3e-4026-966b-7836e3cfc6bc,Genshin Impact,IN,M_PowerCreep;P_RewardMania,M_DeceptiveLuxury;M_PowerCreep;P_EasyToGetHardToLose;P_RewardMania,M_DeceptiveLuxury;P_EasyToGetHardToLose,,1,3,0,0,1,1,,0,"M_DeceptiveLuxury: Fontaine arrived the characters started becoming expensive because of premium team comps
+M_PowerCreep: old characters started falling off which I hope they could climb back up. And now the Meta shifts now are extremely fast..
+P_EasyToGetHardToLose: I love the game, I invested so much time and effort in it.
+P_RewardMania: how much rewards we get.. it's so low each patch barely gives us enough to hit hard pity."
+d96bbc2c-73bb-4af5-9597-34a44117c7f5,Fishdom,US,M_RecurringFee,M_RecurringFee,,,0,3,0,0,1,1,,0,M_RecurringFee: season pass
+7732d254-0a39-4614-acf4-e67840e14b76,Cashman Casino Slots Games,US,M_IntermediateCurrency,M_IntermediateCurrency;P_RewardMania,P_RewardMania,,1,3,0,0,1,1,,0,"M_IntermediateCurrency: iv started playing a new game and buying coins from them
+P_RewardMania: the bonus lady rarely comes out or even matches with anything on ww4."
+94246484-0b03-4247-91b7-a7b5e6c5ff5c,Pokémon GO,UK,S_Reciprocity,S_Reciprocity,,,0,3,0,0,1,1,,0,S_Reciprocity: open/send gifts
+042ee18e-d78e-4a0f-9cc2-2b1e10cc46e6,Total Battle: War Strategy,UK,T_Grinding;T_InfiniteTreadmill;P_EasyToGetHardToLose,T_Grinding;T_InfiniteTreadmill;P_EasyToGetHardToLose,,,0,3,0,0,1,1,,0,"T_Grinding:  'Groundhog Day', meaning that I show up, complete tasks, spend gold and potion, spend real money, then come back tomorrow and do it all over again. 
+T_InfiniteTreadmill: There is no real progress or advancement; there is no pot of gold at the end of this rainbow.
+P_EasyToGetHardToLose:  It's a way to get you drawn in and invested in the game, so you feel obligated to keep playing."
+2f50b132-9762-4f48-ae35-487f414aa41a,MONOPOLY GO!,UK,S_Reciprocity,S_Reciprocity;P_RewardMania,P_RewardMania,,1,3,0,0,1,1,,0,"S_Reciprocity: enough trades
+P_RewardMania:  Way to many gold duplicates!"
+41a6813f-af68-497a-ac7b-2532b4659186,Jackpot Party Casino Slots,US,P_OptimismAndFrequencyBiases,P_OptimismAndFrequencyBiases,,,0,3,0,0,1,1,,0,"P_OptimismAndFrequencyBiases: you come close, but NOTHING is won or any game with REAL MONEY or prizes are always just a few points or coins away from a jackpot
+"
+e19dc016-9f44-4e0e-bc04-d5198a837c4a,Ludo King®,IN,P_IllusionOfControl,P_IllusionOfControl,,,0,3,0,0,1,1,,0,"P_IllusionOfControl: i feel guilty after installing it..sometime it feels like the game is meant to make you lose most of the time..it's partial..; ..if you are meant to lose, no matter how good you play you will definitley lose and in most of the cases this is the scene always."
+f112aad7-3ccd-4220-ae49-34d217dda09d,Gardenscapes,UK,T_Grinding,T_Grinding;T_MandatoryMarathon,T_MandatoryMarathon,,1,3,0,0,1,1,,0,"T_Grinding: Little did I know that what I'm playing is nothing less than candy crush. Always you play one game you just get one star only. And all your points get lost if you don't make that level.
+T_MandatoryMarathon: And all your points get lost if you don't make that level. "
+c2c60604-401f-416e-9489-a53cbaa6a968,Chess - Play and Learn Online,IN,,P_AestheticManipulation,P_AestheticManipulation,,1,3,0,0,1,1,,0,P_AestheticManipulation:  I end a game it sometimes show that i played brilliant moves but when I review it it doesn't show any brilliant move this wastes my free review
+01d62acd-a7ec-4bba-b0b7-1a0b600e8c04,Coin Master - Board Adventure,UK,,,,,0,3,0,1,0,1,,0,NONE
+b6745663-5486-4e5b-9066-8a889055d8bc,Travel Town - Merge Adventure,UK,M_IntermediateCurrency,M_PayToProgress;M_IntermediateCurrency;M_UIMisdirection,M_PayToProgress;M_UIMisdirection,,1,3,0,0,1,1,,0,"M_PayToProgress:  into buying gems/energy to play more
+M_IntermediateCurrency: buying gems
+M_UIMisdirection: opening the app and then having to click away ten different challenges is very annoying. ; please consider having a dismiss option "
+40767241-e96d-4020-a23b-8e08eb00ea95,Pixel Flow!,UK,T_Advertisement,T_Advertisement;M_UIMisdirection,M_UIMisdirection,,1,3,0,0,1,1,,0,"T_Advertisement: Can't close the ads, therefore can't continue playing without closing and restarting the game.
+M_UIMisdirection: Can't close the ads"
+42025004-6937-4657-ab75-72e97fe19166,Lightning Link Casino Slots,US,M_IntermediateCurrency,M_IntermediateCurrency;M_EasyToPurchase,M_EasyToPurchase,,1,3,0,0,1,1,,0,"M_IntermediateCurrency: bought a huge coin pack 
+M_EasyToPurchase: I messed up and accidentally bought a huge coin pack"
+fe4ad63c-0bee-4c2e-814f-1e4f46f14d3d,Township,UK,T_MandatoryMarathon,T_MandatoryMarathon,,,0,3,0,0,1,1,,0,"T_MandatoryMarathon: Please have a feature where you can edit plans for your town and then if you're not finished yet, you can temporarily save it as a draft so you can continue editing it later; Editing the plan of the town is very time consuming and it's unfortunate that you have to put all buildings in place first before you can save it and continue."
+ef1623a3-c6dd-4bff-b3a0-928b387776db,"Warhammer 40,000: Tacticus ™",UK,,,,,0,3,0,1,0,1,,0,NONE
+a12fb168-3791-4d93-8cee-9b38fceb3059,Moba Legends: 5v5!,IN,P_IllusionOfControl,S_Competition;P_IllusionOfControl,S_Competition,,1,3,0,0,1,1,,0,"S_Competition:  The match making
+P_IllusionOfControl: The match making, completely illogical,if you play good,game will give you bad teammates expecting you to carry and if you play bad,game will give you more bad teammates saying that it's so called ""skill based matching"""
+64e4aba6-ce6d-420a-b5cb-4422c11c4186,Yalla Ludo - Ludo&Jackaroo,IN,T_MandatoryMarathon;S_EncouragesAntiSocialBehavior;S_Competition,T_MandatoryMarathon;S_EncouragesAntiSocialBehavior;S_Competition,,,0,3,0,0,1,1,,0,"T_MandatoryMarathon: If the first player isn't responding or playing, the second player at the end have to exit and lose his credits because there are no limitations are for the Bot.
+S_EncouragesAntiSocialBehaviour: Some players can also misuse this feature to grab the credits of the corresponding players. 
+S_Competition: If the first player isn't responding or playing, the second player at the end have to exit and lose his credits because there are no limitations are for the Bot. Some players can also misuse this feature to grab the credits of the corresponding players."
+12105fcc-1fe5-46c6-8d77-d0bd2a11d6f1,Bingo Blitz™️ - Bingo Games,US,P_EasyToGetHardToLose,P_EasyToGetHardToLose,,,0,3,0,1,0,1,,0,"P_EasyToGetHardToLose: If I didnt have so much time invested I would not continue playing.
+"
+340ca9ea-754c-4fd9-ba70-70345a576196,Free Fire MAX,IN,,,,,0,3,0,1,0,1,,0,NONE
+6088dbf1-7d56-4302-945e-72fd73832609,Cash Frenzy™ - Casino Slots,US,M_RecurringFee,M_RecurringFee,,,0,3,0,1,0,1,,0,M_RecurringFee: season pass
+10f3de40-f550-4205-b6fe-611aa3402917,Cricket League,IN,T_Advertisement,T_Advertisement,,,0,3,0,1,0,1,,0,"T_Advertisement: What's worse, when you watch the ads, it conveniently ""can't connect"" so you can't get rewards for the ads you watched"
+bba96b29-914e-40d7-bc0d-49b352f54f85,Whiteout Survival,UK,T_PlayingByAppointment,T_PlayingByAppointment,,,0,3,0,0,1,1,,0,T_PlayingByAppointment: waiting for building times
+fb70e577-e644-4af9-88a1-773476a5b805,Free Fire: 9th Anniversary,US,M_IntermediateCurrency,M_IntermediateCurrency,,,0,3,0,0,1,1,,0,M_IntermediateCurrency: it just want you to top up to get this or that.
+71d54398-28c7-4f4a-a67d-0914206f59c6,GODDESS OF VICTORY: NIKKE,US,M_IntermediateCurrency;M_Gambling;P_RewardMania,M_IntermediateCurrency;M_DeceptiveLuxury;M_Gambling;P_RewardMania,M_DeceptiveLuxury,,1,3,0,0,1,1,,0,"M_IntermediateCurrency: You get about 20 tickets with $80 so even being generous 
+M_DeceptiveLuxury: still $600-$800 just to guarantee the unit you want. 4% chance to pull any SSR at any time; If you started with no currency and wanted a guaranteed unit, it's 200 tickets.
+M_Gambling: it's still $600-$800 just to guarantee the unit you want.
+P_RewardMania: Gacha"
+cbcde992-08aa-4bfb-a653-a944e4b733aa,Mech Arena - Shooting Game,IN,M_UIMisdirection,M_EasyToPurchase;M_UIMisdirection,M_EasyToPurchase,,1,3,0,0,1,1,,0,"M_EasyToPurchase: Every time you open the main menu you get a minimum of 10 pop up ads to buy gear/equipment 
+M_UIMisdirection: with small x buttons in the corner."
+49a53e7c-0564-46c6-995f-1d8bc418c80a,MONOPOLY GO!,US,P_CompleteTheCollection,S_Reciprocity;P_CompleteTheCollection;P_RewardMania,S_Reciprocity;P_RewardMania,,1,3,0,0,1,1,,0,"P_CompleteTheCollection: but the new sticker album has been made to be to difficult to get the non tradable gold cards
+P_RewardMania: I have been needing only gold cards for two months now and have only been awarded one new card in that time
+S_Reciprocity: tradable gold cards"
+681563e1-227c-4af2-8a1f-a145f3a795ca,Pokémon GO,US,S_Reciprocity,S_Reciprocity,,,0,3,0,1,0,1,,0,S_Reciprocity: Gift exchange screens
+8b4092da-3c5a-41fa-8d14-16c5737e6b85,Hitwicket™ Cricket Game 2026,IN,T_MandatoryMarathon,T_MandatoryMarathon,,,0,3,0,0,1,1,,0,T_MandatoryMarathon: i have to restart the game snd boom energy gone but no match progress
+e2a95947-be08-4077-ad5f-1e7891b9eff5,MadOut 2: Grand Auto Racing,IN,,,,,0,3,0,1,0,1,,0,NONE
+2d118652-5693-499a-8f3f-d02d0b405cd4,BGMI: FPS Battle Royale,IN,Tech_FragmentedDownloads,Tech_FragmentedDownloads,,,0,3,0,1,0,1,,0,"Tech_FragmentedDownloads: Maps, outfits, and other resource packs are downloading automatically in the background. The main issue is that even when I manually go to the settings and turn OFF the ""Auto-Download"" feature"
+b4d6e64c-bd0c-49aa-9023-ed3f59bc63bf,Match Masters,UK,S_ForcedFellowship;S_FriendSpamImpersonation,S_ForcedFellowship;S_FriendSpamImpersonation,,,0,3,0,1,0,1,,0,"S_ForcedFellowship: My real friends downlded & ""joined"" my team, but no success on their end or mine & NO coins rewarded!
+S_FriendSpamImpersonation: I decided 2 form a team, so invites were sent 2 gaming friends fr other apps, FB friends etc."
+a472fc08-300a-44ba-bc93-910ff7dad18e,Solitaire Grand Harvest,UK,T_PlayingByAppointment;M_PayToProgress;M_IntermediateCurrency,T_PlayingByAppointment;M_PayToProgress;M_IntermediateCurrency,,,0,3,0,0,1,1,,0,"T_PlayingByAppointment: which leaves you waiting an hour to play again or shell out cash for credits
+M_PayToProgress: leaves you waiting an hour to play again or shell out cash for credits
+M_IntermediateCurrency: shell out cash for credits"
+a1fa8982-758a-4925-adaf-52f14337dee1,Zynga Poker ™ – Texas Holdem,IN,T_DailyRewards,T_DailyRewards,,,0,3,0,1,0,1,,0,T_DailyRewards:  I've lost my 7 day streak for no reason whatsoever
+4a9d42d6-ad1d-4d3e-9cd1-5b16339524b0,Match Masters,UK,M_PayToProgress;M_NeverEndingLure;S_Competition;P_AestheticManipulation;P_RewardMania,M_PayToProgress;M_EasyToPurchase;M_NeverEndingLure;S_Competition;P_AestheticManipulation;P_RewardMania,M_EasyToPurchase,,1,3,0,0,1,1,,0,"M_PayToProgress: You can spend money to gain a competitive advantage.
+M_EasyToPurchase: It has pop up to sell you in game assets constantly
+M_NeverEndingLure: it discounts first time buyers
+S_Competition: You can spend money to gain a competitive advantage
+P_AestheticManipulation: it makes you feel like you've earned prizes, but you've earned the right to buy the prizes
+P_RewardMania: just one big slot machine"
+201672d6-579d-44c3-a1df-55a3f8182969,Travel Town - Merge Adventure,UK,T_PlayingByAppointment,T_PlayingByAppointment,,,0,3,0,0,1,1,,0,T_PlayingByAppointment: and it takes nearly 2 minutes for new chances to play.
+6ccb26a7-01e3-41a3-ba1a-bddba2063257,Lightning Link Casino Slots,US,M_Gambling,,,M_Gambling,1,3,0,0,1,1,,0,NONE
+5c0e0d12-6578-4169-ba24-c72a325799f1,All in Hole: Black Hole Games,US,T_Advertisement,T_Advertisement,,,0,3,0,1,0,1,,0,T_Advertisement: cant back out of ads or continue once an ad comes on
+ab9a6418-85dc-4e82-a279-bab6e1e5e148,Carrom Pool: Disc Game,IN,T_PlayingByAppointment,T_PlayingByAppointment;S_Competition,S_Competition,,1,3,0,0,1,1,,0,"T_PlayingByAppointment: The openning time for the chests is too long, 1 or 2 hours is fine, but 8 and 12 hours?!...come on!
+S_Competition: impossible to play when other players"
+ce1c6456-5d34-4001-a1a8-8b5991ef8ffb,War Robots Multiplayer Battles,IN,M_PayToProgress;S_Competition;P_IllusionOfControl,T_Advertisement;M_PayToProgress;S_Competition,T_Advertisement,P_IllusionOfControl,1,3,0,0,1,1,,0,"T_Advertisement: You are not just bombarded with tons of advertisements but after you progress up through the rankings
+M_PayToProgress:  The strategy is to make you spend and spend to reach to upper levels.
+S_Competition: you notice you are always competing with gamers way above your paygrade"

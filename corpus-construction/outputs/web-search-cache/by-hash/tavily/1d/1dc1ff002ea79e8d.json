@@ -1,0 +1,91 @@
+{
+  "query": "what is a login streak reward in Township game",
+  "sent_query": "what is a login streak reward in Township game",
+  "query_hash": "1dc1ff002ea79e8d",
+  "answer": "A login streak reward in Township game is a bonus players receive for consecutive daily logins, typically increasing in value with longer streaks. Missing a day resets the streak. Rewards include in-game currency and items.",
+  "sources": [
+    {
+      "title": "Daily login streak rewards - The Presentation Experience Wiki",
+      "url": "https://presentation.fandom.com/wiki/Daily_login_streak_rewards",
+      "host": "presentation.fandom.com"
+    },
+    {
+      "title": "How Daily Bonuses and Login Rewards Work in Social Mobile Games - , Gaming Blog",
+      "url": "https://egamersworld.com/blog/how-daily-bonuses-and-login-rewards-work-in-social-98CGDRjJw",
+      "host": "egamersworld.com"
+    },
+    {
+      "title": "Inspiring Examples of Daily Login Rewards for your Mobile Game - Beamable",
+      "url": "https://beamable.com/blog/inspiring-examples-of-daily-login-rewards-for-your-mobile-game",
+      "host": "beamable.com"
+    },
+    {
+      "title": "Why am I not getting daily login rewards in Township game?",
+      "url": "https://www.facebook.com/groups/township.official/posts/3616237415301691",
+      "host": "facebook.com"
+    },
+    {
+      "title": "will my no of days played streak die if i didnt login for a day?",
+      "url": "https://www.reddit.com/r/TownshipGame/comments/1bz7r9m/will_my_no_of_days_played_streak_die_if_i_didnt",
+      "host": "reddit.com"
+    }
+  ],
+  "backend": "tavily",
+  "cached": false,
+  "cost_usd": 0.008,
+  "latency_s": 2.204,
+  "n_results": 5,
+  "domains": [],
+  "error": null,
+  "ts": "2026-09-04T12:55:54+00:00",
+  "raw": {
+    "query": "what is a login streak reward in Township game",
+    "follow_up_questions": null,
+    "answer": "A login streak reward in Township game is a bonus players receive for consecutive daily logins, typically increasing in value with longer streaks. Missing a day resets the streak. Rewards include in-game currency and items.",
+    "images": [],
+    "results": [
+      {
+        "url": "https://presentation.fandom.com/wiki/Daily_login_streak_rewards",
+        "title": "Daily login streak rewards - The Presentation Experience Wiki",
+        "content": "Daily login streak rewards is a feature that was solely added in Update 15. The feature was added so that players can get some Points and Gems for logging",
+        "score": 0.8145405,
+        "raw_content": null,
+        "id": "21bd2e-00"
+      },
+      {
+        "url": "https://egamersworld.com/blog/how-daily-bonuses-and-login-rewards-work-in-social-98CGDRjJw",
+        "title": "How Daily Bonuses and Login Rewards Work in Social Mobile Games - , Gaming Blog",
+        "content": "Huuuge Casino demonstrates how daily bonuses in social mobile games are implemented to encourage frequent logins. These rewards are commonly structured as a login calendar or streak tracker, visible immediately when you launch the game. On each consecutive day, you receive different rewards, starting with small amounts of in-game currency, boosters, or chips and progressing to special prizes like bonus wheel spins or larger chests on milestone days. Most systems offer escalating value for each [...] value for each day in a streak, rewarding consecutive participation, while options like streak protection or catch-up days let you recover a missed day without losing progress. By combining accessibility with progression, these login rewards remain central to how free rewards mobile gaming operates and why they are so widely used across social titles. [...] While the core idea is simple, daily login bonuses mobile game offers include diverse design elements to maximize appeal. Some games feature calendar resets for missed days, while others use streak repair options or allow retroactive claims through special events. Huuuge Casino employs streak protection, letting players safeguard their progress or reclaim missed days, keeping the routine accessible and not overly punishing. Daily rewards also connect with broader game events or seasonal",
+        "score": 0.5172057,
+        "raw_content": null,
+        "id": "b6ea4f-01"
+      },
+      {
+        "url": "https://beamable.com/blog/inspiring-examples-of-daily-login-rewards-for-your-mobile-game",
+        "title": "Inspiring Examples of Daily Login Rewards for your Mobile Game - Beamable",
+        "content": "Core to the game are a series of integrated rewards that increase with daily login streaks to boost gameplay and add cosmetics. In addition to the dailies, every level cleared opens up new bonuses, and these deep progression systems encourage repeat sessions and high player retention. If you are considering a progression meta with daily rewards, study Rovio and their Angry Birds titles for inspiration and instruction. [...] There are multiple daily reward systems built in. There is your daily reward which grants better and better prizes based on your login streak. There are daily missions that grant merits which can be used to acquire more items for your character levels. There is also a battle pass system that rewards you additional daily rewards throughout the entire month. There is a subscription you can purchase to also unlock a premium tier of battle pass rewards (called Campaign rewards). All of these [...] This game also uses a streak-based daily reward system that stacks your rewards with higher and higher levels of return sessions. Players can complete challenges daily to unlock even more rewards.\n\nIf you haven’t played Temple Run recently, perhaps it’s time to revisit it for “research purposes!”\n\n# Super Mario Run",
+        "score": 0.49348235,
+        "raw_content": null,
+        "id": "14e24b-02"
+      },
+      {
+        "url": "https://www.facebook.com/groups/township.official/posts/3616237415301691",
+        "title": "Why am I not getting daily login rewards in Township game?",
+        "content": "That last couple days when I log in to the game I haven't gotten the pop-up screen that tells you how many days you've played and you get a couple gifts,",
+        "score": 0.3995779,
+        "raw_content": null,
+        "id": "6339e6-03"
+      },
+      {
+        "url": "https://www.reddit.com/r/TownshipGame/comments/1bz7r9m/will_my_no_of_days_played_streak_die_if_i_didnt",
+        "title": "will my no of days played streak die if i didnt login for a day?",
+        "content": "been playing everyday for 300 smth days, but had a busy week so couldn't login for ONE day, i domt even think ifs been complete 24 hours too im not sure,",
+        "score": 0.0895264,
+        "raw_content": null,
+        "id": "701005-04"
+      }
+    ],
+    "response_time": 1.25,
+    "request_id": "bca543b2-4ddb-432c-b164-897c59ee5023"
+  }
+}

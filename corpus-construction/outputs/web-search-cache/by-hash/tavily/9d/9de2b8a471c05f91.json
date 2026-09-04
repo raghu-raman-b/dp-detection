@@ -1,0 +1,91 @@
+{
+  "query": "what are gold stickers in Monopoly GO and why do duplicate gold stickers matter",
+  "sent_query": "what are gold stickers in Monopoly GO and why do duplicate gold stickers matter",
+  "query_hash": "9de2b8a471c05f91",
+  "answer": "Gold stickers in Monopoly GO are rare collectibles that can only be traded during Golden Blitz events. Duplicate gold stickers are valuable as they can be traded with friends, helping to complete the Sticker Album faster. Holding onto duplicates can be strategic for future events.",
+  "sources": [
+    {
+      "title": "All about stickers in Monopoly Go",
+      "url": "https://play.google.com/store/apps/editorial?id=mc_games_editorialevergreen_monopoly_go_all_about_stickers_postinstall_fcp&hl=en_US",
+      "host": "play.google.com"
+    },
+    {
+      "title": "How to Get Gold Stickers in Monopoly Go: Step-by- ...",
+      "url": "https://gameboost.com/blog/how-to-get-gold-stickers-in-monopoly-go",
+      "host": "gameboost.com"
+    },
+    {
+      "title": "Best Monopoly GO Golden Blitz Tips for Getting Gold Stickers",
+      "url": "https://www.u4gm.com/monopoly-go/blog-best-monopoly-go-golden-blitz-tips-for-getting-gold-stickers",
+      "host": "u4gm.com"
+    },
+    {
+      "title": "Can anyone explain to me how the golden stickers ...",
+      "url": "https://www.reddit.com/r/Monopoly_GO/comments/1g7gjgo/can_anyone_explain_to_me_how_the_golden_stickers",
+      "host": "reddit.com"
+    },
+    {
+      "title": "What's the point of extra gold stickers in Monopoly Go if ...",
+      "url": "https://www.facebook.com/groups/393668596401732/posts/1074510298317555",
+      "host": "facebook.com"
+    }
+  ],
+  "backend": "tavily",
+  "cached": false,
+  "cost_usd": 0.008,
+  "latency_s": 2.667,
+  "n_results": 5,
+  "domains": [],
+  "error": null,
+  "ts": "2026-09-04T13:12:28+00:00",
+  "raw": {
+    "query": "what are gold stickers in Monopoly GO and why do duplicate gold stickers matter",
+    "follow_up_questions": null,
+    "answer": "Gold stickers in Monopoly GO are rare collectibles that can only be traded during Golden Blitz events. Duplicate gold stickers are valuable as they can be traded with friends, helping to complete the Sticker Album faster. Holding onto duplicates can be strategic for future events.",
+    "images": [],
+    "results": [
+      {
+        "url": "https://play.google.com/store/apps/editorial?id=mc_games_editorialevergreen_monopoly_go_all_about_stickers_postinstall_fcp&hl=en_US",
+        "title": "All about stickers in Monopoly Go",
+        "content": "You can trade up to five duplicate stickers with your friends. Golden stickers can be traded only during Golden Blitz events. Make in-game friends to start trading and complete your Sticker Album much faster.\n\nStickers in Monopoly Go come in various rarities, drive rewards, and serve as a strategic collectible system. With this guide, you’ll complete albums faster, cash in on richer rewards, and gain an edge in your game progress.\n\nIcon image\n\nMONOPOLY GO!\n\nScopely\n\nIn-app purchases\n\n4.7star [...] You can use duplicate stickers either for trading or for rewards. Duplicate stickers show up as sticker stars based on their rarity (e.g. a 5-star duplicate appears as 5 stars). Tap the safe icon in your album to trade sticker stars for vault rewards: [...] 1–3 star stickers: Most common, available in green, yellow, and pink packs. You can trade them frequently or convert duplicates into sticker stars.\n 4–5 star stickers: Rarer. Often appear in blue and purple packs.\n Gold stickers: Extremely rare, typically found in higher-tier packs or events like Golden Blitz. Gold stickers offer extra rewards and only trade within limited windows.",
+        "score": 0.8312667,
+        "raw_content": null,
+        "id": "8e3ad3-00"
+      },
+      {
+        "url": "https://gameboost.com/blog/how-to-get-gold-stickers-in-monopoly-go",
+        "title": "How to Get Gold Stickers in Monopoly Go: Step-by- ...",
+        "content": "Gold stickers are the rarest collectibles in the game, typically rated at 4 to 5 stars. Unlike regular stickers that can be traded freely with",
+        "score": 0.7803451,
+        "raw_content": null,
+        "id": "638492-01"
+      },
+      {
+        "url": "https://www.u4gm.com/monopoly-go/blog-best-monopoly-go-golden-blitz-tips-for-getting-gold-stickers",
+        "title": "Best Monopoly GO Golden Blitz Tips for Getting Gold Stickers",
+        "content": "If you have duplicate Gold Stickers, don't immediately convert them. A future Golden Blitz may feature exactly the sticker someone else needs,",
+        "score": 0.7500592,
+        "raw_content": null,
+        "id": "66f2c1-02"
+      },
+      {
+        "url": "https://www.reddit.com/r/Monopoly_GO/comments/1g7gjgo/can_anyone_explain_to_me_how_the_golden_stickers",
+        "title": "Can anyone explain to me how the golden stickers ...",
+        "content": "they choose two gold stickers you can trade during the blitz. another blitz, another two. you can't trade every gold sticker, but you can",
+        "score": 0.56489134,
+        "raw_content": null,
+        "id": "267be9-03"
+      },
+      {
+        "url": "https://www.facebook.com/groups/393668596401732/posts/1074510298317555",
+        "title": "What's the point of extra gold stickers in Monopoly Go if ...",
+        "content": "So this stinks….someone tell me if I’m wrong.\nI’m Gold Locked at 211/216. The next Blitz I already have the stickers being offered. I can’t trade",
+        "score": 0.38748226,
+        "raw_content": null,
+        "id": "c1e0d9-04"
+      }
+    ],
+    "response_time": 1.57,
+    "request_id": "ccb2fe06-4de5-4fd1-8179-7dd85b562629"
+  }
+}

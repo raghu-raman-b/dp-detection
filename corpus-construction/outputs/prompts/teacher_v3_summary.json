@@ -1,0 +1,26 @@
+{
+  "bare": {
+    "path": "../outputs/prompts/teacher_v3_bare.txt",
+    "approx_tokens": 8505,
+    "prompt_sha256": "1a6ac1ace49b4cec72b2aa1c58f7177b21e116f0bea753b1f046a37b7fd06ff2",
+    "rule_examples_rendered": 0,
+    "counterexamples_rendered": 0,
+    "worked_examples_rendered": 0
+  },
+  "boundary": {
+    "path": "../outputs/prompts/teacher_v3_boundary.txt",
+    "approx_tokens": 17302,
+    "prompt_sha256": "1103dc085a30f00270048b795a46b0c78976b20c6b621c9d60822b7890639c8a",
+    "rule_examples_rendered": 0,
+    "counterexamples_rendered": 25,
+    "worked_examples_rendered": 0
+  },
+  "full": {
+    "path": "../outputs/prompts/teacher_v3_full.txt",
+    "approx_tokens": 29947,
+    "prompt_sha256": "a6ae58246360888865a93ebc4230e22033ab72c93b27e04bfcfe7d3908f9f662",
+    "rule_examples_rendered": 7,
+    "counterexamples_rendered": 25,
+    "worked_examples_rendered": 58
+  }
+}

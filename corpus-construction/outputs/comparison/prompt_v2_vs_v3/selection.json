@@ -1,0 +1,114 @@
+{
+  "tag": "prompt_v2_vs_v3",
+  "generated": "2026-09-04T18:13:24",
+  "mode": "explicit",
+  "index": "/home/prex_san/Documents/dp-detection/corpus-construction/outputs/run-stats/index.jsonl",
+  "primary_metric": "micro_f1",
+  "flags": {
+    "GOLD_UNIFORM": "true",
+    "PROMPT_UNIFORM": "false",
+    "GATE_MODE": "explicit",
+    "N_GATE_FAILURES": "0",
+    "N_DISQUALIFIED": "0",
+    "GATE": "pass"
+  },
+  "selection": {
+    "run_id": "gpt-5.6-luna_medium_teacher_v3_full",
+    "selection_criterion": "max micro_f1 among named runs",
+    "ranked_on": "micro_f1",
+    "tie_break_rule": "gate_pass > lower $/200k > lower latency_p95 > lexical run_id",
+    "margin": 0.002963030703567097,
+    "p_win_vs_runner_up": 0.5345,
+    "runner_up_run_id": "gpt-5.6-luna_xhigh_teacher_v2_full"
+  },
+  "runs": [
+    {
+      "run_id": "gpt-5.6-luna_medium_teacher_v3_full",
+      "model": "gpt-5.6-luna",
+      "reasoning_effort": "medium",
+      "prompt_stem": "teacher_v3_full",
+      "prompt_sha256": "a6ae58246360888865a93ebc4230e22033ab72c93b27e04bfcfe7d3908f9f662",
+      "gold_file": "/home/prex_san/Documents/dp-detection/corpus-construction/tuning/tuning_set_50.jsonl",
+      "run_dir": "/home/prex_san/Documents/dp-detection/corpus-construction/outputs/runs/gpt-5.6-luna/medium/teacher_v3_full",
+      "micro_f1": 0.8553,
+      "gate_failures": []
+    },
+    {
+      "run_id": "gpt-5.6-luna_xhigh_teacher_v2_full",
+      "model": "gpt-5.6-luna",
+      "reasoning_effort": "xhigh",
+      "prompt_stem": "teacher_v2_full",
+      "prompt_sha256": "aad355174ac44da072eee2003a4d2ed48038e273fcdc70e5c51dffa8e4a54416",
+      "gold_file": "/home/prex_san/Documents/dp-detection/corpus-construction/tuning/tuning_set_50.jsonl",
+      "run_dir": "/home/prex_san/Documents/dp-detection/corpus-construction/outputs/runs/gpt-5.6-luna/xhigh/teacher_v2_full",
+      "micro_f1": 0.8506,
+      "gate_failures": []
+    },
+    {
+      "run_id": "gpt-5.6-luna_high_teacher_v3_full",
+      "model": "gpt-5.6-luna",
+      "reasoning_effort": "high",
+      "prompt_stem": "teacher_v3_full",
+      "prompt_sha256": "a6ae58246360888865a93ebc4230e22033ab72c93b27e04bfcfe7d3908f9f662",
+      "gold_file": "/home/prex_san/Documents/dp-detection/corpus-construction/tuning/tuning_set_50.jsonl",
+      "run_dir": "/home/prex_san/Documents/dp-detection/corpus-construction/outputs/runs/gpt-5.6-luna/high/teacher_v3_full",
+      "micro_f1": 0.85,
+      "gate_failures": []
+    },
+    {
+      "run_id": "gpt-5.6-luna_high_teacher_v2_full",
+      "model": "gpt-5.6-luna",
+      "reasoning_effort": "high",
+      "prompt_stem": "teacher_v2_full",
+      "prompt_sha256": "6529a474a2b03d2c00556c78075130b0f05d7cd7d1a637f241279393194c422c",
+      "gold_file": "/home/prex_san/Documents/dp-detection/corpus-construction/tuning/tuning_set_50.jsonl",
+      "run_dir": "/home/prex_san/Documents/dp-detection/corpus-construction/outputs/runs/gpt-5.6-luna/high/teacher_v2_full",
+      "micro_f1": 0.8452,
+      "gate_failures": []
+    },
+    {
+      "run_id": "gpt-5.6-luna_low_teacher_v2_full",
+      "model": "gpt-5.6-luna",
+      "reasoning_effort": "low",
+      "prompt_stem": "teacher_v2_full",
+      "prompt_sha256": "6529a474a2b03d2c00556c78075130b0f05d7cd7d1a637f241279393194c422c",
+      "gold_file": "/home/prex_san/Documents/dp-detection/corpus-construction/tuning/tuning_set_50.jsonl",
+      "run_dir": "/home/prex_san/Documents/dp-detection/corpus-construction/outputs/runs/gpt-5.6-luna/low/teacher_v2_full",
+      "micro_f1": 0.8434,
+      "gate_failures": []
+    },
+    {
+      "run_id": "gpt-5.6-luna_medium_teacher_v2_full",
+      "model": "gpt-5.6-luna",
+      "reasoning_effort": "medium",
+      "prompt_stem": "teacher_v2_full",
+      "prompt_sha256": "6529a474a2b03d2c00556c78075130b0f05d7cd7d1a637f241279393194c422c",
+      "gold_file": "/home/prex_san/Documents/dp-detection/corpus-construction/tuning/tuning_set_50.jsonl",
+      "run_dir": "/home/prex_san/Documents/dp-detection/corpus-construction/outputs/runs/gpt-5.6-luna/medium/teacher_v2_full",
+      "micro_f1": 0.8354,
+      "gate_failures": []
+    },
+    {
+      "run_id": "gpt-5.6-luna_xhigh_teacher_v3_full",
+      "model": "gpt-5.6-luna",
+      "reasoning_effort": "xhigh",
+      "prompt_stem": "teacher_v3_full",
+      "prompt_sha256": "a6ae58246360888865a93ebc4230e22033ab72c93b27e04bfcfe7d3908f9f662",
+      "gold_file": "/home/prex_san/Documents/dp-detection/corpus-construction/tuning/tuning_set_50.jsonl",
+      "run_dir": "/home/prex_san/Documents/dp-detection/corpus-construction/outputs/runs/gpt-5.6-luna/xhigh/teacher_v3_full",
+      "micro_f1": 0.8182,
+      "gate_failures": []
+    },
+    {
+      "run_id": "gpt-5.6-luna_low_teacher_v3_full",
+      "model": "gpt-5.6-luna",
+      "reasoning_effort": "low",
+      "prompt_stem": "teacher_v3_full",
+      "prompt_sha256": "a6ae58246360888865a93ebc4230e22033ab72c93b27e04bfcfe7d3908f9f662",
+      "gold_file": "/home/prex_san/Documents/dp-detection/corpus-construction/tuning/tuning_set_50.jsonl",
+      "run_dir": "/home/prex_san/Documents/dp-detection/corpus-construction/outputs/runs/gpt-5.6-luna/low/teacher_v3_full",
+      "micro_f1": 0.7483,
+      "gate_failures": []
+    }
+  ]
+}

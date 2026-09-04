@@ -1,0 +1,2580 @@
+{
+  "meta": {
+    "generated": "2026-09-04T18:12:49",
+    "tag": "prompt_sweep_none",
+    "index": "/home/prex_san/Documents/dp-detection/corpus-construction/outputs/run-stats/index.jsonl",
+    "n_runs": 4,
+    "n_index_total": 34,
+    "explicit": true,
+    "ranked_on": "micro_f1",
+    "concurrency": 1,
+    "project_to": 200000,
+    "bootstrap_n": 2000,
+    "min_support": 3
+  },
+  "flags": {
+    "GOLD_UNIFORM": "true",
+    "PROMPT_UNIFORM": "false",
+    "GATE_MODE": "explicit",
+    "N_GATE_FAILURES": "0",
+    "N_DISQUALIFIED": "0",
+    "GATE": "pass"
+  },
+  "run_metadata": [
+    {
+      "run_id": "gpt-5.6-luna_none_teacher_v2_full",
+      "model": "gpt-5.6-luna",
+      "effort": "none",
+      "prompt_name": "teacher_v2_full",
+      "prompt_sha": "6529a474a2b0",
+      "seed": "n/a",
+      "temperature": null,
+      "max_tokens": 8192,
+      "eval_set_n": 50,
+      "codebook_version": "0.20",
+      "started_at": "2026-08-22T18:15:24",
+      "finished_at": "2026-08-22T18:27:25"
+    },
+    {
+      "run_id": "gpt-5.6-luna_none_teacher_v1",
+      "model": "gpt-5.6-luna",
+      "effort": "none",
+      "prompt_name": "teacher_v1",
+      "prompt_sha": "e8cd52987c33",
+      "seed": "n/a",
+      "temperature": null,
+      "max_tokens": 8192,
+      "eval_set_n": 50,
+      "codebook_version": "0.20",
+      "started_at": "2026-08-22T18:19:27",
+      "finished_at": "2026-08-22T18:29:20"
+    },
+    {
+      "run_id": "gpt-5.6-luna_none_teacher_v2_boundary",
+      "model": "gpt-5.6-luna",
+      "effort": "none",
+      "prompt_name": "teacher_v2_boundary",
+      "prompt_sha": "013bb31c5857",
+      "seed": "n/a",
+      "temperature": null,
+      "max_tokens": 8192,
+      "eval_set_n": 50,
+      "codebook_version": "0.20",
+      "started_at": "2026-08-22T18:05:24",
+      "finished_at": "2026-08-22T18:14:34"
+    },
+    {
+      "run_id": "gpt-5.6-luna_none_teacher_v2_bare",
+      "model": "gpt-5.6-luna",
+      "effort": "none",
+      "prompt_name": "teacher_v2_bare",
+      "prompt_sha": "ecd3c1810cf2",
+      "seed": "n/a",
+      "temperature": null,
+      "max_tokens": 8192,
+      "eval_set_n": 50,
+      "codebook_version": "0.20",
+      "started_at": "2026-08-22T18:10:11",
+      "finished_at": "2026-08-22T18:17:12"
+    }
+  ],
+  "leaderboard": [
+    {
+      "rank": 1,
+      "run_id": "gpt-5.6-luna_none_teacher_v2_full",
+      "delta_from_top": 0.0,
+      "micro_f1": 0.8395,
+      "micro_p": 0.8947,
+      "micro_r": 0.7907,
+      "class_macro_f1": 0.7266,
+      "meso_macro_f1": 0.859,
+      "all_label_macro_f1": 0.6801034482758621,
+      "exact_match": 0.64,
+      "jaccard_mean": 0.7693333333333333,
+      "masi_mean": 0.7155466666666667,
+      "none_p": 0.6429,
+      "none_r": 0.9,
+      "none_f1": 0.75,
+      "labels_per_review_mean": 1.52,
+      "cardinality_ratio": 0.8837209302325582,
+      "label_count_bias": -10,
+      "reviews_with_fp_n": 7,
+      "reviews_with_fn_n": 15,
+      "reviews_exact_correct_n": 32,
+      "latency_p50": 8.02,
+      "latency_p95": 18.71,
+      "wall_clock_hours_at_200k": 586.6666666666666,
+      "tokens_in_per_review": 25642.88,
+      "tokens_out_per_review": 604.72,
+      "usd_per_review": 0.0012817,
+      "projected_usd_at_200000": 256.34,
+      "run_variance": false
+    },
+    {
+      "rank": 2,
+      "run_id": "gpt-5.6-luna_none_teacher_v1",
+      "delta_from_top": -0.016000000000000014,
+      "micro_f1": 0.8235,
+      "micro_p": 0.9403,
+      "micro_r": 0.7326,
+      "class_macro_f1": 0.7409,
+      "meso_macro_f1": 0.8222,
+      "all_label_macro_f1": 0.6708620689655173,
+      "exact_match": 0.62,
+      "jaccard_mean": 0.77,
+      "masi_mean": 0.7114333333333334,
+      "none_p": 0.7143,
+      "none_r": 1.0,
+      "none_f1": 0.8333,
+      "labels_per_review_mean": 1.34,
+      "cardinality_ratio": 0.7790697674418605,
+      "label_count_bias": -19,
+      "reviews_with_fp_n": 4,
+      "reviews_with_fn_n": 19,
+      "reviews_exact_correct_n": 31,
+      "latency_p50": 9.6,
+      "latency_p95": 21.26,
+      "wall_clock_hours_at_200k": 592.2222222222222,
+      "tokens_in_per_review": 24431.38,
+      "tokens_out_per_review": 528.06,
+      "usd_per_review": 0.00116359,
+      "projected_usd_at_200000": 232.72,
+      "run_variance": false
+    },
+    {
+      "rank": 3,
+      "run_id": "gpt-5.6-luna_none_teacher_v2_boundary",
+      "delta_from_top": -0.06620000000000004,
+      "micro_f1": 0.7733,
+      "micro_p": 0.9062,
+      "micro_r": 0.6744,
+      "class_macro_f1": 0.735,
+      "meso_macro_f1": 0.8143,
+      "all_label_macro_f1": 0.5164137931034483,
+      "exact_match": 0.56,
+      "jaccard_mean": 0.7463333333333333,
+      "masi_mean": 0.6764566666666667,
+      "none_p": 0.7692,
+      "none_r": 1.0,
+      "none_f1": 0.8696,
+      "labels_per_review_mean": 1.28,
+      "cardinality_ratio": 0.7441860465116279,
+      "label_count_bias": -22,
+      "reviews_with_fp_n": 4,
+      "reviews_with_fn_n": 22,
+      "reviews_exact_correct_n": 28,
+      "latency_p50": 7.63,
+      "latency_p95": 19.55,
+      "wall_clock_hours_at_200k": 531.6666666666666,
+      "tokens_in_per_review": 19454.86,
+      "tokens_out_per_review": 597.4,
+      "usd_per_review": 0.00115275,
+      "projected_usd_at_200000": 230.55,
+      "run_variance": false
+    },
+    {
+      "rank": 4,
+      "run_id": "gpt-5.6-luna_none_teacher_v2_bare",
+      "delta_from_top": -0.1553,
+      "micro_f1": 0.6842,
+      "micro_p": 0.7879,
+      "micro_r": 0.6047,
+      "class_macro_f1": 0.6006,
+      "meso_macro_f1": 0.5969,
+      "all_label_macro_f1": 0.42997241379310347,
+      "exact_match": 0.46,
+      "jaccard_mean": 0.6210952380952381,
+      "masi_mean": 0.5499947619047619,
+      "none_p": 0.5385,
+      "none_r": 0.7,
+      "none_f1": 0.6087,
+      "labels_per_review_mean": 1.32,
+      "cardinality_ratio": 0.7674418604651163,
+      "label_count_bias": -20,
+      "reviews_with_fp_n": 12,
+      "reviews_with_fn_n": 23,
+      "reviews_exact_correct_n": 23,
+      "latency_p50": 6.79,
+      "latency_p95": 16.18,
+      "wall_clock_hours_at_200k": 423.8888888888889,
+      "tokens_in_per_review": 12470.8,
+      "tokens_out_per_review": 584.36,
+      "usd_per_review": 0.00109603,
+      "projected_usd_at_200000": 219.21,
+      "run_variance": false
+    }
+  ],
+  "pareto": {
+    "quality_vs_cost": [
+      {
+        "run_id": "gpt-5.6-luna_none_teacher_v2_bare",
+        "micro_f1": 0.6842,
+        "projected_usd_at_200000": 219.21
+      },
+      {
+        "run_id": "gpt-5.6-luna_none_teacher_v2_boundary",
+        "micro_f1": 0.7733,
+        "projected_usd_at_200000": 230.55
+      },
+      {
+        "run_id": "gpt-5.6-luna_none_teacher_v1",
+        "micro_f1": 0.8235,
+        "projected_usd_at_200000": 232.72
+      },
+      {
+        "run_id": "gpt-5.6-luna_none_teacher_v2_full",
+        "micro_f1": 0.8395,
+        "projected_usd_at_200000": 256.34
+      }
+    ],
+    "quality_vs_wallclock": [
+      {
+        "run_id": "gpt-5.6-luna_none_teacher_v2_bare",
+        "micro_f1": 0.6842,
+        "wall_clock_hours_at_200k": 423.8888888888889
+      },
+      {
+        "run_id": "gpt-5.6-luna_none_teacher_v2_boundary",
+        "micro_f1": 0.7733,
+        "wall_clock_hours_at_200k": 531.6666666666666
+      },
+      {
+        "run_id": "gpt-5.6-luna_none_teacher_v2_full",
+        "micro_f1": 0.8395,
+        "wall_clock_hours_at_200k": 586.6666666666666
+      }
+    ]
+  },
+  "significance": {
+    "n_resamples": 2000,
+    "shared_n": 50,
+    "sig_threshold": 0.95,
+    "grey_zone": [
+      0.05,
+      0.95
+    ],
+    "ci": [
+      {
+        "run_id": "gpt-5.6-luna_none_teacher_v2_full",
+        "ci_lo": 0.7710843373493976,
+        "ci_hi": 0.9,
+        "ci_width": 0.1289156626506024
+      },
+      {
+        "run_id": "gpt-5.6-luna_none_teacher_v1",
+        "ci_lo": 0.7464788732394366,
+        "ci_hi": 0.8864864864864866,
+        "ci_width": 0.14000761324705002
+      },
+      {
+        "run_id": "gpt-5.6-luna_none_teacher_v2_boundary",
+        "ci_lo": 0.7006369426751592,
+        "ci_hi": 0.8450704225352113,
+        "ci_width": 0.14443347986005206
+      },
+      {
+        "run_id": "gpt-5.6-luna_none_teacher_v2_bare",
+        "ci_lo": 0.5915492957746479,
+        "ci_hi": 0.7682926829268293,
+        "ci_width": 0.1767433871521814
+      }
+    ],
+    "pairwise": [
+      {
+        "run_a": "gpt-5.6-luna_none_teacher_v2_full",
+        "run_b": "gpt-5.6-luna_none_teacher_v1",
+        "p_win": 0.686,
+        "mean_gap": 0.016719397542128263,
+        "sd_gap": 0.03300487914806844
+      },
+      {
+        "run_a": "gpt-5.6-luna_none_teacher_v2_full",
+        "run_b": "gpt-5.6-luna_none_teacher_v2_boundary",
+        "p_win": 0.9745,
+        "mean_gap": 0.06527826864021126,
+        "sd_gap": 0.03224143584352057
+      },
+      {
+        "run_a": "gpt-5.6-luna_none_teacher_v2_full",
+        "run_b": "gpt-5.6-luna_none_teacher_v2_bare",
+        "p_win": 0.9995,
+        "mean_gap": 0.1552634218829663,
+        "sd_gap": 0.042185690776549434
+      },
+      {
+        "run_a": "gpt-5.6-luna_none_teacher_v1",
+        "run_b": "gpt-5.6-luna_none_teacher_v2_full",
+        "p_win": 0.31,
+        "mean_gap": -0.016719397542128263,
+        "sd_gap": 0.03300487914806844
+      },
+      {
+        "run_a": "gpt-5.6-luna_none_teacher_v1",
+        "run_b": "gpt-5.6-luna_none_teacher_v2_boundary",
+        "p_win": 0.938,
+        "mean_gap": 0.048558871098083004,
+        "sd_gap": 0.030107680129509845
+      },
+      {
+        "run_a": "gpt-5.6-luna_none_teacher_v1",
+        "run_b": "gpt-5.6-luna_none_teacher_v2_bare",
+        "p_win": 1.0,
+        "mean_gap": 0.13854402434083804,
+        "sd_gap": 0.04284796070495509
+      },
+      {
+        "run_a": "gpt-5.6-luna_none_teacher_v2_boundary",
+        "run_b": "gpt-5.6-luna_none_teacher_v2_full",
+        "p_win": 0.0255,
+        "mean_gap": -0.06527826864021126,
+        "sd_gap": 0.03224143584352057
+      },
+      {
+        "run_a": "gpt-5.6-luna_none_teacher_v2_boundary",
+        "run_b": "gpt-5.6-luna_none_teacher_v1",
+        "p_win": 0.057,
+        "mean_gap": -0.048558871098083004,
+        "sd_gap": 0.030107680129509845
+      },
+      {
+        "run_a": "gpt-5.6-luna_none_teacher_v2_boundary",
+        "run_b": "gpt-5.6-luna_none_teacher_v2_bare",
+        "p_win": 0.9815,
+        "mean_gap": 0.08998515324275504,
+        "sd_gap": 0.04323103619072173
+      },
+      {
+        "run_a": "gpt-5.6-luna_none_teacher_v2_bare",
+        "run_b": "gpt-5.6-luna_none_teacher_v2_full",
+        "p_win": 0.0005,
+        "mean_gap": -0.1552634218829663,
+        "sd_gap": 0.042185690776549434
+      },
+      {
+        "run_a": "gpt-5.6-luna_none_teacher_v2_bare",
+        "run_b": "gpt-5.6-luna_none_teacher_v1",
+        "p_win": 0.0,
+        "mean_gap": -0.13854402434083804,
+        "sd_gap": 0.04284796070495509
+      },
+      {
+        "run_a": "gpt-5.6-luna_none_teacher_v2_bare",
+        "run_b": "gpt-5.6-luna_none_teacher_v2_boundary",
+        "p_win": 0.0175,
+        "mean_gap": -0.08998515324275504,
+        "sd_gap": 0.04323103619072173
+      }
+    ]
+  },
+  "universal_false_negatives": {
+    "P_AestheticManipulation": {
+      "review_ids": [
+        "12267c1e-47ba-4984-97c8-768e820ceb1c",
+        "b93c432d-19c0-4c6c-a2d4-bb9b21a436f3"
+      ],
+      "n": 2
+    },
+    "M_EasyToPurchase": {
+      "review_ids": [
+        "12267c1e-47ba-4984-97c8-768e820ceb1c"
+      ],
+      "n": 1
+    },
+    "M_IntermediateCurrency": {
+      "review_ids": [
+        "176aaa1f-d8f9-4a1a-9f29-64902f13be5c",
+        "7b564746-b769-4856-b686-529f8717c3ba"
+      ],
+      "n": 2
+    },
+    "M_WasteAversion": {
+      "review_ids": [
+        "3c46f5e0-6091-43dc-94a0-e3af3259a63d"
+      ],
+      "n": 1
+    },
+    "M_PayToProgress": {
+      "review_ids": [
+        "3c46f5e0-6091-43dc-94a0-e3af3259a63d"
+      ],
+      "n": 1
+    },
+    "S_Reciprocity": {
+      "review_ids": [
+        "490ca53d-66fe-44b0-928f-ea2ba6682f0b",
+        "b580a4c7-3c75-493e-ad3b-03b4f2bde6a5"
+      ],
+      "n": 2
+    },
+    "P_RewardMania": {
+      "review_ids": [
+        "cc714d17-863c-4ebd-b14f-989ba17c71c4"
+      ],
+      "n": 1
+    },
+    "P_OptimismAndFrequencyBiases": {
+      "review_ids": [
+        "fd1230ab-7d12-4aeb-a425-e37ed06bcd5c"
+      ],
+      "n": 1
+    },
+    "M_Gambling": {
+      "review_ids": [
+        "fdef27f2-9a21-4b8e-a04c-7a4753e0fb07"
+      ],
+      "n": 1
+    }
+  },
+  "universal_false_positives": {},
+  "cross_run_consensus": {
+    "unanimity_rate": 0.32,
+    "top_entropy_reviews": [
+      "0bc09fc3-6436-4a24-855e-0fdc56887918",
+      "a2ece36d-c527-442d-8f18-9a16b63994c8",
+      "b93c432d-19c0-4c6c-a2d4-bb9b21a436f3",
+      "fd1230ab-7d12-4aeb-a425-e37ed06bcd5c",
+      "fdef27f2-9a21-4b8e-a04c-7a4753e0fb07",
+      "12267c1e-47ba-4984-97c8-768e820ceb1c",
+      "176aaa1f-d8f9-4a1a-9f29-64902f13be5c",
+      "32c623b4-0249-469e-968c-94f60c7fe3c2",
+      "33c422de-1a84-4df9-accd-cdf8bfc96295",
+      "5e6a5625-5291-4f0e-897c-1b63c1a26494"
+    ],
+    "unanimous_but_wrong": [
+      "490ca53d-66fe-44b0-928f-ea2ba6682f0b"
+    ],
+    "per_review": {
+      "0347fbc7-5c01-452e-ae4b-867f5bd7dd47": {
+        "n_exact_match_gold": 3,
+        "entropy_bits": 0.8112781244591328,
+        "unanimous": false,
+        "agrees_with_gold": false
+      },
+      "0853c395-2040-4e0b-a56c-1591484cd35b": {
+        "n_exact_match_gold": 1,
+        "entropy_bits": 0.8112781244591328,
+        "unanimous": false,
+        "agrees_with_gold": false
+      },
+      "0bc09fc3-6436-4a24-855e-0fdc56887918": {
+        "n_exact_match_gold": 1,
+        "entropy_bits": 2.0,
+        "unanimous": false,
+        "agrees_with_gold": false
+      },
+      "12267c1e-47ba-4984-97c8-768e820ceb1c": {
+        "n_exact_match_gold": 0,
+        "entropy_bits": 1.5,
+        "unanimous": false,
+        "agrees_with_gold": false
+      },
+      "1471ee8f-fb07-4a26-a36f-318bc4f1838d": {
+        "n_exact_match_gold": 4,
+        "entropy_bits": -0.0,
+        "unanimous": true,
+        "agrees_with_gold": true
+      },
+      "14e87cfb-665b-4239-863d-2175f401d894": {
+        "n_exact_match_gold": 4,
+        "entropy_bits": -0.0,
+        "unanimous": true,
+        "agrees_with_gold": true
+      },
+      "176aaa1f-d8f9-4a1a-9f29-64902f13be5c": {
+        "n_exact_match_gold": 0,
+        "entropy_bits": 1.5,
+        "unanimous": false,
+        "agrees_with_gold": false
+      },
+      "1da19dbd-f522-43c7-95d7-df59f631cc18": {
+        "n_exact_match_gold": 3,
+        "entropy_bits": 0.8112781244591328,
+        "unanimous": false,
+        "agrees_with_gold": false
+      },
+      "21021f9a-e106-4e51-b01d-3fe4a4c941fc": {
+        "n_exact_match_gold": 3,
+        "entropy_bits": 0.8112781244591328,
+        "unanimous": false,
+        "agrees_with_gold": false
+      },
+      "2414fb3d-38e2-4e14-a8af-925f764d2abd": {
+        "n_exact_match_gold": 4,
+        "entropy_bits": -0.0,
+        "unanimous": true,
+        "agrees_with_gold": true
+      },
+      "2528f51b-7c4c-4a27-ac30-09bbef267e0f": {
+        "n_exact_match_gold": 4,
+        "entropy_bits": -0.0,
+        "unanimous": true,
+        "agrees_with_gold": true
+      },
+      "2a89246a-2c19-468b-985b-195b9e3edc66": {
+        "n_exact_match_gold": 4,
+        "entropy_bits": -0.0,
+        "unanimous": true,
+        "agrees_with_gold": true
+      },
+      "32c623b4-0249-469e-968c-94f60c7fe3c2": {
+        "n_exact_match_gold": 2,
+        "entropy_bits": 1.5,
+        "unanimous": false,
+        "agrees_with_gold": false
+      },
+      "33c422de-1a84-4df9-accd-cdf8bfc96295": {
+        "n_exact_match_gold": 1,
+        "entropy_bits": 1.5,
+        "unanimous": false,
+        "agrees_with_gold": false
+      },
+      "3c46f5e0-6091-43dc-94a0-e3af3259a63d": {
+        "n_exact_match_gold": 0,
+        "entropy_bits": 1.0,
+        "unanimous": false,
+        "agrees_with_gold": false
+      },
+      "440bffdc-ba8d-42d3-b7fc-af289deb1e22": {
+        "n_exact_match_gold": 4,
+        "entropy_bits": -0.0,
+        "unanimous": true,
+        "agrees_with_gold": true
+      },
+      "45e3e2f0-4612-4d60-9312-3bff055ec9f3": {
+        "n_exact_match_gold": 3,
+        "entropy_bits": 0.8112781244591328,
+        "unanimous": false,
+        "agrees_with_gold": false
+      },
+      "490ca53d-66fe-44b0-928f-ea2ba6682f0b": {
+        "n_exact_match_gold": 0,
+        "entropy_bits": -0.0,
+        "unanimous": true,
+        "agrees_with_gold": false
+      },
+      "549e5e94-9b59-477d-88c7-ae5e00d62514": {
+        "n_exact_match_gold": 0,
+        "entropy_bits": 0.8112781244591328,
+        "unanimous": false,
+        "agrees_with_gold": false
+      },
+      "57d9039a-982d-4eb4-970d-f9f32cc96d0d": {
+        "n_exact_match_gold": 4,
+        "entropy_bits": -0.0,
+        "unanimous": true,
+        "agrees_with_gold": true
+      },
+      "5c7e7a1a-23e9-434f-9380-6d9298bc982e": {
+        "n_exact_match_gold": 4,
+        "entropy_bits": -0.0,
+        "unanimous": true,
+        "agrees_with_gold": true
+      },
+      "5e6a5625-5291-4f0e-897c-1b63c1a26494": {
+        "n_exact_match_gold": 2,
+        "entropy_bits": 1.5,
+        "unanimous": false,
+        "agrees_with_gold": false
+      },
+      "5f3e71b5-200c-45a3-b90e-e08b0dc0e1a3": {
+        "n_exact_match_gold": 3,
+        "entropy_bits": 0.8112781244591328,
+        "unanimous": false,
+        "agrees_with_gold": false
+      },
+      "64f944c2-f4b3-4af9-806d-25c57b5f976e": {
+        "n_exact_match_gold": 3,
+        "entropy_bits": 0.8112781244591328,
+        "unanimous": false,
+        "agrees_with_gold": false
+      },
+      "66698c5c-8577-46fe-b796-8e93ad782166": {
+        "n_exact_match_gold": 3,
+        "entropy_bits": 0.8112781244591328,
+        "unanimous": false,
+        "agrees_with_gold": false
+      },
+      "727cc804-9d4b-48ef-8774-2799a2a8de08": {
+        "n_exact_match_gold": 2,
+        "entropy_bits": 1.5,
+        "unanimous": false,
+        "agrees_with_gold": false
+      },
+      "73423b22-395c-49ed-8fc3-488a0b7680df": {
+        "n_exact_match_gold": 1,
+        "entropy_bits": 1.5,
+        "unanimous": false,
+        "agrees_with_gold": false
+      },
+      "7b564746-b769-4856-b686-529f8717c3ba": {
+        "n_exact_match_gold": 0,
+        "entropy_bits": 0.8112781244591328,
+        "unanimous": false,
+        "agrees_with_gold": false
+      },
+      "84bbc363-d55a-4cf1-a557-c61ed7ab82bc": {
+        "n_exact_match_gold": 3,
+        "entropy_bits": 0.8112781244591328,
+        "unanimous": false,
+        "agrees_with_gold": false
+      },
+      "8d13a3c1-1982-45db-a2b4-07c61c41ba2a": {
+        "n_exact_match_gold": 3,
+        "entropy_bits": 0.8112781244591328,
+        "unanimous": false,
+        "agrees_with_gold": false
+      },
+      "8da35d79-a1e5-46ef-b545-cc2cc3c4d671": {
+        "n_exact_match_gold": 4,
+        "entropy_bits": -0.0,
+        "unanimous": true,
+        "agrees_with_gold": true
+      },
+      "91e3872b-4443-43de-b4e5-508456ea6706": {
+        "n_exact_match_gold": 4,
+        "entropy_bits": -0.0,
+        "unanimous": true,
+        "agrees_with_gold": true
+      },
+      "95ddadb3-82cd-4042-8a51-cf8b3ed164c2": {
+        "n_exact_match_gold": 2,
+        "entropy_bits": 1.0,
+        "unanimous": false,
+        "agrees_with_gold": false
+      },
+      "96c70a42-6d71-4f54-a480-84d48731245d": {
+        "n_exact_match_gold": 4,
+        "entropy_bits": -0.0,
+        "unanimous": true,
+        "agrees_with_gold": true
+      },
+      "a12b6d56-8505-4b4e-9b43-cde2d1085360": {
+        "n_exact_match_gold": 2,
+        "entropy_bits": 1.0,
+        "unanimous": false,
+        "agrees_with_gold": false
+      },
+      "a2ece36d-c527-442d-8f18-9a16b63994c8": {
+        "n_exact_match_gold": 1,
+        "entropy_bits": 2.0,
+        "unanimous": false,
+        "agrees_with_gold": false
+      },
+      "a5bfa159-1783-40a8-8852-ce39d7962398": {
+        "n_exact_match_gold": 2,
+        "entropy_bits": 1.0,
+        "unanimous": false,
+        "agrees_with_gold": false
+      },
+      "a5c4a517-8f92-4509-bcb2-6708c353f1f7": {
+        "n_exact_match_gold": 4,
+        "entropy_bits": -0.0,
+        "unanimous": true,
+        "agrees_with_gold": true
+      },
+      "ab2097d3-2f9b-4a87-885c-25dfcddb5a70": {
+        "n_exact_match_gold": 1,
+        "entropy_bits": 1.5,
+        "unanimous": false,
+        "agrees_with_gold": false
+      },
+      "ae3b6309-101e-4320-99b1-aa6795602787": {
+        "n_exact_match_gold": 3,
+        "entropy_bits": 0.8112781244591328,
+        "unanimous": false,
+        "agrees_with_gold": false
+      },
+      "ae51c2f5-a77c-428d-bb71-ee00109538ba": {
+        "n_exact_match_gold": 4,
+        "entropy_bits": -0.0,
+        "unanimous": true,
+        "agrees_with_gold": true
+      },
+      "b06927cb-5b00-4a77-ac6b-bfb034c82ad2": {
+        "n_exact_match_gold": 4,
+        "entropy_bits": -0.0,
+        "unanimous": true,
+        "agrees_with_gold": true
+      },
+      "b2dc0bc8-8ebe-4c48-bc05-38d0d65acb84": {
+        "n_exact_match_gold": 3,
+        "entropy_bits": 0.8112781244591328,
+        "unanimous": false,
+        "agrees_with_gold": false
+      },
+      "b580a4c7-3c75-493e-ad3b-03b4f2bde6a5": {
+        "n_exact_match_gold": 0,
+        "entropy_bits": 1.0,
+        "unanimous": false,
+        "agrees_with_gold": false
+      },
+      "b93c432d-19c0-4c6c-a2d4-bb9b21a436f3": {
+        "n_exact_match_gold": 0,
+        "entropy_bits": 2.0,
+        "unanimous": false,
+        "agrees_with_gold": false
+      },
+      "b98d7e75-73da-4591-b23e-1a2951bfd856": {
+        "n_exact_match_gold": 4,
+        "entropy_bits": -0.0,
+        "unanimous": true,
+        "agrees_with_gold": true
+      },
+      "cc714d17-863c-4ebd-b14f-989ba17c71c4": {
+        "n_exact_match_gold": 0,
+        "entropy_bits": 0.8112781244591328,
+        "unanimous": false,
+        "agrees_with_gold": false
+      },
+      "fd1230ab-7d12-4aeb-a425-e37ed06bcd5c": {
+        "n_exact_match_gold": 0,
+        "entropy_bits": 2.0,
+        "unanimous": false,
+        "agrees_with_gold": false
+      },
+      "fdef27f2-9a21-4b8e-a04c-7a4753e0fb07": {
+        "n_exact_match_gold": 0,
+        "entropy_bits": 2.0,
+        "unanimous": false,
+        "agrees_with_gold": false
+      },
+      "fdfb3f26-0573-4cac-a0e2-ea5571bb5ad2": {
+        "n_exact_match_gold": 3,
+        "entropy_bits": 0.8112781244591328,
+        "unanimous": false,
+        "agrees_with_gold": false
+      }
+    }
+  },
+  "meso_confusion": {
+    "by_class": {
+      "P": 22,
+      "M": 34,
+      "S": 4,
+      "T": 1
+    },
+    "top_pairs": [
+      {
+        "class": "P",
+        "gold_label": "P_AestheticManipulation",
+        "pred_label": "P_CompleteTheCollection",
+        "n": 8
+      },
+      {
+        "class": "P",
+        "gold_label": "P_RewardMania",
+        "pred_label": "P_CompleteTheCollection",
+        "n": 8
+      },
+      {
+        "class": "M",
+        "gold_label": "M_DeceptiveLuxury",
+        "pred_label": "M_PayToProgress",
+        "n": 4
+      },
+      {
+        "class": "M",
+        "gold_label": "M_IntermediateCurrency",
+        "pred_label": "M_PayToProgress",
+        "n": 4
+      },
+      {
+        "class": "M",
+        "gold_label": "M_Gambling",
+        "pred_label": "M_UIMisdirection",
+        "n": 4
+      },
+      {
+        "class": "M",
+        "gold_label": "M_Gambling",
+        "pred_label": "M_IntermediateCurrency",
+        "n": 4
+      },
+      {
+        "class": "M",
+        "gold_label": "M_EasyToPurchase",
+        "pred_label": "M_PayToProgress",
+        "n": 3
+      },
+      {
+        "class": "P",
+        "gold_label": "P_OptimismAndFrequencyBiases",
+        "pred_label": "P_IllusionOfControl",
+        "n": 2
+      },
+      {
+        "class": "M",
+        "gold_label": "M_Gambling",
+        "pred_label": "M_EasyToPurchase",
+        "n": 2
+      },
+      {
+        "class": "M",
+        "gold_label": "M_WasteAversion",
+        "pred_label": "M_Gambling",
+        "n": 2
+      },
+      {
+        "class": "M",
+        "gold_label": "M_PayToProgress",
+        "pred_label": "M_Gambling",
+        "n": 2
+      },
+      {
+        "class": "S",
+        "gold_label": "S_Reciprocity",
+        "pred_label": "S_Competition",
+        "n": 2
+      },
+      {
+        "class": "M",
+        "gold_label": "M_PowerCreep",
+        "pred_label": "M_PayToProgress",
+        "n": 2
+      },
+      {
+        "class": "M",
+        "gold_label": "M_EasyToPurchase",
+        "pred_label": "M_WasteAversion",
+        "n": 1
+      },
+      {
+        "class": "P",
+        "gold_label": "P_AestheticManipulation",
+        "pred_label": "P_RewardMania",
+        "n": 1
+      }
+    ]
+  },
+  "prevalence": {
+    "gold_count": {
+      "M_DeceptiveLuxury": 2,
+      "M_EasyToPurchase": 2,
+      "M_Gambling": 2,
+      "M_IntermediateCurrency": 4,
+      "M_NeverEndingLure": 0,
+      "M_PayToProgress": 18,
+      "M_PowerCreep": 2,
+      "M_RecurringFee": 1,
+      "M_UIMisdirection": 3,
+      "M_WasteAversion": 2,
+      "P_AestheticManipulation": 2,
+      "P_CompleteTheCollection": 5,
+      "P_EasyToGetHardToLose": 1,
+      "P_IllusionOfControl": 3,
+      "P_OptimismAndFrequencyBiases": 1,
+      "P_RewardMania": 6,
+      "S_Competition": 8,
+      "S_EncouragesAntiSocialBehavior": 1,
+      "S_FearOfMissingOutFOMO": 0,
+      "S_ForcedFellowship": 1,
+      "S_FriendSpamImpersonation": 1,
+      "S_Reciprocity": 3,
+      "T_Advertisement": 2,
+      "T_DailyRewards": 2,
+      "T_Grinding": 5,
+      "T_InfiniteTreadmill": 1,
+      "T_MandatoryMarathon": 1,
+      "T_PlayingByAppointment": 7,
+      "Tech_FragmentedDownloads": 0
+    },
+    "gold_consistent": true,
+    "per_run": {
+      "gpt-5.6-luna [] teacher_v2_full": {
+        "M_DeceptiveLuxury": {
+          "pred_count": 1,
+          "ratio": 0.5,
+          "signed_error": -1
+        },
+        "M_EasyToPurchase": {
+          "pred_count": 2,
+          "ratio": 1.0,
+          "signed_error": 0
+        },
+        "M_Gambling": {
+          "pred_count": 1,
+          "ratio": 0.5,
+          "signed_error": -1
+        },
+        "M_IntermediateCurrency": {
+          "pred_count": 2,
+          "ratio": 0.5,
+          "signed_error": -2
+        },
+        "M_NeverEndingLure": {
+          "pred_count": 0,
+          "ratio": null,
+          "signed_error": 0
+        },
+        "M_PayToProgress": {
+          "pred_count": 16,
+          "ratio": 0.8888888888888888,
+          "signed_error": -2
+        },
+        "M_PowerCreep": {
+          "pred_count": 3,
+          "ratio": 1.5,
+          "signed_error": 1
+        },
+        "M_RecurringFee": {
+          "pred_count": 1,
+          "ratio": 1.0,
+          "signed_error": 0
+        },
+        "M_UIMisdirection": {
+          "pred_count": 3,
+          "ratio": 1.0,
+          "signed_error": 0
+        },
+        "M_WasteAversion": {
+          "pred_count": 2,
+          "ratio": 1.0,
+          "signed_error": 0
+        },
+        "P_AestheticManipulation": {
+          "pred_count": 0,
+          "ratio": 0.0,
+          "signed_error": -2
+        },
+        "P_CompleteTheCollection": {
+          "pred_count": 5,
+          "ratio": 1.0,
+          "signed_error": 0
+        },
+        "P_EasyToGetHardToLose": {
+          "pred_count": 1,
+          "ratio": 1.0,
+          "signed_error": 0
+        },
+        "P_IllusionOfControl": {
+          "pred_count": 3,
+          "ratio": 1.0,
+          "signed_error": 0
+        },
+        "P_OptimismAndFrequencyBiases": {
+          "pred_count": 0,
+          "ratio": 0.0,
+          "signed_error": -1
+        },
+        "P_RewardMania": {
+          "pred_count": 6,
+          "ratio": 1.0,
+          "signed_error": 0
+        },
+        "S_Competition": {
+          "pred_count": 8,
+          "ratio": 1.0,
+          "signed_error": 0
+        },
+        "S_EncouragesAntiSocialBehavior": {
+          "pred_count": 1,
+          "ratio": 1.0,
+          "signed_error": 0
+        },
+        "S_FearOfMissingOutFOMO": {
+          "pred_count": 0,
+          "ratio": null,
+          "signed_error": 0
+        },
+        "S_ForcedFellowship": {
+          "pred_count": 1,
+          "ratio": 1.0,
+          "signed_error": 0
+        },
+        "S_FriendSpamImpersonation": {
+          "pred_count": 1,
+          "ratio": 1.0,
+          "signed_error": 0
+        },
+        "S_Reciprocity": {
+          "pred_count": 1,
+          "ratio": 0.3333333333333333,
+          "signed_error": -2
+        },
+        "T_Advertisement": {
+          "pred_count": 2,
+          "ratio": 1.0,
+          "signed_error": 0
+        },
+        "T_DailyRewards": {
+          "pred_count": 2,
+          "ratio": 1.0,
+          "signed_error": 0
+        },
+        "T_Grinding": {
+          "pred_count": 6,
+          "ratio": 1.2,
+          "signed_error": 1
+        },
+        "T_InfiniteTreadmill": {
+          "pred_count": 1,
+          "ratio": 1.0,
+          "signed_error": 0
+        },
+        "T_MandatoryMarathon": {
+          "pred_count": 1,
+          "ratio": 1.0,
+          "signed_error": 0
+        },
+        "T_PlayingByAppointment": {
+          "pred_count": 6,
+          "ratio": 0.8571428571428571,
+          "signed_error": -1
+        },
+        "Tech_FragmentedDownloads": {
+          "pred_count": 0,
+          "ratio": null,
+          "signed_error": 0
+        }
+      },
+      "gpt-5.6-luna [] teacher_v1": {
+        "M_DeceptiveLuxury": {
+          "pred_count": 2,
+          "ratio": 1.0,
+          "signed_error": 0
+        },
+        "M_EasyToPurchase": {
+          "pred_count": 1,
+          "ratio": 0.5,
+          "signed_error": -1
+        },
+        "M_Gambling": {
+          "pred_count": 2,
+          "ratio": 1.0,
+          "signed_error": 0
+        },
+        "M_IntermediateCurrency": {
+          "pred_count": 2,
+          "ratio": 0.5,
+          "signed_error": -2
+        },
+        "M_NeverEndingLure": {
+          "pred_count": 0,
+          "ratio": null,
+          "signed_error": 0
+        },
+        "M_PayToProgress": {
+          "pred_count": 15,
+          "ratio": 0.8333333333333334,
+          "signed_error": -3
+        },
+        "M_PowerCreep": {
+          "pred_count": 2,
+          "ratio": 1.0,
+          "signed_error": 0
+        },
+        "M_RecurringFee": {
+          "pred_count": 0,
+          "ratio": 0.0,
+          "signed_error": -1
+        },
+        "M_UIMisdirection": {
+          "pred_count": 3,
+          "ratio": 1.0,
+          "signed_error": 0
+        },
+        "M_WasteAversion": {
+          "pred_count": 3,
+          "ratio": 1.5,
+          "signed_error": 1
+        },
+        "P_AestheticManipulation": {
+          "pred_count": 0,
+          "ratio": 0.0,
+          "signed_error": -2
+        },
+        "P_CompleteTheCollection": {
+          "pred_count": 5,
+          "ratio": 1.0,
+          "signed_error": 0
+        },
+        "P_EasyToGetHardToLose": {
+          "pred_count": 1,
+          "ratio": 1.0,
+          "signed_error": 0
+        },
+        "P_IllusionOfControl": {
+          "pred_count": 2,
+          "ratio": 0.6666666666666666,
+          "signed_error": -1
+        },
+        "P_OptimismAndFrequencyBiases": {
+          "pred_count": 0,
+          "ratio": 0.0,
+          "signed_error": -1
+        },
+        "P_RewardMania": {
+          "pred_count": 4,
+          "ratio": 0.6666666666666666,
+          "signed_error": -2
+        },
+        "S_Competition": {
+          "pred_count": 7,
+          "ratio": 0.875,
+          "signed_error": -1
+        },
+        "S_EncouragesAntiSocialBehavior": {
+          "pred_count": 1,
+          "ratio": 1.0,
+          "signed_error": 0
+        },
+        "S_FearOfMissingOutFOMO": {
+          "pred_count": 0,
+          "ratio": null,
+          "signed_error": 0
+        },
+        "S_ForcedFellowship": {
+          "pred_count": 1,
+          "ratio": 1.0,
+          "signed_error": 0
+        },
+        "S_FriendSpamImpersonation": {
+          "pred_count": 1,
+          "ratio": 1.0,
+          "signed_error": 0
+        },
+        "S_Reciprocity": {
+          "pred_count": 1,
+          "ratio": 0.3333333333333333,
+          "signed_error": -2
+        },
+        "T_Advertisement": {
+          "pred_count": 1,
+          "ratio": 0.5,
+          "signed_error": -1
+        },
+        "T_DailyRewards": {
+          "pred_count": 2,
+          "ratio": 1.0,
+          "signed_error": 0
+        },
+        "T_Grinding": {
+          "pred_count": 3,
+          "ratio": 0.6,
+          "signed_error": -2
+        },
+        "T_InfiniteTreadmill": {
+          "pred_count": 1,
+          "ratio": 1.0,
+          "signed_error": 0
+        },
+        "T_MandatoryMarathon": {
+          "pred_count": 1,
+          "ratio": 1.0,
+          "signed_error": 0
+        },
+        "T_PlayingByAppointment": {
+          "pred_count": 6,
+          "ratio": 0.8571428571428571,
+          "signed_error": -1
+        },
+        "Tech_FragmentedDownloads": {
+          "pred_count": 0,
+          "ratio": null,
+          "signed_error": 0
+        }
+      },
+      "gpt-5.6-luna [] teacher_v2_boundary": {
+        "M_DeceptiveLuxury": {
+          "pred_count": 0,
+          "ratio": 0.0,
+          "signed_error": -2
+        },
+        "M_EasyToPurchase": {
+          "pred_count": 2,
+          "ratio": 1.0,
+          "signed_error": 0
+        },
+        "M_Gambling": {
+          "pred_count": 1,
+          "ratio": 0.5,
+          "signed_error": -1
+        },
+        "M_IntermediateCurrency": {
+          "pred_count": 1,
+          "ratio": 0.25,
+          "signed_error": -3
+        },
+        "M_NeverEndingLure": {
+          "pred_count": 0,
+          "ratio": null,
+          "signed_error": 0
+        },
+        "M_PayToProgress": {
+          "pred_count": 18,
+          "ratio": 1.0,
+          "signed_error": 0
+        },
+        "M_PowerCreep": {
+          "pred_count": 1,
+          "ratio": 0.5,
+          "signed_error": -1
+        },
+        "M_RecurringFee": {
+          "pred_count": 0,
+          "ratio": 0.0,
+          "signed_error": -1
+        },
+        "M_UIMisdirection": {
+          "pred_count": 3,
+          "ratio": 1.0,
+          "signed_error": 0
+        },
+        "M_WasteAversion": {
+          "pred_count": 0,
+          "ratio": 0.0,
+          "signed_error": -2
+        },
+        "P_AestheticManipulation": {
+          "pred_count": 0,
+          "ratio": 0.0,
+          "signed_error": -2
+        },
+        "P_CompleteTheCollection": {
+          "pred_count": 5,
+          "ratio": 1.0,
+          "signed_error": 0
+        },
+        "P_EasyToGetHardToLose": {
+          "pred_count": 1,
+          "ratio": 1.0,
+          "signed_error": 0
+        },
+        "P_IllusionOfControl": {
+          "pred_count": 3,
+          "ratio": 1.0,
+          "signed_error": 0
+        },
+        "P_OptimismAndFrequencyBiases": {
+          "pred_count": 0,
+          "ratio": 0.0,
+          "signed_error": -1
+        },
+        "P_RewardMania": {
+          "pred_count": 3,
+          "ratio": 0.5,
+          "signed_error": -3
+        },
+        "S_Competition": {
+          "pred_count": 8,
+          "ratio": 1.0,
+          "signed_error": 0
+        },
+        "S_EncouragesAntiSocialBehavior": {
+          "pred_count": 1,
+          "ratio": 1.0,
+          "signed_error": 0
+        },
+        "S_FearOfMissingOutFOMO": {
+          "pred_count": 0,
+          "ratio": null,
+          "signed_error": 0
+        },
+        "S_ForcedFellowship": {
+          "pred_count": 1,
+          "ratio": 1.0,
+          "signed_error": 0
+        },
+        "S_FriendSpamImpersonation": {
+          "pred_count": 0,
+          "ratio": 0.0,
+          "signed_error": -1
+        },
+        "S_Reciprocity": {
+          "pred_count": 1,
+          "ratio": 0.3333333333333333,
+          "signed_error": -2
+        },
+        "T_Advertisement": {
+          "pred_count": 1,
+          "ratio": 0.5,
+          "signed_error": -1
+        },
+        "T_DailyRewards": {
+          "pred_count": 2,
+          "ratio": 1.0,
+          "signed_error": 0
+        },
+        "T_Grinding": {
+          "pred_count": 4,
+          "ratio": 0.8,
+          "signed_error": -1
+        },
+        "T_InfiniteTreadmill": {
+          "pred_count": 1,
+          "ratio": 1.0,
+          "signed_error": 0
+        },
+        "T_MandatoryMarathon": {
+          "pred_count": 1,
+          "ratio": 1.0,
+          "signed_error": 0
+        },
+        "T_PlayingByAppointment": {
+          "pred_count": 6,
+          "ratio": 0.8571428571428571,
+          "signed_error": -1
+        },
+        "Tech_FragmentedDownloads": {
+          "pred_count": 0,
+          "ratio": null,
+          "signed_error": 0
+        }
+      },
+      "gpt-5.6-luna [] teacher_v2_bare": {
+        "M_DeceptiveLuxury": {
+          "pred_count": 1,
+          "ratio": 0.5,
+          "signed_error": -1
+        },
+        "M_EasyToPurchase": {
+          "pred_count": 0,
+          "ratio": 0.0,
+          "signed_error": -2
+        },
+        "M_Gambling": {
+          "pred_count": 1,
+          "ratio": 0.5,
+          "signed_error": -1
+        },
+        "M_IntermediateCurrency": {
+          "pred_count": 1,
+          "ratio": 0.25,
+          "signed_error": -3
+        },
+        "M_NeverEndingLure": {
+          "pred_count": 0,
+          "ratio": null,
+          "signed_error": 0
+        },
+        "M_PayToProgress": {
+          "pred_count": 19,
+          "ratio": 1.0555555555555556,
+          "signed_error": 1
+        },
+        "M_PowerCreep": {
+          "pred_count": 1,
+          "ratio": 0.5,
+          "signed_error": -1
+        },
+        "M_RecurringFee": {
+          "pred_count": 1,
+          "ratio": 1.0,
+          "signed_error": 0
+        },
+        "M_UIMisdirection": {
+          "pred_count": 3,
+          "ratio": 1.0,
+          "signed_error": 0
+        },
+        "M_WasteAversion": {
+          "pred_count": 1,
+          "ratio": 0.5,
+          "signed_error": -1
+        },
+        "P_AestheticManipulation": {
+          "pred_count": 0,
+          "ratio": 0.0,
+          "signed_error": -2
+        },
+        "P_CompleteTheCollection": {
+          "pred_count": 5,
+          "ratio": 1.0,
+          "signed_error": 0
+        },
+        "P_EasyToGetHardToLose": {
+          "pred_count": 3,
+          "ratio": 3.0,
+          "signed_error": 2
+        },
+        "P_IllusionOfControl": {
+          "pred_count": 0,
+          "ratio": 0.0,
+          "signed_error": -3
+        },
+        "P_OptimismAndFrequencyBiases": {
+          "pred_count": 0,
+          "ratio": 0.0,
+          "signed_error": -1
+        },
+        "P_RewardMania": {
+          "pred_count": 2,
+          "ratio": 0.3333333333333333,
+          "signed_error": -4
+        },
+        "S_Competition": {
+          "pred_count": 6,
+          "ratio": 0.75,
+          "signed_error": -2
+        },
+        "S_EncouragesAntiSocialBehavior": {
+          "pred_count": 0,
+          "ratio": 0.0,
+          "signed_error": -1
+        },
+        "S_FearOfMissingOutFOMO": {
+          "pred_count": 2,
+          "ratio": null,
+          "signed_error": 2
+        },
+        "S_ForcedFellowship": {
+          "pred_count": 1,
+          "ratio": 1.0,
+          "signed_error": 0
+        },
+        "S_FriendSpamImpersonation": {
+          "pred_count": 1,
+          "ratio": 1.0,
+          "signed_error": 0
+        },
+        "S_Reciprocity": {
+          "pred_count": 0,
+          "ratio": 0.0,
+          "signed_error": -3
+        },
+        "T_Advertisement": {
+          "pred_count": 2,
+          "ratio": 1.0,
+          "signed_error": 0
+        },
+        "T_DailyRewards": {
+          "pred_count": 2,
+          "ratio": 1.0,
+          "signed_error": 0
+        },
+        "T_Grinding": {
+          "pred_count": 7,
+          "ratio": 1.4,
+          "signed_error": 2
+        },
+        "T_InfiniteTreadmill": {
+          "pred_count": 1,
+          "ratio": 1.0,
+          "signed_error": 0
+        },
+        "T_MandatoryMarathon": {
+          "pred_count": 0,
+          "ratio": 0.0,
+          "signed_error": -1
+        },
+        "T_PlayingByAppointment": {
+          "pred_count": 6,
+          "ratio": 0.8571428571428571,
+          "signed_error": -1
+        },
+        "Tech_FragmentedDownloads": {
+          "pred_count": 0,
+          "ratio": null,
+          "signed_error": 0
+        }
+      }
+    }
+  },
+  "per_label": {
+    "M_DeceptiveLuxury": {
+      "label": "M_DeceptiveLuxury",
+      "support": 2,
+      "best_f1": 1.0,
+      "best_run_id": "gpt-5.6-luna_none_teacher_v1",
+      "median_f1": 0.6667,
+      "spread": 1.0,
+      "below_support_floor": true,
+      "per_run": {
+        "gpt-5.6-luna_none_teacher_v2_full": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666,
+          "support": 2
+        },
+        "gpt-5.6-luna_none_teacher_v1": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 2
+        },
+        "gpt-5.6-luna_none_teacher_v2_boundary": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 2
+        },
+        "gpt-5.6-luna_none_teacher_v2_bare": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666,
+          "support": 2
+        }
+      }
+    },
+    "M_EasyToPurchase": {
+      "label": "M_EasyToPurchase",
+      "support": 2,
+      "best_f1": 0.6667,
+      "best_run_id": "gpt-5.6-luna_none_teacher_v1",
+      "median_f1": 0.5,
+      "spread": 0.6667,
+      "below_support_floor": true,
+      "per_run": {
+        "gpt-5.6-luna_none_teacher_v2_full": {
+          "precision": 0.5,
+          "recall": 0.5,
+          "f1": 0.5,
+          "support": 2
+        },
+        "gpt-5.6-luna_none_teacher_v1": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666,
+          "support": 2
+        },
+        "gpt-5.6-luna_none_teacher_v2_boundary": {
+          "precision": 0.5,
+          "recall": 0.5,
+          "f1": 0.5,
+          "support": 2
+        },
+        "gpt-5.6-luna_none_teacher_v2_bare": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 2
+        }
+      }
+    },
+    "M_Gambling": {
+      "label": "M_Gambling",
+      "support": 2,
+      "best_f1": 0.6667,
+      "best_run_id": "gpt-5.6-luna_none_teacher_v2_full",
+      "median_f1": 0.25,
+      "spread": 0.6667,
+      "below_support_floor": true,
+      "per_run": {
+        "gpt-5.6-luna_none_teacher_v2_full": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666,
+          "support": 2
+        },
+        "gpt-5.6-luna_none_teacher_v1": {
+          "precision": 0.5,
+          "recall": 0.5,
+          "f1": 0.5,
+          "support": 2
+        },
+        "gpt-5.6-luna_none_teacher_v2_boundary": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 2
+        },
+        "gpt-5.6-luna_none_teacher_v2_bare": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 2
+        }
+      }
+    },
+    "M_IntermediateCurrency": {
+      "label": "M_IntermediateCurrency",
+      "support": 4,
+      "best_f1": 0.6667,
+      "best_run_id": "gpt-5.6-luna_none_teacher_v2_full",
+      "median_f1": 0.53335,
+      "spread": 0.26669999999999994,
+      "below_support_floor": false,
+      "per_run": {
+        "gpt-5.6-luna_none_teacher_v2_full": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666,
+          "support": 4
+        },
+        "gpt-5.6-luna_none_teacher_v1": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666,
+          "support": 4
+        },
+        "gpt-5.6-luna_none_teacher_v2_boundary": {
+          "precision": 1.0,
+          "recall": 0.25,
+          "f1": 0.4,
+          "support": 4
+        },
+        "gpt-5.6-luna_none_teacher_v2_bare": {
+          "precision": 1.0,
+          "recall": 0.25,
+          "f1": 0.4,
+          "support": 4
+        }
+      }
+    },
+    "M_NeverEndingLure": {
+      "label": "M_NeverEndingLure",
+      "support": 0,
+      "best_f1": 0.0,
+      "best_run_id": "gpt-5.6-luna_none_teacher_v2_full",
+      "median_f1": 0.0,
+      "spread": 0.0,
+      "below_support_floor": true,
+      "per_run": {
+        "gpt-5.6-luna_none_teacher_v2_full": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "gpt-5.6-luna_none_teacher_v1": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "gpt-5.6-luna_none_teacher_v2_boundary": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "gpt-5.6-luna_none_teacher_v2_bare": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        }
+      }
+    },
+    "M_PayToProgress": {
+      "label": "M_PayToProgress",
+      "support": 18,
+      "best_f1": 0.9189,
+      "best_run_id": "gpt-5.6-luna_none_teacher_v2_bare",
+      "median_f1": 0.88565,
+      "spread": 0.07040000000000002,
+      "below_support_floor": false,
+      "per_run": {
+        "gpt-5.6-luna_none_teacher_v2_full": {
+          "precision": 0.9375,
+          "recall": 0.8333333333333334,
+          "f1": 0.8823529411764706,
+          "support": 18
+        },
+        "gpt-5.6-luna_none_teacher_v1": {
+          "precision": 0.9333333333333333,
+          "recall": 0.7777777777777778,
+          "f1": 0.8484848484848485,
+          "support": 18
+        },
+        "gpt-5.6-luna_none_teacher_v2_boundary": {
+          "precision": 0.8888888888888888,
+          "recall": 0.8888888888888888,
+          "f1": 0.8888888888888888,
+          "support": 18
+        },
+        "gpt-5.6-luna_none_teacher_v2_bare": {
+          "precision": 0.8947368421052632,
+          "recall": 0.9444444444444444,
+          "f1": 0.918918918918919,
+          "support": 18
+        }
+      }
+    },
+    "M_PowerCreep": {
+      "label": "M_PowerCreep",
+      "support": 2,
+      "best_f1": 1.0,
+      "best_run_id": "gpt-5.6-luna_none_teacher_v1",
+      "median_f1": 0.73335,
+      "spread": 0.33330000000000004,
+      "below_support_floor": true,
+      "per_run": {
+        "gpt-5.6-luna_none_teacher_v2_full": {
+          "precision": 0.6666666666666666,
+          "recall": 1.0,
+          "f1": 0.8,
+          "support": 2
+        },
+        "gpt-5.6-luna_none_teacher_v1": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 2
+        },
+        "gpt-5.6-luna_none_teacher_v2_boundary": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666,
+          "support": 2
+        },
+        "gpt-5.6-luna_none_teacher_v2_bare": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666,
+          "support": 2
+        }
+      }
+    },
+    "M_RecurringFee": {
+      "label": "M_RecurringFee",
+      "support": 1,
+      "best_f1": 1.0,
+      "best_run_id": "gpt-5.6-luna_none_teacher_v2_full",
+      "median_f1": 0.5,
+      "spread": 1.0,
+      "below_support_floor": true,
+      "per_run": {
+        "gpt-5.6-luna_none_teacher_v2_full": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 1
+        },
+        "gpt-5.6-luna_none_teacher_v1": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 1
+        },
+        "gpt-5.6-luna_none_teacher_v2_boundary": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 1
+        },
+        "gpt-5.6-luna_none_teacher_v2_bare": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 1
+        }
+      }
+    },
+    "M_UIMisdirection": {
+      "label": "M_UIMisdirection",
+      "support": 3,
+      "best_f1": 1.0,
+      "best_run_id": "gpt-5.6-luna_none_teacher_v2_full",
+      "median_f1": 1.0,
+      "spread": 0.0,
+      "below_support_floor": false,
+      "per_run": {
+        "gpt-5.6-luna_none_teacher_v2_full": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 3
+        },
+        "gpt-5.6-luna_none_teacher_v1": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 3
+        },
+        "gpt-5.6-luna_none_teacher_v2_boundary": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 3
+        },
+        "gpt-5.6-luna_none_teacher_v2_bare": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 3
+        }
+      }
+    },
+    "M_WasteAversion": {
+      "label": "M_WasteAversion",
+      "support": 2,
+      "best_f1": 0.6667,
+      "best_run_id": "gpt-5.6-luna_none_teacher_v2_bare",
+      "median_f1": 0.45,
+      "spread": 0.6667,
+      "below_support_floor": true,
+      "per_run": {
+        "gpt-5.6-luna_none_teacher_v2_full": {
+          "precision": 0.5,
+          "recall": 0.5,
+          "f1": 0.5,
+          "support": 2
+        },
+        "gpt-5.6-luna_none_teacher_v1": {
+          "precision": 0.3333333333333333,
+          "recall": 0.5,
+          "f1": 0.4,
+          "support": 2
+        },
+        "gpt-5.6-luna_none_teacher_v2_boundary": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 2
+        },
+        "gpt-5.6-luna_none_teacher_v2_bare": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666,
+          "support": 2
+        }
+      }
+    },
+    "P_AestheticManipulation": {
+      "label": "P_AestheticManipulation",
+      "support": 2,
+      "best_f1": 0.0,
+      "best_run_id": "gpt-5.6-luna_none_teacher_v2_full",
+      "median_f1": 0.0,
+      "spread": 0.0,
+      "below_support_floor": true,
+      "per_run": {
+        "gpt-5.6-luna_none_teacher_v2_full": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 2
+        },
+        "gpt-5.6-luna_none_teacher_v1": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 2
+        },
+        "gpt-5.6-luna_none_teacher_v2_boundary": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 2
+        },
+        "gpt-5.6-luna_none_teacher_v2_bare": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 2
+        }
+      }
+    },
+    "P_CompleteTheCollection": {
+      "label": "P_CompleteTheCollection",
+      "support": 5,
+      "best_f1": 1.0,
+      "best_run_id": "gpt-5.6-luna_none_teacher_v2_full",
+      "median_f1": 1.0,
+      "spread": 0.0,
+      "below_support_floor": false,
+      "per_run": {
+        "gpt-5.6-luna_none_teacher_v2_full": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 5
+        },
+        "gpt-5.6-luna_none_teacher_v1": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 5
+        },
+        "gpt-5.6-luna_none_teacher_v2_boundary": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 5
+        },
+        "gpt-5.6-luna_none_teacher_v2_bare": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 5
+        }
+      }
+    },
+    "P_EasyToGetHardToLose": {
+      "label": "P_EasyToGetHardToLose",
+      "support": 1,
+      "best_f1": 1.0,
+      "best_run_id": "gpt-5.6-luna_none_teacher_v1",
+      "median_f1": 0.25,
+      "spread": 1.0,
+      "below_support_floor": true,
+      "per_run": {
+        "gpt-5.6-luna_none_teacher_v2_full": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 1
+        },
+        "gpt-5.6-luna_none_teacher_v1": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 1
+        },
+        "gpt-5.6-luna_none_teacher_v2_boundary": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 1
+        },
+        "gpt-5.6-luna_none_teacher_v2_bare": {
+          "precision": 0.3333333333333333,
+          "recall": 1.0,
+          "f1": 0.5,
+          "support": 1
+        }
+      }
+    },
+    "P_IllusionOfControl": {
+      "label": "P_IllusionOfControl",
+      "support": 3,
+      "best_f1": 1.0,
+      "best_run_id": "gpt-5.6-luna_none_teacher_v2_full",
+      "median_f1": 0.9,
+      "spread": 1.0,
+      "below_support_floor": false,
+      "per_run": {
+        "gpt-5.6-luna_none_teacher_v2_full": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 3
+        },
+        "gpt-5.6-luna_none_teacher_v1": {
+          "precision": 1.0,
+          "recall": 0.6666666666666666,
+          "f1": 0.8,
+          "support": 3
+        },
+        "gpt-5.6-luna_none_teacher_v2_boundary": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 3
+        },
+        "gpt-5.6-luna_none_teacher_v2_bare": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 3
+        }
+      }
+    },
+    "P_OptimismAndFrequencyBiases": {
+      "label": "P_OptimismAndFrequencyBiases",
+      "support": 1,
+      "best_f1": 0.0,
+      "best_run_id": "gpt-5.6-luna_none_teacher_v2_full",
+      "median_f1": 0.0,
+      "spread": 0.0,
+      "below_support_floor": true,
+      "per_run": {
+        "gpt-5.6-luna_none_teacher_v2_full": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 1
+        },
+        "gpt-5.6-luna_none_teacher_v1": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 1
+        },
+        "gpt-5.6-luna_none_teacher_v2_boundary": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 1
+        },
+        "gpt-5.6-luna_none_teacher_v2_bare": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 1
+        }
+      }
+    },
+    "P_RewardMania": {
+      "label": "P_RewardMania",
+      "support": 6,
+      "best_f1": 0.8333,
+      "best_run_id": "gpt-5.6-luna_none_teacher_v2_full",
+      "median_f1": 0.73335,
+      "spread": 0.33330000000000004,
+      "below_support_floor": false,
+      "per_run": {
+        "gpt-5.6-luna_none_teacher_v2_full": {
+          "precision": 0.8333333333333334,
+          "recall": 0.8333333333333334,
+          "f1": 0.8333333333333334,
+          "support": 6
+        },
+        "gpt-5.6-luna_none_teacher_v1": {
+          "precision": 1.0,
+          "recall": 0.6666666666666666,
+          "f1": 0.8,
+          "support": 6
+        },
+        "gpt-5.6-luna_none_teacher_v2_boundary": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666,
+          "support": 6
+        },
+        "gpt-5.6-luna_none_teacher_v2_bare": {
+          "precision": 1.0,
+          "recall": 0.3333333333333333,
+          "f1": 0.5,
+          "support": 6
+        }
+      }
+    },
+    "S_Competition": {
+      "label": "S_Competition",
+      "support": 8,
+      "best_f1": 0.9333,
+      "best_run_id": "gpt-5.6-luna_none_teacher_v1",
+      "median_f1": 0.875,
+      "spread": 0.21899999999999997,
+      "below_support_floor": false,
+      "per_run": {
+        "gpt-5.6-luna_none_teacher_v2_full": {
+          "precision": 0.875,
+          "recall": 0.875,
+          "f1": 0.875,
+          "support": 8
+        },
+        "gpt-5.6-luna_none_teacher_v1": {
+          "precision": 1.0,
+          "recall": 0.875,
+          "f1": 0.9333333333333333,
+          "support": 8
+        },
+        "gpt-5.6-luna_none_teacher_v2_boundary": {
+          "precision": 0.875,
+          "recall": 0.875,
+          "f1": 0.875,
+          "support": 8
+        },
+        "gpt-5.6-luna_none_teacher_v2_bare": {
+          "precision": 0.8333333333333334,
+          "recall": 0.625,
+          "f1": 0.7142857142857143,
+          "support": 8
+        }
+      }
+    },
+    "S_EncouragesAntiSocialBehavior": {
+      "label": "S_EncouragesAntiSocialBehavior",
+      "support": 1,
+      "best_f1": 1.0,
+      "best_run_id": "gpt-5.6-luna_none_teacher_v2_full",
+      "median_f1": 1.0,
+      "spread": 1.0,
+      "below_support_floor": true,
+      "per_run": {
+        "gpt-5.6-luna_none_teacher_v2_full": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 1
+        },
+        "gpt-5.6-luna_none_teacher_v1": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 1
+        },
+        "gpt-5.6-luna_none_teacher_v2_boundary": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 1
+        },
+        "gpt-5.6-luna_none_teacher_v2_bare": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 1
+        }
+      }
+    },
+    "S_FearOfMissingOutFOMO": {
+      "label": "S_FearOfMissingOutFOMO",
+      "support": 0,
+      "best_f1": 0.0,
+      "best_run_id": "gpt-5.6-luna_none_teacher_v2_full",
+      "median_f1": 0.0,
+      "spread": 0.0,
+      "below_support_floor": true,
+      "per_run": {
+        "gpt-5.6-luna_none_teacher_v2_full": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "gpt-5.6-luna_none_teacher_v1": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "gpt-5.6-luna_none_teacher_v2_boundary": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "gpt-5.6-luna_none_teacher_v2_bare": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        }
+      }
+    },
+    "S_ForcedFellowship": {
+      "label": "S_ForcedFellowship",
+      "support": 1,
+      "best_f1": 1.0,
+      "best_run_id": "gpt-5.6-luna_none_teacher_v2_full",
+      "median_f1": 1.0,
+      "spread": 1.0,
+      "below_support_floor": true,
+      "per_run": {
+        "gpt-5.6-luna_none_teacher_v2_full": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 1
+        },
+        "gpt-5.6-luna_none_teacher_v1": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 1
+        },
+        "gpt-5.6-luna_none_teacher_v2_boundary": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 1
+        },
+        "gpt-5.6-luna_none_teacher_v2_bare": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 1
+        }
+      }
+    },
+    "S_FriendSpamImpersonation": {
+      "label": "S_FriendSpamImpersonation",
+      "support": 1,
+      "best_f1": 1.0,
+      "best_run_id": "gpt-5.6-luna_none_teacher_v2_full",
+      "median_f1": 0.5,
+      "spread": 1.0,
+      "below_support_floor": true,
+      "per_run": {
+        "gpt-5.6-luna_none_teacher_v2_full": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 1
+        },
+        "gpt-5.6-luna_none_teacher_v1": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 1
+        },
+        "gpt-5.6-luna_none_teacher_v2_boundary": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 1
+        },
+        "gpt-5.6-luna_none_teacher_v2_bare": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 1
+        }
+      }
+    },
+    "S_Reciprocity": {
+      "label": "S_Reciprocity",
+      "support": 3,
+      "best_f1": 0.5,
+      "best_run_id": "gpt-5.6-luna_none_teacher_v2_full",
+      "median_f1": 0.5,
+      "spread": 0.5,
+      "below_support_floor": false,
+      "per_run": {
+        "gpt-5.6-luna_none_teacher_v2_full": {
+          "precision": 1.0,
+          "recall": 0.3333333333333333,
+          "f1": 0.5,
+          "support": 3
+        },
+        "gpt-5.6-luna_none_teacher_v1": {
+          "precision": 1.0,
+          "recall": 0.3333333333333333,
+          "f1": 0.5,
+          "support": 3
+        },
+        "gpt-5.6-luna_none_teacher_v2_boundary": {
+          "precision": 1.0,
+          "recall": 0.3333333333333333,
+          "f1": 0.5,
+          "support": 3
+        },
+        "gpt-5.6-luna_none_teacher_v2_bare": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 3
+        }
+      }
+    },
+    "T_Advertisement": {
+      "label": "T_Advertisement",
+      "support": 2,
+      "best_f1": 1.0,
+      "best_run_id": "gpt-5.6-luna_none_teacher_v2_full",
+      "median_f1": 0.83335,
+      "spread": 0.33330000000000004,
+      "below_support_floor": true,
+      "per_run": {
+        "gpt-5.6-luna_none_teacher_v2_full": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 2
+        },
+        "gpt-5.6-luna_none_teacher_v1": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666,
+          "support": 2
+        },
+        "gpt-5.6-luna_none_teacher_v2_boundary": {
+          "precision": 1.0,
+          "recall": 0.5,
+          "f1": 0.6666666666666666,
+          "support": 2
+        },
+        "gpt-5.6-luna_none_teacher_v2_bare": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 2
+        }
+      }
+    },
+    "T_DailyRewards": {
+      "label": "T_DailyRewards",
+      "support": 2,
+      "best_f1": 1.0,
+      "best_run_id": "gpt-5.6-luna_none_teacher_v2_full",
+      "median_f1": 1.0,
+      "spread": 0.0,
+      "below_support_floor": true,
+      "per_run": {
+        "gpt-5.6-luna_none_teacher_v2_full": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 2
+        },
+        "gpt-5.6-luna_none_teacher_v1": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 2
+        },
+        "gpt-5.6-luna_none_teacher_v2_boundary": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 2
+        },
+        "gpt-5.6-luna_none_teacher_v2_bare": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 2
+        }
+      }
+    },
+    "T_Grinding": {
+      "label": "T_Grinding",
+      "support": 5,
+      "best_f1": 0.9091,
+      "best_run_id": "gpt-5.6-luna_none_teacher_v2_full",
+      "median_f1": 0.81945,
+      "spread": 0.24240000000000006,
+      "below_support_floor": false,
+      "per_run": {
+        "gpt-5.6-luna_none_teacher_v2_full": {
+          "precision": 0.8333333333333334,
+          "recall": 1.0,
+          "f1": 0.9090909090909091,
+          "support": 5
+        },
+        "gpt-5.6-luna_none_teacher_v1": {
+          "precision": 1.0,
+          "recall": 0.6,
+          "f1": 0.7499999999999999,
+          "support": 5
+        },
+        "gpt-5.6-luna_none_teacher_v2_boundary": {
+          "precision": 1.0,
+          "recall": 0.8,
+          "f1": 0.888888888888889,
+          "support": 5
+        },
+        "gpt-5.6-luna_none_teacher_v2_bare": {
+          "precision": 0.5714285714285714,
+          "recall": 0.8,
+          "f1": 0.6666666666666666,
+          "support": 5
+        }
+      }
+    },
+    "T_InfiniteTreadmill": {
+      "label": "T_InfiniteTreadmill",
+      "support": 1,
+      "best_f1": 1.0,
+      "best_run_id": "gpt-5.6-luna_none_teacher_v2_full",
+      "median_f1": 1.0,
+      "spread": 0.0,
+      "below_support_floor": true,
+      "per_run": {
+        "gpt-5.6-luna_none_teacher_v2_full": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 1
+        },
+        "gpt-5.6-luna_none_teacher_v1": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 1
+        },
+        "gpt-5.6-luna_none_teacher_v2_boundary": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 1
+        },
+        "gpt-5.6-luna_none_teacher_v2_bare": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 1
+        }
+      }
+    },
+    "T_MandatoryMarathon": {
+      "label": "T_MandatoryMarathon",
+      "support": 1,
+      "best_f1": 1.0,
+      "best_run_id": "gpt-5.6-luna_none_teacher_v2_full",
+      "median_f1": 1.0,
+      "spread": 1.0,
+      "below_support_floor": true,
+      "per_run": {
+        "gpt-5.6-luna_none_teacher_v2_full": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 1
+        },
+        "gpt-5.6-luna_none_teacher_v1": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 1
+        },
+        "gpt-5.6-luna_none_teacher_v2_boundary": {
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "support": 1
+        },
+        "gpt-5.6-luna_none_teacher_v2_bare": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 1
+        }
+      }
+    },
+    "T_PlayingByAppointment": {
+      "label": "T_PlayingByAppointment",
+      "support": 7,
+      "best_f1": 0.9231,
+      "best_run_id": "gpt-5.6-luna_none_teacher_v2_full",
+      "median_f1": 0.9231,
+      "spread": 0.15390000000000004,
+      "below_support_floor": false,
+      "per_run": {
+        "gpt-5.6-luna_none_teacher_v2_full": {
+          "precision": 1.0,
+          "recall": 0.8571428571428571,
+          "f1": 0.923076923076923,
+          "support": 7
+        },
+        "gpt-5.6-luna_none_teacher_v1": {
+          "precision": 1.0,
+          "recall": 0.8571428571428571,
+          "f1": 0.923076923076923,
+          "support": 7
+        },
+        "gpt-5.6-luna_none_teacher_v2_boundary": {
+          "precision": 1.0,
+          "recall": 0.8571428571428571,
+          "f1": 0.923076923076923,
+          "support": 7
+        },
+        "gpt-5.6-luna_none_teacher_v2_bare": {
+          "precision": 0.8333333333333334,
+          "recall": 0.7142857142857143,
+          "f1": 0.7692307692307692,
+          "support": 7
+        }
+      }
+    },
+    "Tech_FragmentedDownloads": {
+      "label": "Tech_FragmentedDownloads",
+      "support": 0,
+      "best_f1": 0.0,
+      "best_run_id": "gpt-5.6-luna_none_teacher_v2_full",
+      "median_f1": 0.0,
+      "spread": 0.0,
+      "below_support_floor": true,
+      "per_run": {
+        "gpt-5.6-luna_none_teacher_v2_full": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "gpt-5.6-luna_none_teacher_v1": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "gpt-5.6-luna_none_teacher_v2_boundary": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        },
+        "gpt-5.6-luna_none_teacher_v2_bare": {
+          "precision": 0.0,
+          "recall": 0.0,
+          "f1": 0.0,
+          "support": 0
+        }
+      }
+    }
+  },
+  "repeatability": {
+    "n_repeat_groups": 0,
+    "between_config_gap": 0.1553,
+    "groups": []
+  },
+  "compliance": [
+    {
+      "run_id": "gpt-5.6-luna_none_teacher_v2_full",
+      "span_verbatim_rate": 1.0,
+      "oov_label_rate": 0.0,
+      "parse_failure_rate": 0.0,
+      "truncation_rate": 0.0,
+      "retry_count": 0,
+      "empty_analysis_rate": null,
+      "gate_pass": true
+    },
+    {
+      "run_id": "gpt-5.6-luna_none_teacher_v1",
+      "span_verbatim_rate": 0.9851,
+      "oov_label_rate": 0.0,
+      "parse_failure_rate": 0.0,
+      "truncation_rate": 0.0,
+      "retry_count": 0,
+      "empty_analysis_rate": null,
+      "gate_pass": true
+    },
+    {
+      "run_id": "gpt-5.6-luna_none_teacher_v2_boundary",
+      "span_verbatim_rate": 1.0,
+      "oov_label_rate": 0.0,
+      "parse_failure_rate": 0.0,
+      "truncation_rate": 0.0,
+      "retry_count": 0,
+      "empty_analysis_rate": null,
+      "gate_pass": true
+    },
+    {
+      "run_id": "gpt-5.6-luna_none_teacher_v2_bare",
+      "span_verbatim_rate": 0.9848,
+      "oov_label_rate": 0.0,
+      "parse_failure_rate": 0.0,
+      "truncation_rate": 0.0,
+      "retry_count": 0,
+      "empty_analysis_rate": null,
+      "gate_pass": true
+    }
+  ],
+  "cost": [
+    {
+      "run_id": "gpt-5.6-luna_none_teacher_v2_full",
+      "usd_per_review": 0.0012817,
+      "projected_usd_at_200000": 256.34,
+      "tokens_in_per_review": 25642.88,
+      "tokens_out_per_review": 604.72,
+      "cost_per_f1_point": 239.085640695428
+    },
+    {
+      "run_id": "gpt-5.6-luna_none_teacher_v1",
+      "usd_per_review": 0.00116359,
+      "projected_usd_at_200000": 232.72,
+      "tokens_in_per_review": 24431.38,
+      "tokens_out_per_review": 528.06,
+      "cost_per_f1_point": 96.98492462311553
+    },
+    {
+      "run_id": "gpt-5.6-luna_none_teacher_v2_boundary",
+      "usd_per_review": 0.00115275,
+      "projected_usd_at_200000": 230.55,
+      "tokens_in_per_review": 19454.86,
+      "tokens_out_per_review": 597.4,
+      "cost_per_f1_point": 127.27272727272737
+    },
+    {
+      "run_id": "gpt-5.6-luna_none_teacher_v2_bare",
+      "usd_per_review": 0.00109603,
+      "projected_usd_at_200000": 219.21,
+      "tokens_in_per_review": 12470.8,
+      "tokens_out_per_review": 584.36,
+      "cost_per_f1_point": "ref"
+    }
+  ],
+  "selection": {
+    "run_id": "gpt-5.6-luna_none_teacher_v2_full",
+    "selection_criterion": "max micro_f1 among named runs",
+    "ranked_on": "micro_f1",
+    "tie_break_rule": "gate_pass > lower $/200k > lower latency_p95 > lexical run_id",
+    "margin": 0.016719397542128263,
+    "p_win_vs_runner_up": 0.686,
+    "runner_up_run_id": "gpt-5.6-luna_none_teacher_v1"
+  }
+}

@@ -39,14 +39,20 @@ Six ways DeepSeek differs. Each is marked DEEPSEEK DIFF below.
      turn -- omitting it is a 400, not a quality regression, and it applies even on turns
      where the model did not call a tool. This is the same trap k3 has for the same
      reason, and the same fix: echo the model's own message dump back unfiltered.
-  4. THE EFFORT AXIS HAS TWO RUNGS. On the OpenAI-compatible surface, thinking is a
-     boolean: extra_body={"thinking": {"type": "enabled"|"disabled"}}. The finer
-     none|low|high|max ladder exists only on DeepSeek's Anthropic-format surface, which
-     is a different base_url, different usage field names and a different tool-call
-     shape -- a third architecture for one extra axis point. So --effort here is
-     none|high and DeepSeek contributes a thinking-on/off contrast to the sweep, not an
-     effort curve. --effort-surface reasoning is wired up for anyone who wants to probe
-     the other surface; --dry will tell you whether it 400s.
+  4. THE EFFORT AXIS HAS FOUR RUNGS. On the OpenAI-compatible surface DeepSeek V4 takes
+     a TOP-LEVEL reasoning_effort of low|high|max, plus a separate on/off toggle in
+     extra_body={"thinking": {"type": "enabled"|"disabled"}}. So --effort here is
+     none|low|high|max: `none` sends thinking disabled and no reasoning_effort; low,
+     high and max send thinking enabled and the matching reasoning_effort. That is a
+     real within-provider effort curve, not just a thinking-on/off contrast.
+     (DeepSeek's thinking_mode guide, read 2026-09-04: on this surface reasoning_effort
+     accepts only low|high|max -- `none` is expressed as thinking:disabled; thinking is
+     on by default at effort `high`; a requested medium/xhigh both fold to high.)
+     DeepSeek's Anthropic-format surface spells the same ladder as
+     reasoning={"effort": "none|low|high|max"} on a different base_url with different
+     usage field names and tool-call shape. --effort-surface reasoning carries that
+     shape for anyone probing it, but this runner still points at the OpenAI base_url,
+     so --dry will tell you whether it 400s there.
   5. Caching is automatic prefix caching -- no breakpoint, no write charge. Stable
      prefix first, per-review text last, which the prompt already does.
   6. 1M context and a 384K output ceiling, so MAX_OUTPUT_CAP is nowhere near the model's
@@ -85,7 +91,7 @@ resolve, show, payload_for = rc.resolve, rc.show, rc.payload_for
 
 # ============================== DEFAULTS ==============================
 DEFAULT_MODEL   = "deepseek-v4-pro"
-DEFAULT_EFFORT  = "high"            # none | high   (DEEPSEEK DIFF 4; no ladder)
+DEFAULT_EFFORT  = "high"            # none | low | high | max   (DEEPSEEK DIFF 4)
 DEFAULT_PROMPT  = "../outputs/prompts/teacher_v2_full.txt"
 # The review set and the run tree both come from --eval-set
 # (runner_common.EVAL_SETS), asked interactively when the flag is omitted:
@@ -114,19 +120,28 @@ MAX_TOOL_ROUNDS = 1
 SEARCH_BACKEND  = "tavily"
 SEARCH_CACHE    = "../outputs/web-search-cache"
 
-# DEEPSEEK DIFF 4: what each --effort actually puts on the wire. One dict, so the
+# DEEPSEEK DIFF 4: what each --effort actually puts on the request. One dict, so the
 # question "does this axis change the request at all?" has exactly one answer to read.
+# Each value is a fragment merged into the chat-completions kwargs: reasoning_effort is
+# a TOP-LEVEL param on the OpenAI surface, the thinking on/off toggle rides in
+# extra_body. `none` is the only rung with no reasoning_effort -- it just turns thinking
+# off. The Anthropic-format surface folds both into one extra_body["reasoning"] dict.
 EFFORT_SURFACE  = "thinking"        # thinking | reasoning
 EFFORT_BODY = {
-    "thinking": {                                   # OpenAI-compatible surface
-        "none": {"thinking": {"type": "disabled"}},
-        "high": {"thinking": {"type": "enabled"}},
+    "thinking": {                                   # OpenAI-compatible surface (BASE_URL)
+        "none": {"extra_body": {"thinking": {"type": "disabled"}}},
+        "low":  {"reasoning_effort": "low",
+                 "extra_body": {"thinking": {"type": "enabled"}}},
+        "high": {"reasoning_effort": "high",
+                 "extra_body": {"thinking": {"type": "enabled"}}},
+        "max":  {"reasoning_effort": "max",
+                 "extra_body": {"thinking": {"type": "enabled"}}},
     },
-    "reasoning": {                                  # unverified; --dry probes it
-        "none": {"reasoning": {"effort": "none"}},
-        "low":  {"reasoning": {"effort": "low"}},
-        "high": {"reasoning": {"effort": "high"}},
-        "max":  {"reasoning": {"effort": "max"}},
+    "reasoning": {                                  # Anthropic-format shape; --dry probes it
+        "none": {"extra_body": {"reasoning": {"effort": "none"}}},
+        "low":  {"extra_body": {"reasoning": {"effort": "low"}}},
+        "high": {"extra_body": {"reasoning": {"effort": "high"}}},
+        "max":  {"extra_body": {"reasoning": {"effort": "max"}}},
     },
 }
 
@@ -222,9 +237,13 @@ def get_search_tool(cfg: RunConfig) -> "wst.WebSearchTool | None":
 
 # --------------------------------------------------------------------- the call
 
-def effort_body(cfg: RunConfig) -> dict:
-    """DEEPSEEK DIFF 4: the single place that answers 'what does --effort send?'."""
-    return dict(EFFORT_BODY[cfg.effort_surface][cfg.effort])
+def effort_kwargs(cfg: RunConfig) -> dict:
+    """DEEPSEEK DIFF 4: the single place that answers 'what does --effort send?'.
+    Returns a fragment to merge into the chat-completions kwargs -- a top-level
+    reasoning_effort (low|high|max) and/or an extra_body thinking toggle. Deep-copied
+    so a caller cannot mutate the module constant."""
+    frag = EFFORT_BODY[cfg.effort_surface][cfg.effort]
+    return {k: (dict(v) if isinstance(v, dict) else v) for k, v in frag.items()}
 
 
 def build_kwargs(cfg: RunConfig, messages: list, use_tools: bool,
@@ -233,8 +252,9 @@ def build_kwargs(cfg: RunConfig, messages: list, use_tools: bool,
         "model": cfg.model,
         "messages": messages,
         "max_tokens": max_output,          # chat-completions name, not max_output_tokens
-        "extra_body": effort_body(cfg),    # DEEPSEEK DIFF 4: not a top-level param
     }
+    kw.update(effort_kwargs(cfg))          # DEEPSEEK DIFF 4: reasoning_effort is
+                                           # top-level; the thinking toggle is extra_body
     if cfg.web_search and tools_list:
         kw["tools"] = tools_list                    # resent on every call in the loop
         if not use_tools:
@@ -471,7 +491,7 @@ def preflight(cfg: RunConfig, rows: list, done: set) -> None:
     print("=" * 72)
     print(f"model          {cfg.model}   effort={cfg.effort or 'none'}   "
           f"web_search={cfg.web_search}   max_tool_rounds={cfg.max_tool_rounds}")
-    print(f"effort sends   {json.dumps(effort_body(cfg))}   "
+    print(f"effort sends   {json.dumps(effort_kwargs(cfg))}   "
           f"(surface={cfg.effort_surface}; DEEPSEEK DIFF 4)")
     print(f"pricing        in ${p['input']} / cached ${p['cached_input']} / "
           f"out ${p['output']} per MTok + ${p.get('search_per_call', 0)}/search"
@@ -544,6 +564,10 @@ def dry_run(cfg: RunConfig) -> None:
         if "reasoning" in str(emsg).lower() or "400" in str(etype):
             print("  If this is a 400 mentioning reasoning_content, DEEPSEEK DIFF 3 is")
             print("  the culprit: the assistant echo is being filtered somewhere.")
+            if cfg.effort_surface == "reasoning":
+                print("  If it names the `reasoning` field, this base_url does not accept")
+                print("  the Anthropic-format shape -- drop --effort-surface reasoning "
+                      "(the 'thinking' surface covers none|low|high|max here).")
         sys.exit(1)
     print(f"  api calls    {n_calls}  (2 means the search loop ran)")
     print(f"  finish       {fin} -> status={status_of(fin)}   served={served}")
@@ -680,7 +704,7 @@ def actual_run(cfg: RunConfig, a: argparse.Namespace) -> None:
                     "provider": "deepseek", "model": cfg.model,
                     "reasoning_effort": cfg.effort,
                     "effort_surface": cfg.effort_surface,
-                    "effort_body": effort_body(cfg),
+                    "effort_request": effort_kwargs(cfg),
                     "prompt_file": str(cfg.prompt_file), "prompt_sha256": cfg.prompt_sha,
                     "cache_mode": "automatic", "base_url": BASE_URL,
                     "temperature": TEMPERATURE if SEND_TEMPERATURE else "default",
@@ -785,7 +809,7 @@ def actual_run(cfg: RunConfig, a: argparse.Namespace) -> None:
         "complete": stopped is None, "stopped_because": stopped,
         "started": started, "provider": "deepseek",
         "model": cfg.model, "reasoning_effort": cfg.effort,
-        "effort_surface": cfg.effort_surface, "effort_body": effort_body(cfg),
+        "effort_surface": cfg.effort_surface, "effort_request": effort_kwargs(cfg),
         "web_search": cfg.web_search,
         "web_search_channel": (f"{cfg.search_backend}:web_search_tool"
                                if cfg.web_search else None),
@@ -827,11 +851,15 @@ def parse_args() -> argparse.Namespace:
                     help=f"one of: {', '.join(sorted(rc.PRICING_TABLE))} "
                          f"(pricing is looked up, not configured)")
     ap.add_argument("--effort", default=DEFAULT_EFFORT,
-                    help="DEEPSEEK DIFF 4: none|high on the default 'thinking' surface; "
-                         "none|low|high|max on the 'reasoning' surface")
+                    help="none|low|high|max (DEEPSEEK DIFF 4). 'none' disables thinking; "
+                         "low|high|max send reasoning_effort. Same rungs on both "
+                         "--effort-surface values.")
     ap.add_argument("--effort-surface", default=EFFORT_SURFACE,
                     choices=sorted(EFFORT_BODY),
-                    help="which API surface carries the effort setting")
+                    help="which API surface carries the effort setting: 'thinking' "
+                         "(default, OpenAI-compatible: reasoning_effort + thinking "
+                         "toggle) or 'reasoning' (Anthropic-format shape, unverified "
+                         "against this base_url -- --dry probes it)")
     ap.add_argument("--prompt", default=DEFAULT_PROMPT,
                     help="built prompt file; its stem names the output directory")
     ap.add_argument("--eval-set", choices=sorted(rc.EVAL_SETS), default=None,

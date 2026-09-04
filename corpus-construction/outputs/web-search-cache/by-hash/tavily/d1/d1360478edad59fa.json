@@ -1,0 +1,91 @@
+{
+  "query": "NIKKE Goddess of Victory gold mileage tickets 200 guaranteed SSR unit how obtained",
+  "sent_query": "NIKKE Goddess of Victory gold mileage tickets 200 guaranteed SSR unit how obtained",
+  "query_hash": "d1360478edad59fa",
+  "answer": "To guarantee an SSR unit in NIKKE, accumulate 200 Gold Mileage Tickets from Special Recruit banner pulls. Each pull earns one ticket, and 200 tickets guarantee the featured SSR. Tickets carry over between banners indefinitely.",
+  "sources": [
+    {
+      "title": "NIKKE Gold Mileage Pity: Does It Carry Over to - BitTopup",
+      "url": "https://bittopup.com/article/NIKKE-Gold-Mileage-Pity-Does-It-Carry-Over-to-2026",
+      "host": "bittopup.com"
+    },
+    {
+      "title": "Shop Guide | Nikke: Goddess of Victory",
+      "url": "https://nikke.gg/shop-guide",
+      "host": "nikke.gg"
+    },
+    {
+      "title": "NIKKE: Goddess of Victory Pity Calculator 2026 — Soft Pity 60, Hard Pity 80",
+      "url": "https://pitycalculator.com/nikke/pity-calculator",
+      "host": "pitycalculator.com"
+    },
+    {
+      "title": "Mileage shop - NIKKE: Goddess of Victory",
+      "url": "https://lootandwaifus.com/guides/mileage-shop",
+      "host": "lootandwaifus.com"
+    },
+    {
+      "title": "NIKKE Gacha Odds: 200-Pull Mileage Cap, 2% Rate [2026]",
+      "url": "https://shattered.io/nikke-gacha-pity-odds-2026",
+      "host": "shattered.io"
+    }
+  ],
+  "backend": "tavily",
+  "cached": false,
+  "cost_usd": 0.008,
+  "latency_s": 3.54,
+  "n_results": 5,
+  "domains": [],
+  "error": null,
+  "ts": "2026-09-04T13:20:23+00:00",
+  "raw": {
+    "query": "NIKKE Goddess of Victory gold mileage tickets 200 guaranteed SSR unit how obtained",
+    "follow_up_questions": null,
+    "answer": "To guarantee an SSR unit in NIKKE, accumulate 200 Gold Mileage Tickets from Special Recruit banner pulls. Each pull earns one ticket, and 200 tickets guarantee the featured SSR. Tickets carry over between banners indefinitely.",
+    "images": [],
+    "results": [
+      {
+        "title": "NIKKE Gold Mileage Pity: Does It Carry Over to - BitTopup",
+        "url": "https://bittopup.com/article/NIKKE-Gold-Mileage-Pity-Does-It-Carry-Over-to-2026",
+        "content": "Gold Mileage Tickets in Goddess of Victory: NIKKE carry over across all Special Recruit banners indefinitely, including from New Year events to 2026 collaboration banners. Each pull on Special Recruit banners earns 1 Gold Mileage Ticket, with 200 tickets guaranteeing the featured SSR unit. This persistent pity system allows strategic resource management across banner rotations—your accumulated progress never expires or resets when transitioning between limited-time events. [...] Gold Mileage Tickets accumulate from Special Recruit banner pulls at 1 ticket per pull, exchangeable for featured limited-time SSR units at 200 tickets. Silver Mileage Tickets generate from Ordinary Recruit pulls, used for spare body exchanges in the Mileage Shop at 200 tickets. These systems operate independently—progress in one never transfers to the other.\n\nHow many pulls for guaranteed SSR in NIKKE? [...] 200 pulls on Special Recruit banners guarantee the featured SSR unit through Gold Mileage Ticket exchange. The 4% SSR rate means most players acquire featured units before reaching 200 pulls, but the mileage system provides absolute certainty at the 200-pull threshold.\n\nDo NIKKE pity counters reset after banner ends?",
+        "score": 0.88705814,
+        "raw_content": null,
+        "id": "414f1a-00"
+      },
+      {
+        "title": "Shop Guide | Nikke: Goddess of Victory",
+        "url": "https://nikke.gg/shop-guide",
+        "content": "Only the current rate up unit(s) can be purchased with 200 gold mileage that is gained by pulling on rate up banners with advanced recruitment tickets. Gold mileage carries over from one rate up banner to the next.\n\nSince the update that introduced the treasure/favorite item system, a new slot has been added for Nikke that have gotten their favorite item added to the game recently. The treasure pool depends on the release-season of Nikkes favorite items.\n\n### Treasure [...] The currency for this shop is body labels. Body labels are acquired when you pull extra dupes/copies of R and SR units. A R unit dupe gives 150 body labels, while SR unit dupe gives 200 body labels. An extra dupe of SSR unit (if you somehow get your SSR unit to Core+7 and pull another copy) gives 6000 body labels. [...] ### Treasure\n\nThis pool has been removed, instead you can only buy a seasonal selection box. 200 silvers for spare body; 200 golden for full Nikke. Options:\n\nJulia,Tove,Poli,Bay\n\nIt’s recommend holding on to your mileage for as long as possible for F2P, so that you can use your mileage to MLB (3 star) units for five MLB SSR to break past the level 160 cap.\n\n### Group 1\n\nEmma,Ludmilla,Mary,Milk\n\n### Group 2\n\nExia,Frima,Miranda,Pepper\n\n### Group 3\n\nLiter,Noise,Volume,Yan\n\n### Group 4",
+        "score": 0.8437023,
+        "raw_content": null,
+        "id": "66afef-01"
+      },
+      {
+        "title": "NIKKE: Goddess of Victory Pity Calculator 2026 — Soft Pity 60, Hard Pity 80",
+        "url": "https://pitycalculator.com/nikke/pity-calculator",
+        "content": "The Special Recruit in NIKKE: Goddess of Victory guarantees an SSR every 80 pulls, with soft pity from pull 60. The 50/50 system gives a 50% chance of the SSR being the featured one. Additionally, the Gold Mileage system lets you accumulate 200 pulls worth of Gold Mileage Tickets to directly redeem the guaranteed featured SSR. One pull costs 300 Gems.\n\n0\n\n0Soft pity: 60Hard: 80\n\n10\n\n= 3,000Gems\n\n50/50 guarantee active\n\nYou lost your last 50/50\n\n## NIKKE: Goddess of Victory — All banners [...] Gold Mileage is the pity system for the featured SSR. Each pull on the Special Recruit gives 1 Gold Mileage Ticket. At 200 tickets you can redeem the featured SSR in the shop. It does not carry over between banners.\n\n### What does SSR mean in NIKKE?\n\nSSR (Super Super Rare) is the highest rarity in NIKKE: Goddess of Victory, equivalent to 5★ in other gacha games. The base SSR rate is 4% per pull, increasing from pull 60 onward (soft pity).\n\n### How does the 50/50 system work in NIKKE? [...] When you obtain an SSR on the Special Recruit, there is a 50% chance it is the featured SSR. If not, you accumulate Gold Mileage tickets toward the 200 needed for the guaranteed exchange.\n\n### How many Gems do I need to guarantee the featured SSR?\n\nIn the worst case (200 Gold Mileage tickets without getting the featured SSR through 50/50) you need 200 pulls × 300 Gems = 60,000 Gems. On average with the 50/50 system, around 100–120 pulls (~30,000–36,000 Gems).\n\n## More gacha pity calculators",
+        "score": 0.83710164,
+        "raw_content": null,
+        "id": "fc1faf-02"
+      },
+      {
+        "title": "Mileage shop - NIKKE: Goddess of Victory",
+        "url": "https://lootandwaifus.com/guides/mileage-shop",
+        "content": "Limited time banners have a separate ticket type, as well as its own Mileage ticket called   Gold Mileage Ticket   Gold Mileage Ticket Gold Mileage Ticket   Description A shining gold ticket obtained from Special Recruit. These luminous certificates are a testament to the sacrifices made by all Commanders in the fight to reclaim the surface. Can be used in the Mileage Shop.    .\n\nBoth cases require 200 Mileage tickets in order to acquire the unit or a dupe. [...] As a F2P player, you will not be able to get 200   Gold Mileage Ticket   Gold Mileage Ticket Gold Mileage Ticket   Description A shining gold ticket obtained from Special Recruit. These luminous certificates are a testament to the sacrifices made by all Commanders in the fight to reclaim the surface. Can be used in the Mileage Shop.    for every new rate-up banner, in general it will take at least 1–2 months to accumulate enough resources to “pity” one unit depending on current events. [...] Gold Mileage Ticket   Gold Mileage Ticket Gold Mileage Ticket   Description A shining gold ticket obtained from Special Recruit. These luminous certificates are a testament to the sacrifices made by all Commanders in the fight to reclaim the surface. Can be used in the Mileage Shop.    will carry over from one limited time banner to the next. So if you decide you want to hold onto them to save for future units then by all means, you can do that.",
+        "score": 0.8315952,
+        "raw_content": null,
+        "id": "8d74fc-03"
+      },
+      {
+        "title": "NIKKE Gacha Odds: 200-Pull Mileage Cap, 2% Rate [2026]",
+        "url": "https://shattered.io/nikke-gacha-pity-odds-2026",
+        "content": "Example 5: Full dry streak, mileage kicks in. A player pulls all 200 times with zero featured SSRs, a 1.76% outcome. They redeem the guarantee at exactly 200 Gold Mileage Tickets, having spent 60,000 Gems, roughly $400 at the best available pack rate. This is the ceiling: no NIKKE player pays more than this for one specific featured SSR from a single Special Recruit banner track, because mileage never expires.\n\n## Standard pool vs Pilgrim SSRs: how they change your odds [...] Step 1: Set up the formula. For a flat probability p per attempt, capped at n attempts, the expected number of pulls before you hit the featured SSR (or exhaust the guarantee) is:\n\nE[pulls] = (1 − (1 − p)ⁿ) / p\n\nStep 2: Plug in NIKKE’s real numbers. p = 0.02 (the featured SSR rate), n = 200 (the Gold Mileage cap).\n\n(1 − 0.02)²⁰⁰ = 0.98²⁰⁰ ≈ 0.0176\n\nE[pulls] = (1 − 0.0176) / 0.02 = 0.9824 / 0.02 ≈ 49.1 pulls\n\nStep 3: Convert to Gems. 49.1 pulls × 300 Gems = 14,730 Gems on average. [...] ## Frequently asked questions\n\n### What’s the SSR rate in NIKKE?\n\n4% per pull on Special Recruit banners, with 2% of that going to the featured rate-up SSR and 2% spread across the rest of the SSR pool.\n\n### Does NIKKE have a pity system?\n\nNot in the traditional soft-pity sense confirmed elsewhere. NIKKE’s confirmed guarantee mechanic is Gold Mileage: one ticket per pull, redeemable for any featured SSR once you reach 200.\n\n### How many pulls does it take to guarantee a featured SSR in NIKKE?",
+        "score": 0.7933146,
+        "raw_content": null,
+        "id": "c7ddec-04"
+      }
+    ],
+    "response_time": 2.55,
+    "request_id": "63dc4caf-425e-442c-9f07-13ff7bced4d4"
+  }
+}

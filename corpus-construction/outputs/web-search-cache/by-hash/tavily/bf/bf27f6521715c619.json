@@ -1,0 +1,91 @@
+{
+  "query": "Candy Crush Soda Saga gold bars currency buy with real money",
+  "sent_query": "Candy Crush Soda Saga gold bars currency buy with real money",
+  "query_hash": "bf27f6521715c619",
+  "answer": "Gold bars in Candy Crush Soda Saga can be purchased with real money for a minimum of 1 US dollar, providing 15 bars. They are a premium currency used for in-game benefits. Purchases can be made through the Candy Crush Soda Bank.",
+  "sources": [
+    {
+      "title": "Gold - Candy Crush Soda Wiki - Fandom",
+      "url": "https://candycrushsoda.fandom.com/wiki/Gold",
+      "host": "candycrushsoda.fandom.com"
+    },
+    {
+      "title": "Top Up Candy Crush Saga | Cheap, Safe & Fast Deal on ...",
+      "url": "https://www.lootbar.com/top-up/candy-crush-saga",
+      "host": "lootbar.com"
+    },
+    {
+      "title": "Can gold bars be sold in Candy Crush Saga game and how?",
+      "url": "https://www.facebook.com/groups/501410144060723/posts/1705905946944464",
+      "host": "facebook.com"
+    },
+    {
+      "title": "Gold Bars purchases not received",
+      "url": "https://community.king.com/en/candy-crush-soda-saga/discussion/512857/gold-bars-purchases-not-received",
+      "host": "community.king.com"
+    },
+    {
+      "title": "How to get gold bars? : r/candycrush",
+      "url": "https://www.reddit.com/r/candycrush/comments/12aaoea/how_to_get_gold_bars",
+      "host": "reddit.com"
+    }
+  ],
+  "backend": "tavily",
+  "cached": false,
+  "cost_usd": 0.008,
+  "latency_s": 2.528,
+  "n_results": 5,
+  "domains": [],
+  "error": null,
+  "ts": "2026-09-04T10:17:42+00:00",
+  "raw": {
+    "query": "Candy Crush Soda Saga gold bars currency buy with real money",
+    "follow_up_questions": null,
+    "answer": "Gold bars in Candy Crush Soda Saga can be purchased with real money for a minimum of 1 US dollar, providing 15 bars. They are a premium currency used for in-game benefits. Purchases can be made through the Candy Crush Soda Bank.",
+    "images": [],
+    "results": [
+      {
+        "url": "https://candycrushsoda.fandom.com/wiki/Gold",
+        "title": "Gold - Candy Crush Soda Wiki - Fandom",
+        "content": "It can be bought in the Candy Crush Soda Bank for a minimum of 1 US dollar (or other currencies depending on your region), which will get you 15 gold bars.",
+        "score": 0.76951396,
+        "raw_content": null,
+        "id": "9f69a4-00"
+      },
+      {
+        "url": "https://www.lootbar.com/top-up/candy-crush-saga",
+        "title": "Top Up Candy Crush Saga | Cheap, Safe & Fast Deal on ...",
+        "content": "Buy Gold Bars at a 10% discount NOW! Gold bars in Candy Crush Saga serve as a premium currency, Acquired through in-game purchases, gold bars can be used to",
+        "score": 0.7045877,
+        "raw_content": null,
+        "id": "a48cff-01"
+      },
+      {
+        "url": "https://www.facebook.com/groups/501410144060723/posts/1705905946944464",
+        "title": "Can gold bars be sold in Candy Crush Saga game and how?",
+        "content": "I have 3 gold bars. To buy 225 extra moves to pass level 19501 I need 10 gold bars but I only have 3 bars. I played over 100 lives and they give",
+        "score": 0.4400126,
+        "raw_content": null,
+        "id": "ab5666-02"
+      },
+      {
+        "url": "https://community.king.com/en/candy-crush-soda-saga/discussion/512857/gold-bars-purchases-not-received",
+        "title": "Gold Bars purchases not received",
+        "content": "Hello, I had tried to purchase 3 times on Candy Crush Soda Saga for extra gold bars and 2 times on Candy Crush Jelly Saga today and each",
+        "score": 0.40867847,
+        "raw_content": null,
+        "id": "4acae7-03"
+      },
+      {
+        "url": "https://www.reddit.com/r/candycrush/comments/12aaoea/how_to_get_gold_bars",
+        "title": "How to get gold bars? : r/candycrush",
+        "content": "Anyone know a trick to get gold bars like the one with fantastic five? I spent them all and can’t afford to buy them, thanks in advance",
+        "score": 0.27435184,
+        "raw_content": null,
+        "id": "3d7f6f-04"
+      }
+    ],
+    "response_time": 1.64,
+    "request_id": "f396af13-6af0-489b-a387-3674755cb451"
+  }
+}

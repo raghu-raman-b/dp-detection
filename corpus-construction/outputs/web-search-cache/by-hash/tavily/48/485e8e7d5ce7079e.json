@@ -1,0 +1,91 @@
+{
+  "query": "Bingo Blitz offer after losing a round spend coins to claim a photo to complete collection",
+  "sent_query": "Bingo Blitz offer after losing a round spend coins to claim a photo to complete collection",
+  "query_hash": "485e8e7d5ce7079e",
+  "answer": "After losing a round in Bingo Blitz, you can spend coins to use the Collection Pass to claim any missing photo to complete your collection. This feature helps you acquire the items you need without waiting.",
+  "sources": [
+    {
+      "title": "My Bingo Blitz Guide : r/SwagBucks",
+      "url": "https://www.reddit.com/r/SwagBucks/comments/1heh92e/my_bingo_blitz_guide",
+      "host": "reddit.com"
+    },
+    {
+      "title": "All About the New Look - BingoBlitz",
+      "url": "https://www.bingoblitz.com/support/10228",
+      "host": "bingoblitz.com"
+    },
+    {
+      "title": "BINGO Blitz FAQ | BINGO Blitz Wiki | Fandom",
+      "url": "https://bingoblitz.fandom.com/wiki/BINGO_Blitz_FAQ",
+      "host": "bingoblitz.fandom.com"
+    },
+    {
+      "title": "Collection Pass - BingoBlitz",
+      "url": "https://www.bingoblitz.com/support/collection-pass",
+      "host": "bingoblitz.com"
+    },
+    {
+      "title": "Bingo Blitz - Hey, Blitzers! You know that feeling when...",
+      "url": "https://www.facebook.com/bingoblitz/posts/hey-blitzers-you-know-that-feeling-when-you-just-cant-get-that-one-collection-it/4279142055488941",
+      "host": "facebook.com"
+    }
+  ],
+  "backend": "tavily",
+  "cached": false,
+  "cost_usd": 0.008,
+  "latency_s": 2.962,
+  "n_results": 5,
+  "domains": [],
+  "error": null,
+  "ts": "2026-09-04T13:31:43+00:00",
+  "raw": {
+    "query": "Bingo Blitz offer after losing a round spend coins to claim a photo to complete collection",
+    "follow_up_questions": null,
+    "answer": "After losing a round in Bingo Blitz, you can spend coins to use the Collection Pass to claim any missing photo to complete your collection. This feature helps you acquire the items you need without waiting.",
+    "images": [],
+    "results": [
+      {
+        "url": "https://www.reddit.com/r/SwagBucks/comments/1heh92e/my_bingo_blitz_guide",
+        "title": "My Bingo Blitz Guide : r/SwagBucks",
+        "content": "You need pictures to complete a city, which you get from getting bingos. New pictures are marked with a red tab on your bingo cards. If you don",
+        "score": 0.34846824,
+        "raw_content": null,
+        "id": "c1d8d3-00"
+      },
+      {
+        "url": "https://www.bingoblitz.com/support/10228",
+        "title": "All About the New Look - BingoBlitz",
+        "content": "At the top right of your screen, you’ll find your Bingo Bank, Daily Spin, and Gift Center.\n\nYour piggy bank collects Credits until its belly is filled and you can smash it open to claim what’s inside!\n\nYour Daily Spin is a free bonus you get every day you enter the game. Spin the wheel to reveal your gift!\n\nYour Gift Center is a spot to collect gifts from us, your Blitz Buds, and Blitzy or his friends!\n\nTo keep confusion at bay, we’ve put all necessary actions on your menu! [...] When entering a Bingo Room in the new Bingo Blitz experience, you’ll find easier access to everything you need right from your Card selection screen.\n\nAccept friend requests, collect gifts from Blitz Buds, or access the Bingo Store or Chef feature all without leaving your room! You can now start or keep playing after completing any action you need.\n\nNo matter the Bingo Room you enter, your Lobby icons will always stay on your screen to ensure easy access to all parts of the game. [...] At the top of your Card selection frame is a small indicator showing how many Collection Items you have in your Inventory for the room you’re in. Now you can view your Inventory by clicking it or simply check your progress with a quick glance!\n\nClick on your Inventory indicator to open your Adventure Book and view your Pics, the missing ones and duplicates.\n\nThe Card Boosts you can choose to play in are:",
+        "score": 0.29427123,
+        "raw_content": null,
+        "id": "f757d5-01"
+      },
+      {
+        "url": "https://bingoblitz.fandom.com/wiki/BINGO_Blitz_FAQ",
+        "title": "BINGO Blitz FAQ | BINGO Blitz Wiki | Fandom",
+        "content": "Over the course of playing BINGO Blitz, you will come across Collection Items that will randomly be added to your account. Each city has a collection of 12 items: they can be collected by simply playing the game, received as gifts from your neighbors, or through Shadow Cards. (Shadow Cards are Bingo cards that display the silhouette of a collection item in the background; the item will be awarded when you get a Bingo on that card.) [...] You can also earn Credits through leveling up, as well as purchasing them through the Get Credits tab at the top of the game.\n\n### • How do I get more coins? What are they used for?\n\nYou can win coins by:\n\nCoins can also be earned by:\n\nYou can also convert Credits into Coins in the Store.\n\nCoins can be used in the Store to purchase Keys to unlock treasure chests, Power-Up Packs to add or refill the amount of power-ups you have, and Collection Items to complete a set. [...] Completing a set of Collection Items for each city will reward you with either extra Daily Credits or a large, one-time payout of Credits.\n\n### • What are Team Points?",
+        "score": 0.2924038,
+        "raw_content": null,
+        "id": "329483-02"
+      },
+      {
+        "url": "https://www.bingoblitz.com/support/collection-pass",
+        "title": "Collection Pass - BingoBlitz",
+        "content": "The Collection Pass is a new, rare, and exclusive reward, which you can win from a myriad of sources: Events, Quests, Gifts, Balloons, Teams, and Special",
+        "score": 0.24655193,
+        "raw_content": null,
+        "id": "3e1660-03"
+      },
+      {
+        "url": "https://www.facebook.com/bingoblitz/posts/hey-blitzers-you-know-that-feeling-when-you-just-cant-get-that-one-collection-it/4279142055488941",
+        "title": "Bingo Blitz - Hey, Blitzers! You know that feeling when...",
+        "content": "Blitzy freebie: \n\nNo photo description available. [...] Luigi Martinez\n\nIs wonderful what bb help with this, but will be grea what Bingo blitz each week gift one of this. I need for complete several rooms. I play but i can´t win ungifted items is sad\n\n 5y\n\nHeather Johnson-Myiow\n\nThis is a fabulous feature. I love that i was able to complete some rooms. 👍🏻👍🏻I hope you continue to offer this feature!\n\n 5y\n\n1 [...] ## Bingo Blitz's Post\n\n### Bingo Blitz\n\nJune 23, 2021  ·\n\nHey, Blitzers!\n\nYou know that feeling when you just can’t get that one Collection Item you're missing?\n\n😾 Soooooo frustrating...\n\nBUT GUESS WHAT?! The perfect solution has been discovered!\n\nPlease welcome the all-new Collection Pass: you can use it to replace ANY item you’re missing 🤯\n\nWhat are you waiting for?\n\nHear all you need to know about it from Michelle – and maybe even win one yourself! 😉\n\n🎥 \n\nBlitzy freebie:",
+        "score": 0.2355921,
+        "raw_content": null,
+        "id": "115a98-04"
+      }
+    ],
+    "response_time": 1.95,
+    "request_id": "ae7e6fbb-5553-41b9-9850-e365eb0247f7"
+  }
+}

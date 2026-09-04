@@ -1,0 +1,91 @@
+{
+  "query": "Fishdom game \"pass\" season pass what does it include",
+  "sent_query": "Fishdom game \"pass\" season pass what does it include",
+  "query_hash": "d6673db15554c422",
+  "answer": "The Fishdom game pass season pass includes boosters, coins, lives, and special rewards like power-ups and aquarium decorations. It also offers unlimited lives and unique season-specific rewards.",
+  "sources": [
+    {
+      "title": "🎟️ Season Challenges — Fishdom Help Center",
+      "url": "https://playrix.helpshift.com/hc/en/4-fishdom/faq/4134-season-challenges-1757580206?l=en",
+      "host": "playrix.helpshift.com"
+    },
+    {
+      "title": "Season pass : r/fishdomgameplay",
+      "url": "https://www.reddit.com/r/fishdomgameplay/comments/1ei08ee/season_pass",
+      "host": "reddit.com"
+    },
+    {
+      "title": "‎Fishdom App - App Store",
+      "url": "https://apps.apple.com/us/app/fishdom/id664575829",
+      "host": "apps.apple.com"
+    },
+    {
+      "title": "Fishdom - Apps on Google Play",
+      "url": "https://play.google.com/store/apps/details?id=com.playrix.fishdomdd.gplay&hl=en_US",
+      "host": "play.google.com"
+    },
+    {
+      "title": "Is it worth buying the Season pass in Fishdom?",
+      "url": "https://www.facebook.com/groups/fishdomgroup/posts/2030169537490306",
+      "host": "facebook.com"
+    }
+  ],
+  "backend": "tavily",
+  "cached": false,
+  "cost_usd": 0.008,
+  "latency_s": 2.376,
+  "n_results": 5,
+  "domains": [],
+  "error": null,
+  "ts": "2026-09-04T12:50:45+00:00",
+  "raw": {
+    "query": "Fishdom game pass season pass what does it include",
+    "follow_up_questions": null,
+    "answer": "The Fishdom game pass season pass includes boosters, coins, lives, and special rewards like power-ups and aquarium decorations. It also offers unlimited lives and unique season-specific rewards.",
+    "images": [],
+    "results": [
+      {
+        "url": "https://playrix.helpshift.com/hc/en/4-fishdom/faq/4134-season-challenges-1757580206?l=en",
+        "title": "🎟️ Season Challenges — Fishdom Help Center",
+        "content": "These could include boosters, coins, lives, and bronze vouchers, for example. Special rewards — are available only to those who purchase the Gold Pass.",
+        "score": 0.7975099,
+        "raw_content": null,
+        "id": "88d98f-00"
+      },
+      {
+        "url": "https://www.reddit.com/r/fishdomgameplay/comments/1ei08ee/season_pass",
+        "title": "Season pass : r/fishdomgameplay",
+        "content": "you earn the extra rewards as you complete levels. You also get to collect 8 lives instead of 5. Different seasons had unique rewards, like",
+        "score": 0.69870013,
+        "raw_content": null,
+        "id": "f4b45e-01"
+      },
+      {
+        "url": "https://apps.apple.com/us/app/fishdom/id664575829",
+        "title": "‎Fishdom App - App Store",
+        "content": "decorations and unlimited creative freedom: what the aquariums look like is entirely up to you! ● Exciting events: embark on expeditions, collect keys in season adventures, and get awesome rewards like power-ups, boosters, unlimited lives, pets, and aquarium decorations! ● Have fun together: compete against other players, team up, and win fantastic prizes! Play with your Facebook friends, or make new friends in the game community! Fishdom is free to play, but some in-game elements (including [...] …\n\n  MAJOR UPDATE\n\n  ### Vacation Collection\n\n  Discover your new collection! Complete card sets to unlock rewards and earn a Vacation Badge for your profile!\n …\n\n  \n\n  SPECIAL EVENT\n\n  ### Trapped by the rain\n\n  Save the town from flooding in a thrilling new expedition! Complete tasks, earn rewards, and get a new title!\n …\n\n  \n\n  NEW SEASON\n\n  ### Jewel Pass\n\n  Jump into the new season! Beat levels, collect keys, and unlock amazing rewards!\n\n## Ratings & Reviews\n\n 4.6\n\n  out of 5 [...] Dive into the fantastic world of Fishdom! You're in for an ocean of exciting levels, scores of adorable fish and pets, and a sea of captivating events! Explore incredible underwater adventures! Unlock aquariums and decorate them to your taste, creating perfect homes for cute fish and their friends. Game Features: ● Original gameplay: beat match-3 levels to create the perfect home for your fish! ● Thousands of captivating levels with powerful boosters! ● Loads of beautiful decorations and",
+        "score": 0.5780915,
+        "raw_content": null,
+        "id": "3264a3-02"
+      },
+      {
+        "url": "https://play.google.com/store/apps/details?id=com.playrix.fishdomdd.gplay&hl=en_US",
+        "title": "Fishdom - Apps on Google Play",
+        "content": "● Loads of beautiful decorations and unlimited creative freedom: what the aquariums look like is entirely up to you!  \n● Exciting events: embark on expeditions, collect keys in season adventures, and get awesome rewards like power-ups, boosters, unlimited lives, pets, and aquarium decorations!  \n● Have fun together: compete against other players, team up, and win fantastic prizes! Play with your Facebook friends, or make new friends in the game community! [...] Solve epic match-3 and merge puzzles to create perfect homes for adorable fish!\n\nUpdated on\n\nAug 18, 2026\n\nAvailable on\n\nAndroid, Windows\n\nPuzzle\n\nMatch 3\n\nMatch 3 adventure\n\nCasual\n\nSingle player\n\nStylized\n\nMiscellaneous\n\nPuzzles\n\nAquarium\n\nOffline\n\nEvents & offers\n\nUpdate available\n\nVacation Collection\n\nEnds on 08/29\n\nJewel Pass\n\n## Data safety\n\narrow\\_forward [...] Fishdom is free to play, but some in-game elements (including randomized items) can be purchased for real money.  \n   \nA Wi-Fi or internet connection is not required to play.  \n \\An internet connection is required to access competitions and additional features.\"  \n   \nDo you like Fishdom? Follow us!  \nFacebook: facebook.com/Fishdom   \nInstagram:",
+        "score": 0.47124818,
+        "raw_content": null,
+        "id": "87c30b-03"
+      },
+      {
+        "url": "https://www.facebook.com/groups/fishdomgroup/posts/2030169537490306",
+        "title": "Is it worth buying the Season pass in Fishdom?",
+        "content": "Is it worth buying the Season pass?",
+        "score": 0.32209986,
+        "raw_content": null,
+        "id": "3b904f-04"
+      }
+    ],
+    "response_time": 1.4,
+    "request_id": "e378c0e5-3803-4f60-a433-b248241ca421"
+  }
+}

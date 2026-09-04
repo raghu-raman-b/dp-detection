@@ -1,0 +1,91 @@
+{
+  "query": "Royal Match card collection event sets cards reward expire",
+  "sent_query": "Royal Match card collection event sets cards reward expire",
+  "query_hash": "3688f67c7a3e256d",
+  "answer": "Card collection event rewards in Royal Match expire after completion; leftover stars do not carry over to new collections.",
+  "sources": [
+    {
+      "title": "Royal Match Cards [New Royal Collection Guide]",
+      "url": "https://oldcynic.com/royal-match-cards-royal-collection",
+      "host": "oldcynic.com"
+    },
+    {
+      "title": "All about Collections in Royal Match",
+      "url": "https://play.google.com/store/apps/editorial?id=mc_games_editorialevergreen_royal_match_all_about_collection_postinstall_fcp&hl=en_US",
+      "host": "play.google.com"
+    },
+    {
+      "title": "Royal Pass | Royal Match Wiki | Fandom",
+      "url": "https://royalmatch.fandom.com/wiki/Royal_Pass",
+      "host": "royalmatch.fandom.com"
+    },
+    {
+      "title": "What happens to card stars at the end of a Royal Match ...",
+      "url": "https://www.facebook.com/groups/royalmatchfan/posts/1046238567644784",
+      "host": "facebook.com"
+    },
+    {
+      "title": "Do card stars transfer into a new collection or do I lose them?",
+      "url": "https://www.reddit.com/r/RoyalMatch/comments/1qnfyv2/do_card_stars_transfer_into_a_new_collection_or",
+      "host": "reddit.com"
+    }
+  ],
+  "backend": "tavily",
+  "cached": false,
+  "cost_usd": 0.008,
+  "latency_s": 2.658,
+  "n_results": 5,
+  "domains": [],
+  "error": null,
+  "ts": "2026-09-04T10:33:59+00:00",
+  "raw": {
+    "query": "Royal Match card collection event sets cards reward expire",
+    "follow_up_questions": null,
+    "answer": "Card collection event rewards in Royal Match expire after completion; leftover stars do not carry over to new collections.",
+    "images": [],
+    "results": [
+      {
+        "url": "https://oldcynic.com/royal-match-cards-royal-collection",
+        "title": "Royal Match Cards [New Royal Collection Guide]",
+        "content": "This post may contain speculation, opinion, and comedy. It is not advice and is solely for entertainment & informational purposes.\n\n## How Does the Royal Collection Work? (Royal Match Cards)\n\nThe Royal Collection is an event that runs over 62 days where you collect cards to complete sets to unlock rewards.\n\nThe ultimate goal is to collect each of the 135 available cards to complete all 15 sets to win a Grand Prize of 10,000 Gold Coins, Boosters, and an exclusive profile badge. [...] Here are the rewards for the Grand Royal Collection:\n\n 15,000 free coins\n 15 Rockets, 15 TNTs, and 15 Light Balls\n\n## Completing the Grand Royal Collection (Can You Still Share Cards?)\n\nHere is a screenshot of my completed Grand Royal Collection:\n\nOnce you’ve completed the Grand Royal Collection, you will no longer receive Card Packs as rewards.\n\nInstead, you’ll earn normal prizes, like Boosters, for example.\n\nThis time, your card collection doesn’t reset. [...] 20. I too have completed the grand royal collection – basically collecting the entire set 2X. You do get to keep whatever spare cards you have and can share them, but you will no longer have new card packs as rewards. I found that there will be 1 card that you are missing – likely a gold one that can’t be traded – and the only way you will get it is by working toward a red and pack. I was able to trade in “500” stars 4 times ( 2 in the 1st set and 2 in the 2nd set). When you do the 500 stars,",
+        "score": 0.7646988,
+        "raw_content": null,
+        "id": "0dd7b6-00"
+      },
+      {
+        "url": "https://play.google.com/store/apps/editorial?id=mc_games_editorialevergreen_royal_match_all_about_collection_postinstall_fcp&hl=en_US",
+        "title": "All about Collections in Royal Match",
+        "content": "Collections are unlocked at level 41. They are groups of themed cards that are only available for a limited time. You'll earn these cards in packs as rewards for completing events, tournaments, and opening area chests. [...] If you are able to collect every card in a Collection by the end of the event, you will receive the Collection’s Grand Prize, which not only contains multiple power-ups, boosters, and other rewards, but you'll also receive a special Badge that can be displayed next to your username. [...] If you complete a Collection a second time before the event ends, you'll receive an even more prestigious Badge and additional rewards on top of what you received before. Make sure to finish Collections as soon as possible to earn these badges and extras.\n\n## Card examples",
+        "score": 0.72489023,
+        "raw_content": null,
+        "id": "8cf4bd-01"
+      },
+      {
+        "url": "https://royalmatch.fandom.com/wiki/Royal_Pass",
+        "title": "Royal Pass | Royal Match Wiki | Fandom",
+        "content": "|  | ROYAL PASS REWARDS | | | |\n ---  --- \n| Stage | Chest | Free Rewards | Chest | Royal Pass Rewards |\n| 0 |  | TNT X1 |  | RP active |\n| 1 |  | Light Ball x1 |  | 15m Unlimited lives |\n| 2 |  | Rocket x1 |  | Hammer x1 |\n| 3 |  | 2x card rewards |  | Royal Match Wild Card |\n| 4 |  | Royal Match Coin RP 100 |  | Arrow x1 |\n| 5 | Book of Treasure Chest1 icon | 15m Unlimited lives + Rocket x1 | Royal Pass Purchased Chest 1 | 15m Unlimited TNT + Hammer x1 + Royal Match Coin 200 | [...] Rocket x2\nTNT X2\nLight Ball x2\nHammer x1\nRoyal Match Coin 200\nArrow x1\n30m Unlimited Rocket\nRoyal Match Coin RP 100\nJester Hat x2\n4x card rewards\n9x card rewards\nRocket x1\nTNT X2\nBook of Treasure Chest1 icon\nTNT X1\nArrow x1\nRoyal Pass Purchased Chest 3\n1h Unlimited lives\nRocket x2\nCannon x2\nRoyal Match Coin 300\nTNT X1\nArrow x2\nRoyal Match Coin RP 100\n30m Unlimited lives\nLight Ball x1\nHammer x2\nJesterHat x1\nRocket x2\nBook of Treasure Chest1 icon\nCannon x1\nRocket x1\nTNT X1 [...] | 6 |  | Hammer x1 |  | Light Ball x2 |\n| 7 |  | TNT X1 |  | Rocket x2 |\n| 8 |  | 15m Unlimited Light Ball |  | Cannon x2 |\n| 9 |  | Rocket x1 |  | Hammer x2 |\n| 10 | Book of Treasure Chest1 icon | Light Ball x1 + Rocket x1 + JesterHat x1 | Royal Pass Purchased Chest 2 | Rocket x2 + TNT X2 + Light Ball x2 + Hammer x1 + Royal Match Coin 200 |\n| 11 |  | Arrow x1 |  | 30m Unlimited Rocket |\n| 12 |  | Royal Match Coin RP 100 |  | Jester Hat x2 |\n| 13 |  | 4x card rewards |  | 9x card rewards |",
+        "score": 0.36480075,
+        "raw_content": null,
+        "id": "a7c927-02"
+      },
+      {
+        "url": "https://www.facebook.com/groups/royalmatchfan/posts/1046238567644784",
+        "title": "What happens to card stars at the end of a Royal Match ...",
+        "content": "After reading posts, I’m still confused about what happens to card stars at the end of a collection. Do they roll over from the first of the month to",
+        "score": 0.26086742,
+        "raw_content": null,
+        "id": "c491a0-03"
+      },
+      {
+        "url": "https://www.reddit.com/r/RoyalMatch/comments/1qnfyv2/do_card_stars_transfer_into_a_new_collection_or",
+        "title": "Do card stars transfer into a new collection or do I lose them?",
+        "content": "I have 582 stars and only two cards to finish my collection. If I don’t use my stars will they be available for the upgraded collection or will I lose",
+        "score": 0.063233286,
+        "raw_content": null,
+        "id": "8a16fe-04"
+      }
+    ],
+    "response_time": 1.63,
+    "request_id": "2a549d5d-7d3b-4e2f-8fd5-b49d688e70c2"
+  }
+}

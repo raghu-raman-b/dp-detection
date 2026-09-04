@@ -1,0 +1,91 @@
+{
+  "query": "Merge Cooking game buy board slots parts storage",
+  "sent_query": "Merge Cooking game buy board slots parts storage",
+  "query_hash": "0b15d6ad2511bdbc",
+  "answer": "To manage inventory and free up board slots in Merge Cooking, sell lower-level parts and merge items to higher levels. Use gems to open new inventory slots. Delete unused generators to save space.",
+  "sources": [
+    {
+      "title": "How to manage inventory and space in Merge Cooking game?",
+      "url": "https://www.facebook.com/groups/764037108676390/posts/1055011406245624",
+      "host": "facebook.com"
+    },
+    {
+      "title": "Board organization? : r/MergeCooking - Reddit",
+      "url": "https://www.reddit.com/r/MergeCooking/comments/1ntkyj2/board_organization",
+      "host": "reddit.com"
+    },
+    {
+      "title": "Merge Cooking® - Apps on Google Play",
+      "url": "https://play.google.com/store/apps/details?id=com.merge.cooking.theme.restaurant.food&hl=en_US",
+      "host": "play.google.com"
+    },
+    {
+      "title": "Discuss Everything About Merge Cooking: Theme Restaurant Wiki",
+      "url": "https://merge-cooking-theme-restaurant.fandom.com/f",
+      "host": "merge-cooking-theme-restaurant.fandom.com"
+    },
+    {
+      "title": "Questions and Answers for Merge Cooking:Theme Restaurant on ..",
+      "url": "https://www.appgamer.com/merge-cookingtheme-restaurant/answers",
+      "host": "appgamer.com"
+    }
+  ],
+  "backend": "tavily",
+  "cached": false,
+  "cost_usd": 0.008,
+  "latency_s": 2.07,
+  "n_results": 5,
+  "domains": [],
+  "error": null,
+  "ts": "2026-09-04T10:57:52+00:00",
+  "raw": {
+    "query": "Merge Cooking game buy board slots parts storage",
+    "follow_up_questions": null,
+    "answer": "To manage inventory and free up board slots in Merge Cooking, sell lower-level parts and merge items to higher levels. Use gems to open new inventory slots. Delete unused generators to save space.",
+    "images": [],
+    "results": [
+      {
+        "url": "https://www.facebook.com/groups/764037108676390/posts/1055011406245624",
+        "title": "How to manage inventory and space in Merge Cooking game?",
+        "content": "Players suggest selling lower-level parts and utilizing storage to free up space, also merging items to higher levels, like combining grill",
+        "score": 0.61779,
+        "raw_content": null,
+        "id": "0bbe61-00"
+      },
+      {
+        "url": "https://www.reddit.com/r/MergeCooking/comments/1ntkyj2/board_organization",
+        "title": "Board organization? : r/MergeCooking - Reddit",
+        "content": "my advice is to put opening inventory slots as a priority, like each time i hv 100 gems, i open a slot immediately. use the gems wisely, not use",
+        "score": 0.43266314,
+        "raw_content": null,
+        "id": "4e52a0-01"
+      },
+      {
+        "url": "https://play.google.com/store/apps/details?id=com.merge.cooking.theme.restaurant.food&hl=en_US",
+        "title": "Merge Cooking® - Apps on Google Play",
+        "content": "OS: Windows 10 (v2004)\n Storage: Solid state drive (SSD) with 10 GB of available storage space\n Graphics: IntelⓇ UHD Graphics 630 GPU or comparable\n Processor: 4 CPU physical cores\n Memory: 8 GB of RAM\n Windows admin account\n Hardware virtualization must be turned on\n\nTo learn more about these requirements, visit the Help Center\n\nIntel is a registered trademark of Intel Corporation or its subsidiaries. Windows is a trademark of the Microsoft group of companies. [...] April 10, 2026\n\non the whole thoroughly enjoyable. You get a huge amount of playability for free and core \"merge\" gameplay is one of the most satisfying I've ever played and I've tried a lot! the only reason not 5\\ is because the in-game popups to purchase stuff is a little OTT at times. Most times you go back to the main window you are presented with 2-5 different popups to buy stuff. Easy to dismiss, and has actually disincentivised me too purchase anything because of the quantity. [...] Merge food ingredients with the simple steps – tap, drag & merge! Quality delicacy requires nothing but basic ingredients!  \nCOOK with the help of machines – seven pieces of equipment that bring you extra fun in this addictive puzzle game! Simulate real-life cooking and prepare the food in a fun way! Frying pan, juice blender, oven and cocktail shaker… everything you need to prepare a decent meal will be on standby. Say goodbye to overcooked pies and charred steaks!",
+        "score": 0.3391493,
+        "raw_content": null,
+        "id": "a41645-02"
+      },
+      {
+        "url": "https://merge-cooking-theme-restaurant.fandom.com/f",
+        "title": "Discuss Everything About Merge Cooking: Theme Restaurant Wiki",
+        "content": "Fandom Image\n\nFor some reason, I'm one grill part short, and haven't been able to get the last piece I need to fully upgrade the grill. I never sold any parts, and kept and merged them every time I got them. I'm now in the French section of the game and don't seem to be getting any more parts. What do I do?\n\nOn level 30. When are glass cake stand, plate and cup used, if ever? Also, when do you get more puzzle pieces. Stuff taking up too much space.\n\n# Welcome to the community! [...] I wonder what’s next after that? Scandinavian restaurants? South African restaurants?\n\nOn my phone, the game offers the ability to open a tray of the items you’ve been awarded but haven’t added to board/inventory yet so you can choose what to add or what you keep in the tray so as to not take up space.\n\nHowever, on my tablet, this feature does not exist. Yes, I checked for updates. Curious to know why this may be? [...] I have a bunch of generators from older restaurants/cuisines, and haven't used them since competing the restaurant or cuisine. They're taking up a bunch of space in my inventory and I'm wondering if it's safe to sell/delete them to free up space?\n\nYou can see at the bottom of the inventory page how many I have that I don't really need -\n\nFandom Image",
+        "score": 0.24164635,
+        "raw_content": null,
+        "id": "863516-03"
+      },
+      {
+        "url": "https://www.appgamer.com/merge-cookingtheme-restaurant/answers",
+        "title": "Questions and Answers for Merge Cooking:Theme Restaurant on ..",
+        "content": "© 2026 Web Media Network Limited. All rights reserved. No part of this website or its content may be reproduced without the copyright owner's permission.\n\nThis website is a fan site resource and is not affiliated in any way with Google, Apple or any video game publisher.\n\nDisplay Name\n\nEmail [...] Email\n\nAge --123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120 [...] # Questions and Answers for Merge Cooking:Theme Restaurant\n\nThis is our page for asking and answering questions for Merge Cooking:Theme Restaurant. If you have a question you can ask it below and please check through the questions that have already been asked to see if you can answer any.\n\nAsk a question for Merge Cooking:Theme Restaurant\n\nThe members with the know how for Merge Cooking:Theme Restaurant\n\nAppGamer - Mobile Game Guides and News since 2008.",
+        "score": 0.09106655,
+        "raw_content": null,
+        "id": "ac3666-04"
+      }
+    ],
+    "response_time": 1.0,
+    "request_id": "57e642f3-2119-4e4f-8363-89df3c15a0e5"
+  }
+}

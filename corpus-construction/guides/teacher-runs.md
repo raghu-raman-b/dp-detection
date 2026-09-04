@@ -31,11 +31,25 @@ The prompt is rendered from the codebook. Never hand-edit a built prompt — reb
 python build_prompt.py              # writes all three ablation modes
 ```
 
-Produces `../outputs/prompts/teacher_v2_{bare,boundary,full}.txt`, each with a
+Produces `../outputs/prompts/teacher_v3_{bare,boundary,full}.txt`, each with a
 `.manifest.json` recording the codebook version, the flags, and the SHA. The modes are a
 ladder: **bare** (indicators) → **boundary** (+ boundary rules, counterexamples) →
 **full** (+ worked examples). Each is the one above it plus one kind of material, so a
 score difference is attributable to exactly one addition.
+
+**v3 reads codebook v0.21** (`codebook_versions/codebook_adjudicated.json`), which differs
+from v0.20 only in `worked_examples`: 58 adjudicated examples, two per label across all 29,
+each carrying the span, the `rule_applied` and a one-line rationale. Rebuild it with
+`scripts/post-label/build_adjudicated_codebook.py`. Every other script stays on
+`codebook_final.json` — the label vocabulary is identical, so nothing else needs to move.
+
+Because worked examples are gated on `full`, **`teacher_v3_bare` and `teacher_v3_boundary`
+are byte-identical to the v2 files** — same body SHA, same cache prefix. Only `full` changed
+(24,066 → 29,947 tokens). Existing v2 bare/boundary runs remain valid; only `full` needs
+re-running.
+
+**Score v3 on `--eval-set prompt-eval`, not `validation`.** v3 quotes 45 of the 75 gold
+reviews, so the validation number is no longer honest for it. See §0b.
 
 ---
 
@@ -44,14 +58,14 @@ score difference is attributable to exactly one addition.
 Every script below (the four runners, `compute_run_stats.py`, `compare_runs.py`) starts by
 asking which review set you mean. Answer at the prompt, or pass `--eval-set` to skip it.
 
-| | `tuning` | `validation` |
-|---|---|---|
-| reviews | `../tuning/tuning_set_50_blind.jsonl` (50) | `../validation/validation_set_blind.jsonl` (75) |
-| gold | `../tuning/tuning_set_50.jsonl` | `../validation/gold_set.jsonl` |
-| runs | `../outputs/runs/` | `../outputs/validation/runs/` |
-| stats | `../outputs/run-stats/` | `../outputs/validation/run-stats/` |
-| comparison | `../outputs/comparison/` | `../outputs/validation/comparison/` |
-| role | selection only, **burned** | the reporting set, scored **once** |
+| | `tuning` | `validation` | `prompt-eval` |
+|---|---|---|---|
+| reviews | `../tuning/tuning_set_50_blind.jsonl` (50) | `../validation/validation_set_blind.jsonl` (75) | `../prompt_eval/prompt_eval_set_blind.jsonl` (30) |
+| gold | `../tuning/tuning_set_50.jsonl` | `../validation/gold_set.jsonl` | `../prompt_eval/gold_set.jsonl` |
+| runs | `../outputs/runs/` | `../outputs/validation/runs/` | `../outputs/prompt-eval/runs/` |
+| stats | `../outputs/run-stats/` | `../outputs/validation/run-stats/` | `../outputs/prompt-eval/run-stats/` |
+| comparison | `../outputs/comparison/` | `../outputs/validation/comparison/` | `../outputs/prompt-eval/comparison/` |
+| role | selection only, **burned** | the reporting set, scored **once** | the clean arm for prompts built from gold examples |
 
 One switch moves the review file, the run tree, the gold file, the stats tree and the
 comparison tree together. That is the point: a validation run cannot land in the tuning
@@ -62,6 +76,41 @@ a plausible-looking number, which is the kind that survives to a table.
 for a one-off. A non-interactive caller (no tty) that omits `--eval-set` gets `tuning`, so
 existing scripts keep doing exactly what they did before.
 
+### `prompt-eval` — why there is a third arm
+
+Prompt v3 quotes 45 of the 75 adjudicated gold reviews as worked examples. A prompt cannot
+be scored on reviews it was shown, so **`validation` stops being a usable number for any
+prompt built that way**. `prompt-eval` is the 30 gold reviews v3 does not contain: a strict
+subset of the adjudicated gold, labels copied verbatim, never re-ruled.
+
+Build or re-verify it:
+
+```bash
+cd corpus-construction/scripts/post-label
+python build_prompt_eval_set.py --check     # verify only, writes nothing
+python build_prompt_eval_set.py             # rebuild both files + the report
+```
+
+The exclusion list is data, not a constant: `prompt_eval/prompt_v3_example_ids.json`, which
+records every promoted review and the label it exemplifies. Point `--codebook-check` at a
+built codebook to assert that none of its worked examples or counterexamples survived into
+the eval set. **Whenever the prompt's examples change, update the manifest and rebuild** —
+otherwise the arm silently stops being clean.
+
+**It is thin, and the report says so.** 30 reviews, 33 label instances, and 13 of the 29
+labels have no support at all — every label with exactly two gold instances lost both to its
+own apt and coverage example. Only 5 clear `MIN_SUPPORT`. True-NONE is 23% of the set against
+9% of the full gold, so under-labelling is flattered here.
+
+Because of that, `EVAL_SETS["prompt-eval"]` sets `meso_macro: False` and
+`compute_run_stats.py` **suppresses meso macro-F1** on this arm rather than averaging over
+five labels — such a number prints next to the validation figure over nineteen and invites a
+comparison that is not there. `meso_macro_f1` is `null` in the metrics row (not `0`), carries
+`meso_macro_suppressed: true`, and renders as `n/a` in comparisons. Read micro-F1 and
+example-based F1 here; per-label figures are still printed in full.
+
+Full composition and per-label support: `prompt_eval/prompt_eval_report.md`.
+
 **Validation gold falls back.** Until `dp_gold.html` has produced `gold_set.jsonl`, the
 validation set scores against `validation_set.jsonl` — the author's single-coder labels —
 and every script says so on stderr. That is a usable smoke test and is **not** a reportable
@@ -70,7 +119,7 @@ agreement number.
 ## 1. Check the config — no API calls, no cost
 
 ```bash
-python run_teacher_openai.py --check --prompt ../outputs/prompts/teacher_v2_bare.txt
+python run_teacher_openai.py --check --prompt ../outputs/prompts/teacher_v3_bare.txt
 ```
 
 Prints the model, the looked-up pricing, prompt size and SHA, how many legal codes it
@@ -151,7 +200,7 @@ Provider-specific flags, on top of those:
 | `--pin-window auto\|peak\|off_peak` | deepseek | `auto` prices each call by the hour it started (exact); pinning declares one rate card for the whole run and records that it is an assumption |
 | `--search-backend` | deepseek | `tavily` (default), `brave`, `serper`, `stub` |
 | `--search-cache` / `--no-search-cache` | deepseek | where the shared query cache lives, or off |
-| `--effort-surface` | deepseek | `thinking` (default, 2 rungs) or `reasoning` (4 rungs, unverified — `--dry` will tell you if it 400s) |
+| `--effort-surface` | deepseek | `thinking` (default, OpenAI-compatible: `reasoning_effort` + a thinking on/off toggle) or `reasoning` (same rungs in the Anthropic-format shape, unverified against this base_url — `--dry` will tell you if it 400s). Both carry `none·low·high·max`. |
 
 ### The four providers
 
@@ -172,7 +221,7 @@ under a `CLAUDE DIFF` / `DEEPSEEK DIFF` / `KIMI DIFF` heading:
 | **OpenAI** | none…max (6) | server-side builtin | explicit breakpoint + cache key | reported |
 | **Anthropic** | low, medium, high, xhigh, max (5) — `claude-opus-5` / `claude-sonnet-5` only; `claude-haiku-4-5` has **no** effort parameter (thinks with `--thinking-budget` instead) | server-side, `max_uses=1` — `web_search_20260209` on Opus 5 / Sonnet 5, `web_search_20250305` on Haiku 4.5 | explicit `cache_control` on the system block | **not reported** |
 | **Kimi** | low, high, max (3) | client loop via the Formula API | automatic | reported |
-| **DeepSeek** | none, high (2) | client loop via `web_search_tool.py` | automatic | reported |
+| **DeepSeek** | none, low, high, max (4) — `none` disables thinking; `low·high·max` ride the top-level `reasoning_effort` | client loop via `web_search_tool.py` | automatic | reported |
 
 **The effort ladders are not commensurable across providers.** Only a within-provider
 effort sweep is a curve; across providers, `high` is a label, not a quantity.
@@ -397,7 +446,7 @@ cd corpus-construction/scripts
 python build_prompt.py
 
 # sanity, then a 5-review probe on the cheapest setting
-python run_teacher_openai.py --check --prompt ../outputs/prompts/teacher_v2_bare.txt
+python run_teacher_openai.py --check --prompt ../outputs/prompts/teacher_v3_bare.txt
 python run_teacher_openai.py --dry   --prompt ../outputs/prompts/teacher_v2_bare.txt
 python run_teacher_openai.py --actual --limit 5 --effort low \
        --prompt ../outputs/prompts/teacher_v2_bare.txt

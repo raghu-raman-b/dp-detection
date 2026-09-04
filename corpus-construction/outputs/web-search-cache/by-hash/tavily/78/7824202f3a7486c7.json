@@ -1,0 +1,91 @@
+{
+  "query": "Fishdom mobile game \"pass\" purchase what is it",
+  "sent_query": "Fishdom mobile game \"pass\" purchase what is it",
+  "query_hash": "7824202f3a7486c7",
+  "answer": "Fishdom's mobile game pass offers extra rewards and features for a fee. It's optional and not required to play. Players can turn off purchases in device settings.",
+  "sources": [
+    {
+      "title": "Fishdom - Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Fishdom",
+      "host": "en.wikipedia.org"
+    },
+    {
+      "title": "Fishdom - Apps on Google Play",
+      "url": "https://play.google.com/store/apps/details?id=com.playrix.fishdomdd.gplay&hl=en",
+      "host": "play.google.com"
+    },
+    {
+      "title": "Managing in-app purchases — Fishdom Help Center",
+      "url": "https://playrix.helpshift.com/hc/uk/4-fishdom/faq/16033-managing-in-app-purchases?s=fish&l=ko",
+      "host": "playrix.helpshift.com"
+    },
+    {
+      "title": "‎Fishdom App - App Store",
+      "url": "https://apps.apple.com/us/app/fishdom/id664575829",
+      "host": "apps.apple.com"
+    },
+    {
+      "title": "Is it worth buying the Season pass in Fishdom? - Facebook",
+      "url": "https://www.facebook.com/groups/fishdomgroup/posts/2030169537490306",
+      "host": "facebook.com"
+    }
+  ],
+  "backend": "tavily",
+  "cached": false,
+  "cost_usd": 0.008,
+  "latency_s": 2.3,
+  "n_results": 5,
+  "domains": [],
+  "error": null,
+  "ts": "2026-09-04T10:21:21+00:00",
+  "raw": {
+    "query": "Fishdom mobile game pass purchase what is it",
+    "follow_up_questions": null,
+    "answer": "Fishdom's mobile game pass offers extra rewards and features for a fee. It's optional and not required to play. Players can turn off purchases in device settings.",
+    "images": [],
+    "results": [
+      {
+        "url": "https://en.wikipedia.org/wiki/Fishdom",
+        "title": "Fishdom - Wikipedia",
+        "content": "The object of the game is to solve puzzles and earn coins to set up and decorate a virtual aquarium. Using in-game currency the player is able to purchase different species of fish, decorations, and \"comfort\" items to make the environment more pleasant for pet fishes. Filling all of the three meter gauges measuring the progress will unlock one of the trophies: bronze, silver, or gold. Adorned and themed tanks can be used as a smartphone screensaver. [...] firecrackers, depth bombs, dynamite charges, or lightning. The puzzle board must be cleared before the player runs out of moves, otherwise the level must be repeated in order to progress further. The platform also provides mini-games, holiday-themed upgrades, pearl tournament challenges, and a 3D-simulation of a scuba mask which allows the user to dive into the deep sea. By 2019, Playrix changed the gaming model to \"freemium\", in which various currencies such as diamonds can also be purchased [...] Fishdom is a puzzle game developed by Playrix for Microsoft Windows, Mac OS, Nintendo DS, Nintendo 3DS, Android \"Android (operating system)\"), iOS, and iPadOS. The game was originally launched on 19 June 2008.\n\n## Gameplay\n\n[edit]\n\nReception\n\nReview scores\n\n| Publication | Score |\n| Gamezebo | 3.5/5 |\n| Nintendo Life | 6/10 |",
+        "score": 0.64826655,
+        "raw_content": null,
+        "id": "b87dea-00"
+      },
+      {
+        "url": "https://play.google.com/store/apps/details?id=com.playrix.fishdomdd.gplay&hl=en",
+        "title": "Fishdom - Apps on Google Play",
+        "content": "Fishdom is free to play, but some in-game elements (including randomized items) can be purchased for real money. A Wi-Fi or internet connection is not required",
+        "score": 0.57322514,
+        "raw_content": null,
+        "id": "ab3082-01"
+      },
+      {
+        "url": "https://playrix.helpshift.com/hc/uk/4-fishdom/faq/16033-managing-in-app-purchases?s=fish&l=ko",
+        "title": "Managing in-app purchases — Fishdom Help Center",
+        "content": "While all our games are free to download, they do contain in-app purchases. You can play entirely for free, but making purchases can help you.",
+        "score": 0.51193684,
+        "raw_content": null,
+        "id": "e2b921-02"
+      },
+      {
+        "url": "https://apps.apple.com/us/app/fishdom/id664575829",
+        "title": "‎Fishdom App - App Store",
+        "content": "elements (including randomized items) can be purchased for real money. If you don't want to take advantage of this option, simply turn it off in your device's \"Restrictions\" menu. A Wi-Fi or internet connection is not required to play. \\An internet connection is required to access competitions and additional features. Do you like Fishdom? Follow us! Facebook: facebook.com/Fishdom Instagram:  Need to report an issue or ask a question? Contact Player Support through the game by going to Settings [...] decorations and unlimited creative freedom: what the aquariums look like is entirely up to you! ● Exciting events: embark on expeditions, collect keys in season adventures, and get awesome rewards like power-ups, boosters, unlimited lives, pets, and aquarium decorations! ● Have fun together: compete against other players, team up, and win fantastic prizes! Play with your Facebook friends, or make new friends in the game community! Fishdom is free to play, but some in-game elements (including [...] Fishdom is one of the funnest games that I’ve ever played. It has amazing graphics and smooth animations. It has absolutely NO ADS and free to download. You get to build aquariums with a bunch of different themes. You have to do fun puzzles to get money for decorations. I swear I got this app a day ago and I’m already addicted to it and writing this review. I only wish that the puzzles you see on the ads, happens more often in the actual game. Like I said, I got app yesterday, and it is",
+        "score": 0.493043,
+        "raw_content": null,
+        "id": "bd27a1-03"
+      },
+      {
+        "url": "https://www.facebook.com/groups/fishdomgroup/posts/2030169537490306",
+        "title": "Is it worth buying the Season pass in Fishdom? - Facebook",
+        "content": "Yes . You get all the top line of rewards (if you unlock them), and diamonds if you finish the season and collect enough keys.",
+        "score": 0.3291442,
+        "raw_content": null,
+        "id": "dfea21-04"
+      }
+    ],
+    "response_time": 1.31,
+    "request_id": "e4364a0c-eb83-4ccb-a37e-5e9c000fa6db"
+  }
+}

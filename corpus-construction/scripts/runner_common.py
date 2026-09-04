@@ -486,6 +486,10 @@ def resolve(p: str | Path) -> Path:
 #   tuning      the 50. Burned. Drove prompt and provider choice, so every number
 #               on it is a max-over-configs statistic and is never reported.
 #   validation  the 75. The reporting set, scored once against adjudicated gold.
+#   prompt-eval the 30 of those 75 that prompt v3 does NOT contain. Once a prompt
+#               quotes gold reviews as worked examples it cannot be scored on them,
+#               so this is the only clean arm for v3. Small and thin -- 13 of the 29
+#               labels have no support -- hence meso_macro: False.
 #
 # `gold` is a candidate list: the first file that exists wins. Validation prefers
 # the adjudicated panel gold and falls back to the author's single-coder labels so
@@ -511,6 +515,21 @@ EVAL_SETS = {
         "runs":    "../outputs/validation/runs",
         "stats":   "../outputs/validation/run-stats",
         "compare": "../outputs/validation/comparison",
+    },
+    "prompt-eval": {
+        "n": 30,
+        "blurb": "the 30 gold reviews prompt v3 does NOT quote. The only arm a\n"
+                 "prompt built from gold examples can honestly be scored on.\n"
+                 "Thin: 13 of 29 labels have no support -- micro and example-F1\n"
+                 "only, meso macro-F1 is suppressed. See prompt_eval_report.md.",
+        "reviews": "../prompt_eval/prompt_eval_set_blind.jsonl",
+        "gold":    ["../prompt_eval/gold_set.jsonl"],
+        "runs":    "../outputs/prompt-eval/runs",
+        "stats":   "../outputs/prompt-eval/run-stats",
+        "compare": "../outputs/prompt-eval/comparison",
+        # Averaging F1 over the 5 labels that clear the support floor produces a number
+        # that reads as comparable to the validation figure over 19. It is not.
+        "meso_macro": False,
     },
 }
 DEFAULT_EVAL_SET = "tuning"

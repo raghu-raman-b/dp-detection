@@ -1,0 +1,91 @@
+{
+  "query": "Clash of Clans obstacle decoration removal option",
+  "sent_query": "Clash of Clans obstacle decoration removal option",
+  "query_hash": "fcabedfa95d57247",
+  "answer": "To remove obstacles in Clash of Clans, use a Magic Shovel to move them or store them in your inventory. They can also be hidden via the \"Special Effects\" toggle in settings. Permanent obstacles can be enhanced with Sparky Stones.",
+  "sources": [
+    {
+      "title": "r/ClashOfClans - Supercell, please remove the \"Remove Decoration ...",
+      "url": "https://www.reddit.com/r/ClashOfClans/comments/1kthulv/supercell_please_remove_the_remove_decoration",
+      "host": "reddit.com"
+    },
+    {
+      "title": "Obstacles/Home Village | Clash of Clans Wiki - Fandom",
+      "url": "https://clashofclans.fandom.com/wiki/Obstacles/Home_Village",
+      "host": "clashofclans.fandom.com"
+    },
+    {
+      "title": "Clash of Clans Obstacles List — Full Archive | The Village Vault",
+      "url": "https://www.clashofclansvault.win/wiki/obstacles",
+      "host": "clashofclansvault.win"
+    },
+    {
+      "title": "How to Hide Decorations/Obstacles in Clash of Clans on iPhone & Android",
+      "url": "https://www.youtube.com/watch?v=P8mAqUlRZHI",
+      "host": "youtube.com"
+    },
+    {
+      "title": "HOW TO HIDE DECORATION AND OBSTACLE IN CLASH OF CLANS ...",
+      "url": "https://www.youtube.com/watch?v=eAaxphFfBSA",
+      "host": "youtube.com"
+    }
+  ],
+  "backend": "tavily",
+  "cached": false,
+  "cost_usd": 0.008,
+  "latency_s": 2.067,
+  "n_results": 5,
+  "domains": [],
+  "error": null,
+  "ts": "2026-09-04T07:45:23+00:00",
+  "raw": {
+    "query": "Clash of Clans obstacle decoration removal option",
+    "follow_up_questions": null,
+    "answer": "To remove obstacles in Clash of Clans, use a Magic Shovel to move them or store them in your inventory. They can also be hidden via the \"Special Effects\" toggle in settings. Permanent obstacles can be enhanced with Sparky Stones.",
+    "images": [],
+    "results": [
+      {
+        "url": "https://www.reddit.com/r/ClashOfClans/comments/1kthulv/supercell_please_remove_the_remove_decoration",
+        "title": "r/ClashOfClans - Supercell, please remove the \"Remove Decoration ...",
+        "content": "Hi Supercell team,. After using a Magic Shovel to move or store a decoration, the option to \"Remove Decoration\" for gold is still available.",
+        "score": 0.79675186,
+        "raw_content": null,
+        "id": "ec52e3-00"
+      },
+      {
+        "url": "https://clashofclans.fandom.com/wiki/Obstacles/Home_Village",
+        "title": "Obstacles/Home Village | Clash of Clans Wiki - Fandom",
+        "content": "You can remove them if you have a small amount of Gold or Elixir. The obstacle can also be removed normally afterwards, though this does not provide further",
+        "score": 0.78866494,
+        "raw_content": null,
+        "id": "85e6f5-01"
+      },
+      {
+        "url": "https://www.clashofclansvault.win/wiki/obstacles",
+        "title": "Clash of Clans Obstacles List — Full Archive | The Village Vault",
+        "content": "Because multiple effects can impact game performance or visual clarity, there is a global toggle in the More Settings menu to turn off \"Special Effects on Decorations and Shoveled Obstacles.\"\n\n## All Obstacles Archive\n\n53 Distinct Items\n\n### Complete Reference Table [...] Introduced as a high-level cosmetic feature via the Fancy Shop (added in the 2026 updates), the \"Add Effect\" option allows for visual enhancement of permanent obstacles. You need 100 Sparky Stones to add effect on an obstacle.\n\nThis option is only available for obstacles that have been made permanently movable with a Shovel. The effect applied is similar to the supercharged animation effect on supercharged defenses. [...] Shoveled items gain the \"Stash\" ability. You can remove them from the active map and store them in your Village Edit Mode inventory, allowing you to clear space for base designs without deleting rare collectibles.\n\nEven when stashed, these items occupy a slot in your total obstacle count, potentially preventing new regular vegetation from spawning if you exceed 45.\n\n## The \"Add Effect\" Option",
+        "score": 0.64128816,
+        "raw_content": null,
+        "id": "db8a58-02"
+      },
+      {
+        "url": "https://www.youtube.com/watch?v=P8mAqUlRZHI",
+        "title": "How to Hide Decorations/Obstacles in Clash of Clans on iPhone & Android",
+        "content": "Want a cleaner village layout in Clash of Clans? In this video, I'll show you how to hide decorations and obstacles in Clash of Clans on",
+        "score": 0.4054258,
+        "raw_content": null,
+        "id": "3828e3-03"
+      },
+      {
+        "url": "https://www.youtube.com/watch?v=eAaxphFfBSA",
+        "title": "HOW TO HIDE DECORATION AND OBSTACLE IN CLASH OF CLANS ...",
+        "content": "HOW TO HIDE DECORATIONS AND OBSTACLES IN CLASH OF CLANS ✓ HIDE DECORATIONS AND OBSTACLES DURING BATTLE.",
+        "score": 0.39201146,
+        "raw_content": null,
+        "id": "3cb2c2-04"
+      }
+    ],
+    "response_time": 1.06,
+    "request_id": "f068955b-cb4c-499a-817f-e3e321eb2faa"
+  }
+}

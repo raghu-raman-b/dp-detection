@@ -1,0 +1,91 @@
+{
+  "query": "Dice Dreams stickers album goal mechanic",
+  "sent_query": "Dice Dreams stickers album goal mechanic",
+  "query_hash": "0f0a383d7e3647e2",
+  "answer": "Dice Dreams features a sticker album where players collect cards to complete sets and earn rewards. Stickers are obtained from card packs, and completing sets unlocks minigames. The goal mechanic involves daily logins to progress and earn bigger gifts.",
+  "sources": [
+    {
+      "title": "What stickers are needed for Dice Dreams 2026?",
+      "url": "https://www.facebook.com/groups/306975830521706/posts/1686675772551698",
+      "host": "facebook.com"
+    },
+    {
+      "title": "Medium",
+      "url": "https://medium.com/@jairajp1992/deconstructing-dice-dreams-1d19c157b219",
+      "host": "medium.com"
+    },
+    {
+      "title": "Dice Dreams",
+      "url": "https://www.facebook.com/DiceDreams/posts/-%F0%9D%90%92%F0%9D%90%AD%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A4%F0%9D%90%9E%F0%9D%90%AB-%F0%9D%90%82%F0%9D%90%A1%F0%9D%90%9A%F0%9D%90%A5%F0%9D%90%A5%F0%9D%90%9E%F0%9D%90%A7%F0%9D%90%A0%F0%9D%90%9E-%F0%9D%90%93%F0%9D%90%A2%F0%9D%90%A6%F0%9D%90%9E-the-album-is-almost-coming-to-an-end-so-lets-test-your-s/1542539071210384",
+      "host": "facebook.com"
+    },
+    {
+      "title": "Dice Dreams™️ - Apps on Google Play",
+      "url": "https://play.google.com/store/apps/details?id=com.superplaystudios.dicedreams&hl=en_US",
+      "host": "play.google.com"
+    },
+    {
+      "title": "🚨 Sticker Party Alert! 🚨 The clock is ticking, and the album ...",
+      "url": "https://www.instagram.com/p/DAyyx6GiCMz",
+      "host": "instagram.com"
+    }
+  ],
+  "backend": "tavily",
+  "cached": false,
+  "cost_usd": 0.008,
+  "latency_s": 2.479,
+  "n_results": 5,
+  "domains": [],
+  "error": null,
+  "ts": "2026-09-04T10:13:19+00:00",
+  "raw": {
+    "query": "Dice Dreams stickers album goal mechanic",
+    "follow_up_questions": null,
+    "answer": "Dice Dreams features a sticker album where players collect cards to complete sets and earn rewards. Stickers are obtained from card packs, and completing sets unlocks minigames. The goal mechanic involves daily logins to progress and earn bigger gifts.",
+    "images": [],
+    "results": [
+      {
+        "url": "https://www.facebook.com/groups/306975830521706/posts/1686675772551698",
+        "title": "What stickers are needed for Dice Dreams 2026?",
+        "content": "This is my updated album. Any help with the stickers I need would be greatly appreciated. DICE DREAMS 2026. GOAL DIGGERS SET COMPLETED! get 26 cards for the",
+        "score": 0.6052631,
+        "raw_content": null,
+        "id": "f16d23-00"
+      },
+      {
+        "url": "https://medium.com/@jairajp1992/deconstructing-dice-dreams-1d19c157b219",
+        "title": "Medium",
+        "content": "### Albums\n\nAlbums is like any other card collection event found in other game genres. Here you collect Card Packs from events as rewards or through special offers. Each card pack grants you stickers. Each sticker is a part of a set which is a part of the album. Players earn rewards for completing sets and albums.\n\nThere are different types of cards based on rarity.\n\n## Monetization\n\nDice Dreams has a main store and many special offers active at a time.\n\n### Main Store [...] The daily login calendar incentivizes the players to come in daily into the game. Every time a player logs in and collects a reward, the progression meter fills and has bigger gifts to be earned over time.\n\n## Conclusion\n\nDice Dreams offers a fresh take on casual gameplay with its dynamic dice-rolling mechanic, visually captivating artwork, and a plethora of innovative minigames to play. It surely is an immersive journey that promises endless surprises and delightful moments for players. [...] ## Minigames\n\nDice Dreams has gone beyond just the Raid / Attack mechanic of CM and expanded the whole set of minigames that can be played through the Dice outcomes. It has been packaged as a card collection where these minigames can be unlocked and upgraded. Apart from the minigames, this card collection also has cards for Coin and Roll outcome which increases the coins and rolls granted through the core action of roll.",
+        "score": 0.5726516,
+        "raw_content": null,
+        "id": "9aa9d0-01"
+      },
+      {
+        "url": "https://www.facebook.com/DiceDreams/posts/-%F0%9D%90%92%F0%9D%90%AD%F0%9D%90%A2%F0%9D%90%9C%F0%9D%90%A4%F0%9D%90%9E%F0%9D%90%AB-%F0%9D%90%82%F0%9D%90%A1%F0%9D%90%9A%F0%9D%90%A5%F0%9D%90%A5%F0%9D%90%9E%F0%9D%90%A7%F0%9D%90%A0%F0%9D%90%9E-%F0%9D%90%93%F0%9D%90%A2%F0%9D%90%A6%F0%9D%90%9E-the-album-is-almost-coming-to-an-end-so-lets-test-your-s/1542539071210384",
+        "title": "Dice Dreams",
+        "content": "UPDATE: All stickers have been gifted Would like to help 4 players complete their album. So if this card completes your album, pls share",
+        "score": 0.514718,
+        "raw_content": null,
+        "id": "56f4ab-02"
+      },
+      {
+        "url": "https://play.google.com/store/apps/details?id=com.superplaystudios.dicedreams&hl=en_US",
+        "title": "Dice Dreams™️ - Apps on Google Play",
+        "content": "Bob, the first of his name, returned to his kingdom after a journey visiting the Piggy King, only to find that his beloved home had been attacked!  \nBrave Bob decided to roll the dice and clash his enemies head on. He gathered his fellow peons, and together they went on an adventure to rebuild his kingdom, get revenge, and once again become the Kings of the hyper magical dice board game. [...] 🎲 Get revenge on those who attacked your kingdom and rule the dice board game!  \n🎲 Become the master of the dice board and help the Peons restore their kingdom!   \nYou never know what treasures you can find in your friend’s kingdom. Attack and be surprised!  \n  \nGet ready to go on an epic adventure with Dice Dreams! [...] Super cute and really fun game. Addicting but quickly losing interest Rewards are too small and too far between. It takes thousands upon thousands of rolls to rank in tournaments. Trails are tough to complete without buying steps or rolls. Completing tasks and challenges, such as growing a pet by feeding it, is next to impossible without spending a lot of money. Many people have voiced this on the FB page but developers aren't listening. Also, pricing for packages is not equal for all players",
+        "score": 0.1705912,
+        "raw_content": null,
+        "id": "f30876-03"
+      },
+      {
+        "url": "https://www.instagram.com/p/DAyyx6GiCMz",
+        "title": "🚨 Sticker Party Alert! 🚨 The clock is ticking, and the album ...",
+        "content": "Sticker Party Alert! The clock is ticking, and the album is ending in just 2 days! ⏳ This is your perfect opportunity to jump into the",
+        "score": 0.07108027,
+        "raw_content": null,
+        "id": "2e1048-04"
+      }
+    ],
+    "response_time": 1.58,
+    "request_id": "46652460-37a8-4a1e-b058-b38543afc7e4"
+  }
+}

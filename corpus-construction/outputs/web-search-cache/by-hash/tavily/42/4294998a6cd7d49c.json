@@ -1,0 +1,91 @@
+{
+  "query": "Merge Cooking refrigerator board slots buying parts what does parts mean",
+  "sent_query": "Merge Cooking refrigerator board slots buying parts what does parts mean",
+  "query_hash": "4294998a6cd7d49c",
+  "answer": "In Merge Cooking, \"parts\" refer to items you can merge on the board. For refrigerators, \"parts\" are specific components like compressors and evaporators.",
+  "sources": [
+    {
+      "title": "Anyone else have this issue in Merge Cooking Theme ...",
+      "url": "https://www.reddit.com/r/MobileGaming/comments/1ixqgcc/anyone_else_have_this_issue_in_merge_cooking",
+      "host": "reddit.com"
+    },
+    {
+      "title": "How to manage inventory and space in Merge Cooking ...",
+      "url": "https://www.facebook.com/groups/764037108676390/posts/1055011406245624",
+      "host": "facebook.com"
+    },
+    {
+      "title": "Discuss Everything About Merge Cooking: Theme Restaurant Wiki",
+      "url": "https://merge-cooking-theme-restaurant.fandom.com/f",
+      "host": "merge-cooking-theme-restaurant.fandom.com"
+    },
+    {
+      "title": "Questions and Answers for Merge Cooking:Theme Restaurant on ..",
+      "url": "https://www.appgamer.com/merge-cookingtheme-restaurant/answers",
+      "host": "appgamer.com"
+    },
+    {
+      "title": "Parts of a Refrigerator: A Visual Guide | Whirlpool",
+      "url": "https://www.whirlpool.com/blog/kitchen/parts-of-a-refrigerator.html",
+      "host": "whirlpool.com"
+    }
+  ],
+  "backend": "tavily",
+  "cached": false,
+  "cost_usd": 0.008,
+  "latency_s": 2.831,
+  "n_results": 5,
+  "domains": [],
+  "error": null,
+  "ts": "2026-09-04T13:30:12+00:00",
+  "raw": {
+    "query": "Merge Cooking refrigerator board slots buying parts what does parts mean",
+    "follow_up_questions": null,
+    "answer": "In Merge Cooking, \"parts\" refer to items you can merge on the board. For refrigerators, \"parts\" are specific components like compressors and evaporators.",
+    "images": [],
+    "results": [
+      {
+        "url": "https://www.reddit.com/r/MobileGaming/comments/1ixqgcc/anyone_else_have_this_issue_in_merge_cooking",
+        "title": "Anyone else have this issue in Merge Cooking Theme ...",
+        "content": "Basically my entire board is generators and appliances. I don’t have any room to merge!",
+        "score": 0.9015383858914315,
+        "raw_content": null,
+        "id": "42a002-00"
+      },
+      {
+        "url": "https://www.facebook.com/groups/764037108676390/posts/1055011406245624",
+        "title": "How to manage inventory and space in Merge Cooking ...",
+        "content": "Yall help how do you do anything I just got to the noodle maker and I'm like all my board is full of generators and cooking units how do they even expect",
+        "score": 0.8928168306471256,
+        "raw_content": null,
+        "id": "bb67e7-01"
+      },
+      {
+        "url": "https://merge-cooking-theme-restaurant.fandom.com/f",
+        "title": "Discuss Everything About Merge Cooking: Theme Restaurant Wiki",
+        "content": "I wonder what’s next after that? Scandinavian restaurants? South African restaurants?\n\nOn my phone, the game offers the ability to open a tray of the items you’ve been awarded but haven’t added to board/inventory yet so you can choose what to add or what you keep in the tray so as to not take up space.\n\nHowever, on my tablet, this feature does not exist. Yes, I checked for updates. Curious to know why this may be? [...] Merge Cooking: Theme Restaurant Wiki\nMerge Cooking: Theme Restaurant Wiki\n\nWhat's on your mind?\n\nTEXT\n\nPOLL\n\n## Sort by\n\n## Card Layout\n\nLinkinParkFan222's avatar\n\nI think they added Belgian recipes and a Belgian/Flemish restaurant to this game, even though that restaurant was given the wrong icon (which was for American restaurants).\n\nAnyone else having this issue?\n\n## Just Updated [...] Help us grow Merge Cooking: Theme Restaurant Wiki\n\nTsukiakari1203's avatar\nReinDevildom's avatar\nRilakkuma Fanatic's avatar\nMaverick-rose123's avatar\nLinkinParkFan222's avatar\nLazybrownpig's avatar\n\n## Explore Merge Cooking: Theme Restaurant Wiki\n\n## Fandom logo\n\nFandom logo\n\n### Explore properties\n\n### Follow Us\n\n### Overview\n\n### Community\n\n### Advertise\n\n### Fandom Apps\n\nFandom App logo\nStore icon\nStore icon",
+        "score": 0.853385858908677,
+        "raw_content": null,
+        "id": "90a866-02"
+      },
+      {
+        "url": "https://www.appgamer.com/merge-cookingtheme-restaurant/answers",
+        "title": "Questions and Answers for Merge Cooking:Theme Restaurant on ..",
+        "content": "# Questions and Answers for Merge Cooking:Theme Restaurant\n\nThis is our page for asking and answering questions for Merge Cooking:Theme Restaurant. If you have a question you can ask it below and please check through the questions that have already been asked to see if you can answer any.\n\nAsk a question for Merge Cooking:Theme Restaurant\n\nThe members with the know how for Merge Cooking:Theme Restaurant\n\nAppGamer - Mobile Game Guides and News since 2008. [...] Email\n\nAge --123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120 [...] © 2026 Web Media Network Limited. All rights reserved. No part of this website or its content may be reproduced without the copyright owner's permission.\n\nThis website is a fan site resource and is not affiliated in any way with Google, Apple or any video game publisher.\n\nDisplay Name\n\nEmail",
+        "score": 0.8296653637792661,
+        "raw_content": null,
+        "id": "ef92af-03"
+      },
+      {
+        "url": "https://www.whirlpool.com/blog/kitchen/parts-of-a-refrigerator.html",
+        "title": "Parts of a Refrigerator: A Visual Guide | Whirlpool",
+        "content": "Need to purchase replacement parts for your Whirlpool® refrigerator? Find everything you need by browsing the Whirlpool® Refrigerator Accessoriesand Parts pages.\n\nA Whirlpool® refrigerator with an open ice box.\nA Whirlpool® refrigerator with an open ice box.\n\n## Can I replace different parts of a refrigerator on my own? [...] A diagram of the parts of a refrigerator.\nA diagram of the parts of a refrigerator.\n\n## What are the external and internal parts of a refrigerator?\n\nThe parts of a refrigeration system all work together to give your fridge the power to keep your foods fresh. Read on to learn more about each one of the unique components of a fridge.\n\nA refrigerator compressor.\n\n### 1. Compressor [...] Read Article\n\n## Are parts for fridges interchangeable across brands and manufacturers?\n\nIf you're having problems with your Whirlpool® refrigerator and its interior or external parts, it's important to only use appliance-specific Whirlpool brand parts. Using refrigerator components from other brands may cause additional damage to your appliance.",
+        "score": 0.6980757401323243,
+        "raw_content": null,
+        "id": "03bbce-04"
+      }
+    ],
+    "response_time": 1.89,
+    "request_id": "d1086133-c74d-4539-861f-82422b72d085"
+  }
+}

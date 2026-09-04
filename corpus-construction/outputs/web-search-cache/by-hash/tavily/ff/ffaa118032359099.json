@@ -1,0 +1,91 @@
+{
+  "query": "Disney Solitaire game cost to play level 100 2200 coins",
+  "sent_query": "Disney Solitaire game cost to play level 100 2200 coins",
+  "query_hash": "ffaa118032359099",
+  "answer": "To reach level 100 in Disney Solitaire, you need 2200 coins per game, and extra cards cost 4400 coins each. The game is free to play but heavily relies on in-game purchases. The wild card costs 5000 coins.",
+  "sources": [
+    {
+      "title": "Disney Solitaire not worth it : r/FreeCash",
+      "url": "https://www.reddit.com/r/FreeCash/comments/1t4ploh/disney_solitaire_not_worth_it",
+      "host": "reddit.com"
+    },
+    {
+      "title": "User-initiated failure – my favorite part of Disney Solitaire",
+      "url": "https://alexandremacmillan.com/2025/07/02/user-initiated-failure-my-favorite-part-of-disney-solitaire",
+      "host": "alexandremacmillan.com"
+    },
+    {
+      "title": "‎Disney Solitaire App - App Store",
+      "url": "https://apps.apple.com/us/app/disney-solitaire/id6475757306",
+      "host": "apps.apple.com"
+    },
+    {
+      "title": "Disney Solitaire - Apps on Google Play",
+      "url": "https://play.google.com/store/apps/details?id=com.superplaystudios.disneysolitairedreams&hl=en_US",
+      "host": "play.google.com"
+    },
+    {
+      "title": "Levels - Disney Solitaire Wiki - Fandom",
+      "url": "https://disneysolitaire.fandom.com/wiki/Levels",
+      "host": "disneysolitaire.fandom.com"
+    }
+  ],
+  "backend": "tavily",
+  "cached": false,
+  "cost_usd": 0.008,
+  "latency_s": 2.567,
+  "n_results": 5,
+  "domains": [],
+  "error": null,
+  "ts": "2026-09-04T10:12:30+00:00",
+  "raw": {
+    "query": "Disney Solitaire game cost to play level 100 2200 coins",
+    "follow_up_questions": null,
+    "answer": "To reach level 100 in Disney Solitaire, you need 2200 coins per game, and extra cards cost 4400 coins each. The game is free to play but heavily relies on in-game purchases. The wild card costs 5000 coins.",
+    "images": [],
+    "results": [
+      {
+        "url": "https://www.reddit.com/r/FreeCash/comments/1t4ploh/disney_solitaire_not_worth_it",
+        "title": "Disney Solitaire not worth it : r/FreeCash",
+        "content": "Example: To play I lose 2200 coins. To get the extra 5 cards costs 4400 per 5 and buying a wild card is 5000. You can play at 1X, 2X, or 3X the",
+        "score": 0.7429634,
+        "raw_content": null,
+        "id": "542156-00"
+      },
+      {
+        "url": "https://alexandremacmillan.com/2025/07/02/user-initiated-failure-my-favorite-part-of-disney-solitaire",
+        "title": "User-initiated failure – my favorite part of Disney Solitaire",
+        "content": "The wild card is a bit more than 2x the cost of initiating a level. Say 22000 coins here. Now, combining the user-initiated failure with the",
+        "score": 0.62523276,
+        "raw_content": null,
+        "id": "c53d8e-01"
+      },
+      {
+        "url": "https://apps.apple.com/us/app/disney-solitaire/id6475757306",
+        "title": "‎Disney Solitaire App - App Store",
+        "content": "go from having 100k coins to 2k in a matter of minutes and this is all without purchasing, I have also noticed different times of the day will change your odds, call me crazy but collect your coins during the day and play at night. Don’t get me started on the broken card algorithm, there have been plenty of times I’m down to one card and not enough coins to use a gold card or shuffle five which are expensive as hell why? I have no clue.. for no reason. There’s enough levels to bring those costs [...] Disney Solitaire 5 $4.99\n     Disney Solitaire 4 $3.99\n     Disney Solitaire 6 $5.99\n     Disney Solitaire 2 Offer $1.99\n     Disney Solitaire 8 Offer $7.99\n     Disney Solitaire 10 Offer $9.99\n     Disney Solitaire 15 offer $14.99\n     Disney Solitaire 7 Offer $6.99\n     Disney Solitaire 3 Offer $2.99\n     Solitaire 3 Awesome offer $2.99\n     Learn More\n\nCopyright\n:    © 2019 SuperPlay LTD\n\n- Developer Website\n- Privacy Policy\n\n## Supports\n\n \n\n  ### Game Center [...] Current level 446~ this game although fun and addictive it’s really sets you up to lose once you hit those higher levels. This isn’t traditional solitaire but more of number stacking, yes you have to spend more coins to “win” but the chances to farm without having to purchase with real money makes it so difficult even with extra events, the cost to play a single game costs more than actually spending money in the game. My initial criticism is the lack of free coins, I can go from having 100k",
+        "score": 0.5637388,
+        "raw_content": null,
+        "id": "ea7691-02"
+      },
+      {
+        "url": "https://play.google.com/store/apps/details?id=com.superplaystudios.disneysolitairedreams&hl=en_US",
+        "title": "Disney Solitaire - Apps on Google Play",
+        "content": "April 21, 2026\n\nI'm sorry but this game is horrible! You don't even earn lives over a period of time. Unless you spend money, you have to log in every hour to collect 2K coins which isn't even enough to start a level! Once you advance a little bit, it costs more to start a level than the measly amount of coins you collect. Forget if you need extra cards. The premise is great, but it's just another pay to win game. Do better Disney!\n\n54 people found this review helpful\n\nSuperPlay. [...] April 9, 2026\n\nGreat game, solid game play, but it's basically 100% pay to win. Once you're out of coins (which are easy to accidentally spend) you only get one refill (ie ONE PLAY) per hour. Who has the patience for that? And if you don't pass a level you can't reset it to try again, you have to replay it and that costs coins so you just have to wait an hour to do a re-deal. What a money grab.\n\n46 people found this review helpful\n\nSuperPlay.\n\nApril 9, 2026 [...] Welcome to Disney Solitaire, the ultimate solitaire card game that transforms classic tripeaks solitaire into an exciting experience filled with Disney magic!   \n  \nPlay through beautifully designed levels inspired by iconic Disney and Pixar scenes while solving fun and challenging puzzles.  \n  \nStep into the enchanting realm of Disney Solitaire, where every postcard recreates an iconic scene from the worlds of Disney and Pixar!",
+        "score": 0.5097406,
+        "raw_content": null,
+        "id": "31d255-03"
+      },
+      {
+        "url": "https://disneysolitaire.fandom.com/wiki/Levels",
+        "title": "Levels - Disney Solitaire Wiki - Fandom",
+        "content": "Coins x1 – Base cost and standard rewards. · Coins ×2 – Costs twice the Dsn-solitaire-coinp fee. Rewards are increased between ×2 up to ×3, depending on rewards.",
+        "score": 0.4617697,
+        "raw_content": null,
+        "id": "b71029-04"
+      }
+    ],
+    "response_time": 1.58,
+    "request_id": "c431f550-c5a0-4f54-98fd-fedab8072e5f"
+  }
+}

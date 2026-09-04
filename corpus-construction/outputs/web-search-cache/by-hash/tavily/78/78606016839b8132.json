@@ -1,0 +1,91 @@
+{
+  "query": "MadOut 2 Grand Auto Racing download size additional in-game download storage",
+  "sent_query": "MadOut 2 Grand Auto Racing download size additional in-game download storage",
+  "query_hash": "78606016839b8132",
+  "answer": "MadOut 2 requires 1.2 GB for download, with additional storage for updates and in-game purchases. The game is free-to-play with optional in-app purchases. The initial download size is 1.2 GB.",
+  "sources": [
+    {
+      "title": "Play MadOut 2: Grand Auto Racing on PC | Download Now - Google Play Store",
+      "url": "https://play.google.com/pc-store/games/details?id=com.MadOut.BIG",
+      "host": "play.google.com"
+    },
+    {
+      "title": "‎MadOut 2: Grand Auto racing App - App Store",
+      "url": "https://apps.apple.com/us/app/madout-2-grand-auto-racing/id1214765807",
+      "host": "apps.apple.com"
+    },
+    {
+      "title": "Download & Play MadOut 2: Grand Auto Racing on PC & Mac (Emulator)",
+      "url": "https://www.bluestacks.com/apps/action/madout2-big-city-online-on-pc.html",
+      "host": "bluestacks.com"
+    },
+    {
+      "title": "MadOut2 BigCityOnline for Android - Download",
+      "url": "https://madout2-bigcityonline.en.softonic.com/android",
+      "host": "madout2-bigcityonline.en.softonic.com"
+    },
+    {
+      "title": "MadOut2 BigCityOnline for Android - Download the APK from Uptodown",
+      "url": "https://madout2-bigcityonline.en.uptodown.com/android",
+      "host": "madout2-bigcityonline.en.uptodown.com"
+    }
+  ],
+  "backend": "tavily",
+  "cached": false,
+  "cost_usd": 0.008,
+  "latency_s": 2.22,
+  "n_results": 5,
+  "domains": [],
+  "error": null,
+  "ts": "2026-09-04T13:51:23+00:00",
+  "raw": {
+    "query": "MadOut 2 Grand Auto Racing download size additional in-game download storage",
+    "follow_up_questions": null,
+    "answer": "MadOut 2 requires 1.2 GB for download, with additional storage for updates and in-game purchases. The game is free-to-play with optional in-app purchases. The initial download size is 1.2 GB.",
+    "images": [],
+    "results": [
+      {
+        "url": "https://play.google.com/pc-store/games/details?id=com.MadOut.BIG",
+        "title": "Play MadOut 2: Grand Auto Racing on PC | Download Now - Google Play Store",
+        "content": "OS: Windows 10 (v2004)\n Storage: Solid state drive (SSD) with 10 GB of available storage space\n Graphics: IntelⓇ UHD Graphics 630 GPU or comparable\n Processor: 4 CPU physical cores\n Memory: 8 GB of RAM\n Windows admin account\n Hardware virtualization must be turned on\n\nTo learn more about these requirements, visit the Help Center\n\nIntel is a registered trademark of Intel Corporation or its subsidiaries. Windows is a trademark of the Microsoft group of companies. [...] Icon image\n\nPlay on PC\n\nIcon image\n\n# MadOut 2: Grand Auto Racing\n\nMadOut Games LLC FZ\n\nContains adsIn-app purchases\n\n4.1star\n\n941 reviews\n\nContent rating\n\nRated for 18+\n\ninfo\n\n100M+\n\nDownloads\n\nGoogle Play Games on PC is required to install this game on Windows. By downloading the app and the game, you agree to the Google Terms of Service and Google Play Terms of Service. Learn more.\n\nContent rating\n\nRated for 18+\n\nExtreme Violence\n\nIn-Game Purchases (Includes Random Items)\n\nLearn more [...] ✪ In MadOut 2 the possibilities are endless, and the action MMO adventure never ends. Prepare to embark on the ultimate sandbox-style, role-playing, racing adventure of a lifetime. Welcome to the world of MadOut 2 — where the only limit is your imagination. Join us and experience the ultimate fusion of action, RP, online games, offline games, and racing games free mayhem!",
+        "score": 0.81630427,
+        "raw_content": null,
+        "id": "4d4d05-00"
+      },
+      {
+        "url": "https://apps.apple.com/us/app/madout-2-grand-auto-racing/id1214765807",
+        "title": "‎MadOut 2: Grand Auto racing App - App Store",
+        "content": "# MadOut 2: Grand Auto racing\n\nCar action & shooting RP game\n\nFree · In‑App Purchases\n\n 93K Ratings\n Age Rating\n\n  13+\n #17\n Vladislav Ivanchuk\n EN\n\n  + 7 More\n 1.8\n\n  GB [...] + Location\n  + User Content\n  + Identifiers\n  + Usage Data\n ### Data Not Linked to You\n\n  The following data may be collected but it is not linked to your identity:\n\n  + Location\n  + Diagnostics\n\nPrivacy practices may vary, for example, based on the features you use or your age. Learn More\n\n## Accessibility\n\nThe developer has not yet indicated which accessibility features this app supports. Learn More\n\n## Information\n\nSeller\n:    Vladislav Ivanchuk\n\nSize\n:    1.8 GB\n\nCategory\n:    Racing [...] Special offer price 5 $4.99\n     Special offer price 3 $2.99\n     Add Coins 1 $2.99\n     Special offer price 10 $9.99\n     Small Box $3.99\n     Special offer price 20 $19.99\n     Special offer price 1 $0.99\n     Remove Ads $0.99\n     Add Coins 2 $6.99\n     Special offer price 7 $6.99\n     Learn More\n\nCopyright\n:    © Ivanchuk Vladislav\n\n- Developer Website\n- Privacy Policy\n\n## You Might Also Like\n\n View\n\n  \n\n  ### Urban Street Car Driver\n\n  Open World Car Games 2026\n View",
+        "score": 0.77364457,
+        "raw_content": null,
+        "id": "8cffbe-01"
+      },
+      {
+        "url": "https://www.bluestacks.com/apps/action/madout2-big-city-online-on-pc.html",
+        "title": "Download & Play MadOut 2: Grand Auto Racing on PC & Mac (Emulator)",
+        "content": "+ OS: Microsoft Windows 7 or above MacOS 11 (Big Sur) or above\n  + Processor: Intel, AMD or Apple Silicon Processor\n  + RAM: Your PC must have at least 4GB of RAM. (Note that having 4GB or more disk space is not a substitute for RAM)\n  + HDD: 10GB Free Disk Space.\n  + You must be an Administrator on your PC.\n\nBluestacks\n\n##### BlueStacks is a PC platform.\n\nSince you are on your phone, we are going to send you to the Google Play page. [...] With BlueStacks 5, you can get started on a PC that fulfills the following requirements.\n\n ### Operating System\n\n  Microsoft Windows 7 or above, macOS 11 (Big Sur) or above\n ### Processor\n\n  Intel, AMD or Apple Silicon Processor\n ### RAM\n\n  at least 4GB\n ### HDD\n\n  10GB Free Disk Space\n\nNote:\n\n\\ You must be an Administrator on your PC. Up to date graphics drivers from Microsoft or the chipset vendor.\n\n### Similar Games\n\nDrive Zone: Car Simulator Game [...] Realistic Cars: MadOut 2 features more than 70 realistic cars, ranging from sleek sports cars to off-road vehicles and so much more. You can even customize your ride to perfection by choosing from technical options.",
+        "score": 0.6991933,
+        "raw_content": null,
+        "id": "aee883-02"
+      },
+      {
+        "url": "https://madout2-bigcityonline.en.softonic.com/android",
+        "title": "MadOut2 BigCityOnline for Android - Download",
+        "content": "Icon of program: MadOut Open City\n\n  ### MadOut Open City\n\n  + 4.4\n  + Paid\n\n  Combat racing game\n Icon of program: Gangstar New Orleans Open…\n\n  ### Gangstar New Orleans OpenWorld\n\n  + 4.4\n  + Free\n\n  Open-world action-adventure game\n Icon of program: Off The Road  OTR Open Wo…\n\n  ### Off The Road OTR Open World Driving\n\n  + 4.6\n  + Free\n\n  Open-world off-road driving with diverse vehicles\n\nView all\n\n ### 10.48\n\n  + 1.03 GB\n ### 10.27\n\n  + 45.33 MB\n ### 10.24\n\n  + 44.24 MB\n\nView all [...] MadOut 2: Grand Auto Racing is a free-to-play game that drops you into high-speed road action. The game is set across a sprawling Eastern European–inspired city. It blends driving, exploration, and mission-based gameplay, letting you tackle dangerous jobs within the criminal underworld.\n\n### Top Recommended Alternative\n\nMadOut Open City icon\n\n### MadOut Open City\n\nPaid\n\n4.4 [...] MadOut 2: Grand Auto Racing receives a substantial update that adds plenty for long-time players to dig into. A new drag racing mode introduces straight-line, high-speed competition, while fresh locations, including the shooting range and rally jump track, add more visual variety. The update also expands content with three new bikes, eight cars, deeper tuning options, and a large batch of new outfits and weapon skins.",
+        "score": 0.564027,
+        "raw_content": null,
+        "id": "8284c1-03"
+      },
+      {
+        "url": "https://madout2-bigcityonline.en.uptodown.com/android",
+        "title": "MadOut2 BigCityOnline for Android - Download the APK from Uptodown",
+        "content": "|  |  |\n --- |\n| Required permissions | See 27 permissions |\n| Certificate signature | 41c15b0b05c48d2dd6f4507077056bb0 |\n| See security and antivirus report |  |\n\n### Download info\n\n|  |  |\n --- |\n| Downloads | 4,308,622 |\n| Date | Aug 19, 2026 |\n| File type | XAPK |\n| Size | 1.2 GB |\n| SHA256 | 18caaea80f50c9f781d619779b9aee9e3cba7d051d378d3994c68eb0f04e29a1 |\n\n### Technical details\n\n|  |  |  |\n --- \n|  | Package Name | com.MadOut.BIG |\n\nAdvertisement\n\nRemove ads and more with Turbo [...] Games  /\n\nAction/Adventure  /\n\nMadOut2 BigCityOnline\n\nMadOut2 BigCityOnline icon\n\n# MadOut2 BigCityOnline\n\n 4.4   1,875 reviews\n\n4.3 M downloads\n\n## An incredible GTA-style sandbox\n\nRemove ads and more with Turbo\n\n### Get the latest version\n\n20.44\n\nAug 19, 2026\n\n Older versions\n\nGameplay video of MadOut2 BigCityOnline 1\n\nMadOut2 BigCityOnline screenshot 2\n\nMadOut2 BigCityOnline screenshot 3\n\nMadOut2 BigCityOnline screenshot 4\n\nMadOut2 BigCityOnline screenshot 5 [...] In MadOut2 BigCityOnline, you'll make your way through the dangerous streets of a huge city, which you can see on the map in the corner of the screen. Throughout this adventure, you'll drive over 30 vehicles and have almost a dozen different weapons at your disposal. You'll be able to use pistols, machine guns, shotguns, and many more. As is often the case in these GTA-esque Android games, you'll be gathering rewards throughout the game to try and get infinite money to unlock the most valuable",
+        "score": 0.45231876,
+        "raw_content": null,
+        "id": "09bb82-04"
+      }
+    ],
+    "response_time": 1.23,
+    "request_id": "2149526f-54b0-4156-ae75-db243fa20a6c"
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "query": "genie game wheel spin Cash Frenzy Casino Slots",
+  "sent_query": "genie game wheel spin Cash Frenzy Casino Slots",
+  "query_hash": "764c86998c195688",
+  "answer": "Genie's Wheel is a slot game with a wheel bonus and free games. Cash Frenzy Casino Slots is a free app with various slot games. Genie Unleashed features a wheel frenzy bonus and free spins.",
+  "sources": [
+    {
+      "title": "Genie's Wheel Slots Game | Aristocrat Gaming",
+      "url": "https://www.aristocratgaming.com/us/games/us-genie-s-wheel",
+      "host": "aristocratgaming.com"
+    },
+    {
+      "title": "Genie Unleashed | AGS Slot | AGS Gaming",
+      "url": "https://www.playags.com/directory/games/genie-unleashed",
+      "host": "playags.com"
+    },
+    {
+      "title": "Cash Frenzy™ - Casino Slots - Apps on Google Play",
+      "url": "https://play.google.com/store/apps/details?id=slots.pcg.casino.games.free.android&hl=en_US",
+      "host": "play.google.com"
+    },
+    {
+      "title": "Genie's Prize™ and Pixie's Prize™ - Everi",
+      "url": "https://www.everi.com/games/library/genies-prize-and-pixies-prize",
+      "host": "everi.com"
+    },
+    {
+      "title": "Cash Frenzy™ - Slots Casino - App Store - Apple",
+      "url": "https://apps.apple.com/us/app/cash-frenzy-slots-casino/id1404165333",
+      "host": "apps.apple.com"
+    }
+  ],
+  "backend": "tavily",
+  "cached": false,
+  "cost_usd": 0.008,
+  "latency_s": 2.31,
+  "n_results": 5,
+  "domains": [],
+  "error": null,
+  "ts": "2026-09-04T10:09:10+00:00",
+  "raw": {
+    "query": "genie game wheel spin Cash Frenzy Casino Slots",
+    "follow_up_questions": null,
+    "answer": "Genie's Wheel is a slot game with a wheel bonus and free games. Cash Frenzy Casino Slots is a free app with various slot games. Genie Unleashed features a wheel frenzy bonus and free spins.",
+    "images": [],
+    "results": [
+      {
+        "url": "https://www.aristocratgaming.com/us/games/us-genie-s-wheel",
+        "title": "Genie's Wheel Slots Game | Aristocrat Gaming",
+        "content": "Exciting spins with a boost\n\nSpin some magic\n\nGenie’s Wheel™ brings wheel gameplay to new heights, where any wheel spin can be boosted by Cash-or-Reel symbols, allowing for wins to be multiplied. Featuring Collection Free Games, it gives you one of the most beloved features of all time on top of an already action-packed game. Give this genie a go and take the wheel for a spin.\n\nsingleGameimage [...] [{\"title\":\"GENIE FEATURE\",\"description\":\"Genie can randomly give either a 3rd wheel symbol to trigger Wheel Bonus, a 3rd scatter to trigger Free Games Bonus, or a Credit prize\"},{\"title\":\"WHEEL BONUS\",\"description\":\"Wheel symbols on reels trigger a wheel spin. If the wheels have Cash-on-Reels then the wheel prizes are increased by 1 to 5 times the total Cash-on-Reels. Wheel may award credit prizes or jackpots\"},{\"title\":\"FREE GAMES\",\"description\":\"During the Free Games, 2 or more scatters award [...] more scatters award 5 extra games. Collect diamonds to increase Wheel Multipliers that multiply free games wins when a WILD appears\"}]",
+        "score": 0.7192461,
+        "raw_content": null,
+        "id": "3b10bf-00"
+      },
+      {
+        "url": "https://www.playags.com/directory/games/genie-unleashed",
+        "title": "Genie Unleashed | AGS Slot | AGS Gaming",
+        "content": "Image 1: AGS Logo   About\n   Slots\n   Table Products\n   Online Gaming\n   Newsroom\n\nSearch\n\n[](\n\n1.   SLOT GAMES\n2.   >GENIE UNLEASHED\n\nImage 2: Logo for Genie Unleashed\n\nWheel Frenzy\n# Genie Unleashed\n\nA friendly 3D genie is here to grant all your wishes in Genie Unleashed®. Featuring a pick bonus, wheel frenzy bonus, and free spins bonus, this game will give players the chance to play like royalty.\n\n## Game Info\n\n### Wheel Frenzy Bonus [...] ## Wheel Frenzy\n\nThe power is in the spin with the Wheel Frenzy® family. The exciting top wheel features true persistence mechanics which keep players engaged by collecting different color coins in anticipation of a bonus trigger.\n\nImage 4: Featured image for Genie Unleashed ### Genie UnleashedImage 5: Featured image for Frights n' Delights ### Frights n' Delights\n\n© 2026 AGS LLC. All Rights ReservedPrivacy PolicyCookie Policy [...] Collect 6 same-color coins for a wheel spin with prizes, jackpots, or 2× multiplier.\n\n### Wheel Boost Feature\n\nRandomly adds up to four 2× wedges; wheel can upgrade to 8× for next five games.\n\nImage 3: Cabinet image for Game Info\n\n### WATCH IT IN ACTION\n\nVideo 1\n\n#### About the family\n\n## Wheel Frenzy",
+        "score": 0.66777676,
+        "raw_content": null,
+        "id": "ce6233-01"
+      },
+      {
+        "url": "https://play.google.com/store/apps/details?id=slots.pcg.casino.games.free.android&hl=en_US",
+        "title": "Cash Frenzy™ - Casino Slots - Apps on Google Play",
+        "content": "¡Cash Frenzy puede brindarte las mejores tragaperras online casino! ¡Recibe hoy los mejores slots gratis! Disfruta una selección de vegas casino tragamonedas con bonus en Cash Frenzy. ¡Y siempre te traemos slots de temas nuevos!  \n  \n🔔Nota:  \n\\ Cash Frenzy no ofrece apuesta de dinero real. Está destinado a una audiencia adulta solo motivos de entretenimiento.  \nPara más información sobre Cash Frenzy Juegos de slots Online Casino, visita:  \n🔗 Facebook :  \n🔗 Twitter:   \n🔗 YouTube: [...] 🎆🎁 ¡Feliz Año nuevo a todos! ¡Descargar Cash Frenzy ahora para explorar las tragamonedas nueva lanzadas con grandes jackpots y monedas de bonos en todas partes! 🎆🎁  \n  \nCash Frenzy, Juegos de Casino gratis con Máquinas de Tragaperras en Línea  \n  \nBienvenido al increíble mundo de los casinos slots en línea - Cash Frenzy Tragamonedas 777, la mejor experiencia de tragamonedas en Las Vegas. ¡Lanza estos juegos de slots casino gratis! [...] Great game. But I also spin at (funxspin•соm💎) lately. Was skeptical at first, but somehow hit $9,370😊 last night and the payout was in my account in 2 mins - same kind of slots, just a whole different feeling when the wins are actually real and you can cash out. As for Cash Frenzy, when you run out of coins, it's also nice that you don't have to wait long for new free coins. I won't knock any stars off the rating as the game is still fun and you don't have to spend real money, but payouts hav",
+        "score": 0.46628717,
+        "raw_content": null,
+        "id": "aab5d7-02"
+      },
+      {
+        "url": "https://www.everi.com/games/library/genies-prize-and-pixies-prize",
+        "title": "Genie's Prize™ and Pixie's Prize™ - Everi",
+        "content": "Pixie’s Pick Bonus features the best of both worlds – a pick bonus and a wheel spin(s)! Earn more picks and/or upgrade wheel spin(s) with more credits, multipliers, and/or add a progressive(s) to the wheel. Once all picks are made, spin the wheel for big prizes!\n\n### Diamond Frenzy\n\nLanding wild diamond symbols scattered on both reels 1 and 5 triggers the Diamond Frenzy mode for two minutes of fast action, heart pounding play to win credit prizes or a progressive! [...] ### Genie's Prize / Pixie's Prize\n\nLand one or more scatter symbols on reels 2, 3, or 4 for a shot at winning Genie’s Prize / Pixie’s Prize which can include the double column wilds feature, the upgrade low symbols feature, and the upgrade high symbols feature. It’s all about enhancing the base game reels!\n\n## CABINETS\n\n## GAME DOCUMENTS\n\nEveri 24 Hour Support Line  \n(844) EVERI24  \nCentralCredit (800) 566-2087\n\n## Social Responsibility\n\n## Legal [...] Everi Logo\nEveri\nclose\n\n# Genie’s Prize™ and Pixie’s Prize™\n\nGenies Prize Pixies Prize Thumbnail\n\n### Genie's Prize & Pixie's Prize\n\n## GAME OVERVIEW\n\n## GAMEPLAY\n\n### Genie's Pick Bonus\n\nThe Genie grants three wishes (or opportunities) to upgrade picks with even bigger credit prizes, multipliers, or a progressive.\n\n### Pixie's Pick Bonus",
+        "score": 0.459586,
+        "raw_content": null,
+        "id": "3c57f8-03"
+      },
+      {
+        "url": "https://apps.apple.com/us/app/cash-frenzy-slots-casino/id1404165333",
+        "title": "Cash Frenzy™ - Slots Casino - App Store - Apple",
+        "content": "The app provides regular bonuses and rewards, including daily tasks and Megaball, which gives players even more opportunities to earn coins and unlock new levels and slot machines. If you're looking for a way to enjoy the excitement of slot machine games without leaving your home, Cash Frenzy is the perfect Vegas live slots app for you. With its vast collection of live slot machines, free games, and immersive gaming experience, it's sure to keep you entertained for hours on end. So download the [...] So download the slots app today and start spinning those reels! Get ready to spin and win with our slot machines! Our huge casino offers huge prizes, including the chance to earn Lucky Smash rewards that will help you maximize your winnings. With features and an exciting timer system, our slot machine games are sure to make you fall in love with slots all over again! More than free slots casino games. In addition to new premium Vegas casino slots every week, there are many more awesome [...] # Cash Frenzy™ - Slots Casino\n\n777 Vegas Slot Machine Jackpot\n\nFree · In‑App Purchases\n\n 360K Ratings\n Age Rating\n\n  18+\n #48\n SpinX Games Limited\n EN\n\n  + 9 More\n 375.6",
+        "score": 0.43079433,
+        "raw_content": null,
+        "id": "c6c488-04"
+      }
+    ],
+    "response_time": 1.38,
+    "request_id": "96f57939-1fe5-4808-bec5-b628b6d7c4c7"
+  }
+}

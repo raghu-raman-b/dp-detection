@@ -1,0 +1,91 @@
+{
+  "query": "Dark War Survival events competitive winning",
+  "sent_query": "Dark War Survival events competitive winning",
+  "query_hash": "96f69f9666272ad4",
+  "answer": "To win competitive events in Dark War Survival, focus on leveling up your Watchtower, acquire high-tier heroes, and participate in events like Lucky Chest and Goodie Bazaar. Winning an event appoints the winner as President and controls the region. Sync server time with local time to avoid missing events.",
+  "sources": [
+    {
+      "title": "Dark War Survival Guide (2026) | Tips, Strategy & Walkthrough for Competitive Players",
+      "url": "https://www.packsify.com/blogs/dark-war-survival-guide-tips-to-dominate",
+      "host": "packsify.com"
+    },
+    {
+      "title": "Events | Dark War survival Wiki - Fandom",
+      "url": "https://dark-war-survival.fandom.com/wiki/Events",
+      "host": "dark-war-survival.fandom.com"
+    },
+    {
+      "title": "Advice for a new player : r/darkwarsurvival",
+      "url": "https://www.reddit.com/r/darkwarsurvival/comments/1oi4c5z/advice_for_a_new_player",
+      "host": "reddit.com"
+    },
+    {
+      "title": "Dark War:Survival",
+      "url": "https://darkwar-survival.com",
+      "host": "darkwar-survival.com"
+    },
+    {
+      "title": "How to Never Miss Events in Dark War Survival",
+      "url": "https://www.youtube.com/watch?v=8J_jWyxY0ks",
+      "host": "youtube.com"
+    }
+  ],
+  "backend": "tavily",
+  "cached": false,
+  "cost_usd": 0.008,
+  "latency_s": 2.553,
+  "n_results": 5,
+  "domains": [],
+  "error": null,
+  "ts": "2026-09-04T10:53:26+00:00",
+  "raw": {
+    "query": "Dark War Survival events competitive winning",
+    "follow_up_questions": null,
+    "answer": "To win competitive events in Dark War Survival, focus on leveling up your Watchtower, acquire high-tier heroes, and participate in events like Lucky Chest and Goodie Bazaar. Winning an event appoints the winner as President and controls the region. Sync server time with local time to avoid missing events.",
+    "images": [],
+    "results": [
+      {
+        "url": "https://www.packsify.com/blogs/dark-war-survival-guide-tips-to-dominate",
+        "title": "Dark War Survival Guide (2026) | Tips, Strategy & Walkthrough for Competitive Players",
+        "content": "‍\n\nPriority 2: Lucky Chest and Goodie Bazaar events. Lucky Chest gives you spins for rare hero shards (Lan, Francis, Darian). Goodie Bazaar provides guaranteed hero fragments through event currency — you can buy specific S-tier hero shards like Tristan, Cyrus, or Margaret. Save Rubies between events and deploy during these windows for maximum hero acquisition efficiency.\n\n‍ [...] ‍\n\nYour Watchtower level gates everything in Dark War Survival: hero level caps, building access, troop tiers, Radar unlock (world map access at Watchtower 7), and competitive event eligibility. Every hour you spend at a lower Watchtower level than necessary is an hour where every other system on your account produces less than it should.\n\n‍ [...] ‍\n\nTrain the highest tier available. Don't waste speedups on low-tier troops. Wait for higher-tier unlocks from Watchtower and research progression, then deploy speedups for mass training during events like Wasteland King.\n\n‍\n\n### 6. Alliance positioning & world map\n\n‍\n\nOnce your Radar unlocks at Watchtower 7, the world map opens and PvP begins. Here's the Dark War Survival strategy for competitive play:\n\n‍",
+        "score": 0.7065353,
+        "raw_content": null,
+        "id": "2cab30-00"
+      },
+      {
+        "url": "https://dark-war-survival.fandom.com/wiki/Events",
+        "title": "Events | Dark War survival Wiki - Fandom",
+        "content": "The winner appoints the President and controls the region. Compete to earn points by using resources and accelerating progress. Includes jackpots, ranking",
+        "score": 0.6773251,
+        "raw_content": null,
+        "id": "4420d0-01"
+      },
+      {
+        "url": "https://www.reddit.com/r/darkwarsurvival/comments/1oi4c5z/advice_for_a_new_player",
+        "title": "Advice for a new player : r/darkwarsurvival",
+        "content": "Survival Preparedness is another daily event where you can earn multiple chests a day - 21 total if you went really hard. 3 chests appear every",
+        "score": 0.40126598,
+        "raw_content": null,
+        "id": "a2e424-02"
+      },
+      {
+        "url": "https://darkwar-survival.com",
+        "title": "Dark War:Survival",
+        "content": "and win rewards!\n\n and win rewards!\n\nGo [...] Image 44\n\nImage 45 Membership Center\n\nImage 46\n\nImage 47 Official Mall\n\nImage 48\n\n1\n\nImage 49 Invite Event\n\nImage 50\n\nImage 51 Contact GM\n\nImage 52\n\nImage 53 Redeem Gift Code\n\nImage 54\n\nImage 55 Log Out\n\nImage 56\n\nImage 57\n\nEnglishImage 58\n\nالعربيةDeutschEnglishEspañolFrançaisIndonesiaItaliano日本語한국어PolskiPortuguêsPусскийไทยTürkçeTiếngViệt简体中文繁體中文\n\nImage 59\n\nImage 60\n\nImage 61\n\nImage 62\n\nRecharge Dawn Badges, invite friends\n\n Recharge Dawn Badges, invite friends\n\nand win rewards! [...] Image 1\n\nImage 2EnglishImage 3\n\nالعربيةDeutschEspañolFrançaisIndonesiaItaliano日本語한국어PolskiPortuguêsPусскийไทยTürkçeTiếngViệt简体中文繁體中文\n\nLogin\n\nImage 4\n\nDiscord's 150K Member Milestone\n\nImage 5\n\n[Dawnfall] event has started!\n\nLATEST CONTENT\n\nImage 6\n\n[Dawnfall] event has started!\n\nImage 7\n\nAugust 21 Update Notice\n\nImage 8\n\nAugust 14 Update Notice\n\nImage 9\n\nAugust 7 Update Notice\n\nImage 10\n\nJuly 31 Update Notice\n\nImage 11\n\nDiscord's 150K Member Milestone\n\nImage 12\n\nJuly 24 Update Notice\n\nImage 13",
+        "score": 0.38477397,
+        "raw_content": null,
+        "id": "e70d8d-03"
+      },
+      {
+        "url": "https://www.youtube.com/watch?v=8J_jWyxY0ks",
+        "title": "How to Never Miss Events in Dark War Survival",
+        "content": "I break down a powerful but underused feature in Dark War Survival: how to sync server time with your local time so you never miss an alliance",
+        "score": 0.19232725,
+        "raw_content": null,
+        "id": "d2af59-04"
+      }
+    ],
+    "response_time": 1.35,
+    "request_id": "68697fac-ee35-465e-a28a-46698bd232bc"
+  }
+}

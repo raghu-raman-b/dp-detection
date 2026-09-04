@@ -1,275 +1,5151 @@
 {
-  "generated": "2026-09-04T04:59:21",
-  "author_file": "../../validation/validation_set.jsonl",
-  "coders_dir": "../../coders",
-  "include_author": true,
-  "raters": [
-    "author",
-    "keshav02",
-    "vansh97",
-    "virinchi90"
-  ],
+  "generated": "2026-09-04T19:55:11",
+  "config": {
+    "author_file": "../../validation/validation_set.jsonl",
+    "gold_file": "../../gold_set/gold_set.jsonl",
+    "coders_dir": "../../coders",
+    "llm_runs_dir": "../../outputs/validation/runs",
+    "codebook": "../../../codebook_versions/codebook_v0.20.json",
+    "bootstrap_n": 2000,
+    "bootstrap_n_panel": 600,
+    "ci": 0.95,
+    "seed": 20260831,
+    "min_support": 3
+  },
   "n_units": 75,
   "n_pairable": 75,
-  "alpha_masi": 0.588613981461807,
-  "alpha_masi_ci": [
-    0.5172153150774683,
-    0.6505374952610837
+  "raters": [
+    {
+      "code": "AUTHOR",
+      "short": "AUTH",
+      "name": "author",
+      "role": "author",
+      "independent": true,
+      "source": "../../validation/validation_set.jsonl",
+      "coded": 75,
+      "labels": 111,
+      "none": 7,
+      "notes": {
+        "file": "validation_set.jsonl",
+        "rows": 75,
+        "coded": 75,
+        "abstain": 0,
+        "foreign": 0,
+        "unknown_codes": {},
+        "renamed_from": null,
+        "name_variants": []
+      },
+      "run": {}
+    },
+    {
+      "code": "GOLD",
+      "short": "GOLD",
+      "name": "adjudicated_panel",
+      "role": "gold",
+      "independent": false,
+      "source": "../../gold_set/gold_set.jsonl",
+      "coded": 75,
+      "labels": 137,
+      "none": 7,
+      "notes": {
+        "file": "gold_set.jsonl",
+        "rows": 75,
+        "coded": 75,
+        "abstain": 0,
+        "foreign": 0,
+        "unknown_codes": {},
+        "renamed_from": null,
+        "name_variants": []
+      },
+      "run": {}
+    },
+    {
+      "code": "HUMAN-A",
+      "short": "H-A",
+      "name": "keshav02",
+      "role": "human",
+      "independent": true,
+      "source": "../../coders/coder_keshav02.jsonl",
+      "coded": 75,
+      "labels": 123,
+      "none": 8,
+      "notes": {
+        "file": "coder_keshav02.jsonl",
+        "rows": 75,
+        "coded": 75,
+        "abstain": 0,
+        "foreign": 0,
+        "unknown_codes": {},
+        "renamed_from": null,
+        "name_variants": []
+      },
+      "run": {}
+    },
+    {
+      "code": "HUMAN-B",
+      "short": "H-B",
+      "name": "vansh97",
+      "role": "human",
+      "independent": true,
+      "source": "../../coders/coder_vansh97.jsonl",
+      "coded": 75,
+      "labels": 122,
+      "none": 9,
+      "notes": {
+        "file": "coder_vansh97.jsonl",
+        "rows": 75,
+        "coded": 75,
+        "abstain": 0,
+        "foreign": 0,
+        "unknown_codes": {},
+        "renamed_from": null,
+        "name_variants": []
+      },
+      "run": {}
+    },
+    {
+      "code": "HUMAN-C",
+      "short": "H-C",
+      "name": "virinchi5318008",
+      "role": "human",
+      "independent": true,
+      "source": "../../coders/coder_virinchi5318008.jsonl",
+      "coded": 75,
+      "labels": 142,
+      "none": 5,
+      "notes": {
+        "file": "coder_virinchi5318008.jsonl",
+        "rows": 75,
+        "coded": 75,
+        "abstain": 0,
+        "foreign": 0,
+        "unknown_codes": {},
+        "renamed_from": null,
+        "name_variants": []
+      },
+      "run": {}
+    },
+    {
+      "code": "LLM-A",
+      "short": "L-A",
+      "name": "deepseek-v4-flash @ max / teacher_v2_full",
+      "role": "llm",
+      "independent": true,
+      "source": "../../outputs/validation/runs/deepseek-v4-flash/max/teacher_v2_full",
+      "coded": 75,
+      "labels": 95,
+      "none": 20,
+      "notes": {
+        "file": "deepseek-v4-flash_max_teacher_v2_full_responses.jsonl",
+        "rows": 75,
+        "coded": 75,
+        "abstain": 0,
+        "foreign": 0,
+        "duplicate_rows": 0,
+        "unknown_codes": {},
+        "renamed_from": null,
+        "name_variants": []
+      },
+      "run": {
+        "tag": "deepseek-v4-flash_max_teacher_v2_full",
+        "model": "deepseek-v4-flash",
+        "effort": "max",
+        "prompt_stem": "teacher_v2_full",
+        "provider": "deepseek",
+        "n": 75,
+        "complete": true,
+        "web_search": true,
+        "eval_set": "validation",
+        "prompt_sha256": "aad355174ac4"
+      }
+    },
+    {
+      "code": "LLM-B",
+      "short": "L-B",
+      "name": "gpt-5.6-luna @ high / teacher_v2_full",
+      "role": "llm",
+      "independent": true,
+      "source": "../../outputs/validation/runs/gpt-5.6-luna/high/teacher_v2_full",
+      "coded": 75,
+      "labels": 106,
+      "none": 18,
+      "notes": {
+        "file": "gpt-5.6-luna_high_teacher_v2_full_responses.jsonl",
+        "rows": 75,
+        "coded": 75,
+        "abstain": 0,
+        "foreign": 0,
+        "duplicate_rows": 0,
+        "unknown_codes": {},
+        "renamed_from": null,
+        "name_variants": []
+      },
+      "run": {
+        "tag": "gpt-5.6-luna_high_teacher_v2_full",
+        "model": "gpt-5.6-luna",
+        "effort": "high",
+        "prompt_stem": "teacher_v2_full",
+        "provider": "openai",
+        "n": 75,
+        "complete": true,
+        "web_search": true,
+        "eval_set": "validation",
+        "prompt_sha256": "aad355174ac4"
+      }
+    },
+    {
+      "code": "LLM-C",
+      "short": "L-C",
+      "name": "gpt-5.6-luna @ xhigh / teacher_v2_full",
+      "role": "llm",
+      "independent": true,
+      "source": "../../outputs/validation/runs/gpt-5.6-luna/xhigh/teacher_v2_full",
+      "coded": 75,
+      "labels": 118,
+      "none": 13,
+      "notes": {
+        "file": "gpt-5.6-luna_xhigh_teacher_v2_full_responses.jsonl",
+        "rows": 75,
+        "coded": 75,
+        "abstain": 0,
+        "foreign": 0,
+        "duplicate_rows": 0,
+        "unknown_codes": {},
+        "renamed_from": null,
+        "name_variants": []
+      },
+      "run": {
+        "tag": "gpt-5.6-luna_xhigh_teacher_v2_full",
+        "model": "gpt-5.6-luna",
+        "effort": "xhigh",
+        "prompt_stem": "teacher_v2_full",
+        "provider": "openai",
+        "n": 75,
+        "complete": true,
+        "web_search": true,
+        "eval_set": "validation",
+        "prompt_sha256": "aad355174ac4"
+      }
+    }
   ],
-  "alpha_jaccard": 0.6707191955553147,
-  "alpha_nominal": 0.4692402044812165,
-  "bootstrap_n": 2000,
-  "ci": 0.95,
-  "seed": 20260831,
-  "per_class_alpha": {
-    "T": 0.757,
-    "M": 0.68,
-    "S": 0.645,
-    "P": 0.661,
-    "Tech": 1.0
+  "discovered_llm_runs": [
+    {
+      "tag": "deepseek-v4-flash_max_teacher_v2_full",
+      "path": "/home/prex_san/Documents/dp-detection/corpus-construction/outputs/validation/runs/deepseek-v4-flash/max/teacher_v2_full/deepseek-v4-flash_max_teacher_v2_full_responses.jsonl",
+      "model": "deepseek-v4-flash",
+      "effort": "max",
+      "prompt_stem": "teacher_v2_full",
+      "provider": "deepseek",
+      "n": 75,
+      "complete": true,
+      "web_search": true,
+      "eval_set": "validation",
+      "reviews_file": "/home/prex_san/Documents/dp-detection/corpus-construction/validation/validation_set_blind.jsonl",
+      "prompt_sha256": "aad355174ac4"
+    },
+    {
+      "tag": "gpt-5.6-luna_high_teacher_v2_full",
+      "path": "/home/prex_san/Documents/dp-detection/corpus-construction/outputs/validation/runs/gpt-5.6-luna/high/teacher_v2_full/gpt-5.6-luna_high_teacher_v2_full_responses.jsonl",
+      "model": "gpt-5.6-luna",
+      "effort": "high",
+      "prompt_stem": "teacher_v2_full",
+      "provider": "openai",
+      "n": 75,
+      "complete": true,
+      "web_search": true,
+      "eval_set": "validation",
+      "reviews_file": "/home/prex_san/Documents/dp-detection/corpus-construction/validation/validation_set_blind.jsonl",
+      "prompt_sha256": "aad355174ac4"
+    },
+    {
+      "tag": "gpt-5.6-luna_xhigh_teacher_v2_full",
+      "path": "/home/prex_san/Documents/dp-detection/corpus-construction/outputs/validation/runs/gpt-5.6-luna/xhigh/teacher_v2_full/gpt-5.6-luna_xhigh_teacher_v2_full_responses.jsonl",
+      "model": "gpt-5.6-luna",
+      "effort": "xhigh",
+      "prompt_stem": "teacher_v2_full",
+      "provider": "openai",
+      "n": 75,
+      "complete": true,
+      "web_search": true,
+      "eval_set": "validation",
+      "reviews_file": "/home/prex_san/Documents/dp-detection/corpus-construction/validation/validation_set_blind.jsonl",
+      "prompt_sha256": "aad355174ac4"
+    }
+  ],
+  "selected_llm_runs": [
+    "deepseek-v4-flash_max_teacher_v2_full",
+    "gpt-5.6-luna_high_teacher_v2_full",
+    "gpt-5.6-luna_xhigh_teacher_v2_full"
+  ],
+  "headline": {
+    "panel": [
+      "AUTHOR",
+      "HUMAN-A",
+      "HUMAN-B",
+      "HUMAN-C",
+      "LLM-A",
+      "LLM-B",
+      "LLM-C"
+    ],
+    "alpha_masi": 0.5548525323243101,
+    "alpha_masi_ci": [
+      0.49445465756896556,
+      0.6076395435972154
+    ],
+    "alpha_jaccard": 0.6257766488203711,
+    "alpha_nominal": 0.4428968658387751,
+    "units": 75,
+    "ballots": 525
   },
+  "per_class_alpha": {
+    "T": {
+      "all_independent": 0.749,
+      "humans": 0.757,
+      "llms": 0.793
+    },
+    "M": {
+      "all_independent": 0.665,
+      "humans": 0.688,
+      "llms": 0.756
+    },
+    "S": {
+      "all_independent": 0.584,
+      "humans": 0.645,
+      "llms": 0.625
+    },
+    "P": {
+      "all_independent": 0.712,
+      "humans": 0.661,
+      "llms": 0.861
+    },
+    "Tech": {
+      "all_independent": 0.815,
+      "humans": 1.0,
+      "llms": 1.0
+    }
+  },
+  "named_panels": [
+    {
+      "panel": "ALL INDEPENDENT (headline)",
+      "codes": [
+        "AUTHOR",
+        "HUMAN-A",
+        "HUMAN-B",
+        "HUMAN-C",
+        "LLM-A",
+        "LLM-B",
+        "LLM-C"
+      ],
+      "n_raters": 7,
+      "n_units": 75,
+      "alpha_masi": 0.5548525323243101,
+      "alpha_masi_ci": [
+        0.49445465756896556,
+        0.6076395435972154
+      ],
+      "alpha_jaccard": 0.6257766488203711,
+      "alpha_nominal": 0.4428968658387751,
+      "note": ""
+    },
+    {
+      "panel": "ALL RATERS incl. GOLD",
+      "codes": [
+        "AUTHOR",
+        "GOLD",
+        "HUMAN-A",
+        "HUMAN-B",
+        "HUMAN-C",
+        "LLM-A",
+        "LLM-B",
+        "LLM-C"
+      ],
+      "n_raters": 8,
+      "n_units": 75,
+      "alpha_masi": 0.5753183522103149,
+      "alpha_masi_ci": [
+        0.5167680369393381,
+        0.6313943039828812
+      ],
+      "alpha_jaccard": 0.6459311781827582,
+      "alpha_nominal": 0.46312148290085353,
+      "note": "GOLD dependent \u2014 read as distance-to-consensus"
+    },
+    {
+      "panel": "HUMANS + AUTHOR",
+      "codes": [
+        "AUTHOR",
+        "HUMAN-A",
+        "HUMAN-B",
+        "HUMAN-C"
+      ],
+      "n_raters": 4,
+      "n_units": 75,
+      "alpha_masi": 0.5934066239959696,
+      "alpha_masi_ci": [
+        0.5222781429335683,
+        0.6580460564475885
+      ],
+      "alpha_jaccard": 0.6755336503633583,
+      "alpha_nominal": 0.4740605368360937,
+      "note": ""
+    },
+    {
+      "panel": "HUMAN CODERS only (no author)",
+      "codes": [
+        "HUMAN-A",
+        "HUMAN-B",
+        "HUMAN-C"
+      ],
+      "n_raters": 3,
+      "n_units": 75,
+      "alpha_masi": 0.5577276821907124,
+      "alpha_masi_ci": [
+        0.48195043959104644,
+        0.6331190685332193
+      ],
+      "alpha_jaccard": 0.643661122871361,
+      "alpha_nominal": 0.4457469679146554,
+      "note": ""
+    },
+    {
+      "panel": "LLM ANNOTATORS only",
+      "codes": [
+        "LLM-A",
+        "LLM-B",
+        "LLM-C"
+      ],
+      "n_raters": 3,
+      "n_units": 75,
+      "alpha_masi": 0.6683368363685349,
+      "alpha_masi_ci": [
+        0.5936721659668007,
+        0.7342807795190152
+      ],
+      "alpha_jaccard": 0.718132979113868,
+      "alpha_nominal": 0.572700296735905,
+      "note": ""
+    },
+    {
+      "panel": "HUMANS + AUTHOR + LLM-A",
+      "codes": [
+        "AUTHOR",
+        "HUMAN-A",
+        "HUMAN-B",
+        "HUMAN-C",
+        "LLM-A"
+      ],
+      "n_raters": 5,
+      "n_units": 75,
+      "alpha_masi": 0.5524198865782155,
+      "alpha_masi_ci": [
+        0.4905585009228348,
+        0.612251431264046
+      ],
+      "alpha_jaccard": 0.6258744262796073,
+      "alpha_nominal": 0.44516513774976807,
+      "note": ""
+    },
+    {
+      "panel": "HUMANS + AUTHOR + LLM-B",
+      "codes": [
+        "AUTHOR",
+        "HUMAN-A",
+        "HUMAN-B",
+        "HUMAN-C",
+        "LLM-B"
+      ],
+      "n_raters": 5,
+      "n_units": 75,
+      "alpha_masi": 0.5532876426137228,
+      "alpha_masi_ci": [
+        0.4933894357811862,
+        0.6074092908466915
+      ],
+      "alpha_jaccard": 0.6317231016225309,
+      "alpha_nominal": 0.4314773745355207,
+      "note": ""
+    },
+    {
+      "panel": "HUMANS + AUTHOR + LLM-C",
+      "codes": [
+        "AUTHOR",
+        "HUMAN-A",
+        "HUMAN-B",
+        "HUMAN-C",
+        "LLM-C"
+      ],
+      "n_raters": 5,
+      "n_units": 75,
+      "alpha_masi": 0.5722901673864405,
+      "alpha_masi_ci": [
+        0.5097155977954129,
+        0.6290914989752143
+      ],
+      "alpha_jaccard": 0.6527402680485686,
+      "alpha_nominal": 0.4519504117698778,
+      "note": ""
+    },
+    {
+      "panel": "HUMANS + AUTHOR + all LLMs",
+      "codes": [
+        "AUTHOR",
+        "HUMAN-A",
+        "HUMAN-B",
+        "HUMAN-C",
+        "LLM-A",
+        "LLM-B",
+        "LLM-C"
+      ],
+      "n_raters": 7,
+      "n_units": 75,
+      "alpha_masi": 0.5548525323243101,
+      "alpha_masi_ci": [
+        0.49445465756896556,
+        0.6076395435972154
+      ],
+      "alpha_jaccard": 0.6257766488203711,
+      "alpha_nominal": 0.4428968658387751,
+      "note": ""
+    },
+    {
+      "panel": "AUTHOR + GOLD",
+      "codes": [
+        "AUTHOR",
+        "GOLD"
+      ],
+      "n_raters": 2,
+      "n_units": 75,
+      "alpha_masi": 0.7298721531557013,
+      "alpha_masi_ci": null,
+      "alpha_jaccard": 0.7987676761682991,
+      "alpha_nominal": 0.6172477064220183,
+      "note": "dependent"
+    }
+  ],
+  "pairwise": {
+    "AUTHOR|GOLD": {
+      "n": 75,
+      "exact": 0.6266666666666667,
+      "jaccard": 0.8086349206349206,
+      "masi": 0.739915343915344,
+      "alpha": 0.7298721531557013
+    },
+    "AUTHOR|HUMAN-A": {
+      "n": 75,
+      "exact": 0.5333333333333333,
+      "jaccard": 0.734,
+      "masi": 0.660074074074074,
+      "alpha": 0.646184759781212
+    },
+    "AUTHOR|HUMAN-B": {
+      "n": 75,
+      "exact": 0.64,
+      "jaccard": 0.823968253968254,
+      "masi": 0.7572486772486772,
+      "alpha": 0.7472207493981908
+    },
+    "AUTHOR|HUMAN-C": {
+      "n": 75,
+      "exact": 0.37333333333333335,
+      "jaccard": 0.6103492063492064,
+      "masi": 0.5153015873015873,
+      "alpha": 0.4971163334251528
+    },
+    "AUTHOR|LLM-A": {
+      "n": 75,
+      "exact": 0.5333333333333333,
+      "jaccard": 0.6633015873015873,
+      "masi": 0.6125820105820107,
+      "alpha": 0.5884458651633558
+    },
+    "AUTHOR|LLM-B": {
+      "n": 75,
+      "exact": 0.4666666666666667,
+      "jaccard": 0.6655555555555556,
+      "masi": 0.5955555555555555,
+      "alpha": 0.5734514990466186
+    },
+    "AUTHOR|LLM-C": {
+      "n": 75,
+      "exact": 0.5466666666666666,
+      "jaccard": 0.719111111111111,
+      "masi": 0.659037037037037,
+      "alpha": 0.6428411336390925
+    },
+    "GOLD|HUMAN-A": {
+      "n": 75,
+      "exact": 0.6533333333333333,
+      "jaccard": 0.8246349206349206,
+      "masi": 0.7595449735449735,
+      "alpha": 0.7500335339653571
+    },
+    "GOLD|HUMAN-B": {
+      "n": 75,
+      "exact": 0.7333333333333333,
+      "jaccard": 0.87,
+      "masi": 0.8222222222222222,
+      "alpha": 0.8151646232531942
+    },
+    "GOLD|HUMAN-C": {
+      "n": 75,
+      "exact": 0.4,
+      "jaccard": 0.6417777777777778,
+      "masi": 0.5376296296296297,
+      "alpha": 0.5208572749207032
+    },
+    "GOLD|LLM-A": {
+      "n": 75,
+      "exact": 0.4,
+      "jaccard": 0.5815238095238096,
+      "masi": 0.5105079365079365,
+      "alpha": 0.4816400166521957
+    },
+    "GOLD|LLM-B": {
+      "n": 75,
+      "exact": 0.4533333333333333,
+      "jaccard": 0.65,
+      "masi": 0.5807407407407408,
+      "alpha": 0.558291747366326
+    },
+    "GOLD|LLM-C": {
+      "n": 75,
+      "exact": 0.49333333333333335,
+      "jaccard": 0.6871746031746032,
+      "masi": 0.6154285714285714,
+      "alpha": 0.597761894662395
+    },
+    "HUMAN-A|HUMAN-B": {
+      "n": 75,
+      "exact": 0.6133333333333333,
+      "jaccard": 0.7737460317460317,
+      "masi": 0.7073968253968254,
+      "alpha": 0.6951946988722644
+    },
+    "HUMAN-A|HUMAN-C": {
+      "n": 75,
+      "exact": 0.37333333333333335,
+      "jaccard": 0.6079523809523809,
+      "masi": 0.5067248677248677,
+      "alpha": 0.48759614896688264
+    },
+    "HUMAN-A|LLM-A": {
+      "n": 75,
+      "exact": 0.4266666666666667,
+      "jaccard": 0.5606666666666666,
+      "masi": 0.5082222222222222,
+      "alpha": 0.4773069479255364
+    },
+    "HUMAN-A|LLM-B": {
+      "n": 75,
+      "exact": 0.37333333333333335,
+      "jaccard": 0.583047619047619,
+      "masi": 0.5086455026455027,
+      "alpha": 0.4809823204715681
+    },
+    "HUMAN-A|LLM-C": {
+      "n": 75,
+      "exact": 0.4,
+      "jaccard": 0.619,
+      "masi": 0.533962962962963,
+      "alpha": 0.5114938544110947
+    },
+    "HUMAN-B|HUMAN-C": {
+      "n": 75,
+      "exact": 0.38666666666666666,
+      "jaccard": 0.609015873015873,
+      "masi": 0.5107830687830688,
+      "alpha": 0.49228182771993967
+    },
+    "HUMAN-B|LLM-A": {
+      "n": 75,
+      "exact": 0.48,
+      "jaccard": 0.6481904761904762,
+      "masi": 0.5812486772486772,
+      "alpha": 0.5538428133844552
+    },
+    "HUMAN-B|LLM-B": {
+      "n": 75,
+      "exact": 0.4533333333333333,
+      "jaccard": 0.6455555555555555,
+      "masi": 0.5777777777777778,
+      "alpha": 0.5531862619775572
+    },
+    "HUMAN-B|LLM-C": {
+      "n": 75,
+      "exact": 0.5066666666666667,
+      "jaccard": 0.6927301587301588,
+      "masi": 0.6215026455026456,
+      "alpha": 0.602826921695354
+    },
+    "HUMAN-C|LLM-A": {
+      "n": 75,
+      "exact": 0.26666666666666666,
+      "jaccard": 0.4497777777777778,
+      "masi": 0.371037037037037,
+      "alpha": 0.33583204754719886
+    },
+    "HUMAN-C|LLM-B": {
+      "n": 75,
+      "exact": 0.26666666666666666,
+      "jaccard": 0.47980952380952385,
+      "masi": 0.3914179894179894,
+      "alpha": 0.36056165092955905
+    },
+    "HUMAN-C|LLM-C": {
+      "n": 75,
+      "exact": 0.29333333333333333,
+      "jaccard": 0.5358095238095237,
+      "masi": 0.43230687830687825,
+      "alpha": 0.40728883050479336
+    },
+    "LLM-A|LLM-B": {
+      "n": 75,
+      "exact": 0.5333333333333333,
+      "jaccard": 0.6977777777777778,
+      "masi": 0.6407407407407407,
+      "alpha": 0.6072340125693967
+    },
+    "LLM-A|LLM-C": {
+      "n": 75,
+      "exact": 0.52,
+      "jaccard": 0.6828888888888889,
+      "masi": 0.6265925925925926,
+      "alpha": 0.597472398572042
+    },
+    "LLM-B|LLM-C": {
+      "n": 75,
+      "exact": 0.7466666666666667,
+      "jaccard": 0.8482222222222222,
+      "masi": 0.8132592592592593,
+      "alpha": 0.799651296326283
+    }
+  },
+  "human_ceiling": {
+    "pairs": 6,
+    "masi_mean": 0.6095881834215168,
+    "masi_min": 0.5067248677248677,
+    "masi_max": 0.7572486772486772,
+    "alpha_mean": 0.5942657530272738,
+    "alpha_min": 0.48759614896688264,
+    "alpha_max": 0.7472207493981908,
+    "panel_alpha": 0.5934066239959696
+  },
+  "subsets": [
+    {
+      "codes": [
+        "AUTHOR",
+        "GOLD"
+      ],
+      "size": 2,
+      "n_units": 75,
+      "alpha_masi": 0.7298721531557013,
+      "alpha_jaccard": 0.7987676761682991,
+      "has_gold": true,
+      "n_human": 1,
+      "n_llm": 0
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "HUMAN-A"
+      ],
+      "size": 2,
+      "n_units": 75,
+      "alpha_masi": 0.646184759781212,
+      "alpha_jaccard": 0.7199718109079434,
+      "has_gold": false,
+      "n_human": 2,
+      "n_llm": 0
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "HUMAN-B"
+      ],
+      "size": 2,
+      "n_units": 75,
+      "alpha_masi": 0.7472207493981908,
+      "alpha_jaccard": 0.8147221581066342,
+      "has_gold": false,
+      "n_human": 2,
+      "n_llm": 0
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "HUMAN-C"
+      ],
+      "size": 2,
+      "n_units": 75,
+      "alpha_masi": 0.49711633342515293,
+      "alpha_jaccard": 0.5892100589693516,
+      "has_gold": false,
+      "n_human": 2,
+      "n_llm": 0
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "LLM-A"
+      ],
+      "size": 2,
+      "n_units": 75,
+      "alpha_masi": 0.5884458651633558,
+      "alpha_jaccard": 0.6392493249531153,
+      "has_gold": false,
+      "n_human": 1,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "LLM-B"
+      ],
+      "size": 2,
+      "n_units": 75,
+      "alpha_masi": 0.5734514990466187,
+      "alpha_jaccard": 0.6433919209811836,
+      "has_gold": false,
+      "n_human": 1,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "LLM-C"
+      ],
+      "size": 2,
+      "n_units": 75,
+      "alpha_masi": 0.6428411336390923,
+      "alpha_jaccard": 0.702283359182808,
+      "has_gold": false,
+      "n_human": 1,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "GOLD",
+        "HUMAN-A"
+      ],
+      "size": 2,
+      "n_units": 75,
+      "alpha_masi": 0.7500335339653571,
+      "alpha_jaccard": 0.814737595233171,
+      "has_gold": true,
+      "n_human": 1,
+      "n_llm": 0
+    },
+    {
+      "codes": [
+        "GOLD",
+        "HUMAN-B"
+      ],
+      "size": 2,
+      "n_units": 75,
+      "alpha_masi": 0.8151646232531942,
+      "alpha_jaccard": 0.8627581263100739,
+      "has_gold": true,
+      "n_human": 1,
+      "n_llm": 0
+    },
+    {
+      "codes": [
+        "GOLD",
+        "HUMAN-C"
+      ],
+      "size": 2,
+      "n_units": 75,
+      "alpha_masi": 0.5208572749207032,
+      "alpha_jaccard": 0.6209259310266719,
+      "has_gold": true,
+      "n_human": 1,
+      "n_llm": 0
+    },
+    {
+      "codes": [
+        "GOLD",
+        "LLM-A"
+      ],
+      "size": 2,
+      "n_units": 75,
+      "alpha_masi": 0.4816400166521958,
+      "alpha_jaccard": 0.5509838897333894,
+      "has_gold": true,
+      "n_human": 0,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "GOLD",
+        "LLM-B"
+      ],
+      "size": 2,
+      "n_units": 75,
+      "alpha_masi": 0.558291747366326,
+      "alpha_jaccard": 0.6254311227409808,
+      "has_gold": true,
+      "n_human": 0,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "GOLD",
+        "LLM-C"
+      ],
+      "size": 2,
+      "n_units": 75,
+      "alpha_masi": 0.597761894662395,
+      "alpha_jaccard": 0.6672239328953598,
+      "has_gold": true,
+      "n_human": 0,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "HUMAN-A",
+        "HUMAN-B"
+      ],
+      "size": 2,
+      "n_units": 75,
+      "alpha_masi": 0.6951946988722645,
+      "alpha_jaccard": 0.7609193161256305,
+      "has_gold": false,
+      "n_human": 2,
+      "n_llm": 0
+    },
+    {
+      "codes": [
+        "HUMAN-A",
+        "HUMAN-C"
+      ],
+      "size": 2,
+      "n_units": 75,
+      "alpha_masi": 0.48759614896688264,
+      "alpha_jaccard": 0.5845863867395482,
+      "has_gold": false,
+      "n_human": 2,
+      "n_llm": 0
+    },
+    {
+      "codes": [
+        "HUMAN-A",
+        "LLM-A"
+      ],
+      "size": 2,
+      "n_units": 75,
+      "alpha_masi": 0.4773069479255364,
+      "alpha_jaccard": 0.5272798243593333,
+      "has_gold": false,
+      "n_human": 1,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "HUMAN-A",
+        "LLM-B"
+      ],
+      "size": 2,
+      "n_units": 75,
+      "alpha_masi": 0.4809823204715681,
+      "alpha_jaccard": 0.553147368826856,
+      "has_gold": false,
+      "n_human": 1,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "HUMAN-A",
+        "LLM-C"
+      ],
+      "size": 2,
+      "n_units": 75,
+      "alpha_masi": 0.5114938544110947,
+      "alpha_jaccard": 0.594299109989582,
+      "has_gold": false,
+      "n_human": 1,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "HUMAN-B",
+        "HUMAN-C"
+      ],
+      "size": 2,
+      "n_units": 75,
+      "alpha_masi": 0.4922818277199398,
+      "alpha_jaccard": 0.5864908656032519,
+      "has_gold": false,
+      "n_human": 2,
+      "n_llm": 0
+    },
+    {
+      "codes": [
+        "HUMAN-B",
+        "LLM-A"
+      ],
+      "size": 2,
+      "n_units": 75,
+      "alpha_masi": 0.5538428133844552,
+      "alpha_jaccard": 0.6207654817669352,
+      "has_gold": false,
+      "n_human": 1,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "HUMAN-B",
+        "LLM-B"
+      ],
+      "size": 2,
+      "n_units": 75,
+      "alpha_masi": 0.553186261977557,
+      "alpha_jaccard": 0.6198043438895688,
+      "has_gold": false,
+      "n_human": 1,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "HUMAN-B",
+        "LLM-C"
+      ],
+      "size": 2,
+      "n_units": 75,
+      "alpha_masi": 0.6028269216953541,
+      "alpha_jaccard": 0.6727880417075445,
+      "has_gold": false,
+      "n_human": 1,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "HUMAN-C",
+        "LLM-A"
+      ],
+      "size": 2,
+      "n_units": 75,
+      "alpha_masi": 0.335832047547199,
+      "alpha_jaccard": 0.4093985353740739,
+      "has_gold": false,
+      "n_human": 1,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "HUMAN-C",
+        "LLM-B"
+      ],
+      "size": 2,
+      "n_units": 75,
+      "alpha_masi": 0.36056165092955916,
+      "alpha_jaccard": 0.4428055903216316,
+      "has_gold": false,
+      "n_human": 1,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "HUMAN-C",
+        "LLM-C"
+      ],
+      "size": 2,
+      "n_units": 75,
+      "alpha_masi": 0.4072888305047936,
+      "alpha_jaccard": 0.5053237214054607,
+      "has_gold": false,
+      "n_human": 1,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "LLM-A",
+        "LLM-B"
+      ],
+      "size": 2,
+      "n_units": 75,
+      "alpha_masi": 0.6072340125693967,
+      "alpha_jaccard": 0.665652847064486,
+      "has_gold": false,
+      "n_human": 0,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "LLM-A",
+        "LLM-C"
+      ],
+      "size": 2,
+      "n_units": 75,
+      "alpha_masi": 0.597472398572042,
+      "alpha_jaccard": 0.6538287591317442,
+      "has_gold": false,
+      "n_human": 0,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "LLM-B",
+        "LLM-C"
+      ],
+      "size": 2,
+      "n_units": 75,
+      "alpha_masi": 0.799651296326283,
+      "alpha_jaccard": 0.8346421956590915,
+      "has_gold": false,
+      "n_human": 0,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "GOLD",
+        "HUMAN-A"
+      ],
+      "size": 3,
+      "n_units": 75,
+      "alpha_masi": 0.7082795619376616,
+      "alpha_jaccard": 0.7774271930543315,
+      "has_gold": true,
+      "n_human": 2,
+      "n_llm": 0
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "GOLD",
+        "HUMAN-B"
+      ],
+      "size": 3,
+      "n_units": 75,
+      "alpha_masi": 0.7636987393769742,
+      "alpha_jaccard": 0.8250754961144919,
+      "has_gold": true,
+      "n_human": 2,
+      "n_llm": 0
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "GOLD",
+        "HUMAN-C"
+      ],
+      "size": 3,
+      "n_units": 75,
+      "alpha_masi": 0.5820950995162326,
+      "alpha_jaccard": 0.6694516617534755,
+      "has_gold": true,
+      "n_human": 2,
+      "n_llm": 0
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "GOLD",
+        "LLM-A"
+      ],
+      "size": 3,
+      "n_units": 75,
+      "alpha_masi": 0.6010851425041224,
+      "alpha_jaccard": 0.6641229225964029,
+      "has_gold": true,
+      "n_human": 1,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "GOLD",
+        "LLM-B"
+      ],
+      "size": 3,
+      "n_units": 75,
+      "alpha_masi": 0.6210769759631181,
+      "alpha_jaccard": 0.6897648234747125,
+      "has_gold": true,
+      "n_human": 1,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "GOLD",
+        "LLM-C"
+      ],
+      "size": 3,
+      "n_units": 75,
+      "alpha_masi": 0.656693299598049,
+      "alpha_jaccard": 0.7227718694160864,
+      "has_gold": true,
+      "n_human": 1,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "HUMAN-A",
+        "HUMAN-B"
+      ],
+      "size": 3,
+      "n_units": 75,
+      "alpha_masi": 0.6957323287043218,
+      "alpha_jaccard": 0.7648265787676697,
+      "has_gold": false,
+      "n_human": 3,
+      "n_llm": 0
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "HUMAN-A",
+        "HUMAN-C"
+      ],
+      "size": 3,
+      "n_units": 75,
+      "alpha_masi": 0.5430859266054902,
+      "alpha_jaccard": 0.6309825633909147,
+      "has_gold": false,
+      "n_human": 3,
+      "n_llm": 0
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "HUMAN-A",
+        "LLM-A"
+      ],
+      "size": 3,
+      "n_units": 75,
+      "alpha_masi": 0.571408152662364,
+      "alpha_jaccard": 0.6296961236752974,
+      "has_gold": false,
+      "n_human": 2,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "HUMAN-A",
+        "LLM-B"
+      ],
+      "size": 3,
+      "n_units": 75,
+      "alpha_masi": 0.56728479390425,
+      "alpha_jaccard": 0.639303583061921,
+      "has_gold": false,
+      "n_human": 2,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "HUMAN-A",
+        "LLM-C"
+      ],
+      "size": 3,
+      "n_units": 75,
+      "alpha_masi": 0.5999640748788023,
+      "alpha_jaccard": 0.6721242197855164,
+      "has_gold": false,
+      "n_human": 2,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "HUMAN-B",
+        "HUMAN-C"
+      ],
+      "size": 3,
+      "n_units": 75,
+      "alpha_masi": 0.578267494414763,
+      "alpha_jaccard": 0.6633042397981204,
+      "has_gold": false,
+      "n_human": 3,
+      "n_llm": 0
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "HUMAN-B",
+        "LLM-A"
+      ],
+      "size": 3,
+      "n_units": 75,
+      "alpha_masi": 0.6307707899682715,
+      "alpha_jaccard": 0.692505753306643,
+      "has_gold": false,
+      "n_human": 2,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "HUMAN-B",
+        "LLM-B"
+      ],
+      "size": 3,
+      "n_units": 75,
+      "alpha_masi": 0.6251370971413295,
+      "alpha_jaccard": 0.6932228453226847,
+      "has_gold": false,
+      "n_human": 2,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "HUMAN-B",
+        "LLM-C"
+      ],
+      "size": 3,
+      "n_units": 75,
+      "alpha_masi": 0.6641592312319738,
+      "alpha_jaccard": 0.7299432886173061,
+      "has_gold": false,
+      "n_human": 2,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "HUMAN-C",
+        "LLM-A"
+      ],
+      "size": 3,
+      "n_units": 75,
+      "alpha_masi": 0.4744334797361518,
+      "alpha_jaccard": 0.5469544503033148,
+      "has_gold": false,
+      "n_human": 2,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "HUMAN-C",
+        "LLM-B"
+      ],
+      "size": 3,
+      "n_units": 75,
+      "alpha_masi": 0.4774022615812086,
+      "alpha_jaccard": 0.5590882818605458,
+      "has_gold": false,
+      "n_human": 2,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "HUMAN-C",
+        "LLM-C"
+      ],
+      "size": 3,
+      "n_units": 75,
+      "alpha_masi": 0.5154494686259966,
+      "alpha_jaccard": 0.5990031954670831,
+      "has_gold": false,
+      "n_human": 2,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "LLM-A",
+        "LLM-B"
+      ],
+      "size": 3,
+      "n_units": 75,
+      "alpha_masi": 0.5897323415943361,
+      "alpha_jaccard": 0.6494354964733495,
+      "has_gold": false,
+      "n_human": 1,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "LLM-A",
+        "LLM-C"
+      ],
+      "size": 3,
+      "n_units": 75,
+      "alpha_masi": 0.6099348684874754,
+      "alpha_jaccard": 0.665467610274227,
+      "has_gold": false,
+      "n_human": 1,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "LLM-B",
+        "LLM-C"
+      ],
+      "size": 3,
+      "n_units": 75,
+      "alpha_masi": 0.6710833903133555,
+      "alpha_jaccard": 0.7258537988186917,
+      "has_gold": false,
+      "n_human": 1,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "GOLD",
+        "HUMAN-A",
+        "HUMAN-B"
+      ],
+      "size": 3,
+      "n_units": 75,
+      "alpha_masi": 0.7530795594397568,
+      "alpha_jaccard": 0.812484156450297,
+      "has_gold": true,
+      "n_human": 2,
+      "n_llm": 0
+    },
+    {
+      "codes": [
+        "GOLD",
+        "HUMAN-A",
+        "HUMAN-C"
+      ],
+      "size": 3,
+      "n_units": 75,
+      "alpha_masi": 0.5855558696618897,
+      "alpha_jaccard": 0.6731095726674395,
+      "has_gold": true,
+      "n_human": 2,
+      "n_llm": 0
+    },
+    {
+      "codes": [
+        "GOLD",
+        "HUMAN-A",
+        "LLM-A"
+      ],
+      "size": 3,
+      "n_units": 75,
+      "alpha_masi": 0.5711081101443791,
+      "alpha_jaccard": 0.6322442484817125,
+      "has_gold": true,
+      "n_human": 1,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "GOLD",
+        "HUMAN-A",
+        "LLM-B"
+      ],
+      "size": 3,
+      "n_units": 75,
+      "alpha_masi": 0.5971369855636844,
+      "alpha_jaccard": 0.6650451442343674,
+      "has_gold": true,
+      "n_human": 1,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "GOLD",
+        "HUMAN-A",
+        "LLM-C"
+      ],
+      "size": 3,
+      "n_units": 75,
+      "alpha_masi": 0.6197194626742706,
+      "alpha_jaccard": 0.6920644979013502,
+      "has_gold": true,
+      "n_human": 1,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "GOLD",
+        "HUMAN-B",
+        "HUMAN-C"
+      ],
+      "size": 3,
+      "n_units": 75,
+      "alpha_masi": 0.608808525913648,
+      "alpha_jaccard": 0.6898126086178542,
+      "has_gold": true,
+      "n_human": 2,
+      "n_llm": 0
+    },
+    {
+      "codes": [
+        "GOLD",
+        "HUMAN-B",
+        "LLM-A"
+      ],
+      "size": 3,
+      "n_units": 75,
+      "alpha_masi": 0.618309713888223,
+      "alpha_jaccard": 0.6793391750490527,
+      "has_gold": true,
+      "n_human": 1,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "GOLD",
+        "HUMAN-B",
+        "LLM-B"
+      ],
+      "size": 3,
+      "n_units": 75,
+      "alpha_masi": 0.6429508734255147,
+      "alpha_jaccard": 0.703320945672044,
+      "has_gold": true,
+      "n_human": 1,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "GOLD",
+        "HUMAN-B",
+        "LLM-C"
+      ],
+      "size": 3,
+      "n_units": 75,
+      "alpha_masi": 0.6718934408002061,
+      "alpha_jaccard": 0.7342910048408589,
+      "has_gold": true,
+      "n_human": 1,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "GOLD",
+        "HUMAN-C",
+        "LLM-A"
+      ],
+      "size": 3,
+      "n_units": 75,
+      "alpha_masi": 0.44728947405845343,
+      "alpha_jaccard": 0.5282690603266795,
+      "has_gold": true,
+      "n_human": 1,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "GOLD",
+        "HUMAN-C",
+        "LLM-B"
+      ],
+      "size": 3,
+      "n_units": 75,
+      "alpha_masi": 0.48027974093531356,
+      "alpha_jaccard": 0.563526399797285,
+      "has_gold": true,
+      "n_human": 1,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "GOLD",
+        "HUMAN-C",
+        "LLM-C"
+      ],
+      "size": 3,
+      "n_units": 75,
+      "alpha_masi": 0.5083876122313457,
+      "alpha_jaccard": 0.597735393448948,
+      "has_gold": true,
+      "n_human": 1,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "GOLD",
+        "LLM-A",
+        "LLM-B"
+      ],
+      "size": 3,
+      "n_units": 75,
+      "alpha_masi": 0.548684178778331,
+      "alpha_jaccard": 0.6137210871063435,
+      "has_gold": true,
+      "n_human": 0,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "GOLD",
+        "LLM-A",
+        "LLM-C"
+      ],
+      "size": 3,
+      "n_units": 75,
+      "alpha_masi": 0.5590416972970462,
+      "alpha_jaccard": 0.624133562724634,
+      "has_gold": true,
+      "n_human": 0,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "GOLD",
+        "LLM-B",
+        "LLM-C"
+      ],
+      "size": 3,
+      "n_units": 75,
+      "alpha_masi": 0.6506861955404823,
+      "alpha_jaccard": 0.7080974537446685,
+      "has_gold": true,
+      "n_human": 0,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "HUMAN-A",
+        "HUMAN-B",
+        "HUMAN-C"
+      ],
+      "size": 3,
+      "n_units": 75,
+      "alpha_masi": 0.5577276821907124,
+      "alpha_jaccard": 0.643661122871361,
+      "has_gold": false,
+      "n_human": 3,
+      "n_llm": 0
+    },
+    {
+      "codes": [
+        "HUMAN-A",
+        "HUMAN-B",
+        "LLM-A"
+      ],
+      "size": 3,
+      "n_units": 75,
+      "alpha_masi": 0.576340850718364,
+      "alpha_jaccard": 0.6371248171997557,
+      "has_gold": false,
+      "n_human": 2,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "HUMAN-A",
+        "HUMAN-B",
+        "LLM-B"
+      ],
+      "size": 3,
+      "n_units": 75,
+      "alpha_masi": 0.5768595672453607,
+      "alpha_jaccard": 0.6450209381664123,
+      "has_gold": false,
+      "n_human": 2,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "HUMAN-A",
+        "HUMAN-B",
+        "LLM-C"
+      ],
+      "size": 3,
+      "n_units": 75,
+      "alpha_masi": 0.6029415437347729,
+      "alpha_jaccard": 0.6758553724467422,
+      "has_gold": false,
+      "n_human": 2,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "HUMAN-A",
+        "HUMAN-C",
+        "LLM-A"
+      ],
+      "size": 3,
+      "n_units": 75,
+      "alpha_masi": 0.4344848107173295,
+      "alpha_jaccard": 0.5080664449444408,
+      "has_gold": false,
+      "n_human": 2,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "HUMAN-A",
+        "HUMAN-C",
+        "LLM-B"
+      ],
+      "size": 3,
+      "n_units": 75,
+      "alpha_masi": 0.4434325666214941,
+      "alpha_jaccard": 0.5272747159306415,
+      "has_gold": false,
+      "n_human": 2,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "HUMAN-A",
+        "HUMAN-C",
+        "LLM-C"
+      ],
+      "size": 3,
+      "n_units": 75,
+      "alpha_masi": 0.46855499800744327,
+      "alpha_jaccard": 0.5612618593757626,
+      "has_gold": false,
+      "n_human": 2,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "HUMAN-A",
+        "LLM-A",
+        "LLM-B"
+      ],
+      "size": 3,
+      "n_units": 75,
+      "alpha_masi": 0.5211417528675075,
+      "alpha_jaccard": 0.5813671271919791,
+      "has_gold": false,
+      "n_human": 1,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "HUMAN-A",
+        "LLM-A",
+        "LLM-C"
+      ],
+      "size": 3,
+      "n_units": 75,
+      "alpha_masi": 0.5284812873196805,
+      "alpha_jaccard": 0.5916364368129274,
+      "has_gold": false,
+      "n_human": 1,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "HUMAN-A",
+        "LLM-B",
+        "LLM-C"
+      ],
+      "size": 3,
+      "n_units": 75,
+      "alpha_masi": 0.5959031370984695,
+      "alpha_jaccard": 0.659403960047374,
+      "has_gold": false,
+      "n_human": 1,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "HUMAN-B",
+        "HUMAN-C",
+        "LLM-A"
+      ],
+      "size": 3,
+      "n_units": 75,
+      "alpha_masi": 0.46113381733003944,
+      "alpha_jaccard": 0.5395561846457998,
+      "has_gold": false,
+      "n_human": 2,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "HUMAN-B",
+        "HUMAN-C",
+        "LLM-B"
+      ],
+      "size": 3,
+      "n_units": 75,
+      "alpha_masi": 0.4687809072044389,
+      "alpha_jaccard": 0.5500179132033494,
+      "has_gold": false,
+      "n_human": 2,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "HUMAN-B",
+        "HUMAN-C",
+        "LLM-C"
+      ],
+      "size": 3,
+      "n_units": 75,
+      "alpha_masi": 0.5003927316960388,
+      "alpha_jaccard": 0.5880540857239953,
+      "has_gold": false,
+      "n_human": 2,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "HUMAN-B",
+        "LLM-A",
+        "LLM-B"
+      ],
+      "size": 3,
+      "n_units": 75,
+      "alpha_masi": 0.5710257359117021,
+      "alpha_jaccard": 0.635084617165691,
+      "has_gold": false,
+      "n_human": 1,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "HUMAN-B",
+        "LLM-A",
+        "LLM-C"
+      ],
+      "size": 3,
+      "n_units": 75,
+      "alpha_masi": 0.5846982843729265,
+      "alpha_jaccard": 0.6491815364840251,
+      "has_gold": false,
+      "n_human": 1,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "HUMAN-B",
+        "LLM-B",
+        "LLM-C"
+      ],
+      "size": 3,
+      "n_units": 75,
+      "alpha_masi": 0.6507775040711182,
+      "alpha_jaccard": 0.7080942514502562,
+      "has_gold": false,
+      "n_human": 1,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "HUMAN-C",
+        "LLM-A",
+        "LLM-B"
+      ],
+      "size": 3,
+      "n_units": 75,
+      "alpha_masi": 0.43326421777042656,
+      "alpha_jaccard": 0.505108316726197,
+      "has_gold": false,
+      "n_human": 1,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "HUMAN-C",
+        "LLM-A",
+        "LLM-C"
+      ],
+      "size": 3,
+      "n_units": 75,
+      "alpha_masi": 0.4463459974689087,
+      "alpha_jaccard": 0.5227448498481635,
+      "has_gold": false,
+      "n_human": 1,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "HUMAN-C",
+        "LLM-B",
+        "LLM-C"
+      ],
+      "size": 3,
+      "n_units": 75,
+      "alpha_masi": 0.5204749937346826,
+      "alpha_jaccard": 0.5928753842279393,
+      "has_gold": false,
+      "n_human": 1,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "LLM-A",
+        "LLM-B",
+        "LLM-C"
+      ],
+      "size": 3,
+      "n_units": 75,
+      "alpha_masi": 0.6683368363685349,
+      "alpha_jaccard": 0.718132979113868,
+      "has_gold": false,
+      "n_human": 0,
+      "n_llm": 3
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "GOLD",
+        "HUMAN-A",
+        "HUMAN-B"
+      ],
+      "size": 4,
+      "n_units": 75,
+      "alpha_masi": 0.7299886327411513,
+      "alpha_jaccard": 0.7947732428141712,
+      "has_gold": true,
+      "n_human": 3,
+      "n_llm": 0
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "GOLD",
+        "HUMAN-A",
+        "HUMAN-C"
+      ],
+      "size": 4,
+      "n_units": 75,
+      "alpha_masi": 0.6044744558961368,
+      "alpha_jaccard": 0.6875798654206466,
+      "has_gold": true,
+      "n_human": 3,
+      "n_llm": 0
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "GOLD",
+        "HUMAN-A",
+        "LLM-A"
+      ],
+      "size": 4,
+      "n_units": 75,
+      "alpha_masi": 0.6132590195143167,
+      "alpha_jaccard": 0.6761459934810674,
+      "has_gold": true,
+      "n_human": 2,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "GOLD",
+        "HUMAN-A",
+        "LLM-B"
+      ],
+      "size": 4,
+      "n_units": 75,
+      "alpha_masi": 0.6235470840766375,
+      "alpha_jaccard": 0.6929897058308343,
+      "has_gold": true,
+      "n_human": 2,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "GOLD",
+        "HUMAN-A",
+        "LLM-C"
+      ],
+      "size": 4,
+      "n_units": 75,
+      "alpha_masi": 0.6460495551494866,
+      "alpha_jaccard": 0.7160224985173111,
+      "has_gold": true,
+      "n_human": 2,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "GOLD",
+        "HUMAN-B",
+        "HUMAN-C"
+      ],
+      "size": 4,
+      "n_units": 75,
+      "alpha_masi": 0.6329233758244128,
+      "alpha_jaccard": 0.7117686411409307,
+      "has_gold": true,
+      "n_human": 3,
+      "n_llm": 0
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "GOLD",
+        "HUMAN-B",
+        "LLM-A"
+      ],
+      "size": 4,
+      "n_units": 75,
+      "alpha_masi": 0.6537633442672703,
+      "alpha_jaccard": 0.7155318266091804,
+      "has_gold": true,
+      "n_human": 2,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "GOLD",
+        "HUMAN-B",
+        "LLM-B"
+      ],
+      "size": 4,
+      "n_units": 75,
+      "alpha_masi": 0.6633296722090758,
+      "alpha_jaccard": 0.7279706704209827,
+      "has_gold": true,
+      "n_human": 2,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "GOLD",
+        "HUMAN-B",
+        "LLM-C"
+      ],
+      "size": 4,
+      "n_units": 75,
+      "alpha_masi": 0.6890070550545726,
+      "alpha_jaccard": 0.7529652058434484,
+      "has_gold": true,
+      "n_human": 2,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "GOLD",
+        "HUMAN-C",
+        "LLM-A"
+      ],
+      "size": 4,
+      "n_units": 75,
+      "alpha_masi": 0.5264504346037882,
+      "alpha_jaccard": 0.6025029803469312,
+      "has_gold": true,
+      "n_human": 2,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "GOLD",
+        "HUMAN-C",
+        "LLM-B"
+      ],
+      "size": 4,
+      "n_units": 75,
+      "alpha_masi": 0.5402586078287653,
+      "alpha_jaccard": 0.6205913712469413,
+      "has_gold": true,
+      "n_human": 2,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "GOLD",
+        "HUMAN-C",
+        "LLM-C"
+      ],
+      "size": 4,
+      "n_units": 75,
+      "alpha_masi": 0.565483710907052,
+      "alpha_jaccard": 0.6471936989495116,
+      "has_gold": true,
+      "n_human": 2,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "GOLD",
+        "LLM-A",
+        "LLM-B"
+      ],
+      "size": 4,
+      "n_units": 75,
+      "alpha_masi": 0.5904070812467461,
+      "alpha_jaccard": 0.6545339405854251,
+      "has_gold": true,
+      "n_human": 1,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "GOLD",
+        "LLM-A",
+        "LLM-C"
+      ],
+      "size": 4,
+      "n_units": 75,
+      "alpha_masi": 0.6068797220057712,
+      "alpha_jaccard": 0.6693372508268485,
+      "has_gold": true,
+      "n_human": 1,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "GOLD",
+        "LLM-B",
+        "LLM-C"
+      ],
+      "size": 4,
+      "n_units": 75,
+      "alpha_masi": 0.6497632579595591,
+      "alpha_jaccard": 0.711539698478018,
+      "has_gold": true,
+      "n_human": 1,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "HUMAN-A",
+        "HUMAN-B",
+        "HUMAN-C"
+      ],
+      "size": 4,
+      "n_units": 75,
+      "alpha_masi": 0.5934066239959696,
+      "alpha_jaccard": 0.6755336503633583,
+      "has_gold": false,
+      "n_human": 4,
+      "n_llm": 0
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "HUMAN-A",
+        "HUMAN-B",
+        "LLM-A"
+      ],
+      "size": 4,
+      "n_units": 75,
+      "alpha_masi": 0.6187644145051703,
+      "alpha_jaccard": 0.6812460217213714,
+      "has_gold": false,
+      "n_human": 3,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "HUMAN-A",
+        "HUMAN-B",
+        "LLM-B"
+      ],
+      "size": 4,
+      "n_units": 75,
+      "alpha_masi": 0.6163146887740485,
+      "alpha_jaccard": 0.6856801977430906,
+      "has_gold": false,
+      "n_human": 3,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "HUMAN-A",
+        "HUMAN-B",
+        "LLM-C"
+      ],
+      "size": 4,
+      "n_units": 75,
+      "alpha_masi": 0.6405545865802249,
+      "alpha_jaccard": 0.71060076872666,
+      "has_gold": false,
+      "n_human": 3,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "HUMAN-A",
+        "HUMAN-C",
+        "LLM-A"
+      ],
+      "size": 4,
+      "n_units": 75,
+      "alpha_masi": 0.5060225081954558,
+      "alpha_jaccard": 0.5791830845975297,
+      "has_gold": false,
+      "n_human": 3,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "HUMAN-A",
+        "HUMAN-C",
+        "LLM-B"
+      ],
+      "size": 4,
+      "n_units": 75,
+      "alpha_masi": 0.5078419583445177,
+      "alpha_jaccard": 0.5892792461009442,
+      "has_gold": false,
+      "n_human": 3,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "HUMAN-A",
+        "HUMAN-C",
+        "LLM-C"
+      ],
+      "size": 4,
+      "n_units": 75,
+      "alpha_masi": 0.5315896302021511,
+      "alpha_jaccard": 0.6157786287236658,
+      "has_gold": false,
+      "n_human": 3,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "HUMAN-A",
+        "LLM-A",
+        "LLM-B"
+      ],
+      "size": 4,
+      "n_units": 75,
+      "alpha_masi": 0.5625357833595643,
+      "alpha_jaccard": 0.6251198942094365,
+      "has_gold": false,
+      "n_human": 2,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "HUMAN-A",
+        "LLM-A",
+        "LLM-C"
+      ],
+      "size": 4,
+      "n_units": 75,
+      "alpha_masi": 0.5775431604348905,
+      "alpha_jaccard": 0.6398687378364725,
+      "has_gold": false,
+      "n_human": 2,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "HUMAN-A",
+        "LLM-B",
+        "LLM-C"
+      ],
+      "size": 4,
+      "n_units": 75,
+      "alpha_masi": 0.6083793503038745,
+      "alpha_jaccard": 0.6740313608048301,
+      "has_gold": false,
+      "n_human": 2,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "HUMAN-B",
+        "HUMAN-C",
+        "LLM-A"
+      ],
+      "size": 4,
+      "n_units": 75,
+      "alpha_masi": 0.5362528815711888,
+      "alpha_jaccard": 0.6107958019129152,
+      "has_gold": false,
+      "n_human": 3,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "HUMAN-B",
+        "HUMAN-C",
+        "LLM-B"
+      ],
+      "size": 4,
+      "n_units": 75,
+      "alpha_masi": 0.5373881413518808,
+      "alpha_jaccard": 0.6165197378796824,
+      "has_gold": false,
+      "n_human": 3,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "HUMAN-B",
+        "HUMAN-C",
+        "LLM-C"
+      ],
+      "size": 4,
+      "n_units": 75,
+      "alpha_masi": 0.5643569240597577,
+      "alpha_jaccard": 0.6450182353926557,
+      "has_gold": false,
+      "n_human": 3,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "HUMAN-B",
+        "LLM-A",
+        "LLM-B"
+      ],
+      "size": 4,
+      "n_units": 75,
+      "alpha_masi": 0.6043800658719414,
+      "alpha_jaccard": 0.6677884395994913,
+      "has_gold": false,
+      "n_human": 2,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "HUMAN-B",
+        "LLM-A",
+        "LLM-C"
+      ],
+      "size": 4,
+      "n_units": 75,
+      "alpha_masi": 0.6225422515715684,
+      "alpha_jaccard": 0.6844485326164403,
+      "has_gold": false,
+      "n_human": 2,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "HUMAN-B",
+        "LLM-B",
+        "LLM-C"
+      ],
+      "size": 4,
+      "n_units": 75,
+      "alpha_masi": 0.6526713412714458,
+      "alpha_jaccard": 0.7141989636282546,
+      "has_gold": false,
+      "n_human": 2,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "HUMAN-C",
+        "LLM-A",
+        "LLM-B"
+      ],
+      "size": 4,
+      "n_units": 75,
+      "alpha_masi": 0.4937351485980418,
+      "alpha_jaccard": 0.5653089263943719,
+      "has_gold": false,
+      "n_human": 2,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "HUMAN-C",
+        "LLM-A",
+        "LLM-C"
+      ],
+      "size": 4,
+      "n_units": 75,
+      "alpha_masi": 0.5115531630814303,
+      "alpha_jaccard": 0.5836979188458334,
+      "has_gold": false,
+      "n_human": 2,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "HUMAN-C",
+        "LLM-B",
+        "LLM-C"
+      ],
+      "size": 4,
+      "n_units": 75,
+      "alpha_masi": 0.5458064528766802,
+      "alpha_jaccard": 0.6190603933359846,
+      "has_gold": false,
+      "n_human": 2,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "LLM-A",
+        "LLM-B",
+        "LLM-C"
+      ],
+      "size": 4,
+      "n_units": 75,
+      "alpha_masi": 0.634709331729325,
+      "alpha_jaccard": 0.6896434890513659,
+      "has_gold": false,
+      "n_human": 1,
+      "n_llm": 3
+    },
+    {
+      "codes": [
+        "GOLD",
+        "HUMAN-A",
+        "HUMAN-B",
+        "HUMAN-C"
+      ],
+      "size": 4,
+      "n_units": 75,
+      "alpha_masi": 0.6259868541153788,
+      "alpha_jaccard": 0.7045923294878227,
+      "has_gold": true,
+      "n_human": 3,
+      "n_llm": 0
+    },
+    {
+      "codes": [
+        "GOLD",
+        "HUMAN-A",
+        "HUMAN-B",
+        "LLM-A"
+      ],
+      "size": 4,
+      "n_units": 75,
+      "alpha_masi": 0.6300413741607811,
+      "alpha_jaccard": 0.6905692664961781,
+      "has_gold": true,
+      "n_human": 2,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "GOLD",
+        "HUMAN-A",
+        "HUMAN-B",
+        "LLM-B"
+      ],
+      "size": 4,
+      "n_units": 75,
+      "alpha_masi": 0.6426305628451514,
+      "alpha_jaccard": 0.7065787234411465,
+      "has_gold": true,
+      "n_human": 2,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "GOLD",
+        "HUMAN-A",
+        "HUMAN-B",
+        "LLM-C"
+      ],
+      "size": 4,
+      "n_units": 75,
+      "alpha_masi": 0.6618012911183504,
+      "alpha_jaccard": 0.7285960335406896,
+      "has_gold": true,
+      "n_human": 2,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "GOLD",
+        "HUMAN-A",
+        "HUMAN-C",
+        "LLM-A"
+      ],
+      "size": 4,
+      "n_units": 75,
+      "alpha_masi": 0.5098711336241817,
+      "alpha_jaccard": 0.585690477605774,
+      "has_gold": true,
+      "n_human": 2,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "GOLD",
+        "HUMAN-A",
+        "HUMAN-C",
+        "LLM-B"
+      ],
+      "size": 4,
+      "n_units": 75,
+      "alpha_masi": 0.5266427897295576,
+      "alpha_jaccard": 0.6073223373852371,
+      "has_gold": true,
+      "n_human": 2,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "GOLD",
+        "HUMAN-A",
+        "HUMAN-C",
+        "LLM-C"
+      ],
+      "size": 4,
+      "n_units": 75,
+      "alpha_masi": 0.5453809920328109,
+      "alpha_jaccard": 0.6309423208432197,
+      "has_gold": true,
+      "n_human": 2,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "GOLD",
+        "HUMAN-A",
+        "LLM-A",
+        "LLM-B"
+      ],
+      "size": 4,
+      "n_units": 75,
+      "alpha_masi": 0.5598016901954319,
+      "alpha_jaccard": 0.6233508884381709,
+      "has_gold": true,
+      "n_human": 1,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "GOLD",
+        "HUMAN-A",
+        "LLM-A",
+        "LLM-C"
+      ],
+      "size": 4,
+      "n_units": 75,
+      "alpha_masi": 0.5697920078881893,
+      "alpha_jaccard": 0.6352066623630976,
+      "has_gold": true,
+      "n_human": 1,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "GOLD",
+        "HUMAN-A",
+        "LLM-B",
+        "LLM-C"
+      ],
+      "size": 4,
+      "n_units": 75,
+      "alpha_masi": 0.6157349850483651,
+      "alpha_jaccard": 0.6810535628655083,
+      "has_gold": true,
+      "n_human": 1,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "GOLD",
+        "HUMAN-B",
+        "HUMAN-C",
+        "LLM-A"
+      ],
+      "size": 4,
+      "n_units": 75,
+      "alpha_masi": 0.5340851101595259,
+      "alpha_jaccard": 0.6094809678602298,
+      "has_gold": true,
+      "n_human": 2,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "GOLD",
+        "HUMAN-B",
+        "HUMAN-C",
+        "LLM-B"
+      ],
+      "size": 4,
+      "n_units": 75,
+      "alpha_masi": 0.5502036565687295,
+      "alpha_jaccard": 0.6267491141473472,
+      "has_gold": true,
+      "n_human": 2,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "GOLD",
+        "HUMAN-B",
+        "HUMAN-C",
+        "LLM-C"
+      ],
+      "size": 4,
+      "n_units": 75,
+      "alpha_masi": 0.5721686227743779,
+      "alpha_jaccard": 0.6523829381125313,
+      "has_gold": true,
+      "n_human": 2,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "GOLD",
+        "HUMAN-B",
+        "LLM-A",
+        "LLM-B"
+      ],
+      "size": 4,
+      "n_units": 75,
+      "alpha_masi": 0.5955380195388755,
+      "alpha_jaccard": 0.6581280874817204,
+      "has_gold": true,
+      "n_human": 1,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "GOLD",
+        "HUMAN-B",
+        "LLM-A",
+        "LLM-C"
+      ],
+      "size": 4,
+      "n_units": 75,
+      "alpha_masi": 0.608697983841165,
+      "alpha_jaccard": 0.6719270585597634,
+      "has_gold": true,
+      "n_human": 1,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "GOLD",
+        "HUMAN-B",
+        "LLM-B",
+        "LLM-C"
+      ],
+      "size": 4,
+      "n_units": 75,
+      "alpha_masi": 0.6539796143408894,
+      "alpha_jaccard": 0.7133826848340177,
+      "has_gold": true,
+      "n_human": 1,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "GOLD",
+        "HUMAN-C",
+        "LLM-A",
+        "LLM-B"
+      ],
+      "size": 4,
+      "n_units": 75,
+      "alpha_masi": 0.4774764657724567,
+      "alpha_jaccard": 0.5528332191606604,
+      "has_gold": true,
+      "n_human": 1,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "GOLD",
+        "HUMAN-C",
+        "LLM-A",
+        "LLM-C"
+      ],
+      "size": 4,
+      "n_units": 75,
+      "alpha_masi": 0.4903522025324297,
+      "alpha_jaccard": 0.5683762165698245,
+      "has_gold": true,
+      "n_human": 1,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "GOLD",
+        "HUMAN-C",
+        "LLM-B",
+        "LLM-C"
+      ],
+      "size": 4,
+      "n_units": 75,
+      "alpha_masi": 0.5396520988021392,
+      "alpha_jaccard": 0.6153867937915032,
+      "has_gold": true,
+      "n_human": 1,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "GOLD",
+        "LLM-A",
+        "LLM-B",
+        "LLM-C"
+      ],
+      "size": 4,
+      "n_units": 75,
+      "alpha_masi": 0.6064754690077121,
+      "alpha_jaccard": 0.6658415947778054,
+      "has_gold": true,
+      "n_human": 0,
+      "n_llm": 3
+    },
+    {
+      "codes": [
+        "HUMAN-A",
+        "HUMAN-B",
+        "HUMAN-C",
+        "LLM-A"
+      ],
+      "size": 4,
+      "n_units": 75,
+      "alpha_masi": 0.5075551858525553,
+      "alpha_jaccard": 0.5822874271750447,
+      "has_gold": false,
+      "n_human": 3,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "HUMAN-A",
+        "HUMAN-B",
+        "HUMAN-C",
+        "LLM-B"
+      ],
+      "size": 4,
+      "n_units": 75,
+      "alpha_masi": 0.5116832585794868,
+      "alpha_jaccard": 0.591544359264699,
+      "has_gold": false,
+      "n_human": 3,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "HUMAN-A",
+        "HUMAN-B",
+        "HUMAN-C",
+        "LLM-C"
+      ],
+      "size": 4,
+      "n_units": 75,
+      "alpha_masi": 0.5321942268685169,
+      "alpha_jaccard": 0.6170908404572265,
+      "has_gold": false,
+      "n_human": 3,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "HUMAN-A",
+        "HUMAN-B",
+        "LLM-A",
+        "LLM-B"
+      ],
+      "size": 4,
+      "n_units": 75,
+      "alpha_masi": 0.5614533963799035,
+      "alpha_jaccard": 0.6247611176636252,
+      "has_gold": false,
+      "n_human": 2,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "HUMAN-A",
+        "HUMAN-B",
+        "LLM-A",
+        "LLM-C"
+      ],
+      "size": 4,
+      "n_units": 75,
+      "alpha_masi": 0.5731806631999742,
+      "alpha_jaccard": 0.63852918294368,
+      "has_gold": false,
+      "n_human": 2,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "HUMAN-A",
+        "HUMAN-B",
+        "LLM-B",
+        "LLM-C"
+      ],
+      "size": 4,
+      "n_units": 75,
+      "alpha_masi": 0.6064070140678508,
+      "alpha_jaccard": 0.6719232373318214,
+      "has_gold": false,
+      "n_human": 2,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "HUMAN-A",
+        "HUMAN-C",
+        "LLM-A",
+        "LLM-B"
+      ],
+      "size": 4,
+      "n_units": 75,
+      "alpha_masi": 0.4581102036492847,
+      "alpha_jaccard": 0.530565797804675,
+      "has_gold": false,
+      "n_human": 2,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "HUMAN-A",
+        "HUMAN-C",
+        "LLM-A",
+        "LLM-C"
+      ],
+      "size": 4,
+      "n_units": 75,
+      "alpha_masi": 0.4694940467682366,
+      "alpha_jaccard": 0.5460334600466812,
+      "has_gold": false,
+      "n_human": 2,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "HUMAN-A",
+        "HUMAN-C",
+        "LLM-B",
+        "LLM-C"
+      ],
+      "size": 4,
+      "n_units": 75,
+      "alpha_masi": 0.5067810832874903,
+      "alpha_jaccard": 0.5850046397088806,
+      "has_gold": false,
+      "n_human": 2,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "HUMAN-A",
+        "LLM-A",
+        "LLM-B",
+        "LLM-C"
+      ],
+      "size": 4,
+      "n_units": 75,
+      "alpha_masi": 0.5781343477878944,
+      "alpha_jaccard": 0.6373401022128413,
+      "has_gold": false,
+      "n_human": 1,
+      "n_llm": 3
+    },
+    {
+      "codes": [
+        "HUMAN-B",
+        "HUMAN-C",
+        "LLM-A",
+        "LLM-B"
+      ],
+      "size": 4,
+      "n_units": 75,
+      "alpha_masi": 0.4834545736245158,
+      "alpha_jaccard": 0.5574637632242603,
+      "has_gold": false,
+      "n_human": 2,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "HUMAN-B",
+        "HUMAN-C",
+        "LLM-A",
+        "LLM-C"
+      ],
+      "size": 4,
+      "n_units": 75,
+      "alpha_masi": 0.4980720095128235,
+      "alpha_jaccard": 0.5749281156772643,
+      "has_gold": false,
+      "n_human": 2,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "HUMAN-B",
+        "HUMAN-C",
+        "LLM-B",
+        "LLM-C"
+      ],
+      "size": 4,
+      "n_units": 75,
+      "alpha_masi": 0.534717028932157,
+      "alpha_jaccard": 0.6095249781598124,
+      "has_gold": false,
+      "n_human": 2,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "HUMAN-B",
+        "LLM-A",
+        "LLM-B",
+        "LLM-C"
+      ],
+      "size": 4,
+      "n_units": 75,
+      "alpha_masi": 0.6185245748419599,
+      "alpha_jaccard": 0.6774646501411292,
+      "has_gold": false,
+      "n_human": 1,
+      "n_llm": 3
+    },
+    {
+      "codes": [
+        "HUMAN-C",
+        "LLM-A",
+        "LLM-B",
+        "LLM-C"
+      ],
+      "size": 4,
+      "n_units": 75,
+      "alpha_masi": 0.5165166694178338,
+      "alpha_jaccard": 0.5843137067989765,
+      "has_gold": false,
+      "n_human": 1,
+      "n_llm": 3
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "GOLD",
+        "HUMAN-A",
+        "HUMAN-B",
+        "HUMAN-C"
+      ],
+      "size": 5,
+      "n_units": 75,
+      "alpha_masi": 0.6371841124669666,
+      "alpha_jaccard": 0.7147459888383595,
+      "has_gold": true,
+      "n_human": 4,
+      "n_llm": 0
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "GOLD",
+        "HUMAN-A",
+        "HUMAN-B",
+        "LLM-A"
+      ],
+      "size": 5,
+      "n_units": 75,
+      "alpha_masi": 0.6492529677964827,
+      "alpha_jaccard": 0.7117339433294327,
+      "has_gold": true,
+      "n_human": 3,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "GOLD",
+        "HUMAN-A",
+        "HUMAN-B",
+        "LLM-B"
+      ],
+      "size": 5,
+      "n_units": 75,
+      "alpha_masi": 0.6551713645008228,
+      "alpha_jaccard": 0.7216147487314319,
+      "has_gold": true,
+      "n_human": 3,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "GOLD",
+        "HUMAN-A",
+        "HUMAN-B",
+        "LLM-C"
+      ],
+      "size": 5,
+      "n_units": 75,
+      "alpha_masi": 0.673394168411001,
+      "alpha_jaccard": 0.7405300925299863,
+      "has_gold": true,
+      "n_human": 3,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "GOLD",
+        "HUMAN-A",
+        "HUMAN-C",
+        "LLM-A"
+      ],
+      "size": 5,
+      "n_units": 75,
+      "alpha_masi": 0.5520753710752591,
+      "alpha_jaccard": 0.626310721612814,
+      "has_gold": true,
+      "n_human": 3,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "GOLD",
+        "HUMAN-A",
+        "HUMAN-C",
+        "LLM-B"
+      ],
+      "size": 5,
+      "n_units": 75,
+      "alpha_masi": 0.5605331412041272,
+      "alpha_jaccard": 0.6395715112296638,
+      "has_gold": true,
+      "n_human": 3,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "GOLD",
+        "HUMAN-A",
+        "HUMAN-C",
+        "LLM-C"
+      ],
+      "size": 5,
+      "n_units": 75,
+      "alpha_masi": 0.5784796235267632,
+      "alpha_jaccard": 0.6594431996454369,
+      "has_gold": true,
+      "n_human": 3,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "GOLD",
+        "HUMAN-A",
+        "LLM-A",
+        "LLM-B"
+      ],
+      "size": 5,
+      "n_units": 75,
+      "alpha_masi": 0.5900515024725834,
+      "alpha_jaccard": 0.6545682260406218,
+      "has_gold": true,
+      "n_human": 2,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "GOLD",
+        "HUMAN-A",
+        "LLM-A",
+        "LLM-C"
+      ],
+      "size": 5,
+      "n_units": 75,
+      "alpha_masi": 0.6027842595337392,
+      "alpha_jaccard": 0.6674024720997751,
+      "has_gold": true,
+      "n_human": 2,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "GOLD",
+        "HUMAN-A",
+        "LLM-B",
+        "LLM-C"
+      ],
+      "size": 5,
+      "n_units": 75,
+      "alpha_masi": 0.6286568123124622,
+      "alpha_jaccard": 0.6951054437846627,
+      "has_gold": true,
+      "n_human": 2,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "GOLD",
+        "HUMAN-B",
+        "HUMAN-C",
+        "LLM-A"
+      ],
+      "size": 5,
+      "n_units": 75,
+      "alpha_masi": 0.5767350772512911,
+      "alpha_jaccard": 0.6500974613696591,
+      "has_gold": true,
+      "n_human": 3,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "GOLD",
+        "HUMAN-B",
+        "HUMAN-C",
+        "LLM-B"
+      ],
+      "size": 5,
+      "n_units": 75,
+      "alpha_masi": 0.5847863217359649,
+      "alpha_jaccard": 0.6607402132364575,
+      "has_gold": true,
+      "n_human": 3,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "GOLD",
+        "HUMAN-B",
+        "HUMAN-C",
+        "LLM-C"
+      ],
+      "size": 5,
+      "n_units": 75,
+      "alpha_masi": 0.6046612445294437,
+      "alpha_jaccard": 0.6818103505899935,
+      "has_gold": true,
+      "n_human": 3,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "GOLD",
+        "HUMAN-B",
+        "LLM-A",
+        "LLM-B"
+      ],
+      "size": 5,
+      "n_units": 75,
+      "alpha_masi": 0.6216335961875761,
+      "alpha_jaccard": 0.6849367400433002,
+      "has_gold": true,
+      "n_human": 2,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "GOLD",
+        "HUMAN-B",
+        "LLM-A",
+        "LLM-C"
+      ],
+      "size": 5,
+      "n_units": 75,
+      "alpha_masi": 0.636264264746381,
+      "alpha_jaccard": 0.6989323913752897,
+      "has_gold": true,
+      "n_human": 2,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "GOLD",
+        "HUMAN-B",
+        "LLM-B",
+        "LLM-C"
+      ],
+      "size": 5,
+      "n_units": 75,
+      "alpha_masi": 0.6617228886946187,
+      "alpha_jaccard": 0.724003049284398,
+      "has_gold": true,
+      "n_human": 2,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "GOLD",
+        "HUMAN-C",
+        "LLM-A",
+        "LLM-B"
+      ],
+      "size": 5,
+      "n_units": 75,
+      "alpha_masi": 0.5257518852701875,
+      "alpha_jaccard": 0.5992874672184159,
+      "has_gold": true,
+      "n_human": 2,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "GOLD",
+        "HUMAN-C",
+        "LLM-A",
+        "LLM-C"
+      ],
+      "size": 5,
+      "n_units": 75,
+      "alpha_masi": 0.540180285046335,
+      "alpha_jaccard": 0.6143096686928732,
+      "has_gold": true,
+      "n_human": 2,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "GOLD",
+        "HUMAN-C",
+        "LLM-B",
+        "LLM-C"
+      ],
+      "size": 5,
+      "n_units": 75,
+      "alpha_masi": 0.5681004624074059,
+      "alpha_jaccard": 0.6427255174123869,
+      "has_gold": true,
+      "n_human": 2,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "GOLD",
+        "LLM-A",
+        "LLM-B",
+        "LLM-C"
+      ],
+      "size": 5,
+      "n_units": 75,
+      "alpha_masi": 0.6176633002955021,
+      "alpha_jaccard": 0.6782059446589297,
+      "has_gold": true,
+      "n_human": 1,
+      "n_llm": 3
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "HUMAN-A",
+        "HUMAN-B",
+        "HUMAN-C",
+        "LLM-A"
+      ],
+      "size": 5,
+      "n_units": 75,
+      "alpha_masi": 0.5524198865782155,
+      "alpha_jaccard": 0.6258744262796073,
+      "has_gold": false,
+      "n_human": 4,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "HUMAN-A",
+        "HUMAN-B",
+        "HUMAN-C",
+        "LLM-B"
+      ],
+      "size": 5,
+      "n_units": 75,
+      "alpha_masi": 0.5532876426137228,
+      "alpha_jaccard": 0.6317231016225309,
+      "has_gold": false,
+      "n_human": 4,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "HUMAN-A",
+        "HUMAN-B",
+        "HUMAN-C",
+        "LLM-C"
+      ],
+      "size": 5,
+      "n_units": 75,
+      "alpha_masi": 0.5722901673864405,
+      "alpha_jaccard": 0.6527402680485686,
+      "has_gold": false,
+      "n_human": 4,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "HUMAN-A",
+        "HUMAN-B",
+        "LLM-A",
+        "LLM-B"
+      ],
+      "size": 5,
+      "n_units": 75,
+      "alpha_masi": 0.5927848059364231,
+      "alpha_jaccard": 0.657022385359788,
+      "has_gold": false,
+      "n_human": 3,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "HUMAN-A",
+        "HUMAN-B",
+        "LLM-A",
+        "LLM-C"
+      ],
+      "size": 5,
+      "n_units": 75,
+      "alpha_masi": 0.6065591752739556,
+      "alpha_jaccard": 0.6709966662617988,
+      "has_gold": false,
+      "n_human": 3,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "HUMAN-A",
+        "HUMAN-B",
+        "LLM-B",
+        "LLM-C"
+      ],
+      "size": 5,
+      "n_units": 75,
+      "alpha_masi": 0.6248063386290703,
+      "alpha_jaccard": 0.691251503540119,
+      "has_gold": false,
+      "n_human": 3,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "HUMAN-A",
+        "HUMAN-C",
+        "LLM-A",
+        "LLM-B"
+      ],
+      "size": 5,
+      "n_units": 75,
+      "alpha_masi": 0.5057077407124344,
+      "alpha_jaccard": 0.5779990867523352,
+      "has_gold": false,
+      "n_human": 3,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "HUMAN-A",
+        "HUMAN-C",
+        "LLM-A",
+        "LLM-C"
+      ],
+      "size": 5,
+      "n_units": 75,
+      "alpha_masi": 0.5192553068760298,
+      "alpha_jaccard": 0.5929811086050271,
+      "has_gold": false,
+      "n_human": 3,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "HUMAN-A",
+        "HUMAN-C",
+        "LLM-B",
+        "LLM-C"
+      ],
+      "size": 5,
+      "n_units": 75,
+      "alpha_masi": 0.5399821419066071,
+      "alpha_jaccard": 0.6165904410092178,
+      "has_gold": false,
+      "n_human": 3,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "HUMAN-A",
+        "LLM-A",
+        "LLM-B",
+        "LLM-C"
+      ],
+      "size": 5,
+      "n_units": 75,
+      "alpha_masi": 0.5922286051581646,
+      "alpha_jaccard": 0.6531845919776177,
+      "has_gold": false,
+      "n_human": 2,
+      "n_llm": 3
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "HUMAN-B",
+        "HUMAN-C",
+        "LLM-A",
+        "LLM-B"
+      ],
+      "size": 5,
+      "n_units": 75,
+      "alpha_masi": 0.5310719026714552,
+      "alpha_jaccard": 0.603665168248424,
+      "has_gold": false,
+      "n_human": 3,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "HUMAN-B",
+        "HUMAN-C",
+        "LLM-A",
+        "LLM-C"
+      ],
+      "size": 5,
+      "n_units": 75,
+      "alpha_masi": 0.5465456427002169,
+      "alpha_jaccard": 0.6198327951081929,
+      "has_gold": false,
+      "n_human": 3,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "HUMAN-B",
+        "HUMAN-C",
+        "LLM-B",
+        "LLM-C"
+      ],
+      "size": 5,
+      "n_units": 75,
+      "alpha_masi": 0.5668710229364796,
+      "alpha_jaccard": 0.640821061439572,
+      "has_gold": false,
+      "n_human": 3,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "HUMAN-B",
+        "LLM-A",
+        "LLM-B",
+        "LLM-C"
+      ],
+      "size": 5,
+      "n_units": 75,
+      "alpha_masi": 0.62657432570697,
+      "alpha_jaccard": 0.6867279456734912,
+      "has_gold": false,
+      "n_human": 2,
+      "n_llm": 3
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "HUMAN-C",
+        "LLM-A",
+        "LLM-B",
+        "LLM-C"
+      ],
+      "size": 5,
+      "n_units": 75,
+      "alpha_masi": 0.5403531298399716,
+      "alpha_jaccard": 0.6083672577974599,
+      "has_gold": false,
+      "n_human": 2,
+      "n_llm": 3
+    },
+    {
+      "codes": [
+        "GOLD",
+        "HUMAN-A",
+        "HUMAN-B",
+        "HUMAN-C",
+        "LLM-A"
+      ],
+      "size": 5,
+      "n_units": 75,
+      "alpha_masi": 0.5615573094952504,
+      "alpha_jaccard": 0.6345922939763313,
+      "has_gold": true,
+      "n_human": 3,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "GOLD",
+        "HUMAN-A",
+        "HUMAN-B",
+        "HUMAN-C",
+        "LLM-B"
+      ],
+      "size": 5,
+      "n_units": 75,
+      "alpha_masi": 0.5713930335618986,
+      "alpha_jaccard": 0.6473585668119748,
+      "has_gold": true,
+      "n_human": 3,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "GOLD",
+        "HUMAN-A",
+        "HUMAN-B",
+        "HUMAN-C",
+        "LLM-C"
+      ],
+      "size": 5,
+      "n_units": 75,
+      "alpha_masi": 0.5873776644434032,
+      "alpha_jaccard": 0.6666453911748434,
+      "has_gold": true,
+      "n_human": 3,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "GOLD",
+        "HUMAN-A",
+        "HUMAN-B",
+        "LLM-A",
+        "LLM-B"
+      ],
+      "size": 5,
+      "n_units": 75,
+      "alpha_masi": 0.5980419803370958,
+      "alpha_jaccard": 0.6608098513038039,
+      "has_gold": true,
+      "n_human": 2,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "GOLD",
+        "HUMAN-A",
+        "HUMAN-B",
+        "LLM-A",
+        "LLM-C"
+      ],
+      "size": 5,
+      "n_units": 75,
+      "alpha_masi": 0.6087862594774069,
+      "alpha_jaccard": 0.6730407801659161,
+      "has_gold": true,
+      "n_human": 2,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "GOLD",
+        "HUMAN-A",
+        "HUMAN-B",
+        "LLM-B",
+        "LLM-C"
+      ],
+      "size": 5,
+      "n_units": 75,
+      "alpha_masi": 0.6360746259808032,
+      "alpha_jaccard": 0.7002831427832847,
+      "has_gold": true,
+      "n_human": 2,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "GOLD",
+        "HUMAN-A",
+        "HUMAN-C",
+        "LLM-A",
+        "LLM-B"
+      ],
+      "size": 5,
+      "n_units": 75,
+      "alpha_masi": 0.5064767063778095,
+      "alpha_jaccard": 0.58007097788072,
+      "has_gold": true,
+      "n_human": 2,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "GOLD",
+        "HUMAN-A",
+        "HUMAN-C",
+        "LLM-A",
+        "LLM-C"
+      ],
+      "size": 5,
+      "n_units": 75,
+      "alpha_masi": 0.5170251291915087,
+      "alpha_jaccard": 0.5933199322715252,
+      "has_gold": true,
+      "n_human": 2,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "GOLD",
+        "HUMAN-A",
+        "HUMAN-C",
+        "LLM-B",
+        "LLM-C"
+      ],
+      "size": 5,
+      "n_units": 75,
+      "alpha_masi": 0.5467466091389916,
+      "alpha_jaccard": 0.6238949401506292,
+      "has_gold": true,
+      "n_human": 2,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "GOLD",
+        "HUMAN-A",
+        "LLM-A",
+        "LLM-B",
+        "LLM-C"
+      ],
+      "size": 5,
+      "n_units": 75,
+      "alpha_masi": 0.5859816748636002,
+      "alpha_jaccard": 0.6485576490966879,
+      "has_gold": true,
+      "n_human": 1,
+      "n_llm": 3
+    },
+    {
+      "codes": [
+        "GOLD",
+        "HUMAN-B",
+        "HUMAN-C",
+        "LLM-A",
+        "LLM-B"
+      ],
+      "size": 5,
+      "n_units": 75,
+      "alpha_masi": 0.5282144142331079,
+      "alpha_jaccard": 0.6010285551227829,
+      "has_gold": true,
+      "n_human": 2,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "GOLD",
+        "HUMAN-B",
+        "HUMAN-C",
+        "LLM-A",
+        "LLM-C"
+      ],
+      "size": 5,
+      "n_units": 75,
+      "alpha_masi": 0.5406949024933185,
+      "alpha_jaccard": 0.6154754359593262,
+      "has_gold": true,
+      "n_human": 2,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "GOLD",
+        "HUMAN-B",
+        "HUMAN-C",
+        "LLM-B",
+        "LLM-C"
+      ],
+      "size": 5,
+      "n_units": 75,
+      "alpha_masi": 0.5700311492729864,
+      "alpha_jaccard": 0.6434329551879723,
+      "has_gold": true,
+      "n_human": 2,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "GOLD",
+        "HUMAN-B",
+        "LLM-A",
+        "LLM-B",
+        "LLM-C"
+      ],
+      "size": 5,
+      "n_units": 75,
+      "alpha_masi": 0.6166571837097353,
+      "alpha_jaccard": 0.677365650315324,
+      "has_gold": true,
+      "n_human": 1,
+      "n_llm": 3
+    },
+    {
+      "codes": [
+        "GOLD",
+        "HUMAN-C",
+        "LLM-A",
+        "LLM-B",
+        "LLM-C"
+      ],
+      "size": 5,
+      "n_units": 75,
+      "alpha_masi": 0.5259872015718703,
+      "alpha_jaccard": 0.5973040498679227,
+      "has_gold": true,
+      "n_human": 1,
+      "n_llm": 3
+    },
+    {
+      "codes": [
+        "HUMAN-A",
+        "HUMAN-B",
+        "HUMAN-C",
+        "LLM-A",
+        "LLM-B"
+      ],
+      "size": 5,
+      "n_units": 75,
+      "alpha_masi": 0.5044765787519954,
+      "alpha_jaccard": 0.5773887757886208,
+      "has_gold": false,
+      "n_human": 3,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "HUMAN-A",
+        "HUMAN-B",
+        "HUMAN-C",
+        "LLM-A",
+        "LLM-C"
+      ],
+      "size": 5,
+      "n_units": 75,
+      "alpha_masi": 0.516089404273595,
+      "alpha_jaccard": 0.5918049802096419,
+      "has_gold": false,
+      "n_human": 3,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "HUMAN-A",
+        "HUMAN-B",
+        "HUMAN-C",
+        "LLM-B",
+        "LLM-C"
+      ],
+      "size": 5,
+      "n_units": 75,
+      "alpha_masi": 0.5382293884563427,
+      "alpha_jaccard": 0.614945888684399,
+      "has_gold": false,
+      "n_human": 3,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "HUMAN-A",
+        "HUMAN-B",
+        "LLM-A",
+        "LLM-B",
+        "LLM-C"
+      ],
+      "size": 5,
+      "n_units": 75,
+      "alpha_masi": 0.5874819406967291,
+      "alpha_jaccard": 0.6499602583741713,
+      "has_gold": false,
+      "n_human": 2,
+      "n_llm": 3
+    },
+    {
+      "codes": [
+        "HUMAN-A",
+        "HUMAN-C",
+        "LLM-A",
+        "LLM-B",
+        "LLM-C"
+      ],
+      "size": 5,
+      "n_units": 75,
+      "alpha_masi": 0.5056729049404551,
+      "alpha_jaccard": 0.5765774822562848,
+      "has_gold": false,
+      "n_human": 2,
+      "n_llm": 3
+    },
+    {
+      "codes": [
+        "HUMAN-B",
+        "HUMAN-C",
+        "LLM-A",
+        "LLM-B",
+        "LLM-C"
+      ],
+      "size": 5,
+      "n_units": 75,
+      "alpha_masi": 0.5300921386164088,
+      "alpha_jaccard": 0.6006478713278236,
+      "has_gold": false,
+      "n_human": 2,
+      "n_llm": 3
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "GOLD",
+        "HUMAN-A",
+        "HUMAN-B",
+        "HUMAN-C",
+        "LLM-A"
+      ],
+      "size": 6,
+      "n_units": 75,
+      "alpha_masi": 0.5882061216877998,
+      "alpha_jaccard": 0.660582344500455,
+      "has_gold": true,
+      "n_human": 4,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "GOLD",
+        "HUMAN-A",
+        "HUMAN-B",
+        "HUMAN-C",
+        "LLM-B"
+      ],
+      "size": 6,
+      "n_units": 75,
+      "alpha_masi": 0.5936878992077379,
+      "alpha_jaccard": 0.6692830117276769,
+      "has_gold": true,
+      "n_human": 4,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "GOLD",
+        "HUMAN-A",
+        "HUMAN-B",
+        "HUMAN-C",
+        "LLM-C"
+      ],
+      "size": 6,
+      "n_units": 75,
+      "alpha_masi": 0.6088106523287462,
+      "alpha_jaccard": 0.6859365268516524,
+      "has_gold": true,
+      "n_human": 4,
+      "n_llm": 1
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "GOLD",
+        "HUMAN-A",
+        "HUMAN-B",
+        "LLM-A",
+        "LLM-B"
+      ],
+      "size": 6,
+      "n_units": 75,
+      "alpha_masi": 0.6178933807604938,
+      "alpha_jaccard": 0.6818497583709151,
+      "has_gold": true,
+      "n_human": 3,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "GOLD",
+        "HUMAN-A",
+        "HUMAN-B",
+        "LLM-A",
+        "LLM-C"
+      ],
+      "size": 6,
+      "n_units": 75,
+      "alpha_masi": 0.6295374605368472,
+      "alpha_jaccard": 0.6938066113528962,
+      "has_gold": true,
+      "n_human": 3,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "GOLD",
+        "HUMAN-A",
+        "HUMAN-B",
+        "LLM-B",
+        "LLM-C"
+      ],
+      "size": 6,
+      "n_units": 75,
+      "alpha_masi": 0.6466136850247883,
+      "alpha_jaccard": 0.7121183854954074,
+      "has_gold": true,
+      "n_human": 3,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "GOLD",
+        "HUMAN-A",
+        "HUMAN-C",
+        "LLM-A",
+        "LLM-B"
+      ],
+      "size": 6,
+      "n_units": 75,
+      "alpha_masi": 0.5401465520692343,
+      "alpha_jaccard": 0.6130356536918531,
+      "has_gold": true,
+      "n_human": 3,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "GOLD",
+        "HUMAN-A",
+        "HUMAN-C",
+        "LLM-A",
+        "LLM-C"
+      ],
+      "size": 6,
+      "n_units": 75,
+      "alpha_masi": 0.5516445017389894,
+      "alpha_jaccard": 0.6256629946888134,
+      "has_gold": true,
+      "n_human": 3,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "GOLD",
+        "HUMAN-A",
+        "HUMAN-C",
+        "LLM-B",
+        "LLM-C"
+      ],
+      "size": 6,
+      "n_units": 75,
+      "alpha_masi": 0.5703678250433345,
+      "alpha_jaccard": 0.6462034940778755,
+      "has_gold": true,
+      "n_human": 3,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "GOLD",
+        "HUMAN-A",
+        "LLM-A",
+        "LLM-B",
+        "LLM-C"
+      ],
+      "size": 6,
+      "n_units": 75,
+      "alpha_masi": 0.60291634831546,
+      "alpha_jaccard": 0.6661982320531712,
+      "has_gold": true,
+      "n_human": 2,
+      "n_llm": 3
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "GOLD",
+        "HUMAN-B",
+        "HUMAN-C",
+        "LLM-A",
+        "LLM-B"
+      ],
+      "size": 6,
+      "n_units": 75,
+      "alpha_masi": 0.5614011783806027,
+      "alpha_jaccard": 0.6333542098088394,
+      "has_gold": true,
+      "n_human": 3,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "GOLD",
+        "HUMAN-B",
+        "HUMAN-C",
+        "LLM-A",
+        "LLM-C"
+      ],
+      "size": 6,
+      "n_units": 75,
+      "alpha_masi": 0.5741814833293846,
+      "alpha_jaccard": 0.6467739509341908,
+      "has_gold": true,
+      "n_human": 3,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "GOLD",
+        "HUMAN-B",
+        "HUMAN-C",
+        "LLM-B",
+        "LLM-C"
+      ],
+      "size": 6,
+      "n_units": 75,
+      "alpha_masi": 0.5926392392955395,
+      "alpha_jaccard": 0.6655705170302568,
+      "has_gold": true,
+      "n_human": 3,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "GOLD",
+        "HUMAN-B",
+        "LLM-A",
+        "LLM-B",
+        "LLM-C"
+      ],
+      "size": 6,
+      "n_units": 75,
+      "alpha_masi": 0.6301166996422243,
+      "alpha_jaccard": 0.6917305352598195,
+      "has_gold": true,
+      "n_human": 2,
+      "n_llm": 3
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "GOLD",
+        "HUMAN-C",
+        "LLM-A",
+        "LLM-B",
+        "LLM-C"
+      ],
+      "size": 6,
+      "n_units": 75,
+      "alpha_masi": 0.552988544276253,
+      "alpha_jaccard": 0.6233832534394985,
+      "has_gold": true,
+      "n_human": 2,
+      "n_llm": 3
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "HUMAN-A",
+        "HUMAN-B",
+        "HUMAN-C",
+        "LLM-A",
+        "LLM-B"
+      ],
+      "size": 6,
+      "n_units": 75,
+      "alpha_masi": 0.539978523729383,
+      "alpha_jaccard": 0.6123272382723639,
+      "has_gold": false,
+      "n_human": 4,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "HUMAN-A",
+        "HUMAN-B",
+        "HUMAN-C",
+        "LLM-A",
+        "LLM-C"
+      ],
+      "size": 6,
+      "n_units": 75,
+      "alpha_masi": 0.5521824988017298,
+      "alpha_jaccard": 0.6257257421399095,
+      "has_gold": false,
+      "n_human": 4,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "HUMAN-A",
+        "HUMAN-B",
+        "HUMAN-C",
+        "LLM-B",
+        "LLM-C"
+      ],
+      "size": 6,
+      "n_units": 75,
+      "alpha_masi": 0.5658491793090332,
+      "alpha_jaccard": 0.6413195094075023,
+      "has_gold": false,
+      "n_human": 4,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "HUMAN-A",
+        "HUMAN-B",
+        "LLM-A",
+        "LLM-B",
+        "LLM-C"
+      ],
+      "size": 6,
+      "n_units": 75,
+      "alpha_masi": 0.6050751477671217,
+      "alpha_jaccard": 0.6682028708486196,
+      "has_gold": false,
+      "n_human": 3,
+      "n_llm": 3
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "HUMAN-A",
+        "HUMAN-C",
+        "LLM-A",
+        "LLM-B",
+        "LLM-C"
+      ],
+      "size": 6,
+      "n_units": 75,
+      "alpha_masi": 0.533835473471325,
+      "alpha_jaccard": 0.6042865366303858,
+      "has_gold": false,
+      "n_human": 3,
+      "n_llm": 3
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "HUMAN-B",
+        "HUMAN-C",
+        "LLM-A",
+        "LLM-B",
+        "LLM-C"
+      ],
+      "size": 6,
+      "n_units": 75,
+      "alpha_masi": 0.5568775859468112,
+      "alpha_jaccard": 0.6266762657734368,
+      "has_gold": false,
+      "n_human": 3,
+      "n_llm": 3
+    },
+    {
+      "codes": [
+        "GOLD",
+        "HUMAN-A",
+        "HUMAN-B",
+        "HUMAN-C",
+        "LLM-A",
+        "LLM-B"
+      ],
+      "size": 6,
+      "n_units": 75,
+      "alpha_masi": 0.5450642197097575,
+      "alpha_jaccard": 0.6169275001564379,
+      "has_gold": true,
+      "n_human": 3,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "GOLD",
+        "HUMAN-A",
+        "HUMAN-B",
+        "HUMAN-C",
+        "LLM-A",
+        "LLM-C"
+      ],
+      "size": 6,
+      "n_units": 75,
+      "alpha_masi": 0.5552586042926344,
+      "alpha_jaccard": 0.6291677821733196,
+      "has_gold": true,
+      "n_human": 3,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "GOLD",
+        "HUMAN-A",
+        "HUMAN-B",
+        "HUMAN-C",
+        "LLM-B",
+        "LLM-C"
+      ],
+      "size": 6,
+      "n_units": 75,
+      "alpha_masi": 0.5749172709960397,
+      "alpha_jaccard": 0.6493978164687806,
+      "has_gold": true,
+      "n_human": 3,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "GOLD",
+        "HUMAN-A",
+        "HUMAN-B",
+        "LLM-A",
+        "LLM-B",
+        "LLM-C"
+      ],
+      "size": 6,
+      "n_units": 75,
+      "alpha_masi": 0.6055243967534936,
+      "alpha_jaccard": 0.6683573445960633,
+      "has_gold": true,
+      "n_human": 2,
+      "n_llm": 3
+    },
+    {
+      "codes": [
+        "GOLD",
+        "HUMAN-A",
+        "HUMAN-C",
+        "LLM-A",
+        "LLM-B",
+        "LLM-C"
+      ],
+      "size": 6,
+      "n_units": 75,
+      "alpha_masi": 0.5312964455946264,
+      "alpha_jaccard": 0.6032927800625658,
+      "has_gold": true,
+      "n_human": 2,
+      "n_llm": 3
+    },
+    {
+      "codes": [
+        "GOLD",
+        "HUMAN-B",
+        "HUMAN-C",
+        "LLM-A",
+        "LLM-B",
+        "LLM-C"
+      ],
+      "size": 6,
+      "n_units": 75,
+      "alpha_masi": 0.5519149363172682,
+      "alpha_jaccard": 0.6225412269647558,
+      "has_gold": true,
+      "n_human": 2,
+      "n_llm": 3
+    },
+    {
+      "codes": [
+        "HUMAN-A",
+        "HUMAN-B",
+        "HUMAN-C",
+        "LLM-A",
+        "LLM-B",
+        "LLM-C"
+      ],
+      "size": 6,
+      "n_units": 75,
+      "alpha_masi": 0.5302897853559307,
+      "alpha_jaccard": 0.6018685618970896,
+      "has_gold": false,
+      "n_human": 3,
+      "n_llm": 3
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "GOLD",
+        "HUMAN-A",
+        "HUMAN-B",
+        "HUMAN-C",
+        "LLM-A",
+        "LLM-B"
+      ],
+      "size": 7,
+      "n_units": 75,
+      "alpha_masi": 0.5694993306735965,
+      "alpha_jaccard": 0.6410821416735581,
+      "has_gold": true,
+      "n_human": 4,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "GOLD",
+        "HUMAN-A",
+        "HUMAN-B",
+        "HUMAN-C",
+        "LLM-A",
+        "LLM-C"
+      ],
+      "size": 7,
+      "n_units": 75,
+      "alpha_masi": 0.5799677087509515,
+      "alpha_jaccard": 0.6525321826547419,
+      "has_gold": true,
+      "n_human": 4,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "GOLD",
+        "HUMAN-A",
+        "HUMAN-B",
+        "HUMAN-C",
+        "LLM-B",
+        "LLM-C"
+      ],
+      "size": 7,
+      "n_units": 75,
+      "alpha_masi": 0.5932311225234879,
+      "alpha_jaccard": 0.6671016544330277,
+      "has_gold": true,
+      "n_human": 4,
+      "n_llm": 2
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "GOLD",
+        "HUMAN-A",
+        "HUMAN-B",
+        "LLM-A",
+        "LLM-B",
+        "LLM-C"
+      ],
+      "size": 7,
+      "n_units": 75,
+      "alpha_masi": 0.6196847912103114,
+      "alpha_jaccard": 0.6832003624073397,
+      "has_gold": true,
+      "n_human": 3,
+      "n_llm": 3
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "GOLD",
+        "HUMAN-A",
+        "HUMAN-C",
+        "LLM-A",
+        "LLM-B",
+        "LLM-C"
+      ],
+      "size": 7,
+      "n_units": 75,
+      "alpha_masi": 0.5547393522230455,
+      "alpha_jaccard": 0.6260235918404464,
+      "has_gold": true,
+      "n_human": 3,
+      "n_llm": 3
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "GOLD",
+        "HUMAN-B",
+        "HUMAN-C",
+        "LLM-A",
+        "LLM-B",
+        "LLM-C"
+      ],
+      "size": 7,
+      "n_units": 75,
+      "alpha_masi": 0.5742948987724399,
+      "alpha_jaccard": 0.6443026465641618,
+      "has_gold": true,
+      "n_human": 3,
+      "n_llm": 3
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "HUMAN-A",
+        "HUMAN-B",
+        "HUMAN-C",
+        "LLM-A",
+        "LLM-B",
+        "LLM-C"
+      ],
+      "size": 7,
+      "n_units": 75,
+      "alpha_masi": 0.5548525323243101,
+      "alpha_jaccard": 0.6257766488203711,
+      "has_gold": false,
+      "n_human": 4,
+      "n_llm": 3
+    },
+    {
+      "codes": [
+        "GOLD",
+        "HUMAN-A",
+        "HUMAN-B",
+        "HUMAN-C",
+        "LLM-A",
+        "LLM-B",
+        "LLM-C"
+      ],
+      "size": 7,
+      "n_units": 75,
+      "alpha_masi": 0.556314192186071,
+      "alpha_jaccard": 0.6273703034040854,
+      "has_gold": true,
+      "n_human": 3,
+      "n_llm": 3
+    },
+    {
+      "codes": [
+        "AUTHOR",
+        "GOLD",
+        "HUMAN-A",
+        "HUMAN-B",
+        "HUMAN-C",
+        "LLM-A",
+        "LLM-B",
+        "LLM-C"
+      ],
+      "size": 8,
+      "n_units": 75,
+      "alpha_masi": 0.5753183522103149,
+      "alpha_jaccard": 0.6459311781827582,
+      "has_gold": true,
+      "n_human": 4,
+      "n_llm": 3
+    }
+  ],
   "per_label": {
-    "T_PlayingByAppointment ": {
-      "units": 11,
-      "unanimous": 5,
-      "assignments": 29,
-      "alpha": 0.759,
-      "fleiss_kappa": 0.758
+    "T_PlayingByAppointment": {
+      "units_any": 14,
+      "units_unanimous": 5,
+      "assignments": 52,
+      "alpha_all_independent": 0.7656529516994633,
+      "fleiss_kappa": 0.7652057245080502,
+      "alpha_humans": 0.7590448318276286,
+      "alpha_llms": 0.8553594489883771,
+      "low_support": false
     },
-    "T_DailyRewards ": {
-      "units": 7,
-      "unanimous": 4,
-      "assignments": 20,
-      "alpha": 0.822,
-      "fleiss_kappa": 0.821
+    "T_DailyRewards": {
+      "units_any": 7,
+      "units_unanimous": 3,
+      "assignments": 31,
+      "alpha_all_independent": 0.7718862914109095,
+      "fleiss_kappa": 0.7714509599059691,
+      "alpha_humans": 0.8220238095238095,
+      "alpha_llms": 0.9048428207306712,
+      "low_support": false
     },
-    "T_Grinding ": {
-      "units": 8,
-      "unanimous": 1,
-      "assignments": 20,
-      "alpha": 0.537,
-      "fleiss_kappa": 0.536
+    "T_Grinding": {
+      "units_any": 8,
+      "units_unanimous": 1,
+      "assignments": 32,
+      "alpha_all_independent": 0.5682048681541583,
+      "fleiss_kappa": 0.567380831643003,
+      "alpha_humans": 0.5372619047619047,
+      "alpha_llms": 0.5618153364632237,
+      "low_support": false
     },
-    "T_Advertisement ": {
-      "units": 13,
-      "unanimous": 8,
-      "assignments": 42,
-      "alpha": 0.853,
-      "fleiss_kappa": 0.852
+    "T_Advertisement": {
+      "units_any": 13,
+      "units_unanimous": 6,
+      "assignments": 67,
+      "alpha_all_independent": 0.8520063438267179,
+      "fleiss_kappa": 0.8517239131851657,
+      "alpha_humans": 0.8528362249292482,
+      "alpha_llms": 0.9104,
+      "low_support": false
     },
-    "T_InfiniteTreadmill ": {
-      "units": 3,
-      "unanimous": 0,
-      "assignments": 6,
-      "alpha": 0.435,
-      "fleiss_kappa": 0.433
+    "T_InfiniteTreadmill": {
+      "units_any": 4,
+      "units_unanimous": 0,
+      "assignments": 11,
+      "alpha_all_independent": 0.4748260818299729,
+      "fleiss_kappa": 0.47382384152812235,
+      "alpha_humans": 0.4349962207105065,
+      "alpha_llms": 0.38909090909090904,
+      "low_support": false
     },
-    "T_MandatoryMarathon ": {
-      "units": 7,
-      "unanimous": 4,
-      "assignments": 22,
-      "alpha": 0.837,
-      "fleiss_kappa": 0.836
+    "T_MandatoryMarathon": {
+      "units_any": 7,
+      "units_unanimous": 2,
+      "assignments": 32,
+      "alpha_all_independent": 0.7564232589587558,
+      "fleiss_kappa": 0.7559584178498977,
+      "alpha_humans": 0.8370394593416176,
+      "alpha_llms": 0.7916279069767442,
+      "low_support": false
     },
-    "M_PayToProgress ": {
-      "units": 16,
-      "unanimous": 7,
-      "assignments": 45,
-      "alpha": 0.731,
-      "fleiss_kappa": 0.73
+    "M_PayToProgress": {
+      "units_any": 18,
+      "units_unanimous": 7,
+      "assignments": 80,
+      "alpha_all_independent": 0.7644943820224719,
+      "fleiss_kappa": 0.7640449438202246,
+      "alpha_humans": 0.7307480029048656,
+      "alpha_llms": 0.8989473684210526,
+      "low_support": false
     },
-    "M_IntermediateCurrency ": {
-      "units": 13,
-      "unanimous": 3,
-      "assignments": 28,
-      "alpha": 0.581,
-      "fleiss_kappa": 0.58
+    "M_IntermediateCurrency": {
+      "units_any": 13,
+      "units_unanimous": 1,
+      "assignments": 43,
+      "alpha_all_independent": 0.6544758596288076,
+      "fleiss_kappa": 0.6538164624143598,
+      "alpha_humans": 0.6068626203503414,
+      "alpha_llms": 0.7725118483412322,
+      "low_support": false
     },
-    "M_DeceptiveLuxury ": {
-      "units": 5,
-      "unanimous": 0,
-      "assignments": 12,
-      "alpha": 0.539,
-      "fleiss_kappa": 0.537
+    "M_DeceptiveLuxury": {
+      "units_any": 5,
+      "units_unanimous": 0,
+      "assignments": 17,
+      "alpha_all_independent": 0.5550409140033965,
+      "fleiss_kappa": 0.5541917554423333,
+      "alpha_humans": 0.5385802469135803,
+      "alpha_llms": 0.7963636363636364,
+      "low_support": false
     },
     "M_RecurringFee": {
-      "units": 2,
-      "unanimous": 2,
-      "assignments": 8,
-      "alpha": 1.0,
-      "fleiss_kappa": 1.0
+      "units_any": 2,
+      "units_unanimous": 2,
+      "assignments": 14,
+      "alpha_all_independent": 1.0,
+      "fleiss_kappa": 1.0,
+      "alpha_humans": 1.0,
+      "alpha_llms": 1.0,
+      "low_support": true
     },
-    "M_Gambling ": {
-      "units": 9,
-      "unanimous": 3,
-      "assignments": 18,
-      "alpha": 0.647,
-      "fleiss_kappa": 0.645
+    "M_Gambling": {
+      "units_any": 10,
+      "units_unanimous": 2,
+      "assignments": 29,
+      "alpha_all_independent": 0.6235632183908045,
+      "fleiss_kappa": 0.6228448275862077,
+      "alpha_humans": 0.6465721040189125,
+      "alpha_llms": 0.7145284621920136,
+      "low_support": false
     },
     "M_PowerCreep": {
-      "units": 2,
-      "unanimous": 2,
-      "assignments": 8,
-      "alpha": 1.0,
-      "fleiss_kappa": 1.0
+      "units_any": 2,
+      "units_unanimous": 2,
+      "assignments": 14,
+      "alpha_all_independent": 1.0,
+      "fleiss_kappa": 1.0,
+      "alpha_humans": 1.0,
+      "alpha_llms": 1.0,
+      "low_support": true
     },
-    "M_WasteAversion ": {
-      "units": 4,
-      "unanimous": 3,
-      "assignments": 13,
-      "alpha": 0.92,
-      "fleiss_kappa": 0.92
+    "M_WasteAversion": {
+      "units_any": 4,
+      "units_unanimous": 2,
+      "assignments": 22,
+      "alpha_all_independent": 0.8737273329718658,
+      "fleiss_kappa": 0.8734863545996747,
+      "alpha_humans": 0.9198606271777003,
+      "alpha_llms": 0.7695473251028806,
+      "low_support": false
     },
-    "M_EasyToPurchase ": {
-      "units": 7,
-      "unanimous": 2,
-      "assignments": 17,
-      "alpha": 0.648,
-      "fleiss_kappa": 0.647
+    "M_EasyToPurchase": {
+      "units_any": 8,
+      "units_unanimous": 1,
+      "assignments": 31,
+      "alpha_all_independent": 0.612206695398546,
+      "fleiss_kappa": 0.6114666318401459,
+      "alpha_humans": 0.6478209658421673,
+      "alpha_llms": 0.6208530805687205,
+      "low_support": false
     },
-    "M_UIMisdirection ": {
-      "units": 10,
-      "unanimous": 4,
-      "assignments": 27,
-      "alpha": 0.743,
-      "fleiss_kappa": 0.742
+    "M_UIMisdirection": {
+      "units_any": 10,
+      "units_unanimous": 2,
+      "assignments": 37,
+      "alpha_all_independent": 0.6324028946979766,
+      "fleiss_kappa": 0.6317013735046513,
+      "alpha_humans": 0.7430922986478542,
+      "alpha_llms": 0.6874418604651162,
+      "low_support": false
     },
-    "M_NeverEndingLure ": {
-      "units": 8,
-      "unanimous": 2,
-      "assignments": 16,
-      "alpha": 0.605,
-      "fleiss_kappa": 0.604
+    "M_NeverEndingLure": {
+      "units_any": 8,
+      "units_unanimous": 1,
+      "assignments": 19,
+      "alpha_all_independent": 0.5094653630122737,
+      "fleiss_kappa": 0.508529228208863,
+      "alpha_humans": 0.605193661971831,
+      "alpha_llms": 1.0,
+      "low_support": false
     },
-    "S_ForcedFellowship ": {
-      "units": 5,
-      "unanimous": 2,
-      "assignments": 11,
-      "alpha": 0.718,
-      "fleiss_kappa": 0.717
+    "S_ForcedFellowship": {
+      "units_any": 5,
+      "units_unanimous": 1,
+      "assignments": 15,
+      "alpha_all_independent": 0.6803485838779957,
+      "fleiss_kappa": 0.6797385620915052,
+      "alpha_humans": 0.7178357974205725,
+      "alpha_llms": 0.746606334841629,
+      "low_support": false
     },
     "S_FriendSpamImpersonation": {
-      "units": 2,
-      "unanimous": 1,
-      "assignments": 7,
-      "alpha": 0.854,
-      "fleiss_kappa": 0.854
+      "units_any": 2,
+      "units_unanimous": 0,
+      "assignments": 10,
+      "alpha_all_independent": 0.694757281553398,
+      "fleiss_kappa": 0.6941747572815538,
+      "alpha_humans": 0.8542174549000487,
+      "alpha_llms": 0.3273273273273274,
+      "low_support": true
     },
-    "S_Reciprocity ": {
-      "units": 5,
-      "unanimous": 3,
+    "S_Reciprocity": {
+      "units_any": 5,
+      "units_unanimous": 1,
+      "assignments": 20,
+      "alpha_all_independent": 0.6368316831683167,
+      "fleiss_kappa": 0.6361386138613863,
+      "alpha_humans": 0.8368031189083821,
+      "alpha_llms": 0.7963636363636364,
+      "low_support": false
+    },
+    "S_EncouragesAntiSocialBehavior": {
+      "units_any": 4,
+      "units_unanimous": 1,
       "assignments": 15,
-      "alpha": 0.837,
-      "fleiss_kappa": 0.836
+      "alpha_all_independent": 0.7945098039215686,
+      "fleiss_kappa": 0.794117647058823,
+      "alpha_humans": 0.6575028636884307,
+      "alpha_llms": 1.0,
+      "low_support": false
     },
-    "S_EncouragesAntiSocialBehavior ": {
-      "units": 4,
-      "unanimous": 1,
-      "assignments": 9,
-      "alpha": 0.658,
-      "fleiss_kappa": 0.656
+    "S_FearOfMissingOutFOMO": {
+      "units_any": 3,
+      "units_unanimous": 0,
+      "assignments": 11,
+      "alpha_all_independent": 0.598396415517038,
+      "fleiss_kappa": 0.5976299964626802,
+      "alpha_humans": 0.25672316384180793,
+      "alpha_llms": 1.0,
+      "low_support": false
     },
-    "S_FearOfMissingOutFOMO ": {
-      "units": 3,
-      "unanimous": 0,
-      "assignments": 5,
-      "alpha": 0.257,
-      "fleiss_kappa": 0.254
+    "S_Competition": {
+      "units_any": 19,
+      "units_unanimous": 3,
+      "assignments": 65,
+      "alpha_all_independent": 0.55603121516165,
+      "fleiss_kappa": 0.5551839464882943,
+      "alpha_humans": 0.5362236598191654,
+      "alpha_llms": 0.5647668393782384,
+      "low_support": false
     },
-    "S_Competition ": {
-      "units": 15,
-      "unanimous": 3,
-      "assignments": 33,
-      "alpha": 0.536,
-      "fleiss_kappa": 0.535
-    },
-    "P_EasyToGetHardToLose ": {
-      "units": 6,
-      "unanimous": 2,
-      "assignments": 14,
-      "alpha": 0.701,
-      "fleiss_kappa": 0.7
+    "P_EasyToGetHardToLose": {
+      "units_any": 6,
+      "units_unanimous": 2,
+      "assignments": 23,
+      "alpha_all_independent": 0.8184652693573532,
+      "fleiss_kappa": 0.8181188290317003,
+      "alpha_humans": 0.7012987012987013,
+      "alpha_llms": 1.0,
+      "low_support": false
     },
     "P_CompleteTheCollection": {
-      "units": 2,
-      "unanimous": 0,
-      "assignments": 6,
-      "alpha": 0.661,
-      "fleiss_kappa": 0.66
+      "units_any": 4,
+      "units_unanimous": 0,
+      "assignments": 14,
+      "alpha_all_independent": 0.7070170533967012,
+      "fleiss_kappa": 0.7064579256360087,
+      "alpha_humans": 0.6609977324263039,
+      "alpha_llms": 0.7419354838709677,
+      "low_support": false
     },
-    "P_IllusionOfControl ": {
-      "units": 7,
-      "unanimous": 4,
-      "assignments": 21,
-      "alpha": 0.847,
-      "fleiss_kappa": 0.846
+    "P_IllusionOfControl": {
+      "units_any": 9,
+      "units_unanimous": 3,
+      "assignments": 37,
+      "alpha_all_independent": 0.787180623246197,
+      "fleiss_kappa": 0.7867744793974293,
+      "alpha_humans": 0.8469022017409114,
+      "alpha_llms": 0.7320574162679425,
+      "low_support": false
     },
-    "P_AestheticManipulation ": {
-      "units": 3,
-      "unanimous": 0,
-      "assignments": 5,
-      "alpha": 0.392,
-      "fleiss_kappa": 0.39
+    "P_AestheticManipulation": {
+      "units_any": 3,
+      "units_unanimous": 0,
+      "assignments": 8,
+      "alpha_all_independent": 0.6199226305609284,
+      "fleiss_kappa": 0.6191972920696331,
+      "alpha_humans": 0.39186440677966095,
+      "alpha_llms": 1.0,
+      "low_support": false
     },
-    "P_OptimismAndFrequencyBiases ": {
-      "units": 4,
-      "unanimous": 2,
-      "assignments": 12,
-      "alpha": 0.827,
-      "fleiss_kappa": 0.826
+    "P_OptimismAndFrequencyBiases": {
+      "units_any": 4,
+      "units_unanimous": 1,
+      "assignments": 15,
+      "alpha_all_independent": 0.6575163398692809,
+      "fleiss_kappa": 0.6568627450980384,
+      "alpha_humans": 0.8269675925925926,
+      "alpha_llms": 1.0,
+      "low_support": false
     },
-    "P_RewardMania ": {
-      "units": 9,
-      "unanimous": 1,
-      "assignments": 20,
-      "alpha": 0.573,
-      "fleiss_kappa": 0.571
+    "P_RewardMania": {
+      "units_any": 9,
+      "units_unanimous": 1,
+      "assignments": 42,
+      "alpha_all_independent": 0.724473364224917,
+      "fleiss_kappa": 0.7239475500345062,
+      "alpha_humans": 0.5728571428571428,
+      "alpha_llms": 0.9498432601880877,
+      "low_support": false
     },
     "Tech_FragmentedDownloads": {
-      "units": 2,
-      "unanimous": 2,
-      "assignments": 8,
-      "alpha": 1.0,
-      "fleiss_kappa": 1.0
+      "units_any": 2,
+      "units_unanimous": 1,
+      "assignments": 11,
+      "alpha_all_independent": 0.8146444994694022,
+      "fleiss_kappa": 0.8142907675981605,
+      "alpha_humans": 1.0,
+      "alpha_llms": 1.0,
+      "low_support": true
     }
   },
-  "observed": {
-    "unanimous_units": 21,
-    "rater_pairs": 450,
-    "pairwise_exact": 217,
-    "mean_pairwise_masi": 0.6051437389770731,
-    "mean_pairwise_jaccard": 0.6887275132275131
-  },
-  "notes": {
-    "keshav02": {
-      "file": "coder_keshav02_2026-09-03-23-28-08.jsonl",
-      "rows": 75,
-      "coded": 75,
-      "abstain": 0,
-      "foreign": 0,
-      "unknown_codes": {},
-      "renamed_from": null,
-      "name_variants": []
+  "prevalence": {
+    "T_PlayingByAppointment": {
+      "AUTHOR": 6,
+      "GOLD": 7,
+      "HUMAN-A": 6,
+      "HUMAN-B": 7,
+      "HUMAN-C": 10,
+      "LLM-A": 9,
+      "LLM-B": 8,
+      "LLM-C": 6
     },
-    "vansh97": {
-      "file": "coder_vansh97_2026-08-31-18-25-28.jsonl",
-      "rows": 75,
-      "coded": 75,
-      "abstain": 0,
-      "foreign": 0,
-      "unknown_codes": {},
-      "renamed_from": null,
-      "name_variants": []
+    "T_DailyRewards": {
+      "AUTHOR": 4,
+      "GOLD": 4,
+      "HUMAN-A": 4,
+      "HUMAN-B": 5,
+      "HUMAN-C": 7,
+      "LLM-A": 3,
+      "LLM-B": 4,
+      "LLM-C": 4
     },
-    "virinchi90": {
-      "file": "coder_virinchi5318008_2026-09-03-13-39-52 - R90.jsonl",
-      "rows": 75,
-      "coded": 75,
-      "abstain": 0,
-      "foreign": 0,
-      "unknown_codes": {},
-      "renamed_from": null,
-      "name_variants": []
+    "T_Grinding": {
+      "AUTHOR": 5,
+      "GOLD": 5,
+      "HUMAN-A": 5,
+      "HUMAN-B": 6,
+      "HUMAN-C": 4,
+      "LLM-A": 3,
+      "LLM-B": 3,
+      "LLM-C": 6
+    },
+    "T_Advertisement": {
+      "AUTHOR": 9,
+      "GOLD": 9,
+      "HUMAN-A": 10,
+      "HUMAN-B": 10,
+      "HUMAN-C": 13,
+      "LLM-A": 8,
+      "LLM-B": 8,
+      "LLM-C": 9
+    },
+    "T_InfiniteTreadmill": {
+      "AUTHOR": 2,
+      "GOLD": 2,
+      "HUMAN-A": 1,
+      "HUMAN-B": 2,
+      "HUMAN-C": 1,
+      "LLM-A": 1,
+      "LLM-B": 3,
+      "LLM-C": 1
+    },
+    "T_MandatoryMarathon": {
+      "AUTHOR": 5,
+      "GOLD": 6,
+      "HUMAN-A": 6,
+      "HUMAN-B": 4,
+      "HUMAN-C": 7,
+      "LLM-A": 3,
+      "LLM-B": 3,
+      "LLM-C": 4
+    },
+    "M_PayToProgress": {
+      "AUTHOR": 8,
+      "GOLD": 11,
+      "HUMAN-A": 13,
+      "HUMAN-B": 11,
+      "HUMAN-C": 13,
+      "LLM-A": 12,
+      "LLM-B": 11,
+      "LLM-C": 12
+    },
+    "M_IntermediateCurrency": {
+      "AUTHOR": 6,
+      "GOLD": 8,
+      "HUMAN-A": 7,
+      "HUMAN-B": 7,
+      "HUMAN-C": 9,
+      "LLM-A": 4,
+      "LLM-B": 5,
+      "LLM-C": 5
+    },
+    "M_DeceptiveLuxury": {
+      "AUTHOR": 3,
+      "GOLD": 5,
+      "HUMAN-A": 2,
+      "HUMAN-B": 4,
+      "HUMAN-C": 3,
+      "LLM-A": 1,
+      "LLM-B": 2,
+      "LLM-C": 2
+    },
+    "M_RecurringFee": {
+      "AUTHOR": 2,
+      "GOLD": 2,
+      "HUMAN-A": 2,
+      "HUMAN-B": 2,
+      "HUMAN-C": 2,
+      "LLM-A": 2,
+      "LLM-B": 2,
+      "LLM-C": 2
+    },
+    "M_Gambling": {
+      "AUTHOR": 5,
+      "GOLD": 4,
+      "HUMAN-A": 4,
+      "HUMAN-B": 3,
+      "HUMAN-C": 6,
+      "LLM-A": 2,
+      "LLM-B": 4,
+      "LLM-C": 5
+    },
+    "M_PowerCreep": {
+      "AUTHOR": 2,
+      "GOLD": 2,
+      "HUMAN-A": 2,
+      "HUMAN-B": 2,
+      "HUMAN-C": 2,
+      "LLM-A": 2,
+      "LLM-B": 2,
+      "LLM-C": 2
+    },
+    "M_WasteAversion": {
+      "AUTHOR": 3,
+      "GOLD": 3,
+      "HUMAN-A": 3,
+      "HUMAN-B": 3,
+      "HUMAN-C": 4,
+      "LLM-A": 2,
+      "LLM-B": 3,
+      "LLM-C": 4
+    },
+    "M_EasyToPurchase": {
+      "AUTHOR": 2,
+      "GOLD": 5,
+      "HUMAN-A": 6,
+      "HUMAN-B": 5,
+      "HUMAN-C": 4,
+      "LLM-A": 6,
+      "LLM-B": 3,
+      "LLM-C": 5
+    },
+    "M_UIMisdirection": {
+      "AUTHOR": 4,
+      "GOLD": 8,
+      "HUMAN-A": 7,
+      "HUMAN-B": 7,
+      "HUMAN-C": 9,
+      "LLM-A": 2,
+      "LLM-B": 4,
+      "LLM-C": 4
+    },
+    "M_NeverEndingLure": {
+      "AUTHOR": 3,
+      "GOLD": 3,
+      "HUMAN-A": 3,
+      "HUMAN-B": 3,
+      "HUMAN-C": 7,
+      "LLM-A": 1,
+      "LLM-B": 1,
+      "LLM-C": 1
+    },
+    "S_ForcedFellowship": {
+      "AUTHOR": 2,
+      "GOLD": 2,
+      "HUMAN-A": 2,
+      "HUMAN-B": 2,
+      "HUMAN-C": 5,
+      "LLM-A": 1,
+      "LLM-B": 1,
+      "LLM-C": 2
+    },
+    "S_FriendSpamImpersonation": {
+      "AUTHOR": 2,
+      "GOLD": 2,
+      "HUMAN-A": 2,
+      "HUMAN-B": 2,
+      "HUMAN-C": 1,
+      "LLM-A": 0,
+      "LLM-B": 1,
+      "LLM-C": 2
+    },
+    "S_Reciprocity": {
+      "AUTHOR": 4,
+      "GOLD": 5,
+      "HUMAN-A": 5,
+      "HUMAN-B": 3,
+      "HUMAN-C": 3,
+      "LLM-A": 1,
+      "LLM-B": 2,
+      "LLM-C": 2
+    },
+    "S_EncouragesAntiSocialBehavior": {
+      "AUTHOR": 2,
+      "GOLD": 2,
+      "HUMAN-A": 2,
+      "HUMAN-B": 2,
+      "HUMAN-C": 3,
+      "LLM-A": 2,
+      "LLM-B": 2,
+      "LLM-C": 2
+    },
+    "S_FearOfMissingOutFOMO": {
+      "AUTHOR": 2,
+      "GOLD": 2,
+      "HUMAN-A": 1,
+      "HUMAN-B": 2,
+      "HUMAN-C": 0,
+      "LLM-A": 2,
+      "LLM-B": 2,
+      "LLM-C": 2
+    },
+    "S_Competition": {
+      "AUTHOR": 7,
+      "GOLD": 11,
+      "HUMAN-A": 8,
+      "HUMAN-B": 6,
+      "HUMAN-C": 12,
+      "LLM-A": 4,
+      "LLM-B": 13,
+      "LLM-C": 15
+    },
+    "P_EasyToGetHardToLose": {
+      "AUTHOR": 3,
+      "GOLD": 5,
+      "HUMAN-A": 2,
+      "HUMAN-B": 4,
+      "HUMAN-C": 5,
+      "LLM-A": 3,
+      "LLM-B": 3,
+      "LLM-C": 3
+    },
+    "P_CompleteTheCollection": {
+      "AUTHOR": 2,
+      "GOLD": 2,
+      "HUMAN-A": 2,
+      "HUMAN-B": 2,
+      "HUMAN-C": 0,
+      "LLM-A": 3,
+      "LLM-B": 2,
+      "LLM-C": 3
+    },
+    "P_IllusionOfControl": {
+      "AUTHOR": 6,
+      "GOLD": 5,
+      "HUMAN-A": 5,
+      "HUMAN-B": 5,
+      "HUMAN-C": 5,
+      "LLM-A": 8,
+      "LLM-B": 4,
+      "LLM-C": 4
+    },
+    "P_AestheticManipulation": {
+      "AUTHOR": 2,
+      "GOLD": 2,
+      "HUMAN-A": 2,
+      "HUMAN-B": 1,
+      "HUMAN-C": 0,
+      "LLM-A": 1,
+      "LLM-B": 1,
+      "LLM-C": 1
+    },
+    "P_OptimismAndFrequencyBiases": {
+      "AUTHOR": 3,
+      "GOLD": 3,
+      "HUMAN-A": 3,
+      "HUMAN-B": 2,
+      "HUMAN-C": 4,
+      "LLM-A": 1,
+      "LLM-B": 1,
+      "LLM-C": 1
+    },
+    "P_RewardMania": {
+      "AUTHOR": 5,
+      "GOLD": 10,
+      "HUMAN-A": 6,
+      "HUMAN-B": 8,
+      "HUMAN-C": 1,
+      "LLM-A": 7,
+      "LLM-B": 7,
+      "LLM-C": 8
+    },
+    "Tech_FragmentedDownloads": {
+      "AUTHOR": 2,
+      "GOLD": 2,
+      "HUMAN-A": 2,
+      "HUMAN-B": 2,
+      "HUMAN-C": 2,
+      "LLM-A": 1,
+      "LLM-B": 1,
+      "LLM-C": 1
     }
-  }
+  },
+  "none": {
+    "all": 5,
+    "any": 25,
+    "split": 20,
+    "alpha": 0.5486142322097378,
+    "per_rater": {
+      "AUTHOR": 7,
+      "GOLD": 7,
+      "HUMAN-A": 8,
+      "HUMAN-B": 9,
+      "HUMAN-C": 5,
+      "LLM-A": 20,
+      "LLM-B": 18,
+      "LLM-C": 13
+    }
+  },
+  "vs_gold": {
+    "AUTHOR": {
+      "n": 75,
+      "tp": 106,
+      "fp": 5,
+      "fn": 31,
+      "micro_p": 0.954954954954955,
+      "micro_r": 0.7737226277372263,
+      "micro_f1": 0.8548387096774194,
+      "example_f1": 0.8592005772005769,
+      "exact_match": 0.6266666666666667
+    },
+    "HUMAN-A": {
+      "n": 75,
+      "tp": 112,
+      "fp": 11,
+      "fn": 25,
+      "micro_p": 0.9105691056910569,
+      "micro_r": 0.8175182481751825,
+      "micro_f1": 0.8615384615384616,
+      "example_f1": 0.8735026455026453,
+      "exact_match": 0.6533333333333333
+    },
+    "HUMAN-B": {
+      "n": 75,
+      "tp": 118,
+      "fp": 4,
+      "fn": 19,
+      "micro_p": 0.9672131147540983,
+      "micro_r": 0.8613138686131386,
+      "micro_f1": 0.911196911196911,
+      "example_f1": 0.9058412698412698,
+      "exact_match": 0.7333333333333333
+    },
+    "HUMAN-C": {
+      "n": 75,
+      "tp": 94,
+      "fp": 48,
+      "fn": 43,
+      "micro_p": 0.6619718309859155,
+      "micro_r": 0.6861313868613139,
+      "micro_f1": 0.6738351254480287,
+      "example_f1": 0.7220355940355938,
+      "exact_match": 0.4
+    },
+    "LLM-A": {
+      "n": 75,
+      "tp": 81,
+      "fp": 14,
+      "fn": 56,
+      "micro_p": 0.8526315789473684,
+      "micro_r": 0.5912408759124088,
+      "micro_f1": 0.6982758620689655,
+      "example_f1": 0.6398730158730157,
+      "exact_match": 0.4
+    },
+    "LLM-B": {
+      "n": 75,
+      "tp": 94,
+      "fp": 12,
+      "fn": 43,
+      "micro_p": 0.8867924528301887,
+      "micro_r": 0.6861313868613139,
+      "micro_f1": 0.7736625514403294,
+      "example_f1": 0.7041904761904763,
+      "exact_match": 0.4533333333333333
+    },
+    "LLM-C": {
+      "n": 75,
+      "tp": 102,
+      "fp": 16,
+      "fn": 35,
+      "micro_p": 0.864406779661017,
+      "micro_r": 0.7445255474452555,
+      "micro_f1": 0.7999999999999999,
+      "example_f1": 0.7416652236652236,
+      "exact_match": 0.49333333333333335
+    }
+  },
+  "warnings": [
+    "GOLD is the adjudicated consensus of AUTHOR and the HUMAN coders. Any panel containing GOLD measures distance to consensus, not inter-rater reliability.",
+    "2 LLM raters share the model gpt-5.6-luna; alpha across them is self-consistency under a setting change, not independent agreement."
+  ]
 }

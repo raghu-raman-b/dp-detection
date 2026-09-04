@@ -409,7 +409,7 @@
           <li>Load <code>validation_set.jsonl</code> — the file <b>with</b> <code>actual_labels</code>,
               not the blind one.</li>
           <li>Say how many coders you are fusing.</li>
-          <li>Add each coder's <code>coder_&lt;id&gt;_&lt;stamp&gt;.jsonl</code>
+          <li>Add each coder's <code>coder_&lt;id&gt;.jsonl</code>
               from <code>dp_coder.html</code>.</li>
           <li>Rule each review; export <code>gold_set.jsonl</code>.</li>
         </ol>
@@ -531,7 +531,7 @@
    build_input.py. Retyping it is how the 29 codes silently drift.
 
    INPUT   validation_set.jsonl  (build_validation_set.py, OUT)
-         + N x coder_<id>_<stamp>.jsonl  (dp_coder.html, Download labels)
+         + N x coder_<id>.jsonl  (dp_coder.html, Download labels)
    OUTPUT  gold_set.jsonl / gold_set_blind.jsonl  — byte-compatible with
            build_validation_set.py's own output, so the teacher runners,
            compute_run_stats.py and compare_runs.py consume them unchanged.
@@ -838,9 +838,9 @@ function deriveCoderId(objs, filename){
     names.sort((a,b) => counts[b] - counts[a]);
     return { id: names[0], alternatives: names.slice(1) };
   }
-  /* fall back to the filename: coder_<id>_<YYYY-MM-DD-HH-MM-SS>.jsonl */
+  /* fall back to the filename: coder_<id>.jsonl */
   let base = String(filename).replace(/\.(jsonl|json|txt)$/i, "");
-  base = base.replace(/^coder[_-]/i, "").replace(/[_-]\d{4}-\d{2}-\d{2}-\d{2}-\d{2}-\d{2}$/, "");
+  base = base.replace(/^coder[_-]/i, "");
   return { id: slug(base), alternatives: [] };
 }
 

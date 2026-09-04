@@ -1,0 +1,91 @@
+{
+  "query": "Monopoly GO what are gold stickers and duplicate gold stickers",
+  "sent_query": "Monopoly GO what are gold stickers and duplicate gold stickers",
+  "query_hash": "975dd491dff6ebc8",
+  "answer": "Gold stickers in Monopoly GO are rare and can be traded during Golden Blitz events. Duplicate gold stickers convert to Sticker Stars for rewards. Trade up to five duplicates for Sticker Stars.",
+  "sources": [
+    {
+      "title": "How to Get Free Gold Stickers For Monopoly GO",
+      "url": "https://www.u4gm.com/monopoly-go/blog-how-to-get-free-gold-stickers-for-monopoly-go",
+      "host": "u4gm.com"
+    },
+    {
+      "title": "All about stickers in Monopoly Go",
+      "url": "https://play.google.com/store/apps/editorial?id=mc_games_editorialevergreen_monopoly_go_all_about_stickers_postinstall_fcp&hl=en_US",
+      "host": "play.google.com"
+    },
+    {
+      "title": "Buy Monopoly Go Stickers - 1 To 6 Stars Cards Fast & Cheap",
+      "url": "https://www.ezg.com/monopoly-go/stickers",
+      "host": "ezg.com"
+    },
+    {
+      "title": "Can anyone explain to me how the golden stickers ...",
+      "url": "https://www.reddit.com/r/Monopoly_GO/comments/1g7gjgo/can_anyone_explain_to_me_how_the_golden_stickers",
+      "host": "reddit.com"
+    },
+    {
+      "title": "What to do with duplicate golden stars and when to open ...",
+      "url": "https://www.facebook.com/groups/935040604232613/posts/1975964166806913",
+      "host": "facebook.com"
+    }
+  ],
+  "backend": "tavily",
+  "cached": false,
+  "cost_usd": 0.008,
+  "latency_s": 3.837,
+  "n_results": 5,
+  "domains": [],
+  "error": null,
+  "ts": "2026-09-04T13:49:05+00:00",
+  "raw": {
+    "query": "Monopoly GO what are gold stickers and duplicate gold stickers",
+    "follow_up_questions": null,
+    "answer": "Gold stickers in Monopoly GO are rare and can be traded during Golden Blitz events. Duplicate gold stickers convert to Sticker Stars for rewards. Trade up to five duplicates for Sticker Stars.",
+    "images": [],
+    "results": [
+      {
+        "url": "https://www.u4gm.com/monopoly-go/blog-how-to-get-free-gold-stickers-for-monopoly-go",
+        "title": "How to Get Free Gold Stickers For Monopoly GO",
+        "content": "But gold stickers are the rarest of them all. Duplicate stickers turn into Sticker Stars, which can be redeemed for random packs.",
+        "score": 0.87348515,
+        "raw_content": null,
+        "id": "5f2d6f-00"
+      },
+      {
+        "url": "https://play.google.com/store/apps/editorial?id=mc_games_editorialevergreen_monopoly_go_all_about_stickers_postinstall_fcp&hl=en_US",
+        "title": "All about stickers in Monopoly Go",
+        "content": "1–3 star stickers: Most common, available in green, yellow, and pink packs. You can trade them frequently or convert duplicates into sticker stars.\n 4–5 star stickers: Rarer. Often appear in blue and purple packs.\n Gold stickers: Extremely rare, typically found in higher-tier packs or events like Golden Blitz. Gold stickers offer extra rewards and only trade within limited windows. [...] You can trade up to five duplicate stickers with your friends. Golden stickers can be traded only during Golden Blitz events. Make in-game friends to start trading and complete your Sticker Album much faster.\n\nStickers in Monopoly Go come in various rarities, drive rewards, and serve as a strategic collectible system. With this guide, you’ll complete albums faster, cash in on richer rewards, and gain an edge in your game progress.\n\nIcon image\n\nMONOPOLY GO!\n\nScopely\n\nIn-app purchases\n\n4.7star [...] You can use duplicate stickers either for trading or for rewards. Duplicate stickers show up as sticker stars based on their rarity (e.g. a 5-star duplicate appears as 5 stars). Tap the safe icon in your album to trade sticker stars for vault rewards:",
+        "score": 0.8464638,
+        "raw_content": null,
+        "id": "25faec-01"
+      },
+      {
+        "url": "https://www.ezg.com/monopoly-go/stickers",
+        "title": "Buy Monopoly Go Stickers - 1 To 6 Stars Cards Fast & Cheap",
+        "content": "Those with duplicate Golden Stickers can also take advantage of the event to exchange them for the stickers they need.",
+        "score": 0.75355774,
+        "raw_content": null,
+        "id": "800c06-02"
+      },
+      {
+        "url": "https://www.reddit.com/r/Monopoly_GO/comments/1g7gjgo/can_anyone_explain_to_me_how_the_golden_stickers",
+        "title": "Can anyone explain to me how the golden stickers ...",
+        "content": "gold stickers are worth x2 stars (you can see it in the vault where you have dupes). so sometimes there are people who want 1:1, which means a",
+        "score": 0.66621506,
+        "raw_content": null,
+        "id": "a8d060-03"
+      },
+      {
+        "url": "https://www.facebook.com/groups/935040604232613/posts/1975964166806913",
+        "title": "What to do with duplicate golden stars and when to open ...",
+        "content": "2 Questions.... (1) So I'm pretty sure there's not going to be any more golden blitz for 4 stars So I'm assuming the duplicate golden stars I have I'm basically",
+        "score": 0.13225682,
+        "raw_content": null,
+        "id": "57ad8d-04"
+      }
+    ],
+    "response_time": 1.6,
+    "request_id": "f7ebb7d2-3827-4c44-b91e-b51f76ab28f6"
+  }
+}

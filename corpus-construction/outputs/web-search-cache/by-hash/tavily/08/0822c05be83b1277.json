@@ -1,0 +1,91 @@
+{
+  "query": "Genshin Impact pulling gacha characters what does pull mean",
+  "sent_query": "Genshin Impact pulling gacha characters what does pull mean",
+  "query_hash": "0822c05be83b1277",
+  "answer": "In Genshin Impact, a \"pull\" means using currency to try to obtain a character or weapon from a gacha banner. Each pull is a chance to receive a random item. After 90 pulls, you are guaranteed a 5-star item.",
+  "sources": [
+    {
+      "title": "What are pulls in Genshin? Are they the same as wishes? - Reddit",
+      "url": "https://www.reddit.com/r/Genshin_Impact/comments/1f0j4gp/what_are_pulls_in_genshin_are_they_the_same_as",
+      "host": "reddit.com"
+    },
+    {
+      "title": "Hello guys. I'm new to this game. I wanted to ask about the wishes ...",
+      "url": "https://www.facebook.com/groups/genshinimpactofficial/posts/2089068168203305",
+      "host": "facebook.com"
+    },
+    {
+      "title": "Gacha games explained: Banners, pulls, pity systems, and more - Epic Games Store",
+      "url": "https://store.epicgames.com/news/gacha-games-explained-banners-pulls-pity-systems-and-more?lang=en-US",
+      "host": "store.epicgames.com"
+    },
+    {
+      "title": "Pity System in Banners Explained | Wish Guarantee Guide | Genshin Impact｜Game8",
+      "url": "https://game8.co/games/Genshin-Impact/archives/305937",
+      "host": "game8.co"
+    },
+    {
+      "title": "When to PULL and when NOT to PULL for a Character - YouTube",
+      "url": "https://www.youtube.com/watch?v=-anaGbGG-F0",
+      "host": "youtube.com"
+    }
+  ],
+  "backend": "tavily",
+  "cached": false,
+  "cost_usd": 0.008,
+  "latency_s": 2.427,
+  "n_results": 5,
+  "domains": [],
+  "error": null,
+  "ts": "2026-09-04T10:18:24+00:00",
+  "raw": {
+    "query": "Genshin Impact pulling gacha characters what does pull mean",
+    "follow_up_questions": null,
+    "answer": "In Genshin Impact, a \"pull\" means using currency to try to obtain a character or weapon from a gacha banner. Each pull is a chance to receive a random item. After 90 pulls, you are guaranteed a 5-star item.",
+    "images": [],
+    "results": [
+      {
+        "url": "https://www.reddit.com/r/Genshin_Impact/comments/1f0j4gp/what_are_pulls_in_genshin_are_they_the_same_as",
+        "title": "What are pulls in Genshin? Are they the same as wishes? - Reddit",
+        "content": "A \"Pull\" is a common term in gacha games, it's basically wishes and is the same thing. You might also hear people call it a \"roll\" as well.",
+        "score": 0.8058924,
+        "raw_content": null,
+        "id": "534e10-00"
+      },
+      {
+        "url": "https://www.facebook.com/groups/genshinimpactofficial/posts/2089068168203305",
+        "title": "Hello guys. I'm new to this game. I wanted to ask about the wishes ...",
+        "content": "Never played a gacha before? Because a \"pull\" is just each wish you make to try and get a character. And the rest there's a quick guide picture",
+        "score": 0.7890553,
+        "raw_content": null,
+        "id": "0c03be-01"
+      },
+      {
+        "url": "https://store.epicgames.com/news/gacha-games-explained-banners-pulls-pity-systems-and-more?lang=en-US",
+        "title": "Gacha games explained: Banners, pulls, pity systems, and more - Epic Games Store",
+        "content": "Pulls are the colloquial term for the number of chances you have to turn the knob on the proverbial capsule machine. Gacha games use exchangeable items like stars, passes, and tickets as the pulls for its banners. They all mean the same thing: one item from the banner. One toy from the capsule machine. [...] Gacha games incorporate randomized items from banners at the heart of their progression systems. You can enjoy the core part of a game like _Fortnite_ without engaging with monetized items, but five-star _Genshin Impact_ characters undeniably make combat challenges easier to complete. Your team will depend on the characters you receive from the banner. [...] ## What are gacha games?\n\nImage 3: Infinity Nikki Visual 1\n\n Gacha games revolve around similarly randomized prizes. While _Genshin Impact_ will promote limited-time characters to add to your team every six weeks or so, _Infinity Nikki_ will tempt you with beautiful limited-time outfits to dress your character in from head to toe. It just depends on the goal of the game, whether that’s to build a super-strong team to bulldoze bosses or something else.",
+        "score": 0.6786044,
+        "raw_content": null,
+        "id": "08fb28-02"
+      },
+      {
+        "url": "https://game8.co/games/Genshin-Impact/archives/305937",
+        "title": "Pity System in Banners Explained | Wish Guarantee Guide | Genshin Impact｜Game8",
+        "content": "|  |\n\n| Genshin Impact - Epitome Invocation Gacha and Wish Guide |\n| Epitome Invocation |\n| Available Until | 2026/08/11 14:59 Server Time |\n| Featured Weapons |\n| Nocturne Nocturne's Curtain Call | Engulfing Lightning Image Engulfing Lightning |\n| Sacrificial Sword Image Sacrificial Sword | Favonius Warbow Image Favonius Warbow |\n| Favonius Lance Image Favonius Lance | The Bell Image The Bell |\n| Waveriding Whirl Image Waveriding Whirl |\n\n#### Pulls to guarantee a weapon with pity [...] Genshin - Get Pity pulls for featured characters or items   \nWhen you get a 4-star or 5-star drop, there's a 50% chance it will either be a featured character or weapon in the limited banner, or a standard character or weapon. This is commonly known amongst players as the 50/50 System. [...] #### Pulls to guarantee a character with pity\n\n| Reward | # To Trigger Pity System | Primogem |\n --- \n| 5-Star Guaranteed | 90 Wishes | 14,400 Primogems |\n| 4-Star Guaranteed | 10 Wishes | 1,600 Primogems |\n\n## Genshin Impact Related Guides\n\nAll Gacha (Wish) Guides\n\n### List of Gacha (Wish) Guides",
+        "score": 0.5954225,
+        "raw_content": null,
+        "id": "ba18e3-03"
+      },
+      {
+        "url": "https://www.youtube.com/watch?v=-anaGbGG-F0",
+        "title": "When to PULL and when NOT to PULL for a Character - YouTube",
+        "content": "When should you pull and when should you not pull for the character in the gacha? That is the question. For today's video, we will be",
+        "score": 0.23251961,
+        "raw_content": null,
+        "id": "7097ce-04"
+      }
+    ],
+    "response_time": 1.46,
+    "request_id": "fc2cde72-32fb-4f36-b0fe-6785aa46a195"
+  }
+}

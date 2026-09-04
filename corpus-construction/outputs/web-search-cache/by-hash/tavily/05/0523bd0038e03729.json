@@ -1,0 +1,91 @@
+{
+  "query": "Evony The King's Return does it have puzzles",
+  "sent_query": "Evony The King's Return does it have puzzles",
+  "query_hash": "0523bd0038e03729",
+  "answer": "Evony The King's Return features puzzles as part of its gameplay. Some puzzles have been replaced with other mini-games. The game still includes puzzle challenges for rewards.",
+  "sources": [
+    {
+      "title": "Evony: The King's Return - Walkthrough & Tips - Talk Android",
+      "url": "https://www.talkandroid.com/43154-evony-the-kings-return-walkthrough",
+      "host": "talkandroid.com"
+    },
+    {
+      "title": "Play puzzles and win lots of treasures. | Evony - The King's Return",
+      "url": "https://www.facebook.com/Evony.The.Kings.Return/videos/challenge-the-puzzle-now/1182434727204647",
+      "host": "facebook.com"
+    },
+    {
+      "title": "Puzzles are gone : r/Evony_TKR - Reddit",
+      "url": "https://www.reddit.com/r/Evony_TKR/comments/16js6h3/puzzles_are_gone",
+      "host": "reddit.com"
+    },
+    {
+      "title": "Evony the king's return - newly updated puzzles gameplay with all ...",
+      "url": "https://www.youtube.com/watch?v=4nRioZTyvEs",
+      "host": "youtube.com"
+    },
+    {
+      "title": "EVONY: the kings return - 20) puzzles SOLUTIONS gameplay [Android iOS]",
+      "url": "https://www.youtube.com/watch?v=FMKQzROTqb8",
+      "host": "youtube.com"
+    }
+  ],
+  "backend": "tavily",
+  "cached": false,
+  "cost_usd": 0.008,
+  "latency_s": 2.208,
+  "n_results": 5,
+  "domains": [],
+  "error": null,
+  "ts": "2026-09-04T13:03:07+00:00",
+  "raw": {
+    "query": "Evony The King's Return does it have puzzles",
+    "follow_up_questions": null,
+    "answer": "Evony The King's Return features puzzles as part of its gameplay. Some puzzles have been replaced with other mini-games. The game still includes puzzle challenges for rewards.",
+    "images": [],
+    "results": [
+      {
+        "url": "https://www.talkandroid.com/43154-evony-the-kings-return-walkthrough",
+        "title": "Evony: The King's Return - Walkthrough & Tips - Talk Android",
+        "content": "The game is famous for its head-scratching puzzles. Puzzles are essentially a mini-game in Evony, There are two puzzle features you can play.",
+        "score": 0.8865877,
+        "raw_content": null,
+        "id": "407df1-00"
+      },
+      {
+        "url": "https://www.facebook.com/Evony.The.Kings.Return/videos/challenge-the-puzzle-now/1182434727204647",
+        "title": "Play puzzles and win lots of treasures. | Evony - The King's Return",
+        "content": "Play puzzles and win lots of treasures.",
+        "score": 0.86331123,
+        "raw_content": null,
+        "id": "f99b26-01"
+      },
+      {
+        "url": "https://www.reddit.com/r/Evony_TKR/comments/16js6h3/puzzles_are_gone",
+        "title": "Puzzles are gone : r/Evony_TKR - Reddit",
+        "content": "Hi, it seems that in the latest version of the game we have no longer the puzzles but a shooting barrels minigames.",
+        "score": 0.854509,
+        "raw_content": null,
+        "id": "939236-02"
+      },
+      {
+        "url": "https://www.youtube.com/watch?v=4nRioZTyvEs",
+        "title": "Evony the king's return - newly updated puzzles gameplay with all ...",
+        "content": "Evony the king's return - newly updated puzzles gameplay with all solutions this video contains the solutions for Evony the Kings return",
+        "score": 0.75421005,
+        "raw_content": null,
+        "id": "aaec10-03"
+      },
+      {
+        "url": "https://www.youtube.com/watch?v=FMKQzROTqb8",
+        "title": "EVONY: the kings return - 20) puzzles SOLUTIONS gameplay [Android iOS]",
+        "content": "... commission that can help support the channel and allow me to continue creating contents like this. Thanks for support! #hulksdengaming #evony",
+        "score": 0.69820654,
+        "raw_content": null,
+        "id": "52691b-04"
+      }
+    ],
+    "response_time": 1.23,
+    "request_id": "4dd2ad7c-c8ea-4423-89bc-b4b448176194"
+  }
+}

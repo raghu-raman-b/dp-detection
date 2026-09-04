@@ -1,0 +1,260 @@
+============================================================================================
+PROVIDER / MODEL COMPARISON
+============================================================================================
+generated=2026-09-04T18:12:55
+tag=prompt_sweep_low
+index=../outputs/run-stats/index.jsonl
+runs=4 of_34_in_index
+ranked_on=micro_f1
+CONCURRENCY=1 PROJECT_TO=200000 BOOTSTRAP_N=2000 MIN_SUPPORT=3
+
+--------------------------------------------------------------------------------------------
+FLAGS
+--------------------------------------------------------------------------------------------
+GATE=pass
+GATE_MODE=explicit
+GOLD_UNIFORM=true
+N_DISQUALIFIED=0
+N_GATE_FAILURES=0
+PROMPT_UNIFORM=false
+
+--------------------------------------------------------------------------------------------
+RUN METADATA
+--------------------------------------------------------------------------------------------
+  run_id                                model         effort  prompt_name          prompt_sha    seed  temperature  max_tokens  eval_set_n  codebook_version  started_at           finished_at          
+                                                                                                                                n                                                                       
+  gpt-5.6-luna_low_teacher_v2_full      gpt-5.6-luna  low     teacher_v2_full      6529a474a2b0  n/a   n/a          8192        50          0.20              2026-08-22T18:50:17  2026-08-22T19:01:29  
+  gpt-5.6-luna_low_teacher_v2_boundary  gpt-5.6-luna  low     teacher_v2_boundary  013bb31c5857  n/a   n/a          8192        50          0.20              2026-08-22T17:51:59  2026-08-22T17:57:47  
+  gpt-5.6-luna_low_teacher_v1           gpt-5.6-luna  low     teacher_v1           e8cd52987c33  n/a   n/a          8192        50          0.20              2026-08-22T18:27:58  2026-08-22T18:38:08  
+  gpt-5.6-luna_low_teacher_v2_bare      gpt-5.6-luna  low     teacher_v2_bare      ecd3c1810cf2  n/a   n/a          8192        50          0.20              2026-08-22T18:05:04  2026-08-22T18:09:54  
+
+--------------------------------------------------------------------------------------------
+COMPLIANCE GATE FAILURES
+--------------------------------------------------------------------------------------------
+  (none)
+
+--------------------------------------------------------------------------------------------
+LEADERBOARD
+--------------------------------------------------------------------------------------------
+  rank  run_id                                d_top   microF1  P      R      clsMac  mesoMac  allMac  exact  Jaccard  MASI   NoneP  NoneR  $/rev     $/200k  p50  p95   wallclk_h  tok_in  tok_out  var    
+                                              F1      F1       F1     F1     F1      F1       F1      rate   0-1      0-1    0-1    0-1    USD       USD     s    s     h@200k     n/rev   n/rev           
+  1     gpt-5.6-luna_low_teacher_v2_full      +0.000  0.843    0.875  0.814  0.741   0.884    0.674   0.620  0.778    0.716  0.727  0.800  $0.00126  $253    8.1  17.7  535.6      25725   479      false  
+  2     gpt-5.6-luna_low_teacher_v2_boundary  -0.049  0.794    0.967  0.674  0.691   0.813    0.533   0.540  0.724    0.660  0.588  1.000  $0.00102  $204    6.4  11.6  386.7      19344   430      false  
+  3     gpt-5.6-luna_low_teacher_v1           -0.054  0.789    0.909  0.698  0.678   0.814    0.603   0.560  0.714    0.650  0.600  0.900  $0.00105  $210    8.2  19.0  531.7      24351   353      false  
+  4     gpt-5.6-luna_low_teacher_v2_bare      -0.181  0.662    0.868  0.535  0.610   0.547    0.384   0.460  0.628    0.566  0.556  1.000  $0.00079  $157    5.5  10.8  321.7      12118   386      false  
+
+--------------------------------------------------------------------------------------------
+PARETO -- micro_f1 vs projected_usd_at_200000
+--------------------------------------------------------------------------------------------
+  run_id                                micro_f1  projected_usd_at_200000  
+                                        F1        USD                      
+  gpt-5.6-luna_low_teacher_v2_bare      0.662     $157                     
+  gpt-5.6-luna_low_teacher_v2_boundary  0.794     $204                     
+  gpt-5.6-luna_low_teacher_v2_full      0.843     $253                     
+  dominated=gpt-5.6-luna_low_teacher_v1
+
+--------------------------------------------------------------------------------------------
+PARETO -- micro_f1 vs wall_clock_hours_at_200k
+--------------------------------------------------------------------------------------------
+  run_id                                micro_f1  wall_clock_hours_at_200k  
+                                        F1        h@200k                    
+  gpt-5.6-luna_low_teacher_v2_bare      0.662     321.7                     
+  gpt-5.6-luna_low_teacher_v2_boundary  0.794     386.7                     
+  gpt-5.6-luna_low_teacher_v2_full      0.843     535.6                     
+  dominated=gpt-5.6-luna_low_teacher_v1
+
+--------------------------------------------------------------------------------------------
+SIGNIFICANCE  n_resamples=2000 shared_n=50
+SIG_THRESHOLD=0.95 GREY_ZONE=[0.05,0.95]
+--------------------------------------------------------------------------------------------
+  run_id                                ci_lo  ci_hi  ci_width  
+                                        F1     F1     F1        
+  gpt-5.6-luna_low_teacher_v2_full      0.777  0.902  0.125     
+  gpt-5.6-luna_low_teacher_v2_boundary  0.723  0.857  0.134     
+  gpt-5.6-luna_low_teacher_v1           0.708  0.861  0.153     
+  gpt-5.6-luna_low_teacher_v2_bare      0.571  0.741  0.170     
+
+  pairwise: P(row beats column) over resamples
+                        gpt-5.6-luna_low  gpt-5.6-luna_low  gpt-5.6-luna_low  gpt-5.6-luna_low  
+    gpt-5.6-luna_low_t  -                 0.93 (+0.050)     0.98 (+0.056)     1.00 (+0.184)     
+    gpt-5.6-luna_low_t  0.07 (-0.050)     -                 0.56 (+0.006)     1.00 (+0.134)     
+    gpt-5.6-luna_low_t  0.02 (-0.056)     0.44 (-0.006)     -                 1.00 (+0.128)     
+    gpt-5.6-luna_low_t  0.00 (-0.184)     0.00 (-0.134)     0.00 (-0.128)     -                 
+
+MDE_AT_N=0.057
+
+--------------------------------------------------------------------------------------------
+UNIVERSAL FALSE NEGATIVES
+--------------------------------------------------------------------------------------------
+  P_AestheticManipulation              n=2 review_ids=12267c1e-47ba-4984-97c8-768e820ceb1c,b93c432d-19c0-4c6c-a2d4-bb9b21a436f3
+  M_PayToProgress                      n=2 review_ids=3c46f5e0-6091-43dc-94a0-e3af3259a63d,8d13a3c1-1982-45db-a2b4-07c61c41ba2a
+  S_Reciprocity                        n=2 review_ids=490ca53d-66fe-44b0-928f-ea2ba6682f0b,b580a4c7-3c75-493e-ad3b-03b4f2bde6a5
+  M_EasyToPurchase                     n=1 review_ids=12267c1e-47ba-4984-97c8-768e820ceb1c
+  T_MandatoryMarathon                  n=1 review_ids=176aaa1f-d8f9-4a1a-9f29-64902f13be5c
+  M_WasteAversion                      n=1 review_ids=3c46f5e0-6091-43dc-94a0-e3af3259a63d
+  M_DeceptiveLuxury                    n=1 review_ids=73423b22-395c-49ed-8fc3-488a0b7680df
+  M_IntermediateCurrency               n=1 review_ids=7b564746-b769-4856-b686-529f8717c3ba
+  P_RewardMania                        n=1 review_ids=cc714d17-863c-4ebd-b14f-989ba17c71c4
+  P_OptimismAndFrequencyBiases         n=1 review_ids=fd1230ab-7d12-4aeb-a425-e37ed06bcd5c
+  M_Gambling                           n=1 review_ids=fdef27f2-9a21-4b8e-a04c-7a4753e0fb07
+
+--------------------------------------------------------------------------------------------
+UNIVERSAL FALSE POSITIVES
+--------------------------------------------------------------------------------------------
+  (none)
+
+--------------------------------------------------------------------------------------------
+CROSS-RUN CONSENSUS
+--------------------------------------------------------------------------------------------
+unanimity_rate=0.360 n_unanimous_but_wrong=3
+unanimous_but_wrong_review_ids=490ca53d-66fe-44b0-928f-ea2ba6682f0b,7b564746-b769-4856-b686-529f8717c3ba,8d13a3c1-1982-45db-a2b4-07c61c41ba2a
+top_entropy_reviews:
+  review_id                             entropy_bits  n_exact_match_gold  
+                                        bits          n_runs              
+  0bc09fc3-6436-4a24-855e-0fdc56887918  2.000         1                   
+  5e6a5625-5291-4f0e-897c-1b63c1a26494  2.000         1                   
+  a2ece36d-c527-442d-8f18-9a16b63994c8  2.000         1                   
+  fd1230ab-7d12-4aeb-a425-e37ed06bcd5c  2.000         0                   
+  176aaa1f-d8f9-4a1a-9f29-64902f13be5c  1.500         0                   
+  33c422de-1a84-4df9-accd-cdf8bfc96295  1.500         2                   
+  549e5e94-9b59-477d-88c7-ae5e00d62514  1.500         1                   
+  727cc804-9d4b-48ef-8774-2799a2a8de08  1.500         1                   
+  b2dc0bc8-8ebe-4c48-bc05-38d0d65acb84  1.500         2                   
+  b93c432d-19c0-4c6c-a2d4-bb9b21a436f3  1.500         0                   
+
+--------------------------------------------------------------------------------------------
+MESO CONFUSION
+--------------------------------------------------------------------------------------------
+  class  swap_count  
+         n           
+  M      31          
+  P      19          
+  S      5           
+top substitutions:
+  class  gold_label                    pred_label               n  
+                                                                   
+  P      P_AestheticManipulation       P_CompleteTheCollection  8  
+  P      P_RewardMania                 P_CompleteTheCollection  7  
+  M      M_DeceptiveLuxury             M_PayToProgress          6  
+  M      M_IntermediateCurrency        M_PayToProgress          4  
+  M      M_Gambling                    M_UIMisdirection         4  
+  S      S_Reciprocity                 S_Competition            3  
+  M      M_Gambling                    M_PayToProgress          3  
+  M      M_Gambling                    M_IntermediateCurrency   3  
+  M      M_PowerCreep                  M_PayToProgress          3  
+  M      M_EasyToPurchase              M_PayToProgress          2  
+  P      P_AestheticManipulation       P_RewardMania            2  
+  P      P_OptimismAndFrequencyBiases  P_IllusionOfControl      2  
+  M      M_EasyToPurchase              M_WasteAversion          1  
+  M      M_WasteAversion               M_Gambling               1  
+  M      M_PayToProgress               M_Gambling               1  
+
+--------------------------------------------------------------------------------------------
+PREVALENCE  gold_consistent=true
+--------------------------------------------------------------------------------------------
+  label                           gold_n  run_1                                         run_2                                             run_3                                    run_4                                         
+                                                                                                                                                                                                                                 
+  M_PayToProgress                 18      gpt-5.6-luna_low_teacher_v2_full:18/1.000/+0  gpt-5.6-luna_low_teacher_v2_boundary:16/0.889/-2  gpt-5.6-luna_low_teacher_v1:18/1.000/+0  gpt-5.6-luna_low_teacher_v2_bare:16/0.889/-2  
+  S_Competition                   8       gpt-5.6-luna_low_teacher_v2_full:9/1.125/+1   gpt-5.6-luna_low_teacher_v2_boundary:6/0.750/-2   gpt-5.6-luna_low_teacher_v1:7/0.875/-1   gpt-5.6-luna_low_teacher_v2_bare:7/0.875/-1   
+  T_PlayingByAppointment          7       gpt-5.6-luna_low_teacher_v2_full:7/1.000/+0   gpt-5.6-luna_low_teacher_v2_boundary:7/1.000/+0   gpt-5.6-luna_low_teacher_v1:6/0.857/-1   gpt-5.6-luna_low_teacher_v2_bare:4/0.571/-3   
+  P_RewardMania                   6       gpt-5.6-luna_low_teacher_v2_full:5/0.833/-1   gpt-5.6-luna_low_teacher_v2_boundary:4/0.667/-2   gpt-5.6-luna_low_teacher_v1:3/0.500/-3   gpt-5.6-luna_low_teacher_v2_bare:0/0.000/-6   
+  P_CompleteTheCollection         5       gpt-5.6-luna_low_teacher_v2_full:5/1.000/+0   gpt-5.6-luna_low_teacher_v2_boundary:5/1.000/+0   gpt-5.6-luna_low_teacher_v1:5/1.000/+0   gpt-5.6-luna_low_teacher_v2_bare:5/1.000/+0   
+  T_Grinding                      5       gpt-5.6-luna_low_teacher_v2_full:4/0.800/-1   gpt-5.6-luna_low_teacher_v2_boundary:4/0.800/-1   gpt-5.6-luna_low_teacher_v1:3/0.600/-2   gpt-5.6-luna_low_teacher_v2_bare:6/1.200/+1   
+  M_IntermediateCurrency          4       gpt-5.6-luna_low_teacher_v2_full:3/0.750/-1   gpt-5.6-luna_low_teacher_v2_boundary:1/0.250/-3   gpt-5.6-luna_low_teacher_v1:2/0.500/-2   gpt-5.6-luna_low_teacher_v2_bare:1/0.250/-3   
+  M_UIMisdirection                3       gpt-5.6-luna_low_teacher_v2_full:3/1.000/+0   gpt-5.6-luna_low_teacher_v2_boundary:3/1.000/+0   gpt-5.6-luna_low_teacher_v1:3/1.000/+0   gpt-5.6-luna_low_teacher_v2_bare:2/0.667/-1   
+  P_IllusionOfControl             3       gpt-5.6-luna_low_teacher_v2_full:3/1.000/+0   gpt-5.6-luna_low_teacher_v2_boundary:2/0.667/-1   gpt-5.6-luna_low_teacher_v1:3/1.000/+0   gpt-5.6-luna_low_teacher_v2_bare:0/0.000/-3   
+  S_Reciprocity                   3       gpt-5.6-luna_low_teacher_v2_full:1/0.333/-2   gpt-5.6-luna_low_teacher_v2_boundary:1/0.333/-2   gpt-5.6-luna_low_teacher_v1:1/0.333/-2   gpt-5.6-luna_low_teacher_v2_bare:0/0.000/-3   
+  M_DeceptiveLuxury               2       gpt-5.6-luna_low_teacher_v2_full:1/0.500/-1   gpt-5.6-luna_low_teacher_v2_boundary:0/0.000/-2   gpt-5.6-luna_low_teacher_v1:1/0.500/-1   gpt-5.6-luna_low_teacher_v2_bare:1/0.500/-1   
+  M_EasyToPurchase                2       gpt-5.6-luna_low_teacher_v2_full:1/0.500/-1   gpt-5.6-luna_low_teacher_v2_boundary:1/0.500/-1   gpt-5.6-luna_low_teacher_v1:1/0.500/-1   gpt-5.6-luna_low_teacher_v2_bare:0/0.000/-2   
+  M_Gambling                      2       gpt-5.6-luna_low_teacher_v2_full:2/1.000/+0   gpt-5.6-luna_low_teacher_v2_boundary:1/0.500/-1   gpt-5.6-luna_low_teacher_v1:0/0.000/-2   gpt-5.6-luna_low_teacher_v2_bare:0/0.000/-2   
+  M_PowerCreep                    2       gpt-5.6-luna_low_teacher_v2_full:3/1.500/+1   gpt-5.6-luna_low_teacher_v2_boundary:1/0.500/-1   gpt-5.6-luna_low_teacher_v1:1/0.500/-1   gpt-5.6-luna_low_teacher_v2_bare:1/0.500/-1   
+  M_WasteAversion                 2       gpt-5.6-luna_low_teacher_v2_full:3/1.500/+1   gpt-5.6-luna_low_teacher_v2_boundary:0/0.000/-2   gpt-5.6-luna_low_teacher_v1:1/0.500/-1   gpt-5.6-luna_low_teacher_v2_bare:1/0.500/-1   
+  P_AestheticManipulation         2       gpt-5.6-luna_low_teacher_v2_full:0/0.000/-2   gpt-5.6-luna_low_teacher_v2_boundary:0/0.000/-2   gpt-5.6-luna_low_teacher_v1:0/0.000/-2   gpt-5.6-luna_low_teacher_v2_bare:0/0.000/-2   
+  T_Advertisement                 2       gpt-5.6-luna_low_teacher_v2_full:2/1.000/+0   gpt-5.6-luna_low_teacher_v2_boundary:1/0.500/-1   gpt-5.6-luna_low_teacher_v1:2/1.000/+0   gpt-5.6-luna_low_teacher_v2_bare:1/0.500/-1   
+  T_DailyRewards                  2       gpt-5.6-luna_low_teacher_v2_full:2/1.000/+0   gpt-5.6-luna_low_teacher_v2_boundary:2/1.000/+0   gpt-5.6-luna_low_teacher_v1:2/1.000/+0   gpt-5.6-luna_low_teacher_v2_bare:2/1.000/+0   
+  M_RecurringFee                  1       gpt-5.6-luna_low_teacher_v2_full:1/1.000/+0   gpt-5.6-luna_low_teacher_v2_boundary:1/1.000/+0   gpt-5.6-luna_low_teacher_v1:0/0.000/-1   gpt-5.6-luna_low_teacher_v2_bare:1/1.000/+0   
+  P_EasyToGetHardToLose           1       gpt-5.6-luna_low_teacher_v2_full:2/2.000/+1   gpt-5.6-luna_low_teacher_v2_boundary:0/0.000/-1   gpt-5.6-luna_low_teacher_v1:2/2.000/+1   gpt-5.6-luna_low_teacher_v2_bare:0/0.000/-1   
+  P_OptimismAndFrequencyBiases    1       gpt-5.6-luna_low_teacher_v2_full:0/0.000/-1   gpt-5.6-luna_low_teacher_v2_boundary:0/0.000/-1   gpt-5.6-luna_low_teacher_v1:0/0.000/-1   gpt-5.6-luna_low_teacher_v2_bare:0/0.000/-1   
+  S_EncouragesAntiSocialBehavior  1       gpt-5.6-luna_low_teacher_v2_full:1/1.000/+0   gpt-5.6-luna_low_teacher_v2_boundary:2/2.000/+1   gpt-5.6-luna_low_teacher_v1:1/1.000/+0   gpt-5.6-luna_low_teacher_v2_bare:0/0.000/-1   
+  S_ForcedFellowship              1       gpt-5.6-luna_low_teacher_v2_full:1/1.000/+0   gpt-5.6-luna_low_teacher_v2_boundary:1/1.000/+0   gpt-5.6-luna_low_teacher_v1:1/1.000/+0   gpt-5.6-luna_low_teacher_v2_bare:2/2.000/+1   
+  S_FriendSpamImpersonation       1       gpt-5.6-luna_low_teacher_v2_full:1/1.000/+0   gpt-5.6-luna_low_teacher_v2_boundary:0/0.000/-1   gpt-5.6-luna_low_teacher_v1:1/1.000/+0   gpt-5.6-luna_low_teacher_v2_bare:0/0.000/-1   
+  T_InfiniteTreadmill             1       gpt-5.6-luna_low_teacher_v2_full:1/1.000/+0   gpt-5.6-luna_low_teacher_v2_boundary:1/1.000/+0   gpt-5.6-luna_low_teacher_v1:1/1.000/+0   gpt-5.6-luna_low_teacher_v2_bare:1/1.000/+0   
+  T_MandatoryMarathon             1       gpt-5.6-luna_low_teacher_v2_full:0/0.000/-1   gpt-5.6-luna_low_teacher_v2_boundary:0/0.000/-1   gpt-5.6-luna_low_teacher_v1:0/0.000/-1   gpt-5.6-luna_low_teacher_v2_bare:0/0.000/-1   
+  M_NeverEndingLure               0       gpt-5.6-luna_low_teacher_v2_full:0/n/a/+0     gpt-5.6-luna_low_teacher_v2_boundary:0/n/a/+0     gpt-5.6-luna_low_teacher_v1:0/n/a/+0     gpt-5.6-luna_low_teacher_v2_bare:0/n/a/+0     
+  S_FearOfMissingOutFOMO          0       gpt-5.6-luna_low_teacher_v2_full:1/n/a/+1     gpt-5.6-luna_low_teacher_v2_boundary:0/n/a/+0     gpt-5.6-luna_low_teacher_v1:1/n/a/+1     gpt-5.6-luna_low_teacher_v2_bare:2/n/a/+2     
+  Tech_FragmentedDownloads        0       gpt-5.6-luna_low_teacher_v2_full:0/n/a/+0     gpt-5.6-luna_low_teacher_v2_boundary:0/n/a/+0     gpt-5.6-luna_low_teacher_v1:0/n/a/+0     gpt-5.6-luna_low_teacher_v2_bare:0/n/a/+0     
+  (per run cell: pred_count/ratio/signed_error)
+
+--------------------------------------------------------------------------------------------
+PER-LABEL FULL TABLE  (per-run precision/recall in sidecar only)
+--------------------------------------------------------------------------------------------
+  label                           support  best_f1  best_run_id                           median_f1  spread  
+                                  n        F1                                             F1         F1      
+  M_DeceptiveLuxury               2        0.667*   gpt-5.6-luna_low_teacher_v2_full      0.333*     0.667*  
+  M_EasyToPurchase                2        0.667*   gpt-5.6-luna_low_teacher_v2_full      0.667*     0.667*  
+  M_Gambling                      2        0.667*   gpt-5.6-luna_low_teacher_v2_boundary  0.250*     0.667*  
+  M_IntermediateCurrency          4        0.857    gpt-5.6-luna_low_teacher_v2_full      0.533      0.457   
+  M_NeverEndingLure               0        0.000*   gpt-5.6-luna_low_teacher_v2_full      0.000*     0.000*  
+  M_PayToProgress                 18       0.889    gpt-5.6-luna_low_teacher_v2_full      0.882      0.056   
+  M_PowerCreep                    2        0.800*   gpt-5.6-luna_low_teacher_v2_full      0.667*     0.133*  
+  M_RecurringFee                  1        1.000*   gpt-5.6-luna_low_teacher_v2_full      1.000*     1.000*  
+  M_UIMisdirection                3        1.000    gpt-5.6-luna_low_teacher_v2_full      1.000      0.200   
+  M_WasteAversion                 2        0.667*   gpt-5.6-luna_low_teacher_v2_bare      0.533*     0.667*  
+  P_AestheticManipulation         2        0.000*   gpt-5.6-luna_low_teacher_v2_full      0.000*     0.000*  
+  P_CompleteTheCollection         5        1.000    gpt-5.6-luna_low_teacher_v2_full      1.000      0.000   
+  P_EasyToGetHardToLose           1        0.667*   gpt-5.6-luna_low_teacher_v2_full      0.333*     0.667*  
+  P_IllusionOfControl             3        1.000    gpt-5.6-luna_low_teacher_v2_full      0.900      1.000   
+  P_OptimismAndFrequencyBiases    1        0.000*   gpt-5.6-luna_low_teacher_v2_full      0.000*     0.000*  
+  P_RewardMania                   6        0.909    gpt-5.6-luna_low_teacher_v2_full      0.733      0.909   
+  S_Competition                   8        0.941    gpt-5.6-luna_low_teacher_v2_full      0.895      0.141   
+  S_EncouragesAntiSocialBehavior  1        1.000*   gpt-5.6-luna_low_teacher_v2_full      0.833*     1.000*  
+  S_FearOfMissingOutFOMO          0        0.000*   gpt-5.6-luna_low_teacher_v2_full      0.000*     0.000*  
+  S_ForcedFellowship              1        1.000*   gpt-5.6-luna_low_teacher_v2_full      1.000*     0.333*  
+  S_FriendSpamImpersonation       1        1.000*   gpt-5.6-luna_low_teacher_v2_full      0.500*     1.000*  
+  S_Reciprocity                   3        0.500    gpt-5.6-luna_low_teacher_v2_full      0.500      0.500   
+  T_Advertisement                 2        1.000*   gpt-5.6-luna_low_teacher_v2_full      0.833*     0.333*  
+  T_DailyRewards                  2        1.000*   gpt-5.6-luna_low_teacher_v2_full      1.000*     0.000*  
+  T_Grinding                      5        0.889    gpt-5.6-luna_low_teacher_v2_full      0.819      0.162   
+  T_InfiniteTreadmill             1        1.000*   gpt-5.6-luna_low_teacher_v2_full      1.000*     0.000*  
+  T_MandatoryMarathon             1        0.000*   gpt-5.6-luna_low_teacher_v2_full      0.000*     0.000*  
+  T_PlayingByAppointment          7        1.000    gpt-5.6-luna_low_teacher_v2_boundary  0.890      0.273   
+  Tech_FragmentedDownloads        0        0.000*   gpt-5.6-luna_low_teacher_v2_full      0.000*     0.000*  
+  (* support < MIN_SUPPORT)
+
+--------------------------------------------------------------------------------------------
+REPEATABILITY  N_REPEAT_GROUPS=0 between_config_gap=0.181
+--------------------------------------------------------------------------------------------
+  (no config has more than one run)
+
+--------------------------------------------------------------------------------------------
+COMPLIANCE
+--------------------------------------------------------------------------------------------
+  run_id                                span_verbatim  oov_rate  parse_fail  truncation  retry_n  empty_analysis  gate_pass  
+                                        rate           rate      rate        rate        n        rate            bool       
+  gpt-5.6-luna_low_teacher_v2_full      1.000          0.000     0.000       0.000       0        n/a             true       
+  gpt-5.6-luna_low_teacher_v2_boundary  1.000          0.000     0.000       0.000       0        n/a             true       
+  gpt-5.6-luna_low_teacher_v1           1.000          0.000     0.000       0.000       0        n/a             true       
+  gpt-5.6-luna_low_teacher_v2_bare      0.981          0.000     0.000       0.000       0        n/a             true       
+
+--------------------------------------------------------------------------------------------
+COST
+--------------------------------------------------------------------------------------------
+  run_id                                $/rev     $/200k  tok_in/rev  tok_out/rev  $/F1_point  
+                                        USD       USD     n           n            USD         
+  gpt-5.6-luna_low_teacher_v2_full      $0.00126  $253    25725       479          $525        
+  gpt-5.6-luna_low_teacher_v2_boundary  $0.00102  $204    19344       430          $348        
+  gpt-5.6-luna_low_teacher_v1           $0.00105  $210    24351       353          $410        
+  gpt-5.6-luna_low_teacher_v2_bare      $0.00079  $157    12118       386          ref         
+  ($/F1_point relative to the cheapest run on the quality-vs-cost frontier; 'ref' = that run itself)
+
+============================================================================================
+SELECTION
+============================================================================================
+run_id=gpt-5.6-luna_low_teacher_v2_full
+selection_criterion=max micro_f1 among named runs
+ranked_on=micro_f1
+tie_break_rule=gate_pass > lower $/200k > lower latency_p95 > lexical run_id
+margin=0.050
+p_win_vs_runner_up=0.926
+runner_up_run_id=gpt-5.6-luna_low_teacher_v2_boundary
+============================================================================================

@@ -1,158 +1,361 @@
-============================================================================================
-INTER-CODER AGREEMENT
-============================================================================================
-generated=2026-09-04T04:59:20
-author_file=../../validation/validation_set.jsonl
-coders_dir=../../coders
+====================================================================================================
+AGREEMENT — HUMAN CODERS, AUTHOR, ADJUDICATED GOLD, AND LLM ANNOTATORS
+====================================================================================================
+generated=2026-09-04T19:55:11
+review universe=../../validation/validation_set.jsonl  units=75
 codebook=../../../codebook_versions/codebook_v0.20.json  labels=29
-units=75  pairable_units=75  raters=4  include_author=True
-BOOTSTRAP_N=2000 CI=0.95 SEED=20260831 MIN_SUPPORT=3
+raters=8  independent=7  (author=1 human=3 llm=3 gold=1)
+llm_runs_dir=../../outputs/validation/runs  discovered=3  selected=3  in panel=3
+BOOTSTRAP_N=2000 (secondary panels 600) CI=0.95 SEED=20260831 MIN_SUPPORT=3
 
---------------------------------------------------------------------------------------------
-RATERS
---------------------------------------------------------------------------------------------
-  rater                                                        file  coded  absent  abstain  labels  lab/rev  NONE  NONE rate
-  author                                       validation_set.jsonl     75       0        0     111     1.48     7      0.093
-  keshav02                 coder_keshav02_2026-09-03-23-28-08.jsonl     75       0        0     122     1.63     9      0.120
-  vansh97                   coder_vansh97_2026-08-31-18-25-28.jsonl     75       0        0     122     1.63     9      0.120
-  virinchi90  coder_virinchi5318008_2026-09-03-13-39-52 - R90.jsonl     75       0        0     142     1.89     5      0.067
+----------------------------------------------------------------------------------------------------
+RATER LEGEND
+----------------------------------------------------------------------------------------------------
+  code     short  role    indep  identity                                   source                                                               notes                                               
+  AUTHOR   AUTH   author    yes  author                                     ../../validation/validation_set.jsonl                                                                                    
+  GOLD     GOLD   gold       NO  adjudicated_panel                          ../../gold_set/gold_set.jsonl                                        NOT INDEPENDENT — adjudicated from the human ballots
+  HUMAN-A  H-A    human     yes  keshav02                                   ../../coders/coder_keshav02.jsonl                                                                                        
+  HUMAN-B  H-B    human     yes  vansh97                                    ../../coders/coder_vansh97.jsonl                                                                                         
+  HUMAN-C  H-C    human     yes  virinchi5318008                            ../../coders/coder_virinchi5318008.jsonl                                                                                 
+  LLM-A    L-A    llm       yes  deepseek-v4-flash @ max / teacher_v2_full  ../../outputs/validation/runs/deepseek-v4-flash/max/teacher_v2_full  deepseek  search=yes  prompt#aad355174ac4           
+  LLM-B    L-B    llm       yes  gpt-5.6-luna @ high / teacher_v2_full      ../../outputs/validation/runs/gpt-5.6-luna/high/teacher_v2_full      openai  search=yes  prompt#aad355174ac4             
+  LLM-C    L-C    llm       yes  gpt-5.6-luna @ xhigh / teacher_v2_full     ../../outputs/validation/runs/gpt-5.6-luna/xhigh/teacher_v2_full     openai  search=yes  prompt#aad355174ac4             
 
-============================================================================================
-KRIPPENDORFF'S ALPHA
-============================================================================================
+----------------------------------------------------------------------------------------------------
+RATER COVERAGE AND LABELLING RATE
+----------------------------------------------------------------------------------------------------
+  code     identity                            coded  absent  abstain  labels  lab/rev  max  NONE  NONE rate
+  AUTHOR   author                                 75       0        0     111     1.48    6     7      0.093
+  GOLD     adjudicated_panel                      75       0        0     137     1.83    6     7      0.093
+  HUMAN-A  keshav02                               75       0        0     123     1.64    6     8      0.107
+  HUMAN-B  vansh97                                75       0        0     122     1.63    6     9      0.120
+  HUMAN-C  virinchi5318008                        75       0        0     142     1.89    5     5      0.067
+  LLM-A    deepseek-v4-flash @ max / teacher_     75       0        0      95     1.27    6    20      0.267
+  LLM-B    gpt-5.6-luna @ high / teacher_v2_f     75       0        0     106     1.41    6    18      0.240
+  LLM-C    gpt-5.6-luna @ xhigh / teacher_v2_     75       0        0     118     1.57    6    13      0.173
+
+----------------------------------------------------------------------------------------------------
+DATA NOTES
+----------------------------------------------------------------------------------------------------
+  - GOLD is the adjudicated consensus of AUTHOR and the HUMAN coders. Any panel containing GOLD measures distance to consensus, not inter-rater reliability.
+  - 2 LLM raters share the model gpt-5.6-luna; alpha across them is self-consistency under a setting change, not independent agreement.
+
+====================================================================================================
+KRIPPENDORFF'S ALPHA — FULL INDEPENDENT PANEL (AUTHOR, HUMAN-A, HUMAN-B, HUMAN-C, LLM-A, LLM-B, LLM-C)
+====================================================================================================
   distance                    alpha          95% CI  reading   
-  MASI (set-valued, primary)  0.589  [0.517, 0.651]  below .600
-  Jaccard (set-valued)        0.671                            
-  nominal (exact set match)   0.469                            
+  MASI (set-valued, primary)  0.555  [0.494, 0.608]  below .600
+  Jaccard (set-valued)        0.626                            
+  nominal (exact set match)   0.443                            
 
-  units=75  ballots=300  distinct_value_sets=110
+  units=75  ballots=525  distinct_value_sets=136
 
---------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------
 PER-CLASS ALPHA (MASI, label set restricted to the class)
---------------------------------------------------------------------------------------------
-  class             alpha  positive ballots
-  T  Temporal       0.757               121
-  M  Monetary       0.680               138
-  S  Social         0.645                65
-  P  Psychological  0.661                61
-  Tech  Technical   1.000                 8
+----------------------------------------------------------------------------------------------------
+  class             alpha(all indep)  positive ballots  alpha(humans)  alpha(LLMs)
+  T  Temporal                  0.749               199          0.757        0.793
+  M  Monetary                  0.665               221          0.688        0.756
+  S  Social                    0.584               109          0.645        0.625
+  P  Psychological             0.712               114          0.661        0.861
+  Tech  Technical              0.815                11          1.000        1.000
 
---------------------------------------------------------------------------------------------
-PAIRWISE (units both raters coded)
---------------------------------------------------------------------------------------------
-  pair                    n  exact  Jaccard   MASI  alpha(MASI)
-  author / keshav02      75  0.520    0.721  0.647        0.632
-  author / vansh97       75  0.640    0.824  0.757        0.747
-  author / virinchi90    75  0.373    0.610  0.515        0.497
-  keshav02 / vansh97     75  0.600    0.760  0.694        0.681
-  keshav02 / virinchi90  75  0.373    0.608  0.507        0.487
-  vansh97 / virinchi90   75  0.387    0.609  0.511        0.492
+====================================================================================================
+NAMED PANELS — ALPHA BY GROUPING
+====================================================================================================
+  panel                          k  units  alpha(MASI)          95% CI  alpha(Jac)  alpha(exact)  note                                          
+  ALL INDEPENDENT (headline)     7     75        0.555  [0.494, 0.608]       0.626         0.443                                                
+  ALL RATERS incl. GOLD          8     75        0.575  [0.517, 0.631]       0.646         0.463  GOLD dependent — read as distance-to-consensus
+  HUMANS + AUTHOR                4     75        0.593  [0.522, 0.658]       0.676         0.474                                                
+  HUMAN CODERS only (no author)  3     75        0.558  [0.482, 0.633]       0.644         0.446                                                
+  LLM ANNOTATORS only            3     75        0.668  [0.594, 0.734]       0.718         0.573                                                
+  HUMANS + AUTHOR + LLM-A        5     75        0.552  [0.491, 0.612]       0.626         0.445                                                
+  HUMANS + AUTHOR + LLM-B        5     75        0.553  [0.493, 0.607]       0.632         0.431                                                
+  HUMANS + AUTHOR + LLM-C        5     75        0.572  [0.510, 0.629]       0.653         0.452                                                
+  HUMANS + AUTHOR + all LLMs     7     75        0.555  [0.494, 0.608]       0.626         0.443                                                
+  AUTHOR + GOLD                  2     75        0.730                       0.799         0.617  dependent                                     
 
---------------------------------------------------------------------------------------------
-OBSERVED AGREEMENT
---------------------------------------------------------------------------------------------
-  measure                                   n   rate
-  unanimous units (all raters identical)   21  0.280
-  rater pairs compared                    450       
-  pairwise exact set match                217  0.482
-  mean pairwise MASI similarity                0.605
-  mean pairwise Jaccard similarity             0.689
+====================================================================================================
+PAIRWISE MATRICES (units both raters coded)
+====================================================================================================
+  legend: AUTH=AUTHOR  GOLD=GOLD  H-A=HUMAN-A  H-B=HUMAN-B  H-C=HUMAN-C  L-A=LLM-A  L-B=LLM-B  L-C=LLM-C
 
-============================================================================================
-PER-LABEL AGREEMENT  (binary presence, one column per rater)
-============================================================================================
-  label                            units  unanim  assigns  alpha  Fleiss k
-  T_PlayingByAppointment              11       5       29  0.759     0.758
-  T_DailyRewards                       7       4       20  0.822     0.821
-  T_Grinding                           8       1       20  0.537     0.536
-  T_Advertisement                     13       8       42  0.853     0.852
-  T_InfiniteTreadmill                  3       0        6  0.435     0.433
-  T_MandatoryMarathon                  7       4       22  0.837     0.836
-  M_PayToProgress                     16       7       45  0.731     0.730
-  M_IntermediateCurrency              13       3       28  0.581     0.580
-  M_DeceptiveLuxury                    5       0       12  0.539     0.537
-  M_RecurringFee*                      2       2        8  1.000     1.000
-  M_Gambling                           9       3       18  0.647     0.645
-  M_PowerCreep*                        2       2        8  1.000     1.000
-  M_WasteAversion                      4       3       13  0.920     0.920
-  M_EasyToPurchase                     7       2       17  0.648     0.647
-  M_UIMisdirection                    10       4       27  0.743     0.742
-  M_NeverEndingLure                    8       2       16  0.605     0.604
-  S_ForcedFellowship                   5       2       11  0.718     0.717
-  S_FriendSpamImpersonation*           2       1        7  0.854     0.854
-  S_Reciprocity                        5       3       15  0.837     0.836
-  S_EncouragesAntiSocialBehavior       4       1        9  0.658     0.656
-  S_FearOfMissingOutFOMO               3       0        5  0.257     0.254
-  S_Competition                       15       3       33  0.536     0.535
-  P_EasyToGetHardToLose                6       2       14  0.701     0.700
-  P_CompleteTheCollection*             2       0        6  0.661     0.660
-  P_IllusionOfControl                  7       4       21  0.847     0.846
-  P_AestheticManipulation              3       0        5  0.392     0.390
-  P_OptimismAndFrequencyBiases         4       2       12  0.827     0.826
-  P_RewardMania                        9       1       20  0.573     0.571
-  Tech_FragmentedDownloads*            2       2        8  1.000     1.000
-  (* support < MIN_SUPPORT=3; alpha/kappa on a handful of units is noise, not a measurement)
+  alpha (MASI), pairwise
+         AUTH  GOLD   H-A   H-B   H-C   L-A   L-B   L-C
+  AUTH    .   0.730 0.646 0.747 0.497 0.588 0.573 0.643
+  GOLD  0.730   .   0.750 0.815 0.521 0.482 0.558 0.598
+  H-A   0.646 0.750   .   0.695 0.488 0.477 0.481 0.511
+  H-B   0.747 0.815 0.695   .   0.492 0.554 0.553 0.603
+  H-C   0.497 0.521 0.488 0.492   .   0.336 0.361 0.407
+  L-A   0.588 0.482 0.477 0.554 0.336   .   0.607 0.597
+  L-B   0.573 0.558 0.481 0.553 0.361 0.607   .   0.800
+  L-C   0.643 0.598 0.511 0.603 0.407 0.597 0.800   .  
 
---------------------------------------------------------------------------------------------
-LABEL PREVALENCE BY RATER  (assignments, over units that rater coded)
---------------------------------------------------------------------------------------------
-  label                           author  keshav02  vansh97  virinchi90  total
-  T_PlayingByAppointment               6         6        7          10     29
-  T_DailyRewards                       4         4        5           7     20
-  T_Grinding                           5         5        6           4     20
-  T_Advertisement                      9        10       10          13     42
-  T_InfiniteTreadmill                  2         1        2           1      6
-  T_MandatoryMarathon                  5         6        4           7     22
-  M_PayToProgress                      8        13       11          13     45
-  M_IntermediateCurrency               6         6        7           9     28
-  M_DeceptiveLuxury                    3         2        4           3     12
-  M_RecurringFee                       2         2        2           2      8
-  M_Gambling                           5         4        3           6     18
-  M_PowerCreep                         2         2        2           2      8
-  M_WasteAversion                      3         3        3           4     13
-  M_EasyToPurchase                     2         6        5           4     17
-  M_UIMisdirection                     4         7        7           9     27
-  M_NeverEndingLure                    3         3        3           7     16
-  S_ForcedFellowship                   2         2        2           5     11
-  S_FriendSpamImpersonation            2         2        2           1      7
-  S_Reciprocity                        4         5        3           3     15
-  S_EncouragesAntiSocialBehavior       2         2        2           3      9
-  S_FearOfMissingOutFOMO               2         1        2           0      5
-  S_Competition                        7         8        6          12     33
-  P_EasyToGetHardToLose                3         2        4           5     14
-  P_CompleteTheCollection              2         2        2           0      6
-  P_IllusionOfControl                  6         5        5           5     21
-  P_AestheticManipulation              2         2        1           0      5
-  P_OptimismAndFrequencyBiases         3         3        2           4     12
-  P_RewardMania                        5         6        8           1     20
-  Tech_FragmentedDownloads             2         2        2           2      8
+  mean MASI similarity
+         AUTH  GOLD   H-A   H-B   H-C   L-A   L-B   L-C
+  AUTH    .   0.740 0.660 0.757 0.515 0.613 0.596 0.659
+  GOLD  0.740   .   0.760 0.822 0.538 0.511 0.581 0.615
+  H-A   0.660 0.760   .   0.707 0.507 0.508 0.509 0.534
+  H-B   0.757 0.822 0.707   .   0.511 0.581 0.578 0.622
+  H-C   0.515 0.538 0.507 0.511   .   0.371 0.391 0.432
+  L-A   0.613 0.511 0.508 0.581 0.371   .   0.641 0.627
+  L-B   0.596 0.581 0.509 0.578 0.391 0.641   .   0.813
+  L-C   0.659 0.615 0.534 0.622 0.432 0.627 0.813   .  
 
---------------------------------------------------------------------------------------------
-MOST CONTESTED REVIEWS (top 15 by mean pairwise MASI distance)
---------------------------------------------------------------------------------------------
-  review_id                             game                      n  MASI dist  union of assigned labels                                                                                                                  
-  49a53e7c-0564-46c6-995f-1d8bc418c80a  MONOPOLY GO!              4      0.870  M_IntermediateCurrency, S_Reciprocity, P_CompleteTheCollection, P_RewardMania                                                             
-  b6745663-5486-4e5b-9066-8a889055d8bc  Travel Town - Merge Adve  4      0.839  T_PlayingByAppointment, M_PayToProgress, M_IntermediateCurrency, M_EasyToPurchase, M_UIMisdirection, S_Competition                        
-  f62c8a1f-91fc-4866-b267-977172fa2db3  Toon Blast                4      0.833  T_Grinding, T_InfiniteTreadmill, S_Competition                                                                                            
-  2f50b132-9762-4f48-ae35-487f414aa41a  MONOPOLY GO!              4      0.833  M_IntermediateCurrency, S_Reciprocity, S_EncouragesAntiSocialBehavior, S_Competition, P_RewardMania                                       
-  c2c60604-401f-416e-9489-a53cbaa6a968  Chess - Play and Learn O  4      0.833  M_UIMisdirection, S_ForcedFellowship, P_AestheticManipulation                                                                             
-  fb70e577-e644-4af9-88a1-773476a5b805  Free Fire: 9th Anniversa  4      0.833  M_PayToProgress, M_IntermediateCurrency                                                                                                   
-  6ccb26a7-01e3-41a3-ba1a-bddba2063257  Lightning Link Casino Sl  4      0.833  M_PayToProgress, M_Gambling                                                                                                               
-  042ee18e-d78e-4a0f-9cc2-2b1e10cc46e6  Total Battle: War Strate  4      0.776  T_DailyRewards, T_Grinding, T_InfiniteTreadmill, M_PayToProgress, M_IntermediateCurrency, P_EasyToGetHardToLose                           
-  57add346-8b93-4249-be50-1a39331cf79b  RAID: Shadow Legends      4      0.760  T_Grinding, T_Advertisement, M_PayToProgress, M_DeceptiveLuxury, M_NeverEndingLure, S_ForcedFellowship, S_Competition                     
-  a59f5319-a1b7-4991-8c6b-d2d2ca56265c  Fate/Grand Order (Englis  4      0.748  T_Grinding, M_PayToProgress, M_DeceptiveLuxury, M_Gambling, M_UIMisdirection, S_FearOfMissingOutFOMO, P_EasyToGetHardToLose, P_RewardMania
-  42025004-6937-4657-ab75-72e97fe19166  Lightning Link Casino Sl  4      0.741  M_IntermediateCurrency, M_EasyToPurchase, M_NeverEndingLure                                                                               
-  da13d098-3944-4e0b-aa94-c064a56edd83  Mystery Town: Merge Game  4      0.694  T_PlayingByAppointment, M_PayToProgress, M_IntermediateCurrency, P_CompleteTheCollection                                                  
-  f112aad7-3ccd-4220-ae49-34d217dda09d  Gardenscapes              4      0.667  T_Grinding, T_MandatoryMarathon                                                                                                           
-  f09401aa-1aef-4c8b-ac3a-92eec49af44d  Homescapes                4      0.663  M_PayToProgress, S_FearOfMissingOutFOMO, S_Competition, P_EasyToGetHardToLose, P_AestheticManipulation                                    
-  41a6813f-af68-497a-ac7b-2532b4659186  Jackpot Party Casino Slo  4      0.657  M_PayToProgress, M_IntermediateCurrency, M_Gambling, P_OptimismAndFrequencyBiases                                                         
+  mean Jaccard similarity
+         AUTH  GOLD   H-A   H-B   H-C   L-A   L-B   L-C
+  AUTH    .   0.809 0.734 0.824 0.610 0.663 0.666 0.719
+  GOLD  0.809   .   0.825 0.870 0.642 0.582 0.650 0.687
+  H-A   0.734 0.825   .   0.774 0.608 0.561 0.583 0.619
+  H-B   0.824 0.870 0.774   .   0.609 0.648 0.646 0.693
+  H-C   0.610 0.642 0.608 0.609   .   0.450 0.480 0.536
+  L-A   0.663 0.582 0.561 0.648 0.450   .   0.698 0.683
+  L-B   0.666 0.650 0.583 0.646 0.480 0.698   .   0.848
+  L-C   0.719 0.687 0.619 0.693 0.536 0.683 0.848   .  
 
---------------------------------------------------------------------------------------------
+  exact set-match rate
+         AUTH  GOLD   H-A   H-B   H-C   L-A   L-B   L-C
+  AUTH    .   0.627 0.533 0.640 0.373 0.533 0.467 0.547
+  GOLD  0.627   .   0.653 0.733 0.400 0.400 0.453 0.493
+  H-A   0.533 0.653   .   0.613 0.373 0.427 0.373 0.400
+  H-B   0.640 0.733 0.613   .   0.387 0.480 0.453 0.507
+  H-C   0.373 0.400 0.373 0.387   .   0.267 0.267 0.293
+  L-A   0.533 0.400 0.427 0.480 0.267   .   0.533 0.520
+  L-B   0.467 0.453 0.373 0.453 0.267 0.533   .   0.747
+  L-C   0.547 0.493 0.400 0.507 0.293 0.520 0.747   .  
+
+  units compared
+         AUTH  GOLD   H-A   H-B   H-C   L-A   L-B   L-C
+  AUTH    .      75    75    75    75    75    75    75
+  GOLD     75   .      75    75    75    75    75    75
+  H-A      75    75   .      75    75    75    75    75
+  H-B      75    75    75   .      75    75    75    75
+  H-C      75    75    75    75   .      75    75    75
+  L-A      75    75    75    75    75   .      75    75
+  L-B      75    75    75    75    75    75   .      75
+  L-C      75    75    75    75    75    75    75   .  
+
+----------------------------------------------------------------------------------------------------
+PAIRWISE SUMMARY PER RATER (mean over the other raters)
+----------------------------------------------------------------------------------------------------
+  code     role    MASI to all  MASI to humans  MASI to LLMs  alpha to all  exact to all
+  AUTHOR   author        0.649           0.644         0.622         0.632         0.531
+  GOLD     gold          0.652           0.715         0.569         0.636         0.537
+  HUMAN-A  human         0.598           0.625         0.517         0.578         0.482
+  HUMAN-B  human         0.654           0.658         0.594         0.637         0.545
+  HUMAN-C  human         0.466           0.511         0.398         0.443         0.337
+  LLM-A    llm           0.550           0.518         0.634         0.520         0.451
+  LLM-B    llm           0.587           0.518         0.727         0.562         0.470
+  LLM-C    llm           0.615           0.562         0.720         0.594         0.501
+
+====================================================================================================
+HUMAN CEILING vs LLM ANNOTATORS
+====================================================================================================
+  The question a corpus paper has to answer is not 'is the model good',
+  it is 'does the model disagree with the humans no more than the humans
+  disagree with each other'. The human-human band below is that ceiling.
+
+  human ceiling             value    min    max
+  human-human pairs             6              
+  mean pairwise MASI        0.610  0.507  0.757
+  mean pairwise alpha       0.594  0.488  0.747
+  human panel alpha (MASI)  0.593              
+
+  code   identity                          MASI to humans    min    max  alpha to humans  panel+LLM  swap-in alpha  verdict              
+  LLM-A  deepseek-v4-flash @ max / teache           0.518  0.371  0.613            0.489      0.552          0.542  inside the human band
+  LLM-B  gpt-5.6-luna @ high / teacher_v2           0.518  0.391  0.596            0.492      0.553          0.543  inside the human band
+  LLM-C  gpt-5.6-luna @ xhigh / teacher_v           0.562  0.432  0.659            0.541      0.572          0.567  inside the human band
+  panel+LLM   = alpha of the human panel with the LLM added as an extra rater
+  swap-in     = mean alpha when the LLM replaces one human, over each human dropped
+
+----------------------------------------------------------------------------------------------------
+LEAVE-ONE-OUT (independent panel)
+----------------------------------------------------------------------------------------------------
+  panel         identity                        k  alpha(MASI)   delta
+  drop HUMAN-C  virinchi5318008                 6        0.605  +0.050
+  drop LLM-A    deepseek-v4-flash @ max / teac  6        0.566  +0.011
+  drop HUMAN-A  keshav02                        6        0.557  +0.002
+  drop LLM-B    gpt-5.6-luna @ high / teacher_  6        0.552  -0.003
+  drop LLM-C    gpt-5.6-luna @ xhigh / teacher  6        0.540  -0.015
+  drop HUMAN-B  vansh97                         6        0.534  -0.021
+  drop AUTHOR   author                          6        0.530  -0.025
+  baseline (all 7 independent raters) = 0.555; a large positive delta marks the rater most out of step
+
+====================================================================================================
+ALL RATER COMBINATIONS
+====================================================================================================
+  distribution of alpha(MASI) by panel size
+  k  panels    min  median   mean    max  best panel                         worst panel                      
+  2      28  0.336   0.573  0.575  0.815  GOLD+H-B                           H-C+L-A                          
+  3      56  0.433   0.582  0.575  0.764  AUTH+GOLD+H-B                      H-C+L-A+L-B                      
+  4      70  0.458   0.573  0.575  0.730  AUTH+GOLD+H-A+H-B                  H-A+H-C+L-A+L-B                  
+  5      56  0.504   0.572  0.575  0.673  AUTH+GOLD+H-A+H-B+L-C              H-A+H-B+H-C+L-A+L-B              
+  6      28  0.530   0.570  0.575  0.647  AUTH+GOLD+H-A+H-B+L-B+L-C          H-A+H-B+H-C+L-A+L-B+L-C          
+  7       8  0.555   0.574  0.575  0.620  AUTH+GOLD+H-A+H-B+L-A+L-B+L-C      AUTH+GOLD+H-A+H-C+L-A+L-B+L-C    
+  8       1  0.575   0.575  0.575  0.575  AUTH+GOLD+H-A+H-B+H-C+L-A+L-B+L-C  AUTH+GOLD+H-A+H-B+H-C+L-A+L-B+L-C
+
+  alpha(MASI) by panel composition
+  composition                panels    min  median   mean    max
+  humans only                    11  0.488   0.578  0.594  0.747
+  LLMs only                       4  0.597   0.668  0.668  0.800
+  mixed human + LLM             105  0.336   0.552  0.547  0.671
+  contains GOLD (dependent)     127  0.447   0.590  0.595  0.815
+
+  247 panels; the 12 strongest and 12 weakest (the full sweep is in the metrics JSON)
+  panel              k  units  alpha(MASI)  alpha(Jac)  flag
+  GOLD+H-B           2     75        0.815       0.863  gold
+  L-B+L-C            2     75        0.800       0.835      
+  AUTH+GOLD+H-B      3     75        0.764       0.825  gold
+  GOLD+H-A+H-B       3     75        0.753       0.812  gold
+  GOLD+H-A           2     75        0.750       0.815  gold
+  AUTH+H-B           2     75        0.747       0.815      
+  AUTH+GOLD+H-A+H-B  4     75        0.730       0.795  gold
+  AUTH+GOLD          2     75        0.730       0.799  gold
+  AUTH+GOLD+H-A      3     75        0.708       0.777  gold
+  AUTH+H-A+H-B       3     75        0.696       0.765      
+  H-A+H-B            2     75        0.695       0.761      
+  AUTH+GOLD+H-B+L-C  4     75        0.689       0.753  gold
+  ...
+  panel            k  units  alpha(MASI)  alpha(Jac)  flag
+  H-B+H-C+L-B      3     75        0.469       0.550      
+  H-A+H-C+L-C      3     75        0.469       0.561      
+  H-B+H-C+L-A      3     75        0.461       0.540      
+  H-A+H-C+L-A+L-B  4     75        0.458       0.531      
+  GOLD+H-C+L-A     3     75        0.447       0.528  gold
+  H-C+L-A+L-C      3     75        0.446       0.523      
+  H-A+H-C+L-B      3     75        0.443       0.527      
+  H-A+H-C+L-A      3     75        0.434       0.508      
+  H-C+L-A+L-B      3     75        0.433       0.505      
+  H-C+L-C          2     75        0.407       0.505      
+  H-C+L-B          2     75        0.361       0.443      
+  H-C+L-A          2     75        0.336       0.409      
+
+----------------------------------------------------------------------------------------------------
+EVERY RATER AGAINST THE ADJUDICATED GOLD SET
+----------------------------------------------------------------------------------------------------
+  code     role    identity                         n  micro P  micro R  micro F1  example F1  exact   tp  fp  fn
+  HUMAN-B  human   vansh97                         75    0.967    0.861     0.911       0.906  0.733  118   4  19
+  HUMAN-A  human   keshav02                        75    0.911    0.818     0.862       0.874  0.653  112  11  25
+  AUTHOR   author  author                          75    0.955    0.774     0.855       0.859  0.627  106   5  31
+  LLM-C    llm     gpt-5.6-luna @ xhigh / teacher  75    0.864    0.745     0.800       0.742  0.493  102  16  35
+  LLM-B    llm     gpt-5.6-luna @ high / teacher_  75    0.887    0.686     0.774       0.704  0.453   94  12  43
+  LLM-A    llm     deepseek-v4-flash @ max / teac  75    0.853    0.591     0.698       0.640  0.400   81  14  56
+  HUMAN-C  human   virinchi5318008                 75    0.662    0.686     0.674       0.722  0.400   94  48  43
+  GOLD was adjudicated from AUTHOR and the HUMAN ballots, so their
+  scores here are inflated by construction and are not comparable to
+  the LLM scores. Only the LLM rows are an out-of-sample measurement.
+
+====================================================================================================
+PER-LABEL AGREEMENT (binary presence)
+====================================================================================================
+  label                            units  unanim  assigns  alpha(indep)  Fleiss k  alpha(humans)  alpha(LLMs)
+  T_PlayingByAppointment              14       5       52         0.766     0.765          0.759        0.855
+  T_DailyRewards                       7       3       31         0.772     0.771          0.822        0.905
+  T_Grinding                           8       1       32         0.568     0.567          0.537        0.562
+  T_Advertisement                     13       6       67         0.852     0.852          0.853        0.910
+  T_InfiniteTreadmill                  4       0       11         0.475     0.474          0.435        0.389
+  T_MandatoryMarathon                  7       2       32         0.756     0.756          0.837        0.792
+  M_PayToProgress                     18       7       80         0.764     0.764          0.731        0.899
+  M_IntermediateCurrency              13       1       43         0.654     0.654          0.607        0.773
+  M_DeceptiveLuxury                    5       0       17         0.555     0.554          0.539        0.796
+  M_RecurringFee*                      2       2       14         1.000     1.000          1.000        1.000
+  M_Gambling                          10       2       29         0.624     0.623          0.647        0.715
+  M_PowerCreep*                        2       2       14         1.000     1.000          1.000        1.000
+  M_WasteAversion                      4       2       22         0.874     0.873          0.920        0.770
+  M_EasyToPurchase                     8       1       31         0.612     0.611          0.648        0.621
+  M_UIMisdirection                    10       2       37         0.632     0.632          0.743        0.687
+  M_NeverEndingLure                    8       1       19         0.509     0.509          0.605        1.000
+  S_ForcedFellowship                   5       1       15         0.680     0.680          0.718        0.747
+  S_FriendSpamImpersonation*           2       0       10         0.695     0.694          0.854        0.327
+  S_Reciprocity                        5       1       20         0.637     0.636          0.837        0.796
+  S_EncouragesAntiSocialBehavior       4       1       15         0.795     0.794          0.658        1.000
+  S_FearOfMissingOutFOMO               3       0       11         0.598     0.598          0.257        1.000
+  S_Competition                       19       3       65         0.556     0.555          0.536        0.565
+  P_EasyToGetHardToLose                6       2       23         0.818     0.818          0.701        1.000
+  P_CompleteTheCollection              4       0       14         0.707     0.706          0.661        0.742
+  P_IllusionOfControl                  9       3       37         0.787     0.787          0.847        0.732
+  P_AestheticManipulation              3       0        8         0.620     0.619          0.392        1.000
+  P_OptimismAndFrequencyBiases         4       1       15         0.658     0.657          0.827        1.000
+  P_RewardMania                        9       1       42         0.724     0.724          0.573        0.950
+  Tech_FragmentedDownloads*            2       1       11         0.815     0.814          1.000        1.000
+  (* support < MIN_SUPPORT=3; alpha on a handful of units is noise, not a measurement)
+
+----------------------------------------------------------------------------------------------------
+LABEL PREVALENCE BY RATER (assignments over the units that rater coded)
+----------------------------------------------------------------------------------------------------
+  label                           AUTH  GOLD  H-A  H-B  H-C  L-A  L-B  L-C  total
+  T_PlayingByAppointment             6     7    6    7   10    9    8    6     59
+  T_DailyRewards                     4     4    4    5    7    3    4    4     35
+  T_Grinding                         5     5    5    6    4    3    3    6     37
+  T_Advertisement                    9     9   10   10   13    8    8    9     76
+  T_InfiniteTreadmill                2     2    1    2    1    1    3    1     13
+  T_MandatoryMarathon                5     6    6    4    7    3    3    4     38
+  M_PayToProgress                    8    11   13   11   13   12   11   12     91
+  M_IntermediateCurrency             6     8    7    7    9    4    5    5     51
+  M_DeceptiveLuxury                  3     5    2    4    3    1    2    2     22
+  M_RecurringFee                     2     2    2    2    2    2    2    2     16
+  M_Gambling                         5     4    4    3    6    2    4    5     33
+  M_PowerCreep                       2     2    2    2    2    2    2    2     16
+  M_WasteAversion                    3     3    3    3    4    2    3    4     25
+  M_EasyToPurchase                   2     5    6    5    4    6    3    5     36
+  M_UIMisdirection                   4     8    7    7    9    2    4    4     45
+  M_NeverEndingLure                  3     3    3    3    7    1    1    1     22
+  S_ForcedFellowship                 2     2    2    2    5    1    1    2     17
+  S_FriendSpamImpersonation          2     2    2    2    1    0    1    2     12
+  S_Reciprocity                      4     5    5    3    3    1    2    2     25
+  S_EncouragesAntiSocialBehavior     2     2    2    2    3    2    2    2     17
+  S_FearOfMissingOutFOMO             2     2    1    2    0    2    2    2     13
+  S_Competition                      7    11    8    6   12    4   13   15     76
+  P_EasyToGetHardToLose              3     5    2    4    5    3    3    3     28
+  P_CompleteTheCollection            2     2    2    2    0    3    2    3     16
+  P_IllusionOfControl                6     5    5    5    5    8    4    4     42
+  P_AestheticManipulation            2     2    2    1    0    1    1    1     10
+  P_OptimismAndFrequencyBiases       3     3    3    2    4    1    1    1     18
+  P_RewardMania                      5    10    6    8    1    7    7    8     52
+  Tech_FragmentedDownloads           2     2    2    2    2    1    1    1     13
+  TOTAL                            111   137  123  122  142   95  106  118    954
+  NONE                               7     7    8    9    5   20   18   13     87
+  legend: AUTH=AUTHOR  GOLD=GOLD  H-A=HUMAN-A  H-B=HUMAN-B  H-C=HUMAN-C  L-A=LLM-A  L-B=LLM-B  L-C=LLM-C
+
+----------------------------------------------------------------------------------------------------
+MOST CONTESTED REVIEWS (top 15 by mean pairwise MASI distance, independent raters)
+----------------------------------------------------------------------------------------------------
+  review    game                    k  MASI dist  distinct sets  agreed  labels raters split on (votes/k)                                                                 
+  6ccb26a7  Lightning Link Casino   7      0.873              5       0  M_Gambling(3/7), T_InfiniteTreadmill(1/7), M_PayToProgress(1/7), P_IllusionOfControl(1/7)        
+  2f50b132  MONOPOLY GO!            7      0.831              6       0  S_Reciprocity(4/7), P_RewardMania(4/7), S_Competition(2/7), T_PlayingByAppointment(1/7), M_Inter…
+  f62c8a1f  Toon Blast              7      0.807              6       0  T_InfiniteTreadmill(5/7), S_Competition(4/7), T_PlayingByAppointment(2/7), T_Grinding(2/7)       
+  042ee18e  Total Battle: War Stra  7      0.793              5       0  P_EasyToGetHardToLose(6/7), T_Grinding(4/7), T_InfiniteTreadmill(4/7), T_PlayingByAppointment(2/…
+  c1a9f304  Lotsa Slots - Casino G  7      0.772              5       0  M_Gambling(5/7), M_IntermediateCurrency(2/7), P_RewardMania(2/7)                                 
+  57add346  RAID: Shadow Legends    7      0.772              7       0  M_PayToProgress(6/7), M_DeceptiveLuxury(5/7), S_ForcedFellowship(5/7), T_Grinding(4/7), T_Advert…
+  b6745663  Travel Town - Merge Ad  7      0.739              6       1  M_PayToProgress(4/7), M_UIMisdirection(2/7), T_PlayingByAppointment(1/7), M_EasyToPurchase(1/7),…
+  991f5326  Candy Crush Soda Saga   7      0.714              3       0  M_DeceptiveLuxury(3/7), M_NeverEndingLure(1/7)                                                   
+  fb70e577  Free Fire: 9th Anniver  7      0.714              4       0  M_IntermediateCurrency(4/7), M_PayToProgress(1/7), S_Competition(1/7)                            
+  a59f5319  Fate/Grand Order (Engl  7      0.706              7       2  M_DeceptiveLuxury(6/7), P_RewardMania(6/7), T_Grinding(4/7), M_UIMisdirection(4/7), M_PayToProgr…
+  7732d254  Cashman Casino Slots G  7      0.706              5       0  M_IntermediateCurrency(6/7), P_RewardMania(4/7), M_Gambling(2/7), T_PlayingByAppointment(1/7)    
+  c63003ef  Kingshot                7      0.698              4       0  T_Grinding(5/7), T_DailyRewards(4/7), T_Advertisement(1/7)                                       
+  03e1dcd5  Disney Solitaire        7      0.690              5       1  P_OptimismAndFrequencyBiases(4/7), M_PayToProgress(2/7), M_IntermediateCurrency(1/7), M_Gambling…
+  ac5fc6a4  Gossip Harbor: Merge &  7      0.667              3       0  M_EasyToPurchase(5/7), M_NeverEndingLure(3/7)                                                    
+  6877b6bf  Candy Crush Saga        7      0.667              3       0  M_UIMisdirection(5/7), S_Competition(2/7)                                                        
+  'agreed' counts labels every rater who coded the review assigned;
+  the split column lists the rest with how many raters wanted each.
+
+----------------------------------------------------------------------------------------------------
 NONE (the empty label set)
---------------------------------------------------------------------------------------------
-  measure                                    n
-  units where every rater said NONE          5
-  units where at least one rater said NONE  11
-  units where raters split on NONE           6
+----------------------------------------------------------------------------------------------------
+  measure                                            n
+  units where every independent rater said NONE      5
+  units where at least one said NONE                25
+  units where raters split on NONE                  20
+  alpha on NONE as a binary decision             0.549
 
-============================================================================================
+  code     role    NONE ballots  NONE rate
+  AUTHOR   author             7      0.093
+  GOLD     gold               7      0.093
+  HUMAN-A  human              8      0.107
+  HUMAN-B  human              9      0.120
+  HUMAN-C  human              5      0.067
+  LLM-A    llm               20      0.267
+  LLM-B    llm               18      0.240
+  LLM-C    llm               13      0.173
+
+====================================================================================================

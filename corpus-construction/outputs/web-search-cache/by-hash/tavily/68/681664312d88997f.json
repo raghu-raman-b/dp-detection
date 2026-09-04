@@ -1,0 +1,91 @@
+{
+  "query": "Merge Cooking game \"parts\" storage slots buy - what does parts mean",
+  "sent_query": "Merge Cooking game \"parts\" storage slots buy - what does parts mean",
+  "query_hash": "681664312d88997f",
+  "answer": "In Merge Cooking, parts refer to individual components of items that can be merged to upgrade them. Players often sell lower-level parts to free up storage space. Merging parts allows players to create higher-level versions of items.",
+  "sources": [
+    {
+      "title": "How to manage inventory and space in Merge Cooking game?",
+      "url": "https://www.facebook.com/groups/764037108676390/posts/1055011406245624",
+      "host": "facebook.com"
+    },
+    {
+      "title": "Discuss Everything About Merge Cooking: Theme Restaurant Wiki | Fandom",
+      "url": "https://merge-cooking-theme-restaurant.fandom.com/f",
+      "host": "merge-cooking-theme-restaurant.fandom.com"
+    },
+    {
+      "title": "Anyone else have this issue in Merge Cooking Theme Restaurant?",
+      "url": "https://www.reddit.com/r/MobileGaming/comments/1ixqgcc/anyone_else_have_this_issue_in_merge_cooking",
+      "host": "reddit.com"
+    },
+    {
+      "title": "Questions and Answers for Merge Cooking:Theme Restaurant on ..",
+      "url": "https://www.appgamer.com/merge-cookingtheme-restaurant/answers",
+      "host": "appgamer.com"
+    },
+    {
+      "title": "Merge Cooking: Theme Restaurant - Gameplay Walkthrough Part 1",
+      "url": "https://www.youtube.com/watch?v=_J93vXHV0NQ",
+      "host": "youtube.com"
+    }
+  ],
+  "backend": "tavily",
+  "cached": false,
+  "cost_usd": 0.008,
+  "latency_s": 3.298,
+  "n_results": 5,
+  "domains": [],
+  "error": null,
+  "ts": "2026-09-04T10:38:18+00:00",
+  "raw": {
+    "query": "Merge Cooking game parts storage slots buy - what does parts mean",
+    "follow_up_questions": null,
+    "answer": "In Merge Cooking, parts refer to individual components of items that can be merged to upgrade them. Players often sell lower-level parts to free up storage space. Merging parts allows players to create higher-level versions of items.",
+    "images": [],
+    "results": [
+      {
+        "url": "https://www.facebook.com/groups/764037108676390/posts/1055011406245624",
+        "title": "How to manage inventory and space in Merge Cooking game?",
+        "content": "Players suggest selling lower-level parts and utilizing storage to free up space, also merging items to higher levels, like combining grill",
+        "score": 0.54361504,
+        "raw_content": null,
+        "id": "8ab26c-00"
+      },
+      {
+        "url": "https://merge-cooking-theme-restaurant.fandom.com/f",
+        "title": "Discuss Everything About Merge Cooking: Theme Restaurant Wiki | Fandom",
+        "content": "Fandom Image\n\nFor some reason, I'm one grill part short, and haven't been able to get the last piece I need to fully upgrade the grill. I never sold any parts, and kept and merged them every time I got them. I'm now in the French section of the game and don't seem to be getting any more parts. What do I do?\n\nOn level 30. When are glass cake stand, plate and cup used, if ever? Also, when do you get more puzzle pieces. Stuff taking up too much space.\n\n# Welcome to the community! [...] Ohhhh i have an urge to go thru the entire list of recipes and make sure they’re all correct, since one thing said soda instead of sparkling water. wish me luck everyone\n\nSo i just finished the last japanese restaurant but i still havent completed the japan temples generator. And im not even close either. Did i do something wrong? I didnt delete any parts i got. What do i do?\n\nBagaimana selesaikan item Panci sampai level max dan ada bintangnya, jika tempat mendapatkan Pancinya sudah lewat? [...] I wonder what’s next after that? Scandinavian restaurants? South African restaurants?\n\nOn my phone, the game offers the ability to open a tray of the items you’ve been awarded but haven’t added to board/inventory yet so you can choose what to add or what you keep in the tray so as to not take up space.\n\nHowever, on my tablet, this feature does not exist. Yes, I checked for updates. Curious to know why this may be?",
+        "score": 0.17179666,
+        "raw_content": null,
+        "id": "46c892-01"
+      },
+      {
+        "url": "https://www.reddit.com/r/MobileGaming/comments/1ixqgcc/anyone_else_have_this_issue_in_merge_cooking",
+        "title": "Anyone else have this issue in Merge Cooking Theme Restaurant?",
+        "content": "What is in your storage? I put lower level machines in my storage. Then use those machines to store things. I have extra milk bottles and",
+        "score": 0.16226083,
+        "raw_content": null,
+        "id": "cfaaaa-02"
+      },
+      {
+        "url": "https://www.appgamer.com/merge-cookingtheme-restaurant/answers",
+        "title": "Questions and Answers for Merge Cooking:Theme Restaurant on ..",
+        "content": "© 2026 Web Media Network Limited. All rights reserved. No part of this website or its content may be reproduced without the copyright owner's permission.\n\nThis website is a fan site resource and is not affiliated in any way with Google, Apple or any video game publisher.\n\nDisplay Name\n\nEmail [...] Email\n\nAge --123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120 [...] # Questions and Answers for Merge Cooking:Theme Restaurant\n\nThis is our page for asking and answering questions for Merge Cooking:Theme Restaurant. If you have a question you can ask it below and please check through the questions that have already been asked to see if you can answer any.\n\nAsk a question for Merge Cooking:Theme Restaurant\n\nThe members with the know how for Merge Cooking:Theme Restaurant\n\nAppGamer - Mobile Game Guides and News since 2008.",
+        "score": 0.085870296,
+        "raw_content": null,
+        "id": "12f4b9-03"
+      },
+      {
+        "url": "https://www.youtube.com/watch?v=_J93vXHV0NQ",
+        "title": "Merge Cooking: Theme Restaurant - Gameplay Walkthrough Part 1",
+        "content": "Do you know you can enjoy the food around the world without traveling? Do you know you can master the secret of cooking with just a few",
+        "score": 0.08504601,
+        "raw_content": null,
+        "id": "42152a-04"
+      }
+    ],
+    "response_time": 2.31,
+    "request_id": "b559fca3-14e0-4c59-be15-ae87e20105f5"
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "query": "Royal Match card collection sets expire rewards how it works",
+  "sent_query": "Royal Match card collection sets expire rewards how it works",
+  "query_hash": "aac77e9312350bbc",
+  "answer": "Royal Match card collection sets expire after two months; complete sets unlock rewards, and new collections start afterward.",
+  "sources": [
+    {
+      "title": "Royal Match Cards [New Royal Collection Guide]",
+      "url": "https://oldcynic.com/royal-match-cards-royal-collection",
+      "host": "oldcynic.com"
+    },
+    {
+      "title": "Collect new cards and win rewards in Royal Match",
+      "url": "https://play.google.com/store/apps/editorial?id=mc_editorialmd_games_royal_match_card_collection_update_fcp&hl=en_US",
+      "host": "play.google.com"
+    },
+    {
+      "title": "What happens when I complete a collection? — Royal Match Help Center",
+      "url": "https://dreamgames.helpshift.com/hc/en/3-royal-match/faq/333-what-happens-when-i-complete-a-collection",
+      "host": "dreamgames.helpshift.com"
+    },
+    {
+      "title": "With the Collection you don't just collect cards",
+      "url": "https://www.facebook.com/royalmatch/posts/-with-the-collection-you-dont-just-collect-cards-you-collect-incredible-rewards-/1051859123609901",
+      "host": "facebook.com"
+    },
+    {
+      "title": "Why did Royal Match introduce new card sets and how do ...",
+      "url": "https://www.facebook.com/groups/royalmatchfan/posts/787703883498255",
+      "host": "facebook.com"
+    }
+  ],
+  "backend": "tavily",
+  "cached": false,
+  "cost_usd": 0.008,
+  "latency_s": 2.405,
+  "n_results": 5,
+  "domains": [],
+  "error": null,
+  "ts": "2026-09-04T10:57:05+00:00",
+  "raw": {
+    "query": "Royal Match card collection sets expire rewards how it works",
+    "follow_up_questions": null,
+    "answer": "Royal Match card collection sets expire after two months; complete sets unlock rewards, and new collections start afterward.",
+    "images": [],
+    "results": [
+      {
+        "url": "https://oldcynic.com/royal-match-cards-royal-collection",
+        "title": "Royal Match Cards [New Royal Collection Guide]",
+        "content": "This post may contain speculation, opinion, and comedy. It is not advice and is solely for entertainment & informational purposes.\n\n## How Does the Royal Collection Work? (Royal Match Cards)\n\nThe Royal Collection is an event that runs over 62 days where you collect cards to complete sets to unlock rewards.\n\nThe ultimate goal is to collect each of the 135 available cards to complete all 15 sets to win a Grand Prize of 10,000 Gold Coins, Boosters, and an exclusive profile badge. [...] Each set gives you the chance to win a different reward. Rewards are either Gold Coins, Pre-Game Boosters (Rockets, TNT, Light Balls), or In-Game Boosters (Royal Hammers, Arrows, Canons, Jester Hats) in various quantities.\n\nWhen you open a Card Pack, you’ll receive a random selection of cards. As your collection grows, these will either be New cards or Duplicate cards.\n\nNew cards will be highlighted with a glow and a “New” badge (as seen in the image below). [...] Royal Match Royal Collection Guide\n\nThe Royal Match Royal Collection Guide\n\nCards are collected via Card Packs, which are given as rewards from other events, like Propeller Madness, Team Treasure, King’s Cup, Royal Pass, and Book of Treasure.\n\nThere are 4 different coloured Card Packs available, each containing a different number of cards:\n\n Brown = 2 cards\n Green = 3 cards\n Blue = 4 cards\n Purple = 6 cards\n\nThere is also a special Red Card Pack that guarantees a minimum of 1 New card.",
+        "score": 0.8377398,
+        "raw_content": null,
+        "id": "203e6e-00"
+      },
+      {
+        "url": "https://play.google.com/store/apps/editorial?id=mc_editorialmd_games_royal_match_card_collection_update_fcp&hl=en_US",
+        "title": "Collect new cards and win rewards in Royal Match",
+        "content": "Image\n\n# Collect new cards and win rewards in Royal Match\n\nGet ready for a brand new way to add to your kingdom’s riches. Royal Match is introducing a card collection feature where you can earn rewards by completing sets of exclusive gold and silver cards. Open chests and trade with friends to complete each set before the Royal Collection season ends and claim a new kind of reward badge.\n\nComplete the set\n\nIcon image\n\nRoyal Match\n\nDream Games, Ltd.\n\nIn-app purchases\n\nIcon image\n\n4.8star [...] Players at level 41 and above are eligible to collect card packs from events and chests\n Collect unique silver and gold cards with 1 to 5 star ratings, with 5-star gold cards featuring beloved characters like King Robert, Winston, and Duke\n Send and receive silver cards from friends in order to complete each set faster\n Duplicate cards can also be traded in for reward chests based on the the number of stars [...] Complete the run before the end of the two-month season to earn a new player badge, then start again with an all-new theme of cards",
+        "score": 0.8131201,
+        "raw_content": null,
+        "id": "d82243-01"
+      },
+      {
+        "url": "https://dreamgames.helpshift.com/hc/en/3-royal-match/faq/333-what-happens-when-i-complete-a-collection",
+        "title": "What happens when I complete a collection? — Royal Match Help Center",
+        "content": "Last Updated: 55d\n\n When you complete a collection, you can claim the Collection's Grand Prize, which gives amazing rewards and a unique Badge!\n After you complete the collection and receive your rewards and badge, your remaining cards will be reset. You can then complete the grand version of your collection for even better rewards and another rarer unique Badge!\n\nNote: After you complete the collection, your duplicate stars balance will not be reset.\n\n#### Related articles [...] This website uses only the necessary cookies required for the site's proper functioning. By using the website, you consent to all cookies in accordance with the cookie policy. To know more, refer Cookie Policy.\n\nRoyal Match Support\n\nRoyal Match Support\n\n## What happens when I complete a collection?\n\nLast Updated: 55d",
+        "score": 0.6578248,
+        "raw_content": null,
+        "id": "0db005-02"
+      },
+      {
+        "url": "https://www.facebook.com/royalmatch/posts/-with-the-collection-you-dont-just-collect-cards-you-collect-incredible-rewards-/1051859123609901",
+        "title": "With the Collection you don't just collect cards",
+        "content": "You can claim the set's rewards when you complete all cards in a set. What are card packs❓ Card packs can be collected",
+        "score": 0.4558047,
+        "raw_content": null,
+        "id": "af70bb-03"
+      },
+      {
+        "url": "https://www.facebook.com/groups/royalmatchfan/posts/787703883498255",
+        "title": "Why did Royal Match introduce new card sets and how do ...",
+        "content": "Why did they take our original card sets and started new ones to collect ?",
+        "score": 0.22308958,
+        "raw_content": null,
+        "id": "7f40a0-04"
+      }
+    ],
+    "response_time": 1.39,
+    "request_id": "4cdbf747-1156-415f-aa50-3a02a4fbd3c9"
+  }
+}

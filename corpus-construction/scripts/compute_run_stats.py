@@ -21,7 +21,8 @@ Metric stack at n=50:
   micro-F1          primary tuning signal
   example-based F1  per-review overlap; analogue of coder agreement
   class macro-F1    5 classes + None; cascade stage 1
-  meso macro-F1     only over labels with support >= MIN_SUPPORT
+  meso macro-F1     only over labels with support >= MIN_SUPPORT; suppressed entirely on
+                    eval sets whose EVAL_SETS entry sets meso_macro: False (prompt-eval)
   None P/R          over-labelling is the main failure mode
 No macro over all 29 labels: most have support 1-2 and one decision swings it 3+ points.
 """
@@ -342,7 +343,8 @@ def parse_args() -> "argparse.Namespace":
 
 
 def score_run(run_dir: Path, tag: str, gold_file: Path, gold_bundle: tuple,
-              legal: set[str], out_dir: Path, print_report: bool) -> dict | None:
+              legal: set[str], out_dir: Path, print_report: bool,
+              meso_macro_enabled: bool = True) -> dict | None:
     """Score one run into out_dir and return its metrics row, or None if it is not
     scorable. Returning None rather than exiting matters: in a batch, one unusable run
     must not take the other nineteen down with it."""
@@ -421,7 +423,11 @@ def score_run(run_dir: Path, tag: str, gold_file: Path, gold_bundle: tuple,
         b = sum(c not in pred[i] and c in gold[i] for i in ids)
         per[c] = (*prf(t, a, b), t + b)
     scored = {c: v for c, v in per.items() if v[3] >= MIN_SUPPORT}
-    meso_macro = statistics.mean([v[2] for v in scored.values()]) if scored else 0.0
+    # Suppressed, not zeroed, on eval sets too thin to support it: a macro over a handful
+    # of labels prints next to one over nineteen and invites a comparison that is not there.
+    # See runner_common.EVAL_SETS[...]["meso_macro"].
+    meso_macro = (statistics.mean([v[2] for v in scored.values()]) if scored else 0.0) \
+        if meso_macro_enabled else None
 
     crows = []
     for k in sorted(set(CLASS_OF.values())):
@@ -504,7 +510,12 @@ def score_run(run_dir: Path, tag: str, gold_file: Path, gold_bundle: tuple,
     add(f"  example-based F1    {ex_f1:.3f}")
     add(f"  exact set match     {exact:.3f}")
     add(f"  class macro-F1      {class_macro:.3f}   (5 classes + None)")
-    add(f"  meso macro-F1       {meso_macro:.3f}   over {len(scored)} labels, support >= {MIN_SUPPORT}")
+    if meso_macro_enabled:
+        add(f"  meso macro-F1       {meso_macro:.3f}   over {len(scored)} labels, support >= {MIN_SUPPORT}")
+    else:
+        add(f"  meso macro-F1       SUPPRESSED on this eval set -- only {len(scored)} of "
+            f"{len(per)} labels reach support >= {MIN_SUPPORT}.")
+        add( "                      Use micro-F1 and example-based F1. Per-label figures below.")
     add(f"  None P/R/F1         {np_:.3f} / {nr_:.3f} / {nf_:.3f}   (support {nt+nfn})")
     if fn:
         add(f"  missed labels named in the model's own analysis: {seen_dropped}/{fn} "
@@ -514,7 +525,8 @@ def score_run(run_dir: Path, tag: str, gold_file: Path, gold_bundle: tuple,
     for k, p, r, f, s in crows:
         add(f"    {k:<20} {p:6.3f} {r:6.3f} {f:6.3f}  {s:>4}")
     add("")
-    add(f"  per-label (* = support < {MIN_SUPPORT}, excluded from meso macro)")
+    add(f"  per-label (* = support < {MIN_SUPPORT}"
+        + (", excluded from meso macro)" if meso_macro_enabled else ", no meso macro on this set)"))
     add("    label                                 P      R     F1   supp")
     for c, (p, r, f, s) in sorted(per.items(), key=lambda kv: (-kv[1][3], kv[0])):
         add(f"  {' ' if s >= MIN_SUPPORT else '*'} {c:<34} {p:6.3f} {r:6.3f} {f:6.3f}  {s:>4}")
@@ -613,7 +625,9 @@ def score_run(run_dir: Path, tag: str, gold_file: Path, gold_bundle: tuple,
         "micro_f1": round(mf, 4), "micro_p": round(mp, 4), "micro_r": round(mr, 4),
         "example_f1": round(ex_f1, 4), "exact_match": round(exact, 4),
         "class_macro_f1": round(class_macro, 4),
-        "meso_macro_f1": round(meso_macro, 4), "meso_macro_n_labels": len(scored),
+        "meso_macro_f1": (round(meso_macro, 4) if meso_macro_enabled else None),
+        "meso_macro_n_labels": (len(scored) if meso_macro_enabled else 0),
+        "meso_macro_suppressed": (not meso_macro_enabled),
         "none_p": round(np_, 4), "none_r": round(nr_, 4), "none_f1": round(nf_, 4),
         "tp": tp, "fp": fp, "fn": fn,
         "missed_but_named_in_analysis": seen_dropped,
@@ -718,7 +732,8 @@ def main() -> None:
             print(f"  NOTE {tag}: checkpoint says this run never finished")
         try:
             row = score_run(run_dir, tag, gold_file, gold_bundle, legal, out_dir,
-                            print_report=single)
+                            print_report=single,
+                            meso_macro_enabled=rc.EVAL_SETS[a.eval_set].get("meso_macro", True))
         except Exception as e:                 # one bad run must not end the batch
             print(f"  SKIP {tag}: {type(e).__name__}: {e}")
             row = None

@@ -1,0 +1,91 @@
+{
+  "query": "Genshin Impact resin overflow system meaning",
+  "sent_query": "Genshin Impact resin overflow system meaning",
+  "query_hash": "be88d067b72eb8c5",
+  "answer": "Genshin Impact's resin cap is 200, but it can overflow to a maximum of 2,000. Overflow resin is not currently implemented. Resin regenerates at 1 per 8 minutes.",
+  "sources": [
+    {
+      "title": "Resin Recharge Rate and Resin Cap Guide | Genshin Impact",
+      "url": "https://game8.co/games/Genshin-Impact/archives/297554",
+      "host": "game8.co"
+    },
+    {
+      "title": "Resin overflow QOL when? : r/Genshin_Impact",
+      "url": "https://www.reddit.com/r/Genshin_Impact/comments/18fipi4/resin_overflow_qol_when",
+      "host": "reddit.com"
+    },
+    {
+      "title": "Original Resin - Genshin Impact Wiki - Fandom",
+      "url": "https://genshin-impact.fandom.com/wiki/Original_Resin",
+      "host": "genshin-impact.fandom.com"
+    },
+    {
+      "title": "Condensed Resin Removed - Genshin Impact",
+      "url": "https://gamefaqs.gamespot.com/boards/270518-genshin-impact/80951744",
+      "host": "gamefaqs.gamespot.com"
+    },
+    {
+      "title": "When are we getting resin overcap?",
+      "url": "https://www.hoyolab.com/article/42777278",
+      "host": "hoyolab.com"
+    }
+  ],
+  "backend": "tavily",
+  "cached": false,
+  "cost_usd": 0.008,
+  "latency_s": 2.447,
+  "n_results": 5,
+  "domains": [],
+  "error": null,
+  "ts": "2026-09-04T10:59:23+00:00",
+  "raw": {
+    "query": "Genshin Impact resin overflow system meaning",
+    "follow_up_questions": null,
+    "answer": "Genshin Impact's resin cap is 200, but it can overflow to a maximum of 2,000. Overflow resin is not currently implemented. Resin regenerates at 1 per 8 minutes.",
+    "images": [],
+    "results": [
+      {
+        "url": "https://game8.co/games/Genshin-Impact/archives/297554",
+        "title": "Resin Recharge Rate and Resin Cap Guide | Genshin Impact",
+        "content": "The Resin Recharge Rate is 1 Resin per 8 minutes, which yields a total of 7 resins an hour. This is a pretty lengthy time but not all activities consume Original Resin, and it also recovers while the game is closed. Make sure to always spend Original Resin in time to maximize its use!\n\nIn Version 4.7 Developers Discussion, the resin cap is increased from 160 to 200, which means the resin recharge rate now takes 26 hours for the entire resin counter to fully replenish! [...] Fragile Resin is an item used to restore Original Resin without spending Primogems. Each Fragile Resin is worth 60 Original Resin. You can get these from Events, the Battle Pass, and Adventure Rank level ups!\n\nHow to Get Fragile Resin and Effects\n\n### Restore with Transient Resin [...] The Resin Recharge Rate of Original Resin in Genshin Impact is one very 8 minutes. See more info about the Resin Recharge Rate, the Resin System, and how to get more resin in this guide!\n\nList of Contents\n\n Resin Recharge Rate\n How to Get Original Resin\n How to Use Original Resin\n What is Original Resin?\n Related Guides\n\n## Resin Recharge Rate\n\n### 1 Resin Regenerates Every 8 Minutes",
+        "score": 0.70702106,
+        "raw_content": null,
+        "id": "637754-00"
+      },
+      {
+        "url": "https://www.reddit.com/r/Genshin_Impact/comments/18fipi4/resin_overflow_qol_when",
+        "title": "Resin overflow QOL when? : r/Genshin_Impact",
+        "content": "So hsr has this thing where you get a third of your stamina in overflow so you can collect it when you cant be bothered to play/farm.",
+        "score": 0.66045773,
+        "raw_content": null,
+        "id": "92bd6e-01"
+      },
+      {
+        "url": "https://genshin-impact.fandom.com/wiki/Original_Resin",
+        "title": "Original Resin - Genshin Impact Wiki - Fandom",
+        "content": "The replenishing cap of 200 can be exceeded through manual refills.\n       When replenishing over the 200 cap, players have a hard cap maximum of 2,000 Original Resin. \n           Replenishing is unavailable when the count is above 1,940 (as such would result in values of 2,001 and above after refill). [...] Original Resin passively regenerates at a rate of 1 unit every 8 minutes, if it is not fully capped (200 total): \n       As long as the Original Resin is regenerating, you will go through 180 resin per 24 hours, 1260 resin per week. Thus it is advised to spend Resin whenever possible to not stay at the cap, as not to waste \"potential\" Resin.\n       Full replenishment (from 0 to 200) will take 26 hours and 40 minutes. [...] Players can manually instantly replenish 60 Original Resin at a time: \n       Image 21: Fragile ResinImage 22: Fragile ResinFragile Resin ×1 or Image 23: Transient ResinImage 24: Transient ResinTransient Resin ×1 can be used to restore 60 Original Resin.\n       Alternatively, players can replenish 60 Original Resin by using an increasingly expensive amount of Primogems, instead (up to 6 times a day, see the chart below).",
+        "score": 0.57064295,
+        "raw_content": null,
+        "id": "40ce28-02"
+      },
+      {
+        "url": "https://gamefaqs.gamespot.com/boards/270518-genshin-impact/80951744",
+        "title": "Condensed Resin Removed - Genshin Impact",
+        "content": "of the sale of your personal data and targeted advertising by using this toggle switch. For more information on your rights as a United States consumer see our privacy notice. [...] Umm, you currently have to use 3 condensed resin in your bag on domains or leylines to make space to condense 3 more for the dailies. Same as the new using original resin system.\n\n   Blue on Black\n   Red\n   Red on Black\n   Green\n   Green on Black\n   Orange\n   Orange on Black\n   Purple\n   Purple on Black\n   Cloudy Blue\n   Grayscale\n   Sepia\n   Cotton Candy\n\ngamespot.commetacritic.comfandom.comfanatical.com\n\nSitemapPartnershipsCareersTerms of UseDigital Services Act [...] When you visit our website, we store cookies on your browser to collect information. The information collected might relate to you, your preferences or your device, and is mostly used to make the site work as you expect it to and to provide a more personalized web experience. However, you can choose not to allow certain types of cookies, which may impact your experience of the site and the services we are able to offer. Click on the different category headings to find out more and change our",
+        "score": 0.51793724,
+        "raw_content": null,
+        "id": "dff333-03"
+      },
+      {
+        "url": "https://www.hoyolab.com/article/42777278",
+        "title": "When are we getting resin overcap?",
+        "content": "Genshin Impact being hoyoverse's most popular game in modern day yet they neglect its player-base so badly? Ive been playing since Inazuma release, Im now at a point when my entire game is maxxed out, and i mean EVERYTHING. I'm bored snd have chosen to start building older characters/ones i want to play with. But we get NO resin.\n\nImagine this: You need 7 million mora, 420 EXP books, Alot of talent materials, and Patience. Lets do some calculations below [...] Were already at 3.5 Weeks, thats not even counting Artifacts, The levelup boss material(46x40=1,840 resin (1840/200=9.2 days) ANOTHER week+2 days???\n\nthats 5 weeks already.\n\nIf we had an overflow of any kind, even by 200 resin We could be building characters so much more quickly.\n\nThats not all,\n\nGenshin Impact • Tavern\n\nRepost allowed\n\nresin\n\nOur 5th Anniversary\n\nGenshinImpact\n\nTravelers' Tales: Gilded Chapter\n\nHoYoWiki\n\nImage 6\n\n14\n\nImage 7\n\n1\n\n4\n\n0\n\n15\n\n0\n\n[](\n\n Send [...] Image 3Image 4\n\npyreeImage 5\n\n2025/12/15\n\nFollow\n\nI mean, its been 5 years. Every single hoyo game has some sort of resin overflow mechanic. Zenless zone zero and Honkai: Star rail have INSANELY high resin overflows with up to 2400(I believe). I'm unsure on if Honkai Impact has a high resin overflow like them but I do believe it does have some sort of overcap.",
+        "score": 0.5172057,
+        "raw_content": null,
+        "id": "ea6658-04"
+      }
+    ],
+    "response_time": 1.36,
+    "request_id": "4f13cd34-1493-4d80-9e9b-f69f05c58a7a"
+  }
+}

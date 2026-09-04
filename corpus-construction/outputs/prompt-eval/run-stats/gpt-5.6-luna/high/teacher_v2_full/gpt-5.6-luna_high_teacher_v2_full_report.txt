@@ -1,0 +1,166 @@
+==============================================================================
+RUN REPORT  gpt-5.6-luna_high_teacher_v2_full
+==============================================================================
+generated        2026-09-04T19:53:36
+provider/model   openai / gpt-5.6-luna  (served: gpt-5.6-luna)
+reasoning        high
+web search       True
+prompt           /home/prex_san/Documents/dp-detection/corpus-construction/outputs/prompts/teacher_v2_full.txt
+prompt sha256    aad355174ac44da072eee2003a4d2ed48038e273fcdc70e5c51dffa8e4a54416
+cache key/mode   dp-teacher-aad355174ac4 / explicit
+gold             /home/prex_san/Documents/dp-detection/corpus-construction/prompt_eval/gold_set.jsonl
+scored           30 of 30 requests
+
+------------------------------------------------------------------------------
+RELIABILITY
+------------------------------------------------------------------------------
+  requests          30
+  ok / api errors   30 / 0
+  parsed JSON       30/30
+  truncated         0
+  parse notes       {'clean': 30}
+  statuses          {'completed': 30}
+
+------------------------------------------------------------------------------
+CODEBOOK COMPLIANCE
+------------------------------------------------------------------------------
+  labels emitted            28
+  out-of-vocabulary codes   0
+  duplicate labels (R1)     0
+  labels with no span (R3)  0
+  span not in review        0
+  span matched only loosely 0
+  span verbatim rate        100.0%
+
+------------------------------------------------------------------------------
+QUALITY
+------------------------------------------------------------------------------
+  micro-F1            0.754   (P 0.821 / R 0.697)   tp 23 fp 5 fn 10
+  example-based F1    0.700
+  exact set match     0.567
+  class macro-F1      0.603   (5 classes + None)
+  meso macro-F1       SUPPRESSED on this eval set -- only 5 of 29 labels reach support >= 3.
+                      Use micro-F1 and example-based F1. Per-label figures below.
+  None P/R/F1         0.556 / 0.714 / 0.625   (support 7)
+  missed labels named in the model's own analysis: 2/10 (20%)   rule interpretation vs attention
+
+  class                     P      R     F1   supp
+    Monetary              0.875  0.700  0.778    10
+    Psychological         1.000  1.000  1.000     3
+    Social                0.333  0.333  0.333     3
+    Technical             0.000  0.000  0.000     0
+    Temporal              0.917  0.846  0.880    13
+    None                  0.556  0.714  0.625     7
+
+  per-label (* = support < 3, no meso macro on this set)
+    label                                 P      R     F1   supp
+    T_Advertisement                     0.833  1.000  0.909     5
+    M_UIMisdirection                    1.000  0.750  0.857     4
+    M_IntermediateCurrency              1.000  1.000  1.000     3
+    T_MandatoryMarathon                 0.000  0.000  0.000     3
+    T_PlayingByAppointment              1.000  1.000  1.000     3
+  * M_EasyToPurchase                    0.000  0.000  0.000     2
+  * P_RewardMania                       1.000  1.000  1.000     2
+  * S_Reciprocity                       1.000  0.500  0.667     2
+  * T_DailyRewards                      1.000  1.000  1.000     2
+  * M_DeceptiveLuxury                   0.000  0.000  0.000     1
+  * M_NeverEndingLure                   0.000  0.000  0.000     1
+  * M_PayToProgress                     1.000  1.000  1.000     1
+  * M_WasteAversion                     1.000  1.000  1.000     1
+  * P_IllusionOfControl                 1.000  1.000  1.000     1
+  * S_Competition                       0.000  0.000  0.000     1
+  * T_Grinding                          1.000  1.000  1.000     1
+  * M_Gambling                          0.000  0.000  0.000     0
+  * M_PowerCreep                        0.000  0.000  0.000     0
+  * M_RecurringFee                      0.000  0.000  0.000     0
+  * P_AestheticManipulation             0.000  0.000  0.000     0
+  * P_CompleteTheCollection             0.000  0.000  0.000     0
+  * P_EasyToGetHardToLose               0.000  0.000  0.000     0
+  * P_OptimismAndFrequencyBiases        0.000  0.000  0.000     0
+  * S_EncouragesAntiSocialBehavior      0.000  0.000  0.000     0
+  * S_FearOfMissingOutFOMO              0.000  0.000  0.000     0
+  * S_ForcedFellowship                  0.000  0.000  0.000     0
+  * S_FriendSpamImpersonation           0.000  0.000  0.000     0
+  * T_InfiniteTreadmill                 0.000  0.000  0.000     0
+  * Tech_FragmentedDownloads            0.000  0.000  0.000     0
+
+------------------------------------------------------------------------------
+ERROR TAXONOMY
+------------------------------------------------------------------------------
+  over-labelled  (predicted, not in gold)
+    S_Competition                        2
+    T_Advertisement                      1
+    Tech_FragmentedDownloads             1
+    M_Gambling                           1
+  under-labelled (in gold, not predicted)
+    T_MandatoryMarathon                  3
+    M_EasyToPurchase                     2
+    M_NeverEndingLure                    1
+    M_UIMisdirection                     1
+    M_DeceptiveLuxury                    1
+    S_Competition                        1
+    S_Reciprocity                        1
+  co-occurring miss/false-positive pairs
+    S_Competition ~ T_MandatoryMarathon   1
+
+  reviews with disagreements (first 12; full detail in the .md)
+    ac5fc6a4-b597-46f3-af5a-3735b3854e26   [FALSE NONE]
+      gold: ['M_EasyToPurchase', 'M_NeverEndingLure']
+      pred: ['NONE']
+    5e2d7a91-2181-4ad5-b5fb-cc1f50805d82   [MISSED ONLY]
+      gold: ['M_UIMisdirection', 'T_Advertisement']
+      pred: ['T_Advertisement']
+    991f5326-63fb-4951-8773-84050dd70912   [FALSE NONE]
+      gold: ['M_DeceptiveLuxury']
+      pred: ['NONE']
+    6877b6bf-e9e0-4c86-a196-e7c85a51529f   [MISSED ONLY]
+      gold: ['M_UIMisdirection', 'S_Competition']
+      pred: ['M_UIMisdirection']
+    3dc64fb0-3b6a-4ba1-9966-79c09f33069c   [SPURIOUS ONLY]
+      gold: ['M_UIMisdirection']
+      pred: ['M_UIMisdirection', 'T_Advertisement']
+    036954c0-447e-460d-b81e-f26f940b2ac4   [SWAP]
+      gold: ['T_MandatoryMarathon']
+      pred: ['S_Competition']
+    94246484-0b03-4247-91b7-a7b5e6c5ff5c   [FALSE NONE]
+      gold: ['S_Reciprocity']
+      pred: ['NONE']
+    e19dc016-9f44-4e0e-bc04-d5198a837c4a   [SPURIOUS ONLY]
+      gold: ['P_IllusionOfControl']
+      pred: ['P_IllusionOfControl', 'S_Competition']
+    f112aad7-3ccd-4220-ae49-34d217dda09d   [MISSED ONLY]
+      gold: ['T_Grinding', 'T_MandatoryMarathon']
+      pred: ['T_Grinding']
+    42025004-6937-4657-ab75-72e97fe19166   [MISSED ONLY]
+      gold: ['M_EasyToPurchase', 'M_IntermediateCurrency']
+      pred: ['M_IntermediateCurrency']
+    8b4092da-3c5a-41fa-8d14-16c5737e6b85   [FALSE NONE]
+      gold: ['T_MandatoryMarathon']
+      pred: ['NONE']
+    e2a95947-be08-4077-ad5f-1e7891b9eff5   [SPURIOUS ONLY]
+      gold: ['NONE']
+      pred: ['Tech_FragmentedDownloads']
+
+------------------------------------------------------------------------------
+COST
+------------------------------------------------------------------------------
+  rates as of       2026-08-21  in 0.2 / cached 0.02 / write 0.25 / out 1.2 per MTok
+  input tokens      758,618  (cached 744,780, written 0, plain 13,838)
+  output tokens     19,223  (reasoning 13,016, 68% of output)
+  mean per review   in 25,287  out 641  reasoning 434
+  cache hit rate    0.982
+  total spend       $0.0407
+  per review        $0.001358
+  cost split        cached  36.6%  cache_write   0.0%  uncached_input   6.8%  output  56.6%
+  projected 200,000  $271.54
+  micro-F1 per $ at 200,000   0.00278
+
+------------------------------------------------------------------------------
+THROUGHPUT
+------------------------------------------------------------------------------
+  latency p50/p95   6.55s / 18.51s   mean 8.88s   max 36.68s
+  sequential 200,000  364 h at p50 (493 h at mean, skewed by outliers)
+  web searches      2/30 reviews (  6.7%)
+    ids: 7732d254-0a39-4614-acf4-e67840e14b76, 2f50b132-9762-4f48-ae35-487f414aa41a
+
+==============================================================================

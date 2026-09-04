@@ -1,0 +1,91 @@
+{
+  "query": "Royal Match card collection sets cards",
+  "sent_query": "Royal Match card collection sets cards",
+  "query_hash": "60c933d9ec6cee9b",
+  "answer": "Royal Match features a card collection system where players collect cards to complete sets and unlock rewards. There are 15 themed card sets, and completing all sets wins a grand prize. Players can trade cards with friends to complete sets faster.",
+  "sources": [
+    {
+      "title": "Royal Match Cards [New Royal Collection Guide]",
+      "url": "https://oldcynic.com/royal-match-cards-royal-collection",
+      "host": "oldcynic.com"
+    },
+    {
+      "title": "Collect new cards and win rewards in Royal Match",
+      "url": "https://play.google.com/store/apps/editorial?id=mc_editorialmd_games_royal_match_card_collection_update_fcp&hl=en_US",
+      "host": "play.google.com"
+    },
+    {
+      "title": "What are Cards? — Royal Match Help Center",
+      "url": "https://dreamgames.helpshift.com/hc/az/3-royal-match/faq/336-what-are-cards",
+      "host": "dreamgames.helpshift.com"
+    },
+    {
+      "title": "I have questions about card collecting and team selection.",
+      "url": "https://www.reddit.com/r/RoyalMatchGame/comments/1fue6jt/i_have_questions_about_card_collecting_and_team",
+      "host": "reddit.com"
+    },
+    {
+      "title": "How to complete the Royal Card collection?",
+      "url": "https://www.facebook.com/groups/royalmatchfan/posts/792060229729287",
+      "host": "facebook.com"
+    }
+  ],
+  "backend": "tavily",
+  "cached": false,
+  "cost_usd": 0.008,
+  "latency_s": 2.352,
+  "n_results": 5,
+  "domains": [],
+  "error": null,
+  "ts": "2026-09-04T10:15:22+00:00",
+  "raw": {
+    "query": "Royal Match card collection sets cards",
+    "follow_up_questions": null,
+    "answer": "Royal Match features a card collection system where players collect cards to complete sets and unlock rewards. There are 15 themed card sets, and completing all sets wins a grand prize. Players can trade cards with friends to complete sets faster.",
+    "images": [],
+    "results": [
+      {
+        "url": "https://oldcynic.com/royal-match-cards-royal-collection",
+        "title": "Royal Match Cards [New Royal Collection Guide]",
+        "content": "Royal Match Royal Collection Guide\n\nThe Royal Match Royal Collection Guide\n\nCards are collected via Card Packs, which are given as rewards from other events, like Propeller Madness, Team Treasure, King’s Cup, Royal Pass, and Book of Treasure.\n\nThere are 4 different coloured Card Packs available, each containing a different number of cards:\n\n Brown = 2 cards\n Green = 3 cards\n Blue = 4 cards\n Purple = 6 cards\n\nThere is also a special Red Card Pack that guarantees a minimum of 1 New card. [...] You can get a Red Card Pack from the Card Stars feature (which is covered below).\n\nRoyal Collection Card Packs (Brown, Green, Blue, and Purple)\n\nRoyal Collection Card Packs (Brown, Green, Blue, and Purple)\n\nThere are 15 sets of cards (9 in each set), and each set is based on a theme, like Kitchen or Shipyard. [...] This post may contain speculation, opinion, and comedy. It is not advice and is solely for entertainment & informational purposes.\n\n## How Does the Royal Collection Work? (Royal Match Cards)\n\nThe Royal Collection is an event that runs over 62 days where you collect cards to complete sets to unlock rewards.\n\nThe ultimate goal is to collect each of the 135 available cards to complete all 15 sets to win a Grand Prize of 10,000 Gold Coins, Boosters, and an exclusive profile badge.",
+        "score": 0.8900749,
+        "raw_content": null,
+        "id": "e8f1cd-00"
+      },
+      {
+        "url": "https://play.google.com/store/apps/editorial?id=mc_editorialmd_games_royal_match_card_collection_update_fcp&hl=en_US",
+        "title": "Collect new cards and win rewards in Royal Match",
+        "content": "Image\n\n# Collect new cards and win rewards in Royal Match\n\nGet ready for a brand new way to add to your kingdom’s riches. Royal Match is introducing a card collection feature where you can earn rewards by completing sets of exclusive gold and silver cards. Open chests and trade with friends to complete each set before the Royal Collection season ends and claim a new kind of reward badge.\n\nComplete the set\n\nIcon image\n\nRoyal Match\n\nDream Games, Ltd.\n\nIn-app purchases\n\nIcon image\n\n4.8star [...] Players at level 41 and above are eligible to collect card packs from events and chests\n Collect unique silver and gold cards with 1 to 5 star ratings, with 5-star gold cards featuring beloved characters like King Robert, Winston, and Duke\n Send and receive silver cards from friends in order to complete each set faster\n Duplicate cards can also be traded in for reward chests based on the the number of stars [...] Complete the run before the end of the two-month season to earn a new player badge, then start again with an all-new theme of cards",
+        "score": 0.8539252,
+        "raw_content": null,
+        "id": "b26449-01"
+      },
+      {
+        "url": "https://dreamgames.helpshift.com/hc/az/3-royal-match/faq/336-what-are-cards",
+        "title": "What are Cards? — Royal Match Help Center",
+        "content": "You can collect cards by opening Card Packs or receiving them from a friend! All cards have a number of stars on them, which indicates the rarity of that card.",
+        "score": 0.67321366,
+        "raw_content": null,
+        "id": "e47034-02"
+      },
+      {
+        "url": "https://www.reddit.com/r/RoyalMatchGame/comments/1fue6jt/i_have_questions_about_card_collecting_and_team",
+        "title": "I have questions about card collecting and team selection.",
+        "content": "Royal Match fan-based subreddit dedicated to CARD EXCHANGE & COLLECTIONS. For general discussions, visit r/RoyalMatch. Be sure to comment in",
+        "score": 0.5726516,
+        "raw_content": null,
+        "id": "5e1d4e-03"
+      },
+      {
+        "url": "https://www.facebook.com/groups/royalmatchfan/posts/792060229729287",
+        "title": "How to complete the Royal Card collection?",
+        "content": "When you complete nine unique cards in a set, you can claim the associated reward of the completed set. Sets are unlocked at a certain",
+        "score": 0.5524679,
+        "raw_content": null,
+        "id": "71935f-04"
+      }
+    ],
+    "response_time": 1.46,
+    "request_id": "dedc4834-c78f-45a0-94a0-5acd8d284b77"
+  }
+}

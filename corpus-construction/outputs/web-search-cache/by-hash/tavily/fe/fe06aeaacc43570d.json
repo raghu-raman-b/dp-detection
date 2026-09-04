@@ -1,0 +1,91 @@
+{
+  "query": "Pokemon GO gifts trade friends mechanic",
+  "sent_query": "Pokemon GO gifts trade friends mechanic",
+  "query_hash": "fe06aeaacc43570d",
+  "answer": "In Pokemon GO, players can add friends, trade Pokemon, and give gifts. Friendship levels unlock bonuses like lower trade costs. Best Friends can trade with guaranteed high IVs.",
+  "sources": [
+    {
+      "title": "How to Add Friends, Trade Creatures, and Give Gifts in Pokemon Go | Shacknews",
+      "url": "https://www.shacknews.com/article/105790/how-to-add-friends-trade-creatures-and-give-gifts-in-pokemon-go",
+      "host": "shacknews.com"
+    },
+    {
+      "title": "Pokemon Go Friends - Pokemon GO Guide - IGN",
+      "url": "https://www.ign.com/wikis/pokemon-go/Pokemon_Go_Friends",
+      "host": "ign.com"
+    },
+    {
+      "title": "Pokémon GO Trading Update - Release Date, Friends, And Gifts - Everything We Know So Far | Nintendo Life",
+      "url": "https://www.nintendolife.com/guides/pokemon-go-trading-update-release-date-friends-and-gifts-everything-we-know-so-far",
+      "host": "nintendolife.com"
+    },
+    {
+      "title": "Pokémon GO Friendship: Ultimate Guide to Bonuses, Forever Friends, Levels, Vivillon & Gifts | Pokémon GO Hub",
+      "url": "https://pokemongohub.net/post/tips-and-tricks/go-hub-guide-to-friendship",
+      "host": "pokemongohub.net"
+    },
+    {
+      "title": "How to get Lucky Friends in Pokemon Go - Dexerto",
+      "url": "https://www.dexerto.com/pokemon/how-to-become-lucky-friends-in-pokemon-go-2602047",
+      "host": "dexerto.com"
+    }
+  ],
+  "backend": "tavily",
+  "cached": false,
+  "cost_usd": 0.008,
+  "latency_s": 4.957,
+  "n_results": 5,
+  "domains": [],
+  "error": null,
+  "ts": "2026-09-04T07:45:49+00:00",
+  "raw": {
+    "query": "Pokemon GO gifts trade friends mechanic",
+    "follow_up_questions": null,
+    "answer": "In Pokemon GO, players can add friends, trade Pokemon, and give gifts. Friendship levels unlock bonuses like lower trade costs. Best Friends can trade with guaranteed high IVs.",
+    "images": [],
+    "results": [
+      {
+        "url": "https://www.shacknews.com/article/105790/how-to-add-friends-trade-creatures-and-give-gifts-in-pokemon-go",
+        "title": "How to Add Friends, Trade Creatures, and Give Gifts in Pokemon Go | Shacknews",
+        "content": "# How to Add Friends, Trade Creatures, and Give Gifts in Pokemon Go. The latest update to Pokemon Go finally allows trainers to link up with their friends, give gifts, and even trade Pokemon. The team has just announced that Friends capabilities are finally arriving in the latest update, and not only does that mean that players can finally keep on track of all of their friends' latest accomplishments, they'll also be able to give Gifts and even trade Pokemon with one another if they so choose. Here's how all of the latest Friends-based features in Pokemon Go work. Once that's done, players should head to their profiles and back to the Friends tab, then tap on the option labeled \"Add Friend.\" Enter the friend's code, tap again to confirm, and that's that. Once two players have become friends, they'll be able to enjoy Pokemon trading and gift giving. It's worth noting that the Friends system has a few limitations, however: for now, the system is only available to trainers who have reached level 30, players can only have up to 200 separate in-game friends, and players who needed parental approval to play Pokemon Go (formally through the Trainer Club, not informally) won't be able to trade creatures with other trainers. ## How to Trade Pokemon in Pokemon Go. Assuming players are friends with one another and are physically nearby one another, they'll be able to trade Pokemon. Trading requires Stardust, and the amount of Stardust needed varies depends on the type of Pokemon being traded as well as the two friends' Friendship Level, starting at 100 Stardust and going all the way up to one million Stardust. There are also Special Trades that require much more Stardust and are limited to just one trade per day, and these apply to Legendary Pokemon, Shiny Pokemon, and Pokemon not featured in the player's Pokedex. Do note that creature power will likely go down with trades, as the CP and HP ranges are based on both the receiving friend's level as well as the two trainers' Friendship Level. That should be all that players need to get together with their friends, give Gifts, and trade their creatures.",
+        "score": 0.8415267,
+        "raw_content": null,
+        "id": "45405c-00"
+      },
+      {
+        "url": "https://www.ign.com/wikis/pokemon-go/Pokemon_Go_Friends",
+        "title": "Pokemon Go Friends - Pokemon GO Guide - IGN",
+        "content": "Title: Pokemon Go Friends - Pokemon GO Guide - IGN\n### Pokemon GO Guide. # Pokemon Go Friends. Friends is a mechanic in Pokemon Go added along with Gifts and Pokemon Trading. On this page, we will go through adding friends, increasing friendship levels, bonuses received, and more. ## How to Add Friends. Each player has their own Trainer Code they can share to exchange friend requests, which can be added remotely. **Another method to add friends is by QR Code. Once someone has accepted your friend request, that player will appear on your Friends List, where you can interact in various ways, including:. ## Friendship Levels. Once you’ve added a friend, you’ll be able to achieve one of four Friendship Levels:. | Good Friends (One Day) | 0% | 100/20,000 Stardust | 20,000/1,000,000 Stardust |. | Great Friends (Seven Days) | 20% | 80/16,000 Stardust | 16,000/800,000 Stardust |. | Ultra Friends (Thirty Days) | 92% | 8/1,600 Stardust | 1,600/80,000 Stardust |. | Best Friends (Ninety Days) | 96% | 8/800 Stardust | 800/40,000 Stardust |. | Level | Damage Bonus | Extra Premier Balls | XP Reward |. | Good Friends (One Day) | 3% | 0 | 3,000 |. | Great Friends (Seven Days) | 5% | 1 | 10,000 |. | Ultra Friends (Thirty Days) | 7% | 2 | 50,000 |. | Best Friends (Ninety Days) | 10% | 4 | 100,000 |. Raising your Friendship Level will offer various bonuses, including reduced Stardust costs for trades, extra damage during gym battles alongside a friend, and additional Premier Balls during raids with a friend. These are the bonuses for each Friendship Level:. ## How to Increase Friendship Levels. Here are the number of days you need to interact with someone to increase your Friendship Level, you'll also get XP for leveling up:. There are five actions you can do to count as an action each day:. ## Friend List Cap. The current cap for each player’s Friends List is 400 friends, but this number could grow in the future. Niantic will never require players to pay for additional friend space like with Bag or Pokemon Storage. ### Top Guide Sections. ### Was this guide helpful? ### In This Guide.",
+        "score": 0.8332299,
+        "raw_content": null,
+        "id": "c519c3-01"
+      },
+      {
+        "url": "https://www.nintendolife.com/guides/pokemon-go-trading-update-release-date-friends-and-gifts-everything-we-know-so-far",
+        "title": "Pokémon GO Trading Update - Release Date, Friends, And Gifts - Everything We Know So Far | Nintendo Life",
+        "content": "Title: Pokémon GO Trading Update - Release Date, Friends, And Gifts - Everything We Know So Far | Nintendo Life\n# Pokémon GO Trading Update - Release Date, Friends, And Gifts - Everything We Know So Far. **Pokémon GO** is about to finally get a few of its most requested features: a friends list and the ability to trade Pokémon. As if it couldn't get any bigger, Niantic has somehow found a way to make us all excited about Pokémon GO again. In this guide, we're going to run you through everything we know about the upcoming update so far, to try and give you a running start when it finally launches. Bear in mind that all of the information in this guide is subject to change, but we will update it when the the update is out for real. On this page: Pokémon GO Trading Update - Release Date, Friends, And Gifts - Everything We Know So Far. ## Pokémon GO Trading Update - Release Date. Niantic hasn't revealed an official release date just yet, but it has announced that the Pokémon GO trading update will play a big part in the Pokémon GO Summer Tour event. That's set to begin on June 30th, so at the very latest you'll be able to make friends and trade by then. ## Pokémon GO Trading Update - Friendship Feature. As part of this update, you'll be able to make friends within Pokémon Go for various special bonuses. Considering that it's actually far more worthwhile to trade with friends, we'll start here. Below we'll tell you exactly how to make friends within Pokémon GO, and the bonuses you'll receive for doing so. ### How To Make Friends. Friendship in Pokémon GO acts pretty much the same as it does across all of Nintendo's platforms – via a code. This will likely be displayed on your trainer's profile page, but we'll update this guide when the update's out with the exact location. You'll simply provide this code to a friend who can add you via the friends list and you're besties for life. ## Pokémon GO Trading Update - How To Trade. That's all we know about the trading and friendship features at this point, but we'll update this guide as soon as we learn more.",
+        "score": 0.7763013,
+        "raw_content": null,
+        "id": "4d7cfa-02"
+      },
+      {
+        "url": "https://pokemongohub.net/post/tips-and-tricks/go-hub-guide-to-friendship",
+        "title": "Pokémon GO Friendship: Ultimate Guide to Bonuses, Forever Friends, Levels, Vivillon & Gifts | Pokémon GO Hub",
+        "content": "1. Trainers take turns selecting up to three Pokémon from their Friend’s tagged list that they’d like to receive.\n2. These selections are sent to the other Trainer as a trade “wish list.”\n3. Each Trainer then chooses one Pokémon from their Friend’s wish list to offer in return.\n4. Both Trainers review the final selections and can confirm or cancel the trade at any time.\n\nYou’re not locked in during the process. Either Trainer can decline or restart the trade at any point before confirming. [...] Friendship Points are a new progression system that replaces the old “daily interaction” mechanic as the main way to track friendship progression between Trainers.\n\nYou can earn up to 1 Friendship Point per day per Friend by completing any of the typical friendship interactions that would normally level up your Friendship. [...] As trainers reach the friendship level, Best Friends, they unlock a range of bonuses. The most notable benefits include the possibility of acquiring an extra Premier Ball during raid encounters and the ability to trade Pokémon at a much lower Stardust cost. Additionally, when trading Pokémon, there is a guarantee that the Pokémon will have a minimum of 5 Individual Values (IVs). This makes trading highly valuable Pokémon much easier and promotes more interaction between players to achieve these",
+        "score": 0.7742597,
+        "raw_content": null,
+        "id": "c61f9a-03"
+      },
+      {
+        "url": "https://www.dexerto.com/pokemon/how-to-become-lucky-friends-in-pokemon-go-2602047",
+        "title": "How to get Lucky Friends in Pokemon Go - Dexerto",
+        "content": "Title: How to get Lucky Friends in Pokemon Go - Dexerto\n### Pokemon. ### Battlefield. ### Pokemon Legends Z-A guides. # How to get Lucky Friends in Pokemon Go. pokemon anime happy marill header. ## What are Lucky Friends in Pokemon Go? ## How to get a Lucky Friend in Pokemon Go. ## What are Lucky Pokemon in Pokemon Go? ## All Pokemon Go friendship levels. ## How to raise friendship levels in Pokemon Go. Getting Lucky Pokemon in Pokemon Go is tied up with the Lucky Friends mechanic, so here’s an overview of how players can turn their best friend into a lucky one in Niantic’s game. Becoming friends with other players in Pokemon Go has several benefits, aside from the fact that buddies help with trades and obtaining gifts in-game. Getting a Lucky Friend can help obtain the elusive Lucky Pokemon, which has special characteristics. ## What are Lucky Friends in Pokemon Go? Lucky Friends **is a special status in Pokemon Go** that players get by reaching a certain level of friendship with other users. ## How to get a Lucky Friend in Pokemon Go. Getting a Lucky Friend in Pokemon Go can be somewhat complicated, as reaching this status is up to luck. Pokemon Go players will have a small, random chance of **turning a best friend into a Lucky Friend during the first interaction of the day**. Lucky friends ensure that the next time a trade is made, the Pokemon will become Lucky Pokemon. ## What are Lucky Pokemon in Pokemon Go? This means that whatever Pokemon you get from your Lucky Friend can potentially arrive in your storage box with a 100 IV. ## All Pokemon Go friendship levels. This means you’ll be able to see them on your Friends list, send them gifts, share fights, and trade Pokemon. ## How to raise friendship levels in Pokemon Go. Raising your friendship level is simple but requires consistency, as you’ll need to interact with your friend for a long time. That’s everything you need to know about becoming Lucky Friends in Pokemon Go. For more guides, check out the list of every event in August 2024 and the current Raid Boss schedule.",
+        "score": 0.6238588,
+        "raw_content": null,
+        "id": "6ad3f8-04"
+      }
+    ],
+    "response_time": 3.38,
+    "request_id": "599e86ae-0185-4535-934a-993de532663e"
+  }
+}

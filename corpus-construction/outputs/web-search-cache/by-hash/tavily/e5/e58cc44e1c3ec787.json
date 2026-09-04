@@ -1,0 +1,91 @@
+{
+  "query": "Township mobile game ads no close button stuck",
+  "sent_query": "Township mobile game ads no close button stuck",
+  "query_hash": "e58cc44e1c3ec787",
+  "answer": "Some Township mobile game ads lack a close button, causing users to force close the game. Solutions include waiting for a hidden close button or clearing the game's cache. This issue often stems from buggy ad integration or malicious ads.",
+  "sources": [
+    {
+      "title": "Weird frustrating bug: ad got no close button, user gets stuck!",
+      "url": "https://discussions.unity.com/t/weird-frustrating-bug-ad-got-no-close-button-user-gets-stuck/889636",
+      "host": "discussions.unity.com"
+    },
+    {
+      "title": "Township game close button issue after advertise",
+      "url": "https://www.facebook.com/groups/township.official/posts/3149144745344296",
+      "host": "facebook.com"
+    },
+    {
+      "title": "Intrusive game ads with no close button",
+      "url": "https://www.facebook.com/groups/mermansion/posts/1295148651504336",
+      "host": "facebook.com"
+    },
+    {
+      "title": "I keep getting stuck in an add loop won't let me back into game",
+      "url": "https://support.google.com/googleplay/thread/373047748/i-keep-getting-stuck-in-an-add-loop-won-t-let-me-back-into-game?hl=en",
+      "host": "support.google.com"
+    },
+    {
+      "title": "Township ads are the worst. They are long, buttons ...",
+      "url": "https://www.reddit.com/r/Asphalt9/comments/smli4i/township_ads_are_the_worst_they_are_long_buttons",
+      "host": "reddit.com"
+    }
+  ],
+  "backend": "tavily",
+  "cached": false,
+  "cost_usd": 0.008,
+  "latency_s": 2.207,
+  "n_results": 5,
+  "domains": [],
+  "error": null,
+  "ts": "2026-09-04T12:52:45+00:00",
+  "raw": {
+    "query": "Township mobile game ads no close button stuck",
+    "follow_up_questions": null,
+    "answer": "Some Township mobile game ads lack a close button, causing users to force close the game. Solutions include waiting for a hidden close button or clearing the game's cache. This issue often stems from buggy ad integration or malicious ads.",
+    "images": [],
+    "results": [
+      {
+        "url": "https://discussions.unity.com/t/weird-frustrating-bug-ad-got-no-close-button-user-gets-stuck/889636",
+        "title": "Weird frustrating bug: ad got no close button, user gets stuck!",
+        "content": "They must force close the game and start again… And get lucky to get an ad that works. The “close ad” button does not appear for some ads!",
+        "score": 0.6383174,
+        "raw_content": null,
+        "id": "baa53e-00"
+      },
+      {
+        "url": "https://www.facebook.com/groups/township.official/posts/3149144745344296",
+        "title": "Township game close button issue after advertise",
+        "content": "After an advertise, the close button × is hidden under a strip on the top. There is no way to return to the game without closing the program.",
+        "score": 0.5412882,
+        "raw_content": null,
+        "id": "0f5ce0-01"
+      },
+      {
+        "url": "https://www.facebook.com/groups/mermansion/posts/1295148651504336",
+        "title": "Intrusive game ads with no close button",
+        "content": "This is an ad I see regularly on one of my game apps. Hitting the NO button does not make the ad go away unfortunately. No photo description",
+        "score": 0.4977301,
+        "raw_content": null,
+        "id": "8612b6-02"
+      },
+      {
+        "url": "https://support.google.com/googleplay/thread/373047748/i-keep-getting-stuck-in-an-add-loop-won-t-let-me-back-into-game?hl=en",
+        "title": "I keep getting stuck in an add loop won't let me back into game",
+        "content": "Be Patient with the Ad: The next time this happens, don't rush to close the ad. Look for a small \"X\" or \">>\" button in the corner. Sometimes, these buttons only appear after a few seconds or a full minute. Tap it carefully to return to the game.\n\nClear the Game's Cache: This is a simple but effective fix.\n\nGo to your phone's Settings > Apps.\n\nFind the game that's giving you trouble and tap on it.\n\nTap on Storage & cache. [...] The \"End Card\" trap: Many modern ads have an \"end card\" that you have to interact with after the video ends. It might be a playable mini-game, a final image, and then a very small \"X\" or \">>\" button. The ad won't close until you find and click this final button.\n\nHow to Fix It (Short-Term Solutions) [...] Why This Happens\n\nMalicious or poorly coded ads: Some ad providers use aggressive tactics that force you to their app page in the Play Store. This is often an attempt to get you to download the app without your consent.\n\nGame's ad integration bug: Sometimes, the way the game developers have integrated the ad service is buggy. The ad finishes, but the signal to return to the game doesn't work, so it defaults to opening the Play Store.",
+        "score": 0.45246392,
+        "raw_content": null,
+        "id": "32276b-03"
+      },
+      {
+        "url": "https://www.reddit.com/r/Asphalt9/comments/smli4i/township_ads_are_the_worst_they_are_long_buttons",
+        "title": "Township ads are the worst. They are long, buttons ...",
+        "content": "Just close and reopen the app, it's faster. If enough people do it, they will get rid of the ad.",
+        "score": 0.37188962,
+        "raw_content": null,
+        "id": "d9e167-04"
+      }
+    ],
+    "response_time": 1.22,
+    "request_id": "c07698aa-5299-4169-b662-caf9953a4a7b"
+  }
+}

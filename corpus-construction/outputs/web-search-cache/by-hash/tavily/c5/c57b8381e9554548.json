@@ -1,0 +1,91 @@
+{
+  "query": "Bingo Blitz album photos collect sets mechanic what are bingo blitz photo collections",
+  "sent_query": "Bingo Blitz album photos collect sets mechanic what are bingo blitz photo collections",
+  "query_hash": "c57b8381e9554548",
+  "answer": "Bingo Blitz photo collections involve collecting pictures from various destinations to complete sets and fill the Adventure Book. Each completed collection offers rewards. The game encourages players to visit new locations to gather souvenirs.",
+  "sources": [
+    {
+      "title": "Adventure Book - BingoBlitz",
+      "url": "https://www.bingoblitz.com/support/adventure-book",
+      "host": "bingoblitz.com"
+    },
+    {
+      "title": "‎Bingo Blitz™ - BINGO Games App - App Store",
+      "url": "https://apps.apple.com/us/app/bingo-blitz-bingo-games/id529996768",
+      "host": "apps.apple.com"
+    },
+    {
+      "title": "How to Get Pictures in Bingo Blitz 2025? - YouTube",
+      "url": "https://www.youtube.com/watch?v=mgG5UcTTbpQ",
+      "host": "youtube.com"
+    },
+    {
+      "title": "New in Bingo Blitz The Collection Pass! Try to Complete Your Album ...",
+      "url": "https://www.facebook.com/bingoblitz/videos/complete-your-album-/598443748017460",
+      "host": "facebook.com"
+    },
+    {
+      "title": "Bingo Blitz Picture Guide | Easiest £55 You can Get from Inbox ...",
+      "url": "https://www.reddit.com/r/Inbox_Pounds/comments/14w2ses/bingo_blitz_picture_guide_easiest_55_you_can_get",
+      "host": "reddit.com"
+    }
+  ],
+  "backend": "tavily",
+  "cached": false,
+  "cost_usd": 0.008,
+  "latency_s": 2.22,
+  "n_results": 5,
+  "domains": [],
+  "error": null,
+  "ts": "2026-09-04T10:16:08+00:00",
+  "raw": {
+    "query": "Bingo Blitz album photos collect sets mechanic what are bingo blitz photo collections",
+    "follow_up_questions": null,
+    "answer": "Bingo Blitz photo collections involve collecting pictures from various destinations to complete sets and fill the Adventure Book. Each completed collection offers rewards. The game encourages players to visit new locations to gather souvenirs.",
+    "images": [],
+    "results": [
+      {
+        "url": "https://www.bingoblitz.com/support/adventure-book",
+        "title": "Adventure Book - BingoBlitz",
+        "content": "Collect all the Pics from each of the destinations and fill up the Adventure Book with beautiful moments. Each completed collection comes with a wonderful",
+        "score": 0.533714,
+        "raw_content": null,
+        "id": "198394-00"
+      },
+      {
+        "url": "https://apps.apple.com/us/app/bingo-blitz-bingo-games/id529996768",
+        "title": "‎Bingo Blitz™ - BINGO Games App - App Store",
+        "content": "your chances to get a Bingo and quadruple the fun! • Power-up your game: Get faster Bingos and win more prizes with Power-Ups that amp up the fun! • Collect souvenirs: Create memories with Blitzy by taking Pics of every destination you visit together. • Get cooking: Collect ingredients in Bingo rounds and cook delicious dishes for additional rewards and even extra fun! • Enjoy special in-game Events: Bingo Blitz is more than just Bingo! Play new games and win even more in-game prizes! • Timely [...] of players, just like you! • In-game chat rooms • Exchange items with other players and help each other win! • Invite friends for more rewards! • An active social media community where you can share your Bingo fun and make new friends! Get in touch: Tell us about your Bingo Blitz experience! Bingo Blitz is intended for those 21 and older for amusement purposes only and does not offer ‘real money’ gambling, or an opportunity to win real money or real prizes based on game play. Playing or success [...] Bingo blitz is the best game out there hands down! If anyone disagrees I would love to know of one better! They are constantly giving new challenges “like 1-2 a week “ no other game out there comes even close to that! You are able to send free things to your friends and even better they are Abel to send free things to you! Very fun,intense, challenging and very fun and different new levels! Now I’m not going to sit here and tell you there is nothing I would do differently cause I would be",
+        "score": 0.3866482,
+        "raw_content": null,
+        "id": "11dd82-01"
+      },
+      {
+        "url": "https://www.youtube.com/watch?v=mgG5UcTTbpQ",
+        "title": "How to Get Pictures in Bingo Blitz 2025? - YouTube",
+        "content": "Looking to get pictures in Bingo Blitz? This easy-to-follow tutorial will show you exactly how to collect Bingo Blitz photos and complete",
+        "score": 0.35360727,
+        "raw_content": null,
+        "id": "eba4bd-02"
+      },
+      {
+        "url": "https://www.facebook.com/bingoblitz/videos/complete-your-album-/598443748017460",
+        "title": "New in Bingo Blitz The Collection Pass! Try to Complete Your Album ...",
+        "content": "New in Bingo Blitz The Collection Pass! Try to Complete Your Album NOW ⭐. 5. Last viewed on: Sep 1, 2026",
+        "score": 0.29494095,
+        "raw_content": null,
+        "id": "e4ee27-03"
+      },
+      {
+        "url": "https://www.reddit.com/r/Inbox_Pounds/comments/14w2ses/bingo_blitz_picture_guide_easiest_55_you_can_get",
+        "title": "Bingo Blitz Picture Guide | Easiest £55 You can Get from Inbox ...",
+        "content": "Updated with some pictures and a better description of how to get and use the 2X XP boost timers!",
+        "score": 0.16377984,
+        "raw_content": null,
+        "id": "18007f-04"
+      }
+    ],
+    "response_time": 1.23,
+    "request_id": "919e3005-f6b2-4c8b-a18c-5761f932eb1f"
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "query": "what is resin and resin overflow system in Genshin Impact",
+  "sent_query": "what is resin and resin overflow system in Genshin Impact",
+  "query_hash": "8e6462eb68df05ed",
+  "answer": "Resin is a resource in Genshin Impact used for activities; it regenerates over time, and the resin cap was increased to 200. Resin overflow is not currently implemented in the game.",
+  "sources": [
+    {
+      "title": "the resin system in genshin is very ANNOYING",
+      "url": "https://www.reddit.com/r/GenshinImpact/comments/1mhqgi4/the_resin_system_in_genshin_is_very_annoying",
+      "host": "reddit.com"
+    },
+    {
+      "title": "Resin Recharge Rate and Resin Cap Guide | Genshin Impact｜Game8",
+      "url": "https://game8.co/games/Genshin-Impact/archives/297554",
+      "host": "game8.co"
+    },
+    {
+      "title": "Original Resin",
+      "url": "https://genshin-impact.fandom.com/wiki/Original_Resin",
+      "host": "genshin-impact.fandom.com"
+    },
+    {
+      "title": "When are we getting resin overcap?",
+      "url": "https://www.hoyolab.com/article/42777278",
+      "host": "hoyolab.com"
+    },
+    {
+      "title": "Condensed Resin Removed - Genshin Impact",
+      "url": "https://gamefaqs.gamespot.com/boards/270518-genshin-impact/80951744",
+      "host": "gamefaqs.gamespot.com"
+    }
+  ],
+  "backend": "tavily",
+  "cached": false,
+  "cost_usd": 0.008,
+  "latency_s": 3.022,
+  "n_results": 5,
+  "domains": [],
+  "error": null,
+  "ts": "2026-09-04T13:33:27+00:00",
+  "raw": {
+    "query": "what is resin and resin overflow system in Genshin Impact",
+    "follow_up_questions": null,
+    "answer": "Resin is a resource in Genshin Impact used for activities; it regenerates over time, and the resin cap was increased to 200. Resin overflow is not currently implemented in the game.",
+    "images": [],
+    "results": [
+      {
+        "url": "https://www.reddit.com/r/GenshinImpact/comments/1mhqgi4/the_resin_system_in_genshin_is_very_annoying",
+        "title": "the resin system in genshin is very ANNOYING",
+        "content": "ed a resin overflow system. You actually get 180 daily resin, because that's the amount that generates in 24 hours. 200 is just the max you can",
+        "score": 0.7393665,
+        "raw_content": null,
+        "id": "e795a3-00"
+      },
+      {
+        "url": "https://game8.co/games/Genshin-Impact/archives/297554",
+        "title": "Resin Recharge Rate and Resin Cap Guide | Genshin Impact｜Game8",
+        "content": "The Resin Recharge Rate is 1 Resin per 8 minutes, which yields a total of 7 resins an hour. This is a pretty lengthy time but not all activities consume Original Resin, and it also recovers while the game is closed. Make sure to always spend Original Resin in time to maximize its use!\n\nIn Version 4.7 Developers Discussion, the resin cap is increased from 160 to 200, which means the resin recharge rate now takes 26 hours for the entire resin counter to fully replenish! [...] The Resin Recharge Rate of Original Resin in Genshin Impact is one very 8 minutes. See more info about the Resin Recharge Rate, the Resin System, and how to get more resin in this guide!\n\nList of Contents\n\n Resin Recharge Rate\n How to Get Original Resin\n How to Use Original Resin\n What is Original Resin?\n Related Guides\n\n## Resin Recharge Rate\n\n### 1 Resin Regenerates Every 8 Minutes [...] Fragile Resin is an item used to restore Original Resin without spending Primogems. Each Fragile Resin is worth 60 Original Resin. You can get these from Events, the Battle Pass, and Adventure Rank level ups!\n\nHow to Get Fragile Resin and Effects\n\n### Restore with Transient Resin",
+        "score": 0.734139,
+        "raw_content": null,
+        "id": "b2f953-01"
+      },
+      {
+        "url": "https://genshin-impact.fandom.com/wiki/Original_Resin",
+        "title": "Original Resin",
+        "content": "How to Obtain  \n\n### Source 1\n\nRegeneration over time\n\n### Source 2\n\nFragile Resin\n\n### Source 3\n\nPrimogems\n\n### Source 4\n\nTransient Resin\n\nOriginal Resin serves as the energy resource in _Genshin Impact_. Original Resin is used to claim challenge rewards from Ley Line Blossoms, Petrified Trees (Domains), and Trounce Blossoms (Bosses), as well as Event-exclusive challenges. [...] Crafting \n\n           Alchemy\n           Creation\n           Cooking\n           Forging\n           Processing\n\n       Other Systems\n\n           Inventory\n           Archive\n           Tutorials\n           Account\n           Co-Op Mode\n           Controls\n           Friends\n           Profile\n           Settings\n\n       Community\n\n           Genshin Impact\n           miHoYo\n           HOYO-MiX\n           HoYoLAB\n           Glossary\n\n\n\n## Original Resin\n\nImage 3: Item Original Resin [...] |  |\n| Genshin Impact |  Character  Teyvat  Factions  Manga  Book  Soundtrack  Timeline  Comics  Game System  Version  Voice Actor  Typeface |\n|  |\n| Activities |  Domain  Event  Expedition  Fishing  Genius Invokation TCG  Imaginarium Theater  Ley Line Outcrop  Miliastra Wonderland  Repertoire of Myriad Melodies  Reset  Spiral Abyss  Stygian Onslaught |\n|  |\n| Exploration |  Statue of The Seven  Teleport Waypoint  Shrine of Depths  Oculus  Crimson Agate  Key Sigil  Lumenspar  Spirit Carp |",
+        "score": 0.6063825,
+        "raw_content": null,
+        "id": "51be22-02"
+      },
+      {
+        "url": "https://www.hoyolab.com/article/42777278",
+        "title": "When are we getting resin overcap?",
+        "content": "Were already at 3.5 Weeks, thats not even counting Artifacts, The levelup boss material(46x40=1,840 resin (1840/200=9.2 days) ANOTHER week+2 days???\n\nthats 5 weeks already.\n\nIf we had an overflow of any kind, even by 200 resin We could be building characters so much more quickly.\n\nThats not all,\n\nGenshin Impact • Tavern\n\nRepost allowed\n\nresin\n\nOur 5th Anniversary\n\nGenshinImpact\n\nTravelers' Tales: Gilded Chapter\n\nHoYoWiki\n\nImage 6\n\n14\n\nImage 7\n\n1\n\n4\n\n0\n\n15\n\n0\n\n[](\n\n Send [...] Genshin Impact being hoyoverse's most popular game in modern day yet they neglect its player-base so badly? Ive been playing since Inazuma release, Im now at a point when my entire game is maxxed out, and i mean EVERYTHING. I'm bored snd have chosen to start building older characters/ones i want to play with. But we get NO resin.\n\nImagine this: You need 7 million mora, 420 EXP books, Alot of talent materials, and Patience. Lets do some calculations below [...] Image 3Image 4\n\npyreeImage 5\n\n2025/12/15\n\nFollow\n\nI mean, its been 5 years. Every single hoyo game has some sort of resin overflow mechanic. Zenless zone zero and Honkai: Star rail have INSANELY high resin overflows with up to 2400(I believe). I'm unsure on if Honkai Impact has a high resin overflow like them but I do believe it does have some sort of overcap.",
+        "score": 0.5617203,
+        "raw_content": null,
+        "id": "69c016-03"
+      },
+      {
+        "url": "https://gamefaqs.gamespot.com/boards/270518-genshin-impact/80951744",
+        "title": "Condensed Resin Removed - Genshin Impact",
+        "content": "Umm, you currently have to use 3 condensed resin in your bag on domains or leylines to make space to condense 3 more for the dailies. Same as the new using original resin system.\n\n   Blue on Black\n   Red\n   Red on Black\n   Green\n   Green on Black\n   Orange\n   Orange on Black\n   Purple\n   Purple on Black\n   Cloudy Blue\n   Grayscale\n   Sepia\n   Cotton Candy\n\ngamespot.commetacritic.comfandom.comfanatical.com\n\nSitemapPartnershipsCareersTerms of UseDigital Services Act [...] You're browsing the GameFAQs Message Boards as a guest. Sign Up for free (or Log In if you already have an account) to be able to post messages, change how messages are displayed, and view media in posts.\n\n1.   Boards\n2.   Genshin Impact\n3.   Condensed Resin Removed\n\n1 year ago#5\n\nThe new system without condensed….spending original resin would count for dailies as long as you have encounter points.\n1 year ago#7 [...] When you visit our website, we store cookies on your browser to collect information. The information collected might relate to you, your preferences or your device, and is mostly used to make the site work as you expect it to and to provide a more personalized web experience. However, you can choose not to allow certain types of cookies, which may impact your experience of the site and the services we are able to offer. Click on the different category headings to find out more and change our",
+        "score": 0.54942364,
+        "raw_content": null,
+        "id": "fd626e-04"
+      }
+    ],
+    "response_time": 2.0,
+    "request_id": "13c8e414-fd85-42ed-b433-865703b9db24"
+  }
+}

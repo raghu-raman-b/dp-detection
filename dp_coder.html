@@ -1094,8 +1094,7 @@ function exportLabels(){
     recs.map(rec => cols.map(c => csvCell(rec[c])).join(",")).join("\n") + "\n";
   const jsonl = recs.map(rec => JSON.stringify(rec)).join("\n") + "\n";
 
-  const stamp = new Date().toISOString().replace(/[:T]/g,"-").slice(0,19);
-  const base = `coder_${slug(coderName())}_${stamp}`;
+  const base = `coder_${slug(coderName())}`;
   download(base + ".jsonl", jsonl, "application/x-ndjson");
   download(base + ".csv",   csv,   "text/csv");
 

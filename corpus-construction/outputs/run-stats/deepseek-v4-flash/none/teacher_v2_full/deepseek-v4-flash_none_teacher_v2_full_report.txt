@@ -1,0 +1,188 @@
+==============================================================================
+RUN REPORT  deepseek-v4-flash_none_teacher_v2_full
+==============================================================================
+generated        2026-09-04T15:49:27
+provider/model   deepseek / deepseek-v4-flash  (served: deepseek-v4-flash)
+reasoning        none
+web search       True
+prompt           /home/prex_san/Documents/dp-detection/corpus-construction/outputs/prompts/teacher_v2_full.txt
+prompt sha256    aad355174ac44da072eee2003a4d2ed48038e273fcdc70e5c51dffa8e4a54416
+cache key/mode   None / automatic
+gold             /home/prex_san/Documents/dp-detection/corpus-construction/tuning/tuning_set_50.jsonl
+scored           50 of 50 requests
+
+------------------------------------------------------------------------------
+RELIABILITY
+------------------------------------------------------------------------------
+  requests          50
+  ok / api errors   50 / 0
+  parsed JSON       50/50
+  truncated         0
+  parse notes       {'extracted_braces': 31, 'stripped_fence': 5, 'clean': 14}
+  statuses          {'completed': 50}
+
+------------------------------------------------------------------------------
+CODEBOOK COMPLIANCE
+------------------------------------------------------------------------------
+  labels emitted            82
+  out-of-vocabulary codes   0
+  duplicate labels (R1)     4
+  labels with no span (R3)  0
+  span not in review        4
+  span matched only loosely 2
+  span verbatim rate         95.1%
+
+------------------------------------------------------------------------------
+QUALITY
+------------------------------------------------------------------------------
+  micro-F1            0.762   (P 0.780 / R 0.744)   tp 64 fp 18 fn 22
+  example-based F1    0.686
+  exact set match     0.480
+  class macro-F1      0.650   (5 classes + None)
+  meso macro-F1       0.788   over 10 labels, support >= 3
+  None P/R/F1         0.467 / 0.700 / 0.560   (support 10)
+  missed labels named in the model's own analysis: 3/22 (14%)   rule interpretation vs attention
+
+  class                     P      R     F1   supp
+    Monetary              0.875  0.840  0.857    25
+    Psychological         0.909  0.909  0.909    11
+    Social                0.889  0.667  0.762    12
+    Technical             0.000  0.000  0.000     0
+    Temporal              0.812  0.812  0.812    16
+    None                  0.467  0.700  0.560    10
+
+  per-label (* = support < 3, excluded from meso macro)
+    label                                 P      R     F1   supp
+    M_PayToProgress                     0.857  1.000  0.923    18
+    S_Competition                       1.000  0.625  0.769     8
+    T_PlayingByAppointment              0.667  0.857  0.750     7
+    P_RewardMania                       0.800  0.667  0.727     6
+    P_CompleteTheCollection             0.833  1.000  0.909     5
+    T_Grinding                          0.667  0.800  0.727     5
+    M_IntermediateCurrency              0.667  0.500  0.571     4
+    M_UIMisdirection                    1.000  1.000  1.000     3
+    P_IllusionOfControl                 1.000  1.000  1.000     3
+    S_Reciprocity                       1.000  0.333  0.500     3
+  * M_DeceptiveLuxury                   1.000  0.500  0.667     2
+  * M_EasyToPurchase                    0.500  0.500  0.500     2
+  * M_Gambling                          0.000  0.000  0.000     2
+  * M_PowerCreep                        0.667  1.000  0.800     2
+  * M_WasteAversion                     1.000  0.500  0.667     2
+  * P_AestheticManipulation             0.000  0.000  0.000     2
+  * T_Advertisement                     1.000  1.000  1.000     2
+  * T_DailyRewards                      0.667  1.000  0.800     2
+  * M_RecurringFee                      0.000  0.000  0.000     1
+  * P_EasyToGetHardToLose               0.000  0.000  0.000     1
+  * P_OptimismAndFrequencyBiases        0.000  0.000  0.000     1
+  * S_EncouragesAntiSocialBehavior      1.000  1.000  1.000     1
+  * S_ForcedFellowship                  1.000  1.000  1.000     1
+  * S_FriendSpamImpersonation           0.500  1.000  0.667     1
+  * T_InfiniteTreadmill                 1.000  1.000  1.000     1
+  * T_MandatoryMarathon                 0.000  0.000  0.000     1
+  * M_NeverEndingLure                   0.000  0.000  0.000     0
+  * S_FearOfMissingOutFOMO              0.000  0.000  0.000     0
+  * Tech_FragmentedDownloads            0.000  0.000  0.000     0
+
+------------------------------------------------------------------------------
+ERROR TAXONOMY
+------------------------------------------------------------------------------
+  over-labelled  (predicted, not in gold)
+    T_PlayingByAppointment               3
+    M_PayToProgress                      3
+    T_Grinding                           2
+    M_Gambling                           2
+    S_FriendSpamImpersonation            1
+    M_EasyToPurchase                     1
+    P_EasyToGetHardToLose                1
+    T_DailyRewards                       1
+    P_CompleteTheCollection              1
+    M_IntermediateCurrency               1
+    P_RewardMania                        1
+    M_PowerCreep                         1
+  under-labelled (in gold, not predicted)
+    S_Competition                        3
+    P_RewardMania                        2
+    S_Reciprocity                        2
+    M_Gambling                           2
+    M_IntermediateCurrency               2
+    P_AestheticManipulation              2
+    T_PlayingByAppointment               1
+    M_RecurringFee                       1
+    P_EasyToGetHardToLose                1
+    P_OptimismAndFrequencyBiases         1
+    M_WasteAversion                      1
+    T_MandatoryMarathon                  1
+  co-occurring miss/false-positive pairs
+    M_Gambling ~ P_AestheticManipulation   2
+    M_Gambling ~ M_PayToProgress   1
+    M_IntermediateCurrency ~ P_AestheticManipulation   1
+    P_AestheticManipulation ~ P_RewardMania   1
+    M_IntermediateCurrency ~ T_Grinding   1
+    M_Gambling ~ T_Grinding   1
+    P_RewardMania ~ T_Grinding   1
+    M_EasyToPurchase ~ M_IntermediateCurrency   1
+    M_EasyToPurchase ~ M_Gambling   1
+    M_EasyToPurchase ~ P_RewardMania   1
+    M_PayToProgress ~ P_AestheticManipulation   1
+
+  reviews with disagreements (first 12; full detail in the .md)
+    0853c395-2040-4e0b-a56c-1591484cd35b   [FALSE NONE]
+      gold: ['T_PlayingByAppointment']
+      pred: ['NONE']
+    5f3e71b5-200c-45a3-b90e-e08b0dc0e1a3   [MISSED ONLY]
+      gold: ['P_IllusionOfControl', 'P_RewardMania']
+      pred: ['P_IllusionOfControl']
+    b580a4c7-3c75-493e-ad3b-03b4f2bde6a5   [FALSE NONE]
+      gold: ['S_Competition', 'S_Reciprocity']
+      pred: ['NONE']
+    95ddadb3-82cd-4042-8a51-cf8b3ed164c2   [SPURIOUS ONLY]
+      gold: ['NONE']
+      pred: ['T_Grinding']
+    0bc09fc3-6436-4a24-855e-0fdc56887918   [MISSED ONLY]
+      gold: ['M_RecurringFee', 'S_Reciprocity']
+      pred: ['S_Reciprocity']
+    a12b6d56-8505-4b4e-9b43-cde2d1085360   [FALSE NONE]
+      gold: ['P_EasyToGetHardToLose']
+      pred: ['NONE']
+    ae51c2f5-a77c-428d-bb71-ee00109538ba   [FALSE NONE]
+      gold: ['S_Competition']
+      pred: ['NONE']
+    91e3872b-4443-43de-b4e5-508456ea6706   [SPURIOUS ONLY]
+      gold: ['M_PayToProgress']
+      pred: ['M_PayToProgress', 'T_PlayingByAppointment']
+    490ca53d-66fe-44b0-928f-ea2ba6682f0b   [FALSE NONE]
+      gold: ['S_Reciprocity']
+      pred: ['NONE']
+    fd1230ab-7d12-4aeb-a425-e37ed06bcd5c   [MISSED ONLY]
+      gold: ['P_IllusionOfControl', 'P_OptimismAndFrequencyBiases', 'S_FriendSpamImpersonation']
+      pred: ['P_IllusionOfControl', 'S_FriendSpamImpersonation']
+    66698c5c-8577-46fe-b796-8e93ad782166   [SPURIOUS ONLY]
+      gold: ['NONE']
+      pred: ['M_EasyToPurchase', 'S_FriendSpamImpersonation']
+    21021f9a-e106-4e51-b01d-3fe4a4c941fc   [SPURIOUS ONLY]
+      gold: ['T_PlayingByAppointment']
+      pred: ['M_PayToProgress', 'P_CompleteTheCollection', 'P_EasyToGetHardToLose', 'T_DailyRewards', 'T_PlayingByAppointment']
+
+------------------------------------------------------------------------------
+COST
+------------------------------------------------------------------------------
+  rates as of       2026-08-22  in 0.22 / cached 0.007 / write 0.0 / out 0.66 per MTok
+  input tokens      1,696,241  (cached 1,671,552, written 0, plain 24,689)
+  output tokens     62,283  (reasoning 0, 0% of output)
+  mean per review   in 33,925  out 1,246  reasoning 0
+  cache hit rate    0.985
+  total spend       $0.2342
+  per review        $0.004685
+  cost split        cached   5.0%  cache_write   0.0%  uncached_input   2.3%  output  17.5%
+  projected 200,000  $936.96
+  micro-F1 per $ at 200,000   0.00081
+
+------------------------------------------------------------------------------
+THROUGHPUT
+------------------------------------------------------------------------------
+  latency p50/p95   8.37s / 19.35s   mean 10.92s   max 48.88s
+  sequential 200,000  465 h at p50 (607 h at mean, skewed by outliers)
+  web searches      21/50 reviews ( 42.0%)
+    ids: 0853c395-2040-4e0b-a56c-1591484cd35b, 8da35d79-a1e5-46ef-b545-cc2cc3c4d671, 5f3e71b5-200c-45a3-b90e-e08b0dc0e1a3, 0347fbc7-5c01-452e-ae4b-867f5bd7dd47, a12b6d56-8505-4b4e-9b43-cde2d1085360, 91e3872b-4443-43de-b4e5-508456ea6706, 490ca53d-66fe-44b0-928f-ea2ba6682f0b, 66698c5c-8577-46fe-b796-8e93ad782166 ...
+
+==============================================================================

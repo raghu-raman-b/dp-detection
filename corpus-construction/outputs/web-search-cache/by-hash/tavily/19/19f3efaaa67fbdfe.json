@@ -1,0 +1,91 @@
+{
+  "query": "MONOPOLY GO what are stickers and sticker albums used for",
+  "sent_query": "MONOPOLY GO what are stickers and sticker albums used for",
+  "query_hash": "19f3efaaa67fbdfe",
+  "answer": "Stickers in Monopoly Go are collectible items that unlock rewards, while sticker albums help players trade and complete collections for bigger rewards. Finishing a sticker album grants significant bonuses.",
+  "sources": [
+    {
+      "title": "All about stickers in Monopoly Go",
+      "url": "https://play.google.com/store/apps/editorial?id=mc_games_editorialevergreen_monopoly_go_all_about_stickers_postinstall_fcp&hl=en_US",
+      "host": "play.google.com"
+    },
+    {
+      "title": "Monopoly Go! Monopoly Origins - Monopoly Wiki - Fandom",
+      "url": "https://monopoly.fandom.com/wiki/Monopoly_Go!_Monopoly_Origins",
+      "host": "monopoly.fandom.com"
+    },
+    {
+      "title": "How to Complete Monopoly Go Sticker Albums Like a Pro ...",
+      "url": "https://www.mmopixel.com/news/how-to-complete-monopoly-go-albums-like-a-pro",
+      "host": "mmopixel.com"
+    },
+    {
+      "title": "What is the best strategy for completing sticker albums in ...",
+      "url": "https://www.facebook.com/groups/935040604232613/posts/2020598399010156",
+      "host": "facebook.com"
+    },
+    {
+      "title": "What happens when you finish the sticker album",
+      "url": "https://www.reddit.com/r/Monopoly_GO/comments/17eqezv/what_happens_when_you_finish_the_sticker_album",
+      "host": "reddit.com"
+    }
+  ],
+  "backend": "tavily",
+  "cached": false,
+  "cost_usd": 0.008,
+  "latency_s": 2.24,
+  "n_results": 5,
+  "domains": [],
+  "error": null,
+  "ts": "2026-09-04T10:26:14+00:00",
+  "raw": {
+    "query": "MONOPOLY GO what are stickers and sticker albums used for",
+    "follow_up_questions": null,
+    "answer": "Stickers in Monopoly Go are collectible items that unlock rewards, while sticker albums help players trade and complete collections for bigger rewards. Finishing a sticker album grants significant bonuses.",
+    "images": [],
+    "results": [
+      {
+        "url": "https://play.google.com/store/apps/editorial?id=mc_games_editorialevergreen_monopoly_go_all_about_stickers_postinstall_fcp&hl=en_US",
+        "title": "All about stickers in Monopoly Go",
+        "content": "Stickers in Monopoly Go are collectible items that enrich gameplay and unlock rewards. You can gather them via packs, events, and social interactions.",
+        "score": 0.82186085,
+        "raw_content": null,
+        "id": "0e8fdd-00"
+      },
+      {
+        "url": "https://monopoly.fandom.com/wiki/Monopoly_Go!_Monopoly_Origins",
+        "title": "Monopoly Go! Monopoly Origins - Monopoly Wiki - Fandom",
+        "content": "Monopoly Origins is a seventh sticker album in Monopoly Go. These set of stickers are based of the story of Monopoly, such as stories for classic tokens,",
+        "score": 0.7797419,
+        "raw_content": null,
+        "id": "521771-01"
+      },
+      {
+        "url": "https://www.mmopixel.com/news/how-to-complete-monopoly-go-albums-like-a-pro",
+        "title": "How to Complete Monopoly Go Sticker Albums Like a Pro ...",
+        "content": "Sticker albums in Monopoly Go aren't just for fun—they're your ticket to bigger and better rewards! With StickerHub, finding and trading missing",
+        "score": 0.751375,
+        "raw_content": null,
+        "id": "ebaa04-02"
+      },
+      {
+        "url": "https://www.facebook.com/groups/935040604232613/posts/2020598399010156",
+        "title": "What is the best strategy for completing sticker albums in ...",
+        "content": "Question/advice for those that have second accounts or work together with friends/family on the game. When it comes to higher star stickers like 4 & 5 stars,",
+        "score": 0.36772484,
+        "raw_content": null,
+        "id": "4a199f-03"
+      },
+      {
+        "url": "https://www.reddit.com/r/Monopoly_GO/comments/17eqezv/what_happens_when_you_finish_the_sticker_album",
+        "title": "What happens when you finish the sticker album",
+        "content": "When you finish the sticker album do you lose all duplicate stickers that you have? I’m two cars away and would rather gift my duplicates to someone than",
+        "score": 0.14195836,
+        "raw_content": null,
+        "id": "58a171-04"
+      }
+    ],
+    "response_time": 1.14,
+    "request_id": "c1500c67-434f-4d0c-a0f8-6a6792729a8d"
+  }
+}

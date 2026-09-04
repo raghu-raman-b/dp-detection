@@ -1,0 +1,91 @@
+{
+  "query": "Royal Match card collection cards sets reward event",
+  "sent_query": "Royal Match card collection cards sets reward event",
+  "query_hash": "83859db29339c61c",
+  "answer": "The Royal Match card collection event runs for 62 days, where players collect themed cards to unlock rewards. Completing all sets earns a grand prize. Players receive cards from packs and events.",
+  "sources": [
+    {
+      "title": "Royal Match Cards [New Royal Collection Guide] • Old Cynic",
+      "url": "https://oldcynic.com/royal-match-cards-royal-collection",
+      "host": "oldcynic.com"
+    },
+    {
+      "title": "🃏 Collection — Royal Match Help Center",
+      "url": "https://dreamgames.helpshift.com/hc/az/3-royal-match/section/55-collection",
+      "host": "dreamgames.helpshift.com"
+    },
+    {
+      "title": "All about Collections in Royal Match",
+      "url": "https://play.google.com/store/apps/editorial?id=mc_games_editorialevergreen_royal_match_all_about_collection_postinstall_fcp&hl=en_US",
+      "host": "play.google.com"
+    },
+    {
+      "title": "Festival Deck in the Grand Winter Collection : r/RoyalMatch",
+      "url": "https://www.reddit.com/r/RoyalMatch/comments/1qbd9lx/festival_deck_in_the_grand_winter_collection",
+      "host": "reddit.com"
+    },
+    {
+      "title": "How to complete the Royal Card collection?",
+      "url": "https://www.facebook.com/groups/royalmatchfan/posts/792060229729287",
+      "host": "facebook.com"
+    }
+  ],
+  "backend": "tavily",
+  "cached": false,
+  "cost_usd": 0.008,
+  "latency_s": 2.287,
+  "n_results": 5,
+  "domains": [],
+  "error": null,
+  "ts": "2026-09-04T13:29:07+00:00",
+  "raw": {
+    "query": "Royal Match card collection cards sets reward event",
+    "follow_up_questions": null,
+    "answer": "The Royal Match card collection event runs for 62 days, where players collect themed cards to unlock rewards. Completing all sets earns a grand prize. Players receive cards from packs and events.",
+    "images": [],
+    "results": [
+      {
+        "url": "https://oldcynic.com/royal-match-cards-royal-collection",
+        "title": "Royal Match Cards [New Royal Collection Guide] • Old Cynic",
+        "content": "This post may contain speculation, opinion, and comedy. It is not advice and is solely for entertainment & informational purposes.\n\n## How Does the Royal Collection Work? (Royal Match Cards)\n\nThe Royal Collection is an event that runs over 62 days where you collect cards to complete sets to unlock rewards.\n\nThe ultimate goal is to collect each of the 135 available cards to complete all 15 sets to win a Grand Prize of 10,000 Gold Coins, Boosters, and an exclusive profile badge. [...] Royal Match Royal Collection Guide\n\nThe Royal Match Royal Collection Guide\n\nCards are collected via Card Packs, which are given as rewards from other events, like Propeller Madness, Team Treasure, King’s Cup, Royal Pass, and Book of Treasure.\n\nThere are 4 different coloured Card Packs available, each containing a different number of cards:\n\n Brown = 2 cards\n Green = 3 cards\n Blue = 4 cards\n Purple = 6 cards\n\nThere is also a special Red Card Pack that guarantees a minimum of 1 New card. [...] Each set gives you the chance to win a different reward. Rewards are either Gold Coins, Pre-Game Boosters (Rockets, TNT, Light Balls), or In-Game Boosters (Royal Hammers, Arrows, Canons, Jester Hats) in various quantities.\n\nWhen you open a Card Pack, you’ll receive a random selection of cards. As your collection grows, these will either be New cards or Duplicate cards.\n\nNew cards will be highlighted with a glow and a “New” badge (as seen in the image below).",
+        "score": 0.878825,
+        "raw_content": null,
+        "id": "564c8d-00"
+      },
+      {
+        "url": "https://dreamgames.helpshift.com/hc/az/3-royal-match/section/55-collection",
+        "title": "🃏 Collection — Royal Match Help Center",
+        "content": "Collection is a time-limited feature where you collect cards from friends, events, tournaments, and chests to complete sets for great reward",
+        "score": 0.826278,
+        "raw_content": null,
+        "id": "dda4c5-01"
+      },
+      {
+        "url": "https://play.google.com/store/apps/editorial?id=mc_games_editorialevergreen_royal_match_all_about_collection_postinstall_fcp&hl=en_US",
+        "title": "All about Collections in Royal Match",
+        "content": "Collections are unlocked at level 41. They are groups of themed cards that are only available for a limited time. You'll earn these cards in packs as rewards for completing events, tournaments, and opening area chests. [...] If you are able to collect every card in a Collection by the end of the event, you will receive the Collection’s Grand Prize, which not only contains multiple power-ups, boosters, and other rewards, but you'll also receive a special Badge that can be displayed next to your username. [...] If you complete a Collection a second time before the event ends, you'll receive an even more prestigious Badge and additional rewards on top of what you received before. Make sure to finish Collections as soon as possible to earn these badges and extras.\n\n## Card examples",
+        "score": 0.8245895,
+        "raw_content": null,
+        "id": "2a0cd0-02"
+      },
+      {
+        "url": "https://www.reddit.com/r/RoyalMatch/comments/1qbd9lx/festival_deck_in_the_grand_winter_collection",
+        "title": "Festival Deck in the Grand Winter Collection : r/RoyalMatch",
+        "content": "Event/progress rewards. Set rewards have already been nerfed to the point where each completion reward feels borderline underwhelming. new card",
+        "score": 0.78154784,
+        "raw_content": null,
+        "id": "6727fb-03"
+      },
+      {
+        "url": "https://www.facebook.com/groups/royalmatchfan/posts/792060229729287",
+        "title": "How to complete the Royal Card collection?",
+        "content": "When you complete nine unique cards in a set, you can claim the associated reward of the completed set. Sets are unlocked at a certain",
+        "score": 0.5792344,
+        "raw_content": null,
+        "id": "aa6ff1-04"
+      }
+    ],
+    "response_time": 1.31,
+    "request_id": "c572ac59-1e6d-4542-a1cb-a0e20b3b5fef"
+  }
+}

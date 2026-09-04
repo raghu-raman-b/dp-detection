@@ -1,0 +1,91 @@
+{
+  "query": "Toon Blast Champions League event what is it",
+  "sent_query": "Toon Blast Champions League event what is it",
+  "query_hash": "d0285b64d6e08400",
+  "answer": "The Champions League in Toon Blast is a competitive event for players who have completed all available levels. It places players in a league where they can compete against others. Winning the Champions League can earn players rewards.",
+  "sources": [
+    {
+      "title": "Events | Toon Blast Wiki - Fandom",
+      "url": "https://toonblast.fandom.com/wiki/Events",
+      "host": "toonblast.fandom.com"
+    },
+    {
+      "title": "What is the Champions League? — Toon Blast Help Center",
+      "url": "https://peakgames.helpshift.com/hc/en/4-toon-blast/faq/25-what-is-the-champions-league",
+      "host": "peakgames.helpshift.com"
+    },
+    {
+      "title": "Champions league : r/ToonBlast",
+      "url": "https://www.reddit.com/r/ToonBlast/comments/v5wlu8/champions_league",
+      "host": "reddit.com"
+    },
+    {
+      "title": "Toon Blast",
+      "url": "https://www.facebook.com/toonblast/posts/did-you-know-how-to-enter-the-champions-leagueonce-you-complete-all-the-availabl/2081306992182681",
+      "host": "facebook.com"
+    },
+    {
+      "title": "Toon Blast Champions League playlist",
+      "url": "https://www.youtube.com/playlist?list=PLFXiQFo88La17RITSnEpuHDYeX5cUnZ4o",
+      "host": "youtube.com"
+    }
+  ],
+  "backend": "tavily",
+  "cached": false,
+  "cost_usd": 0.008,
+  "latency_s": 2.286,
+  "n_results": 5,
+  "domains": [],
+  "error": null,
+  "ts": "2026-09-04T12:50:46+00:00",
+  "raw": {
+    "query": "Toon Blast Champions League event what is it",
+    "follow_up_questions": null,
+    "answer": "The Champions League in Toon Blast is a competitive event for players who have completed all available levels. It places players in a league where they can compete against others. Winning the Champions League can earn players rewards.",
+    "images": [],
+    "results": [
+      {
+        "url": "https://toonblast.fandom.com/wiki/Events",
+        "title": "Events | Toon Blast Wiki - Fandom",
+        "content": "Events are a gameplay feature in Toon Blast. Adventure Island Cannon Fest (Unlocks at lvl. 35) Champions' League (Champions League players only) Cooper's",
+        "score": 0.83290404,
+        "raw_content": null,
+        "id": "0b67ac-00"
+      },
+      {
+        "url": "https://peakgames.helpshift.com/hc/en/4-toon-blast/faq/25-what-is-the-champions-league",
+        "title": "What is the Champions League? — Toon Blast Help Center",
+        "content": "Once you complete all the available levels in Toon Blast, you get to be eligible to enter the Champions League. You'll be placed in a league.",
+        "score": 0.629889,
+        "raw_content": null,
+        "id": "b5bb5e-01"
+      },
+      {
+        "url": "https://www.reddit.com/r/ToonBlast/comments/v5wlu8/champions_league",
+        "title": "Champions league : r/ToonBlast",
+        "content": "Once you complete all the available levels in Toon Blast, you get to be eligible to enter the Champions League. You'll be placed in a league",
+        "score": 0.60245985,
+        "raw_content": null,
+        "id": "f32b59-02"
+      },
+      {
+        "url": "https://www.facebook.com/toonblast/posts/did-you-know-how-to-enter-the-champions-leagueonce-you-complete-all-the-availabl/2081306992182681",
+        "title": "Toon Blast",
+        "content": "🏆Did you know how to enter the Champions League?\n\nOnce you complete all the available levels in Toon Blast, you get to be eligible to enter the Champions",
+        "score": 0.45391592,
+        "raw_content": null,
+        "id": "ec7ab0-03"
+      },
+      {
+        "url": "https://www.youtube.com/playlist?list=PLFXiQFo88La17RITSnEpuHDYeX5cUnZ4o",
+        "title": "Toon Blast Champions League playlist",
+        "content": "Toon Blast Champions League playlist · Toon Blast Champions League Level-1,2,3 · Toon Blast Champions League Level-4,5,6 · Toon Blast Champions League Level-7,8,9.",
+        "score": 0.3057289,
+        "raw_content": null,
+        "id": "005a5f-04"
+      }
+    ],
+    "response_time": 1.39,
+    "request_id": "7dba818a-a262-484a-aa9f-44efce7774e1"
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "query": "Travel Town merge adventure pottery wheel what is it for",
+  "sent_query": "Travel Town merge adventure pottery wheel what is it for",
+  "query_hash": "c9f609e3c476c7b5",
+  "answer": "The Travel Town merge adventure pottery wheel is used to produce items, but it requires significant energy and can yield failed items that also consume energy to remove. It unlocks at level 27 and can be merged to create higher-level generators. Players often find it challenging to use without spending real money.",
+  "sources": [
+    {
+      "title": "‎Travel Town - Merge Adventure App - App Store",
+      "url": "https://apps.apple.com/au/app/travel-town-merge-adventure/id1521236603",
+      "host": "apps.apple.com"
+    },
+    {
+      "title": "Pottery | Travel Town (Mobile Game) Wiki | Fandom",
+      "url": "https://travel-town-mobile-game.fandom.com/wiki/Pottery",
+      "host": "travel-town-mobile-game.fandom.com"
+    },
+    {
+      "title": "Merge or „go“?",
+      "url": "https://www.facebook.com/TravelTownGame/posts/merge-or-go/155346799588988",
+      "host": "facebook.com"
+    },
+    {
+      "title": "What did you do with your pottery wheels? Why were there ...",
+      "url": "https://www.reddit.com/r/TravelTown/comments/11ow791/what_did_you_do_with_your_pottery_wheels_why_were",
+      "host": "reddit.com"
+    },
+    {
+      "title": "Travel Town - Merge Adventure - Apps on Google Play",
+      "url": "https://play.google.com/store/apps/details?id=io.randomco.travel&hl=en_US",
+      "host": "play.google.com"
+    }
+  ],
+  "backend": "tavily",
+  "cached": false,
+  "cost_usd": 0.008,
+  "latency_s": 2.711,
+  "n_results": 5,
+  "domains": [],
+  "error": null,
+  "ts": "2026-09-04T12:53:28+00:00",
+  "raw": {
+    "query": "Travel Town merge adventure pottery wheel what is it for",
+    "follow_up_questions": null,
+    "answer": "The Travel Town merge adventure pottery wheel is used to produce items, but it requires significant energy and can yield failed items that also consume energy to remove. It unlocks at level 27 and can be merged to create higher-level generators. Players often find it challenging to use without spending real money.",
+    "images": [],
+    "results": [
+      {
+        "url": "https://apps.apple.com/au/app/travel-town-merge-adventure/id1521236603",
+        "title": "‎Travel Town - Merge Adventure App - App Store",
+        "content": "Game play is good, only ads you get are the ones you choose to watch to help progress with an action however it is targeted for you to spend real money, which is fine if you’re enjoying the game, but there is a pottery wheel that you have to tap around 7-8 times counting toward your energy spend just to get one item from it, and since you need to get many items to merge them your energy depletes fast not to mention it also spits out failed items which you need to use energy to get rid of [...] to get rid of them! (7 hits to remove) this then means you have no energy left to obtain any of the other challenges, the daily challenges are hard to complete unless you’re spending real money, got to level 29 and have deleted the game, if you have patience you can get through the levels but will hardly make the daily missions unless you spend money on it, I may have kept the game longer but the pottery wheel is just useless and makes the game worthless spending so much energy to attempt to [...] Explore Travel Town, where you can combine everything into better and more useful items while you travel the world! The game contains in-game purchases (including randomized items) Reveal secrets as you discover yourself and help the friendly people of Travel Town! TRAVEL TOWN FEATURES: == Match Objects == • Discover over 500 fantastic objects through hundreds of levels! • Freely drag objects around the beautiful world and match 2 of a kind evolve them into more superior items! • Fulfil the",
+        "score": 0.76847315,
+        "raw_content": null,
+        "id": "18fe9d-00"
+      },
+      {
+        "url": "https://travel-town-mobile-game.fandom.com/wiki/Pottery",
+        "title": "Pottery | Travel Town (Mobile Game) Wiki | Fandom",
+        "content": "The Pottery unlocks at level 27. Each stage rewards a generator when completed which can be merged with the previous level generator to produce higher-level",
+        "score": 0.66464967,
+        "raw_content": null,
+        "id": "7bd707-01"
+      },
+      {
+        "url": "https://www.facebook.com/TravelTownGame/posts/merge-or-go/155346799588988",
+        "title": "Merge or „go“?",
+        "content": "How do I get tiny cup? 5y. Travel Town - Merge Adventure. Julieanne Wheeler-sparkes pottery wheel drops them occasionally. 5y. Jenna Williams.",
+        "score": 0.58976424,
+        "raw_content": null,
+        "id": "8be651-02"
+      },
+      {
+        "url": "https://www.reddit.com/r/TravelTown/comments/11ow791/what_did_you_do_with_your_pottery_wheels_why_were",
+        "title": "What did you do with your pottery wheels? Why were there ...",
+        "content": "Complete the item on them. You can't merge them if they have clay on them. Then you'll have the max version once they're all empty.",
+        "score": 0.3815888,
+        "raw_content": null,
+        "id": "ac4243-03"
+      },
+      {
+        "url": "https://play.google.com/store/apps/details?id=io.randomco.travel&hl=en_US",
+        "title": "Travel Town - Merge Adventure - Apps on Google Play",
+        "content": "## About this game\n\n## Data safety\n\nIcon image\nIcon image\nIcon image\nIcon image\n\n## Ratings and reviews\n\n## What’s new\n\nContent rating\n\n## Play on PC\n\nPlay this game on your Windows PC with Google Play Games\n\nOfficial Google experience\n\nBigger screen\n\nLevel up with improved controls\n\nSeamless sync across devices\\\n\nEarn Google Play Points\n\nMinimum requirements\n\nTo learn more about these requirements, visit the Help Center [...] Intel is a registered trademark of Intel Corporation or its subsidiaries. Windows is a trademark of the Microsoft group of companies.\n\n\\Might not be available for this game\n\n## App support\n\n## Similar games\n\nThumbnail image\nThumbnail image\nThumbnail image\nThumbnail image\nThumbnail image\nThumbnail image\n\nPlay Pass\n\nPlay Points\n\nGift cards\n\nRedeem\n\nRefund policy\n\nParent Guide\n\nFamily sharing\n\nTerms of Service\n\nPrivacy\n\nAbout Google Play\n\nDevelopers\n\nGoogle Store [...] Icon image\n\n# Travel Town - Merge Adventure",
+        "score": 0.30327812,
+        "raw_content": null,
+        "id": "77532b-04"
+      }
+    ],
+    "response_time": 1.74,
+    "request_id": "3faf3344-9155-434a-b7ec-ddcbef812b32"
+  }
+}

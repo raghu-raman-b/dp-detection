@@ -1,0 +1,91 @@
+{
+  "query": "Dice Dreams sticker album deal buying cards duplicates new cards",
+  "sent_query": "Dice Dreams sticker album deal buying cards duplicates new cards",
+  "query_hash": "a07ac4a8f9fee2c5",
+  "answer": "To buy Dice Dreams cards, visit BuyMMOG.com for instant delivery and support. Swap Go app helps trade duplicates and find new cards. Community groups on Facebook facilitate sticker trading.",
+  "sources": [
+    {
+      "title": "Buy Dice Dreams Stickers | Shop From 1-5 Crowns Cards",
+      "url": "https://www.buymmog.com/dice-dreams-stickers",
+      "host": "buymmog.com"
+    },
+    {
+      "title": "‎Swap Go！Sticker & Dice Rewards App - App Store",
+      "url": "https://apps.apple.com/td/app/swap-go-sticker-dice-rewards/id6477522457",
+      "host": "apps.apple.com"
+    },
+    {
+      "title": "Dice dreams sticker trading help needed",
+      "url": "https://www.facebook.com/groups/1564845677540673/posts/1846917239333514",
+      "host": "facebook.com"
+    },
+    {
+      "title": "Cards/Stickers : r/DiceDreams",
+      "url": "https://www.reddit.com/r/DiceDreams/comments/1bggqu3/cardsstickers",
+      "host": "reddit.com"
+    },
+    {
+      "title": "Why are duplicate stickers given as prizes in Dice Dreams?",
+      "url": "https://www.facebook.com/groups/1564845677540673/posts/1875272836497954",
+      "host": "facebook.com"
+    }
+  ],
+  "backend": "tavily",
+  "cached": false,
+  "cost_usd": 0.008,
+  "latency_s": 2.524,
+  "n_results": 5,
+  "domains": [],
+  "error": null,
+  "ts": "2026-09-04T13:13:56+00:00",
+  "raw": {
+    "query": "Dice Dreams sticker album deal buying cards duplicates new cards",
+    "follow_up_questions": null,
+    "answer": "To buy Dice Dreams cards, visit BuyMMOG.com for instant delivery and support. Swap Go app helps trade duplicates and find new cards. Community groups on Facebook facilitate sticker trading.",
+    "images": [],
+    "results": [
+      {
+        "url": "https://www.buymmog.com/dice-dreams-stickers",
+        "title": "Buy Dice Dreams Stickers | Shop From 1-5 Crowns Cards",
+        "content": "Buy Dice Dreams stickers at BuyMMOG.com with instant delivery, cheap prices, and 24/7 live chat support. The best place to buy Dice Dreams cards online.",
+        "score": 0.55998856,
+        "raw_content": null,
+        "id": "694be3-00"
+      },
+      {
+        "url": "https://apps.apple.com/td/app/swap-go-sticker-dice-rewards/id6477522457",
+        "title": "‎Swap Go！Sticker & Dice Rewards App - App Store",
+        "content": "Earn free dice, collect daily rewards, and complete your card albums faster than ever! Swap Go is the ultimate companion utility designed to enhance your gaming experience by providing verified daily bonus links and a secure, advanced platform for exchanging stickers with players worldwide. Download now to claim your rewards and finish your collections today! Features Advanced Sticker Trading System Find the exact missing cards you need and trade your duplicates instantly. Our smart marketplace [...] Go' Dice Rewards: Dice & Rolls\n\n  Daily Dice Link and Rewards\n View\n\n  \n\n  1 2 3 4 Player Games - Battle\n\n  4-player game on one device\n\n## You Might Also Like\n\n View\n\n  \n\n  Go'Rewards\n\n  Rewards, Trades & Events\n View\n\n  \n\n  AI Emoji Maker: Sticker & Meme\n\n  Custom Photos & Animated GIFs\n View\n\n  \n\n  CallFusion: Ringtone Maker\n\n  Custom Ringtones for iPhone\n View\n\n  \n\n  AirTalk Wireless\n\n  AirTalk Wireless\n View\n\n  \n\n  Dreams Rewards - Rolls Rewards\n\n  Rewards Link for Dice Dreams\n View [...] strictly as a community-driven matchmaking platform to facilitate virtual item exchanges between independent players. This application does not facilitate, support, or permit any form of real-money transactions, commercial trading, or purchasing of in-game content. Content provided in this application, including but not limited to Dice Reward Links, is obtained legally and free of charge from public domain sources and official social media channels such as Facebook, X, and Discord. We do not",
+        "score": 0.48865002,
+        "raw_content": null,
+        "id": "5777ca-01"
+      },
+      {
+        "url": "https://www.facebook.com/groups/1564845677540673/posts/1846917239333514",
+        "title": "Dice dreams sticker trading help needed",
+        "content": "Hey guys! I need these 5 cards to finish my album could anyone help me out please! I have several extra cards if you need any just ask I'd be",
+        "score": 0.451448,
+        "raw_content": null,
+        "id": "3447bc-02"
+      },
+      {
+        "url": "https://www.reddit.com/r/DiceDreams/comments/1bggqu3/cardsstickers",
+        "title": "Cards/Stickers : r/DiceDreams",
+        "content": "Completing the card collections wins you prizes and trading can help complete them. You have to add the person on fb as stated below, and then",
+        "score": 0.4133593,
+        "raw_content": null,
+        "id": "e7d00a-03"
+      },
+      {
+        "url": "https://www.facebook.com/groups/1564845677540673/posts/1875272836497954",
+        "title": "Why are duplicate stickers given as prizes in Dice Dreams?",
+        "content": "Am I missing something cause I don't understand why we keep getting more and more of the same stickers as prizes for accomplishments we make, how",
+        "score": 0.3667717,
+        "raw_content": null,
+        "id": "2b8029-04"
+      }
+    ],
+    "response_time": 1.56,
+    "request_id": "62cea9ca-0b9f-4f81-8bb6-3f7efa66d8bf"
+  }
+}
