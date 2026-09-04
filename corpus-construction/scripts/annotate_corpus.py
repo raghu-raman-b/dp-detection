@@ -3,9 +3,11 @@
 annotate_corpus.py -- label the whole corpus with the frozen teacher configuration.
 
 This is the production sibling of run_teacher_openai.py. That script exists to compare
-configurations over 50 reviews; this one takes the configuration those runs SELECTED
-(outputs/comparison/models_and_providers_v2/selection.json ->
-gpt-5.6-luna / high / teacher_v2_full) and applies it to dataset_to_label.jsonl.
+configurations over the tuning set; this one takes the configuration the validation
+stage SELECTED (outputs/validation/comparison/validation_all/selection.json) and applies
+it to dataset_to_label.jsonl. Set DEFAULT_EFFORT to match that file before launching --
+selection.json is the record the paper cites, and a mismatch means the corpus was not
+labelled by the configuration the paper reports.
 
     python annotate_corpus.py --check                 offline: config, paths, projections
     python annotate_corpus.py --probe                 2 live calls: read the rate limits
@@ -36,6 +38,14 @@ Three things change at 200k that do not matter at 50.
    50 rows and about 2GB of Python objects for 200k, so reviews are streamed instead and
    the done-set is applied on the way past.
 
+4. STOPPING ON FAILURE. At 50 reviews a failed call is a row you look at afterwards. At
+   200k the cause -- no credit, a revoked key, a withdrawn model -- applies to every
+   remaining review, so the run stops at the FIRST failure (--max-failures) and says
+   what happened. A failure is written with parsed=null and the error in error_message:
+   an error is never stored as if it were a label. It is not counted as done, so
+   --resume re-labels it, and the run is only marked complete when every selected
+   review carries a label.
+
 Output tree -- one run, so no <model>/<effort>/<prompt> nesting:
 
     ../outputs/llm_annotation/
@@ -59,8 +69,9 @@ import random
 import signal
 import sys
 import threading
+import time
 import uuid
-from collections import defaultdict, deque
+from collections import Counter, defaultdict, deque
 from concurrent.futures import FIRST_COMPLETED, ThreadPoolExecutor, wait
 from dataclasses import dataclass, field
 from datetime import datetime
@@ -156,6 +167,9 @@ class RunConfig:
     limit: int
     only: set[str]
     max_spend: float
+    max_failures: int
+    progress_every: int
+    stats_every: int
     workers: int
     tier: int
     seq_warmup: int
@@ -208,7 +222,9 @@ def build_config(a: argparse.Namespace) -> RunConfig:
         max_output=a.max_output, parse_retries=a.parse_retries, retries=a.retries,
         limit=a.limit,
         only={s.strip() for s in a.only.split(",") if s.strip()} if a.only else set(),
-        max_spend=a.max_spend, workers=a.workers, tier=a.tier,
+        max_spend=a.max_spend, max_failures=a.max_failures,
+        progress_every=a.progress_every, stats_every=a.stats_every,
+        workers=a.workers, tier=a.tier,
         seq_warmup=a.seq_warmup, ramp_batch=a.ramp_batch,
     )
     if not cfg.prompt_file.exists():
@@ -498,22 +514,293 @@ def warn_cache(alarm: dict, workers: int) -> None:
 
 # ------------------------------------------------------------------ the writer
 
+def hms(seconds: float) -> str:
+    """h:mm for anything long enough to care about, m:ss below an hour."""
+    if seconds != seconds or seconds in (float("inf"), float("-inf")) or seconds < 0:
+        return "--:--"
+    s = int(seconds)
+    return f"{s//3600}:{(s%3600)//60:02d}" if s >= 3600 else f"{s//60}:{s%60:02d}"
+
+
+class C:
+    """ANSI colour, off unless stdout is a terminal that wants it.
+
+    Colour is applied to the DISPLAY string only; every width calculation in Progress
+    uses the uncoloured text, because a terminal counts escape sequences as zero columns
+    and Python's len() does not. Mixing the two is how progress bars end up smeared."""
+
+    ON = False
+    _CODES = {"red": 31, "green": 32, "yellow": 33, "blue": 34,
+              "magenta": 35, "cyan": 36, "grey": 90}
+
+    @classmethod
+    def enable(cls) -> None:
+        if os.environ.get("NO_COLOR") or not sys.stdout.isatty():
+            cls.ON = False
+            return
+        if sys.platform == "win32":
+            # Windows consoles need VT processing switched on explicitly; without it
+            # the escape codes are printed literally. Harmless if it fails -- modern
+            # Windows Terminal and the VS Code terminal already have it on.
+            try:
+                import ctypes
+                k = ctypes.windll.kernel32
+                h = k.GetStdHandle(-11)
+                mode = ctypes.c_uint32()
+                if k.GetConsoleMode(h, ctypes.byref(mode)):
+                    k.SetConsoleMode(h, mode.value | 0x0004)
+            except Exception:
+                pass
+        cls.ON = True
+
+    @classmethod
+    def p(cls, text: str, colour: str = "", bold: bool = False) -> str:
+        if not cls.ON or (not colour and not bold):
+            return text
+        parts = []
+        if bold:
+            parts.append("1")
+        if colour in cls._CODES:
+            parts.append(str(cls._CODES[colour]))
+        return f"\033[{';'.join(parts)}m{text}\033[0m"
+
+
+def heat(value: float, good: float, ok: float) -> str:
+    """green / yellow / red by how a measured value compares to its thresholds."""
+    return "green" if value >= good else ("yellow" if value >= ok else "red")
+
+
+class Progress:
+    """Live one-line status, redrawn in place on a terminal.
+
+    A 200k run is a multi-day process watched by a human, and printing only every 25
+    completions means the 20-review sequential warm-up emits nothing at all for its
+    first three minutes -- indistinguishable from a hang. So every completion redraws a
+    status line, and every --progress-every completions leaves a permanent line behind
+    so the scrollback still tells the story.
+
+    The rate is measured over a rolling window rather than over the whole run: workers
+    ramp 1 -> 2 -> ... -> 11, so a whole-run average would badly under-report the
+    current throughput and inflate the ETA for hours.
+
+    Redraw only happens on a tty. Under nohup or a pipe, carriage returns would turn a
+    log file into one enormous line, so there the periodic lines are all that is
+    written."""
+
+    BLOCKS = " ▏▎▍▌▋▊▉█"       # sub-cell fill, so the bar moves on every review
+
+    def __init__(self, every: int, window: int = 300):
+        self.every = max(1, every)
+        self.t0 = time.monotonic()
+        self.marks: deque[float] = deque(maxlen=window)
+        self.tty = sys.stdout.isatty()
+        self.width = 0
+        try:
+            self.cols = os.get_terminal_size().columns
+        except OSError:
+            self.cols = 100
+
+    def rate_per_min(self) -> float:
+        """Reviews per minute over the rolling window."""
+        if len(self.marks) < 2:
+            return 0.0
+        span = self.marks[-1] - self.marks[0]
+        return (len(self.marks) - 1) / span * 60.0 if span > 0 else 0.0
+
+    def bar(self, frac: float, cells: int = 18) -> str:
+        """A fractional block bar. At 200k reviews a whole-cell bar would sit still for
+        11,000 reviews at a time, which looks exactly like a hang -- hence eighths."""
+        frac = min(max(frac, 0.0), 1.0)
+        filled = frac * cells
+        whole = int(filled)
+        rest = self.BLOCKS[int((filled - whole) * 8)] if whole < cells else ""
+        return ("█" * whole + rest).ljust(cells, "·")
+
+    def line(self, label, done, total, workers, cache, ok, errs, spend):
+        """Returns (plain, coloured). Plain is what the widths are measured on."""
+        rpm = self.rate_per_min()
+        left = max(total - done, 0)
+        eta = (left / rpm * 60.0) if rpm > 0 else float("inf")
+        frac = (done / total) if total else 0.0
+        cells = 18 if self.cols >= 118 else (10 if self.cols >= 96 else 0)
+        wide = self.cols >= 118
+
+        seg = []                                   # (plain, colour, bold)
+        seg.append((f"[{label}] ", "cyan", True))
+        if cells:
+            seg.append((self.bar(frac, cells) + " ", "green", False))
+        seg.append((f"{frac*100:5.1f}% ", "green", True))
+        seg.append((f" {done:,}/{total:,} ", "", True))
+        seg.append((f" w={workers} ", "magenta", False))
+        seg.append((f" {rpm:5.1f}/min ", "yellow", False))
+        seg.append((f" cache {cache:.0%} ", heat(cache, 0.80, 0.50), False))
+        seg.append((f" ok {ok:,} ", "green", False))
+        seg.append((f" err {errs} ", "red" if errs else "grey", errs > 0))
+        seg.append((f" ${spend:,.2f} ", "yellow", True))
+        if wide:
+            seg.append((f" up {hms(time.monotonic()-self.t0)} ", "grey", False))
+        seg.append((f" eta {hms(eta)}", "cyan", True))
+
+        plain = "".join(p for p, _, _ in seg)
+        return plain, "".join(C.p(p, c, b) for p, c, b in seg)
+
+    def tick(self, *args) -> None:
+        """Called on every completion, under the writer's lock."""
+        self.marks.append(time.monotonic())
+        plain, coloured = self.line(*args)
+        done = args[1]
+        if done % self.every == 0:
+            self.clear()
+            print(coloured, flush=True)
+        elif self.tty:
+            pad = " " * max(self.width - len(plain), 0)
+            self.width = len(plain)
+            print("\r" + coloured + pad, end="", flush=True)
+
+    def clear(self) -> None:
+        """Wipe the in-place line so a permanent print does not land on top of it."""
+        if self.tty and self.width:
+            print("\r" + " " * self.width + "\r", end="", flush=True)
+            self.width = 0
+
+
+CLASS_NAMES = {"M": "Monetary", "P": "Psychological", "S": "Social",
+               "T": "Temporal", "Tech": "Technical"}
+
+
+class LiveStats:
+    """What the corpus is turning out to look like, while it is being built.
+
+    This is not decoration. A 60-hour run that is quietly emitting the wrong label
+    distribution is worth catching at hour two, and the two failure modes that actually
+    happen -- the abstention rate drifting, and one label swallowing everything -- are
+    both visible in this digest within the first few thousand reviews. The first-sighting
+    line doubles as taxonomy coverage: when all 29 have fired, the codebook is reachable
+    end to end on real data."""
+
+    def __init__(self, every: int, legal: set[str]):
+        self.every = max(0, every)
+        self.legal = set(legal)
+        self.counts: Counter = Counter()
+        self.per_class: Counter = Counter()
+        self.first_seen: dict[str, int] = {}
+        self.pending: list[tuple[str, int, int]] = []
+        self.n = 0
+        self.none = 0
+        self.n_labels = 0
+        self.multi = 0
+
+    def observe(self, parsed: dict | None, n_done: int) -> None:
+        if parsed is None:
+            return
+        self.n += 1
+        labels = [x.get("label") for x in (parsed.get("labels") or [])
+                  if isinstance(x, dict) and x.get("label")]
+        if not labels:
+            self.none += 1
+            return
+        if len(labels) > 1:
+            self.multi += 1
+        for lab in labels:
+            self.n_labels += 1
+            self.counts[lab] += 1
+            self.per_class[lab.split("_")[0]] += 1
+            if lab not in self.first_seen:
+                self.first_seen[lab] = n_done
+                # the coverage count is snapshotted HERE: two new labels in one
+                # review would otherwise both report the post-flush total.
+                self.pending.append((lab, n_done, len(self.first_seen)))
+
+    def due(self) -> bool:
+        return bool(self.every) and self.n and self.n % self.every == 0
+
+    def firsts(self) -> list[str]:
+        """New labels since the last call, as printable lines."""
+        out, self.pending = self.pending, []
+        lines = []
+        for lab, at, seen in out:
+            total = len(self.legal) or 29
+            lines.append(C.p(f"  \u2726 first {lab}", "magenta", True)
+                         + C.p(f"  at review {at:,}   ({seen}/{total} of the codebook "
+                               f"seen)", "grey"))
+        return lines
+
+    def digest(self) -> list[str]:
+        """The periodic block. Deliberately short -- it prints many times over a run."""
+        if not self.n:
+            return []
+        w = 34
+        pct = lambda k, d: (k / d * 100.0) if d else 0.0
+        lines = [C.p(f"  \u2500\u2500 corpus so far  ({self.n:,} reviews) "
+                     + "\u2500" * 28, "grey")]
+
+        none_pct = pct(self.none, self.n)
+        lines.append("   " + C.p("NONE", "", True)
+                     + C.p(f" {self.none:,} ({none_pct:.1f}%)",
+                           heat(1 - none_pct / 100, 0.80, 0.70), True)
+                     + C.p(f"    labels {self.n_labels:,}"
+                           f"    {self.n_labels/max(self.n,1):.2f}/review"
+                           f"    multi-label {pct(self.multi, self.n):.0f}%", "grey"))
+
+        if self.per_class:
+            bits = []
+            for cls in ("M", "P", "S", "T", "Tech"):
+                n = self.per_class.get(cls, 0)
+                bits.append(C.p(f"{CLASS_NAMES[cls]} ", "cyan")
+                            + C.p(f"{pct(n, self.n_labels):4.1f}%", "", True))
+            lines.append("   " + "  ".join(bits))
+
+        top = self.counts.most_common(5)
+        if top:
+            peak = top[0][1]
+            lines.append(C.p("   top", "grey"))
+            for lab, n in top:
+                bar = "\u2588" * max(1, round(n / peak * 18))
+                lines.append(f"     {lab:<{w}} " + C.p(bar, "green")
+                             + C.p(f" {n:,}  {pct(n, self.n_labels):.1f}%", "grey"))
+
+        rare = [(l, c) for l, c in self.counts.most_common()][-3:]
+        if len(self.counts) > 8 and rare:
+            lines.append(C.p("   rarest seen   ", "grey")
+                         + C.p("  ".join(f"{l} ({c})" for l, c in reversed(rare)),
+                               "yellow"))
+        missing = sorted(self.legal - set(self.counts)) if self.legal else []
+        if missing:
+            head = ", ".join(missing[:4]) + (f" +{len(missing)-4} more"
+                                             if len(missing) > 4 else "")
+            lines.append(C.p(f"   not yet seen  ({len(missing)})  ", "grey")
+                         + C.p(head, "grey"))
+        return lines
+
+
 class Writer:
     """Every mutation of on-disk state and of the running totals happens here, under one
     lock. Results arrive out of order, which is fine -- the jsonl is keyed by review_id
     and load_progress() derives the resume set from the file itself."""
 
     def __init__(self, cfg: RunConfig, counters: dict, spend: float,
-                 all_usage: list[dict], started: str, n_total: int):
+                 all_usage: list[dict], started: str, n_total: int,
+                 n_prior: int = 0, n_selected: int = 0):
         self.cfg, self.paths = cfg, cfg.paths
         self.counters, self.spend, self.all_usage = counters, spend, all_usage
         self.started, self.n_total = started, n_total
+        # n_total is what THIS pass has to do; n_prior is what earlier passes
+        # already finished. Progress is reported against the corpus, because
+        # '11/199,693' next to 'ok 39' on a resumed run is just confusing --
+        # one number was per-pass and the other cumulative.
+        self.n_prior = n_prior
+        self.n_selected = n_selected or (n_prior + n_total)
         self.lock = threading.Lock()
         self.n_done = 0
         self.since_checkpoint = 0
         self.stop_reason: str | None = None
+        self.last_failure: dict | None = None
         self.recent_errors: deque[bool] = deque(maxlen=50)
         self.workers = 1
+        self.progress = Progress(cfg.progress_every)
+        self.stats = LiveStats(cfg.stats_every, cfg.legal_codes)
+        self.level_label = "run"
+        self.cache_hit = 0.0
         self.f_resp = open(self.paths.responses, "a", encoding="utf-8")
         self.f_meta = open(self.paths.meta, "a", encoding="utf-8")
         self.f_raw = gzip.open(self.paths.raw, "at", encoding="utf-8")
@@ -584,8 +871,10 @@ class Writer:
             if res["api_error_type"]:
                 self.counters["api_errors"] += 1
                 self.recent_errors.append(True)
-                print(f"  [{self.n_done}/{self.n_total}] API ERROR "
-                      f"{res['api_error_type']}: {(res['api_error_message'] or '')[:60]}")
+                self.progress.clear()
+                print(f"  [{self.n_prior + self.n_done:,}/{self.n_selected:,}] API ERROR "
+                      f"{res['api_error_type']}: {(res['api_error_message'] or '')[:60]}",
+                      flush=True)
             else:
                 self.recent_errors.append(False)
                 meta |= {k: v for k, v in rmeta.items() if k != "n_web_searches"}
@@ -615,9 +904,47 @@ class Writer:
                 self.save(complete=False, ramp=ramp)
                 self.since_checkpoint = 0
 
+            self.progress.tick(self.level_label, self.n_prior + self.n_done,
+                               self.n_selected, level,
+                               self.cache_hit,
+                               self.counters["ok"],
+                               self.counters["api_errors"] + self.counters["parse_failures"],
+                               self.spend)
+
+            self.stats.observe(res["parsed"], self.n_prior + self.n_done)
+            extra_lines = self.stats.firsts()
+            if self.stats.due():
+                extra_lines += [""] + self.stats.digest() + [""]
+            if extra_lines:
+                self.progress.clear()
+                print("\n".join(extra_lines), flush=True)
+
+            # A review that errored or would not parse carries NO label. It is written
+            # to disk as evidence (with parsed=null and the error in error_message --
+            # the error text is never mistaken for a label) and it is not counted as
+            # done, so --resume re-labels it. But the run stops here by default rather
+            # than walking on: the same cause -- no credit, a revoked key, a changed
+            # model -- will hit every remaining review, and finding that out at review
+            # 199,000 is not the same as finding it out at review 21.
+            n_failed = self.counters["api_errors"] + self.counters["parse_failures"]
+            if res["api_error_type"]:
+                self.last_failure = {
+                    "review_id": row.get("review_id"), "kind": "api_error",
+                    "error_type": res["api_error_type"],
+                    "message": (res["api_error_message"] or "")[:400]}
+            elif failed_parse:
+                self.last_failure = {
+                    "review_id": row.get("review_id"), "kind": "parse_failure",
+                    "error_type": "parse_failed",
+                    "message": (res["raw"] or "")[:400]}
+
             if self.cfg.max_spend and self.spend > self.cfg.max_spend:
                 self.stop_reason = (f"spend guard: ${self.spend:.4f} over the "
                                     f"${self.cfg.max_spend:g} ceiling")
+            elif self.cfg.max_failures and n_failed >= self.cfg.max_failures:
+                self.stop_reason = (
+                    f"{n_failed} review(s) failed and the failure ceiling is "
+                    f"{self.cfg.max_failures} (--max-failures)")
             elif (len(self.recent_errors) == self.recent_errors.maxlen
                     and sum(self.recent_errors) > 0.5 * len(self.recent_errors)):
                 self.stop_reason = (f"circuit breaker: "
@@ -631,13 +958,21 @@ class Writer:
 # every attempt, so at 200k it is multiple GB and the resume path is the NORMAL path,
 # not an edge case. Both are re-done as single streaming passes.
 
-def scan_responses(path: Path) -> tuple[set[str], set[str]]:
-    """(done, failed) in one pass. A row that errored or failed to parse is not done --
-    it gets retried on the next pass, which is why it is tracked separately."""
+def scan_responses(path: Path, legal: set[str] | None = None):
+    """(done, failed, stats) in ONE pass over the file.
+
+    A row that errored or failed to parse is not done -- it gets retried on the
+    next pass, which is why it is tracked separately.
+
+    The label distribution is rebuilt here too. It could be recomputed separately,
+    but responses.jsonl is ~0.8GB at 200k and this loop is already reading every
+    line of it; a resumed run would otherwise report "first M_PayToProgress
+    (1/29 of the codebook seen)" for a label it found on day one."""
     done: set[str] = set()
     failed: set[str] = set()
+    stats = LiveStats(0, legal or set())
     if not path.exists():
-        return done, failed
+        return done, failed, stats
     with open(path, encoding="utf-8") as fh:
         for line in fh:
             line = line.strip()
@@ -653,9 +988,11 @@ def scan_responses(path: Path) -> tuple[set[str], set[str]]:
             if rec.get("error_type"):
                 if not rec.get("superseded"):
                     failed.add(rid)
-            else:
+            elif not rec.get("superseded"):
                 done.add(rid)
-    return done, failed
+                stats.observe(rec.get("parsed"), len(done))
+    stats.pending.clear()      # history, not news: do not re-announce it
+    return done, failed, stats
 
 
 def supersede_failed(paths: FlatPaths, retry: set[str]) -> int:
@@ -687,10 +1024,10 @@ def supersede_failed(paths: FlatPaths, retry: set[str]) -> int:
 
 
 def resume_gate(paths: FlatPaths, prompt_sha: str, resume: bool,
-                overwrite: bool) -> tuple[set[str], set[str], dict]:
+                overwrite: bool, legal: set[str] | None = None):
     """Same policy as runner_common.resume_gate -- default is overwrite, an interrupted
     run stops and makes you choose -- over the streaming scan."""
-    done, failed = scan_responses(paths.responses)
+    done, failed, stats = scan_responses(paths.responses, legal)
     state = {}
     if paths.checkpoint.exists():
         try:
@@ -702,7 +1039,7 @@ def resume_gate(paths: FlatPaths, prompt_sha: str, resume: bool,
     if resume:
         if not paths.exists():
             print("--resume: nothing on disk yet, starting fresh.")
-            return set(), set(), state
+            return set(), set(), state, stats
         if state.get("prompt_sha256") and state["prompt_sha256"] != prompt_sha:
             sys.exit(
                 f"refusing to resume: the prompt changed since this run started.\n"
@@ -710,19 +1047,24 @@ def resume_gate(paths: FlatPaths, prompt_sha: str, resume: bool,
                 f"  now:        {prompt_sha[:12]}\n"
                 f"  half the corpus would be labelled by a different prompt. Rerun with "
                 f"--overwrite to start clean.")
-        return done, failed - done, state
+        return done, failed - done, state, stats
 
-    if incomplete and not overwrite:
+    # Any existing run is protected, finished or not. A finished 200k run represents
+    # days of wall clock and real money, and `--actual` with no flags -- the most
+    # natural thing to type twice -- used to wipe it silently.
+    if paths.exists() and not overwrite:
         sys.exit(
-            f"an interrupted run is sitting in {show(paths.dir)}\n"
-            f"  {len(done):,} review(s) already labelled and paid for.\n"
-            f"  --resume     finish it\n"
+            f"a{'n interrupted' if incomplete else ' completed'} run is sitting in "
+            f"{show(paths.dir)}\n"
+            f"  {len(done):,} review(s) already labelled and paid for"
+            + (f", {len(failed - done):,} failed\n" if failed - done else "\n") +
+            f"  --resume     finish it (re-labels the failed ones, skips the rest)\n"
             f"  --overwrite  discard it and start again")
 
     if paths.exists():
-        print(f"overwriting the completed run in {show(paths.dir)}")
+        print(f"overwriting the run in {show(paths.dir)}")
     paths.wipe()
-    return set(), set(), {}
+    return set(), set(), {}, LiveStats(0, legal or set())
 
 
 # ---------------------------------------------------------------- input stream
@@ -773,6 +1115,7 @@ def run_level(client, cfg: RunConfig, rows, workers: int, writer: Writer,
         shards.put(s)
     watch.set_level(workers)
     writer.workers = workers
+    writer.level_label = label
     ramp["workers_current"] = workers
 
     it = iter(rows)
@@ -819,6 +1162,9 @@ def run_level(client, cfg: RunConfig, rows, workers: int, writer: Writer,
             done_futs, pending = wait(pending, return_when=FIRST_COMPLETED)
             for fut in done_futs:
                 row, shard, res = fut.result()
+                # Read the cache rate BEFORE recording, so the status line this
+                # completion draws carries a current number rather than last one's.
+                writer.cache_hit = watch.rolling()
                 writer.record(row, res, shard, workers, ramp)
                 n += 1
                 alarm = watch.pop_alarm()
@@ -830,13 +1176,8 @@ def run_level(client, cfg: RunConfig, rows, workers: int, writer: Writer,
                     prev = ramp.get("cache_broke_at_workers")
                     ramp["cache_broke_at_workers"] = (workers if not prev
                                                       else min(prev, workers))
+                    writer.progress.clear()
                     warn_cache(alarm, workers)
-                if writer.n_done % 25 == 0:
-                    hit = watch.rolling()
-                    print(f"  [{label}] {writer.n_done}/{writer.n_total}  "
-                          f"w={workers}  cache={hit:.1%}  "
-                          f"ok={writer.counters['ok']}  "
-                          f"${writer.spend:.4f}")
             for _ in range(len(done_futs)):
                 if not submit_one():
                     break
@@ -888,6 +1229,9 @@ def preflight(cfg: RunConfig, n_sel: int, done: set[str], max_workers: int,
           f"truncation)  parse_retries={cfg.parse_retries}")
     if cfg.max_spend:
         print(f"spend guard    stop above ${cfg.max_spend:g}")
+    print(f"failure guard  " + (f"stop at failure #{cfg.max_failures} and report it"
+                                if cfg.max_failures else
+                                "OFF -- failures are recorded and the run walks on"))
     print(f"projection     ~${per:.6f}/review warm  ->  ~${per*todo:,.0f} for {todo:,}")
     print(f"               ~{hours:.1f} h at {max_workers} workers "
           f"({EST_LATENCY_S:.1f}s/review measured)")
@@ -986,7 +1330,8 @@ def actual_run(cfg: RunConfig, a: argparse.Namespace) -> None:
     paths = cfg.paths
     paths.mkdir()
 
-    done, retry, state = resume_gate(paths, cfg.prompt_sha, a.resume, a.overwrite)
+    done, retry, state, prior_stats = resume_gate(paths, cfg.prompt_sha, a.resume,
+                                                 a.overwrite, cfg.legal_codes)
     n_super = supersede_failed(paths, retry)
     if n_super:
         print(f"superseding {n_super} failed row(s) from the previous pass")
@@ -1015,7 +1360,15 @@ def actual_run(cfg: RunConfig, a: argparse.Namespace) -> None:
     counters, spend, all_usage = rc.prior_state(paths)
     started = state.get("started") or datetime.now().isoformat(timespec="seconds")
     watch = ShardCache()
-    writer = Writer(cfg, counters, spend, all_usage, started, n_total)
+    writer = Writer(cfg, counters, spend, all_usage, started, n_total,
+                    n_prior=len(done), n_selected=n_sel)
+    if done:
+        # carry the earlier passes' distribution forward so the digest describes
+        # the corpus, not just today's slice of it
+        prior_stats.every = writer.stats.every
+        writer.stats = prior_stats
+        print(f"  carried forward: {prior_stats.n_labels:,} label(s) over "
+              f"{len(prior_stats.first_seen)} distinct code(s) from earlier passes")
     ramp = {"max_workers": max_workers, "workers_current": 1,
             "cache_broke_at_workers": cache_cap, "baseline_cache_hit": None,
             "tier": cfg.tier}
@@ -1026,7 +1379,7 @@ def actual_run(cfg: RunConfig, a: argparse.Namespace) -> None:
 
     try:
         # --- phase 1: sequential. Warms shard 0 and establishes the baseline. ---
-        print(f"\n[1/3] sequential warm-up: {cfg.seq_warmup} reviews on shard 0\n")
+        print(C.p(f"\n[1/3] sequential warm-up: {cfg.seq_warmup} reviews on shard 0\n", "cyan", True))
         run_level(client, cfg, itertools.islice(todo_iter, cfg.seq_warmup), 1,
                   writer, watch, ramp, "warmup")
         base = watch.seal_baseline()
@@ -1037,8 +1390,8 @@ def actual_run(cfg: RunConfig, a: argparse.Namespace) -> None:
             stopped = (f"cache never warmed: {base:.1%} mean hit rate over the "
                        f"sequential phase, floor is {CACHE_FLOOR:.0%}")
         else:
-            print(f"\n  CACHE CONFIRMED: {base:.1%} mean hit rate over "
-                  f"{len(watch.measured)} measured calls.")
+            print(C.p(f"\n  ✓ CACHE CONFIRMED: {base:.1%} mean hit rate over "
+                  f"{len(watch.measured)} measured calls.", "green", True))
             print(f"  This is the baseline. Every later level is judged against it, "
                   f"with a {CACHE_DROP_TOL:.0%} tolerance.\n")
 
@@ -1053,19 +1406,19 @@ def actual_run(cfg: RunConfig, a: argparse.Namespace) -> None:
                 # excluded from the hit rate, so the step has to cover both: at least
                 # 3 calls per worker, and at least CACHE_MIN_SAMPLES beyond the warmups.
                 n = max(cfg.ramp_batch, 3 * lv, lv + CACHE_MIN_SAMPLES)
-                print(f"[2/3] ramp step {i}/{len(levels)}: {lv} workers, {n} reviews "
-                      f"({lv} cache shards, {cache_rpm(lv):.1f} req/min each)")
+                print(C.p(f"[2/3] ramp step {i}/{len(levels)}: {lv} workers, {n} reviews "
+                      f"({lv} cache shards, {cache_rpm(lv):.1f} req/min each)", "cyan", True))
                 got, broke = run_level(client, cfg, itertools.islice(todo_iter, n),
                                        lv, writer, watch, ramp, f"ramp:{lv}")
                 roll = watch.rolling()
                 if broke:
-                    print(f"  -> {lv} workers DEGRADED the cache "
-                          f"({roll:.1%} vs {base:.1%} baseline)")
+                    print(C.p(f"  ✗ {lv} workers DEGRADED the cache "
+                          f"({roll:.1%} vs {base:.1%} baseline)", "red", True))
                     print(f"     ramp stops here: every level above this one would pay "
                           f"~9.5x for input and prove nothing new.")
                     break
-                print(f"  -> {lv} workers OK  (cache {roll:.1%}, "
-                      f"spend ${writer.spend:.4f})")
+                print(C.p(f"  ✓ {lv} workers OK", "green", True)
+                      + C.p(f"  (cache {roll:.1%}, spend ${writer.spend:.4f})", "grey"))
                 if got < n:
                     break
 
@@ -1076,10 +1429,11 @@ def actual_run(cfg: RunConfig, a: argparse.Namespace) -> None:
             if broke:
                 good = [l for l in [1] + ramp_levels(max_workers) if l < broke]
                 final = good[-1] if good else 1
-                print(f"\n[3/3] remainder at {final} workers "
-                      f"(held below the {broke} that broke the cache)\n")
+                print(C.p(f"\n[3/3] remainder at {final} workers "
+                          f"(held below the {broke} that broke the cache)\n",
+                          "cyan", True))
             else:
-                print(f"\n[3/3] remainder at {final} workers\n")
+                print(C.p(f"\n[3/3] remainder at {final} workers\n", "cyan", True))
             run_level(client, cfg, todo_iter, final, writer, watch, ramp, "main")
 
     except KeyboardInterrupt:
@@ -1091,12 +1445,32 @@ def actual_run(cfg: RunConfig, a: argparse.Namespace) -> None:
             stopped = writer.stop_reason
         if stopped and ramp.get("workers_current"):
             ramp["stopped_at_workers"] = ramp["workers_current"]
-        writer.save(complete=stopped is None, ramp=ramp)
         writer.close()
+        writer.progress.clear()
+
+        # Coverage is read back off disk, not from the in-memory counters: the counters
+        # describe what THIS pass did, and the question that matters is whether every
+        # selected review now carries a label. A pass that ends without stopping but
+        # leaves reviews unlabelled is NOT complete -- marking it complete would let a
+        # later plain --actual wipe the run, and would ship a corpus with holes in it.
+        labelled, still_failed, _ = scan_responses(paths.responses)
+        n_missing = max(n_sel - len(labelled), 0)
+        if n_missing and not stopped:
+            stopped = (f"{n_missing:,} of {n_sel:,} selected review(s) carry no label "
+                       f"({len(still_failed):,} failed, {n_missing - len(still_failed):,} "
+                       f"never attempted)")
+        writer.save(complete=stopped is None, ramp=ramp)
 
     rc.summarize(paths, writer.counters, writer.spend, writer.all_usage, cfg.pricing,
                  n_total or 1, extra={
         "complete": stopped is None, "stopped_because": stopped,
+        "n_labelled": len(labelled), "n_missing": n_missing,
+        "label_counts": dict(writer.stats.counts.most_common()),
+        "class_counts": dict(writer.stats.per_class),
+        "n_none": writer.stats.none,
+        "n_labels_emitted": writer.stats.n_labels,
+        "labels_never_seen": sorted(set(writer.stats.legal) - set(writer.stats.counts)),
+        "n_failed_on_disk": len(still_failed),
         "started": started, "provider": "openai",
         "model": cfg.model, "reasoning_effort": cfg.effort, "web_search": cfg.web_search,
         "prompt_file": str(cfg.prompt_file), "prompt_sha256": cfg.prompt_sha,
@@ -1108,15 +1482,51 @@ def actual_run(cfg: RunConfig, a: argparse.Namespace) -> None:
         "manifest": rc.run_manifest(cfg.prompt_file, __file__),
     })
 
+    print(C.p(f"\ncoverage       {len(labelled):,}/{n_sel:,} review(s) labelled"
+              + (f"   ({n_missing:,} MISSING)" if n_missing
+                 else "   (none missing)"),
+              "red" if n_missing else "green", True))
+
     if stopped:
-        print(f"\nSTOPPED: {stopped}")
+        print("\n" + "!" * 72, file=sys.stderr)
+        print(f"!! STOPPED: {stopped}", file=sys.stderr)
+        f = writer.last_failure
+        if f:
+            print("!!", file=sys.stderr)
+            print(f"!! last failure   review_id  {f['review_id']}", file=sys.stderr)
+            print(f"!!                kind       {f['kind']}", file=sys.stderr)
+            print(f"!!                error      {f['error_type']}", file=sys.stderr)
+            for i, chunk in enumerate(_wrap(f["message"], 62)):
+                print(f"!!                {'message   ' if i == 0 else '          '}"
+                      f"{chunk}", file=sys.stderr)
+        print("!!", file=sys.stderr)
+        print(f"!! Nothing is lost: {len(labelled):,} labelled review(s) are on disk and",
+              file=sys.stderr)
+        print(f"!! every failure is written with parsed=null -- an error is never stored",
+              file=sys.stderr)
+        print(f"!! as if it were a label, and a failed review is retried on --resume.",
+              file=sys.stderr)
+        print("!!", file=sys.stderr)
+        print(f"!! LOOK AT THIS BEFORE CONTINUING:", file=sys.stderr)
+        print(f"!!   grep '\"error_type\"' {show(paths.meta)} | tail -5", file=sys.stderr)
         if ramp.get("cache_broke_at_workers"):
-            print(f"  recorded: the cache degraded at "
-                  f"{ramp['cache_broke_at_workers']} workers.")
-            print(f"  --resume will hold strictly below that on the next pass.")
-        print(f"\n  resume with:  python annotate_corpus.py --actual --resume")
+            print("!!", file=sys.stderr)
+            print(f"!! recorded: the cache degraded at "
+                  f"{ramp['cache_broke_at_workers']} workers;", file=sys.stderr)
+            print(f"!! --resume will hold strictly below that on the next pass.",
+                  file=sys.stderr)
+        print("!!", file=sys.stderr)
+        print(f"!! when you have diagnosed it, continue with:", file=sys.stderr)
+        print(f"!!   python annotate_corpus.py --actual --resume", file=sys.stderr)
+        print("!" * 72 + "\n", file=sys.stderr)
         sys.exit(2)
-    print(f"\ndone. raw responses for FT: {show(paths.raw)}")
+    print(C.p("\n  ✓ DONE", "green", True)
+          + C.p(f"   raw responses for FT: {show(paths.raw)}", "grey"))
+
+
+def _wrap(text: str, width: int) -> list[str]:
+    text = " ".join((text or "").split())
+    return [text[i:i + width] for i in range(0, len(text), width)] or [""]
 
 
 # --------------------------------------------------------------------- signals
@@ -1175,6 +1585,17 @@ def parse_args() -> argparse.Namespace:
     ap.add_argument("--only", default="", help="comma-separated review_ids")
     ap.add_argument("--max-spend", type=float, default=0.0,
                     help="stop the run once spend passes this many USD (0 = no ceiling)")
+    ap.add_argument("--progress-every", type=int, default=25,
+                    help="leave a permanent progress line every N reviews. On a "
+                         "terminal the status line is redrawn on EVERY review "
+                         "regardless; this only controls the scrollback history.")
+    ap.add_argument("--stats-every", type=int, default=500,
+                    help="print a live digest of the label distribution every N "
+                         "labelled reviews (0 = off)")
+    ap.add_argument("--max-failures", type=int, default=1,
+                    help="stop after this many reviews fail (API error or unparseable "
+                         "response). 1 = stop at the first and let you look at it. "
+                         "Raise it for an unattended run; 0 = never stop on failures.")
     ap.add_argument("--max-output", type=int, default=MAX_OUTPUT)
     ap.add_argument("--parse-retries", type=int, default=PARSE_RETRIES)
     ap.add_argument("--retries", type=int, default=RETRIES)
@@ -1191,10 +1612,11 @@ def parse_args() -> argparse.Namespace:
 
 
 def main() -> None:
+    C.enable()
     a = parse_args()
     cfg = build_config(a)
     if a.check:
-        done, _failed = scan_responses(cfg.paths.responses)
+        done, _failed, _stats = scan_responses(cfg.paths.responses)
         state = {}
         if cfg.paths.checkpoint.exists():
             state = json.loads(cfg.paths.checkpoint.read_text(encoding="utf-8"))

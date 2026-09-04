@@ -290,6 +290,27 @@ def load_api_key(env_var: str, script_dir: Path, env_file: str = ".env") -> str:
 
 NON_RETRYABLE_STATUS = {400, 401, 403, 404, 409, 422}
 
+# Conditions no amount of waiting fixes. They matter separately from the status code
+# because OpenAI returns "insufficient_quota" as a 429 -- the same code as a rate limit,
+# which IS retryable. Retrying an empty account just turns a hard stop into a slow one.
+FATAL_ERROR_MARKERS = (
+    "insufficient_quota",
+    "exceeded your current quota",
+    "billing_not_active",
+    "account_deactivated",
+    "invalid_api_key",
+    "incorrect api key",
+)
+
+
+def is_fatal(exc: Exception) -> bool:
+    """An error that means the run cannot continue at all: no credit, no key, no access.
+    Distinct from 'not retryable' -- a 400 on one malformed review is not fatal."""
+    if status_code_of(exc) in (401, 403):
+        return True
+    blob = f"{getattr(exc, 'code', '')} {exc}".lower()
+    return any(m in blob for m in FATAL_ERROR_MARKERS)
+
 
 def status_code_of(exc: Exception) -> int | None:
     for attr in ("status_code", "http_status"):
@@ -302,6 +323,8 @@ def status_code_of(exc: Exception) -> int | None:
 
 
 def is_retryable(exc: Exception) -> bool:
+    if is_fatal(exc):
+        return False
     code = status_code_of(exc)
     if code is None:
         return True                      # timeouts, connection resets, unknown shapes
