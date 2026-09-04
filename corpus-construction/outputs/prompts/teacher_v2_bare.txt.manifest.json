@@ -16,14 +16,14 @@
   "counterexamples_rendered": 0,
   "worked_examples_rendered": 0,
   "worked_examples_with_why": 0,
-  "prompt_sha256": "ecd3c1810cf26b708ac6385269fe9ff39f232f2a6dd9131a53f0710b125362ca",
-  "chars": 35590,
-  "approx_tokens": 8897,
+  "prompt_sha256": "1a6ac1ace49b4cec72b2aa1c58f7177b21e116f0bea753b1f046a37b7fd06ff2",
+  "chars": 34022,
+  "approx_tokens": 8505,
   "section_approx_tokens": {
     "role": 75,
     "rules": 819,
     "search_policy": 103,
-    "labels": 6349,
+    "labels": 5957,
     "output_spec": 662,
     "exemplars": 789
   }

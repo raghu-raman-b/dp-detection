@@ -1,0 +1,158 @@
+============================================================================================
+INTER-CODER AGREEMENT
+============================================================================================
+generated=2026-09-04T04:59:20
+author_file=../../validation/validation_set.jsonl
+coders_dir=../../coders
+codebook=../../../codebook_versions/codebook_v0.20.json  labels=29
+units=75  pairable_units=75  raters=4  include_author=True
+BOOTSTRAP_N=2000 CI=0.95 SEED=20260831 MIN_SUPPORT=3
+
+--------------------------------------------------------------------------------------------
+RATERS
+--------------------------------------------------------------------------------------------
+  rater                                                        file  coded  absent  abstain  labels  lab/rev  NONE  NONE rate
+  author                                       validation_set.jsonl     75       0        0     111     1.48     7      0.093
+  keshav02                 coder_keshav02_2026-09-03-23-28-08.jsonl     75       0        0     122     1.63     9      0.120
+  vansh97                   coder_vansh97_2026-08-31-18-25-28.jsonl     75       0        0     122     1.63     9      0.120
+  virinchi90  coder_virinchi5318008_2026-09-03-13-39-52 - R90.jsonl     75       0        0     142     1.89     5      0.067
+
+============================================================================================
+KRIPPENDORFF'S ALPHA
+============================================================================================
+  distance                    alpha          95% CI  reading   
+  MASI (set-valued, primary)  0.589  [0.517, 0.651]  below .600
+  Jaccard (set-valued)        0.671                            
+  nominal (exact set match)   0.469                            
+
+  units=75  ballots=300  distinct_value_sets=110
+
+--------------------------------------------------------------------------------------------
+PER-CLASS ALPHA (MASI, label set restricted to the class)
+--------------------------------------------------------------------------------------------
+  class             alpha  positive ballots
+  T  Temporal       0.757               121
+  M  Monetary       0.680               138
+  S  Social         0.645                65
+  P  Psychological  0.661                61
+  Tech  Technical   1.000                 8
+
+--------------------------------------------------------------------------------------------
+PAIRWISE (units both raters coded)
+--------------------------------------------------------------------------------------------
+  pair                    n  exact  Jaccard   MASI  alpha(MASI)
+  author / keshav02      75  0.520    0.721  0.647        0.632
+  author / vansh97       75  0.640    0.824  0.757        0.747
+  author / virinchi90    75  0.373    0.610  0.515        0.497
+  keshav02 / vansh97     75  0.600    0.760  0.694        0.681
+  keshav02 / virinchi90  75  0.373    0.608  0.507        0.487
+  vansh97 / virinchi90   75  0.387    0.609  0.511        0.492
+
+--------------------------------------------------------------------------------------------
+OBSERVED AGREEMENT
+--------------------------------------------------------------------------------------------
+  measure                                   n   rate
+  unanimous units (all raters identical)   21  0.280
+  rater pairs compared                    450       
+  pairwise exact set match                217  0.482
+  mean pairwise MASI similarity                0.605
+  mean pairwise Jaccard similarity             0.689
+
+============================================================================================
+PER-LABEL AGREEMENT  (binary presence, one column per rater)
+============================================================================================
+  label                            units  unanim  assigns  alpha  Fleiss k
+  T_PlayingByAppointment              11       5       29  0.759     0.758
+  T_DailyRewards                       7       4       20  0.822     0.821
+  T_Grinding                           8       1       20  0.537     0.536
+  T_Advertisement                     13       8       42  0.853     0.852
+  T_InfiniteTreadmill                  3       0        6  0.435     0.433
+  T_MandatoryMarathon                  7       4       22  0.837     0.836
+  M_PayToProgress                     16       7       45  0.731     0.730
+  M_IntermediateCurrency              13       3       28  0.581     0.580
+  M_DeceptiveLuxury                    5       0       12  0.539     0.537
+  M_RecurringFee*                      2       2        8  1.000     1.000
+  M_Gambling                           9       3       18  0.647     0.645
+  M_PowerCreep*                        2       2        8  1.000     1.000
+  M_WasteAversion                      4       3       13  0.920     0.920
+  M_EasyToPurchase                     7       2       17  0.648     0.647
+  M_UIMisdirection                    10       4       27  0.743     0.742
+  M_NeverEndingLure                    8       2       16  0.605     0.604
+  S_ForcedFellowship                   5       2       11  0.718     0.717
+  S_FriendSpamImpersonation*           2       1        7  0.854     0.854
+  S_Reciprocity                        5       3       15  0.837     0.836
+  S_EncouragesAntiSocialBehavior       4       1        9  0.658     0.656
+  S_FearOfMissingOutFOMO               3       0        5  0.257     0.254
+  S_Competition                       15       3       33  0.536     0.535
+  P_EasyToGetHardToLose                6       2       14  0.701     0.700
+  P_CompleteTheCollection*             2       0        6  0.661     0.660
+  P_IllusionOfControl                  7       4       21  0.847     0.846
+  P_AestheticManipulation              3       0        5  0.392     0.390
+  P_OptimismAndFrequencyBiases         4       2       12  0.827     0.826
+  P_RewardMania                        9       1       20  0.573     0.571
+  Tech_FragmentedDownloads*            2       2        8  1.000     1.000
+  (* support < MIN_SUPPORT=3; alpha/kappa on a handful of units is noise, not a measurement)
+
+--------------------------------------------------------------------------------------------
+LABEL PREVALENCE BY RATER  (assignments, over units that rater coded)
+--------------------------------------------------------------------------------------------
+  label                           author  keshav02  vansh97  virinchi90  total
+  T_PlayingByAppointment               6         6        7          10     29
+  T_DailyRewards                       4         4        5           7     20
+  T_Grinding                           5         5        6           4     20
+  T_Advertisement                      9        10       10          13     42
+  T_InfiniteTreadmill                  2         1        2           1      6
+  T_MandatoryMarathon                  5         6        4           7     22
+  M_PayToProgress                      8        13       11          13     45
+  M_IntermediateCurrency               6         6        7           9     28
+  M_DeceptiveLuxury                    3         2        4           3     12
+  M_RecurringFee                       2         2        2           2      8
+  M_Gambling                           5         4        3           6     18
+  M_PowerCreep                         2         2        2           2      8
+  M_WasteAversion                      3         3        3           4     13
+  M_EasyToPurchase                     2         6        5           4     17
+  M_UIMisdirection                     4         7        7           9     27
+  M_NeverEndingLure                    3         3        3           7     16
+  S_ForcedFellowship                   2         2        2           5     11
+  S_FriendSpamImpersonation            2         2        2           1      7
+  S_Reciprocity                        4         5        3           3     15
+  S_EncouragesAntiSocialBehavior       2         2        2           3      9
+  S_FearOfMissingOutFOMO               2         1        2           0      5
+  S_Competition                        7         8        6          12     33
+  P_EasyToGetHardToLose                3         2        4           5     14
+  P_CompleteTheCollection              2         2        2           0      6
+  P_IllusionOfControl                  6         5        5           5     21
+  P_AestheticManipulation              2         2        1           0      5
+  P_OptimismAndFrequencyBiases         3         3        2           4     12
+  P_RewardMania                        5         6        8           1     20
+  Tech_FragmentedDownloads             2         2        2           2      8
+
+--------------------------------------------------------------------------------------------
+MOST CONTESTED REVIEWS (top 15 by mean pairwise MASI distance)
+--------------------------------------------------------------------------------------------
+  review_id                             game                      n  MASI dist  union of assigned labels                                                                                                                  
+  49a53e7c-0564-46c6-995f-1d8bc418c80a  MONOPOLY GO!              4      0.870  M_IntermediateCurrency, S_Reciprocity, P_CompleteTheCollection, P_RewardMania                                                             
+  b6745663-5486-4e5b-9066-8a889055d8bc  Travel Town - Merge Adve  4      0.839  T_PlayingByAppointment, M_PayToProgress, M_IntermediateCurrency, M_EasyToPurchase, M_UIMisdirection, S_Competition                        
+  f62c8a1f-91fc-4866-b267-977172fa2db3  Toon Blast                4      0.833  T_Grinding, T_InfiniteTreadmill, S_Competition                                                                                            
+  2f50b132-9762-4f48-ae35-487f414aa41a  MONOPOLY GO!              4      0.833  M_IntermediateCurrency, S_Reciprocity, S_EncouragesAntiSocialBehavior, S_Competition, P_RewardMania                                       
+  c2c60604-401f-416e-9489-a53cbaa6a968  Chess - Play and Learn O  4      0.833  M_UIMisdirection, S_ForcedFellowship, P_AestheticManipulation                                                                             
+  fb70e577-e644-4af9-88a1-773476a5b805  Free Fire: 9th Anniversa  4      0.833  M_PayToProgress, M_IntermediateCurrency                                                                                                   
+  6ccb26a7-01e3-41a3-ba1a-bddba2063257  Lightning Link Casino Sl  4      0.833  M_PayToProgress, M_Gambling                                                                                                               
+  042ee18e-d78e-4a0f-9cc2-2b1e10cc46e6  Total Battle: War Strate  4      0.776  T_DailyRewards, T_Grinding, T_InfiniteTreadmill, M_PayToProgress, M_IntermediateCurrency, P_EasyToGetHardToLose                           
+  57add346-8b93-4249-be50-1a39331cf79b  RAID: Shadow Legends      4      0.760  T_Grinding, T_Advertisement, M_PayToProgress, M_DeceptiveLuxury, M_NeverEndingLure, S_ForcedFellowship, S_Competition                     
+  a59f5319-a1b7-4991-8c6b-d2d2ca56265c  Fate/Grand Order (Englis  4      0.748  T_Grinding, M_PayToProgress, M_DeceptiveLuxury, M_Gambling, M_UIMisdirection, S_FearOfMissingOutFOMO, P_EasyToGetHardToLose, P_RewardMania
+  42025004-6937-4657-ab75-72e97fe19166  Lightning Link Casino Sl  4      0.741  M_IntermediateCurrency, M_EasyToPurchase, M_NeverEndingLure                                                                               
+  da13d098-3944-4e0b-aa94-c064a56edd83  Mystery Town: Merge Game  4      0.694  T_PlayingByAppointment, M_PayToProgress, M_IntermediateCurrency, P_CompleteTheCollection                                                  
+  f112aad7-3ccd-4220-ae49-34d217dda09d  Gardenscapes              4      0.667  T_Grinding, T_MandatoryMarathon                                                                                                           
+  f09401aa-1aef-4c8b-ac3a-92eec49af44d  Homescapes                4      0.663  M_PayToProgress, S_FearOfMissingOutFOMO, S_Competition, P_EasyToGetHardToLose, P_AestheticManipulation                                    
+  41a6813f-af68-497a-ac7b-2532b4659186  Jackpot Party Casino Slo  4      0.657  M_PayToProgress, M_IntermediateCurrency, M_Gambling, P_OptimismAndFrequencyBiases                                                         
+
+--------------------------------------------------------------------------------------------
+NONE (the empty label set)
+--------------------------------------------------------------------------------------------
+  measure                                    n
+  units where every rater said NONE          5
+  units where at least one rater said NONE  11
+  units where raters split on NONE           6
+
+============================================================================================

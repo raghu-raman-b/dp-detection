@@ -1,0 +1,232 @@
+M_NeverEndingLure: not even 10 minutes into playing it, it notified me that I bought a starter pack
+M_EasyToPurchase: it notified me that I bought a starter pack. I didn't tap anything and my settings are set up to where I have to input my fingerprint or password to make a purchase and it did not do that. 
+
+M_EasyToPurchase: accidentally brought a pack when I double tapped the screen
+
+M_IntermediateCurrency: The bonus when buying is smaller
+M_Gambling: slot games there are less costly options
+P_RewardMania: slot games
+
+S_Competition: One player will get more and more 6s and another one will get 1 or 2 mostly
+P_IllusionOfControl: Dice rolls are not random at all, they are preplanned
+P_OptimismAndFrequencyBiases: One player will get more and more 6s and another one will get 1 or 2 mostly
+
+Tech_FragmentedDownloads: I thought I already download the file but I still get an additional download
+
+M_WasteAversion: After just over a week of play, game is now gridlocked. Way too many new things on a tiny board
+
+T_Advertisement: Too much ads are shown after every over and every wicket fell
+P_IllusionOfControl: Opponent takes catches very easily while our team drops all the catches except one or two
+
+T_Grinding: takes quite a long time to unlock new heros...I have done close to 100 fights and still have the first two heros
+S_FriendSpamImpersonation: "share to unlock this hero" won't unlock the hero for me
+
+T_InfiniteTreadmill: No new levels for 2 weeks and get a champions league. Its a money grab and I fell for it. Get new levels on 3/2/26 only to go maybe 50 levels and no more levels. Come to 3/3, another champions league
+S_Competition: champions league
+
+
+T_Grinding: and all the game ever had me do what click to upgrade this or research that or go there. 
+T_DailyRewards: wad impossible to keep track of them without relying on the daily quests and such.
+
+M_PayToProgress: p2p is the best way to win this game
+M_DeceptiveLuxury: advertising "special" or "limited time" deals
+S_ForcedFellowship: got a free champion and silver from a referral
+
+M_NeverEndingLure: awesome the beginner packs really help get you started
+
+M_WasteAversion: The limited space is bothersome too and you have to use diamonds to buy more storage 
+
+T_Advertisement: way too many ads and paid popups. I've never seen a game ask u to watch an ad just to claim a daily reward
+
+T_Advertisement: After every over, an ad pops up.
+M_UIMisdirecton: If I accidentally tap the ad instead of cancel, the game closes and the ad opens.
+
+T_PlayingByAppointment: time it takes to recharge items and how long it takes to 'cook' is frustrating
+T_Advertisement: I have to watch adds for a measly recharge only to run out again quickly.
+M_WasteAversion: I run out of space on the board and have to delete items I spent time on.
+
+M_DeceptiveLuxury: purchased a weekly one time offer
+
+
+M_PayToProgress:  you can't do anything without using in app purchases; the energy cap will barely get you midway through an order unless you use all your gems
+M_IntermediateCurrency: gems. like everything just feels like a trap to get you to spend real money
+P_CompleteTheCollection: never be able to complete the card packs
+
+T_DailyRewards: I had a login streak of 53 that I just lost today for no reason. I did not miss yesterday's login.
+
+M_PayToProgress: Extremely pay2win
+S_EncouragesAntiSocialBehavior: game modes where strong players steal from weaker players
+S_Competition: a bunch of game modes where strong players steal from weaker players
+
+T_PlayingByAppointment: login every 2-3 hours 24/7 
+M_PayToProgress:Competing=who spends the most.
+S_FearOfMissingOutFOMO:pressure to login every 2-3 hours 24/7 is constant with Arms Race or keep it open all day long so you don't miss treasure digs
+S_Competiton:Competing=who spends the most
+P_RewardMania:This is a gacha game and 4x
+
+M_UIMisdirection: and are you sure you want to quit screens that you have to X out of before continuing. 
+S_Competition: pop up screens with weekly challenge score
+
+T_Grinding: You will spend months upgrading troops; I've played over 10 years, it's just a chore at this point, not fun. 
+M_PowerCreep: You will spend months upgrading troops and defenses just to be nerfed
+
+T_Advertisement: The problem I have with all these games is the seemingly endless in-game ads and pop-ups that cascade one after another so much that by the time
+
+M_PayToProgress: That, and an incentive to roll the slots for things to reduce the amount of grind
+M_DeceptiveLuxury: majority of them are limited time only; (~$140 for 50% to get a 'rate up' character)
+M_Gambling: (~$140 for 50% to get a 'rate up' character)
+M_UIMisdirection: Every part of the game is set up to direct you towards the slot machine summoning system.
+P_EasyToGetHardToLose: Gameplay is mostly just grind to build sunk cost.
+P_RewardMania: Every part of the game is set up to direct you towards the slot machine summoning system.
+
+
+
+M_UIMisdirection: Loaded it up for the first time in a week to a flashing button I didn't recognise. Clicked the button "DO YOU WANT TO PAY US $8?!"
+
+
+NONE
+
+M_Gambling: Even if you pay the astronomical coins to get another handful of cards, you still have the same card left.
+P_IllusionOfControl: This is incredibly rigged; designed to get you hooked early to develop into impossibility
+P_OptimismAndFrequencyBiases: . You can be down to one card and have 10 cards left in your deck and end up going through those 10 cards and still have one card left. Even if you pay the astronomical coins to get another handful of cards, you still have the same card left. 
+P_RewardMania: Even if you pay the astronomical coins to get another handful of cards, you still have the same card left. If you were to take an actual deck of cards, your chances would be significantly higher.
+
+NONE
+
+
+M_PayToProgress: every time you lose the game reminds you that unless you pay up, you're going to go down on the leaderboard
+S_FearOfMissingOut: you're going to go down on the leaderboard and will lose all your winning streak rewards.
+S_Competition:  but I hate how the game tries to force you to be competitive.
+P_EasyToGetHardToLose: will lose all your winning streak rewards. 
+
+M_UIMisdirection: What has put me off is the fact that to get out of the ad, you have to go into the play store
+
+T_MandatoryMarathon: I get penalized for leaving matches early on top of that and I wasn't even the one who quit the match!
+
+T_DailyRewards: said I broke my streak and though I did not, it sent me right back to the beginning
+
+M_PayToProgress: Unless you're willing to pay for them
+S_Reciprocity: Ppl can gift lives to each other
+
+T_MandatoryMarathon:  we playing the game and finally game has suddenly stopped and says YOU HAVE LOST and then nearly -30 to -50 gaming points are lessed from my Ranked game progress
+
+M_DeceptiveLuxury: Fontaine arrived the characters started becoming expensive because of premium team comps
+M_PowerCreep: old characters started falling off which I hope they could climb back up. And now the Meta shifts now are extremely fast..
+P_EasyToGetHardToLose: I love the game, I invested so much time and effort in it.
+P_RewardMania: how much rewards we get.. it's so low each patch barely gives us enough to hit hard pity.
+
+M_RecurringFee: season pass
+
+M_IntermediateCurrency: iv started playing a new game and buying coins from them
+P_RewardMania: the bonus lady rarely comes out or even matches with anything on ww4.
+
+S_Reciprocity: open/send gifts
+
+T_Grinding:  'Groundhog Day', meaning that I show up, complete tasks, spend gold and potion, spend real money, then come back tomorrow and do it all over again. 
+T_InfiniteTreadmill: There is no real progress or advancement; there is no pot of gold at the end of this rainbow.
+P_EasyToGetHardToLose:  It's a way to get you drawn in and invested in the game, so you feel obligated to keep playing.
+
+S_Reciprocity: enough trades
+P_RewardMania:  Way to many gold duplicates!
+
+P_OptimismAndFrequencyBiases: you come close, but NOTHING is won or any game with REAL MONEY or prizes are always just a few points or coins away from a jackpot
+
+
+P_IllusionOfControl: i feel guilty after installing it..sometime it feels like the game is meant to make you lose most of the time..it's partial..; ..if you are meant to lose, no matter how good you play you will definitley lose and in most of the cases this is the scene always.
+
+
+T_Grinding: Little did I know that what I'm playing is nothing less than candy crush. Always you play one game you just get one star only. And all your points get lost if you don't make that level.
+T_MandatoryMarathon: And all your points get lost if you don't make that level. 
+
+P_AestheticManipulation:  I end a game it sometimes show that i played brilliant moves but when I review it it doesn't show any brilliant move this wastes my free review
+
+NONE
+
+M_PayToProgress:  into buying gems/energy to play more
+M_IntermediateCurrency: buying gems
+M_UIMisdirection: opening the app and then having to click away ten different challenges is very annoying. ; please consider having a dismiss option 
+
+
+T_Advertisement: Can't close the ads, therefore can't continue playing without closing and restarting the game.
+M_UIMisdirection: Can't close the ads
+
+M_IntermediateCurrency: bought a huge coin pack 
+M_EasyToPurchase: I messed up and accidentally bought a huge coin pack
+
+T_MandatoryMarathon: Please have a feature where you can edit plans for your town and then if you're not finished yet, you can temporarily save it as a draft so you can continue editing it later; Editing the plan of the town is very time consuming and it's unfortunate that you have to put all buildings in place first before you can save it and continue.
+
+NONE
+
+
+S_Competition:  The match making
+P_IllusionOfControl: The match making, completely illogical,if you play good,game will give you bad teammates expecting you to carry and if you play bad,game will give you more bad teammates saying that it's so called "skill based matching"
+
+T_MandatoryMarathon: If the first player isn't responding or playing, the second player at the end have to exit and lose his credits because there are no limitations are for the Bot.
+S_EncouragesAntiSocialBehaviour: Some players can also misuse this feature to grab the credits of the corresponding players. 
+S_Competition: If the first player isn't responding or playing, the second player at the end have to exit and lose his credits because there are no limitations are for the Bot. Some players can also misuse this feature to grab the credits of the corresponding players.
+
+P_EasyToGetHardToLose: If I didnt have so much time invested I would not continue playing.
+
+
+NONE
+
+M_RecurringFee: season pass
+
+T_Advertisement: What's worse, when you watch the ads, it conveniently "can't connect" so you can't get rewards for the ads you watched
+
+T_PlayingByAppointment: waiting for building times
+
+59 - Remove Virinchi's Competion (no span), Add Intermediate Currency to Keshav
+
+M_IntermediateCurrency: You get about 20 tickets with $80 so even being generous 
+M_DeceptiveLuxury: still $600-$800 just to guarantee the unit you want. 4% chance to pull any SSR at any time; If you started with no currency and wanted a guaranteed unit, it's 200 tickets.
+M_Gambling: it's still $600-$800 just to guarantee the unit you want.
+P_RewardMania: Gacha
+
+M_EasyToPurchase: Every time you open the main menu you get a minimum of 10 pop up ads to buy gear/equipment 
+M_UIMisdirection: with small x buttons in the corner.
+
+
+P_CompleteTheCollection: but the new sticker album has been made to be to difficult to get the non tradable gold cards
+P_RewardMania: I have been needing only gold cards for two months now and have only been awarded one new card in that time
+S_Reciprocity: tradable gold cards
+
+S_Reciprocity: Gift exchange screens
+
+T_MandatoryMarathon: i have to restart the game snd boom energy gone but no match progress
+
+65 - Virinchi No span (Frag)
+
+Tech_FragmentedDownloads: Maps, outfits, and other resource packs are downloading automatically in the background. The main issue is that even when I manually go to the settings and turn OFF the "Auto-Download" feature
+
+S_ForcedFellowship: My real friends downlded & "joined" my team, but no success on their end or mine & NO coins rewarded!
+S_FriendSpamImpersonation: I decided 2 form a team, so invites were sent 2 gaming friends fr other apps, FB friends etc.
+
+T_PlayingByAppointment: which leaves you waiting an hour to play again or shell out cash for credits
+M_PayToProgress: leaves you waiting an hour to play again or shell out cash for credits
+M_IntermediateCurrency: shell out cash for credits
+
+T_DailyRewards:  I've lost my 7 day streak for no reason whatsoever
+
+M_PayToProgress: You can spend money to gain a competitive advantage.
+M_EasyToPurchase: It has pop up to sell you in game assets constantly
+M_NeverEndingLure: it discounts first time buyers
+S_Competition: You can spend money to gain a competitive advantage
+P_AestheticManipulation: it makes you feel like you've earned prizes, but you've earned the right to buy the prizes
+P_RewardMania: just one big slot machine
+
+
+T_PlayingByAppointment: and it takes nearly 2 minutes for new chances to play.
+
+NONE
+
+T_Advertisement: cant back out of ads or continue once an ad comes on
+73. Keshav on Ads no span
+
+T_PlayingByAppointment: The openning time for the chests is too long, 1 or 2 hours is fine, but 8 and 12 hours?!...come on!
+S_Competition: impossible to play when other players
+
+T_Advertisement: You are not just bombarded with tons of advertisements but after you progress up through the rankings
+M_PayToProgress:  The strategy is to make you spend and spend to reach to upper levels.
+S_Competition: you notice you are always competing with gamers way above your paygrade
+

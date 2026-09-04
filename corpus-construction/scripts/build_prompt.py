@@ -8,6 +8,13 @@ Design rules (do not relax without a reason you would write in the paper):
   1. The codebook is the single source of truth. Every rule, definition, indicator,
      boundary rule, counterexample and worked example in the prompt is copied verbatim
      from the JSON. Nothing is paraphrased, summarised, or invented at build time.
+     The one mechanical edit is scrub_citations(): academic and source-attribution
+     markers (bracketed refs like "[87]", author-year cites like "(Hadan et al. 2024)",
+     "Zhang et al. 2025.", and "darkpattern.games:" source tags) are stripped from the
+     codebook prose before it is rendered. The definitional content they introduced is
+     kept verbatim; only the attribution is removed. Semantic tags the codebook relies
+     on -- [low-level], [dp-combo], [dp-enhancer], [indicators], "(Alt. def.)" -- are
+     left untouched, and review text in worked examples / counterexamples is never scrubbed.
   2. The two global exemplars are the one exception. They are pinned near the top of
      this file, in plain sight. The build validates them against the
      codebook: every span must be a verbatim substring of the codebook's own review
@@ -169,6 +176,77 @@ def block(text: str, indent: str = "    ") -> str:
     return "\n".join(indent + ln if ln else "" for ln in lines)
 
 
+# --------------------------------------------------------------------- citations
+# The codebook prose carries academic attribution inline: bracketed reference numbers
+# ("[87]"), author-year cites ("(Hadan et al. 2024)", "King et al. 2023:", trailing
+# "Zhang et al. 2025."), possessives ("Zagal et al.'s"), and "darkpattern.games:"
+# source tags. None of it is instruction to a coder. scrub_citations() removes the
+# attribution and keeps the definitional text it introduced. It is deliberately
+# conservative: the bare (non-parenthesised) forms all carry "et al", so those rules
+# require it and cannot fire on an ordinary word; the semantic bracket tags
+# ([low-level] etc.) and "(Alt. def.)" are digit-free / author-free and never match.
+
+_AUTH = r"(?:Hadan|Zhang|Zagal|King|Sousa\s*&\s*Oliveira|Dahlan\s*&\s*Susanty)\b"
+_ETAL = r"(?:\s+et\.?\s*al\.?)?"        # optional -- only for the "(" -anchored rules
+_ETALM = r"\s+et\.?\s*al\.?"            # mandatory -- for the bare prefix/trailing rules
+_YEAR = r"(?:[ ,]\s*\d{4})?"
+_QUOTE = "[“”\"']"
+
+_CITATION_SUBS = [
+    # (Hadan et al. 2024, "Badges / Endowed Progress")  ->  ("Badges / Endowed Progress")
+    (re.compile(r"\s*\(\s*" + _AUTH + _ETAL + _YEAR
+                + r"\s*,\s*(?P<name>[“\"][^”\"]*[”\"])\s*\)"),
+     r" (\g<name>)"),
+    # (Hadan et al. 2024)  |  (Zhang et al.)  |  (Sousa & Oliveira 2023)   ->  (removed)
+    (re.compile(r"\s*\(\s*" + _AUTH + _ETAL + _YEAR + r"\s*\)"), ""),
+    # Zagal et al.'s "Monetized Rivalries"   ->  "Monetized Rivalries"
+    (re.compile(r"\s*" + _AUTH + _ETALM + _YEAR + r"[’']s\s+(?=" + _QUOTE + r")"), " "),
+    # King et al. 2023 "Default To Purchase":   ->  "Default To Purchase":
+    (re.compile(r"\s*" + _AUTH + _ETALM + _YEAR
+                + r"\s+(?=[“\"][^”\"]*[”\"]\s*:)"), " "),
+    # "Zagal et al.:"  |  "King et al. 2023:"  used as a label prefix
+    (re.compile(r"\s*" + _AUTH + _ETALM + _YEAR + r"\s*:\s*"), " "),
+    # trailing "... . Zhang et al. 2025." before a [tag] or end of string
+    (re.compile(r"\s+" + _AUTH + _ETALM + _YEAR + r"\s*\.?\s*(?=\[[a-z-]+\]|$)"), " "),
+    # "darkpattern.games" source tag, keeping any ("alt name") that follows it
+    (re.compile(r"\s*darkpattern\.games\s*(?=\([“\"])"), " "),
+    (re.compile(r"\s*darkpattern\.games\s*:?\s*"), " "),
+    # bracketed bibliography numbers: "[87]"  ([low-level] etc. are digit-free)
+    (re.compile(r"\s*\[\d+\]"), ""),
+]
+
+_CITATION_CLEANUP = [
+    (re.compile(r"\.[ \t]*\.(?!\.)"), "."),        # ". ." / ".." -> "."   (keep "...")
+    (re.compile(r"[ \t]+([,.;:)\]])"), r"\1"),     # space before closing punctuation
+    (re.compile(r"\(\s+"), "("),
+    (re.compile(r":{2,}"), ":"),
+    (re.compile("“[ \t]+"), "“"),
+    (re.compile("[ \t]+”"), "”"),
+    (re.compile(r"[ \t]{2,}"), " "),
+    (re.compile(r"[ \t]+\n"), "\n"),
+]
+
+
+def scrub_citations(text):
+    """Strip inline academic / source attribution from a codebook string, keeping the
+    definitional content verbatim. Applied to definitions, indicators and boundary
+    rules only -- never to review text.
+
+    If no citation is found the string is returned byte-for-byte: the whitespace
+    cleanup runs only to tidy what a removal left behind, so a citation-free string
+    (e.g. a multi-line boundary rule with indented continuations) is never reflowed."""
+    if not text:
+        return text
+    scrubbed = text
+    for rx, repl in _CITATION_SUBS:
+        scrubbed = rx.sub(repl, scrubbed)
+    if scrubbed == text:
+        return text
+    for rx, repl in _CITATION_CLEANUP:
+        scrubbed = rx.sub(repl, scrubbed)
+    return scrubbed.strip()
+
+
 def approx_tokens(text: str) -> int:
     return len(text) // 4
 
@@ -293,20 +371,20 @@ def render_rules(cb: dict, flags: dict, used_ids: set[str]) -> str:
 def render_label(label: dict, code: str, flags: dict, used_ids: set[str]) -> str:
     out = [f"[{code}]  {label['meso_label']}", ""]
     out.append("  Definition:")
-    out.append(block(label["canonical_definition"], "    "))
+    out.append(block(scrub_citations(label["canonical_definition"]), "    "))
 
     if flags["indicators"] and label.get("indicators"):
         out.append("")
         out.append("  Indicators (each is an instance of this pattern; see R5):")
         for ind in label["indicators"]:
-            out.append(block("- " + str(ind), "    "))
+            out.append(block("- " + scrub_citations(str(ind)), "    "))
 
     if flags["boundary_rules"] and label.get("boundary_rules"):
         out.append("")
         out.append("  Boundary rules:")
         for br in label["boundary_rules"]:
             out.append(f"    vs {br['vs_label']}:")
-            out.append(block(br["rule"], "      "))
+            out.append(block(scrub_citations(br["rule"]), "      "))
 
     if flags["counterexamples"]:
         for ce in label.get("counterexamples", []):
@@ -461,7 +539,7 @@ def build(cb: dict, mode: str) -> tuple[str, dict]:
         lab_sections.append("")
         lab_sections.append("-" * 75)
         lab_sections.append(f"CLASS: {name.upper()}")
-        lab_sections.append(block(cls["canonical_definition"], "  "))
+        lab_sections.append(block(scrub_citations(cls["canonical_definition"]), "  "))
         lab_sections.append("-" * 75)
         for lab in by_class[name]:
             lab_sections.append("")

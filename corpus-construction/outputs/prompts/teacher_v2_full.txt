@@ -2,7 +2,7 @@
 # Everything above the sentinel line is metadata. Sending it to a model changes the
 # cached prefix on every build and destroys prompt caching. Use load_prompt().
 #
-# built_at                 : 2026-08-22T15:28:23+05:30
+# built_at                 : 2026-09-04T01:46:07+05:30
 # codebook_file            : ../../codebook_versions/codebook_final.json
 # codebook_version         : 0.20
 # prompt_version           : v2
@@ -14,15 +14,15 @@
 # rule_examples_rendered   : 7
 # counterexamples_rendered : 25
 # worked_examples_rendered : 39  (20 with a Why: block)
-# prompt_sha256            : 6529a474a2b03d2c00556c78075130b0f05d7cd7d1a637f241279393194c422c
-# chars                    : 97847
-# approx_tokens            : 24461  (chars/4, rough)
+# prompt_sha256            : aad355174ac44da072eee2003a4d2ed48038e273fcdc70e5c51dffa8e4a54416
+# chars                    : 96265
+# approx_tokens            : 24066  (chars/4, rough)
 #
 # section approx tokens:
 #   role              : 75
 #   rules             : 1721
 #   search_policy     : 103
-#   labels            : 21011
+#   labels            : 20615
 #   output_spec       : 662
 #   exemplars         : 789
 #
@@ -110,7 +110,7 @@ LABELS
 
 ---------------------------------------------------------------------------
 CLASS: TEMPORAL
-  Temporal DPs manipulate the amount of time spent on gameplay, i.e., expected versus actual time, leading players to feel that their time has been unfairly exploited [87].
+  Temporal DPs manipulate the amount of time spent on gameplay, i.e., expected versus actual time, leading players to feel that their time has been unfairly exploited.
 ---------------------------------------------------------------------------
 
 [T_PlayingByAppointment]  Playing by Appointment
@@ -119,10 +119,9 @@ CLASS: TEMPORAL
     Requires players play at specific times (and or dates) as defined by the game, rather than the players. When mechanics result in player playing according to the schedules the game offers, rather than their personal desires (an obligation).
 
   Indicators (each is an instance of this pattern; see R5):
-    - (Alt. def.) (Hadan et al. 2024): “Patterns that forces players to adhere to the game’s schedule.”
-    - Evil Battle Pass (Zhang et al.): “Players are required to spend excessive time completing tasks, risking expiration of the battle pass and loss of rewards, even if they have paid for it in advance.” [low-level]
-    - Wait to Play (Hadan et al. 2024): “Patterns that impose arbitrary wait times on players through in-game timers.”
-    darkpattern.games: “In-game timers that make you arbitrarily wait for something.” [low-level]
+    - (Alt. def.): “Patterns that forces players to adhere to the game’s schedule.”
+    - Evil Battle Pass: “Players are required to spend excessive time completing tasks, risking expiration of the battle pass and loss of rewards, even if they have paid for it in advance.” [low-level]
+    - Wait to Play: “Patterns that impose arbitrary wait times on players through in-game timers.” “In-game timers that make you arbitrarily wait for something.” [low-level]
     - Trapping starter kits: This pattern particularly entices new players to log in and play continuously for the first few
     days after creating new accounts. These designs often use in-game rewards as incentives, creating
     a situation where new players lose the opportunity to obtain these rewards if they fail to log in and
@@ -130,7 +129,7 @@ CLASS: TEMPORAL
 
   Boundary rules:
     vs Non-dark scheduling:
-      Zagal et al.: “Nullified if completing appointments is not required for progress. In other words, when appointment is combined with progress it becomes dark.”
+      “Nullified if completing appointments is not required for progress. In other words, when appointment is combined with progress it becomes dark.”
     vs Fear of missing out:
       Where a reward expires on the game's clock and the span describes the schedule or the loss, code Playing by Appointment. Code FOMO only where the span describes anticipatory pressure i.e., the player continuing, returning, or feeling anxious in order not to miss out or fall behind. Both apply under R9 only if the span carries the schedule and the felt pressure.
     vs Recurring Fee:
@@ -150,8 +149,8 @@ CLASS: TEMPORAL
   Indicators (each is an instance of this pattern; see R5):
     - Daily log-in reward calendars [indicators]
     - Daily task lists with resetting rewards [indicators]
-    - (Alt. def.) (Hadan et al. 2024): “Patterns that encourage players to revisit the game daily.”
-    - (Alt. def.) darkpattern.games: “Encourages return visits every day and punishes you for missing a day.”
+    - (Alt. def.): “Patterns that encourage players to revisit the game daily.”
+    - (Alt. def.) “Encourages return visits every day and punishes you for missing a day.”
     - Trapping starter kits: This pattern particularly entices new players to log in and play continuously for the first few
     days after creating new accounts. These designs often use in-game rewards as incentives, creating
     a situation where new players lose the opportunity to obtain these rewards if they fail to log in and
@@ -181,10 +180,10 @@ CLASS: TEMPORAL
     “Performing repetitive and tedious tasks” in order to make progress in a game. Emphasizes time invested over skill and in worst cases could be conducted unattended by the player.
 
   Indicators (each is an instance of this pattern; see R5):
-    - (Alt. def.) (Hadan et al. 2024): “Patterns that requires players to perform repetitive tasks.”
-    - (Alt. def.) (Sousa & Oliveira 2023): “Being compelled to complete monotonous tasks in order to make progress.”
-    - (Alt. def.) (Dahlan & Susanty 2022): “It is forcing players to perform repetitive tasks to make progress in the game.”
-    - Try now, Pay later (Zhang et. al): This pattern offers players the chance to initially try premium experiences,
+    - (Alt. def.): “Patterns that requires players to perform repetitive tasks.”
+    - (Alt. def.): “Being compelled to complete monotonous tasks in order to make progress.”
+    - (Alt. def.): “It is forcing players to perform repetitive tasks to make progress in the game.”
+    - Try now, Pay later: This pattern offers players the chance to initially try premium experiences,
     powerful items, or privileges, with payment required at a later stage. [dp-combo]
     - Trapping starter kits: This pattern particularly entices new players to log in and play continuously for the first few
     days after creating new accounts. These designs often use in-game rewards as incentives, creating
@@ -212,7 +211,7 @@ CLASS: TEMPORAL
     Compelled to view advertisements or incentivized to do so through the promise of rewards.
 
   Indicators (each is an instance of this pattern; see R5):
-    - (Alt. def.) darkpattern.games: “Forced to watch ads or given rewards for watching ads.”
+    - (Alt. def.) “Forced to watch ads or given rewards for watching ads.”
 
   Counterexample (does NOT get this label):
     "If I wanted to play a matching(candy crush style) puzzle game I already have a couple favorites that I like to play. The game is nothing like the ad I kept seeing, I even thought well if I get to a certain level it would open up the puzzles that are on the ad but no...will be deleting this game from my phone. It's a shame that it couldn't be what was advertised that looked fun."
@@ -238,7 +237,7 @@ CLASS: TEMPORAL
     Patterns that continually expand the game to never allow players to complete.
 
   Indicators (each is an instance of this pattern; see R5):
-    - (Alt. def.) darkpattern.games: “Impossible to win or complete the game.”
+    - (Alt. def.) “Impossible to win or complete the game.”
 
   Boundary rules:
     vs High level number or long play history:
@@ -259,7 +258,7 @@ CLASS: TEMPORAL
     Design that prevents the player from stopping at a moment of their choosing, requiring continuation to a stopping point defined by the game. Includes absent or restricted saving, checkpoint-only progress, and sessions or matches that cannot be exited without forfeiting progress.
 
   Indicators (each is an instance of this pattern; see R5):
-    - Can’t Pause or Save (Hadan et al. 2024): “Patterns that force players to continue playing before they can save progress.” [low-level]
+    - Can’t Pause or Save: “Patterns that force players to continue playing before they can save progress.” [low-level]
 
   Boundary rules:
     vs Unskippable sequence:
@@ -280,7 +279,7 @@ CLASS: TEMPORAL
 
 ---------------------------------------------------------------------------
 CLASS: MONETARY
-  Monetary DPs cause players to unexpectedly invest more financial resources, ultimately causing them to regret or lose track of their expenditures [87].
+  Monetary DPs cause players to unexpectedly invest more financial resources, ultimately causing them to regret or lose track of their expenditures.
 ---------------------------------------------------------------------------
 
 [M_PayToProgress]  Pay to Progress
@@ -289,11 +288,11 @@ CLASS: MONETARY
     Patterns that require the players to spend money to progress in-game.
 
   Indicators (each is an instance of this pattern; see R5):
-    - Pay to Skip (Sousa & Oliveira 2023): “Permitting or actively promoting players to spend money to speed up their progress in the game.” Alt (Hadan 2024): “Patterns that allows players players to pay to bypass undesired obstacles.” Alt (Dahlan & Susanty 2022): “Allowing or even encouraging players to spend money to make progress in the game easier and faster.” darkpattern.games: “Spend money to avoid waiting for a timer to expire.” [low-level]
-    - Pay to Win (Hadan et al. 2024): “Patterns that grant advantages to players who spend money.” Zagal et al.’s “Monetized Rivalries”: “Exploits Player competitiveness; encouraging them to spend money they would not otherwise in order to achieve in-game status such as a high placement on a leader board.” darkpattern.games: “A player can spend real money to purchase something that gives them an advantage in the game.” [low-level]
-    - Pay Wall (Sousa & Oliveira 2023): “The game reaches a point where further progress is contingent on making a payment.” Alt (Hadan 2024): “Patterns that make the game unplayable without payment.” darkpattern.games: “The game becomes impossible to continue playing without payment.” [low-level]
-    - Narrative Obligation (King et al. 2023): “the game’s narrative structure makes the purchase of in-game items a regular or repetitive part of gameplay. Although in-game currency may be earned, this is generally at a slow rate, so players may be forced to spend to keep the game flowing.” [low-level]
-    - Try now, Pay later (Zhang et. al): This pattern offers players the chance to initially try premium experiences,
+    - Pay to Skip: “Permitting or actively promoting players to spend money to speed up their progress in the game.” Alt: “Patterns that allows players players to pay to bypass undesired obstacles.” Alt: “Allowing or even encouraging players to spend money to make progress in the game easier and faster.” “Spend money to avoid waiting for a timer to expire.” [low-level]
+    - Pay to Win: “Patterns that grant advantages to players who spend money.” “Monetized Rivalries”: “Exploits Player competitiveness; encouraging them to spend money they would not otherwise in order to achieve in-game status such as a high placement on a leader board.” “A player can spend real money to purchase something that gives them an advantage in the game.” [low-level]
+    - Pay Wall: “The game reaches a point where further progress is contingent on making a payment.” Alt: “Patterns that make the game unplayable without payment.” “The game becomes impossible to continue playing without payment.” [low-level]
+    - Narrative Obligation: “the game’s narrative structure makes the purchase of in-game items a regular or repetitive part of gameplay. Although in-game currency may be earned, this is generally at a slow rate, so players may be forced to spend to keep the game flowing.” [low-level]
+    - Try now, Pay later: This pattern offers players the chance to initially try premium experiences,
     powerful items, or privileges, with payment required at a later stage. [dp-combo]
 
   Boundary rules:
@@ -323,12 +322,12 @@ CLASS: MONETARY
     Pattern where players use real-world money to acquire in-game currency for purchases or trades within the game world
 
   Indicators (each is an instance of this pattern; see R5):
-    - Premium Currency (Sousa & Oliveira 2023): “The true cost of in-game items is concealed by the exchange rate between real-world currency and virtual currency.” Alt (Hadan 2024): “Patterns that disguises item real prices by introducing exchange rates.” darkpattern.games: “Exchange rate between real money and in-game currency disguises the real price of items.” [low-level]
+    - Premium Currency: “The true cost of in-game items is concealed by the exchange rate between real-world currency and virtual currency.” Alt: “Patterns that disguises item real prices by introducing exchange rates.” “Exchange rate between real money and in-game currency disguises the real price of items.” [low-level]
     - Polymorphic Currency:is the use of multiple, purpose-specific in-game currencies within a
     single game that can either be purchased with real-world money or earned by in-game activities.
-    The malicious part is that they are non-interchangeable. Zhang et al. 2025. [low-level]
-    - Bulk Purchase: King et al. 2023: “the player may only purchase in-game currency in set pack sizes, with a bulk-buy discount to encourage larger purchases” [low-level]
-    - Leftovers: King et al. 2023: “the pricing of items is not aligned to the pack sizes, meaning that players must often purchase more currency than required.” [low-level]
+    The malicious part is that they are non-interchangeable. [low-level]
+    - Bulk Purchase: “the player may only purchase in-game currency in set pack sizes, with a bulk-buy discount to encourage larger purchases” [low-level]
+    - Leftovers: “the pricing of items is not aligned to the pack sizes, meaning that players must often purchase more currency than required.” [low-level]
 
   Boundary rules:
     vs Purchases denominated in currency:
@@ -357,12 +356,12 @@ CLASS: MONETARY
     Deceptive Luxury is a game design tactic that makes an item feel rare and exclusive so players will pay more for it, when the rarity was invented by the developer rather than being a real limit. The item's price reflects manufactured scarcity, not genuine value.
 
   Indicators (each is an instance of this pattern; see R5):
-    - Artificial Scarcity (Hadan et al. 2024): “Patterns that use limited-time offers to manipulate player decisions.” darkpattern.games: “Limited time offers with unnecessary urgency.” [low-level]
+    - Artificial Scarcity: “Patterns that use limited-time offers to manipulate player decisions.” “Limited time offers with unnecessary urgency.” [low-level]
     - Remedy Consumption: is a pattern where players are given a second opportunity to correct
     a missed purchase of some limited, valuable in-game items. This involves intentional artificial
     scarcity for these in-game items, which compels players to expend additional effort or incur further
-    costs (compared to the first time) to obtain them. Zhang et al. 2025. [low-level]
-    - Rarity Level (Zhang et al.): in-game items are often designed with varying levels of rarity. For
+    costs (compared to the first time) to obtain them. [low-level]
+    - Rarity Level: in-game items are often designed with varying levels of rarity. For
     instance, character skins are ranked from B rank to S++ rank, with
     higher ranks featuring more intricate designs and commanding higher prices [dp-enhancer]. Mention of rarity tied to price, purchase, or manufactured scarcity implies presence of pattern.
 
@@ -387,7 +386,7 @@ CLASS: MONETARY
     Patterns that encourages players to maximize playtime to justify their spending.
 
   Indicators (each is an instance of this pattern; see R5):
-    - (Alt. def.) darkpattern.games: Involves monthly/yearly subscriptions which encourages the player to play as much as possible to get their money's worth.
+    - (Alt. def.) Involves monthly/yearly subscriptions which encourages the player to play as much as possible to get their money's worth.
     - Battle passes, MMO-subscriptions [indicators]
 
   Worked example:
@@ -406,14 +405,14 @@ CLASS: MONETARY
     Using real money to participate in a game that involves an element of luck, with the possibility of receiving a prize as a reward.
 
   Indicators (each is an instance of this pattern; see R5):
-    - Loot Boxes (Hadan 2024, “Gambling / Loot Boxes”): “Patterns that encourages players to spend money on chance-based rewards.” darkpattern.games (“Gambling / Loot Boxes”): “Spending real money to play a game of chance for a reward.” [low-level]
+    - Loot Boxes (“Gambling / Loot Boxes”): “Patterns that encourages players to spend money on chance-based rewards.” (“Gambling / Loot Boxes”): “Spending real money to play a game of chance for a reward.” [low-level]
     - Risk Conversion: offers players an alternative way to achieve their goals, such as obtaining
     an extremely rare item, by spending a substantial amount of money to circumvent the uncertainties
     inherent in gambling mechanics. However, the actual amount players spend is significantly higher
-    than if they had opted for gambling mechanics. This pattern specifically targets risk-averse players. Zhang et al. 2025 [low-level]
+    than if they had opted for gambling mechanics. This pattern specifically targets risk-averse players. [low-level]
     - Bundle Bonus: encourages players to engage in multiple gambling attempts at once rather
     than a single one. For instance, if a player undertakes 10 in-game lottery activities at once, they
-    receive an additional opportunity for free, incentivizing bulk gambling. . Zhang et al. 2025. [low-level]
+    receive an additional opportunity for free, incentivizing bulk gambling. [low-level]
 
   Boundary rules:
     vs Intermediate Currency:
@@ -438,7 +437,7 @@ CLASS: MONETARY
     Patterns that diminishing the value of purchased items over time to drive new purchases.
 
   Indicators (each is an instance of this pattern; see R5):
-    - (Alt. def.) darkpattern.games: “A permanently purchased item in the game becomes less valuable over time.”
+    - (Alt. def.) “A permanently purchased item in the game becomes less valuable over time.”
 
   Boundary rules:
     vs Incomplete on purchase:
@@ -470,7 +469,7 @@ CLASS: MONETARY
     Patterns set small differences between in-game currency and item costs, prompting additional currency purchases.
 
   Indicators (each is an instance of this pattern; see R5):
-    - (Alt. def.) darkpattern.games: “Capped inventory forces you to destroy items or upgrade inventory. Also, having small amounts of left over premium currency.”
+    - (Alt. def.) “Capped inventory forces you to destroy items or upgrade inventory. Also, having small amounts of left over premium currency.”
 
   Boundary rules:
     vs NONE:
@@ -499,10 +498,10 @@ CLASS: MONETARY
     Interface design that reduces the friction or deliberation involved in spending real money, through purchase-by-default options, absent confirmation or refund steps, prompts triggered at the point of insufficient funds, or price presentation that makes an amount appear smaller than it is.
 
   Indicators (each is an instance of this pattern; see R5):
-    - Anchoring Tricks (Hadan et al. 2024): “Patterns that place inexpensive items next to expensive ones to create the illusion of affordability.” darkpattern.games: “Placing a cheap item next to an expensive item to make it look more affordable.” [low-level]
-    - Accidental Purchases (Hadan et al. 2024): “Patterns that use visual design or default options to deceive players into making unintended purchases.” darkpattern.games: “Making it easy to accidentally spend money with no confirmation or ability to undo or refund the action.” [low-level]
-    - Low Barrier: King et al. 2023 “Default To Purchase”: “instances where the player was directed to purchase in-game items or in-game currency as a default action; if they do not wish to purchase, they must opt-out.” [low-level]
-    - Prompted to Buy: King et al. 2023: “if the player attempts to buy an item with insufficient credit, the user interface displays a prompt for the user to purchase additional in-game currency with real money.” [low-level]
+    - Anchoring Tricks: “Patterns that place inexpensive items next to expensive ones to create the illusion of affordability.” “Placing a cheap item next to an expensive item to make it look more affordable.” [low-level]
+    - Accidental Purchases: “Patterns that use visual design or default options to deceive players into making unintended purchases.” “Making it easy to accidentally spend money with no confirmation or ability to undo or refund the action.” [low-level]
+    - Low Barrier: “Default To Purchase”: “instances where the player was directed to purchase in-game items or in-game currency as a default action; if they do not wish to purchase, they must opt-out.” [low-level]
+    - Prompted to Buy: “if the player attempts to buy an item with insufficient credit, the user interface displays a prompt for the user to purchase additional in-game currency with real money.” [low-level]
 
   Boundary rules:
     vs Purchase solicitation:
@@ -531,7 +530,7 @@ CLASS: MONETARY
     The user interface (i.e., not the NPC) contains elements designed to purposefully focus attention on specific options, or away from opportunities to opt-out.
 
   Indicators (each is an instance of this pattern; see R5):
-    - Exciting UI Effect: King et al. 2023: “the use of colors and animation to direct the player’s attention to selected UI elements (such as the ‘buy in-game currency’ button)”; “[the buy button] was attracting more attention than the rest of the screen”; “a pleasing sound effect described as ‘an angelic choir’ and ‘a heavenly sound’ to accompany the appearance of the in-game currency storefront.” [low-level]
+    - Exciting UI Effect: “the use of colors and animation to direct the player’s attention to selected UI elements (such as the ‘buy in-game currency’ button)”; “[the buy button] was attracting more attention than the rest of the screen”; “a pleasing sound effect described as ‘an angelic choir’ and ‘a heavenly sound’ to accompany the appearance of the in-game currency storefront.” [low-level]
 
   Boundary rules:
     vs Attention-directing without an opt-out:
@@ -554,8 +553,8 @@ CLASS: MONETARY
     The “Never-Ending Lure” pattern is designed to convert non-paying players into paying ones (“First Charge Discount”) and encourage consistent long-term payments (“Accumulating Rewards”).
 
   Indicators (each is an instance of this pattern; see R5):
-    - First Charge Discount: happens when in-game items or currencies are offered at significantly reduced prices for the player’s first purchase, and then revert to the original higher price for subsequent purchases. This pattern distorts the player’s perception of in-game items’ true value. Zhang et al. 2025.[low-level]
-    - Accumulating Rewards: involves granting privileges, special offers, and rewards to players who spend above certain monetary thresholds. Zhang et al. 2025. [low-level]
+    - First Charge Discount: happens when in-game items or currencies are offered at significantly reduced prices for the player’s first purchase, and then revert to the original higher price for subsequent purchases. This pattern distorts the player’s perception of in-game items’ true value. [low-level]
+    - Accumulating Rewards: involves granting privileges, special offers, and rewards to players who spend above certain monetary thresholds. [low-level]
 
   Boundary rules:
     vs Pay to Win:
@@ -586,8 +585,8 @@ CLASS: SOCIAL
     Forced Fellowship is a game design tactic that turns real friendships into leverage: the game rewards you for pulling friends in, then makes it costly to stop playing because quitting would let those friends down.Design that uses the player's social ties, real or in-game, as the mechanism of recruitment or retention: rewarding the player for bringing others into the game, or making disengagement costly because absence burdens teammates, guildmates, or friends.
 
   Indicators (each is an instance of this pattern; see R5):
-    - Social Pyramid Scheme (Sousa & Oliveira 2023): “Players are incentivized to invite friends to join the game and are encouraged to continue spreading the invitation to others in their social circle.” Alt (Hadan 2024): “Patterns that reward players for inviting friends.” Alt (Dahlan & Susanty 2022): “Encouraging or sometimes forcing players to invite people to join them in the game to gain in-game incentives or make progress.” darkpattern.games: “You get a bonus for inviting your friends and then they have to invite their friends.” [low-level]
-    - Social Obligation / Guilds (Sousa & Oliveira 2023): “Due to a sense of responsibility towards one's friends, players may feel compelled to play the game even when they would prefer not to.” Alt (Hadan 2024): “Patterns that create a sense of obligation to avoid letting down friends in the game.” darkpattern.games: “To avoid letting down your friends, you are obligated to play when you don't want to.” [low-level]
+    - Social Pyramid Scheme: “Players are incentivized to invite friends to join the game and are encouraged to continue spreading the invitation to others in their social circle.” Alt: “Patterns that reward players for inviting friends.” Alt: “Encouraging or sometimes forcing players to invite people to join them in the game to gain in-game incentives or make progress.” “You get a bonus for inviting your friends and then they have to invite their friends.” [low-level]
+    - Social Obligation / Guilds: “Due to a sense of responsibility towards one's friends, players may feel compelled to play the game even when they would prefer not to.” Alt: “Patterns that create a sense of obligation to avoid letting down friends in the game.” “To avoid letting down your friends, you are obligated to play when you don't want to.” [low-level]
 
   Boundary rules:
     vs Reciprocity:
@@ -615,8 +614,8 @@ CLASS: SOCIAL
     The game employs unsolicited messaging to a player's contact list or social media account.
 
   Indicators (each is an instance of this pattern; see R5):
-    - Alt (Hadan 2024): “Patterns that send spam to players’ contact lists or social media accounts.”
-    - (Alt. def.) darkpattern.games: “The game sends spam to your contact list or social media account.”
+    - Alt: “Patterns that send spam to players’ contact lists or social media accounts.”
+    - (Alt. def.) “The game sends spam to your contact list or social media account.”
     - Game uses access to the player’s contact list / social graph [indicators]
 
   Boundary rules:
@@ -645,7 +644,7 @@ CLASS: SOCIAL
     Patterns that instill a sense of obligation to reciprocate by donating resources to other players.
 
   Indicators (each is an instance of this pattern; see R5):
-    - (Alt. def.) darkpattern.games: “Feeling obligated to return a favor, share resources, trade an item, etc.”
+    - (Alt. def.) “Feeling obligated to return a favor, share resources, trade an item, etc.”
 
   Counterexample (does NOT get this label):
     "I did not expect that this game is so good. Interesting story , beautiful animation, lots of different kind of games on different levels , great teams and possibility to help each other and communicate. Àso, it feels so real, like I am building my own kingdom with my friends and having an awesome and magical journey. I did not find anything negative. 5 stars from me."
@@ -664,7 +663,7 @@ CLASS: SOCIAL
     Patterns that incentivize players to engage in dishonest or harmful actions to gain an advantage.
 
   Indicators (each is an instance of this pattern; see R5):
-    - (Alt. def.) darkpattern.games: “The game incentivizes players to lie, cheat, or backstab other players to get ahead.”
+    - (Alt. def.) “The game incentivizes players to lie, cheat, or backstab other players to get ahead.”
 
   Boundary rules:
     vs Permitted harm:
@@ -689,8 +688,8 @@ CLASS: SOCIAL
     Players are pressured to continue playing the game by the fear of missing out on rewards or falling behind other players.
 
   Indicators (each is an instance of this pattern; see R5):
-    - (Alt. def.) (Hadan 2024): “Patterns that induce anxiety that players will miss exciting or important events if they stop playing.”
-    - (Alt. def.) darkpattern.games: “If you stop playing you'll miss out on something or be left behind and unable to catch up.”
+    - (Alt. def.): “Patterns that induce anxiety that players will miss exciting or important events if they stop playing.”
+    - (Alt. def.) “If you stop playing you'll miss out on something or be left behind and unable to catch up.”
 
   Worked example:
     "A game that used to be top tier, and brought all types of players together, has sadly fallen into what seems like a corrupt scheme catering to only 1 type of player. While the casual player may still find some enjoyment in Pokemon GOandSpendMoney, they will constantly feel like they're missing out on a huge chunk of the game. Niantic lacks the Instinct to listen to it's players, and without the Valor to make changes, they'll turn you into a Mystic questioning why you still play Pokemon GO."
@@ -704,7 +703,7 @@ CLASS: SOCIAL
     Patterns that make players against each other in competition.
 
   Indicators (each is an instance of this pattern; see R5):
-    - (Alt. def.) darkpattern.games: “The game makes you compete against other players.”
+    - (Alt. def.) “The game makes you compete against other players.”
 
   Worked example:
     "Fun, so far. Minimal purchases needed to play at a competitive level. Many different game styles and features. Great game for a friend group. Would recommend."
@@ -712,7 +711,7 @@ CLASS: SOCIAL
 
 ---------------------------------------------------------------------------
 CLASS: PSYCHOLOGICAL
-  Psychological DPs and practices manipulate players’ minds, emotions, and cognition, inducing them to make poor decisions through psychological tricks [74].
+  Psychological DPs and practices manipulate players’ minds, emotions, and cognition, inducing them to make poor decisions through psychological tricks.
 ---------------------------------------------------------------------------
 
 [P_EasyToGetHardToLose]  Easy to Get, Hard to Lose
@@ -721,9 +720,9 @@ CLASS: PSYCHOLOGICAL
     Design in which accumulated investment, time played, money spent, progress attained, or partially completed goals, raises the cost of leaving. Entry is low-friction; exit entails forfeiting value the player already holds.
 
   Indicators (each is an instance of this pattern; see R5):
-    - Invested (Endowed) Value (Sousa & Oliveira 2023): “Having invested significant time and money into advancing one's status in the game, it can be challenging to abandon those gains.” Alt (Hadan 2024): “Patterns that make it hard for players to discard investments in time and money.” darkpattern.games (“Invested / Endowed Value”): “Having already spent time and money to improve your status in the game, it's difficult to throw it away.” [low-level]
-    - Endowed Progress (Hadan et al. 2024, “Badges / Endowed Progress”): “Patterns that discourage players from abandoning partially completed goals.” darkpattern.games (“Badges / Endowed Progress”): “Reluctancy to abandon a partially completed goal, even one forced upon the player.” [low-level]
-    - Try now, Pay later (Zhang et. al): This pattern offers players the chance to initially try premium experiences,
+    - Invested (Endowed) Value: “Having invested significant time and money into advancing one's status in the game, it can be challenging to abandon those gains.” Alt: “Patterns that make it hard for players to discard investments in time and money.” (“Invested / Endowed Value”): “Having already spent time and money to improve your status in the game, it's difficult to throw it away.” [low-level]
+    - Endowed Progress (“Badges / Endowed Progress”): “Patterns that discourage players from abandoning partially completed goals.” (“Badges / Endowed Progress”): “Reluctancy to abandon a partially completed goal, even one forced upon the player.” [low-level]
+    - Try now, Pay later: This pattern offers players the chance to initially try premium experiences,
     powerful items, or privileges, with payment required at a later stage. [dp-combo]
 
   Counterexample (does NOT get this label):
@@ -748,9 +747,9 @@ CLASS: PSYCHOLOGICAL
 
   Indicators (each is an instance of this pattern; see R5):
     - Collection screens emphasizing unowned items over achieved ones [indicators]
-    - (Alt. def.) (Hadan 2024): “Patterns that capitalize on players’ strong desire to achieve in-game collections and achievements.”
-    - (Alt. def.) (Zhang et al. 2025): “drives players to feel compelled to acquire all in-game items, achievements, or myths (secret achievements for the player to discover).”
-    - (Alt. def.) darkpattern.games: “The urge to collect all the items, achievements or secrets in a game.”
+    - (Alt. def.): “Patterns that capitalize on players’ strong desire to achieve in-game collections and achievements.”
+    - (Alt. def.): “drives players to feel compelled to acquire all in-game items, achievements, or myths (secret achievements for the player to discover).”
+    - (Alt. def.) “The urge to collect all the items, achievements or secrets in a game.”
 
   Worked example:
     "Was good to start with, but gone right down hill, can't get enough dice to complete tasks in the time scale unless you spend mega amounts of money. The dice reward of 50 is still the same on completing level 186 as it was completing level one. Card set packs have far too many repeats so impossible to complete again unless you spend money and that's not guaranteed. All in all 1 star is being generous"
@@ -764,7 +763,7 @@ CLASS: PSYCHOLOGICAL
     Patterns that deceive players about their skill level to encourage more gameplay.
 
   Indicators (each is an instance of this pattern; see R5):
-    - (Alt. def.) darkpattern.games: “The game cheats or hides information to make you think you're better than you actually are.”
+    - (Alt. def.) “The game cheats or hides information to make you think you're better than you actually are.”
 
   Boundary rules:
     vs Alleged rigging:
@@ -792,9 +791,9 @@ CLASS: PSYCHOLOGICAL
     The use of deceitful questions or manipulation of emotions and subconscious desires, mainly based on aesthetical game elements.
 
   Indicators (each is an instance of this pattern; see R5):
-    - (Alt. def.) (Zhang et al. 2025): “involves using misleading questions or exploiting emotional and subconscious desires to influence player behaviour.”
-    - (Alt. def.) darkpattern.games : “Trick questions or toying with emotions or our subconscious desires.”
-    - (Alt. def.) (Hadan 2024): “Patterns that subtly influence players’ aesthetic preferences through text, graphics, or sounds.”
+    - (Alt. def.): “involves using misleading questions or exploiting emotional and subconscious desires to influence player behaviour.”
+    - (Alt. def.) “Trick questions or toying with emotions or our subconscious desires.”
+    - (Alt. def.): “Patterns that subtly influence players’ aesthetic preferences through text, graphics, or sounds.”
     - Frequently enhanced with "cuteness/kawaii" where aesthetically pleasing characters / elements are used to influence player behaviour.
 
   Boundary rules:
@@ -819,7 +818,7 @@ CLASS: PSYCHOLOGICAL
 
   Indicators (each is an instance of this pattern; see R5):
     - Frequently enhanced by “The Power of NPCs” demonstrating gambling with free trials
-    - darkpattern.games: “Overestimating the frequency of something because we've seen it recently or memorably.”
+    - “Overestimating the frequency of something because we've seen it recently or memorably.”
 
   Worked example:
     "The game is clearly rigged to make you take risker bets, lose, and buy more chips. Zynga sets up different hands among players to maximize betting and losses. I regularly get beat with a flush by a full house or straight flush. You will notice how often you get almost nuts hands and then lose. I've had some great runs on the game but it started to feel like players were cheating or using bots. When I did some research most of what I could is that it is not a random deal but hand scenarios."
@@ -833,13 +832,13 @@ CLASS: PSYCHOLOGICAL
     Reward structures in which the mechanism of delivery, its complexity, its unpredictability, or the out-of-game activity it demands, is what sustains engagement, rather than the value of the reward itself. The player invests disproportionate cognitive effort, repeated attempts, or external activity in pursuit of the reward system.
 
   Indicators (each is an instance of this pattern; see R5):
-    - Overloading (Zhang et al.):occurs in in-game mechanisms, such as reward systems or gambling, that are
+    - Overloading:occurs in in-game mechanisms, such as reward systems or gambling, that are
     designed to be overly complex, thereby enticing players to invest significant effort in understanding
     and engaging with them. [low-level]
-    - Sycophant (Zhang et al.): “Sycophant” refers to the use of rewards within the game to encourage players to allocate
+    - Sycophant: “Sycophant” refers to the use of rewards within the game to encourage players to allocate
     additional attention and resources to social activities outside of the game, such as following the
     game’s social media accounts or participating in related online communities. [low-level]
-    - Variable Rewards (Sousa & Oliveira 2023): “Irregular or unexpected rewards have a greater potential to generate addiction compared to rewards provided on a predictable schedule.” Alt (Hadan 2024): “Patterns that offer unpredictable or random rewards to enhance game addiction.” darkpattern.games: “Unpredictable or random rewards are more addictive than a predictable schedule.” [low-level]
+    - Variable Rewards: “Irregular or unexpected rewards have a greater potential to generate addiction compared to rewards provided on a predictable schedule.” Alt: “Patterns that offer unpredictable or random rewards to enhance game addiction.” “Unpredictable or random rewards are more addictive than a predictable schedule.” [low-level]
     - Gacha mechanics like pulls, rolls, banners. [indicators]
 
   Boundary rules:

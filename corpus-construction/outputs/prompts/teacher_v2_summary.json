@@ -1,24 +1,24 @@
 {
   "bare": {
     "path": "../outputs/prompts/teacher_v2_bare.txt",
-    "approx_tokens": 8897,
-    "prompt_sha256": "ecd3c1810cf26b708ac6385269fe9ff39f232f2a6dd9131a53f0710b125362ca",
+    "approx_tokens": 8505,
+    "prompt_sha256": "1a6ac1ace49b4cec72b2aa1c58f7177b21e116f0bea753b1f046a37b7fd06ff2",
     "rule_examples_rendered": 0,
     "counterexamples_rendered": 0,
     "worked_examples_rendered": 0
   },
   "boundary": {
     "path": "../outputs/prompts/teacher_v2_boundary.txt",
-    "approx_tokens": 17697,
-    "prompt_sha256": "013bb31c5857ba04fa67a71af1365b0128246dbdc30ea325ba8ea927329625cf",
+    "approx_tokens": 17302,
+    "prompt_sha256": "1103dc085a30f00270048b795a46b0c78976b20c6b621c9d60822b7890639c8a",
     "rule_examples_rendered": 0,
     "counterexamples_rendered": 25,
     "worked_examples_rendered": 0
   },
   "full": {
     "path": "../outputs/prompts/teacher_v2_full.txt",
-    "approx_tokens": 24461,
-    "prompt_sha256": "6529a474a2b03d2c00556c78075130b0f05d7cd7d1a637f241279393194c422c",
+    "approx_tokens": 24066,
+    "prompt_sha256": "aad355174ac44da072eee2003a4d2ed48038e273fcdc70e5c51dffa8e4a54416",
     "rule_examples_rendered": 7,
     "counterexamples_rendered": 25,
     "worked_examples_rendered": 39

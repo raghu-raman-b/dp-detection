@@ -1,0 +1,275 @@
+{
+  "generated": "2026-09-04T04:59:21",
+  "author_file": "../../validation/validation_set.jsonl",
+  "coders_dir": "../../coders",
+  "include_author": true,
+  "raters": [
+    "author",
+    "keshav02",
+    "vansh97",
+    "virinchi90"
+  ],
+  "n_units": 75,
+  "n_pairable": 75,
+  "alpha_masi": 0.588613981461807,
+  "alpha_masi_ci": [
+    0.5172153150774683,
+    0.6505374952610837
+  ],
+  "alpha_jaccard": 0.6707191955553147,
+  "alpha_nominal": 0.4692402044812165,
+  "bootstrap_n": 2000,
+  "ci": 0.95,
+  "seed": 20260831,
+  "per_class_alpha": {
+    "T": 0.757,
+    "M": 0.68,
+    "S": 0.645,
+    "P": 0.661,
+    "Tech": 1.0
+  },
+  "per_label": {
+    "T_PlayingByAppointment ": {
+      "units": 11,
+      "unanimous": 5,
+      "assignments": 29,
+      "alpha": 0.759,
+      "fleiss_kappa": 0.758
+    },
+    "T_DailyRewards ": {
+      "units": 7,
+      "unanimous": 4,
+      "assignments": 20,
+      "alpha": 0.822,
+      "fleiss_kappa": 0.821
+    },
+    "T_Grinding ": {
+      "units": 8,
+      "unanimous": 1,
+      "assignments": 20,
+      "alpha": 0.537,
+      "fleiss_kappa": 0.536
+    },
+    "T_Advertisement ": {
+      "units": 13,
+      "unanimous": 8,
+      "assignments": 42,
+      "alpha": 0.853,
+      "fleiss_kappa": 0.852
+    },
+    "T_InfiniteTreadmill ": {
+      "units": 3,
+      "unanimous": 0,
+      "assignments": 6,
+      "alpha": 0.435,
+      "fleiss_kappa": 0.433
+    },
+    "T_MandatoryMarathon ": {
+      "units": 7,
+      "unanimous": 4,
+      "assignments": 22,
+      "alpha": 0.837,
+      "fleiss_kappa": 0.836
+    },
+    "M_PayToProgress ": {
+      "units": 16,
+      "unanimous": 7,
+      "assignments": 45,
+      "alpha": 0.731,
+      "fleiss_kappa": 0.73
+    },
+    "M_IntermediateCurrency ": {
+      "units": 13,
+      "unanimous": 3,
+      "assignments": 28,
+      "alpha": 0.581,
+      "fleiss_kappa": 0.58
+    },
+    "M_DeceptiveLuxury ": {
+      "units": 5,
+      "unanimous": 0,
+      "assignments": 12,
+      "alpha": 0.539,
+      "fleiss_kappa": 0.537
+    },
+    "M_RecurringFee": {
+      "units": 2,
+      "unanimous": 2,
+      "assignments": 8,
+      "alpha": 1.0,
+      "fleiss_kappa": 1.0
+    },
+    "M_Gambling ": {
+      "units": 9,
+      "unanimous": 3,
+      "assignments": 18,
+      "alpha": 0.647,
+      "fleiss_kappa": 0.645
+    },
+    "M_PowerCreep": {
+      "units": 2,
+      "unanimous": 2,
+      "assignments": 8,
+      "alpha": 1.0,
+      "fleiss_kappa": 1.0
+    },
+    "M_WasteAversion ": {
+      "units": 4,
+      "unanimous": 3,
+      "assignments": 13,
+      "alpha": 0.92,
+      "fleiss_kappa": 0.92
+    },
+    "M_EasyToPurchase ": {
+      "units": 7,
+      "unanimous": 2,
+      "assignments": 17,
+      "alpha": 0.648,
+      "fleiss_kappa": 0.647
+    },
+    "M_UIMisdirection ": {
+      "units": 10,
+      "unanimous": 4,
+      "assignments": 27,
+      "alpha": 0.743,
+      "fleiss_kappa": 0.742
+    },
+    "M_NeverEndingLure ": {
+      "units": 8,
+      "unanimous": 2,
+      "assignments": 16,
+      "alpha": 0.605,
+      "fleiss_kappa": 0.604
+    },
+    "S_ForcedFellowship ": {
+      "units": 5,
+      "unanimous": 2,
+      "assignments": 11,
+      "alpha": 0.718,
+      "fleiss_kappa": 0.717
+    },
+    "S_FriendSpamImpersonation": {
+      "units": 2,
+      "unanimous": 1,
+      "assignments": 7,
+      "alpha": 0.854,
+      "fleiss_kappa": 0.854
+    },
+    "S_Reciprocity ": {
+      "units": 5,
+      "unanimous": 3,
+      "assignments": 15,
+      "alpha": 0.837,
+      "fleiss_kappa": 0.836
+    },
+    "S_EncouragesAntiSocialBehavior ": {
+      "units": 4,
+      "unanimous": 1,
+      "assignments": 9,
+      "alpha": 0.658,
+      "fleiss_kappa": 0.656
+    },
+    "S_FearOfMissingOutFOMO ": {
+      "units": 3,
+      "unanimous": 0,
+      "assignments": 5,
+      "alpha": 0.257,
+      "fleiss_kappa": 0.254
+    },
+    "S_Competition ": {
+      "units": 15,
+      "unanimous": 3,
+      "assignments": 33,
+      "alpha": 0.536,
+      "fleiss_kappa": 0.535
+    },
+    "P_EasyToGetHardToLose ": {
+      "units": 6,
+      "unanimous": 2,
+      "assignments": 14,
+      "alpha": 0.701,
+      "fleiss_kappa": 0.7
+    },
+    "P_CompleteTheCollection": {
+      "units": 2,
+      "unanimous": 0,
+      "assignments": 6,
+      "alpha": 0.661,
+      "fleiss_kappa": 0.66
+    },
+    "P_IllusionOfControl ": {
+      "units": 7,
+      "unanimous": 4,
+      "assignments": 21,
+      "alpha": 0.847,
+      "fleiss_kappa": 0.846
+    },
+    "P_AestheticManipulation ": {
+      "units": 3,
+      "unanimous": 0,
+      "assignments": 5,
+      "alpha": 0.392,
+      "fleiss_kappa": 0.39
+    },
+    "P_OptimismAndFrequencyBiases ": {
+      "units": 4,
+      "unanimous": 2,
+      "assignments": 12,
+      "alpha": 0.827,
+      "fleiss_kappa": 0.826
+    },
+    "P_RewardMania ": {
+      "units": 9,
+      "unanimous": 1,
+      "assignments": 20,
+      "alpha": 0.573,
+      "fleiss_kappa": 0.571
+    },
+    "Tech_FragmentedDownloads": {
+      "units": 2,
+      "unanimous": 2,
+      "assignments": 8,
+      "alpha": 1.0,
+      "fleiss_kappa": 1.0
+    }
+  },
+  "observed": {
+    "unanimous_units": 21,
+    "rater_pairs": 450,
+    "pairwise_exact": 217,
+    "mean_pairwise_masi": 0.6051437389770731,
+    "mean_pairwise_jaccard": 0.6887275132275131
+  },
+  "notes": {
+    "keshav02": {
+      "file": "coder_keshav02_2026-09-03-23-28-08.jsonl",
+      "rows": 75,
+      "coded": 75,
+      "abstain": 0,
+      "foreign": 0,
+      "unknown_codes": {},
+      "renamed_from": null,
+      "name_variants": []
+    },
+    "vansh97": {
+      "file": "coder_vansh97_2026-08-31-18-25-28.jsonl",
+      "rows": 75,
+      "coded": 75,
+      "abstain": 0,
+      "foreign": 0,
+      "unknown_codes": {},
+      "renamed_from": null,
+      "name_variants": []
+    },
+    "virinchi90": {
+      "file": "coder_virinchi5318008_2026-09-03-13-39-52 - R90.jsonl",
+      "rows": 75,
+      "coded": 75,
+      "abstain": 0,
+      "foreign": 0,
+      "unknown_codes": {},
+      "renamed_from": null,
+      "name_variants": []
+    }
+  }
+}
