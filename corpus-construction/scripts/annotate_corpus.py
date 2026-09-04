@@ -370,15 +370,40 @@ def dump_response(resp) -> dict:
 
 
 def call(client, cfg: RunConfig, user_input: str, rng: random.Random, shard: int,
-         max_output: int | None = None, cached: bool = True):
+         max_output: int | None = None, cached: bool = True,
+         throttle: "Throttle | None" = None, tally: dict | None = None):
+    """One labelled call, with the rate-limit signal tapped on the way past.
+
+    call_with_retries swallows a retried 429 -- which is right for the result and wrong
+    for the telemetry: before this, a run could be throttled for hours and leave no
+    trace in meta.jsonl beyond a fat latency tail."""
     mo = max_output or cfg.max_output
-    return rc.call_with_retries(
-        lambda: client.responses.create(**build_kwargs(cfg, user_input, mo, shard, cached)),
-        cfg.retries, rng)
+
+    def once():
+        try:
+            return client.responses.create(**build_kwargs(cfg, user_input, mo, shard,
+                                                          cached))
+        except Exception as e:
+            limited = rc.status_code_of(e) == 429 and not rc.is_fatal(e)
+            if tally is not None:
+                # whether the LAST attempt was a rate limit, so a review that saw one
+                # 429 and then died of something else is not mistaken for a throttle
+                tally["last_429"] = limited
+            if limited:
+                if tally is not None:
+                    tally["n"] = tally.get("n", 0) + 1
+                if throttle is not None:
+                    cut = throttle.hit()
+                    if cut:
+                        warn_throttle(cut[0], cut[1], throttle.hits)
+            raise
+
+    return rc.call_with_retries(once, cfg.retries, rng)
 
 
 def label_review(client, cfg: RunConfig, row: dict, rng: random.Random,
-                 shard: int, watch: "ShardCache") -> dict:
+                 shard: int, watch: "ShardCache",
+                 throttle: "Throttle | None" = None) -> dict:
     """Label one review, re-attempting while the response will not parse as JSON.
 
     Unchanged in substance from run_teacher_openai.label_review(); it gains a shard (so
@@ -393,16 +418,20 @@ def label_review(client, cfg: RunConfig, row: dict, rng: random.Random,
     n_searches = 0
     max_out = cfg.max_output
     rmeta: dict = {}
+    tally: dict = {"n": 0}
 
     for k in range(cfg.parse_retries + 1):
-        resp, lat, etype, emsg = call(client, cfg, payload, rng, shard, max_output=max_out)
+        resp, lat, etype, emsg = call(client, cfg, payload, rng, shard,
+                                      max_output=max_out, throttle=throttle,
+                                      tally=tally)
         latency_total += lat
         if etype:
             return {"api_error_type": etype, "api_error_message": emsg,
                     "attempts": attempts, "dumps": dumps, "usage": usage_total,
                     "latency_s": latency_total, "n_searches": n_searches,
                     "parsed": None, "raw": None, "parse_note": None,
-                    "rmeta": rmeta, "contract": None}
+                    "rmeta": rmeta, "contract": None, "n_rate_limited": tally["n"],
+                    "rate_limited_final": bool(tally.get("last_429"))}
 
         u = usage_dict(resp)
         usage_total = rc.add_usage(usage_total, u)
@@ -422,7 +451,8 @@ def label_review(client, cfg: RunConfig, row: dict, rng: random.Random,
                     "attempts": attempts, "dumps": dumps, "usage": usage_total,
                     "latency_s": latency_total, "n_searches": n_searches,
                     "parsed": parsed, "raw": text, "parse_note": note, "rmeta": rmeta,
-                    "contract": rc.check_contract(parsed, review_text, cfg.legal_codes)}
+                    "contract": rc.check_contract(parsed, review_text, cfg.legal_codes),
+                    "n_rate_limited": tally["n"]}
 
         if k < cfg.parse_retries:
             if rmeta["status"] == "incomplete" and max_out < MAX_OUTPUT_CAP:
@@ -432,7 +462,8 @@ def label_review(client, cfg: RunConfig, row: dict, rng: random.Random,
             "attempts": attempts, "dumps": dumps, "usage": usage_total,
             "latency_s": latency_total, "n_searches": n_searches, "parsed": None,
             "raw": attempts[-1]["raw"] if attempts else None,
-            "parse_note": "parse_failed", "rmeta": rmeta, "contract": None}
+            "parse_note": "parse_failed", "rmeta": rmeta, "contract": None,
+            "n_rate_limited": tally["n"]}
 
 
 # ------------------------------------------------------------- cache guarding
@@ -510,6 +541,78 @@ def warn_cache(alarm: dict, workers: int) -> None:
     print(f"!! in-flight calls finish, everything is saved, and {workers} is recorded as", file=sys.stderr)
     print(f"!! the level that broke -- a later --resume will stay strictly below it.", file=sys.stderr)
     print("!" * 72 + "\n", file=sys.stderr)
+
+
+class Throttle:
+    """AIMD concurrency control, driven by what the API actually says.
+
+    The worker count is planned offline from a token budget and an ASSUMED latency.
+    When the assumption is wrong the plan is wrong in proportion: at 13.2s/review the
+    plan allowed 23 workers, but reviews are really coming back in 6.1s, so each worker
+    draws tokens twice as fast as budgeted and the org's per-minute ceiling arrives at
+    roughly half the planned concurrency. No amount of arithmetic fixes that in advance
+    -- the only reliable source is a 429.
+
+    So: multiplicative decrease on a rate limit (halve, hold), because a rate limit
+    means the current level is already too high and stepping down by one would just
+    earn another 429. Additive increase is opt-in (--throttle-recover) since a run that
+    settles at a working level and stays there is usually what you want overnight.
+
+    The cooldown matters more than it looks. At 23 workers a throttling event produces
+    a burst of 429s within a second or two of each other; without it, one incident
+    would halve the limit four or five times and collapse the run to a single worker."""
+
+    def __init__(self, ceiling: int, cooldown: float = 60.0, recover_after: float = 0.0):
+        self.ceiling = max(1, ceiling)
+        self.limit = self.ceiling
+        self.cooldown = cooldown
+        self.recover_after = recover_after
+        self.lock = threading.Lock()
+        self.last_cut = 0.0
+        self.last_hit = 0.0
+        self.hits = 0
+        self.cuts: list[tuple[int, int]] = []
+
+    def hit(self) -> tuple[int, int] | None:
+        """A 429 was seen. Returns (from, to) if this caused a cut."""
+        now = time.monotonic()
+        with self.lock:
+            self.hits += 1
+            self.last_hit = now
+            if self.limit <= 1 or (self.last_cut and now - self.last_cut < self.cooldown):
+                return None
+            old, self.limit = self.limit, max(1, self.limit // 2)
+            self.last_cut = now
+            self.cuts.append((old, self.limit))
+            return old, self.limit
+
+    def maybe_recover(self) -> tuple[int, int] | None:
+        """One worker back after a quiet spell, if recovery is enabled."""
+        if not self.recover_after:
+            return None
+        now = time.monotonic()
+        with self.lock:
+            if self.limit >= self.ceiling:
+                return None
+            if now - max(self.last_hit, self.last_cut) < self.recover_after:
+                return None
+            old, self.limit = self.limit, self.limit + 1
+            self.last_cut = now
+            return old, self.limit
+
+    def state(self) -> dict:
+        with self.lock:
+            return {"throttle_limit": self.limit, "throttle_ceiling": self.ceiling,
+                    "throttle_hits": self.hits,
+                    "throttle_cuts": [list(c) for c in self.cuts]}
+
+
+def warn_throttle(old: int, new: int, hits: int) -> None:
+    C_ = C.p
+    print(C_(f"\n  {G['bad']} RATE LIMITED", "yellow", True)
+          + C_(f"  ({hits} so far)  concurrency {old} -> {new}"
+               f"   holding there; --throttle-recover to step back up", "grey"),
+          flush=True)
 
 
 # ------------------------------------------------------------------ the writer
@@ -883,6 +986,7 @@ class Writer:
         self.last_failure: dict | None = None
         self.recent_errors: deque[bool] = deque(maxlen=50)
         self.workers = 1
+        self.n_ratelimit = 0
         self.progress = Progress(cfg.progress_every)
         self.stats = LiveStats(cfg.stats_every, cfg.legal_codes)
         self.level_label = "run"
@@ -927,6 +1031,7 @@ class Writer:
                 "error_type": res["api_error_type"],
                 "error_message": res["api_error_message"],
                 "parse_failed": failed_parse, "n_attempts": n_att,
+                "n_rate_limited": res.get("n_rate_limited", 0),
                 "n_truncated_attempts": sum(a_["status"] == "incomplete"
                                             for a_ in res["attempts"]),
                 "attempt_parse_notes": [a_["parse_note"] for a_ in res["attempts"]]}
@@ -1011,7 +1116,16 @@ class Writer:
             # than walking on: the same cause -- no credit, a revoked key, a changed
             # model -- will hit every remaining review, and finding that out at review
             # 199,000 is not the same as finding it out at review 21.
-            n_failed = self.counters["api_errors"] + self.counters["parse_failures"]
+            # A review lost to a rate limit is a capacity signal, not a data
+            # problem: the throttle has already stepped the concurrency down, the row
+            # is retried on --resume, and stopping the whole run would defeat the
+            # backoff. It is recorded and counted, but it does not trip the ceiling.
+            # Anything else still stops at the first occurrence.
+            if res["api_error_type"] and (res.get("rate_limited_final")
+                                          or res["api_error_type"] == "RateLimitError"):
+                self.n_ratelimit += 1
+            n_failed = (self.counters["api_errors"] + self.counters["parse_failures"]
+                        - self.n_ratelimit)
             if res["api_error_type"]:
                 self.last_failure = {
                     "review_id": row.get("review_id"), "kind": "api_error",
@@ -1189,7 +1303,8 @@ def stream_todo(cfg: RunConfig, done: set[str]):
 # ------------------------------------------------------------------ run a level
 
 def run_level(client, cfg: RunConfig, rows, workers: int, writer: Writer,
-              watch: ShardCache, ramp: dict, label: str) -> tuple[int, bool]:
+              watch: ShardCache, ramp: dict, label: str,
+              throttle: "Throttle | None" = None) -> tuple[int, bool]:
     """Label `rows` with `workers` threads. Returns (n_done, broke_the_cache).
 
     Submission is bounded at 2x workers rather than dumping every future in at once:
@@ -1207,6 +1322,24 @@ def run_level(client, cfg: RunConfig, rows, workers: int, writer: Writer,
     n = 0
     broke_here = False
 
+    # Concurrency is governed by how many shard tokens are in circulation: a task
+    # blocks on shards.get() until one is free, so parking a token removes a worker
+    # without disturbing the pool. Parked shards keep their cache key -- if the
+    # throttle later gives the slot back, that key pays one cache write to warm again.
+    parked: list[int] = []
+
+    def reconcile() -> int:
+        """Match live shard tokens to the throttle's limit. Returns active count."""
+        target = min(workers, throttle.limit) if throttle else workers
+        while len(parked) > workers - target:
+            shards.put(parked.pop())
+        while len(parked) < workers - target:
+            try:
+                parked.append(shards.get_nowait())
+            except queue.Empty:
+                break              # all out on calls; catch the rest next time round
+        return workers - len(parked)
+
     def task(row):
         # The shard is claimed HERE, on a pool thread, and never by the submitting
         # thread. Claiming it at submit time deadlocks: the submitter runs ahead of the
@@ -1216,13 +1349,15 @@ def run_level(client, cfg: RunConfig, rows, workers: int, writer: Writer,
         try:
             rng = random.Random(f"{RNG_SEED}-{row.get('review_id')}")
             try:
-                return row, shard, label_review(client, cfg, row, rng, shard, watch)
+                return row, shard, label_review(client, cfg, row, rng, shard, watch,
+                                                throttle)
             except Exception as e:                   # never let a thread die silently
                 return row, shard, {"api_error_type": type(e).__name__,
                                     "api_error_message": str(e), "attempts": [],
                                     "dumps": [], "usage": {}, "latency_s": 0.0,
                                     "n_searches": 0, "parsed": None, "raw": None,
-                                    "parse_note": None, "rmeta": {}, "contract": None}
+                                    "parse_note": None, "rmeta": {}, "contract": None,
+                                    "n_rate_limited": 0}
         finally:
             shards.put(shard)                        # free the moment the call returns
 
@@ -1244,14 +1379,15 @@ def run_level(client, cfg: RunConfig, rows, workers: int, writer: Writer,
                 break
 
         while pending:
-            writer.progress.inflight = len(pending)
+            active = reconcile()
+            writer.progress.inflight = min(len(pending), active)
             done_futs, pending = wait(pending, return_when=FIRST_COMPLETED)
             for fut in done_futs:
                 row, shard, res = fut.result()
                 # Read the cache rate BEFORE recording, so the status line this
                 # completion draws carries a current number rather than last one's.
                 writer.cache_hit = watch.rolling()
-                writer.record(row, res, shard, workers, ramp)
+                writer.record(row, res, shard, active, ramp)
                 n += 1
                 alarm = watch.pop_alarm()
                 if alarm:
@@ -1264,10 +1400,18 @@ def run_level(client, cfg: RunConfig, rows, workers: int, writer: Writer,
                                                       else min(prev, workers))
                     writer.progress.clear()
                     warn_cache(alarm, workers)
+            if throttle:
+                back = throttle.maybe_recover()
+                if back:
+                    writer.progress.emit([C.p(
+                        f"  {G['ok']} quiet since the last rate limit: "
+                        f"concurrency {back[0]} -> {back[1]}", "green")])
+                ramp.update(throttle.state())
             for _ in range(len(done_futs)):
                 if not submit_one():
                     break
-            writer.progress.inflight = len(pending)
+            active = reconcile()
+            writer.progress.inflight = min(len(pending), active)
 
         if STOP.is_set() or writer.stop_reason:
             ex.shutdown(wait=True, cancel_futures=True)
@@ -1460,6 +1604,16 @@ def actual_run(cfg: RunConfig, a: argparse.Namespace) -> None:
             "cache_broke_at_workers": cache_cap, "baseline_cache_hit": None,
             "tier": cfg.tier}
 
+    throttle = Throttle(max_workers, cooldown=a.throttle_cooldown,
+                        recover_after=a.throttle_recover)
+    if state.get("throttle_limit") and a.resume:
+        # A level the API already refused is not worth rediscovering at full price.
+        throttle.limit = max(1, min(throttle.limit, int(state["throttle_limit"])))
+        if throttle.limit < max_workers:
+            print(f"  starting at {throttle.limit} workers: the previous pass was rate "
+                  f"limited above that")
+    ramp.update(throttle.state())
+
     signal.signal(signal.SIGINT, _sigint_handler)
     writer.progress.start()
     client = make_client(max_workers)
@@ -1469,11 +1623,15 @@ def actual_run(cfg: RunConfig, a: argparse.Namespace) -> None:
         # --- phase 1: sequential. Warms shard 0 and establishes the baseline. ---
         print(C.p(f"\n[1/3] sequential warm-up: {cfg.seq_warmup} reviews on shard 0\n", "cyan", True))
         run_level(client, cfg, itertools.islice(todo_iter, cfg.seq_warmup), 1,
-                  writer, watch, ramp, "warmup")
+                  writer, watch, ramp, "warmup", throttle)
         base = watch.seal_baseline()
         ramp["baseline_cache_hit"] = round(base, 4) if base is not None else None
         if base is None:
-            stopped = "no cache measurements in the warm-up phase"
+            stopped = ("no cache measurements in the warm-up phase"
+                       + (f" -- every call was rate limited ({throttle.hits} x 429); "
+                          f"concurrency is already at {throttle.limit}, so this is an "
+                          f"account-level limit, not a concurrency one"
+                          if throttle.hits else ""))
         elif base < CACHE_FLOOR:
             stopped = (f"cache never warmed: {base:.1%} mean hit rate over the "
                        f"sequential phase, floor is {CACHE_FLOOR:.0%}")
@@ -1496,8 +1654,12 @@ def actual_run(cfg: RunConfig, a: argparse.Namespace) -> None:
                 n = max(cfg.ramp_batch, 3 * lv, lv + CACHE_MIN_SAMPLES)
                 print(C.p(f"[2/3] ramp step {i}/{len(levels)}: {lv} workers, {n} reviews "
                       f"({lv} cache shards, {cache_rpm(lv):.1f} req/min each)", "cyan", True))
+                if throttle.limit < lv:
+                    print(f"  ramp stops at {throttle.limit}: the API rate limited us "
+                          f"below {lv} workers")
+                    break
                 got, broke = run_level(client, cfg, itertools.islice(todo_iter, n),
-                                       lv, writer, watch, ramp, f"ramp:{lv}")
+                                       lv, writer, watch, ramp, f"ramp:{lv}", throttle)
                 roll = watch.rolling()
                 if broke:
                     print(C.p(f"  {G['bad']} {lv} workers DEGRADED the cache "
@@ -1522,7 +1684,8 @@ def actual_run(cfg: RunConfig, a: argparse.Namespace) -> None:
                           "cyan", True))
             else:
                 print(C.p(f"\n[3/3] remainder at {final} workers\n", "cyan", True))
-            run_level(client, cfg, todo_iter, final, writer, watch, ramp, "main")
+            run_level(client, cfg, todo_iter, final, writer, watch, ramp, "main",
+                      throttle)
 
     except KeyboardInterrupt:
         stopped = "interrupted (Ctrl-C)"
@@ -1533,6 +1696,7 @@ def actual_run(cfg: RunConfig, a: argparse.Namespace) -> None:
             stopped = writer.stop_reason
         writer.progress.stop()
         writer.progress.inflight = 0
+        ramp.update(throttle.state())
         if stopped and ramp.get("workers_current"):
             ramp["stopped_at_workers"] = ramp["workers_current"]
         writer.close()
@@ -1679,6 +1843,13 @@ def parse_args() -> argparse.Namespace:
                     help="leave a permanent progress line every N reviews. On a "
                          "terminal the status line is redrawn on EVERY review "
                          "regardless; this only controls the scrollback history.")
+    ap.add_argument("--throttle-cooldown", type=float, default=60.0,
+                    help="seconds after a concurrency cut before another rate limit "
+                         "may cut again. Stops one throttling incident, which arrives "
+                         "as a burst, from halving the run several times over.")
+    ap.add_argument("--throttle-recover", type=float, default=0.0,
+                    help="seconds of no rate limits before adding one worker back "
+                         "(0 = cut and stay there)")
     ap.add_argument("--stats-every", type=int, default=500,
                     help="print a live digest of the label distribution every N "
                          "labelled reviews (0 = off)")
