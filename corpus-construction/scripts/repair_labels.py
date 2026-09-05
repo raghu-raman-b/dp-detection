@@ -165,6 +165,100 @@ def repair_span(span: str, text: str) -> tuple[str | None, str]:
     return None, ""
 
 
+# --------------------------------------------------- human review of the rest
+
+RULE = "-" * 78
+EXPORT_HEADER = """\
+# UNREPAIRABLE SPANS -- for human review
+#
+# Each block below is a label whose span could not be repaired automatically: the
+# quote is not in the review and no rule could turn it into one. Usually the model
+# paraphrased instead of quoting.
+#
+# HOW TO USE
+#   1. Read the review text at the bottom of each block.
+#   2. Set `action` to one of:
+#          KEEP   leave it exactly as it is                    (default)
+#          FIX    use the text you put on the `span:` line
+#          DROP   remove this label from the review entirely
+#   3. For FIX, replace the `span:` line with the words you want, copied from the
+#      review. Whitespace and line breaks do not have to match -- the script finds
+#      the passage and cuts the exact substring out of the review itself. If it
+#      cannot find your text, the edit is REJECTED and nothing is written.
+#   4. Save, then:  python repair_labels.py --checked THIS_FILE --apply
+#
+# Do not edit `review_id`, `label_index`, or `original_span` -- they identify the
+# label and guard against applying a stale file to a corpus that has moved on.
+{rule}
+"""
+
+
+def export_unrepairable(path: Path, items: list[dict]) -> None:
+    with path.open("w", encoding="utf-8") as f:
+        f.write(EXPORT_HEADER.format(rule=RULE))
+        for k, it in enumerate(items, 1):
+            f.write(f"\n### {k} of {len(items)}\n")
+            f.write(f"review_id     : {it['review_id']}\n")
+            f.write(f"label_index   : {it['label_index']}\n")
+            f.write(f"label         : {it['label']}\n")
+            f.write(f"problem       : {it['problem']}\n")
+            f.write(f"original_span : {json.dumps(it['span'], ensure_ascii=False)}\n")
+            f.write(f"action        : KEEP\n")
+            f.write(f"span          : {it['span']}\n")
+            f.write("--- review text ---\n")
+            f.write((it["text"] or "").rstrip() + "\n")
+            f.write("--- end ---\n")
+
+
+def parse_checked(path: Path) -> list[dict]:
+    """Read the edited file back. Deliberately forgiving about spacing, strict about
+    the identifying fields -- a typo in a span is recoverable, a wrong review_id is
+    not."""
+    out, cur, in_text, text = [], None, False, []
+    for raw in path.open(encoding="utf-8"):
+        line = raw.rstrip("\n")
+        # order matters: a block marker also starts with '#', so it must be tested
+        # before the comment skip or every block is silently swallowed
+        if line.startswith("### "):
+            if cur:
+                cur["text"] = "\n".join(text)
+                out.append(cur)
+            cur, in_text, text = {}, False, []
+            continue
+        if cur is None or (line.startswith("#") and not in_text):
+            continue
+        if line.strip() == "--- review text ---":
+            in_text = True
+            continue
+        if line.strip() == "--- end ---":
+            in_text = False
+            continue
+        if in_text:
+            text.append(line)
+            continue
+        if ":" in line:
+            k, v = line.split(":", 1)
+            cur[k.strip()] = v.strip()
+    if cur:
+        cur["text"] = "\n".join(text)
+        out.append(cur)
+    return out
+
+
+def locate_verbatim(want: str, text: str) -> str | None:
+    """Turn what a human typed into the exact substring of the review, or None."""
+    if not want or not text:
+        return None
+    if want in text:
+        return want
+    ntext, idx = _norm_map(text)
+    n = norm(want)
+    pos = ntext.find(n)
+    if pos < 0:
+        pos = ntext.lower().find(n.lower())
+    return _cut(text, idx, pos, pos + len(n)) if pos >= 0 else None
+
+
 # ------------------------------------------------------------------------ main
 
 def main() -> None:
@@ -178,6 +272,12 @@ def main() -> None:
     ap.add_argument("--report-only", action="store_true")
     ap.add_argument("--no-backup", action="store_true")
     ap.add_argument("--fuzz-min", type=float, default=FUZZ_MIN)
+    ap.add_argument("--export", nargs="?", const="unrepairable_spans.txt", default=None,
+                    metavar="FILE",
+                    help="write the spans no rule could fix to an editable file "
+                         "(default name: unrepairable_spans.txt, in --dir)")
+    ap.add_argument("--checked", metavar="FILE", default=None,
+                    help="apply the decisions from a file produced by --export")
     a = ap.parse_args()
 
     out = rc.resolve(a.dir)
@@ -213,6 +313,8 @@ def main() -> None:
 
     stat = Counter()
     plans: dict[int, list[dict]] = {}
+    unrepairable: list[dict] = []
+    index_of = {}                       # (review_id, label_index) -> row position
     for i, rec in enumerate(rows):
         if rec.get("superseded"):
             continue
@@ -260,6 +362,17 @@ def main() -> None:
                     stat["span_fixable"] += 1
                 else:
                     stat["span_unfixable"] += 1
+                    nspan = norm(sp).lower()
+                    ntext = norm(text).lower()
+                    m = difflib.SequenceMatcher(None, nspan, ntext, autojunk=False
+                        ).find_longest_match(0, len(nspan), 0, len(ntext))
+                    cov = m.size / max(len(nspan), 1)
+                    unrepairable.append({
+                        "review_id": rec["review_id"], "label_index": j,
+                        "label": code, "span": sp, "text": text,
+                        "problem": f"span not found in the review "
+                                   f"(best matching block covers {cov:.0%})"})
+                    index_of[(rec["review_id"], j)] = i
         if todo:
             plans[i] = todo
 
@@ -274,6 +387,96 @@ def main() -> None:
     print(f"  very short span (flag only) {stat['span_short_flag']:,}")
     total = stat['code_fixable'] + stat['dupe_fixable'] + stat['span_fixable']
     print(f"  -> repairable now           {total:,} in {len(plans):,} row(s)")
+    if unrepairable and not a.export and not a.checked:
+        print(f"\n  {len(unrepairable):,} span(s) need a human. Export them with:")
+        print(f"      python repair_labels.py --export")
+
+    if a.export:
+        path = Path(a.export)
+        if not path.is_absolute():
+            path = out / path
+        export_unrepairable(path, unrepairable)
+        print(f"\nwrote {len(unrepairable):,} block(s) to {rc.show(path)}")
+        print("  edit the `action` and `span` lines, then re-run with")
+        print(f"  --checked {rc.show(path)} --apply")
+        return
+
+    if a.checked:
+        cpath = rc.resolve(a.checked)
+        if not cpath.exists():
+            sys.exit(f"not found: {cpath}")
+        decisions = parse_checked(cpath)
+        by_id = {}
+        for k, rec in enumerate(rows):
+            by_id.setdefault(rec.get("review_id"), []).append(k)
+        applied = rejected = skipped = 0
+        problems = []
+        for dec in decisions:
+            act = (dec.get("action") or "KEEP").strip().upper()
+            rid = dec.get("review_id");
+            try:
+                li = int(dec.get("label_index"))
+            except (TypeError, ValueError):
+                problems.append(f"{rid}: unreadable label_index"); rejected += 1; continue
+            if act == "KEEP":
+                skipped += 1
+                continue
+            pos = None
+            for k in by_id.get(rid, []):
+                r = rows[k]
+                if r.get("superseded") or not isinstance(r.get("parsed"), dict):
+                    continue
+                labs = r["parsed"].get("labels") or []
+                if li < len(labs):
+                    pos = k
+                    break
+            if pos is None:
+                problems.append(f"{rid}[{li}]: no such label in the corpus")
+                rejected += 1
+                continue
+            item = rows[pos]["parsed"]["labels"][li]
+            orig = dec.get("original_span")
+            if orig:
+                try:
+                    orig = json.loads(orig)
+                except json.JSONDecodeError:
+                    pass
+                if orig != item.get("span"):
+                    problems.append(f"{rid}[{li}]: original_span no longer matches the "
+                                    f"corpus -- the file is stale, re-export it")
+                    rejected += 1
+                    continue
+            if act == "DROP":
+                plans.setdefault(pos, []).append(
+                    {"i": li, "field": "_drop", "from": item.get("label"), "to": None,
+                     "how": "dropped by human review"})
+                applied += 1
+            elif act == "FIX":
+                want = dec.get("span") or ""
+                text = texts.get(rid, "")
+                fixed = locate_verbatim(want, text)
+                if not fixed:
+                    problems.append(f"{rid}[{li}]: the span you typed is not in the "
+                                    f"review, so it was not applied")
+                    rejected += 1
+                    continue
+                plans.setdefault(pos, []).append(
+                    {"i": li, "field": "span", "from": item.get("span"), "to": fixed,
+                     "how": "corrected by human review"})
+                applied += 1
+            else:
+                problems.append(f"{rid}[{li}]: unknown action {act!r}")
+                rejected += 1
+        print(f"\nchecked file: {len(decisions):,} block(s)  "
+              f"-> {applied:,} to apply, {skipped:,} kept, {rejected:,} rejected")
+        for pr in problems[:20]:
+            print(f"    REJECT  {pr}")
+        if len(problems) > 20:
+            print(f"    ... and {len(problems)-20} more")
+        total += applied
+        if rejected and a.apply:
+            sys.exit("\nrefusing to apply while some edits are rejected. Fix the lines "
+                     "above (or set them back to KEEP) and run again.")
 
     if a.report_only or not a.apply or not total:
         print("\n" + ("report only." if a.report_only else
