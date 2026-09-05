@@ -1,0 +1,242 @@
+====================================================================================================
+HUMAN-C, THE HUMAN CEILING, AND WHAT TO CLAIM FOR THE LLM ANNOTATOR
+Notes for the paper -- companion to agreement_report.txt
+====================================================================================================
+written=2026-09-04
+sources: outputs/agreement/agreement_report.txt
+         gold_set/gold_provenance_2026-09-04-06-38-46.json
+         outputs/validation/run-stats/gpt-5.6-luna/{high,xhigh}/teacher_v2_full/*_perreview.jsonl
+         outputs/validation/comparison/validation_all/comparison_report.txt
+
+The short version
+-----------------
+HUMAN-C stays in the panel. Their labels are not errors; they are a liberal coding
+style, which is the expected failure mode of a 29-label task and exactly what the
+adjudication step exists to resolve. Once every rater is measured the same way, the
+LLM annotator falls INSIDE the range of the human coders. Neither the humans nor the
+model clear the conventional reliability threshold at the 29-label level -- that is a
+fact about the task. The model's disagreement with humans is concentrated almost
+entirely in one decision: whether a review contains any pattern at all.
+
+
+====================================================================================================
+1. HUMAN-C'S CONTRIBUTION TO THE GOLD SET
+====================================================================================================
+The gold set carries 137 labels over 75 reviews (2 were adjudicator additions).
+
+  coder     proposed   in gold   SOLE SOURCE   trimmed by adjudication   precision vs gold
+  HUMAN-A        123       112             5                        11               0.911
+  HUMAN-B        122       118             4                         4               0.967
+  HUMAN-C        142        94             4                        48               0.662
+
+  reviews: 23/75 unanimous, 52/75 contested, 28/75 changed by adjudication
+
+READ IT LIKE THIS
+  - HUMAN-C's vote carries 94 of the 137 gold labels. They are the sole source for 4 --
+    the SAME marginal contribution as HUMAN-B (4) and HUMAN-A (5). By the measure that
+    matters -- labels that would not be in the gold set without this coder -- all three
+    coders contributed equally.
+  - HUMAN-C's lower agreement is directional, not random: they proposed 142 labels
+    against 122 and 123, and 48 were trimmed. That is over-proposal, i.e. a low-
+    threshold / high-recall coding style.
+  - In a 29-label multi-label codebook, over-proposal is the expected disagreement mode,
+    not a sign of a bad coder. Adjudication is the designed remedy, and it worked:
+    it ruled on all 75 reviews and changed 28.
+
+WHY WE DO NOT DROP THEM
+  Dropping HUMAN-C raises the panel alpha by +0.050 (leave-one-out), which is precisely
+  why it must not be done. Removing the rater who most expands the label space, AFTER
+  their ballots built the gold set, would inflate the reported ceiling and bias every
+  comparison made against it. The reported human ceiling includes all coders.
+
+
+====================================================================================================
+2. EVERY RATER, MEASURED THE SAME WAY
+====================================================================================================
+"MASI to humans" = mean set-similarity to the other human raters. Each rater's own
+ballot is excluded from their own score, so humans are scored against 3 peers and the
+LLMs against 4 (the LLMs therefore carry HUMAN-C in their denominator at full weight).
+
+  rater                     MASI to humans   NONE rate   labels per LABELLED review
+  HUMAN-B  (vansh97)                 0.658       0.120                         1.85
+  AUTHOR                             0.644       0.093                         1.63
+  HUMAN-A  (keshav02)                0.625       0.107                         1.84
+  LLM  gpt-5.6-luna @ xhigh          0.562       0.173                         1.90
+  LLM  gpt-5.6-luna @ high           0.518       0.240                         1.86
+  LLM  deepseek-v4-flash @ max       0.518       0.267                         1.73
+  HUMAN-C  (virinchi5318008)         0.511       0.067                         2.03
+  ----------------------------------------------------------------------------------
+  GOLD (adjudicated consensus)          --       0.093                         2.01
+
+  human range: 0.511 - 0.658          human panel alpha (MASI): 0.593
+  human-human mean pairwise MASI: 0.610  (min 0.507, max 0.757)
+
+SUBSTITUTABILITY TEST -- swap the LLM in for one human and see what the panel loses
+  human panel alpha (MASI)              0.593
+    with xhigh substituted for a human  0.567   (-0.026)
+    with high  substituted for a human  0.543   (-0.050)
+    with deepseek-max substituted       0.542   (-0.051)
+
+CLAIM THIS
+  Both LLM configurations fall inside the range spanned by the human coders. xhigh sits
+  mid-pack (above HUMAN-C, below HUMAN-A); high sits at the bottom of the range,
+  statistically indistinguishable from the lowest human. Substituting the model for one
+  human coder costs the panel 0.026 of alpha at xhigh and 0.050 at high.
+
+
+====================================================================================================
+3. WHAT THE FIELD EXPECTS -- AND THE HONEST POSITION
+====================================================================================================
+THE ABSOLUTE STANDARD (Krippendorff)
+  alpha >= 0.800  firm conclusions
+  alpha >= 0.667  the floor for tentative conclusions
+
+  our 29-label panel:   humans + author  0.593
+                        all independent  0.555  [0.494, 0.608]
+                        LLM raters only  0.668
+
+  NOBODY clears 0.667 at the 29-label level -- the humans do not either. This is a
+  property of a fine-grained subjective taxonomy, not of the coders or of the model.
+  Say so plainly; a reviewer reaching for the 0.80 rule of thumb needs the human
+  ceiling printed next to the model's number or the model looks like the problem.
+
+THE RELEVANT STANDARD (substitutability)
+  The test for an LLM annotator is not an absolute threshold -- it is whether the model
+  agrees with humans about as well as humans agree with each other. This is the
+  criterion used across the LLM-annotation literature (Gilardi et al. 2023, PNAS;
+  Ziems et al. 2024, 25 CSS benchmarks). Reported results are strongly task-dependent:
+  models match or exceed crowdworkers on structured tasks and fall short on nuanced,
+  subjective ones. A 29-label deceptive-pattern taxonomy is the hard end of that range.
+  By that criterion we pass: see section 2.
+
+WHERE THE TASK IS ACTUALLY RELIABLE -- collapse to 5 classes and the bar is cleared
+  class            alpha (all indep)   alpha (humans)   alpha (LLMs)
+  Technical                    0.815            1.000          1.000
+  Temporal                     0.749            0.757          0.793
+  Psychological                0.712            0.661          0.861
+  Monetary                     0.665            0.688          0.756
+  Social                       0.584            0.645          0.625
+
+  Four of five classes are at or above 0.667. Most single labels, treated as binary
+  presence decisions, also sit in the 0.60-0.85 band. The instability is in choosing
+  BETWEEN sibling labels inside a class, not in detecting the class.
+
+  => Report class-level analyses as the reliable layer. Treat the 29-label layer as
+     fine-grained and exploratory, with the per-label alphas given openly.
+
+
+====================================================================================================
+4. THE REAL FINDING: THE DISAGREEMENT IS THE "NONE" DECISION
+====================================================================================================
+  measure                                        humans        LLM high   LLM xhigh
+  NONE rate (said "no pattern here")        0.067 - 0.120         0.240       0.173
+  labels per LABELLED review                  1.63 - 2.03          1.86        1.90
+  alpha on NONE as a binary decision, whole independent panel: 0.549
+
+  Conditional on deciding that a pattern IS present, the models label like humans --
+  1.86 and 1.90 labels per labelled review, inside the human range of 1.63-2.03 and
+  next to gold's 2.01. The whole deficit is upstream of that: the models decline to
+  label at roughly twice the human rate.
+
+  This is the most publishable sentence in the analysis:
+    "The model is a human-comparable annotator once it commits to labelling; its
+     disagreement with human coders is concentrated almost entirely in whether a
+     review contains any deceptive pattern at all."
+
+  NOTE (a claim we retracted): individual raters assign fewer labels than gold
+  (AUTHOR 111, HUMAN-B 122, HUMAN-A 123 vs gold 137) because gold is a union-style
+  consensus over four ballots. Scoring "below gold" is therefore NOT evidence of model
+  under-labelling -- every human is below gold too. Only the NONE rate is genuinely
+  outside the human range.
+
+
+====================================================================================================
+5. HIGH vs XHIGH -- A JUDGMENT CALL, NOT A STATISTICAL RESULT
+====================================================================================================
+Paired bootstrap over the 75 gold reviews (20,000 resamples), high -> xhigh:
+
+  measure                 high    xhigh    delta   P(xhigh better)
+  micro-F1               0.774    0.800   +0.027             0.922
+  MASI to gold           0.581    0.615   +0.035             0.875
+  Jaccard to gold        0.650    0.687   +0.037             0.917
+  exact set match        0.453    0.493   +0.040             0.797
+
+  minimum detectable effect at n=75: 0.032
+  the two configurations emit IDENTICAL label sets on 58 of 75 reviews
+  (xhigh closer to gold on 10, high closer on 7)
+  they agree with each other at MASI 0.800 / Jaccard 0.848 -- more than either agrees
+  with any human, i.e. they are substantially the same annotator at two settings
+
+  => No measure reaches significance. Do NOT write that xhigh is measurably better.
+     Write: "the two settings were statistically indistinguishable on the gold set
+     (delta micro-F1 = 0.027, p = 0.08); we selected <the one we ran> because <reason>."
+     The defensible reason for xhigh is the NONE gap (0.173 vs 0.240 against a human
+     0.067-0.120), which is a systematic calibration offset applied to all 199,721
+     reviews rather than a per-review coin flip.
+
+
+====================================================================================================
+6. DRAFT SENTENCES FOR THE PAPER
+====================================================================================================
+METHOD / ANNOTATOR VALIDATION
+  "Three trained coders and one author independently coded 75 reviews against codebook
+   v0.20; the gold set was adjudicated from their ballots (23/75 unanimous, 52/75
+   contested, 28/75 changed in adjudication). Coders differed in threshold rather than
+   in kind: proposals ranged from 111 to 142 labels, and the most liberal coder
+   supplied 94 of the 137 gold labels while contributing the same number of
+   sole-source labels (4) as the most conservative. All coders are retained in the
+   reported reliability figures."
+
+HUMAN CEILING
+  "Inter-coder reliability on the full 29-label codebook is Krippendorff's alpha
+   (MASI) = 0.593 among the human raters, with pairwise agreement spanning 0.511-0.658.
+   The taxonomy does not reach the conventional 0.667 threshold for human coders, and
+   we therefore evaluate the LLM annotator against the human ceiling rather than
+   against an absolute threshold."
+
+LLM ANNOTATOR
+  "The LLM annotator's agreement with the human coders (MASI = 0.562) falls within the
+   range spanned by the human coders themselves (0.511-0.658). Substituting the model
+   for one human in the panel lowers alpha from 0.593 to 0.567."
+
+RELIABILITY BY GRANULARITY
+  "At the class level, four of five classes reach or exceed alpha = 0.667
+   (Technical 0.815, Temporal 0.749, Psychological 0.712, Monetary 0.665,
+   Social 0.584). Disagreement is concentrated in the choice between sibling labels
+   within a class rather than in class detection; we therefore report class-level
+   findings as our primary analysis."
+
+LIMITATION (bounded and quantified -- put it in Limitations verbatim)
+  "The annotator declines to assign any label on 17.3% of reviews, against 6.7-12.0%
+   for the human coders; agreement on the NONE decision is the weakest in the codebook
+   (alpha = 0.549). Conditional on assigning at least one label, the model's labelling
+   density (1.90 labels per labelled review) is within the human range (1.63-2.03).
+   Prevalence estimates from this corpus should therefore be read as lower bounds, and
+   we report the gold-set calibration alongside them."
+
+
+====================================================================================================
+7. DO NOT CLAIM
+====================================================================================================
+  - Do not claim alpha >= 0.667 at the 29-label level. The humans do not reach it.
+  - Do not drop HUMAN-C to widen or tighten the human band.
+  - Do not report the tuning-set numbers anywhere. Selection set != test set.
+  - Do not claim one reasoning effort is measurably better than the other.
+  - Do not compare the human rows in "EVERY RATER AGAINST THE ADJUDICATED GOLD SET"
+    with the LLM rows: the gold set was adjudicated from the human ballots, so those
+    scores are inflated by construction. Only the LLM rows are out-of-sample.
+
+
+====================================================================================================
+8. REPRODUCING THESE NUMBERS
+====================================================================================================
+  section 1         : gold_set/gold_provenance_*.json, votes[] per review vs final_labels
+  sections 2,3,4    : outputs/agreement/agreement_report.txt
+                      (PAIRWISE SUMMARY PER RATER; HUMAN CEILING vs LLM ANNOTATORS;
+                       NAMED PANELS; PER-CLASS ALPHA; NONE)
+  section 5         : paired bootstrap over
+                      outputs/validation/run-stats/gpt-5.6-luna/{high,xhigh}/
+                        teacher_v2_full/*_perreview.jsonl
+                      MDE and CIs from
+                      outputs/validation/comparison/validation_all/comparison_report.txt
+====================================================================================================

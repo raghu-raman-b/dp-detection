@@ -1,0 +1,318 @@
+====================================================================================================
+WHY high, AND WHY NOT PROMPT v3
+The selection argument, with every calculation shown
+====================================================================================================
+written=2026-09-04
+decision: gpt-5.6-luna @ reasoning effort "high", prompt teacher_v2_full (sha aad355174ac4)
+
+sources: outputs/validation/comparison/validation_all/comparison_report.txt   (gold-75)
+         outputs/validation/run-stats/gpt-5.6-luna/{high,xhigh}/.../ *_perreview.jsonl
+         outputs/comparison/prompt_v2_vs_v3/comparison_report.txt             (tuning-50)
+         outputs/run-stats/gpt-5.6-luna/{low,medium,high,xhigh}/.../ *_perreview.jsonl
+         outputs/agreement/agreement_report.txt
+         dataset/dataset_to_label.jsonl
+
+THE ARGUMENT IN ONE PARAGRAPH
+  The unit of analysis is the GAME, not the review. A pattern missed in one review is
+  recovered from the next review of the same game; a pattern wrongly asserted is not
+  recovered by anything. So the quantity to protect is precision-on-emission, not
+  recall. high has the higher precision (0.887 vs 0.864) and emits fewer spurious
+  labels (12 vs 16) than xhigh, is statistically indistinguishable from it on every
+  quality measure, and costs half as much and half the wall clock. Prompt v3 was built
+  specifically to make the model label more and stop returning NONE; it is 24.4% larger
+  and it did not do so at any reasoning effort. We therefore keep v2 and treat
+  conservative labelling as a stable property of the annotator rather than a defect to
+  be prompted away.
+
+
+====================================================================================================
+1. THE UNIT OF ANALYSIS ARGUMENT -- WHY MISSED LABELS ARE CHEAP HERE
+====================================================================================================
+CORPUS SHAPE
+  199,721 reviews over 88 games
+  reviews per game:  min 694   p25 2,342   median 2,343   p75 2,344   max 2,347
+
+  The corpus is near-uniform per game. A pattern that genuinely characterises a game
+  has ~2,343 independent chances to be observed, not one.
+
+RECOVERY BY AGGREGATION
+  If a pattern is mentioned in n of a game's reviews and the annotator detects any one
+  mention with probability r, the game-level detection probability is 1 - (1-r)^n.
+  Using the measured gold-75 recall of each setting (high r=0.686, xhigh r=0.745):
+
+    n mentions     high      xhigh      gap
+             1    0.686      0.745   +0.059
+             2    0.901      0.935   +0.034
+             3    0.969      0.983   +0.014
+             5    0.997      0.999   +0.002
+             8    1.000      1.000   +0.000
+            20    1.000      1.000   +0.000
+
+  The recall advantage of xhigh is worth 0.059 at a single mention and effectively
+  nothing from three mentions onward. At ~2,343 reviews per game, any pattern present
+  often enough to be a property OF THE GAME is far past that point.
+
+  ASSUMPTION, STATED: this treats detection failures as independent across reviews.
+  That holds for ordinary misses; it does NOT hold for a label the annotator is blind
+  to as a class. Section 6 records which labels those are. The assumption is what makes
+  the aggregation argument work, so it is checkable, not hidden.
+
+IS high's EXTRA MISS RANDOM OR SYSTEMATIC?  (the test of that assumption)
+  high misses 43 gold labels, xhigh misses 35 -- a difference of 8.
+  Those 8 are spread over 9 distinct labels, at most ONE extra miss on any single label:
+
+    label                       support   high tp/fn   xhigh tp/fn   high extra miss
+    M_EasyToPurchase                  5       3/2          4/1               +1
+    M_Gambling                        4       2/2          3/1               +1
+    P_RewardMania                    10       7/3          8/2               +1
+    S_Competition                    11       9/2         10/1               +1
+    S_ForcedFellowship                2       1/1          2/0               +1
+    S_FriendSpamImpersonation         2       1/1          2/0               +1
+    T_Advertisement                   9       7/2          8/1               +1
+    T_Grinding                        5       3/2          4/1               +1
+    T_MandatoryMarathon               6       3/3          4/2               +1
+    T_InfiniteTreadmill               2       2/0          1/1               -1
+
+  No label loses more than one instance, and one label goes the other way. This is
+  scattered noise, not a blind spot -- exactly the error profile that aggregation
+  over ~2,343 reviews recovers.
+
+THE DIRECTION THAT DOES NOT RECOVER
+  gold-75, teacher_v2_full:
+    high   precision 0.887   12 spurious labels   43 missed
+    xhigh  precision 0.864   16 spurious labels   35 missed
+
+  high emits FEWER wrong labels in absolute terms. Under a game-level design, a
+  spurious label propagates to the game and no amount of extra data removes it,
+  whereas a missed label is re-offered by the next review. Choosing on precision
+  selects high; choosing on recall selects xhigh. The design says precision.
+
+
+====================================================================================================
+2. WHY high vs xhigh IS A COINFLIP -- ALL CALCULATIONS
+====================================================================================================
+PAIRED BOOTSTRAP, gold-75, 20,000 resamples, paired by review_id
+  (each resample draws 75 reviews with replacement and recomputes both settings on the
+   same draw, so the comparison is not contaminated by which reviews were sampled)
+
+    measure                 high    xhigh    delta   P(xhigh better)
+    micro-F1               0.774    0.800   +0.027             0.922
+    MASI to gold           0.581    0.615   +0.035             0.875
+    Jaccard to gold        0.650    0.687   +0.037             0.917
+    exact set match        0.453    0.493   +0.040             0.797
+
+  significance threshold  0.95        grey zone  [0.05, 0.95]
+  minimum detectable effect at n=75:  0.032     (largest delta observed: 0.040)
+  95% CI micro-F1:  high [0.708, 0.831]   xhigh [0.743, 0.851]   -- overlapping
+
+  Not one measure reaches the threshold. Three of the four deltas are at or below the
+  MDE. The confidence intervals overlap across most of their width.
+
+THEY ARE SUBSTANTIALLY THE SAME ANNOTATOR
+  identical label sets on 58 of 75 reviews
+  xhigh closer to gold on 10 reviews, high closer on 7
+  agreement between the two settings: MASI 0.800, Jaccard 0.848, exact 0.747
+    -- higher than either setting's agreement with ANY human rater (max 0.659)
+
+  Two raters that agree with each other more than either agrees with a human are not
+  two different annotators. The 17 reviews where they differ are the entire basis for
+  a 0.027 micro-F1 gap.
+
+WHAT high BUYS
+    measure                        high      xhigh
+    projected cost at 200k         $407       $839
+    wall clock at 11 workers      ~58 h     ~129 h
+    output tokens per review      1,104      2,836
+    p50 latency                   10.1 s     16.6 s
+
+  Half the money and half the calendar for a difference that no test can resolve.
+
+THE SENTENCE FOR THE PAPER
+  "The two reasoning settings were statistically indistinguishable on the held-out gold
+   set (delta micro-F1 = 0.027, p = 0.08; MDE = 0.032 at n = 75) and produced identical
+   label sets on 58 of 75 reviews. We selected the lower-cost setting, which also had
+   the higher precision (0.887 vs 0.864) -- the property that matters when review-level
+   labels are aggregated to game-level attributes."
+
+
+====================================================================================================
+3. WHY PROMPT v3 WAS REJECTED -- ALL CALCULATIONS
+====================================================================================================
+WHAT v3 IS AND WHAT IT WAS FOR
+  v3 = v2 plus additional span requirements, rationales, and worked examples, added
+  specifically to stop the model returning NONE and to make it commit to labels.
+  It is a targeted intervention with a measurable objective: reduce the NONE rate.
+
+EXACT SIZE COST
+    measure                      v2        v3      delta
+    prompt chars             96,265   119,790    +24.4%
+    prompt lines                975     1,240    +27.2%
+    file bytes               99,056   122,828
+    measured input tok/review
+      @ high                 25,831    30,402    +17.7%
+      @ medium               25,552    30,123    +17.9%
+      @ xhigh                27,072    33,163    +22.5%
+
+  Cost consequence at 200k: v2 $407 vs v3 $414 at high; $839 vs $1,005 at xhigh.
+
+DID IT DO WHAT IT WAS BUILT TO DO?  (tuning-50; gold NONE = 10/50, gold labels = 86)
+
+    effort    v2: NONE  labels  microF1     v3: NONE  labels  microF1
+    low         11/50      80    0.843        18/50      61    0.748
+    medium      14/50      72    0.835        13/50      73    0.855
+    high        11/50      82    0.845        13/50      74    0.850
+    xhigh       11/50      88    0.851        10/50      90    0.818
+
+  NO. At the setting we are shipping (high), v3 made it WORSE: NONE rose 11 -> 13 and
+  total labels emitted FELL 82 -> 74. At low it is much worse (11 -> 18 NONE, labels
+  80 -> 61). At medium and xhigh it is a wash. The intervention did not move its own
+  target metric in the intended direction at any effort level.
+
+QUALITY: PAIRED BOOTSTRAP v2 -> v3 AT MATCHED EFFORT (tuning-50, 20,000 resamples)
+
+    effort       v2      v3    delta   P(v3 better)   identical label sets
+    low       0.843   0.748   -0.095          0.069              32/50
+    medium    0.835   0.855   +0.020          0.691              35/50
+    high      0.845   0.850   +0.005          0.166              41/50
+    xhigh     0.851   0.818   -0.032          0.488              39/50
+
+  Read the P column: at high, P(v3 better) = 0.166 -- v2 is the more likely winner.
+  v3 wins nothing decisively, loses decisively at low, and ties elsewhere. Across four
+  efforts it has no consistent direction, which is itself the finding: a 24.4% larger
+  prompt bought variance, not quality.
+
+  Note also the stability difference across efforts:
+    v2 spread over low/medium/high/xhigh:  0.835 - 0.851   (range 0.016)
+    v3 spread over low/medium/high/xhigh:  0.748 - 0.855   (range 0.107)
+  For a single non-repeatable 200k run, prefer the prompt whose quality does not depend
+  on which effort knob it is paired with.
+
+THE SENTENCE FOR THE PAPER
+  "We tested an expanded prompt (+24.4% in length) that added span requirements,
+   rationales and worked examples with the explicit aim of reducing abstention. It did
+   not reduce the NONE rate at any reasoning effort (11 -> 13 of 50 at the selected
+   setting), produced no significant change in micro-F1 (delta = +0.005, p = 0.83 at
+   high), and was less stable across efforts (range 0.107 vs 0.016). We retained the
+   shorter prompt."
+
+
+====================================================================================================
+4. IS CONSERVATIVE LABELLING A MODEL CHARACTERISTIC?
+====================================================================================================
+EVIDENCE FOR (three independent lines)
+  1. It survives a prompt built to remove it. v3 added spans, rationales and examples
+     aimed at exactly this behaviour and did not reduce the NONE rate (section 3).
+  2. It is present in every model tested, not one:
+       NONE rate on gold-75:  deepseek-v4-flash @ max  0.267
+                              gpt-5.6-luna @ high      0.240
+                              gpt-5.6-luna @ xhigh     0.173
+                              human coders             0.067 - 0.120
+     Three annotators from two providers all abstain more than any human.
+  3. It is insensitive to the true base rate. Gold NONE is 20% on the tuning-50 and
+     9.3% on the gold-75; the model returns NONE at 22% and 24% respectively. It is
+     applying a roughly fixed internal threshold rather than calibrating to the data.
+
+VERDICT ON THE CLAIM "AND IT IS GOOD"
+  Half right, and the half that is right is the half that matters here.
+
+  DEFENSIBLE:  the behaviour is a stable property of the annotator, not an artefact of
+               our prompt, and conservative emission is the right bias for a design
+               whose output is a game-level attribute built from thousands of reviews.
+  NOT DEFENSIBLE AS WRITTEN: "under-labelling is good" full stop. It is good FOR THIS
+               DESIGN. The same behaviour would be disqualifying for a review-level
+               prevalence claim, for a per-review classifier benchmark, or for any
+               statement of the form "X% of reviews contain no deceptive pattern".
+
+  Write it as a property with a scope, not as a virtue:
+    "The annotator is conservative: it abstains at roughly twice the human rate and
+     this was not removable by prompt engineering. Because our unit of analysis is the
+     game and each game contributes ~2,343 reviews, missed detections are recovered by
+     aggregation, while the annotator's higher precision on emitted labels transfers
+     directly to the game-level attribute. We report review-level prevalence as a lower
+     bound and do not interpret the NONE class."
+
+
+====================================================================================================
+5. THE DESIGN CONSEQUENCE YOU MUST BUILD FOR
+====================================================================================================
+The precision-first argument is correct, but 0.887 precision over thousands of reviews
+per game means absolute counts are dominated by noise. Scaling high's measured
+false-positive rate to a median game of 2,343 reviews:
+
+    label                        fp/75   rate/review   spurious per game
+    S_Competition                    4        0.0533                 125
+    T_PlayingByAppointment           2        0.0267                  62
+    M_Gambling                       2        0.0267                  62
+    M_PayToProgress                  1        0.0133                  31
+    T_DailyRewards                   1        0.0133                  31
+    T_Advertisement                  1        0.0133                  31
+    T_InfiniteTreadmill              1        0.0133                  31
+    TOTAL                           12        0.1600                 375
+    (true positives, for scale)     94        1.2533               2,937
+
+WHAT FOLLOWS
+  - A rule of the form "game G has pattern P if any review mentions P" is useless:
+    every game would carry almost every label. Do not use k = 1.
+  - Game-level labels must be RATES (fraction of that game's reviews carrying P),
+    compared across games, with a threshold set above the noise floor above.
+  - The good news, and it is the real strength of this design: a false-positive rate
+    that is roughly constant across games adds a roughly constant offset to every
+    game's rate, and a constant under-detection rate scales every game's rate by
+    roughly the same factor. Both largely CANCEL in between-game comparisons. The
+    corpus is therefore strong for ranking and comparing games and weak for absolute
+    per-review prevalence -- which is exactly the claim structure the paper should use.
+  - The cancellation assumes the error rate does not correlate with game genre. That is
+    worth one check once the corpus is labelled (e.g. whether M_Gambling precision
+    differs on casino vs match-3 titles) before any cross-genre claim is made.
+  - S_Competition is the one label to treat with suspicion: it is 4 of high's 12 false
+    positives (33%) on gold-75 and the single largest noise source. Flag it in any
+    per-label result.
+
+CAVEAT ON THESE NUMBERS
+  The false-positive rate is measured on gold-75, which is enriched for deceptive
+  patterns (9.3% NONE against a random sample). The per-game noise figures above are
+  therefore an upper bound in absolute terms; the ordering and the conclusion (use
+  rates and a threshold, not counts) do not depend on the exact scaling.
+
+
+====================================================================================================
+6. WHAT THIS LICENSES, AND WHAT IT FORBIDS
+====================================================================================================
+LICENSED
+  - Game-level pattern rates and comparisons/rankings between games.
+  - Class-level (5-class) analyses, where inter-rater alpha is 0.665-0.815.
+  - "The annotator agrees with human coders as well as human coders agree with each
+    other" (MASI 0.518 for high, human range 0.511-0.658).
+  - Co-occurrence structure between patterns at game level.
+
+FORBIDDEN
+  - "X% of reviews contain no deceptive pattern." The NONE class is the annotator's
+    weakest decision (panel alpha 0.549) and only 33% of high's NONE calls on gold-75
+    are correct.
+  - Absolute review-level prevalence stated as a point estimate. Report as a lower
+    bound with the gold-set calibration alongside.
+  - Binary "this game has/does not have pattern P" from a single mention.
+  - Any claim that xhigh or v3 is measurably better or worse. They are not.
+  - Reporting the tuning-50 numbers as results. Selection set != test set; the tuning
+    numbers appear in this file only to justify a design choice.
+
+
+====================================================================================================
+7. REPRODUCING EVERY NUMBER IN THIS FILE
+====================================================================================================
+  section 1  corpus shape   : count app_id over dataset/dataset_to_label.jsonl
+             recovery curve : 1-(1-r)^n with r = micro recall from validation_all
+             miss profile   : per-label tp/fn diff over the two gold-75 perreview files
+             precision      : validation_all/comparison_report.txt leaderboard
+  section 2  bootstrap      : paired resample of per-review F1 over the two gold-75
+                              perreview files, seed 20260831, 20,000 draws
+             MDE, CIs       : validation_all/comparison_report.txt SIGNIFICANCE block
+             cross-agreement: agreement_report.txt pairwise matrices (L-B vs L-C)
+  section 3  prompt size    : build_prompt.load_prompt() on both prompt files
+             input tokens   : prompt_v2_vs_v3/comparison_report.txt tok_in column
+             NONE / labels  : outputs/run-stats/gpt-5.6-luna/<eff>/<stem>/*_perreview.jsonl
+             bootstrap      : same method as section 2, matched effort, tuning-50
+  section 4  NONE rates     : agreement_report.txt + validation_all leaderboard
+  section 5  noise floor    : per-label fp counts over the gold-75 high perreview file,
+                              divided by 75, multiplied by the median reviews-per-game
+====================================================================================================

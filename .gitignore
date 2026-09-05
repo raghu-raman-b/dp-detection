@@ -8,3 +8,7 @@
 !corpus-construction/outputs/
 !corpus-construction/outputs/llm_annotation/
 !corpus-construction/outputs/llm_annotation/*
+!corpus-construction/outputs/agreement/
+!corpus-construction/outputs/agreement/hc_justification.txt
+!corpus-construction/outputs/comparison/
+!corpus-construction/outputs/comparison/selection_justification.txt
